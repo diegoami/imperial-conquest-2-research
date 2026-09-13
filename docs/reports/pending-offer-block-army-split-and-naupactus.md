@@ -43,7 +43,9 @@ The offer is addressed at the nation whose turn is starting (Rome in every save 
 
 - **Troops and units are conserved exactly**: `37,081 + 38,455 = 75,536`, `9 + 7 = 16`. No rounding, no loss, no minimum. `[confirmed]`
 - **Morale 59 is confirmed, indirectly but cleanly.** The new army reads 57, not 59 — but a full turn elapsed, and `supply-driven-morale-and-fleet-attrition.md` established that the weekly tick rewrites `+14` from the army's supply percentage, `−2` when below 10%. Both armies are at **0% supply**, and the parent army moved `66 → 64` in the same window: exactly `−2`. `59 − 2 = 57`. The new army was created at 59 and took the same penalty as its parent. `[confirmed]`
-- **Money is *not* 0 as the code says**, and the discrepancy is explainable but not settled: the parent lost exactly 100 and the new army holds exactly 100, so the total is conserved. A split that creates the army with money 0 followed by a `TArmyToArmy` transfer of 100 talents (a mechanic already confirmed as exactly reciprocal in `army-to-army-transfer-confirmed.md`) reproduces this exactly, and the user's own note for an earlier session describes reorganising armies this way. The split code itself is not contradicted; nothing here isolates it.
+- **Money is not 0 as `FUN_00449F08` sets it — because the split dialog lets the player change it before committing.** The recording shows `TSplitArmyUnit` directly, and it is a two-pane transfer screen rather than a confirmation box: *"Units in first army"* / *"Units in second army"*, a `Transfer` and a `Disband` button under each, live `N units / N troops` totals under both, and below that **`First army's supply` / `Second army's supply` and `First army's money` / `Second army's money` spinners with 10s and 100s steppers** — the same shape as the `TArmyToArmy` dialog confirmed in `army-to-army-transfer-confirmed.md`. A mid-drag frame shows the two panes at `13 units / 63,458 troops` and `3 units / 12,078 troops` while the final save reads 9 and 7, so the player was still moving units at that point.
+
+  So `FUN_00449F08`'s `money = 0`, `supplies = 0` are the *initial* values the dialog opens with, not the committed ones; the observed `156 / 100` is the player having pushed the money spinner, and the exact conservation of 256 talents is the dialog's reciprocal-transfer behaviour, not an accident. The decompiled constant and the observation agree once that is accounted for. `[confirmed]`
 
 ### "Supplied from Mediolanum / Brixia" is descriptive, not a mechanic
 
@@ -86,13 +88,16 @@ So AI *decisions* in this window are deterministic given the world state, while 
 
 - Whether the pending-offer block can hold an alliance proposal (`2`) as well as a trade one — only `1` was observed, twice.
 - What sets the block, and whether the AI's decision to offer is reachable in code (the roadmap already scopes unnamed AI decision code out).
-- The split's money rule in isolation: the observed `0 / 100` split is consistent with the code plus a subsequent manual transfer, and a same-day before/after pair around a single split click would settle it in one step.
+- Whether the split dialog's supply spinner is constrained by the receiving army's capacity (`troops / 100`), the way the city-to-army dialog appears to be — both armies were at 0 supply here, so nothing was exercised.
 - The `wealth ± fortification × 3000` half of the capture formula (see above).
 - Whether AI determinism holds over more than the one replayed turn examined here.
 
 ## Reproduction
 
 ```text
+ffmpeg -ss 98 -i "recordings/bandicam 2026-09-13 23-14-41-582.mp4" -frames:v 1 \
+       -vf "crop=740:340:0:0" split.png            # the TSplitArmyUnit dialog
+
 dotnet run --project src/IC2.Inspect -- --to-json saves/1_rome_270_winter_9_b.sav w9b.json
 dotnet run --project src/IC2.Inspect -- --to-json saves/1_rome_270_winter_11.sav  w11.json
 dotnet run --project src/IC2.Inspect -- --compare-saves saves/1_rome_270_winter_9_b.sav saves/1_rome_270_winter_11.sav
@@ -102,6 +107,6 @@ python -c "d=open('1_rome_270_winter_11.sav','rb').read(); print(d[-22:-18].hex(
 
 ## Next checks
 
-1. A single-click controlled pair around one `SplitArmy` (save, split, save, no turn end) would pin the new record's money and moves directly, and is cheap.
+1. A single-click controlled pair around one `SplitArmy` (save, split with the money/supply spinners left alone, save, no turn end) would pin the new record's untouched defaults — money, supply and moves — directly, and is cheap.
 2. Offer an alliance rather than a trade and save at the receiving nation's turn start, to confirm the block's second word takes `2`.
 3. Identify which nation field the capture formula's "wealth" term actually writes, then re-check `± fortification × 3000` against this same Naupactus capture — every other number in that turn is already in hand.
