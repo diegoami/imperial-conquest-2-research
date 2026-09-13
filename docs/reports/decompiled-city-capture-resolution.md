@@ -18,12 +18,14 @@ else:
 
 Sums a per-unit contribution across the army's 20 unit slots (independently reconfirming the 20-units/army cap again), **tripling the contribution of one particular unit type** (type check `== 2`, i.e. archers), then scales by a per-army factor. Archers getting a 3× siege-strength bonus is a sensible, specific game-design fact this project didn't have before.
 
-### Defender strength (`FUN_0044a98c`)
+### Defender strength (`FUN_0044a98c`) — **correction, see below**
+
+> **Correction (2026-09-14):** this section originally had the loyalty and fortification weights swapped, named the third field "unidentified," misstated the ×5/3 bonus's gating condition, and glossed the ×4/5 term as "−20%" when it isn't exactly that under integer truncation. All four are fixed below, from a direct read of `FUN_0044a98c` cross-checked against `TInformation_ShowCityDetails` @ `0x0043BE5C` (which prints its own UI labels next to each field, making the identities unambiguous — see `imperial_conquest_2`'s `docs/investigations/siege-defender-strength.md` for the full field-to-label table). The wrong version had already propagated into the reimplementation's shipped ruleset model before this was caught; that correction is tracked as its own task there, not here.
 
 ```text
-strength = fortification × 150 + loyalty × 250 + <third field> × 200
-if <condition> and fortification > 59: strength = strength × 5 / 3
-if owner != allegiance: strength = strength × 4 / 5   // −20% if held by a non-allegiant power
+strength = loyalty × 150 + fortification × 250 + population × 200   // fortification decoded: value < 100 verbatim, else value % 100
+if is-capital(city) and loyalty > 59: strength = strength × 5 / 3
+if owner != allegiance: strength = strength × 4 / 5   // NOT exactly "−20%": integer truncation differs from strength − strength×20/100 at some values
 strength += (garrison troops assigned to this city) / 2
 ```
 
@@ -72,7 +74,7 @@ This is a direct, code-level explanation for findings from three separate save-d
 ## What this does not establish
 
 - `FUN_0044ba1c` — the step most likely responsible for the population/fortification percentage drops observed in every capture — is not yet decompiled. This report explains ownership, economy, and loyalty, but not yet the exact population/fortification-loss formula.
-- The exact meaning of the "third field" in defender strength, and the boolean condition gating the ×5/3 fortification bonus.
+- ~~The exact meaning of the "third field" in defender strength, and the boolean condition gating the ×5/3 fortification bonus.~~ **Resolved** — see the correction above: the third field is population, and the gating condition is `is-capital(city) and loyalty > 59`.
 - `FUN_0044c528`'s (nation-collapse) full trigger conditions and effects.
 - Why Ghidra's reference analysis misses these string usages in the first place — worked around, not fixed.
 
