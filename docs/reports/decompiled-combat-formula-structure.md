@@ -73,6 +73,15 @@ Same toolchain as prior decompilation reports. This pass required `getFunctionCo
 
 `battle-recording-melee-cap-confirmed.md` extracted six fresh combat-resolution panels from `bandicam 2026-09-12 05-27-11-464.mp4` (a stretch never sampled in `battle-observation.md`) via frame extraction. Four of five melee exchanges hit the defender-loss cap `floor(0.4 × defenderTroops) + 1` **exactly**, and the fifth falls below it exactly where the formula predicts it should (attacker too weak relative to defender to force the cap). This is the strongest numeric confirmation of any combat constant in this project — not simulated, directly observed.
 
+## Update: two clamp directions corrected, a missing step, and the matrix orientation settled
+
+From [battle-replayed-rout-mechanic-and-combat-constants.md](battle-replayed-rout-mechanic-and-combat-constants.md):
+
+- `FUN_00448fd0(a, b)` is plain `min(a, b)` on shorts. The two places described above as `clamp(…, floor≈4)` and `clamp(…, floor≈3)` are therefore **ceilings, not floors**: `defFactor = min(4, focusCount)` (the focus-fire count saturates at four attackers — a fifth adds nothing), and the shooting side-effect on morale is `min(3, loss × 35 / (targetTroops + 1))`, at most 3 points per shot.
+- The "quality term" in both power expressions is literally `quality × 10 + morale`, with `quality` the 5–9 tier code and `morale` the battle-local `DAT_004a0350` value.
+- `typeTable` is indexed with a 10-byte row stride on the **attacker's** type and a 2-byte column stride on the **defender's**, confirming the orientation `combat-type-effectiveness-matrix.md` had published as a reasoned guess.
+- **A step is missing from the pseudocode above**: both the melee and the shooting routine call `FUN_00438fb0` on the affected unit(s) immediately after applying losses. That is the **rout check** — a unit is removed outright if its troops drop below `standardBattalionSize / 25` or its morale is low, with a morale cascade to the rest of its side. Since neither loss formula can ever reduce a unit past 60% of its strength in one exchange, this is the only way a unit reaches zero. Both caps above were also confirmed exactly against real recorded exchanges, now on the **attacker** side as well as the defender's.
+
 ## Next checks
 
 1. Decompile `FUN_0043845c`, `FUN_00438420`, and extract the `DAT_0047946c` type-effectiveness table to get concrete numbers, then simulate the full recorded battle from `battle-observation.md` (which has complete before/after troop totals by class for both sides) and compare. **Update: `FUN_0043845c`/`FUN_00438420` are now decompiled and the matrix is now located — see `unit-type-stat-table-in-dat.md` and `combat-type-effectiveness-matrix.md`.**

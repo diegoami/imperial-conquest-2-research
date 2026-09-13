@@ -36,6 +36,12 @@ Every bolded field is an exact match to independent evidence already in this pro
 
 `+0x20` and `+0x26` remain unidentified — plausible candidates include a combat-power/toughness stat and a base value used elsewhere, but neither is matched to an observation yet.
 
+**Update: `+0x20` is identified — it is a per-type *shooting vulnerability*, read for the target's type (not the shooter's) by the shooting-range helper `FUN_0043845c`.** Light infantry and archers read 18, light cavalry 15, heavy cavalry 4, heavy infantry 2 — i.e. unarmoured targets take nine times the fire heavy infantry does. Checked against 23 recorded shooting exchanges, including a case where one light-infantry unit fires at both a heavy-cavalry and a light-infantry target inside the same battle and the two results imply the same shooter constant only when this factor is applied. See [battle-replayed-rout-mechanic-and-combat-constants.md](battle-replayed-rout-mechanic-and-combat-constants.md).
+
+**Update: `+0x1A` (standard battalion size) has a second use — it is also the tactical rout threshold, divided by 25** (light inf 600 · heavy inf 240 · archers 140 · light cav 280 · heavy cav 100). A unit whose troops fall below that value is removed from the battle outright by `FUN_00438fb0`, which is how units reach zero troops at all — the loss formulas' 40% caps can never get them there. Same report.
+
+(`+0x26` was separately identified in the design-audit pass as the per-type combat-power weight used by the strategic field-battle strength function `FUN_0044A8CC` — see `decompilation-plan.md` item 11. Both previously-unidentified fields in this table are therefore now accounted for.)
+
 ## What this does not establish
 
 - `+0x20` and `+0x26`'s meanings.

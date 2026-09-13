@@ -31,6 +31,8 @@ Following up on `decompiled-combat-formula-structure.md`'s open item ("simulate 
 
 Attacker losses in every exchange are far below their own 40% caps (all under 5% of attacker troops), consistent with a strong unit type (heavy infantry/cavalry) attacking a weaker one (light infantry, or a much smaller heavy-cavalry remnant) — the raw formula output simply doesn't get close to the ceiling on the winning side.
 
+**Update: the attacker-side cap is now confirmed exactly too.** A later recording caught a light-infantry unit of 7,135 attacking heavy infantry and losing **2,855** — `⌊0.4 × 7,135⌋ + 1` to the integer — alongside five more exact defender-side hits and one exchange where the defender was removed by the rout check rather than by the loss formula. See [battle-replayed-rout-mechanic-and-combat-constants.md](battle-replayed-rout-mechanic-and-combat-constants.md), which also resolves the effectiveness matrix's axis question raised in "Next checks" below (from the decompiled index arithmetic, not from a closer fight).
+
 ## What this does not establish
 
 - The un-capped raw formula's exact output (only the cases hitting the cap are pinned exactly; the one sub-cap case, and every attacker-side loss, are still just "plausible," not independently re-derived from the random-roll term).

@@ -35,6 +35,44 @@ This reframes the problem: it's not that the game is broken or hanging under the
 
 For future battle recordings, expect roughly one ~3-second dead pause per combat action — a 20-exchange battle will take at least ~60 seconds of pure waiting on top of everything else, regardless of hardware. This isn't fixable from the outside; it's a property of the original binary's pacing logic being decompiled/reimplemented eventually rather than something to work around today. For faster testing, prefer battles with fewer total exchanges (smaller armies, more lopsided matchups that resolve in fewer rounds) when a full end-to-end capture is needed.
 
+## Update: the delay found in the EXE — and it has an in-game settings dialog
+
+All three open items above are now closed, from the decompiled EXE rather than from a trace.
+
+**The mechanism** is `FUN_00448ffc` at `0x00448FFC`:
+
+```c
+void Delay(int n) {
+    DWORD start = GetTickCount();
+    do { } while ((int)(GetTickCount() - start) <= n * 100);   // n × 100 ms
+}
+```
+
+A **busy-wait**, not a `Sleep` and not a timer — which is exactly why the Procmon trace showed *zero* system calls during each gap rather than a blocking wait, and why the window is marked "Not Responding": the loop never returns to the message pump. The measured ~3.02 s corresponds to `n ≈ 30`.
+
+**Where it is called from** answers the "every combat action or only some?" question. The combat path calls it in exactly two places, at the end of each resolved exchange, after the info panel has been printed:
+
+- `FUN_0043910c` (shooting), guarded by `FUN_00438378()` — it only pauses when the battle is actually on screen for a human;
+- `FUN_004393ec` (melee), unguarded.
+
+So it is one pause per *exchange*, not one per sound — matching the trace's 27 stalls against 277 audio-playback threads.
+
+**It is a player-adjustable setting, stored per nation.** The two call sites read two different shorts out of the *nation* record — `nation[+0x468]` for shooting, `nation[+0x466]` for melee — and the recovered Delphi symbol table has a whole form class for editing them that no report had looked at:
+
+```text
+0x004367e0  TBattleDelays_InitializeForm
+0x00436920  TBattleDelays_PrintNumbers
+0x00436a54  TBattleDelays_ChangeDelay
+0x00436b64  TBattleDelays_OK
+0x00436c8c  TBattleDelays_Cancel
+```
+
+`InitializeForm` loads both values out of the acting nation's record into the dialog (setting up a control with a 0…1000 range alongside); `OK` writes them back, and also copies them onto the other side's nation record when that side is flagged as not human, so one setting governs the whole battle. **Setting both to 0 makes battles run at full speed with no patching at all** — the practical answer to this report's original "isn't fixable from the outside" conclusion. It was fixable from inside the game's own options the whole time.
+
+The user independently reached the same address by patching it: `patch_exe.py` in the local game directory builds two variants of the EXE, one that turns `Delay` into an immediate `ret` (instant battles) and one that replaces it with an equivalent wait that pumps the message queue (battles still paced, but the window stays live and drawable). The second is what made `bandicam 2026-09-13 22-49-01-893.mp4` possible — the first recording in which the whole per-exchange combat log is legible, and the source of the 38 exchanges read in [battle-replayed-rout-mechanic-and-combat-constants.md](battle-replayed-rout-mechanic-and-combat-constants.md). The same script also flips the game's `PlaySoundA` call at `0x45C013` from `SND_SYNC` to `SND_ASYNC`, a second, smaller source of per-action stalling that this report's trace had already correctly ruled out as the 3-second one.
+
+For a reimplementation this matters slightly beyond tooling: the pacing delay is a **stored player preference**, not a hardcoded constant, so it belongs in a UI settings screen rather than in the combat rules.
+
 ## Reproduction
 
 ```text

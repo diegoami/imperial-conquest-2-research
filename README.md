@@ -11,7 +11,7 @@ No original game files (EXE, DAT, HLP, SAV, screenshots, recordings) are include
 - `docs/research.md` — static research notes and the evidence-provenance overview.
 - `docs/roadmap.md` — the staged research plan and its status.
 - `docs/decompilation-plan.md` — the Ghidra static-decompilation priority queue and status.
-- `docs/reports/` — 46 individual findings, from initial file-format analysis through fully decompiled game formulas (economy, combat, movement, diplomacy, AI dispatch, and more).
+- `docs/reports/` — 47 individual findings, from initial file-format analysis through fully decompiled game formulas (economy, combat, movement, diplomacy, AI dispatch, and more).
 
 ## Toolchain
 
