@@ -14,6 +14,8 @@ owner.treasury -= shipCount × 3
 
 ## Army and garrison upkeep use the same price table as recruitment
 
+> **Correction (2026-09-14):** see [`upkeep-payment-and-desertion.md`](upkeep-payment-and-desertion.md). The formula below applies to **regular** units and city-unit slots, and those are billed to the treasury with no balance check. **Mercenary** units (slot `+0` ≠ 0) cost `((troops div 200) × price × quality) div 5`, billed to **their army's purse** (`+12`), never the treasury. The non-payment test is per mercenary slot: `purse ≤ 0` before that slot. When it fails, the whole mercenary unit is removed, and `troops div 100` is taken from the army's **supplies** (`+10`), not its troops. `FUN_0044ac3c` is the generic remove-unit helper, not a "degrade" state. Regular units never leave for lack of pay. Morale is not touched, and no news is written. Debt's only consequence is leader deposition (below).
+
 For every unit in every army, and separately for every occupied city-garrison recruitment slot:
 
 ```text
@@ -38,6 +40,8 @@ treasury += (nationTaxBase × taxRate) / 100        // the exact formula from de
          + <another income term, from an undecompiled helper>
 ```
 
+> **Correction (2026-09-14):** see [`upkeep-payment-and-desertion.md`](upkeep-payment-and-desertion.md). The last term, `FUN_004499ec`, is trade and alliance income: `Σ taxBase[j] div 12` over nations `j` with relation 1 or 2. The complete formula, with ship, regular and city-unit upkeep, is exact for the human nation in all 6 quarter pairs and for 27 of 80 nation-quarters with no adjustment.
+
 The first term is the same `income = nationTaxBase × tax% / 100` formula already solved exactly from Rome's own 15%/20% data (`nationTaxBase = 2,440`) — this confirms it's not just a dialog preview number, it's the literal quarterly treasury credit. The other terms (a mobilization-linked bonus, a flat upkeep-style cost, and a small drain proportional to the accumulated "wealth" pool) are new context but not individually verified against an observation this pass.
 
 ## Tribute grows toward a population-based target, moderated by tax rate
@@ -53,6 +57,8 @@ Each city's tribute value is nudged toward a target derived from its population,
 - **Low tax raises loyalty; high tax risks it.** If a nation's tax rate is under 11% and a city's loyalty is below 80, there's a chance loyalty rises. Separately, there's a 1-in-3 chance of a loyalty penalty scaled to the tax rate.
 - **A rebellion/unrest check exists below a loyalty threshold** (`FUN_0044c204`, not decompiled) — cities with loyalty under 30 can trigger it.
 - **A computer-controlled nation stability check**: roughly a 1-in-9 chance per quarter of evaluating whether the nation is prosperous (unity above a threshold and finances healthy); if not, it calls the same cleanup function (`FUN_0044c8f0`) already seen in the "nation eliminated" cascade from `decompiled-defection-and-siege-attrition.md` — plausibly an AI-nation collapse/instability consequence for sustained poor management, not confirmed in detail.
+> **Correction (2026-09-14):** see [`upkeep-payment-and-desertion.md`](upkeep-payment-and-desertion.md). `FUN_0044c8f0` is **leader deposition** ("*X depose their leader Y.*"). The trigger, for AI nations only and after the income credit, is `Random(9) == 0` and (treasury `< −(wealth div 500)`, or `< −20000`, or unity `< 400`). It gives the nation a new leader, sets unity to `max(unity, min(550, unity + 150))`, and resets a negative treasury to 0 (otherwise `+1000`). It is confirmed on 2 of 15 in-debt AI nation-quarters (Galatia, Gaul). A human nation faces the same test at the start of each of its turns, and failing it ends the game: "*Your army have deposed you because they have not been paid.*"
+
 - **Diplomatic relations drift toward peace over time.** For every nation pair with a negative (hostile) relation value, there's a 1-in-3 chance per quarter of a small automatic improvement — wars don't stay maximally hostile forever even without a peace treaty.
 - **Unity decays by 3 every quarter**, clamped at 0 — a baseline erosion that must be offset by successful captures/growth (`+9` per capture, seen in earlier reports) to hold steady or rise.
 

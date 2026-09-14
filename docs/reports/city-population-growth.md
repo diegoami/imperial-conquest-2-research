@@ -60,7 +60,7 @@ growth = d' − ⌊d' × mob / 300⌋ + 1,   d' = d − ⌊d × tax / 120⌋,   
 
 **Order within `FUN_00451b40`** [derived, and the two marked parts confirmed]:
 
-1. Ship upkeep, army and garrison upkeep (see [`decompiled-quarterly-billing-and-economy.md`](decompiled-quarterly-billing-and-economy.md)).
+1. Ship upkeep, army and garrison upkeep (see [`decompiled-quarterly-billing-and-economy.md`](decompiled-quarterly-billing-and-economy.md)). **(Corrected 2026-09-14:** ships, regular army units and city units are billed to the treasury with no check. Mercenary units are billed to their army's purse, and desert when it is empty. See [`upkeep-payment-and-desertion.md`](upkeep-payment-and-desertion.md). The `FUN_004499ec` in step 4 is trade and alliance income.**)**
 2. Every nation's wealth `+0x430` and tax base `+0x44c` are zeroed.
 3. The city loop above. Growth comes first, so **the tax-base and wealth rebuild use the grown population [confirmed, below]**. It reads the tax rate and the mobilization **before** this quarter's mobilization decay in step 4.
 4. The nation loop (`54864–54905`), for every nation with unity > 0:

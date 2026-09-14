@@ -39,6 +39,8 @@ treasury (+0x438) += taxBase (+0x44c) × taxRate (+0x44a) / 100
                    + FUN_004499ec(nation)          // still undecompiled
 ```
 
+> **Correction (2026-09-14):** `FUN_004499ec(nation)` is trade and alliance income, `Σ taxBase[j] div 12` over nations `j` with relation 1 or 2. See [`upkeep-payment-and-desertion.md`](upkeep-payment-and-desertion.md).
+
 The DAT loader (`FUN_004481a0`, see `imperial_conquest_2`'s `docs/investigations/dat-file-layout.md`) reads `+0x44c` as one of its fourteen pieces, so the DAT carries a starting tax base.
 
 ## Checked against every local save [confirmed]
@@ -71,8 +73,8 @@ Every number lands. This closes the open item in [`pending-offer-block-army-spli
 
 ## Still open
 
-- `FUN_004499ec(nation)`, the last income term — **[open] — pending controlled save** (below), or a decompilation pass.
-- An exact whole-turn check of the quarterly treasury credit — **[open] — pending controlled save**.
+- `FUN_004499ec(nation)`, the last income term — **[open] — pending controlled save** (below), or a decompilation pass. **(Resolved 2026-09-14:** trade and alliance income, `Σ taxBase[j] div 12` over nations `j` with relation 1 or 2, read from the just-rebuilt tax bases. See [`upkeep-payment-and-desertion.md`](upkeep-payment-and-desertion.md).**)**
+- An exact whole-turn check of the quarterly treasury credit — **[open] — pending controlled save**. **(Resolved 2026-09-14 from existing saves:** the complete formula, with `FUN_004499ec`, `3 × ships`, regular army upkeep and city-unit upkeep, but **not** mercenary pay, which comes out of the army purse, is exact for the human nation in all 6 quarter pairs and for 27 of 80 nation-quarters with no adjustment. See [`upkeep-payment-and-desertion.md`](upkeep-payment-and-desertion.md). The controlled pair below is no longer needed for this.**)**
 - What `FUN_0044bed8` and `FUN_0044c528` are called from (the defection and cascading-defection paths are the likely callers; the table above records only what they write). One caller of `FUN_0044bed8` is now known: the quarterly rebellion `FUN_0044c204`, for a non-capital city under 30 loyalty — see [`city-population-growth.md`](city-population-growth.md).
 **No controlled save is needed for the tax base itself**: where it lives, how it is rebuilt, and how captures adjust it are settled above by the code plus existing saves. A save pair would settle only the two income items. The experiment, to be done at the keyboard:
 
