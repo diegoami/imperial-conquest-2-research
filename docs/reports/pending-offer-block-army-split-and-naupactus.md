@@ -27,6 +27,13 @@ Both shorts match independently, on two different nations, in two consecutive sa
 
 The offer is addressed at the nation whose turn is starting (Rome in every save here), so the block holds one pending offer at a time for the whole game, not one per nation — consistent with the block being 4 bytes rather than 64.
 
+> **Correction (2026-09-14):** the "News that turn" column is the text of a **dialog**, not a news-log line. `TPremierForm_StartTurn` shows the offer with `MessageDlg(…, mtInformation, [mbOK])` as "*Greece wants to trade with Rome.*" and never calls the news writer. No news slot in any save contains "wants"; 6 saves hold an offer, all trade, all to a human.
+> - **What sets the block:** `FUN_00452034`, at the start of every human seat's turn. It clears the block, then rolls a new offer, then `StartTurn` shows it.
+> - **Alliance offers:** the code writes `2` for an alliance offer.
+> - **Clearing:** accepting does not clear it; the next human turn start does.
+>
+> See [`news-log-format-and-messages.md`](news-log-format-and-messages.md).
+
 ## The army split: the code's constants, checked against a real split
 
 `decompiled-unit-map-orders-and-record-fields.md` decompiled `TUnitMap_SplitArmy`/`FUN_00449F08` and listed the new record's constants — **≥ 2 units required, army-table cap 198, moves 0 for a human nation, supplies 0, money 0, morale 59** — all read from code, none checked against an observed split. The note's *"the other army was split and now there are three armies total"* provides one.

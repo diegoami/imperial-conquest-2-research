@@ -6,6 +6,8 @@ The user corrected an earlier report: a new army unit that appeared to be "field
 
 The region between the end of the 16-record nation table and the 55-byte turn trailer is **exactly 3,042 bytes in every save checked**, regardless of turn, army count, or fleet count — a fixed-size region, not something that grows with game state. Reading it as consecutive 12-byte records, the first pass assumed the whole 3,042 bytes was one table (253 records, with 6 leftover bytes) and got a very strong hit at record 33. Systematically checking every record's plausibility (coordinates within the 320×140 map, unit type 0–4, quality 0 or 5–9) across all 7 saves in this session found the same result every time: **records 0–49 are always plausible, record 50 onward is always garbage** (out-of-range coordinates, type/quality codes in the thousands). The mercenary table is **50 fixed slots (600 bytes)**, not the whole 3,042-byte region. The remaining ~2,442 bytes hold a separate, still-unidentified structure. `SaveMercenaryTable` in `IC2.Data` was corrected to this before being committed.
 
+> **Correction (2026-09-14):** the remaining 2,442 bytes are the news log: a 2-byte newest-slot index plus 40 × 61-byte slots. The region is constant only because every save measured here had a full log; saves with fewer than 40 slots are shorter. See [`news-log-format-and-messages.md`](news-log-format-and-messages.md).
+
 ## The confirming pair
 
 Slot 33 in `winter_1` (before the hire):

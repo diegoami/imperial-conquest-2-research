@@ -77,6 +77,8 @@ if (score(winner) < score(loser) || armies(winner) < armies(loser)) {
 // with news "<A> and <B> have agreed to end their war."
 ```
 
+> **Note (2026-09-14):** `N` is printed by the game's own `FUN_00448F3C` (`FormStripNum1`). It groups digits with a hard-coded comma, independent of the locale, so a real line reads "*Ptolemaic pays reparations of 2,269 talents.*". See [`news-log-format-and-messages.md`](news-log-format-and-messages.md).
+
 `TBattlePols_InitializeForm` (`0x004577EC`) previews exactly the same three terms and the same `reparations` expression before the player accepts, which is an independent check that the formula was read correctly.
 
 This is consistent with the one real observation on record — `diplomatic-reparations-and-more-captures.md`'s Ptolemaic treasury going `999 → −1270`, a `−2269` payment — in shape and magnitude, but **the numbers were not independently reproduced**: `nation[+0x44C]` and `nation[+0x446]` for Ptolemaic at that moment were not read back out of the save, and the formula contains a `random(W/4)` term that a single observation cannot pin down anyway. Treating this as *confirmed formula, unverified against the one data point* is the honest label; verifying it is a cheap next check (read the two nation fields from the pre-treaty save, and check `2269` lands in `[W/4 + cities×10, W/2 + cities×10)`).

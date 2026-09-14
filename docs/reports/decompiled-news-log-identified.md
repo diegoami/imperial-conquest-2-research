@@ -19,6 +19,14 @@ Every "X falls to Y", "X defects from Y to Z", and combat-result message decompi
 - The exact byte layout *within* one 61-byte slot (presumably a null-terminated or length-prefixed string plus possibly a small header, not decompiled at the byte level).
 - Why the previously-measured 3,042-byte region size didn't reconcile exactly with `(count+1)×61` plus the known fixed tail (a ~6-byte gap noted in `decompiled-sav-file-layout.md`) — still open, though now that the record's true purpose (a ring buffer, not a simple list) is known, the discrepancy might trace to an off-by-one in how the "count" field's own semantics (max-used-index, not count) were reconciled, worth re-checking with this correction in mind.
 
+> **Correction (2026-09-14):** both items are closed in [`news-log-format-and-messages.md`](news-log-format-and-messages.md).
+> - A slot is a plain NUL-terminated single-byte string with no header, so the text is at most 60 bytes. The writer uses an unbounded `StrCopy` and never truncates. Bytes after the NUL are stale residue from the slot's previous contents.
+> - It is a shift register, not a circular buffer: slot 0 is always the oldest.
+> - The gap was the 55-byte trailer counted twice. 3,042 = 600 + 2 + 40 × 61 exactly.
+> - Capture, defection and battle messages do go through `FUN_00449240`, as said above, but so does every other news line: 21 templates in all, including a `" "` blank line and the `Week  N …BC` header written at the end of every round tick.
+> - Pending diplomatic offers never reach it; they are a `MessageDlg`.
+> - Checked byte for byte on 252 save pairs and 7 partial logs.
+
 ## Reproduction
 
 Found by grepping the whole-application decompiled dump for the SAV layout's `DAT_0049f994` array base address, then decompiling its two other referencing functions (`TInformation_PaintForm`, `FUN_00449240`) with `ExportAddresses.java`.

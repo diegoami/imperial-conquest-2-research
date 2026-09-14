@@ -45,6 +45,12 @@ This is an exact, code-level confirmation of the pattern `rome-tax-increase-and-
 
 **Update: confirmed against real saves, and the second word decoded.** The block sits 22 bytes before end of file and is `{short proposingNationIndex (0xFFFF = none), short proposedRelationState}`, the second word reusing the relation-matrix encoding (`1` = trade). Two consecutive saves carrying the news "Greece wants to trade with Rome" and "Bythinia wants to trade with Rome" read `07 00 01 00` and `0B 00 01 00`, with nation 7 = Greece and 11 = Bithynia, and the saves either side read `FF FF`. See [pending-offer-block-army-split-and-naupactus.md](pending-offer-block-army-split-and-naupactus.md).
 
+> **Correction (2026-09-14):** "announces" means a modal `MessageDlg(…, mtInformation, [mbOK])` with the text "*X wants to trade with Y.*" or "*X wants to form an alliance with Y.*". It is **not** a news-log line: no save's news log contains "wants" (6 saves hold an offer). The two "news" items quoted above are the dialog text recorded in the session notes.
+> - The block is set by `FUN_00452034` at the start of every human seat's turn. It is cleared first, then rolled, then shown by `StartTurn`.
+> - The code writes `2` for an alliance offer.
+>
+> See [`news-log-format-and-messages.md`](news-log-format-and-messages.md).
+
 `FUN_0045af00`, called at the very start of `TPremierForm_EndTurn`, is an end-turn validity check: it scans the current nation's armies and fleets and refuses to end the turn (clears a "ready" flag) if any unit still has moves remaining under certain conditions — the standard "you still have units that can act" guard familiar from turn-based strategy games.
 
 ## What this does not establish

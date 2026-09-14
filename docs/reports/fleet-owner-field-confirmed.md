@@ -7,6 +7,8 @@ The user asked what in-game action would isolate fleet ownership, the last real 
 - **Rome**: the 10-ship fleet at Caere (city 82) is the exact fleet from the controlled order in `fleet-order-at-caere.md` — a fleet built by the human player (Rome) with no ambiguity.
 - **Carthage**: the 49-ship fleet at Andematunum (city 49, at map position (50, 53)) is confirmed Carthage's because the very next save's news log literally reports **"A fleet belonging to Carthage is lost at sea"** for this exact record (it's the one fleet that disappears between `winter_7` and `winter_9`, and the size table shrinks by exactly one fleet record — see `galatia-elimination-and-city-resupply-confirmed.md`).
 
+> **Correction (2026-09-14):** the literal line ends with a period: "*A fleet belonging to Carthage is lost at sea.*" (the EXE string is `" is lost at sea."`; 4 slot instances in the saves). See [`news-log-format-and-messages.md`](news-log-format-and-messages.md).
+
 ## The finding
 
 Word 4 of the 26-byte fleet record (**byte offset +8**) reads exactly the expected nation code for both:

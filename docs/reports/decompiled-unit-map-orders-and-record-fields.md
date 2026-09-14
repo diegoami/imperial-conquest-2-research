@@ -41,6 +41,8 @@ FUN_0044A8CC(army) = (Σ powerWeight[type] × troops / 100) / 80 × army[+14] //
 
 - `FUN_0044A004` (order placed): `fleet[+8] = owner; fleet[+10] = 24; fleet[+18] = ships; fleet[+20] = buildCityIndex; fleet[+22] = 0xFFFF; treasury -= ships × 10`.
 - `FUN_0044A050` (construction completes): news `"<nation> finishes a new fleet at <cityName[fleet[+20]]>"`, the fleet is placed on the map, then **`fleet[+20] = 100`**, `fleet[+10] = 0xFFFF`, `fleet[+14] = 50` (supplies), `fleet[+16] = 0` (money), `fleet[+24] = 0`.
+
+  > **Correction (2026-09-14):** the message ends with a period, `"<nation> finishes a new fleet at <city>."`. `FUN_0044A050` appends `"."` before calling the news writer. See [`news-log-format-and-messages.md`](news-log-format-and-messages.md).
 - `TRepairFleet_*` (`0x00440AC4`…) displays `fleet[+20]` as `"N %"`, clamps a repair order to `[0, 100 − fleet[+20]]`, charges `ships × points / 5` talents, and adds the points to `fleet[+20]`.
 - `FUN_0044AA54` (naval strength) computes `ships × fleet[+20] / 10`.
 - `FUN_0044B4F8` (naval combat damage) reduces `fleet[+18]` and `fleet[+20]` by the same proportion.
