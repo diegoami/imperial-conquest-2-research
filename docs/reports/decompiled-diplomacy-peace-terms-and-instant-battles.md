@@ -51,6 +51,9 @@ Declaring war is not only done from this screen: `TUnitMap_SelectUnit` auto-decl
 
 `FUN_00450C68(winner, loser)` is the whole treaty. It is reached from `TBattlePols_Yes` (the post-battle *"After defeating you in battle `X` are willing to end …"* dialog) and, for AI-vs-AI wars, automatically from the instant battle resolver below.
 
+> **Correction (2026-09-14):** see [`nation-tax-base-and-city-economy-fields.md`](nation-tax-base-and-city-economy-fields.md). `+0x44C` is the nation's **tax base**, not "wealth" (wealth is `+0x430`). The reparation formula below checks out against Ptolemaic's 2,269 payment: `W = 6188`, 48 cities, range `[2027, 3573]`.
+
+
 ```c
 W = nation[loser][+0x44C];                       // wealth (short)
 reparations = W/4 + random(W/4) + nation[loser][+0x446] * 10;     // +0x446 = city count

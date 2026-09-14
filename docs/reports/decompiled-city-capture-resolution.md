@@ -33,6 +33,8 @@ Fortification and loyalty both directly raise a city's defense, as expected. The
 
 ## Ownership transfer: `FUN_0044bb18(cityIdx, armyIdx)` — confirms almost everything found by save-diffing
 
+> **Correction (2026-09-14):** see [`nation-tax-base-and-city-economy-fields.md`](nation-tax-base-and-city-economy-fields.md). The wealth term is `population × 3000` (nation `+0x430`), not fortification; the tax-base term is the city's contribution `tribute × population / maxPopulation`, `× 4` — not a "per-army value"; and the new owner's treasury is also credited `contribution × 4`. All verified exactly on the Naupactus capture.
+
 ```text
 newOwner = attacking army's nation;  oldOwner = city's current owner
 city.owner = newOwner                                    // the actual OwnerCode write

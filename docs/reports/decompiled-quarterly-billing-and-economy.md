@@ -26,6 +26,8 @@ This is the exact same table (`DAT_00478fd4`) and formula shape `decompiled-recr
 
 ## The treasury income formula
 
+> **Correction (2026-09-14):** see [`nation-tax-base-and-city-economy-fields.md`](nation-tax-base-and-city-economy-fields.md). The second term below is `taxBase / 4`, not `mobilization / 4`; the `× 7` term multiplies the city count (`+0x446`); "wealth" (`+0x430`) is `Σ population × 3000`. The tax base is nation `+0x44c`, rebuilt here each quarter from cities.
+
 For each nation once per quarter:
 
 ```text
@@ -39,6 +41,8 @@ treasury += (nationTaxBase × taxRate) / 100        // the exact formula from de
 The first term is the same `income = nationTaxBase × tax% / 100` formula already solved exactly from Rome's own 15%/20% data (`nationTaxBase = 2,440`) — this confirms it's not just a dialog preview number, it's the literal quarterly treasury credit. The other terms (a mobilization-linked bonus, a flat upkeep-style cost, and a small drain proportional to the accumulated "wealth" pool) are new context but not individually verified against an observation this pass.
 
 ## Tribute grows toward a population-based target, moderated by tax rate
+
+> **Correction (2026-09-14):** see [`nation-tax-base-and-city-economy-fields.md`](nation-tax-base-and-city-economy-fields.md). What grows each quarter is a city's **population** (`+0x1c`) toward its maximum (`+0x1e`), reduced by the tax rate and by mobilization — not its tribute. The wealth contribution is `population × 3000`, not fortification.
 
 Each city's tribute value is nudged toward a target derived from its population, with the tax rate reducing how much it can grow — a plausible design reason a heavily-taxed city's tribute contribution plateaus lower than a lightly-taxed one's. The city's "wealth" contribution (`fortification × 3000`, the same formula already seen applied instantly on capture in `decompiled-city-capture-resolution.md`) and its contribution to the nation's `taxBase` field are both **recomputed here every quarter for every city**, not just adjusted at the moment of capture — capture's immediate adjustment was a special-case correction to a total that's normally rebalanced quarterly anyway.
 

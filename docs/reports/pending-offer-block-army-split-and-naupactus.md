@@ -73,6 +73,8 @@ Exact, both sides, asymmetric as decompiled. The caveat is that unity has other 
 
 Illyria's treasury moves `−2021 → −1973` (`+48`) rather than by `fortification × 3000`, which is nowhere near any plausible fortification value — so the **wealth** half of that next-check is *not* confirmed by this data. Either the wealth field is not `treasuryTalents` (most likely: `decompiled-diplomacy-peace-terms-and-instant-battles.md` uses nation field `+0x44C` for "wealth" and the reparation formula, which is a different field from the treasury at `+0x438`), or the constant is wrong. Left open.
 
+> **Correction (2026-09-14):** closed in [`nation-tax-base-and-city-economy-fields.md`](nation-tax-base-and-city-economy-fields.md). The `+48` is the capture's treasury credit to the new owner, `contribution × 4` with Naupactus's contribution `15 × 25 / 30 = 12`; the tax base (`+0x44C`) moves by the same `± 48`; and "wealth" is a third field, `+0x430`, which moves by `± population × 3000` (`± 75,000`), not fortification.
+
 ## A side observation: the AI turn replayed almost identically
 
 Because the battle was replayed from the same save, the *same* AI turn was also played twice — `winter_7 → winter_9` and `winter_7_b → winter_9_b`. Diffing the two resulting worlds against each other, the **only** two things that differ in the entire game state are:
@@ -89,7 +91,7 @@ So AI *decisions* in this window are deterministic given the world state, while 
 - Whether the pending-offer block can hold an alliance proposal (`2`) as well as a trade one — only `1` was observed, twice.
 - What sets the block, and whether the AI's decision to offer is reachable in code (the roadmap already scopes unnamed AI decision code out).
 - Whether the split dialog's supply spinner is constrained by the receiving army's capacity (`troops / 100`), the way the city-to-army dialog appears to be — both armies were at 0 supply here, so nothing was exercised.
-- The `wealth ± fortification × 3000` half of the capture formula (see above).
+- ~~The `wealth ± fortification × 3000` half of the capture formula~~ — closed: it is `± population × 3000` on `+0x430`, see [`nation-tax-base-and-city-economy-fields.md`](nation-tax-base-and-city-economy-fields.md).
 - Whether AI determinism holds over more than the one replayed turn examined here.
 
 ## Reproduction
@@ -109,4 +111,4 @@ python -c "d=open('1_rome_270_winter_11.sav','rb').read(); print(d[-22:-18].hex(
 
 1. A single-click controlled pair around one `SplitArmy` (save, split with the money/supply spinners left alone, save, no turn end) would pin the new record's untouched defaults — money, supply and moves — directly, and is cheap.
 2. Offer an alliance rather than a trade and save at the receiving nation's turn start, to confirm the block's second word takes `2`.
-3. Identify which nation field the capture formula's "wealth" term actually writes, then re-check `± fortification × 3000` against this same Naupactus capture — every other number in that turn is already in hand.
+3. ~~Identify which nation field the capture formula's "wealth" term actually writes~~ — done in [`nation-tax-base-and-city-economy-fields.md`](nation-tax-base-and-city-economy-fields.md).
