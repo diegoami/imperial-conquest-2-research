@@ -73,8 +73,7 @@ Every number lands. This closes the open item in [`pending-offer-block-army-spli
 
 - `FUN_004499ec(nation)`, the last income term — **[open] — pending controlled save** (below), or a decompilation pass.
 - An exact whole-turn check of the quarterly treasury credit — **[open] — pending controlled save**.
-- What `FUN_0044bed8` and `FUN_0044c528` are called from (the defection and cascading-defection paths are the likely callers; the table above records only what they write).
-
+- What `FUN_0044bed8` and `FUN_0044c528` are called from (the defection and cascading-defection paths are the likely callers; the table above records only what they write). One caller of `FUN_0044bed8` is now known: the quarterly rebellion `FUN_0044c204`, for a non-capital city under 30 loyalty — see [`city-population-growth.md`](city-population-growth.md).
 **No controlled save is needed for the tax base itself**: where it lives, how it is rebuilt, and how captures adjust it are settled above by the code plus existing saves. A save pair would settle only the two income items. The experiment, to be done at the keyboard:
 
 1. Play **Rome**, in any game, at the **last week of a season** (week 11), on Rome's own turn. Make no orders this turn: no recruiting, moving, supply purchase, tax change or diplomacy.

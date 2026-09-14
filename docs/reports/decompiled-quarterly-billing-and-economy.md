@@ -44,6 +44,8 @@ The first term is the same `income = nationTaxBase × tax% / 100` formula alread
 
 > **Correction (2026-09-14):** see [`nation-tax-base-and-city-economy-fields.md`](nation-tax-base-and-city-economy-fields.md). What grows each quarter is a city's **population** (`+0x1c`) toward its maximum (`+0x1e`), reduced by the tax rate and by mobilization — not its tribute. The wealth contribution is `population × 3000`, not fortification.
 
+> **Correction (2026-09-14):** the exact step is in [`city-population-growth.md`](city-population-growth.md): `d = (maxPop − pop) >> 2; d −= d × taxRate / 120; pop += d − d × mobilized / 300 + 1`, capped at `maxPop`, skipped when a hostile army is adjacent, with no random draw. It runs before the city's wealth and tax-base contributions are added, so the rebuild and the treasury credit use the grown population.
+
 Each city's tribute value is nudged toward a target derived from its population, with the tax rate reducing how much it can grow — a plausible design reason a heavily-taxed city's tribute contribution plateaus lower than a lightly-taxed one's. The city's "wealth" contribution (`fortification × 3000`, the same formula already seen applied instantly on capture in `decompiled-city-capture-resolution.md`) and its contribution to the nation's `taxBase` field are both **recomputed here every quarter for every city**, not just adjusted at the moment of capture — capture's immediate adjustment was a special-case correction to a total that's normally rebalanced quarterly anyway.
 
 ## Loyalty, rebellion, and diplomatic thaw
@@ -53,6 +55,8 @@ Each city's tribute value is nudged toward a target derived from its population,
 - **A computer-controlled nation stability check**: roughly a 1-in-9 chance per quarter of evaluating whether the nation is prosperous (unity above a threshold and finances healthy); if not, it calls the same cleanup function (`FUN_0044c8f0`) already seen in the "nation eliminated" cascade from `decompiled-defection-and-siege-attrition.md` — plausibly an AI-nation collapse/instability consequence for sustained poor management, not confirmed in detail.
 - **Diplomatic relations drift toward peace over time.** For every nation pair with a negative (hostile) relation value, there's a 1-in-3 chance per quarter of a small automatic improvement — wars don't stay maximally hostile forever even without a peace treaty.
 - **Unity decays by 3 every quarter**, clamped at 0 — a baseline erosion that must be offset by successful captures/growth (`+9` per capture, seen in earlier reports) to hold steady or rise.
+
+> **Correction (2026-09-14):** see [`city-population-growth.md`](city-population-growth.md). The `−3` (floored at 0) applies to **mobilization** (`+0x442`), not unity. Unity (`+0x440`) is then recomputed as `min(990, max(300, unity + 25 − taxRate / 2 − mobilized / 5))`, so it drifts up, not down. Confirmed on 5 quarter pairs: mobilization 71 of 80 nation-quarters exact, unity 60 of 80 (the rest had battles, captures or orders in the round).
 
 ## What this does not establish
 
