@@ -90,7 +90,7 @@ So AI *decisions* in this window are deterministic given the world state, while 
 
 - Whether the pending-offer block can hold an alliance proposal (`2`) as well as a trade one — only `1` was observed, twice.
 - What sets the block, and whether the AI's decision to offer is reachable in code (the roadmap already scopes unnamed AI decision code out).
-- Whether the split dialog's supply spinner is constrained by the receiving army's capacity (`troops / 100`), the way the city-to-army dialog appears to be — both armies were at 0 supply here, so nothing was exercised.
+- Whether the split dialog's supply spinner is constrained by the receiving army's capacity (`troops / 100`), the way the city-to-army dialog appears to be — both armies were at 0 supply here, so nothing was exercised. **(Answered from code 2026-09-14:** on `OK`, `TArmyToArmy_OK` moves each army's supplies above `troops div 100` to the other army. See [`supply-capacity-rounding.md`](supply-capacity-rounding.md).**)**
 - ~~The `wealth ± fortification × 3000` half of the capture formula~~ — closed: it is `± population × 3000` on `+0x430`, see [`nation-tax-base-and-city-economy-fields.md`](nation-tax-base-and-city-economy-fields.md).
 - Whether AI determinism holds over more than the one replayed turn examined here.
 

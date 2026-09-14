@@ -125,6 +125,8 @@ target.money         -= amount / 5;      // from the army's/fleet's own purse
 - Purchase is also capped at the buyer's `money × 5` and at the city's stock.
 - `TAFSupply_ChangeMoney` moves talents between the national treasury (or a co-located fleet) and the army/fleet, capped at **1,000** money per army or fleet.
 
+> **Correction (2026-09-14):** see [`supply-capacity-rounding.md`](supply-capacity-rounding.md). The dialog's army cap is **`troops div 100 + 1`**: integer `IDIV` by 100, then `INC`, with no rounding. That makes 48,173 troops → **482**, which is the cap, not a 1-ton excess. The fleet cap is `ships × 8`, with no `+1`. The own-city path is a different function, `TAFSupply_ChangeSupply`. It is free, applies each press immediately, and has the same caps but no money cap. The `money × 5` cap and the `amount / 5` cost above apply only to the foreign-city path. Every non-dialog writer (automatic resupply `FUN_0044F6D8`/`FUN_0044F7E4`, army-to-army, battle absorption) caps at `troops div 100`, with no `+1`.
+
 ### Mercenary hire cost — solved
 
 `TRecruitMercs_RecruitMercUnit` (`0x00441360`), against the 12-byte pool record of `mercenary-pool-record.md` (`+0` label, `+2` type, `+4` troops, `+6` quality):
