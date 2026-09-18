@@ -85,6 +85,8 @@ Ordered by (value of the unknown) × (how directly a known form/string points at
 - Victory conditions — no current urgency.
 - Tactical battle grid rendering and other UI-only code.
 
+14. [ ] **An exhaustive signedness sweep of `ArmyRecord.Supplies` (word `+0xA`), and of `Money` (`+0xC`).** Raised by T44's implementation and confirmed by its reviewer (build repo PR #135). Two `MOVSX` reads of `0x47C1EC + 0xA` are already known — `0x004516A8` and `0x0044AAE4` — and `MOVSX` is the same evidence class that settled `+6` in [army-moves-field-signed-and-the-ffff-underflow.md](reports/army-moves-field-signed-and-the-ffff-underflow.md). But both were seen **incidentally**, inside functions dumped for `+6`'s sake, not through the exhaustive write-site enumeration `+6` received — and the corpus maximum (796) is nowhere near the signed/unsigned boundary, so **no save can currently distinguish the two readings**. Flipping `IC2.Data` to `short` on that evidence would assert a conclusion the evidence does not carry, which is precisely the mistake item 13 was written to avoid. What this pass needs: every write to `+0xA` enumerated the way item 13's report enumerates `+6`, and every guard classified `JLE`/`JGE` against `JBE`/`JAE`. `Money` (`+0xC`) is the same shape — [upkeep-payment-and-desertion.md](reports/upkeep-payment-and-desertion.md) shows a signed `JLE` purse test, but the same tick unconditionally floors the value to 0, so again no save can show it negative.
+
 ## Method, per target
 
 1. Locate the form/procedure the same way prior reports did: Delphi RTTI method-name tables, the `TMainMenu`/form-adjacent streams, or a literal-string cross-reference (e.g. searching for dialog text like "quarterly", "Current tax", "New income") to find the owning code.
