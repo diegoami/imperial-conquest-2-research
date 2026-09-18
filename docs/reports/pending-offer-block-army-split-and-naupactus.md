@@ -6,7 +6,7 @@ The rest of `notes/2_rome_s.txt` and the first entry of `notes/3_rome.txt`, cove
 
 `decompiled-turn-and-calendar-sequencing.md` found that `TPremierForm_StartTurn` checks, at the start of each nation's turn, for a pending trade or alliance proposal aimed at that nation and announces it as *"X wants to trade/form an alliance with Y"* — and identified, by elimination, "the 4-byte block right after the 61-byte-record region" in the SAV as where that lives. It was an inference from which block was left over, with no observation attached.
 
-The two notes supply exactly the right pair of observations: *"Greece wants to trade with Rome"* between `winter_7_b` and `winter_9_b`, and *"Bythinia wants to trade with Rome"* between `winter_9_b` and `winter_11`. Reading the 4 bytes at **`fileLength − 22`** across the whole series:
+The two notes supply exactly the right pair of observations: *"Greece wants to trade with Rome"* between `winter_7_b` and `winter_9_b`, and *"Bythinia wants to trade with Rome"* between `winter_9_b` and `winter_11`. Reading the 4 bytes at **`fileLength − 23`** across the whole series (this prose said `− 22` until 2026-09-18; see the correction below):
 
 | Save | Bytes | Reads as | News that turn |
 | --- | --- | --- | --- |
@@ -33,6 +33,27 @@ The offer is addressed at the nation whose turn is starting (Rome in every save 
 > - **Clearing:** accepting does not clear it; the next human turn start does.
 >
 > See [`news-log-format-and-messages.md`](news-log-format-and-messages.md).
+
+
+> **Correction (2026-09-18): the offset is `fileLength − 23`, not `− 22`.** The byte observations,
+> the table and every conclusion below are unaffected — only the stated offset was one off, and the
+> reproduction command's own commented output (`0b000100`) is already the `− 23` slice. Verified
+> byte by byte on all five saves this report names, while implementing the parser in the
+> reimplementation (T34, `9da83a6`):
+>
+> | Save | `d[-23:-19]` | reads as | `d[-22:-18]` | reads as |
+> | --- | --- | --- | --- | --- |
+> | `1_rome_270_winter_7.sav` | `FF FF 01 00` | −1 · 1 | `FF 01 00 00` | 511 · 0 |
+> | `1_rome_270_winter_7_b.sav` | `FF FF 01 00` | −1 · 1 | `FF 01 00 00` | 511 · 0 |
+> | `1_rome_270_winter_9.sav` | `FF FF 01 00` | −1 · 1 | `FF 01 00 00` | 511 · 0 |
+> | `1_rome_270_winter_9_b.sav` | `07 00 01 00` | **7 · 1** | `00 01 00 00` | 256 · 0 |
+> | `1_rome_270_winter_11.sav` | `0B 00 01 00` | **11 · 1** | `00 01 00 00` | 256 · 0 |
+>
+> Two independent checks confirm `− 23`. First, `winter_9_b` and `winter_11` read **identically** at
+> `− 22` (both `256 · 0`), so that offset cannot encode the very difference this report documents.
+> Second, a 4-byte block at `− 22` spans `−22…−19` and clips the low byte of `currentNation`, which
+> [`decompiled-turn-and-calendar-sequencing.md`](decompiled-turn-and-calendar-sequencing.md) pins at
+> `fileLength − 19`; `− 23` spans `−23…−20` and sits exactly beside it.
 
 ## The army split: the code's constants, checked against a real split
 
@@ -111,7 +132,7 @@ dotnet run --project src/IC2.Inspect -- --to-json saves/1_rome_270_winter_9_b.sa
 dotnet run --project src/IC2.Inspect -- --to-json saves/1_rome_270_winter_11.sav  w11.json
 dotnet run --project src/IC2.Inspect -- --compare-saves saves/1_rome_270_winter_9_b.sav saves/1_rome_270_winter_11.sav
 
-python -c "d=open('1_rome_270_winter_11.sav','rb').read(); print(d[-22:-18].hex())"   # 0b000100
+python -c "d=open('1_rome_270_winter_11.sav','rb').read(); print(d[-23:-19].hex())"   # 0b000100
 ```
 
 ## Next checks
