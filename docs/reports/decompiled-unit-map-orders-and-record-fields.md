@@ -180,13 +180,24 @@ A marker is only written when `army[+8] >= 0` (the army is not aboard a fleet), 
 > size bands** this section derives for armies (`FUN_0044A80C`) and fleets (`FUN_0044A878`) — the code
 > says three bands, and the player saw three sprites.
 >
-> It also settles a **count** that had no confirmation for **cities**: `IC2.Engine`'s `AssetKeys` carries
-> `city.tier1/2/3` tagged *"`[designed]` pending decompilation confirmation of the original's own
-> city-size display logic"*. The tier **count** is now user-confirmed as three; the **thresholds** are
-> still unknown, and are not simply the army's `troops / 1000` bands — city marker codes occupy
-> `20`–`199` ([rivers-and-map-markers.md](rivers-and-map-markers.md): exactly 334 cells in that range,
-> all at parsed city coordinates), which is far wider than three 16-wide bands and so encodes something
-> beyond a three-way size split. See decompilation plan item 16.
+> **Correction (2026-09-18, same day): the city half of this note was wrong, twice.** It originally read
+> that the city tier count was "user-confirmed as three" and that city marker codes occupy `20`–`199`,
+> "far wider than three 16-wide bands". Both statements are wrong, and
+> [rivers-and-map-markers.md](rivers-and-map-markers.md) already said so:
+>
+> - the confirmed formula is `map code = 20 + owner code + 16 × variant` **with variants 0–4**, holding
+>   for **334/334 cities** — so the original has **five** city variants, not three;
+> - the occupied range therefore tops out at `20 + 15 + 16×4 = 99`. The "`20` through `199`" figure in
+>   that report is the range **searched**, not the range **occupied**.
+>
+> What the user's testimony does confirm is the **army and fleet** count, which the code independently
+> gives as three. For cities it does not match the code, and the code wins: whatever three things the
+> player remembers seeing, the marker encodes five. The variant's **meaning** remains unconfirmed —
+> that report's own words — and the screenshots make "size band" look unlikely on its own: at least
+> four visually distinct city building glyphs appear across two frames (a columned temple with a pediment
+> for Rome the capital in `1_rome_270_summer_7_1.png`, a crenellated walled castle for Carthage in
+> `1_cartago_271_spring_3_1.png`), which reads as icon *type* rather than population. See decompilation
+> plan item 16.
 
 ## Part 4: the corrected labels, checked against real saves
 
