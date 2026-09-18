@@ -174,6 +174,20 @@ Checked against the two fleets in `fleet-order-at-caere.md`: the 90-ship fleet a
 
 A marker is only written when `army[+8] >= 0` (the army is not aboard a fleet), which is how embarked armies vanish from the map.
 
+> **User testimony (2026-09-18), on the count of visual variants.** Asked while the reimplementation's
+> asset specification was being written, the user stated from play experience: *"when it come to towns
+> and armies and navies and cities there were three variants."* That **independently confirms the three
+> size bands** this section derives for armies (`FUN_0044A80C`) and fleets (`FUN_0044A878`) — the code
+> says three bands, and the player saw three sprites.
+>
+> It also settles a **count** that had no confirmation for **cities**: `IC2.Engine`'s `AssetKeys` carries
+> `city.tier1/2/3` tagged *"`[designed]` pending decompilation confirmation of the original's own
+> city-size display logic"*. The tier **count** is now user-confirmed as three; the **thresholds** are
+> still unknown, and are not simply the army's `troops / 1000` bands — city marker codes occupy
+> `20`–`199` ([rivers-and-map-markers.md](rivers-and-map-markers.md): exactly 334 cells in that range,
+> all at parsed city coordinates), which is far wider than three 16-wide bands and so encodes something
+> beyond a three-way size split. See decompilation plan item 16.
+
 ## Part 4: the corrected labels, checked against real saves
 
 `IC2.Data` has been updated to the layout above and re-run over the existing saves. Every correction predicts something specific, and each prediction holds:
