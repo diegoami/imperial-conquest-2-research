@@ -234,6 +234,95 @@ analyzeHeadless.bat %LOCALAPPDATA%\ReTools\ghidra_projects IC2 ^
 
 The corpus check parses each save's army table directly (count at `0x18A5C`, 656-byte records from `0x18A5E`, troops at unit slot `+4`).
 
+## Controlled-save recipes
+
+What each open item above would need from the game itself. Written for a session at the real
+executable, with per-turn saves; the naming follows the existing corpus
+(`<series>_<nation>_<year>_<season>_<week>.sav`).
+
+**First, the constraint that shapes all of this.** The unfloored decrement at `0x0044DBF7` sits in
+`FUN_0044DBA8`, the **AI's** move driver, and its pre-value of `1` can only come from
+`0x00449F91`, which fires only for an **AI** nation. A human player therefore **cannot drive the
+underflow directly** — no sequence of player orders reaches that instruction. Recipes A and B below
+are player-drivable and settle the formula and the divergence; recipe C is a sampling exercise,
+because that is the only honest way to catch an AI-side event.
+
+### A. The weekly maximum, and the "not refreshed mid-week" clause `[confirms §4]`
+
+Player-drivable, one turn, no special setup.
+
+1. Pick any army. Record its **troop total**, **supply tons** and **moves** from the army panel.
+   Save as `moves_A1_before.sav`.
+2. End the turn. Reopen the same army. Save as `moves_A2_after_tick.sav`.
+   - *Proves the formula*: `moves == 10 − min(5, troops/20000)`, minus `1` if
+     `supplies × 10000 / troops < 10`.
+3. **The interesting half.** Before ending the next turn, use `TArmyToArmy` to move troops into that
+   army so it **crosses a 20,000 boundary** (e.g. 38,000 → 42,000, crossing 40,000). Do not end the
+   turn. Save as `moves_A3_grown_midweek.sav`.
+   - *Proves the clause*: its moves are **unchanged** by the transfer — the allowance is not
+     recomputed when the army changes size. The corpus already shows this once (Rome's army at
+     `(100, 42)` kept `moves 8` after growing to 63,173), and a deliberate crossing confirms it.
+4. End the turn. Save as `moves_A4_after_tick.sav`.
+   - *Proves the recompute*: moves now drop by exactly one step, to the value the new troop total
+     gives.
+
+A single counter-example in any of the four kills the formula, so this is worth doing even though
+§4 is `[confirmed]` from code — the corpus check covered 627 records but never a deliberate
+boundary crossing.
+
+### B. The `FUN_0044AAB4` divergence `[settles Next check 2]`
+
+Player-drivable, and the numbers are chosen so the two expressions disagree loudly.
+
+The weekly tick tests `supplies × 10000 / troops < 10` (fires when `supplies < troops/1000`); the
+end-turn helper tests `supplies × troops / 10000 < 10` (fires when `supplies < 100000/troops`).
+For a **large** army the first is far more permissive than the second, and for a **small** one the
+reverse. So:
+
+1. Build or find an army of roughly **50,000 troops** and let its supply fall to about **10 tons**
+   (capacity is `troops/100 = 500`, so this is ~2 %, easily reached by marching away from any city
+   for a few weeks). Save as `moves_B1_large_starving.sav`.
+   - The tick's test: `10 × 10000 / 50000 = 2 < 10` → **fires**, so its weekly allowance is
+     `10 − min(5, 2) − 1 = 7`, not 8.
+   - The helper's test: `10 × 50000 / 10000 = 50`, **not** `< 10` → the end-turn prompt treats its
+     supply as fine.
+2. End the turn, reopen the army, and note whether moves came back as **7** (tick fired) or **8**.
+   Save as `moves_B2_after_tick.sav`.
+3. On the following turn, **without moving that army**, press End Turn and record whether the game
+   warns about it at all, and in what words. Photograph or screenshot the prompt.
+   - *If moves is 7 and no supply warning appears*: both expressions are confirmed as written, and
+     the original genuinely never warns about a large starving army — the divergence is real and
+     player-visible, and worth a `[confirmed]` note in the design.
+   - *If moves is 8*: the tick's expression is mis-read and §4 needs correcting.
+
+### C. The provenance of the one `−1` record `[open, §3]`
+
+Not directly drivable — it is an AI-side event — so this is a **sampling** recipe, and it should
+ride along with whatever long play-through happens next rather than being run for its own sake.
+
+1. Save **every turn**, both before and after ending it, into one numbered series. The event is
+   rare: one army in 627 records across 54 saves, in a single game state.
+2. Favour a scenario with **heavy AI naval activity**: the coastal nations
+   (Carthage, Ptolemaic, Macedonia) at war with each other across water, so AI armies are
+   repeatedly embarked. The decrement only fires on the aboard-a-fleet branch.
+3. Scan the series automatically rather than by eye — with T44 merged, any army whose `moves` is
+   **negative** is visible directly:
+   ```bash
+   dotnet run --project src/IC2.Inspect/IC2.Inspect.csproj -- --to-json <save> <out.json>
+   # then: any army with moves < 0
+   ```
+4. **What to capture when one is found**: the save *before* the AI turn that produced it and the
+   save *after*, plus the army's index, coordinates, `coveredCell`, owner and unit list. The pair is
+   what makes a trace reconstructible: the candidate explanation is a record-pointer aliasing
+   hazard around `FUN_0044ABE0`'s swap-remove, so **whether an army was deleted during that same AI
+   turn** (a battle or a siege resolving) is the decisive observation. An army count that *falls*
+   between the two saves while a `−1` appears would be strong support; a `−1` appearing with no
+   deletion anywhere in the turn would refute the aliasing candidate outright and send the search
+   back to the code.
+
+Recipe C is the one that needs patience rather than setup. Recipes A and B are each a few minutes
+and settle their items outright.
+
 ## Next checks
 
 1. The provenance of the one `−1` record (§3). The record-pointer aliasing hazard around `FUN_0044ABE0`'s swap-remove is worth a dedicated pass on its own merits — it would affect more than this field.
