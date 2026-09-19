@@ -13,7 +13,7 @@ The originals live in the private repository [`diegoami/imp_conquest_original`](
 | [`run-1-rome`](https://github.com/diegoami/imp_conquest_original/releases/tag/run-1-rome) | Run 1 — Rome (270 BC) | 16 | 5 | 8 |
 | [`run-1-cartago`](https://github.com/diegoami/imp_conquest_original/releases/tag/run-1-cartago) | Run 1 — Carthage (271 BC) | 10 | 2 | 0 |
 | [`run-1-thracia`](https://github.com/diegoami/imp_conquest_original/releases/tag/run-1-thracia) | Run 1 — Thracia (271 BC) | 13 | 0 | 0 |
-| [`legacy-probes`](https://github.com/diegoami/imp_conquest_original/releases/tag/legacy-probes) | Legacy probes | 15 | 25 | 0 |
+| [`legacy-probes`](https://github.com/diegoami/imp_conquest_original/releases/tag/legacy-probes) | Legacy probes | 15 | 25 | 3 |
 
 ### Which release to reach for
 
@@ -93,10 +93,17 @@ The originals live in the private repository [`diegoami/imp_conquest_original`](
 
 ## Recordings
 
-Only recordings that `notes/` ties to a specific save pair are published. **Three more exist locally and are deliberately not here** — nothing in the notes says what they show, and assigning them by timestamp would have been a guess dressed as evidence.
+Every recording that **any source** ties to specific evidence is published.
+
+**Correction, 2026-09-19.** This section first said three recordings were *"deliberately not here — nothing in the notes says what they show."* That was wrong, and the mistake is worth stating rather than quietly fixing: the check looked only at `notes/`, and **all three are cited in reports** — they are among the most load-bearing recordings in the corpus. `bandicam 2026-09-12 05-27-11-464` alone is cited by four documents and is the source of every tactical combat constant in [`battle-recording-melee-cap-confirmed.md`](reports/battle-recording-melee-cap-confirmed.md). All three are now in `legacy-probes`.
+
+**The lesson for anything added later**: `notes/` is *a* mapping, not *the* mapping. A recording is attributed if a note names it **or** a report cites it — check both.
 
 | Asset (as downloaded) | Spans | Release |
 |---|---|---|
+| [`bandicam.2026-09-12.05-27-11-464.mp4`](https://github.com/diegoami/imp_conquest_original/releases/download/legacy-probes/bandicam.2026-09-12.05-27-11-464.mp4) | A tactical battle. **Six fully-specified combat exchanges** around 1:48–3:00; the source for the melee cap and the tactical constants. Cited by four documents. | `legacy-probes` |
+| [`bandicam.2026-09-12.05-42-33-198.mp4`](https://github.com/diegoami/imp_conquest_original/releases/download/legacy-probes/bandicam.2026-09-12.05-42-33-198.mp4) | Strategic play across `7.sav`–`10.sav`. See [`strategic-recording-and-summer-saves.md`](reports/strategic-recording-and-summer-saves.md). | `legacy-probes` |
+| [`bandicam.2026-09-12.06-04-01-165.mp4`](https://github.com/diegoami/imp_conquest_original/releases/download/legacy-probes/bandicam.2026-09-12.06-04-01-165.mp4) | The menus and toolbars, panel by panel. See [`menu-and-toolbar-inventory.md`](reports/menu-and-toolbar-inventory.md). | `legacy-probes` |
 | [`bandicam.2026-09-12.23-56-28-394.mp4`](https://github.com/diegoami/imp_conquest_original/releases/download/run-1-rome/bandicam.2026-09-12.23-56-28-394.mp4) | 1_rome_270_winter_3.sav .. 1_rome_270_winter_5.sav | `run-1-rome` |
 | [`bandicam.2026-09-13.00-04-38-377.mp4`](https://github.com/diegoami/imp_conquest_original/releases/download/run-1-rome/bandicam.2026-09-13.00-04-38-377.mp4) | 1_rome_270_winter_5.sav .. 1_rome_270_winter_7.sav | `run-1-rome` |
 | [`bandicam.2026-09-13.00-31-14-131.mp4`](https://github.com/diegoami/imp_conquest_original/releases/download/run-1-rome/bandicam.2026-09-13.00-31-14-131.mp4) | 1_rome_270_winter_7.sav .. 1_rome_270_winter_9.sav (1 of 4) | `run-1-rome` |
@@ -132,6 +139,7 @@ gh release view legacy-probes --repo diegoami/imp_conquest_original
 
 A new play-through means a **new release**, named `run-<n>-<nation>`, and a new row here. Three rules make the index worth trusting:
 
-- **A recording goes up only when a note maps it to a save pair.** An unattributed video is not evidence, and putting it in a release implies it is.
-- **Observation notes ship with their run.** A save series without its notes shows what the engine did but not what was asked of it, and the difference has mattered repeatedly.
+- **A recording goes up when a note maps it to a save pair *or* a report cites it.** Checking only one of the two is how three of the most-cited recordings in the corpus were nearly left out. A genuinely unattributed video can wait — but establish that it *is* unattributed by checking both.
+- **A recording without notes is still readable.** [`/parse-recording`](https://github.com/diegoami/imperial_conquest_2/blob/main/docs/recording-analysis.md) takes a recording, the saves either side and **rough timestamps**, and extracts the frames itself. Written session notes are no longer a precondition for using a recording — the melee-cap report was produced from the pointer *"around 1:48, a few interactions"*.
+- **Observation notes ship with their run, when they exist.** A save series without notes shows what the engine did but not what was asked of it, and the difference has mattered repeatedly — but a recording plus timestamps now recovers most of it, so the absence of notes is no longer a reason to hold evidence back.
 - **Nothing here is copied into a repository.** This file points; it never holds.
