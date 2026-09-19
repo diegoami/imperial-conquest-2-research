@@ -25,7 +25,9 @@ Exactly 40 bytes (`0x28`) apart, matching the stride already seen in the decompi
 | `+0x20` | 18 | 2 | 18 | 15 | 4 | unidentified |
 | `+0x22` | 2 | 20 | 4 | 15 | 30 | **Recruit cost, initial** |
 | `+0x24` | 1 | 2 | 1 | 3 | 4 | **Recruit cost, quarterly** |
-| `+0x26` | 20 | 100 | 40 | 60 | 120 | unidentified |
+| `+0x26` | 20 | 100 | 40 | 60 | 120 | **AI combat value** (see the 2026-09-19 note) |
+
+> **Update (2026-09-19): `+0x26` is identified.** It is the **AI's per-type combat value**. `FUN_004504f4`, the AI's recruit-and-mobilize routine, scores both its armies and its pending recruitment slots as `(troops / 100) × value[type]` and compares the total against perceived threat to decide how much to build and how much to mobilize. In memory the column is `DAT_00478FD6`. Note that the **in-memory record base is `0x00478FC0`** (the type-name string) and the in-memory offsets run `0x10` *lower* than this table's DAT offsets: `+0x1A` ↔ `DAT_00478FCA`, `+0x22` ↔ `DAT_00478FD2`, `+0x24` ↔ `DAT_00478FD4`, `+0x26` ↔ `DAT_00478FD6`. **`+0x1A` (standard battalion size) has a second use**: it is the ceiling on a mercenary offer's troop count when the pool restocks. See [decompiled-mobilization-and-mercenary-restock.md](decompiled-mobilization-and-mercenary-restock.md) §4 and §6.
 
 Every bolded field is an exact match to independent evidence already in this project, not a guess:
 

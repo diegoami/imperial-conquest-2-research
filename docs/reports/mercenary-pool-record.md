@@ -38,6 +38,8 @@ Slot 33's `label` is `11`. Gaul (the hiring/source nation for this mercenary gro
 
 ## What this does not establish
 
+> **Update (2026-09-19).** Two of the four items below are now answered, and a third is narrowed. **The pool restocks quarterly**, in `FUN_00449130`, called from the weekly tick's week-wrap branch right after the quarterly economy: an empty slot refills with probability ≈ 85 %, and a **live offer is replaced with probability `1/9`** — so ordinary market turnover is real, it is seasonal rather than per-turn, and `0xFFFF` is the code's own empty test. The refill draws coordinates, `Label` and type wholesale from a **fixed 201-record template table at `0x0049D0A4`**, randomizing only troops (`1.5x`–`3x` the template value, capped at the type's standard battalion size) and quality (always `5`–`9`, i.e. `poor` through `elite` — which is why the plausibility scan above found exactly that range). **`Label` indexes a 20-byte-stride name table at `0x0049CC94`** — the address of the name table [decompilation plan item 11](../decompilation-plan.md) had already identified it as — which the hire routine uses to name the unit ("Gallic"); the table is BSS, loaded from the DAT, and its DAT offset was not located, so the literal strings are still open. See [decompiled-mobilization-and-mercenary-restock.md](decompiled-mobilization-and-mercenary-restock.md) §6.
+
 - The meaning of `Label`.
 - The remaining ~2,442 bytes after the mercenary table (the roadmap now lists this as a distinct open region rather than assuming it's more mercenary data).
 - Whether hiring only part of an offer (rather than the whole 6,438, as happened here) decrements `Troops` instead of setting the sentinel — this pair only shows a full-offer hire.

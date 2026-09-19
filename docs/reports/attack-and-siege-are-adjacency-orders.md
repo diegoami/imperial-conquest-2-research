@@ -31,7 +31,9 @@ Worth stating precisely, because it is a recurring shape: **two individually cor
 
 ## What this does not establish
 
-- **The exact adjacency metric.** "Adjacent" is observed; whether the game uses Chebyshev (8-way) or Manhattan (4-way) is not. The reimplementation uses Chebyshev as its shared map metric (`LandingTile.ChebyshevDistance`), and applying it here is `[derived]` until a decompilation or a controlled observation says otherwise.
+- ~~**The exact adjacency metric.** "Adjacent" is observed; whether the game uses Chebyshev (8-way) or Manhattan (4-way) is not. The reimplementation uses Chebyshev as its shared map metric (`LandingTile.ChebyshevDistance`), and applying it here is `[derived]` until a decompilation or a controlled observation says otherwise.~~
+
+  > **Settled (2026-09-19).** The game's grid distance function is `FUN_00449018`, and it is **Chebyshev** — `max(|x1-x2|, |y1-y2|)`, two `abs` idioms feeding the `max` helper `FUN_00448fd8`. The shooting-range check, the mobilization radius, the AI's threat scan and the post-capture defection cascade all call it, so there is one metric engine-wide. The reimplementation's `LandingTile.ChebyshevDistance` is now `[confirmed]` faithful rather than `[derived]`. Separately, the mobilization code's `d == 1` test for "an army at this city" is independent corroboration that an army never stands on a city tile. See [decompiled-mobilization-and-mercenary-restock.md](decompiled-mobilization-and-mercenary-restock.md) §3.
 - **What happens when the target is adjacent but the actor has no moves left**, or is embarked. The reimplementation gates both, from the merged battle rules rather than from this observation.
 - **Whether a fleet can besiege a coastal city**, or whether sieges are army-only. Not observed; not assumed.
 

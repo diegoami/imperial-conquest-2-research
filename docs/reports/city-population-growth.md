@@ -172,7 +172,16 @@ mobilized (+0x442) = max(0, mobilized − 3)
 unity (+0x440)     = min(990, max(300, unity + 25 − taxRate / 2 − mobilized / 5))   // after the decay
 ```
 
-Across the 5 one-turn quarter pairs, mobilization fell by exactly 3 in **71 of 80** nation-quarters; the other 9 were AIs recruiting or disbanding in the round. Unity matched the formula exactly in **60 of 80**; the other 20 had a battle, capture or elimination in the round (±25, +9/−15, reset). So unity drifts **up** by 25 a quarter, minus half the tax rate and a fifth of the mobilization, within 300…990. It does not erode by 3.
+Across the 5 one-turn quarter pairs, mobilization fell by exactly 3 in **71 of 80** nation-quarters; the other 9 were AIs recruiting or disbanding in the round.
+
+> **Update (2026-09-19): the counterpart increase is found**, closing [decompilation plan item 17](../decompilation-plan.md). Placing a recruitment order raises the field, and cancelling one lowers it, symmetrically:
+>
+> ```text
+> order placed   : mobilized (+0x442) = min(100, mobilized + 1 + (troops × 1000) / wealth (+0x430))
+> order cancelled: mobilized (+0x442) = max(0,   mobilized - 1 - (troops × 1000) / wealth)
+> ```
+>
+> Since wealth is `Σ population × 3000`, mobilization is the standing army as a fraction of the population, which is why it feeds back into growth and supply here. **The 9 exceptions above are this rule**, and are the empirical corroboration of it. See [decompiled-mobilization-and-mercenary-restock.md](decompiled-mobilization-and-mercenary-restock.md) §5. Unity matched the formula exactly in **60 of 80**; the other 20 had a battle, capture or elimination in the round (±25, +9/−15, reset). So unity drifts **up** by 25 a quarter, minus half the tax rate and a fifth of the mobilization, within 300…990. It does not erode by 3.
 
 ## Corrections to existing reports
 

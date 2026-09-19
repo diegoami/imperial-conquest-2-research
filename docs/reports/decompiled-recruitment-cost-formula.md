@@ -30,6 +30,14 @@ Both resolve to small, clean whole-number table entries (light cavalry: 15 initi
 
 ## Mobilization and new-recruit creation: read, not fully formalized
 
+> **Resolved (2026-09-19), and one guess in this section was wrong.** `FUN_0044a4e0` is decompiled in [decompiled-mobilization-and-mercenary-restock.md](decompiled-mobilization-and-mercenary-restock.md). Three corrections to the paragraph below:
+>
+> 1. **A lower state code does exist, and is exactly what the gate excludes.** A recruitment order is created with state `0`, not `24`; `24` is the cap it climbs to at `+2` per week. This section's parenthetical *"whether a lower state code exists ... is untested"* is now tested, and the answer is yes.
+> 2. **`> 15` is `quality >= 4`.** The mobilized unit's quality is `state / 4`, and the game's quality-name table (DAT `0x1F6CA`) prints indices `0`–`3` all as `not ready`. The gate is "no longer *not ready*", and mobilizing at state `16` yields a permanently `very poor` unit.
+> 3. **"garrison→army" is the wrong word.** The source is the nation's 40-slot recruitment table, not a city garrison pool; nothing in the transfer touches a city record.
+>
+> The section's own next-check #2 is therefore closed, and so is the 100 % cap's missing counterpart: **`TArmyRecruits_RecruitUnit` itself raises the mobilization rate**, by `1 + troops × 1000 / wealth`, which is [decompilation plan item 17](../decompilation-plan.md).
+
 `TArmyRecruits_MobilizeUnits` delegates the actual garrison→army transfer to an unnamed helper (`FUN_0044a4e0`), gated by a per-slot check requiring a state-like field `> 15` before a unit can be mobilized — plausibly connected to the city-unit `StateCode` values already observed (a freshly recruited unit reads `24`, comfortably above this threshold; whether a *lower* state code exists and is what this gate excludes is untested). `TArmyRecruits_RecruitUnit` confirms mobilization rate is capped at exactly 100% (`"Your mobilisation rate is already 100%."`) and scans a 40-entry array for an empty slot when creating a new recruit order — consistent with, but not offset-for-offset verified against, `SaveRecruitmentTable`'s known 40-slot structure. Not pursued further this pass since it requires decompiling an unnamed function.
 
 ## What this does not establish
