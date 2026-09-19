@@ -105,6 +105,28 @@ Ordered by (value of the unknown) × (how directly a known form/string points at
 
     **What settles it.** Either an explicit write to `+0x442` with the quantity it adds (a constant, a function of troops mobilized, or a percentage of population), or a demonstration that nothing in `CODE` writes the field upward — which would itself be a finding, and would mean the cap literal guards a path reached some other way. A save pair across a mobilization order would confirm whichever shape the code shows.
 
+18. [ ] **`FUN_0044b230` — the fortification and population loss a forced capture inflicts.** The *fact* is `[confirmed]` twice over: [decompiled-defection-and-siege-attrition.md](reports/decompiled-defection-and-siege-attrition.md) says forced capture (`FUN_0044bb18`) **always** changes fortification and population while defection (`FUN_0044bed8`) *"never writes to population or fortification anywhere"*, and [galatia-elimination-and-city-resupply-confirmed.md](reports/galatia-elimination-and-city-resupply-confirmed.md) confirms it city by city across all nine Galatian cities. **The formula is not.** The reimplementation's T17 therefore transfers a captured city without eroding either field, as a declared gap rather than an invented rule (build repo [#17](https://github.com/diegoami/imperial_conquest_2/issues/17)).
+
+    **The two observed captures constrain it more tightly than the report states**, and this is worth writing down before anyone opens Ghidra:
+
+    | City | Fortification | Population |
+    | --- | --- | --- |
+    | Laranda | 41 → 30 | 59 → 44 |
+    | Gordium | 54 → 42 | 23 → 18 |
+
+    Solving `floor(before × r) == after` for each field and intersecting the two windows per city:
+
+    - **Laranda**: `r ∈ [0.7458, 0.7561)`
+    - **Gordium**: `r ∈ [0.7826, 0.7963)`
+
+    Two conclusions follow. **One multiplier explains both fields within each capture** — the windows intersect non-emptily for fortification and population separately, so the same factor is applied to both, which means a **single draw shared by the two fields**, not one per field. And **the two captures have disjoint windows**, so the factor is **not a constant**: it is drawn per capture. Both captures are in the same save transition, so this is not a per-turn or per-season value either.
+
+    A shape consistent with both is `value = value × (75 + Random(10)) / 100`, one draw per capture (Laranda ≈ 0.75, Gordium ≈ 0.79, both inside their windows). **That is a hypothesis, not a finding** — many `(base + Random(span))/100` pairs fit two observations, and the constant could equally be a subtraction or a per-field table. It is recorded only so a decompilation pass knows what the answer has to look like.
+
+    **What settles it**: decompile `FUN_0044b230`, read whether the draw is taken once and reused, and read the literal base and span. The windows above are then a free check — the right formula must be able to produce a value in `[0.7458, 0.7561)` and another in `[0.7826, 0.7963)`.
+
+    **A cheap empirical alternative** if the decompilation stalls: any save pair spanning a forced capture gives another window. Three or four more captures would pin the base and span by intersection alone, without reading code. A run that takes several cities is the ideal source, so this is a good thing to watch for in the next play-through.
+
 ## Method, per target
 
 1. Locate the form/procedure the same way prior reports did: Delphi RTTI method-name tables, the `TMainMenu`/form-adjacent streams, or a literal-string cross-reference (e.g. searching for dialog text like "quarterly", "Current tax", "New income") to find the owning code.
