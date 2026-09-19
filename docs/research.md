@@ -4,6 +4,8 @@ All observations below come from reading the supplied demo ZIP, full-version ZIP
 
 Detailed evidence and per-file hashes are preserved in the [demo static-analysis report](reports/impconq2-initial-report.md), [full-version/save analysis](reports/impconq2-full-save-analysis.md), [one-turn save comparison](reports/one-turn-save-comparison.md), [map-layout notes](reports/map-layout.md), [save/screenshot analysis](reports/saves-and-screenshots.md), [battle observation](reports/battle-observation.md), [strategic recording and summer saves](reports/strategic-recording-and-summer-saves.md), [menu/toolbar inventory](reports/menu-and-toolbar-inventory.md), [controlled army-supply transfer](reports/controlled-army-supply-transfer.md), [army-table analysis](reports/army-records-and-roman-roster.md), [Rome city, recruitment, and nation mapping](reports/rome-city-recruitment-and-nations.md), [Ptolemaic player and Week 9 analysis](reports/ptolemaic-player-and-week9.md), and [city units, army transfer, and mercenaries](reports/city-units-army-transfer-and-mercenaries.md).
 
+> **Where the evidence lives.** The saves, screenshots and recordings this repository cites are published as GitHub releases, one per play-through, in the private repository [`diegoami/imp_conquest_original`](https://github.com/diegoami/imp_conquest_original/releases). Reports cite **bare filenames**, so [`evidence-index.md`](evidence-index.md) is what turns a citation into a retrievable file — it maps every save, screenshot and recording to its release, flags the cited files that **do not exist**, and warns that a `_b` suffix marks a **branch of the same week, not a later turn**. Nothing binary is ever committed here.
+
 ## Known inputs
 
 | Input | SHA-256 | Notes |
