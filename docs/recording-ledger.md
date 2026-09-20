@@ -84,6 +84,35 @@ rectangularity test before trusting a run of consecutive hits, and do not read "
 as "an animation".
 
 
+## What a future recording should aim at
+
+Runs arrive incrementally, so this is the standing shopping list. Updated 2026-09-20 after
+`run-1-ptolemy`.
+
+**Not present in any run so far, and worth a deliberate capture:**
+
+1. **A siege, fought and resolved.** Ptolemaic besieged nothing across the whole of 270 BC, and no
+   other run holds one either. The reimplementation's siege path is decompiled and twice-reviewed but
+   has **never been watched**. A single siege would confirm the defender-strength arithmetic against
+   the game's own screen the way the Army recruits dialog confirmed `quality = state / 4`.
+2. **A siege of a city whose owner differs from its allegiance** — a recently captured one. Both
+   adjustments that apply there are `[confirmed]` from decompilation and modelled, but neither has
+   been seen in play.
+3. **A tax slider mid-drag.** The Change tax dialog previews `New income` against `New tax` **before**
+   committing, so two frames either side of a drag give two points on the income function — a value
+   that appears in **no save**, because a save only ever holds the committed one.
+4. **More battles**, for the per-type casualty model. One fully-transcribed resolution exists; the
+   ordering it shows (archers 100%, heavy cavalry 4%) is very likely a rout phenomenon rather than a
+   casualty one, and one engagement cannot separate the two.
+
+**Already settled — do not spend a recording on these**, both were open questions in earlier notes:
+
+- The **siege defender penalty** where owner ≠ allegiance. Resolved by decompilation: the `× 4/5` in
+  `FUN_0044A98C` and the `× 9/10` in `FUN_0044B27C` are **two separate adjustments in two different
+  functions, both applying**. `[confirmed]`, and modelled by T33.
+- The **quality-promotion "adjacency rule"**. Refuted by the second battle replay, which breaks it
+  three ways. See `battle-replayed-rout-mechanic-and-combat-constants.md`.
+
 ## Standing notes for future runs
 
 - **Do not treat leader names as fixture data.** They are drawn per game — see
