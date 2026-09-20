@@ -90,9 +90,15 @@ the wealth regime where the truncation actually bites.
   `startingArmies`. Whether placement is free or constrained is **not established**; one frame shows
   the screen exists, nothing more.
 - **The tax dialog previews income before committing** `[confirmed]`: `Current tax 13 / New tax 13`
-  beside `Current income 801 / New income 801`, over a slider. A frame where the slider has **moved**
-  would give a `(tax, income)` pair and, across a few, the income function itself. That frame was not
-  in this pass and is the single cheapest next thing to look for.
+  beside `Current income 801 / New income 801`, over a slider. So `tax 13% → income 801` is one real
+  point on the income function. A frame where the slider has **moved but not been accepted** would
+  give a second point for free, and across a few, the function itself. That frame was not in this pass
+  and is the single cheapest next thing to look for.
+
+  **An open dialog is an intent, not a commit.** This frame shows `New tax 13` — unchanged — and says
+  nothing about what was finally applied. Across the same pair the saves do move, `IP000` holding
+  `tax 13%` and `IP000B` holding `18%`, so the change was made at some other moment in the turn. Read
+  the committed value from the save every time; a panel only ever shows what was on screen.
 
 ## 4. What did not reconcile
 
@@ -110,14 +116,42 @@ was watched on screen: supplies `969 → 489` tons, and the fortification line's
 Two recordings of twenty-two were opened, at four timestamps total. Nothing here rests on more than
 one frame except sections 1 and 2, which rest on a frame **and** a save diff. In particular:
 
-- **The between-turn processing was never recorded.** Every recording ends after `IPnnnB` is written
-  and the next begins after the turn has already advanced, so the quarterly economy, the AI's moves
-  and the news log all fall in the gaps. **This is the one change worth asking the player for**: keep
-  recording through the end-of-turn transition. The quarterly boundary
-  (`IP011B → IP012`, Summer week 11 → Autumn week 1) is where the mercenary restock and the quarterly
-  billing fire, and it is currently invisible.
 - No battle appears in the frames examined.
 - The remaining 20 recordings are unexamined.
+
+## 6. A correction, and the news log
+
+An earlier draft of this report claimed the run had **gaps** — that each recording stopped before the
+turn was ended, leaving the quarterly economy and the AI's moves unrecorded. **That was wrong**, and
+it was wrong in an instructive way: it was inferred from arithmetic on file modification times
+(`IP012.sav` is written after `IP1 011.mp4`'s mtime) rather than from looking at the frames.
+
+The coverage is **continuous**. `IP1 011.mp4` at **t=135s** and `IP1 012.mp4` at **t=2s** show the
+same screen at the same wall-clock minute. An `.mp4`'s mtime lags the moment recording stopped, so the
+alignment in §1 places saves *within* a recording reliably but **must not be used to infer that
+anything is missing between two recordings**.
+
+What is actually there at that boundary is the **news log**, and it is the most valuable panel in the
+run: a **cumulative scrollback of every event in the world since the game began**, in the game's own
+words. One frame yields the whole year. From `IP1 011.mp4` t=135s alone:
+
+| Sentence, verbatim | What it names |
+|---|---|
+| `Brixia  (Gaul)  falls to Rome.` | capture |
+| `Modena defects from Gaul to Rome.` | **defection — a different word for a different mechanic** |
+| `Seleucid destroys army of Galatia.` | army elimination |
+| `Celtiberia pays reparations of 384 talents.` | reparations, with the amount |
+| `Bithynia and Seleucid have agreed to end their war.` | peace |
+| `Gaul depose their leader Caractacus.` | **leader deposition** |
+
+Two of these matter beyond their wording. **`falls to` against `defects from … to`** is the exact
+capture-versus-defection distinction T17 was built on, now confirmed as two separate sentences the
+game itself emits. And **`depose their leader`** is a mechanic no report in this repository describes
+and no task in the build repository models — leaders can evidently be removed and replaced during
+play, which the exported world's static `leaderName` field cannot represent.
+
+The news log is also **cheap**: because it is cumulative, a single frame late in a run substitutes for
+watching the run. It should be the **first** thing read from any new recording set.
 
 ## How to re-extract any frame cited here
 
