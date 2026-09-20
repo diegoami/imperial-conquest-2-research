@@ -23,7 +23,7 @@ across the run. All 22 recordings are at least **scanned**; the table records an
 
 | Recording | Len | Depth | Read at | Harvested |
 |---|---|---|---|---|
-| `IP1 000` | 314s | **read** | t=12, 20, 25, 180, 250 | Leader roster (all 16); game-start unit placement; **full battle resolution**; Army recruits; nation panel; Change tax |
+| `IP1 000` | 314s | **read** | t=12, 20, 21, 25, 180, 250 | Leader roster (all 16); game-start unit placement; **full battle resolution**; **tactical battle screen (`Attacker routed`)**; Army recruits; nation panel; Change tax |
 | `IP1 001` – `IP1 015` | — | scanned | — | — |
 | `IP1 016` | 212s | **surveyed** | t=140–200 | **Nothing new — map panning.** Its 22 "distinct" frames were grey mountain terrain tripping the dialog detector |
 | `IP1 017`, `IP1 018` | — | scanned | — | — |
@@ -58,14 +58,21 @@ across the run. All 22 recordings are at least **scanned**; the table records an
 
 ### What is most worth doing next, in order
 
-1. **A second battle.** Only one combat resolution has been read, and it is the densest frame in the
-   game. The current detector will not find one reliably — see the note below.
-2. **The `Fleet` and `City` submenus**, and the `Supply fleet` dialog (`IP1 019` t≈159). The `Army`
+1. **The tactical battle frames — now the highest-value target in the run.** `IP1 000` t≈19–24 holds
+   the per-exchange screen (`ATTACKS`, `UNIT LOSSES`, `Attacker routed`), and
+   [`instant-resolver-cannot-reproduce-a-tactical-battle.md`](reports/instant-resolver-cannot-reproduce-a-tactical-battle.md)
+   showed why it matters: the reimplementation's instant path reproduces a tactical battle's **total**
+   exactly and its **per-type shape** not at all, and cannot at any ratio. The per-exchange panel is
+   the only source for the model that produces the shape. Extract at `fps=2` over t=18–26, not
+   `fps=1` — exchanges resolve in under a second on the patched EXE.
+2. **A second battle**, for the per-type ordering. The current detector will not find one reliably —
+   see the note below.
+3. **The `Fleet` and `City` submenus**, and the `Supply fleet` dialog (`IP1 019` t≈159). The `Army`
    submenu is fully transcribed; its two siblings are not, and together they are the rest of the
    command surface.
-3. **The supply purchase entry dialog** (`IP1 000` t≈115 and three others), unread; T10's territory.
-4. **A tax slider mid-drag**, for a second `(tax, income)` point. Not yet found.
-5. `IP1 001`–`IP1 015`, `017`, `018`, `020` are scanned but nothing in them was read. Their dialog
+4. **The supply purchase entry dialog** (`IP1 000` t≈115 and three others), unread; T10's territory.
+5. **A tax slider mid-drag**, for a second `(tax, income)` point. Not yet found.
+6. `IP1 001`–`IP1 015`, `017`, `018`, `020` are scanned but nothing in them was read. Their dialog
    frames all deduplicated into screen types already transcribed, so the expected yield is low.
 
 ### Detector caveat, learned the hard way
@@ -83,6 +90,8 @@ as "an animation".
   [`ptolemy-run-ui-inventory-and-leader-draw.md`](reports/ptolemy-run-ui-inventory-and-leader-draw.md) §2.
 - **Recordings in this run are continuous.** An earlier claim of gaps was an artifact of mtime
   arithmetic; do not repeat it.
+- **The UI sweep of this run is complete**: all 22 scanned, 12 screen types identified, every
+  recurring screen transcribed. What remains is the named residue in the list above, not an unknown.
 - **Nothing has been moved to `recordings-processed/`.** With every recording short of *exhausted*,
   moving them would assert a completeness that does not exist. Move a recording only when its row here
   says **exhausted**.
