@@ -144,14 +144,13 @@ words. One frame yields the whole year. From `IP1 011.mp4` t=135s alone:
 | `Bithynia and Seleucid have agreed to end their war.` | peace |
 | `Gaul depose their leader Caractacus.` | **leader deposition** |
 
-Two of these matter beyond their wording. **`falls to` against `defects from … to`** is the exact
-capture-versus-defection distinction T17 was built on, now confirmed as two separate sentences the
-game itself emits. And **`depose their leader`** is a mechanic no report in this repository describes
-and no task in the build repository models — leaders can evidently be removed and replaced during
-play, which the exported world's static `leaderName` field cannot represent.
+**`falls to` against `defects from … to`** is the exact capture-versus-defection distinction T17 was
+built on, now confirmed as two separate sentences the game itself emits.
 
 The news log is also **cheap**: because it is cumulative, a single frame late in a run substitutes for
-watching the run. It should be the **first** thing read from any new recording set.
+watching the run. It should be the **first** thing read from any new recording set. A full reading of
+this run's log, and what it settles, is in
+[`ptolemy-run-news-log-vocabulary-verified.md`](ptolemy-run-news-log-vocabulary-verified.md).
 
 ## How to re-extract any frame cited here
 
