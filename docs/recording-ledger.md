@@ -23,12 +23,15 @@ across the run. All 22 recordings are at least **scanned**; the table records an
 
 | Recording | Len | Depth | Read at | Harvested |
 |---|---|---|---|---|
-| `IP1 000` | 314s | **read** | t=12, 20, 25, 180, 250 | Leader roster (all 16 nations); game-start unit placement phase; **full battle resolution panel**; Army recruits dialog; nation panel; Change tax dialog |
-| `IP1 001` – `IP1 010` | — | scanned | — | — |
+| `IP1 000` | 314s | **read** | t=12, 20, 25, 180, 250 | Leader roster (all 16); game-start unit placement; **full battle resolution**; Army recruits; nation panel; Change tax |
+| `IP1 001` – `IP1 015` | — | scanned | — | — |
+| `IP1 016` | 212s | **surveyed** | t=140–200 | **Nothing new — map panning.** Its 22 "distinct" frames were grey mountain terrain tripping the dialog detector |
+| `IP1 017`, `IP1 018` | — | scanned | — | — |
+| `IP1 019` | 294s | **read** | t=112, 159 | **Owned-army panel** (settles fog of war); fleet panel and `Supply fleet` dialog seen, unread |
+| `IP1 020` | — | scanned | — | — |
+| `IP1 021` | 398s | **read** | t=1, 80, 86, 140 | News log Autumn→Winter; **`Unit map` command menu**; **Split army dialog, reconciled unit-for-unit**; foreign-army panel |
 | `IP1 011` | 137s | **read** | t=135 | News log, Spring → Autumn wk1 |
 | `IP1 012` | 190s | **read** | t=2 | Continuity check against `IP1 011` (no gap) |
-| `IP1 013` – `IP1 020` | — | scanned | — | — |
-| `IP1 021` | 398s | **read** | t=1, 85, 140 | News log, Autumn → Winter wk7; foreign-army information panel; two-army transfer dialog (**surveyed only, not transcribed**) |
 
 **Saves**: all 45 dumped for calendar; `IP000`/`IP000B` inspected in full (nation + Alexandria);
 `IP011B`/`IP012` compared across the season boundary.
@@ -40,28 +43,39 @@ across the run. All 22 recordings are at least **scanned**; the table records an
 | Nation panel (leader, cities, population, unity, tax, mobilized, treasury, international relations) | 15 | yes |
 | News log (cumulative) | 7 | yes |
 | Army recruits (recruitment table, costs, Mobilize/Disband) | 5 | yes |
-| Own-army information panel | 5 | no — surveyed |
+| Own-army information panel | 5 | yes |
 | Foreign-army information panel (fog of war) | 4 | yes |
 | Save As / Open dialogs | 6 | n/a — OS chrome |
 | Battle resolution ("Battle ended") | 4 | yes |
-| Two-army transfer (units, supply, money) | 2 | **no — highest-value unread screen** |
+| Split army (two unit lists, supply and money spinners) | 2 | yes — reconciled against the save |
 | Change tax level | 2 | yes |
 | Supply purchase entry | 2 | no |
 | Human and computer leaders (New Game) | 2 | yes |
 | Game-start unit placement | 3 | partially |
-| Remaining single-occurrence screens in `016`, `019`, `021` | ~25 | **no** |
+| `Unit map` command menu (Army / Fleet / City) | 1 | yes — `Army` submenu; `Fleet` and `City` unopened |
+| Fleet information panel, `Supply fleet` dialog | 2 | no |
+| Remaining single-occurrence frames in `016`, `019` | ~30 | **not dialogs** — map panning, see the caveat above |
 
 ### What is most worth doing next, in order
 
-1. **`IP1 016`, `IP1 019`, `IP1 021` have ~25 unread single-occurrence screens** between them — far more
-   than any other recording. Consecutive distinct frames at 5-second spacing usually means an
-   animation, and the strongest candidate is **more battles**. The battle panel is the densest frame
-   in the game.
-2. **The two-army transfer dialog** (`IP1 021` t≈85, t≈145). Surveyed only. It shows both armies' unit
-   lists with names, types, troops and quality, plus supply and money spinners — it is the direct UI
-   for T15's join/split/transfer and nothing has transcribed it.
+1. **A second battle.** Only one combat resolution has been read, and it is the densest frame in the
+   game. The current detector will not find one reliably — see the note below.
+2. **The `Fleet` and `City` submenus**, and the `Supply fleet` dialog (`IP1 019` t≈159). The `Army`
+   submenu is fully transcribed; its two siblings are not, and together they are the rest of the
+   command surface.
 3. **The supply purchase entry dialog** (`IP1 000` t≈115 and three others), unread; T10's territory.
 4. **A tax slider mid-drag**, for a second `(tax, income)` point. Not yet found.
+5. `IP1 001`–`IP1 015`, `017`, `018`, `020` are scanned but nothing in them was read. Their dialog
+   frames all deduplicated into screen types already transcribed, so the expected yield is low.
+
+### Detector caveat, learned the hard way
+
+The dialog detector scores the **near-grey fraction inside the map viewport**. The map's **mountain
+tiles are grey**, so a recording where the player pans across mountains produces a long run of
+high-scoring frames with no dialog in them — which is exactly what `IP1 016` was. Add a texture or
+rectangularity test before trusting a run of consecutive hits, and do not read "many distinct frames"
+as "an animation".
+
 
 ## Standing notes for future runs
 

@@ -29,12 +29,10 @@ Twelve distinct screen types account for all of them:
 | Game-start unit placement | a unit palette and *"&lt;Nation&gt; to place units"* |
 | Save As / Open | OS file chrome, not game UI |
 
-**The foreign-army panel is a fog-of-war rule** `[derived]`: composition and terrain are visible for
-an enemy army while moves, supply, morale and money are withheld. Read from one frame
-(`IP1 021` t=140, `Army of Seleucid`, 57,733 troops itemised, `Terrain: Mountains`, the other four
-rows empty). It is `[derived]` rather than `[confirmed]` because **no frame of an *owned* army was read
-at full resolution in the same pass**, so "blank because withheld" has not been separated from "blank
-because zero". That comparison is one frame away and should be the first thing done next.
+**The foreign-army panel is a fog-of-war rule** — composition and terrain are visible for an enemy
+army while moves, supply, morale and money are withheld (`IP1 021` t=140, `Army of Seleucid`, 57,733
+troops itemised, `Terrain: Mountains`, the other four rows empty). Confirmed against an owned army in
+§5.
 
 ## 2. Leader names are drawn per game — do not treat them as data `[confirmed]`
 
@@ -119,12 +117,102 @@ inputs is a question worth asking directly**, and it has not been asked here.
 Also `[confirmed]`: a victorious army **captures the loser's talents and supplies**, reported as two
 separate sentences with explicit amounts.
 
-## 4. What this pass did not do
+## 4. The army command surface, and the Split army dialog `[confirmed]`
 
-- **~25 single-occurrence screens in `IP1 016`, `IP1 019` and `IP1 021` are unread.** Runs of
-  consecutive distinct frames usually mean animation; more battles are the likeliest content.
-- **The two-army transfer dialog was surveyed, not transcribed** — it is the highest-value unread
-  screen, and the direct UI for T15's join/split/transfer.
-- The supply purchase dialog is unread.
-- No frame of an **owned** army was read at full resolution, which is what §1's fog-of-war reading
-  needs to become `[confirmed]`.
+`IP1 021` t=80 has the `Unit map` menu open. The command surface is exhaustive and small:
+
+```
+Unit map
+  Army  >  Supply army · Recruit mercenaries · Transfer unit ·
+           Split army · Join armies · Change units · Disband army
+  Fleet >
+  City  >
+  Cancel selection                                     Shift+X
+```
+
+Six seconds later, `t=86`, the **Split army** dialog. Two unit lists side by side, `Transfer` and
+`Disband` under each, a running `15 units   69,491 troops` total, and — separately from the units —
+**supply and money split by explicit spinners**, `10s` and `100s`, from first army to second:
+
+```
+First army's supply   524     10s [±]  100s [±]     Second army's supply   0
+First army's money    442     10s [±]  100s [±]     Second army's money    0
+```
+
+**A split is allocated, not apportioned.** The units move individually and the supply and money are
+dialled across by hand; nothing in the dialog divides anything proportionally.
+
+### It reconciles unit-for-unit against the save
+
+The dialog's visible rows against `--inspect-army IP021.sav 233 67` (army 10), **in order**:
+
+| Dialog | Save | Type | Save flag |
+|---|---|---|---|
+| `1st Dragoons Battalion  Hvy cav  2,190  average` | `1st Dragoons Battalion` | heavy cavalry | — |
+| `2nd Lancers Battalion  Lit cav  6,110  average` | `2nd Lancers Battalion` | light cavalry | — |
+| `3rd Bowmen Battalion  Archers  3,054  average` | `3rd Bowmen Battalion` | archers | — |
+| `4th Bowmen Battalion  Archers  3,052  average` | `4th Bowmen Battalion` | archers | — |
+| `3rd Guards Battalion  Hvy inf  5,237  average` | `3rd Guards Battalion` | heavy infantry | — |
+| `2nd Foot Battalion  Lit inf  8,699  average` | `2nd Foot Battalion` | light infantry | — |
+| **`Elymaian  Lit inf  10,278  average`** | `Elymaian` | light infantry | **mercenary (label 9)** |
+| `1st Bowmen  Battalion  Archers  353  average` | `1st Bowmen  Battalion` | archers | — |
+| **`Egyptian  Hvy inf  2,513  average`** | `Egyptian` | heavy infantry | **mercenary (label 35)** |
+
+Same names, same order, same types. Troop counts differ by 1–3% because the dialog is 80 seconds into
+the turn and the save is 6 seconds in.
+
+**Mercenary naming is confirmed** `[confirmed]`. Every regular is `<ordinal> <Role> Battalion`;
+the two units the save flags as mercenaries are **bare ethnonyms — no ordinal, no `Battalion`**. The
+UI draws exactly what the save holds, so a name alone distinguishes a mercenary from a regular. This
+is the distinction T55's mercenary skip needed, observed rather than inferred.
+
+**Role names are confirmed** as `Foot` (light infantry), `Guards` (heavy infantry), `Bowmen`
+(archers), `Lancers` (light cavalry), `Dragoons` (heavy cavalry) — matching T15's `ArmyNaming`.
+
+**Ordinals are nation-wide per role, with gaps across armies** `[confirmed]`: this one army holds
+`1st`, `3rd`, `4th` Bowmen, and the full roster adds `2nd` and `5th`. So the series is per type across
+the nation and an army holds an arbitrary subset.
+
+### One thing to follow up
+
+`1st Bowmen  Battalion` carries a **double space** between role and `Battalion`, in the save *and* on
+screen, where its `3rd` and `4th` siblings carry one. Earlier work on T55 treated double-spaced names
+as a defect to fix. **This frame suggests at least some double spacing is faithful to the original.**
+One instance is not a rule and the mechanism is unknown — recorded here so the question is asked
+before anything is "corrected".
+
+## 5. Fog of war confirmed `[confirmed]`
+
+§1 read the foreign-army panel's blank `Moves` / `Supply` / `Morale` / `Money` as withheld, but could
+not separate "withheld" from "zero rendered as empty". `IP1 019` t=112 supplies the missing half — an
+**owned** army panel:
+
+```
+Army of Ptolemaic
+Moves        0
+Supply       415 tons  (58%)
+Morale       high
+Money        412 talents
+Terrain      Plain
+```
+
+**`Moves` reads `0`, not blank.** A zero is drawn as a zero, so the foreign panel's empty rows are a
+deliberate withholding. Composition and terrain are public; moves, supply, morale and money are not.
+
+This panel also reconciles against `IP021.sav` army 10 exactly — `71,420` total troops, `412` money,
+`15` units.
+
+**`Morale` is a third word-ladder** `[confirmed]`, after readiness and unity: the panel reads `high`
+where the save holds `68`. None of the three ladders is mapped beyond the points observed so far.
+
+## 6. What this pass did not do
+
+- `IP1 019`'s remaining frames are largely repeats of the owned-army panel while panning.
+- The supply purchase dialog is unread, as are the `Fleet` and `City` submenus and the `Supply fleet`
+  dialog glimpsed at `IP1 019` t≈159.
+- **No second battle was found.** The one in §3 remains the only fully-read combat resolution.
+- **`IP1 016`'s 22 "distinct" frames turned out to be the player panning the map**, not a sequence of
+  dialogs. The detector had fired on the map's **grey mountain tiles**, which pass a "bright and
+  near-grey" test as readily as a dialog does. Nothing was lost — the frames were cheap — but the
+  prediction that consecutive distinct frames meant battle animation was wrong for this run, and a
+  texture test would separate the two.
