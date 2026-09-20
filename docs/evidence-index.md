@@ -24,6 +24,8 @@ The originals live in the repository [`diegoami/imp_conquest_fixtures`](https://
 - **[`run-1-thracia`](https://github.com/diegoami/imp_conquest_fixtures/releases/tag/run-1-thracia)** is the **densest uninterrupted series** — twelve consecutive two-week steps, no gaps, no branches — and so the right one for anything verified turn over turn. It has **no notes**: it shows state, not intent.
 - **[`run-1-cartago`](https://github.com/diegoami/imp_conquest_fixtures/releases/tag/run-1-cartago)** is small but holds a **one-action save pair** (`spring_1` → `spring_1b`, a single fleet move) within the same turn.
 
+**What has already been extracted from which recording is tracked in [`recording-ledger.md`](recording-ledger.md).** Read it before opening a video: runs arrive incrementally and it is the only record of which screens have been transcribed and which are merely known to exist.
+
 ## Three things that will mislead you if you do not know them
 
 **1. A `_b` suffix is a branch, not a later turn.** `1_rome_270_winter_7` has two successors: `winter_9` (where the battle froze, four recordings) and `winter_7_b` → `winter_9_b` → `winter_11` (the same battle replayed on auto, no freeze). `winter_9` and `winter_9_b` are **two outcomes of the same week reached by different routes** — diffing them as consecutive turns produces nonsense. The `_b` chain is the one that continues.
