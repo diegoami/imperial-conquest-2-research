@@ -123,17 +123,71 @@ Three things follow that no existing report or design section accounts for:
 
 ```c
 attacker.moves = 0;
-base(f)     = ships × condition / 10 + (f carries an army ? armyPower / 50 : 0);
+base(f)     = ships × condition / 10 + (f carries an army ? siegeStrength(army) / 50 : 0);   // FUN_0044A930, not armyPower
 strength(f) = base(f) + random(4) × (base(f) / 10);        // a 0/10/20/30% random bonus
 winner = (strength(defender) < strength(attacker)) ? attacker : defender;   // ties to the defender
 unity[loserNation] -= floor(loserShips / 2);
 unity[winnerNation] = min(990, unity[winnerNation] + floor(loserShips / 2));
-FUN_0044B4F8(winner, winnerStrength, loserStrength);   // damage to the winner
+FUN_0044B4F8(winner, loserStrength, winnerStrength);   // damage to the winner (argument order corrected 2026-09-23)
 deleteFleet(loser);                                    // and any army it carried
 news("<winner> sinks fleet of <loser>.");
 ```
 
-Winner damage (`FUN_0044B4F8`): with `r = max(1, loserStrength × 100 / winnerStrength)` and `d = r² / 100`, the winner loses `ships × d / 300` ships and `condition × d / 300` condition; a carried army takes casualties (`FUN_0044AE20`), and if `d > 70` it also loses `unitCount × d / 250` whole units at random.
+Winner damage (`FUN_0044B4F8`): with `r = max(1, loserStrength × 100 / winnerStrength)` and `d = r² / 100`, the winner loses `ships × d / 300` ships and `condition × d / 300` condition; a carried army takes casualties (`FUN_0044AE20`) **with `ratio = d`**, and if `d > 70` it also loses **`unitCount × d / 250 + 1`** whole units at random, with `unitCount` counted after those casualties.
+
+> **Correction (2026-09-23)**, from a targeted pass on [`imperial_conquest_2#290`](https://github.com/diegoami/imperial_conquest_2/issues/290). This report corrects three things at instruction level; the section below has the evidence. (1) The call is `FUN_0044B4F8(winner, loserStrength, winnerStrength)`. The block above first gave the two strengths in the opposite order, although the `r` formula was right. The wrong order was copied into the reimplementation's storm call site, which reuses this function (see below). (2) The whole-unit loss removes `unitCount × d / 250` **plus one** units. It is a Delphi `for i := 0 to n` loop, and the text first said `unitCount × d / 250`. (3) A carried army adds its **siege** strength (`FUN_0044A930`) divided by 50, not its field power. The build repo's T31 had already caught that one.
+
+### `FUN_0044B5D0` and `FUN_0044B4F8`, instruction by instruction (2026-09-23)
+
+Read from a headless-Ghidra machine-code listing (`DumpListing.java`). The fleet record is `0x49C26C + fleet × 0x1A`: `+8` owner, `+0xC` moves, `+0x12` ships, `+0x14` condition, `+0x16` carried army (`−1` = none). The nation's unity is `0x474AB0 + nation × 0x494`, which is nation `+0x440`.
+
+**`FUN_0044B5D0(attacker = EBX, defender = EDI)` `[confirmed]`:**
+
+| Address | Instructions | What it does |
+| --- | --- | --- |
+| `0x0044B5EF` | `MOV word ptr [attacker+0xC],0` | `attacker.moves = 0` |
+| `0x0044B5FB`–`B60A` | `CALL 0x0044AA54` (attacker), result to `[ESP]`; `CALL 0x0044AA54` (defender), result in `EAX` | `pA`, then `pD`. The attacker's `Random(4)` is drawn first. |
+| `0x0044B60A`–`B60D` | `CMP EAX,[ESP]`; `JGE 0x0044B68D` | the defender wins if `pD ≥ pA` |
+| `0x0044B631`–`B66F` | `SAR EDX,1`; `ADC EDX,0`; `SUB`/`ADD word ptr [nation×0x494+0x474AB0]` | `unity[loser] −= loserShips / 2` and `unity[winner] += loserShips / 2`, truncated toward zero |
+| `0x0044B677`–`B67F` | `MOV CX,[ESP]` (`pA`); `MOV EDX,EAX` (`pD`); `MOV EAX,EBX`; `CALL 0x0044B4F8` | attacker won: **`FUN_0044B4F8(attacker, pD, pA)`** = (winner, **loser**, **winner**) |
+| `0x0044B684` | `CALL 0x0044AD38` (defender) | the loser's fleet is tombstoned (owner `+8 = 0xFFFF`), and its carried army is deleted through `FUN_0044AB90` |
+| `0x0044B6F5`–`B6FD` | `MOV ECX,EAX` (`pD`); `MOV DX,[ESP]` (`pA`); `MOV EAX,EDI`; `CALL 0x0044B4F8` | defender won: **`FUN_0044B4F8(defender, pA, pD)`** = (winner, **loser**, **winner**) |
+| `0x0044B709`–`B723` | `MOV AX,0x3DE`; `CALL 0x00448FD0` | `unity[winner] = min(990, ·)`. The loser's unity has no floor. |
+
+In both branches, `param_2` is the **loser's** power and `param_3` the **winner's**. Both are passed as 16-bit words (`MOV CX,word`; `MOVSX` in the callee). A fleet's power is at most about `1,000 + siegeStrength / 50`, so `[derived]` that truncation never binds.
+
+**`FUN_0044B4F8(fleet = EDI, param_2 = EBX, param_3 = CX)` `[confirmed]`:**
+
+```text
+0x0044B500–B50C  raw = (sext(param_2) × 100) / sext(param_3)      // 32-bit IDIV, truncation toward zero
+0x0044B50E–B514  r   = max(1, raw)                                // FUN_00448FD8, AX = 1
+0x0044B51B–B528  d   = (r × r) / 100                              // IDIV 100
+0x0044B539–B54A  ships     −= (ships × d) / 300                   // IDIV 0x12C
+0x0044B54E–B55C  condition −= (condition × d) / 300
+0x0044B560–B568  if carried (+0x16) ≤ −1: goto end
+0x0044B56A–B56C  FUN_0044AE20(carried, d)                         // EDX = ESI = d: the ratio IS d
+0x0044B571–B579  re-read carried; if now ≤ −1: goto end           // the deletion pass may have emptied it
+0x0044B57B–B57F  CMP SI,0x46; JLE end                             // requires d > 70
+0x0044B581–B596  n = (FUN_0044A66C(carried) × d) / 250            // IDIV 0xFA; the count is taken AFTER FUN_0044AE20
+0x0044B59A–B59D  TEST SI,SI; JL end
+0x0044B59F       INC ESI                                          // loop counter = n + 1
+0x0044B5A0–B5BF  loop: c = FUN_0044A66C(carried);                 // re-read every pass
+                       k = FUN_0040284C(c);                       // Random(c): 0 … c−1
+                       FUN_0044AC3C(carried, k);                  // remove unit k
+                       DEC SI; JNZ loop                           // exactly n + 1 passes
+0x0044B5C3       end: FUN_0044A878(fleet)                         // map-marker redraw by ship band only
+```
+
+The helpers, from their own listings `[confirmed]`: `FUN_0044A66C(army)` returns one more than the highest slot index with `troops > 0` (`0x0044A66E`–`A692`), which is the unit count because slots are kept packed. `FUN_0044AC3C(army, k)` copies the **last** occupied slot over slot `k` (`REP MOVSD`, 8 dwords), zeroes the last slot's troops (`0x0044AC8C`), and, if slot 0's troops are then `0`, deletes the army through `FUN_0044AB90` (`0x0044AC93`–`ACA0`). That function writes `0xFFFF` into the carrying fleet's `+0x16` and tombstones the army's owner. The removal is **swap-with-last, not a shift**, so it reorders the survivors.
+
+**Consequences `[derived]`:**
+
+- The winner has power `≥` the loser's, so `r ∈ [1, 100]` and **`d ∈ [0, 100]`**. `d = 0` whenever `r ≤ 9`, i.e. when the loser has under 10 % of the winner's power. `FUN_0044AE20` is then still called with `ratio 0`: no troops are lost and its 20 draws are consumed, but its small-unit deletion pass still runs.
+- `d ≤ 100` gives `n ≤ 0.4 × c`, so `n + 1 ≤ c` for every `c ≥ 1`, and the loop never outruns the army. With `c ≤ 2`, `n = 0` and exactly one unit goes, so **a one-unit carried army is always destroyed when `d > 70`**.
+- An even fight (`d = 100`) costs each carried unit `troops / (Random(15)+105) × 100`, about 84–95 %, before the whole-unit loss.
+- If both powers are 0, the defender wins the tie and `0x0044B50C` divides by zero. That needs two fleets with no ships or no condition and no army aboard.
+
+**The storm reuses this function, with the arguments the other way round from the battle `[confirmed]`.** `FUN_004514EC`'s fleet tick (`0x00451823`–`0x00451832`: `MOV CX,[ESP+2]; ADD CX,0x64; MOV DX,0x64; MOV EAX,EDI; CALL 0x0044B4F8`) calls **`FUN_0044B4F8(fleet, 100, dmg + 100)`** for `dmg ≥ 6` (`CMP [ESP+2],5; JLE` at `0x0045181B`). So `r = 10000 / (dmg + 100)`, and `d` *falls* as `dmg` rises `[derived]`: `dmg` 7 → `d` 86, 9 → 82, 11 → 81, 13 → 77, 15 → 73, 17 → 72, and the winter spike 30 → 57. (Per [supply-driven-morale-and-fleet-attrition.md](supply-driven-morale-and-fleet-attrition.md), `dmg ≥ 6` is reached only away from a friendly coast, where it is odd, or through the winter spike.) Every heavy storm except the winter spike therefore has `d > 70`. An army aboard takes `FUN_0044AE20` at that `d` and loses `n + 1` whole units, the same as a winning fleet's army.
 
 The loser's fleet is destroyed outright regardless of margin — there is no partial naval defeat. Nothing in `docs/game-design.md` covers naval combat at all.
 
@@ -166,6 +220,8 @@ grep -n "TPolitics_\|TBattlePols_\|THVHBatPols_\|THumanFalls_" delphi_symbols.ts
 # in all_app_functions.txt: FUN_00449b40, FUN_00450c68, FUN_0044aee4, FUN_0044b5d0, FUN_0044b4f8
 grep -n "sues \| destroys army of \| sinks fleet of " all_app_functions.txt
 ```
+
+The 2026-09-23 naval section is from the machine code (headless Ghidra, `-noanalysis -readOnly`, `-postScript DumpListing.java out.txt`), with the listings of `0x0044b5d0 0x0044b4f8 0x0044aa54 0x0044a66c 0x0044ac3c 0x0044ad38 0x0044a878 0x0044ae20 0x00448fd0 0x00448fd8 0x0040284c 0x004514ec`.
 
 ## Next checks
 

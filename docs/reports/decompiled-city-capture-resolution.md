@@ -14,6 +14,8 @@ else:
     "{AttackerNation} fails to capture {CityName}   ({DefenderNation})."
 ```
 
+> **Correction (2026-09-23)**, from a targeted pass on [`imperial_conquest_2#290`](https://github.com/diegoami/imperial_conquest_2/issues/290). The block above leaves out five steps that run between the two strengths and the outcome test. In order: the fortification-order strip (`fort > 100 → fort % 100`); the `× 9/10` on `defenderStrength` when the army's nation is the city's allegiance; the erosion of loyalty, fortification and population (`FUN_0044b230`); the population floor `maxPop / 6 + 1`; and the attacker's own casualties, `FUN_0044ae20(army, max(1, min(15, defenderStrength × 6 / attackerStrength)))`, on every attempt. The outcome test compares the post-×9/10 `defenderStrength`. See [decompiled-defection-and-siege-attrition.md](decompiled-defection-and-siege-attrition.md#fun_0044b27c-instruction-by-instruction-2026-09-23) for all of it at instruction level. The attacker's strength is also more specific than *"scales by a per-army factor"* says: it is `Σ(troops, ×3 for type 2) / 80 × morale (+0xE)`.
+
 ### Attacker strength (`FUN_0044a930`)
 
 Sums a per-unit contribution across the army's 20 unit slots (independently reconfirming the 20-units/army cap again), **tripling the contribution of one particular unit type** (type check `== 2`, i.e. archers), then scales by a per-army factor. Archers getting a 3× siege-strength bonus is a sensible, specific game-design fact this project didn't have before.
