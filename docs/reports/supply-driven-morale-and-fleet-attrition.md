@@ -107,7 +107,7 @@ The `moves` column corroborates independently: `10 − min(5, 22000/20000) = 9`,
 
 ### Confounds excluded
 
-Morale can also move via the tactical `±2`/`−3` melee path and a `+3` on battle entry, so a battle in the window would invalidate the reading. There was none — this army did nothing for 13 turns:
+A battle can also move this field: the `+3` on battle entry, which only a computer-controlled side receives (see the write index below). The melee path's `+2`/`−3` moves the per-unit tactical array `DAT_004A0350`, not `+14`. A battle in the window would still invalidate the reading, because it changes troops, supply and the army's composition. There was none — this army did nothing for 13 turns:
 
 - **Position identical** in all 13 saves: `(160, 30)`. No movement, so no attack and no siege.
 - **The entire unit-slot block is byte-identical** in all 13 saves — SHA-256 prefix `d55d02c58cf6` for every one. Seven units, 22,000 troops, unchanged names, types and qualities. A battle cannot leave troop counts untouched (melee always applies losses to both sides — [decompiled-combat-formula-structure.md](decompiled-combat-formula-structure.md)) and cannot leave qualities untouched either ([battle-quality-promotion-and-morale-array-decompiled.md](battle-quality-promotion-and-morale-array-decompiled.md)).
@@ -120,7 +120,7 @@ Every indexed access to the morale word (`DAT_0047C1FA` = `0x0047C1EC + 0xE`) in
 
 | Line | What it is |
 | --- | --- |
-| `38084`, `38092` | `+= 3` to each side on battle entry, in `FUN_00437DE4` (`TBattleMap_StartBattle`'s copy-in) |
+| `38084`, `38092` | `+= 3` on battle entry, in `FUN_00437DE4` (`TBattleMap_StartBattle`'s copy-in), **only for a side whose nation is computer-controlled** (nation `+0x490 == 0`; `0x00437E05`/`0x00437E0F` and `0x00437E9F`/`0x00437EA9`). The human side gets nothing. See [battle-quality-promotion-and-morale-array-decompiled.md](battle-quality-promotion-and-morale-array-decompiled.md) §"The morale formula" *(corrected 2026-09-23; this row first read "to each side")* |
 | `38135`, `38162` | seeds the tactical array `DAT_004A0350` — the known formula |
 | `41054`, `41056` | the panel's tier display |
 | `48739` | `= 0x3B` (59), new-army initialisation |
