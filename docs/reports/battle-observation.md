@@ -46,5 +46,6 @@ Rome lost 10,759 troops by subtraction of the displayed totals. The result also 
 ## Next checks
 
 1. Locate the two armies and their class totals in `7.sav` and `8.sav`; compare them with the result screen before naming record fields.
+   **Located 2026-09-23 [derived]:** the build repository's T59 tournament ([imperial_conquest_2#250](https://github.com/diegoami/imperial_conquest_2/issues/250), commit `33dc106`) matched per-type totals exactly against this report's start columns. In `7.sav` the battle was fought by **Rome's army 0 at (102,44)** and **Gaul's army 9 at (103,43)**; no other army per nation matches. It is derived from the exact-total lookup described in the build repository's `docs/investigations/auto-resolve-approaches.md` §9.3. The record fields themselves are not newly named here.
 2. Find battle outcome and capture messages in the help/form resources and static executable references.
 3. Collect controlled examples of one shot, one melee attack, and one movement order with before/after counts. Keep quality, morale, terrain, and unit type visible to test candidate rules.
