@@ -141,6 +141,8 @@ target.money         -= amount / 5;      // from the army's/fleet's own purse
 
 ### Mercenary hire cost — solved
 
+> **Addition (2026-09-24): the hire is gated by position, in the order rather than in `RecruitMercUnit`.** `TUnitMap_RecruitMercenaries` calls `FUN_00449D08`, which picks the city of the first live offer at Chebyshev distance **exactly 1** from the army. If there is none, the order silently does nothing. The dialog then lists only that city's offers. The AI hires by a looser rule of its own (`FUN_0044E41C`: every offer within distance 4, no cost check). See [decompiled-mercenary-offer-list-and-position.md](decompiled-mercenary-offer-list-and-position.md).
+
 `TRecruitMercs_RecruitMercUnit` (`0x00441360`), against the 12-byte pool record of `mercenary-pool-record.md` (`+0` label, `+2` type, `+4` troops, `+6` quality):
 
 ```c
