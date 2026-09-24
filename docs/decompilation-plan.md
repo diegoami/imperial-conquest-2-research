@@ -151,6 +151,14 @@ Ordered by (value of the unknown) × (how directly a known form/string points at
 
     Code 1 is painted each week onto calm sea that has no city within one tile. Each of the 20 centres rolls `1/N`, and a hit paints a square: `(2r+1)²` always, and the ring out to `±2r` at 50 %. `(N, r)` by season is Winter 5/5, late Autumn and early Spring 15/4, early Autumn and late Spring 30/3, Summer 40/2. Everything is cleared the next week. Fleet `+24` is `CoveredCell`, and `== 1` triples storm damage. The corpus agrees on all 99 saves: 19,639 cells, none off-rule, and a 50.6 % outer ring. This corrects `decompiled-weather-events.md`, `terrain-move-cost-table-in-dat.md` ("deep water") and `supply-driven-morale-and-fleet-attrition.md` (both storm predicates). See [decompiled-map-code1-overlay.md](reports/decompiled-map-code1-overlay.md).
 
+21. [x] **What happens when a computer nation offers trade or an alliance to a human seat? Done 2026-09-25: the human decides. Nothing is written unless the human acts on the Politics screen.** Decompiled or re-read: the offer roll `FUN_00452034` (`0x00452034`); `TPremierForm_StartTurn` (`0x0045AC5C`), whose OK-only `MessageDlg` result is discarded; the AI seat's diplomacy `FUN_0044FB7C` and its helpers `FUN_0044FAA0` and `FUN_0044FB50`; `TPolitics_ChangeIR`, `TPolitics_MakeTrade`, `TPolitics_MakeAlliance` and `TPolitics_OK`; and the AI unit attack gates `FUN_0044D734` and `FUN_0044E1FC`.
+    - The AI writes trade and alliance only with AI partners.
+    - The AI's war rule never targets an ally that holds a city. War replaces an alliance only through the setter's cascade.
+    - AI units attack only nations they are already at war with.
+    - Nation `+0x46` is identified as a neighbour mask.
+
+    See [decompiled-ai-offers-to-human-seats.md](reports/decompiled-ai-offers-to-human-seats.md), for build repo [#334](https://github.com/diegoami/imperial_conquest_2/issues/334).
+
 ## Method, per target
 
 1. Locate the form/procedure the same way prior reports did: Delphi RTTI method-name tables, the `TMainMenu`/form-adjacent streams, or a literal-string cross-reference (e.g. searching for dialog text like "quarterly", "Current tax", "New income") to find the owning code.

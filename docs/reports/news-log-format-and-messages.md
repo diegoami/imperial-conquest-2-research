@@ -211,6 +211,12 @@ The 24 call sites, grouped by template. `N`, `A`, `B` are nation names, `C` a ci
 
 ## Q5. Pending trade and alliance offers: a dialog, never news
 
+> **Correction (2026-09-25):** [`decompiled-ai-offers-to-human-seats.md`](decompiled-ai-offers-to-human-seats.md) decodes the "possibly" lines below.
+> - **Trade:** `taxBase[r]` must exceed the human's poorest partner's tax base (or 0 when the human has fewer than 3 partners), **and** `r` must have a partner poorer than the human.
+> - **Alliance:** `r` must be in the human's neighbour mask `+0x46`, and the human must be at war with nobody.
+> - **What "accepting" means:** there is no accept action. The human makes the trade or alliance on the Politics screen. The pending trade offer waives the **proposer's** full-roster refusal there, not the human's own three-partner limit.
+> - The "Still open" item on `FUN_00452034`'s decision rule is closed.
+
 ### The code [derived]
 
 The offer is rolled and announced in one step, at the start of each **human** seat's turn. `FUN_00451FDC` runs the AI seats and calls `FUN_00452034` when it reaches a human (`54941–54957`). `TPremierForm_NewGame` does the same.

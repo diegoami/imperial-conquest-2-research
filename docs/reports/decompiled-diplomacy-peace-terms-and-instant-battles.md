@@ -49,6 +49,11 @@ The quarterly tick (`FUN_00451B40`, the function in `decompiled-quarterly-billin
 - **Alliance** (`TPolitics_MakeAlliance` `0x004530D8`): refused against an AI nation if either side is currently at war with anyone, or if the relation is negative. Always accepted from a human seat.
 - **War**: set directly, no check.
 
+> **Correction (2026-09-25):** see [`decompiled-ai-offers-to-human-seats.md`](decompiled-ai-offers-to-human-seats.md) §3, which reads `TPolitics_MakeAlliance` at instruction level (`0x00453101–0x0045317A`).
+> - **Alliance: the gate checks only the human's side.** Against an AI target, the proposal is refused if any of these holds: the human's edited row contains a war; a nation that row marks allied is at war with anyone; the human is at war in the committed matrix; or the relation is negative. **The AI target's own wars are not checked**, so allying with an AI that is at war drags the human into that war. "*Always accepted from a human seat*" means **when the target seat is human-controlled**. That is hotseat play, human to human. The code tests the target's `+0x490`, not the proposer's.
+> - **Trade:** the target's three-partner refusal is waived only when a pending trade offer **from that target** exists. There is no other AI willingness test.
+> - **The AI side:** computer nations never go through these handlers. `FUN_0044FB7C` writes AI-to-AI trade and alliance directly. Toward a human, the AI either declares war or raises the turn-start notice, and the notice never writes a relation.
+
 `TPolitics_OK` (`0x00453230`) commits the row. Notably, if you open trade with a nation that already has three partners, **that nation drops its poorest existing partner** — the one with the lowest nation field `+0x44C` (wealth) — back to peace.
 
 Declaring war is not only done from this screen: `TUnitMap_SelectUnit` auto-declares it. Clicking an enemy city, army or fleet with your own unit selected prompts *"Are you sure you want to attack this …?"* and, on yes, calls `FUN_00449B40(you, them, 3)` before resolving the attack. Attacking **is** declaring war, with the ally-dragging propagation above.
