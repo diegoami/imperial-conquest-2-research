@@ -19,6 +19,13 @@ Each nation record carries a **16-entry `short` array at `+0x26`** holding its r
 | `3` | war |
 | `< 0` | peace, plus a **cooldown counter** that must climb back to 0 before trade or alliance is possible again |
 
+> **Addition (2026-09-24): where the row lives on disk, and the starting matrix.**
+> - **SAV.** The row is at SAV nation-record `+0x26`, the same offset as at runtime, because the SAV writes the runtime record whole (stride 1,172 = `0x494`). The leader name therefore occupies `+0x0B…+0x25`, **27 bytes**, not 34 **[confirmed: `1_rome_270_summer_7.sav`, where the 16 × 16 shorts at `+0x26` are symmetric with a zero diagonal and hold 6 wars, and reading from `+0x2D` or `+0x2E` gives neither property]**.
+> - **DAT.** The DAT loader `FUN_004481A0` reads each nation's 11-byte name, then **32 bytes straight into runtime `+0x26`**: `Read(rec, 0xb)` then `Read(rec + 0x26, 0x20)` (`%LOCALAPPDATA%\ReTools
+ews_log_decomp.txt` ~:193–194). The DAT record has no leader field, so on disk the row is at DAT nation-record **`+0x0B`** (table `0x1B100`, stride 1,055) **[confirmed from code]**.
+> - **New game keeps it.** `FUN_00448AA4` writes the leader at `+0x0B` and UI fields at `+0x46B…+0x490`, and never writes `+0x26`. So **the original's starting relations are the DAT's matrix** **[confirmed from code]**.
+> - **The starting matrix** **[confirmed: `Imperial Conquest 2.dat`]**: symmetric, zero diagonal, **5 wars, 13 trades, 4 alliances, no cooldowns**. Rome's row: trade with Macedonia (4) and Illyria (9), war with Gaul (6). Saves a year later (`1.sav`, `1_cartago_271_spring_1.sav`, `1_thracia_271_spring_1.sav`) differ from it in 15–22 of the 120 pairs. That is consistent with a year of diplomacy, and it has not been traced turn by turn.
+
 `FUN_00449B40(a, b, state)` is the single setter and writes **both** `[a][b]` and `[b][a]` — the matrix is symmetric by construction. Setting `state = 0` (plain peace) is translated into a cooldown instead, by the previous state:
 
 | Previous state | Cooldown written |
