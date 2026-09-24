@@ -38,6 +38,8 @@ Twelve entries, exactly covering the cell-code range `0..11` that the two moveme
 Two previously-open roadmap items close here:
 
 - **"Determine the remaining tile meanings, including water value `1`."** Value `1` is a second `Sea` type costing **3** move points to cross versus `0`'s **1** — a deep/open-water versus coastal-water distinction, in cost if not in name.
+
+  > **Correction (2026-09-25):** the costs stand, but the "deep versus coastal" reading does not. Code `1` is **rough sea**: a weekly weather overlay that `FUN_00451304`/`FUN_004511bc` paint onto calm sea (code `0`) and clear again a week later. The DAT holds no code-1 cell. The fleet panel prints `Sea-rough` for it and `Sea-calm` for `0`. See [decompiled-map-code1-overlay.md](decompiled-map-code1-overlay.md).
 - **The `DAT_004792f0` table values**, listed as next-check #1 in `decompiled-army-movement-and-river-cost.md`.
 
 It also explains a detail already in the record: `army-records-and-roman-roster.md` reported the Roman army at `(100, 42)` displaying terrain **River** with a DAT cell value of **9** — table entry 9 is `River`. (That same report read the army record's `+8` word as a "candidate morale value" of `9`; see the correction note in that report — `+8` is the saved terrain cell, which is why it read 9.)

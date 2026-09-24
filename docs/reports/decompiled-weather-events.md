@@ -2,6 +2,8 @@
 
 Corrects a guess in `decompiled-turn-and-calendar-sequencing.md`, which called `FUN_00451304` (the step run once per weekly tick, right after city/army/fleet processing) "likely treasury/tax collection" based only on its position in the sequence. Decompiling it shows something different and more interesting.
 
+> **Correction (2026-09-25):** see [decompiled-map-code1-overlay.md](decompiled-map-code1-overlay.md). Step 1's "per-fleet flag" is fleet `+24`, the fleet's **covered map cell**. Step 2's "cells reading `1`" are **rough sea** (the fleet panel's `Sea-calm`/`Sea-rough`), not fog-of-war. `FUN_004511bc` is now decompiled: it turns a calm sea cell (code 0) into rough sea (code 1) unless a city lies in its 3×3; on a fleet's marker it sets that fleet's covered cell to 1 instead. The painted region is a **square** (inner `(2r+1)²` always, outer ring to `±2r` at 50 %), not a diamond. The 20 locations are fixed sea-region centres read from the DAT at `0x1F876`. The roll uses the season/week *before* the calendar advance, and it also runs once at new game. The link to the fleet storm is now direct: the storm pass triples damage for a fleet whose covered cell is 1.
+
 ## What it actually does
 
 1. Resets a per-fleet flag (stride matches `SaveFleetTable`'s 26-byte record) to 0 for every fleet — plausibly a "storm/event affected this fleet already this week" guard, given what follows.

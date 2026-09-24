@@ -140,6 +140,17 @@ Ordered by (value of the unknown) × (how directly a known form/string points at
 
 19. [x] **Does a mercenary offer's position gate hiring? Done 2026-09-24: yes, with separate rules for the player and the AI.** Decompiled or re-read: `TRecruitMercs_InitializeForm` (`0x00440FEC`), `TUnitMap_RecruitMercenaries` (`0x00446FF4`), `FUN_00449D08` (the player gate), `FUN_004492A0` (Chebyshev `== 1`), `FUN_004498D8` (city at a tile), the AI hire `FUN_0044E41C` and seek `FUN_0044E84C`, their driver `FUN_0044F31C`/`FUN_0044FA20`, `TInformation_ShowCityUnits`, `TAreaMap_ShowMercs`, and the DAT loader `FUN_004481A0` and SAV loader `FUN_004487C4`, which are both missing from `all_app_functions.txt`. **Player:** the order needs a live offer at Chebyshev distance **exactly 1**, or it silently does nothing. The dialog then lists only the offers on that one city's tile, with no owner or nation filter. **AI:** it hires every offer on any city within distance **< 5**, if at war with someone, holding money > 50 and not at war with the owner. It checks no cost, deducts no money, and applies no troop cap, supply check or fleet check. The AI rule predicts 10 of 10 observed AI hires across 20 save pairs. `(x, y)` is written only by the restock (from the templates, all 201 of them on city tiles) and by the loaders. Located on the way: the DAT offsets of the templates (`0x1FCD6`) and of the `Label` name table (`0x1F8C6`), which closes item 2's "literal label→name strings" (`11 = Gallic`, `35 = Egyptian`). See [decompiled-mercenary-offer-list-and-position.md](reports/decompiled-mercenary-offer-list-and-position.md).
 
+20. [x] **What is map code `1`? Done 2026-09-25: rough sea, a weekly weather overlay (dev-repo bug #339).** Decompiled or re-read:
+    - `FUN_00451304`, the reset and roll, and `FUN_004511bc`, the per-cell painter.
+    - `FUN_004481A0`, which loads the 20 centres from DAT `0x1F876`, and `FUN_00448AA4`, which makes the new-game roll. Both were exported, since the dump lacks them.
+    - The fleet storm pass in `FUN_004514ec`.
+    - `FUN_0044DD70` and `FUN_0044DCAC`, the fleet step and its cost.
+    - `FUN_004494E4`, which finds a city of the fleet's own nation in the 3×3.
+    - `FUN_00449970`, which finds the fleet at a tile.
+    - `TInformation_ShowFleetDetails`, which prints `Sea-calm`/`Sea-rough`, and `TUnitMap_PrintMapSquare`.
+
+    Code 1 is painted each week onto calm sea that has no city within one tile. Each of the 20 centres rolls `1/N`, and a hit paints a square: `(2r+1)²` always, and the ring out to `±2r` at 50 %. `(N, r)` by season is Winter 5/5, late Autumn and early Spring 15/4, early Autumn and late Spring 30/3, Summer 40/2. Everything is cleared the next week. Fleet `+24` is `CoveredCell`, and `== 1` triples storm damage. The corpus agrees on all 99 saves: 19,639 cells, none off-rule, and a 50.6 % outer ring. This corrects `decompiled-weather-events.md`, `terrain-move-cost-table-in-dat.md` ("deep water") and `supply-driven-morale-and-fleet-attrition.md` (both storm predicates). See [decompiled-map-code1-overlay.md](reports/decompiled-map-code1-overlay.md).
+
 ## Method, per target
 
 1. Locate the form/procedure the same way prior reports did: Delphi RTTI method-name tables, the `TMainMenu`/form-adjacent streams, or a literal-string cross-reference (e.g. searching for dialog text like "quarterly", "Current tax", "New income") to find the owning code.
