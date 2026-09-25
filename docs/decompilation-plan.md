@@ -168,6 +168,14 @@ Ordered by (value of the unknown) × (how directly a known form/string points at
 
     The pass also confirms nation `+0x44E` as conquered-by, and it explains Galatia's stale city count of 5. See [decompiled-elimination-cleanup.md](reports/decompiled-elimination-cleanup.md), for build repo [#366](https://github.com/diegoami/imperial_conquest_2/issues/366).
 
+23. [x] **Where does nation `+0x46`, the neighbour mask, come from, and does play change it? Done 2026-09-25: the DAT holds it, and only conquest changes it.**
+    - The DAT loader `FUN_004481A0` reads it from DAT nation-record `+0x2B`. The 16 words are symmetric and hold 24 pairs, and they are identical in all 101 local saves.
+    - A whole-program instruction scan, with Ghidra's undisassembled gaps forced, finds only three writers: the DAT loader, the SAV block load, and the conquest merge in `FUN_0044C528`. Defection and rebirth do not touch it.
+    - Five readers: the AI war and treaty picks, the offer roll, and two newly connected to the mask: the rebellion recipient `FUN_0044C204` and the peace cascade's ally gate `FUN_00450C68`.
+    - Against the T82 geometric derivation: it has all 24 pairs plus 6 the original lacks.
+
+    See [dat-neighbour-mask.md](reports/dat-neighbour-mask.md), for build repo PR [#377](https://github.com/diegoami/imperial_conquest_2/pull/377) (T82).
+
 ## Method, per target
 
 1. Locate the form/procedure the same way prior reports did: Delphi RTTI method-name tables, the `TMainMenu`/form-adjacent streams, or a literal-string cross-reference (e.g. searching for dialog text like "quarterly", "Current tax", "New income") to find the owning code.
