@@ -116,4 +116,4 @@ analyzeHeadless.bat %LOCALAPPDATA%\ReTools\ghidra_projects IC2 -process "Imperia
 
 1. A controlled save pair around a single *failed* capture attempt (no other activity that turn). The code now predicts `field × 19/20 + 1` for loyalty, fortification and population, so one such pair confirms it.
 2. ~~Identify the three `DAT_004795a6/aa/ac` fields definitively against known SAV city-record offsets, to confirm which is fortification.~~ *Done: loyalty, fortification and population. See the build repo's `docs/investigations/siege-defender-strength.md`, which reads the labels off `TInformation_ShowCityDetails`.*
-3. Decompile the nation-elimination cascade (`FUN_0044ab90`, `FUN_0044ad38`, `TPremierForm_DisableNation`) if a save ever shows a nation actually being eliminated.
+3. ~~Decompile the nation-elimination cascade (`FUN_0044ab90`, `FUN_0044ad38`, `TPremierForm_DisableNation`) if a save ever shows a nation actually being eliminated.~~ **Done 2026-09-25**, see [decompiled-elimination-cleanup.md](decompiled-elimination-cleanup.md): armies are deleted, launched fleets are deleted with their passengers, and fleets under construction go to the receiver.

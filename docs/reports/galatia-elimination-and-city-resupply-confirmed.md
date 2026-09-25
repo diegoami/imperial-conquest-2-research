@@ -74,8 +74,8 @@ Both armies end within ~1.4 tiles of the named city, matching the notes' directi
 
 ## What this does not establish
 
-- The exact formula/trigger for the `cities`-field-doesn't-reach-0 anomaly on nation elimination.
-- The full news-log/cascade boundary rule (why some transfers get individual lines and others don't) beyond what's observed here.
+- ~~The exact formula/trigger for the `cities`-field-doesn't-reach-0 anomaly on nation elimination.~~ **Resolved (2026-09-25)** in [decompiled-elimination-cleanup.md](decompiled-elimination-cleanup.md): the conquest routine `FUN_0044C528` fires when a capture leaves the loser with fewer than 6 cities, and it annexes the rest without ever decrementing the loser's count, so 5 is the count at that moment.
+- ~~The full news-log/cascade boundary rule (why some transfers get individual lines and others don't) beyond what's observed here.~~ **Resolved, same report**: the lines with news are the captures and their `FUN_0044BA1C` defections; the 5 silent transfers are `FUN_0044C528`'s loop, which writes only the final banner.
 - The supply-capacity-per-troop ratio, beyond two rough data points suggesting ~98–100.
 - What fully drained Army 0's supply from 344 back to 0 by the save point.
 - Whether the resupply dialog is a distinct RTTI class or a shared/parameterized form with `TArmyToArmy` — not yet located in the symbol table or decompiled.

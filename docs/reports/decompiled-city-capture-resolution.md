@@ -79,7 +79,7 @@ This is a direct, code-level explanation for findings from three separate save-d
 
 - `FUN_0044ba1c` — the step most likely responsible for the population/fortification percentage drops observed in every capture — is not yet decompiled. This report explains ownership, economy, and loyalty, but not yet the exact population/fortification-loss formula.
 - ~~The exact meaning of the "third field" in defender strength, and the boolean condition gating the ×5/3 fortification bonus.~~ **Resolved** — see the correction above: the third field is population, and the gating condition is `is-capital(city) and loyalty > 59`.
-- `FUN_0044c528`'s (nation-collapse) full trigger conditions and effects.
+- ~~`FUN_0044c528`'s (nation-collapse) full trigger conditions and effects.~~ **Resolved (2026-09-25)** in [decompiled-elimination-cleanup.md](decompiled-elimination-cleanup.md). Its only caller is `FUN_0044bb18`: it fires when a non-capital capture leaves the loser with fewer than 6 cities, or when a capital falls and cannot be moved. `"conquer"` is the string inside it, not a caller.
 - Why Ghidra's reference analysis misses these string usages in the first place — worked around, not fixed.
 
 ## Reproduction

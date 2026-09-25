@@ -27,7 +27,7 @@ The city fields are the ones `IC2.Data`'s `CityRecord` already names at the same
 | `FUN_0044bb18` (ownership transfer on capture) | new owner `+= contribution << 2`, old owner `-= contribution << 2` | new owner's **treasury** `+0x438 += contribution × 4`; wealth `+0x430 ±= population × 3000`; unity `+9 / −15`; city count `±1` |
 | `FUN_0044bed8` (a second ownership transfer: it rewrites `city+0x12`) | new owner `+= contribution << 2`, old owner `-= contribution << 2` | new owner's treasury `+= contribution × 6`; wealth `±= population × 3000`; city count `±1`; unity `+3`, and `−20` floored at 250 |
 | `FUN_0044c528` (loops over cities) | `+= contribution << 2` for each city it credits | treasury `+= contribution × 6`; wealth `+= population × 3000`; city count `+1` |
-| `FUN_0044c360` | set to 0 | resets the collapsing nation (unity 450, other fields) |
+| `FUN_0044c360` | set to 0 | resets the collapsing nation (unity 450, other fields). **Correction (2026-09-25)**: this is the *rebirth* of an eliminated nation, which more than 7 disloyal cities of its allegiance trigger; see [decompiled-elimination-cleanup.md](decompiled-elimination-cleanup.md) |
 
 **The quarterly treasury credit — also `FUN_00451b40`**, read directly (it corrects [`decompiled-quarterly-billing-and-economy.md`](decompiled-quarterly-billing-and-economy.md), see below):
 

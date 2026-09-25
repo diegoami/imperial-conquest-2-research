@@ -159,6 +159,15 @@ Ordered by (value of the unknown) × (how directly a known form/string points at
 
     See [decompiled-ai-offers-to-human-seats.md](reports/decompiled-ai-offers-to-human-seats.md), for build repo [#334](https://github.com/diegoami/imperial_conquest_2/issues/334).
 
+22. [x] **What does elimination do with a nation's armies and fleets? Done 2026-09-25: it deletes them, except fleets still under construction, which go to the receiver.** Decompiled or re-read:
+    - `FUN_0044AB90` and `FUN_0044AD38`, which delete an army or a fleet (the fleet takes the army aboard with it);
+    - the compaction `FUN_0044ADB0`/`FUN_0044ABE0`/`FUN_0044AD7C`, which moves the last record into the hole;
+    - both elimination paths, the defection path `FUN_0044BED8` and the conquest path `FUN_0044C528`;
+    - the conquest trigger in `FUN_0044BB18`: a capture that leaves fewer than 6 cities, or a capital that cannot be moved;
+    - the rebirth routine `FUN_0044C360` and the leader-falls routine `FUN_0044C8F0`.
+
+    The pass also confirms nation `+0x44E` as conquered-by, and it explains Galatia's stale city count of 5. See [decompiled-elimination-cleanup.md](reports/decompiled-elimination-cleanup.md), for build repo [#366](https://github.com/diegoami/imperial_conquest_2/issues/366).
+
 ## Method, per target
 
 1. Locate the form/procedure the same way prior reports did: Delphi RTTI method-name tables, the `TMainMenu`/form-adjacent streams, or a literal-string cross-reference (e.g. searching for dialog text like "quarterly", "Current tax", "New income") to find the owning code.

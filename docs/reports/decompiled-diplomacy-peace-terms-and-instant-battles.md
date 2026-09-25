@@ -221,7 +221,7 @@ so the win condition is **holding all 334 cities**, and the screen also handles 
 - The AI's *decision* to offer or accept diplomacy outside the two triggers above — still unnamed AI code, still out of scope per the roadmap.
 - The reparation formula against real save bytes (see the check suggested above).
 - Whether the 250 BC comparison is the actual end-of-game trigger or only the game-over screen's wording; the turn loop was not re-read for a year check this pass.
-- `nation[+0x44E]` ("conquered by") — inferred from its only use, not otherwise confirmed.
+- ~~`nation[+0x44E]` ("conquered by") — inferred from its only use, not otherwise confirmed.~~ **Confirmed (2026-09-25)**: `FUN_0044BED8` and `FUN_0044C528` write it as the conqueror, `FUN_0044C360` resets it to −1, and Galatia's reads 2 (Seleucid). See [decompiled-elimination-cleanup.md](decompiled-elimination-cleanup.md).
 - `FUN_0044AE20`'s exact casualty distribution (already noted as open in `decompiled-defection-and-siege-attrition.md`).
 
 ## Reproduction
