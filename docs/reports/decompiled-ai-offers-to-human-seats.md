@@ -100,6 +100,11 @@ For contrast, `TUnitMap_SelectUnit`'s "*Are you sure you want to attack this …
 
 The alliance cascade cannot break an alliance. `me` allies only with an `m` that is at war with exactly one nation, `j` (`wars(m) < 2`), and `j` is not `me`'s ally (`rel[me][j] ≤ 1`).
 
+> **Extension (2026-09-25):** see [`decompiled-war-cascade-and-peace-paths.md`](decompiled-war-cascade-and-peace-paths.md).
+> - **Both cascades are one step.** They do not reach allies of allies.
+> - **Peace:** the AI never writes peace over a war, with anyone. A human–AI war ends only through the post-battle `TBattlePols` dialog, on the human's Yes, or through elimination.
+> - **Two writes touch a human without consent.** The trade swap in §1a can drop a **human** trade partner to −8, because only the new partner is tested for being AI. And a treaty resets an ally's alliance with the treaty's winner, or with its loser, to −8.
+
 ## 5. What a reimplementation needs
 
 - **AI → human, trade or alliance:** roll it at the human's turn start with the rule in §1b, and show an OK-only notice. **Never write the relation.** Accepting means the human uses the normal proposal path: trade through the `TPolitics_MakeTrade` rule, with the target's full-roster refusal waived for the pending proposer, and alliance through the `TPolitics_MakeAlliance` rule, unchanged. An "accept" button is a UI convenience the original lacks. If one is added, it must apply those same gates, and for an alliance that means the **human-side** war checks, not the proposer's. Clear the offer at the next human turn start.

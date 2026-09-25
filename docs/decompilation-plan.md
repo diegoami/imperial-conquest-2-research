@@ -176,6 +176,19 @@ Ordered by (value of the unknown) × (how directly a known form/string points at
 
     See [dat-neighbour-mask.md](reports/dat-neighbour-mask.md), for build repo PR [#377](https://github.com/diegoami/imperial_conquest_2/pull/377) (T82).
 
+24. [x] **How deep does the war and alliance cascade go, and how can an AI–human war end? Done 2026-09-25: one step, and only on the human's Yes or by elimination.** Decompiled or re-read:
+    - the setter `FUN_00449B40` and its nested news procedure `FUN_00449A44`;
+    - a whole-program `E8` scan for every caller of the setter and the treaty;
+    - `TPolitics_MakePeace`/`TPolitics_OK`, the AI's diplomacy `FUN_0044FB7C`, `TBattleOver_OK`, `TBattlePols_*` and the treaty `FUN_00450C68`.
+
+    The findings:
+    - The cascade writes each dragged-in war directly and never re-enters the setter.
+    - The AI never makes peace from a war. The Politics screen refuses peace with an AI at war.
+    - `TBattlePols`, the only peace offer, needs `armies(W) < armies(L)`, so it is always an honourable peace.
+    - The treaty's ally loop resets the partner–ally alliance to −8 with no gate, and it reseeds the RNG to `winner + loser`.
+
+    See [decompiled-war-cascade-and-peace-paths.md](reports/decompiled-war-cascade-and-peace-paths.md), for build repo [#383](https://github.com/diegoami/imperial_conquest_2/issues/383) and [#384](https://github.com/diegoami/imperial_conquest_2/issues/384).
+
 ## Method, per target
 
 1. Locate the form/procedure the same way prior reports did: Delphi RTTI method-name tables, the `TMainMenu`/form-adjacent streams, or a literal-string cross-reference (e.g. searching for dialog text like "quarterly", "Current tax", "New income") to find the owning code.

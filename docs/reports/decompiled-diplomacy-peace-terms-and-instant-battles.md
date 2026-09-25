@@ -38,6 +38,8 @@ Two propagation rules live in the same function:
 - Setting **alliance (2)** with `b`: every nation at war with `b` that you are not already at war with becomes **at war with you**.
 - Setting **war (3)** with `b`: every nation allied to `b` that you are not already at war with becomes **at war with you**.
 
+> **Extension (2026-09-25):** see [`decompiled-war-cascade-and-peace-paths.md`](decompiled-war-cascade-and-peace-paths.md) §1. Both rules go **one step only**. The dragged-in wars are two direct stores each, plus a news line from the nested procedure `FUN_00449A44`. The setter never calls itself, so allies of allies are not dragged in **[confirmed: listing + byte scan]**.
+
 The quarterly tick (`FUN_00451B40`, the function in `decompiled-quarterly-billing-and-economy.md`) implements the "gradual diplomatic thaw" that report described in structure only: for each negative entry, `v += 1`, and with probability `1/3`, `v = min(0, v + 3)`. **The thaw loop runs only over the first 8 columns of each row** (`while (sVar6 != 8)`), so a cooldown between two nations both indexed ≥ 8 never decays — an original bug, not a design rule, but one a faithful reimplementation has to decide about consciously.
 
 ## Player-initiated diplomacy (`TPolitics`)
@@ -87,6 +89,11 @@ if (score(winner) < score(loser) || armies(winner) < armies(loser)) {
 // finally: any ally of either side still at war with the other gets setRelation(..., -8),
 // with news "<A> and <B> have agreed to end their war."
 ```
+
+> **Correction (2026-09-25):** see [`decompiled-war-cascade-and-peace-paths.md`](decompiled-war-cascade-and-peace-paths.md) §2.3–§4.
+> - **The closing "finally" line is incomplete.** For each ally `k` of one side at war with the other, the side's alliance with `k` is first written to **−8**, with no gate. Only then, and only if `k` does not border the enemy and is not human, is `k`'s war written to −8 with the news line "*<enemy> and <k> have agreed to end their war.*". The loser's half cannot fire after a sues branch.
+> - **`TBattlePols` is shown only from `TBattleOver_OK`.** Its gate includes `armies(W) < armies(L)`, so a treaty the human accepts there is always the honourable one.
+> - **The treaty sets `RandSeed := winner + loser`** before drawing `random(W/4)`.
 
 > **Note (2026-09-14):** `N` is printed by the game's own `FUN_00448F3C` (`FormStripNum1`). It groups digits with a hard-coded comma, independent of the locale, so a real line reads "*Ptolemaic pays reparations of 2,269 talents.*". See [`news-log-format-and-messages.md`](news-log-format-and-messages.md).
 

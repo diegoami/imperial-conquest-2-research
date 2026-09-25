@@ -149,6 +149,11 @@ for k in 0..15:
 
 **An ally makes peace alongside its partner only if it does not border the enemy and is not human.** A bordering ally stays at war. This refines the peace report's closing line, "any ally of either side still at war with the other gets `setRelation(..., -8)`". Read literally, the listing also resets the **winner–ally** alliance to `−8` before the mask test. That is outside this report's question and is left for the peace report to re-check `[confirmed: listing; its intent is not argued]`.
 
+> **Re-checked (2026-09-25):** see [`decompiled-war-cascade-and-peace-paths.md`](decompiled-war-cascade-and-peace-paths.md) §3.
+> - **Confirmed.** The partner–ally alliance is written to **−8** with no gate, not the −24 an alliance break would map to. The setter stores a non-zero argument as given.
+> - **The mirror half** (the loser's allies) cannot fire after a sues branch, which has already written −10 over the loser's alliances.
+> - **The news** names the enemy first: "*<enemy> and <ally> have agreed to end their war.*"
+
 ## 6. Against the T82 derivation `[confirmed: engine run]`
 
 The input was `NeighbourGeography` at `origin/task/T82-ai-diplomacy-fidelity`, exported with `git archive` to a scratch directory outside both checkouts. A throwaway xUnit probe called `AreNeighbours` for all 120 unordered pairs on the committed `classical-mediterranean.json`, and the branch's own 16 `NeighbourGeographyTests` passed in the same run. The derivation yields 29 pairs:
