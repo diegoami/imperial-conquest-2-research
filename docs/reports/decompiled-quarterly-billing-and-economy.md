@@ -56,6 +56,7 @@ Each city's tribute value is nudged toward a target derived from its population,
 
 - **Low tax raises loyalty; high tax risks it.** If a nation's tax rate is under 11% and a city's loyalty is below 80, there's a chance loyalty rises. Separately, there's a 1-in-3 chance of a loyalty penalty scaled to the tax rate.
 - **A rebellion/unrest check exists below a loyalty threshold** (`FUN_0044c204`, not decompiled) — cities with loyalty under 30 can trigger it.
+> **Decompiled (2026-09-26):** see [`decompiled-quarterly-rebellion.md`](decompiled-quarterly-rebellion.md). A non-capital city under 30 returns to its allegiance nation, or triggers that nation's rebirth if it is dead. A city already held by its allegiance nation goes to a nation at war with the owner that has an army within 9 tiles, or else to the best-placed live neighbour. The transfer is `FUN_0044BED8`.
 - **A computer-controlled nation stability check**: roughly a 1-in-9 chance per quarter of evaluating whether the nation is prosperous (unity above a threshold and finances healthy); if not, it calls the same cleanup function (`FUN_0044c8f0`) already seen in the "nation eliminated" cascade from `decompiled-defection-and-siege-attrition.md` — plausibly an AI-nation collapse/instability consequence for sustained poor management, not confirmed in detail.
 > **Correction (2026-09-14):** see [`upkeep-payment-and-desertion.md`](upkeep-payment-and-desertion.md). `FUN_0044c8f0` is **leader deposition** ("*X depose their leader Y.*"). The trigger, for AI nations only and after the income credit, is `Random(9) == 0` and (treasury `< −(wealth div 500)`, or `< −20000`, or unity `< 400`). It gives the nation a new leader, sets unity to `max(unity, min(550, unity + 150))`, and resets a negative treasury to 0 (otherwise `+1000`). It is confirmed on 2 of 15 in-debt AI nation-quarters (Galatia, Gaul). A human nation faces the same test at the start of each of its turns, and failing it ends the game: "*Your army have deposed you because they have not been paid.*"
 
@@ -67,7 +68,7 @@ Each city's tribute value is nudged toward a target derived from its population,
 ## What this does not establish
 
 - The exact identity/units of several fields referenced only by offset (the mobilization-linked income term, the flat upkeep-cost term, the "wealth" drain).
-- `FUN_004499ec` (an additional income source per nation) and `FUN_0044c204` (the rebellion check) — neither decompiled this pass.
+- `FUN_004499ec` (an additional income source per nation) and `FUN_0044c204` (the rebellion check) — neither decompiled this pass. *(`FUN_004499ec` is trade income, see [upkeep-payment-and-desertion.md](upkeep-payment-and-desertion.md); `FUN_0044c204` is decompiled in [decompiled-quarterly-rebellion.md](decompiled-quarterly-rebellion.md).)*
 - Whether the AI-nation stability check's exact trigger condition is "collapse if unhealthy" as read here, or something more nuanced.
 - No numeric cross-check against a real save was performed this pass — this report establishes the formula shapes and confirms prior guesses/dialog previews, but doesn't verify exact totals against an observed quarterly treasury change the way the tax and fleet formulas were originally verified.
 
@@ -78,5 +79,5 @@ Found by tracing one call deeper than `decompiled-turn-and-calendar-sequencing.m
 ## Next checks
 
 1. Find a same-season-boundary save pair (one just before a week-11→1 wrap, one just after) to numerically verify the treasury formula's remaining terms, the way the tax formula was originally verified from Rome's dialog values.
-2. Decompile `FUN_004499ec` and `FUN_0044c204` for the remaining income term and the rebellion mechanic.
+2. ~~Decompile `FUN_004499ec` and `FUN_0044c204` for the remaining income term and the rebellion mechanic.~~ *Done: [upkeep-payment-and-desertion.md](upkeep-payment-and-desertion.md) and [decompiled-quarterly-rebellion.md](decompiled-quarterly-rebellion.md).*
 3. Watch for an AI nation actually collapsing in a future save to confirm the stability-check's real trigger and effect.

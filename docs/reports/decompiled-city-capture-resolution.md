@@ -62,6 +62,8 @@ if city.allegiance == newOwner:
     loyalty → pulled toward 90 (0x5a)
 else:
     loyalty → pulled toward a floor of 40 (0x28)
+    // Correction (2026-09-26): max(40, min(60, 100 − L′)), L′ the loyalty after siege erosion; allegiant: min(90, 140 − L′).
+    // See decompiled-quarterly-rebellion.md §3.
 ```
 
 This is a direct, code-level explanation for findings from three separate save-diffing reports:

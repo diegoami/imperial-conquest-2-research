@@ -189,6 +189,15 @@ Ordered by (value of the unknown) × (how directly a known form/string points at
 
     See [decompiled-war-cascade-and-peace-paths.md](reports/decompiled-war-cascade-and-peace-paths.md), for build repo [#383](https://github.com/diegoami/imperial_conquest_2/issues/383) and [#384](https://github.com/diegoami/imperial_conquest_2/issues/384).
 
+25. [x] **What does the quarterly rebellion do with a city under 30 loyalty? Done 2026-09-26: allegiance first, then a nearby enemy, then the best-placed neighbour.** Decompiled or re-read, all from the machine listing: the rebellion `FUN_0044C204`, the distance `FUN_00449018`, the defection `FUN_0044BED8`, the rebirth `FUN_0044C360` and the city loop's call site in `FUN_00451B40`.
+    - **Owner ≠ allegiance.** The city goes to the allegiance nation. If that nation is dead (unity ≤ 0), rebirth is attempted instead, with no fallback when it declines.
+    - **Owner = allegiance.** The city goes to a nation at war with the owner that has any live army within Chebyshev 9 tiles; the last matching army in table order wins. Failing that, it goes to the best live neighbour by `cities − 2 × distance to capital`, with ties to the lower index. Failing that, nothing happens.
+    - No `Random` draws of its own. A rebirth draws one `Random(12)`.
+    - Corrects `FUN_0044BED8`'s loyalty rule: `min(90, 140 − L)` for an allegiant receiver, `min(65, max(50, 100 − L))` otherwise. The loser's unity is `max(250, unity − 20)`. All 8 cascade defections in the saves match. Forced capture has the same shape (`max(40, min(60, 100 − L′))`).
+    - No local save shows a rebellion: no city's loyalty is ever below 39.
+
+    See [decompiled-quarterly-rebellion.md](reports/decompiled-quarterly-rebellion.md), for build repo [#389](https://github.com/diegoami/imperial_conquest_2/issues/389) (T89, [#397](https://github.com/diegoami/imperial_conquest_2/issues/397)).
+
 ## Method, per target
 
 1. Locate the form/procedure the same way prior reports did: Delphi RTTI method-name tables, the `TMainMenu`/form-adjacent streams, or a literal-string cross-reference (e.g. searching for dialog text like "quarterly", "Current tax", "New income") to find the owning code.
