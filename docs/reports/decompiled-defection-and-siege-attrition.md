@@ -8,14 +8,18 @@ Called at the end of the forced-capture transfer, this loops **every other city*
 
 ```text
 if other_city.owner == just_captured_city's_old_owner and other_city != just_captured_city:
-    if not already contested:
+    if not FUN_0044b8d0(other_city):                  // not ANY nation's capital (corrected 2026-09-26)
         distance = grid_distance(other_city, attacking_army_position)
         if distance < 10:
             otherDefense = defender_strength(other_city)
             if other_city.allegiance == new_owner: otherDefense /= 3   // rebellious sympathy weakens it further
-            if new_owner.unity < 650 and otherDefense < attacker_strength and other_city.loyalty < 65:
+            if loser.unity < 650 and otherDefense < attacker_strength and other_city.loyalty < 65:   // the LOSER's unity (corrected 2026-09-26)
                 FUN_0044bed8(other_city, new_owner)   // the city defects, no siege needed
 ```
+
+> **Correction (2026-09-26), two lines of the pseudocode above** [confirmed: decompile, `all_app_functions.txt`]:
+> - **"if not already contested" was a misreading.** The gate is `FUN_0044B8D0(city) == 0` (:50125, and again at :50135 before `FUN_0044BED8`). `FUN_0044B8D0` walks all 16 nations' capital pointers (`DAT_00474AB4`, nation `+0x444`, stride `0x494`), with no check on whether the nation is alive, and returns 1 when the city is **any** nation's capital. The sweep never makes a capital defect. There is no siege gate here. The engine corrected this as T90 (imperial_conquest_2 bug #407).
+> - **The unity gate reads the loser, not the new owner.** `FUN_0044BB18` calls this sweep (:50196) *before* it writes the captured city's owner (:50199). The gate `(&DAT_00474AB0)[candidate.owner * 0x24A] < 0x28A` (:50133) therefore reads nation `+0x440` of the candidate's owner, the **loser**, after the capture's own −15 unity (:50182). [derived] This matches the Galatia elimination (`galatia-elimination-and-city-resupply-confirmed.md`). Capturing Laranda leaves Galatia at 653 unity, so no cascade. Capturing Gordium leaves it at 638, so Synnada and Acroinon defect, and Galatia is at 5 cities. The conquest takes the rest, which matches the news log exactly. Tracked in imperial_conquest_2 as bug #415.
 
 A single successful capture can cause **nearby, weakly-defended, low-loyalty cities of the same defeated nation to defect automatically** — no army or battle involved for the secondary cities. This is very plausibly the mechanism behind every "X defects to Y" news event seen throughout this project's saves (Modena, Taurasia), which previously had no known trigger condition.
 
