@@ -138,10 +138,80 @@ else:                                                  // the loser's capital fe
     moved = false
     if loser.unity > 400 and loser.cityCount > 6:  FUN_0044BD2C(loser, &moved)   // :50234, unity −50, then
                                                    // "<X> have moved their capital to <city>." if a city > 10 tiles away exists
+                                                   // (in full: the next section)
     if not moved:  FUN_0044C528(loser, capturer)
 ```
 
 So **a nation is conquered as soon as a capture leaves it with 5 or fewer cities**, and every remaining city goes to the capturer at once. Galatia fits exactly: the save's stale city count is **5** (below), the value at the moment `FUN_0044C528` fired. Its 5 silent transfers are the 5 cities with no news line in [galatia-elimination-and-city-resupply-confirmed.md](galatia-elimination-and-city-resupply-confirmed.md) `[confirmed: code + save]`.
+
+### `FUN_0044BD2C(loser, &moved)`, :50234: the capital move (addendum 2026-09-26)
+
+Written for dev-repo task T86 (PR [#406](https://github.com/diegoami/imperial_conquest_2/pull/406)), whose review found the one-line summary above too thin to implement from. Read directly from :50234–50302 and its helpers. Offsets are from the record bases in the header. City field names follow [decompiled-defection-and-siege-attrition.md](decompiled-defection-and-siege-attrition.md) and [nation-tax-base-and-city-economy-fields.md](nation-tax-base-and-city-economy-fields.md), which read them off `TInformation_ShowCityDetails`.
+
+**State on entry** (set by the caller `FUN_0044BB18`, :50150) `[confirmed: decompile]`:
+
+- The fallen capital is **already the capturer's**: its owner (`+0x12`) is written at :50199, before the call at :50222. So it is never a candidate.
+- The loser's capital pointer (`+0x444`) **still names the fallen city**. The search measures distance from that city's coordinates.
+- The loser has already paid the capture's own costs: unity `−15` (:50182) and city count `−1` (:50185). So the gate `unity > 400 and cityCount > 6` (:50220) is tested **after** them: the loser needed unity ≥ 416 and at least 8 cities before the capture, and keeps at least 7 `[derived]`.
+- `moved` is a local byte cleared to 0 before the call (:50218). The function sets it only on success.
+
+```text
+FUN_0044BD2C(loser, &moved):                                       // :50234
+    loser.unity (+0x440) -= 50                                      // :50255, FIRST, unconditionally, no floor
+    best = -1;  bestScore = 0
+    capXY = city[loser.capital (+0x444)].xy (+0x0E)                 // the fallen city, re-read each pass
+    for c in 0 .. 333:                                              // 0x14E cities, table order :50259–50276
+        if city[c].owner (+0x12) != loser: continue
+        d = FUN_00449018(city[c].xy, capXY)                         // Chebyshev: max(|dx|, |dy|)
+        if d > 10:                                                  // :50265, `10 < d` signed short, so d >= 11
+            score = (short)((FUN_0044A98C(c) / 10) / d)             // :50267, signed int division, truncates
+            if score > bestScore:                                   // :50268, strict: ties keep the lower index
+                best = c;  bestScore = score
+    if best >= 0:                                                   // :50277; only reached if some score >= 1
+        *moved = 1                                                  // :50278
+        news(loser.name (+0x000) + " have moved their capital to " + city[best].name (+0x00) + ".")   // :50279–50284, FUN_00449240
+        loser.capital (+0x444)            = best                    // :50285
+        city[best].loyalty       (+0x16)  = min(99, loyalty + 8)    // :50286–50288, FUN_00448FD0 is signed-short min
+        city[best].fortification (+0x1A)  = min(99, fort + 10)      // :50289–50291
+        city[best].population    (+0x1C) += 10                      // :50293, no cap
+        city[best].maxPopulation (+0x1E) += 20                      // :50294, no cap
+        city[best].tribute       (+0x20) += 25                      // :50295, no cap
+        map[city[best].x (+0x0E)][city[best].y (+0x10)] = loser + 0x54   // :50296–50298, the capital marker
+        TUnitMap_PaintForm(...)                                     // :50299
+```
+
+**The rule, item by item.**
+
+| Item | Rule | Tag |
+| --- | --- | --- |
+| Candidates | every city with `owner (+0x12) == loser`, scanned in table order `0..333`; the fallen capital is excluded because its owner is already the capturer | `[confirmed: decompile]` |
+| Distance | `FUN_00449018` (:47727) is `max(\|x₁ − x₂\|, \|y₁ − y₂\|)` (Chebyshev) on the packed `(x, y)` word at `+0x0E`/`+0x10`. It calls `FUN_00448FD8` (signed-short max) on the two absolute differences | `[confirmed: decompile]` |
+| Distance filter | `10 < d`, so `d ≥ 11`; a city exactly 10 tiles away is out | `[confirmed: decompile]` |
+| Strength | `FUN_0044A98C(c)`, the full defender strength of [decompiled-city-capture-resolution.md](decompiled-city-capture-resolution.md): `loyalty × 150 + decodedFort × 250 + population × 200`, `× 5/3` if the city passes `FUN_0044B8D0` and loyalty > 59, `× 4/5` if owner ≠ allegiance, `+ troops / 2` per recruitment slot of the owner that targets the city. The dev engine's `CompleteDefenderStrength.Compute` is this function (its doc comment names `FUN_0044A98C`) | `[confirmed: decompile]`; engine name `[derived]` |
+| Score | `(strength / 10) / d`: divide by 10 first, then by `d`, each a signed `IDIV` that truncates toward zero, and the result is cut to a `short` | `[confirmed: decompile]` |
+| Score floor | `bestScore` starts at 0 and the test is strict, so the winner must score **≥ 1**, i.e. `strength / 10 ≥ d` | `[confirmed: decompile]` |
+| Tie-break | strict `>`, so the **lowest city index** among equal best scores keeps the move. The index is the city table's order, not the sorted per-nation list | `[confirmed: decompile]` |
+| No candidate | nothing but the unity `−50` is written; `moved` stays 0 and the caller runs the conquest `FUN_0044C528(loser, capturer)` (:50225–50226), which then sets unity to 0 anyway | `[confirmed: decompile]` |
+| Unity | `−50`, applied **before** the search and whether or not a city qualifies; no clamp. With the capture's `−15`, a successful move costs the loser 65 unity | `[confirmed: decompile]`; the 65 `[derived]` |
+| News | `"<nation name> have moved their capital to <city name>."`, one line through `FUN_00449240`, written after the unity change and before the capital and city writes | `[confirmed: decompile]` |
+| Capital pointer | `loser.capital (+0x444) = best` | `[confirmed: decompile]` |
+| New capital: loyalty `+0x16` | `min(99, L + 8)` | `[confirmed: decompile]` |
+| New capital: fortification `+0x1A` | `min(99, F + 10)`. A fortify order in progress (`F > 100`, `points × 100 + current`) becomes 99, so the move **discards it** | `[confirmed: decompile]`; the order loss `[derived]` |
+| New capital: population `+0x1C` | `+10` (thousands), uncapped, even above maximum population | `[confirmed: decompile]` |
+| New capital: maximum population `+0x1E` | `+20`, uncapped | `[confirmed: decompile]`; field name `[confirmed]` by the panel reading cited above |
+| New capital: tribute `+0x20` | `+25`, uncapped | `[confirmed: decompile]`; field name as above |
+| Map marker | grid cell of the new capital = `loser + 0x54`, the capital tile code (the same write the rebirth path makes, [decompiled-quarterly-rebellion.md](decompiled-quarterly-rebellion.md) §4), then a map repaint | `[confirmed: decompile]` |
+| Old capital | **not written here.** After the call, the caller runs `FUN_0044A794(fallen city)` (:50229). Since no nation's `+0x444` names it any more, it gets the capturer's ordinary population-band marker (`owner + 0x14/0x24/0x34/0x44` for population `< 25`, `< 50`, `< 100`, else) | `[confirmed: decompile]` |
+| Not written | owner, allegiance, supplies (`+0x18`), the capturer's state, the loser's city count, wealth, treasury, relations, armies, fleets, recruitment slots | `[confirmed: decompile]` (the function body has no other store) |
+
+**Consequences** `[derived]`:
+
+- The `× 5/3` capital bonus normally does not apply to a candidate, because none is a capital. It would apply only to a loser city that still passes `FUN_0044B8D0` through **another** nation's stale `+0x444`, the same effect the rebirth path meets.
+- The same bonus **does** apply to the new capital from the next strength read on, once its loyalty is above 59. The loyalty `+8` helps it get there.
+- A strong city far away beats a weaker near one only through the `/ d` term. With the `/ 10` taken first, two cities whose `strength / 10` differ by less than `d` can tie, and then index order decides.
+- Strength would have to reach about `10 × 32,768 × d` to overflow the `short` score, far outside any real city.
+
+**Evidence.** No save pair or recording in the evidence set shows a capital move. [news-log-format-and-messages.md](news-log-format-and-messages.md) lists "*have moved their capital to*" as code-only, and `docs/evidence-index.md` has no capital-move entry. The rule above is `[confirmed: decompile]` only. A save pair around a capture of a capital held by a nation with unity > 415 and 8 or more cities would check it.
 
 ### Why defection almost never empties a nation `[derived]`
 
@@ -248,7 +318,7 @@ if n > 7:
 - Whether cross-nation embarkation exists, which decides whether the fleet loop can kill a third nation's army.
 - Whether any path other than `FUN_0044C360` lets `FUN_0044BED8` take a nation's last city in real play.
 - The `DisableNation` UI reading (which list and which menu) was not checked against the form resources.
-- `FUN_0044BD2C`'s capital-move choice (`strength / 10 / distance`, distance > 10) is only summarised here and was not checked against a save.
+- `FUN_0044BD2C`'s capital move is now read in full from the decompile: see [the capital-move addendum](#fun_0044bd2closer-moved-50234-the-capital-move-addendum-2026-09-26) in §4. It has still **not been checked against a save**: no save pair or recording in the evidence set shows a capital move.
 
 ## Dev-repo engine, for comparison (read-only)
 
