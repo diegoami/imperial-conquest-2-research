@@ -328,7 +328,7 @@ These files were read, not modified:
 - `src/IC2.Engine/Cities/Capture/CityCaptureResolver.cs`
 - `src/IC2.Engine/Model/GameState.cs`
 
-`NationElimination.ApplyIfLastCityLost` sets `Eliminated`, `CapitalCityId = null` and `Unity = EliminationUnityReset` (0). Both `Capture` and `Defect` call it when the old owner holds zero cities, and both publish `NationConquered`. **What the engine does not yet do:**
+`NationElimination.ApplyIfLastCityLost` sets `Eliminated`, `CapitalCityId = null` and `Unity = EliminationUnityReset` (0). *(Superseded 2026-09-26: since T86 the engine's defection path keeps the eliminated nation's `CapitalCityId`, as `FUN_0044BED8` does, and the conquest path sets it to the no-capital sentinel. A capture whose sweep empties the loser still skips the conquest in the engine: imperial_conquest_2 bug #424.)* Both `Capture` and `Defect` call it when the old owner holds zero cities, and both publish `NationConquered`. **What the engine does not yet do:**
 
 1. **Dispose of the eliminated nation's armies.** They stay in `state.Armies`, which is bug #366.
 2. **Dispose of its launched fleets** and the army each carries, and **hand fleets under construction** (`ConstructionTicksRemaining != null`) to the receiver.

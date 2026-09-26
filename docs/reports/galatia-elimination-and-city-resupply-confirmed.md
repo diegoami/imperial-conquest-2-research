@@ -10,7 +10,8 @@ The save diff shows 9 cities changing owner away from Galatia (nation code 12), 
 | --- | --- | --- | --- |
 | Laranda | 41 → 30 | 59 → 44 | **forced capture** ("falls to") |
 | Gordium | 54 → 42 | 23 → 18 | **forced capture** ("falls to") |
-| Synnada, Pessinus, Acroinon, Ancyra, Gangra, Nyssa, Halys | unchanged | unchanged | **defection** ("defects from") |
+| Synnada, Acroinon | unchanged | unchanged | **defection** ("defects from") |
+| Pessinus, Ancyra, Gangra, Nyssa, Halys | unchanged | unchanged | **conquest** (`FUN_0044C528`, under the "Seleucid conquers Galatia." banner; corrected 2026-09-26, see below and `decompiled-elimination-cleanup.md` §4) |
 
 This is an exact match to the code read in `decompiled-defection-and-siege-attrition.md`: forced capture (`FUN_0044bb18`) always changes fortification/population; defection (`FUN_0044bed8`) "never writes to population or fortification anywhere." Real data now confirms that claim precisely, city by city.
 
