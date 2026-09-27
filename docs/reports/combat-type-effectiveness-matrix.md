@@ -4,7 +4,7 @@ Continuing from [unit-type-stat-table-in-dat.md](unit-type-stat-table-in-dat.md)
 
 ## The matrix
 
-Read as `value[attackerType][defenderType]` (candidate orientation — see caveat below):
+Read as `value[attackerType][defenderType]` (orientation confirmed from the melee function's index arithmetic — see the resolved caveat below):
 
 | Attacker ↓ / Defender → | Light Inf | Heavy Inf | Archers | Light Cav | Heavy Cav |
 | --- | ---: | ---: | ---: | ---: | ---: |
@@ -33,7 +33,7 @@ A matrix value of `0` doesn't zero out the whole term — it just removes that f
 
 ## What this does not establish
 
-- Definitive attacker/defender axis assignment (see caveat above) — the values are read correctly, the orientation is a reasoned guess.
+- ~~Definitive attacker/defender axis assignment~~ — **no longer open**: the resolved caveat above settles it from the index arithmetic (rows by attacker, columns by defender), per [battle-replayed-rout-mechanic-and-combat-constants.md](battle-replayed-rout-mechanic-and-combat-constants.md). This line originally called the orientation "a reasoned guess".
 - Whether this table's DAT-file position (immediately after the unit-type table) is a stable, principled layout or specific to this one checked file.
 - A full numeric simulation against the complete recorded battle in `battle-observation.md` — this report only fills in the last previously-missing constant, it doesn't yet run the formula end-to-end against real data.
 
@@ -49,6 +49,6 @@ matrix = struct.unpack_from("<25h", data, table_end)  # 5x5, row-major
 
 ## Next checks
 
-1. **Simulate the full recorded battle** from `battle-observation.md` (complete before/after troop totals by unit class for both sides) using the now-complete formula (unit-type table + this matrix + the melee formula structure) and compare. This is the real test of both the formula and the row/column orientation — if one orientation reproduces the recorded outcome and the other doesn't, that resolves the caveat above definitively.
+1. **Simulate the full recorded battle** from `battle-observation.md` (complete before/after troop totals by unit class for both sides) using the now-complete formula (unit-type table + this matrix + the melee formula structure) and compare. This is the real test of the formula. (It was also meant to settle the row/column orientation; the index arithmetic has since settled that — see the resolved caveat above — so a simulation now checks it rather than decides it.)
 2. Confirm the matrix's DAT-file position is stable by checking a second DAT file if one becomes available (e.g. the demo version, if ever obtained).
 3. Identify the remaining unexplained unit-type table fields (`+0x20`, `+0x26` from the prior report) — they may also feed into combat and could matter for a faithful simulation.
