@@ -198,6 +198,16 @@ Ordered by (value of the unknown) × (how directly a known form/string points at
 
     See [decompiled-quarterly-rebellion.md](reports/decompiled-quarterly-rebellion.md), for build repo [#389](https://github.com/diegoami/imperial_conquest_2/issues/389) (T89, [#397](https://github.com/diegoami/imperial_conquest_2/issues/397)).
 
+26. [x] **How is the mercenary pool filled at New Game? Done 2026-09-27: by one pass of the quarterly restock over an emptied pool.** Decompiled or re-read: `TPremierForm_NewGame` (`0x0045A9E0`), `FUN_00448AA4` (New Game setup, exported), the DAT loader `FUN_004481A0`, the restock `FUN_00449130`, `TPremierForm_OpenGameFile` and the SAV loader `FUN_004487C4`, `TPickLeaders_OK`.
+    - The DAT reload writes all 50 live slots as `(0, 0, 0, 0, −1, 0)`. `FUN_00448AA4` then calls `FUN_00449130` once, as the first consumer of the fresh `Randomize` seed, before the weather overlay, the leader draw and the turn-order shuffle.
+    - Each slot fills with probability 46/54 from template `Random(200)`, at 1.5× to 3× the template troops, capped, and quality `q` or `q + 1` clamped to 5–9. About 42.6 of the 50 slots start filled.
+    - Loading a SAV reads the 50 slots and never fills.
+    - The DAT block at `0x1FCD6` is 251 records of six words: 201 templates, then the 50 empty live slots.
+    - Four turn-1 saves filled 43, 45, 46 and 40 slots. All 5,041 live offers in 111 save files fit the rule.
+    - Corrects the restock report's "called from exactly one place".
+
+    See [decompiled-new-game-mercenary-fill.md](reports/decompiled-new-game-mercenary-fill.md), for build repo [#457](https://github.com/diegoami/imperial_conquest_2/issues/457).
+
 ## Method, per target
 
 1. Locate the form/procedure the same way prior reports did: Delphi RTTI method-name tables, the `TMainMenu`/form-adjacent streams, or a literal-string cross-reference (e.g. searching for dialog text like "quarterly", "Current tax", "New income") to find the owning code.

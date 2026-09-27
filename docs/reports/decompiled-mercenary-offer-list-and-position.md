@@ -198,6 +198,8 @@ The strings are NUL-terminated, not length-prefixed. Two independent observation
 - **Whether an AI hire can push an army past 100,000 troops.** The code permits it; no save was checked for an AI army above the cap.
 - **Whether the pool is filled at new game.** The DAT ships all 50 live slots empty, and `FUN_00449130`'s only caller is the quarterly tick, so the pool may start empty until the first quarter boundary. Not checked against a turn-1 save.
 
+  > **Answered (2026-09-27).** It is filled. New Game's `FUN_00448AA4` calls `FUN_00449130` once over the emptied pool, so about 42.6 of the 50 slots start filled, and four turn-1 saves agree. The quarterly tick is not the only caller. See [decompiled-new-game-mercenary-fill.md](decompiled-new-game-mercenary-fill.md).
+
 ## Reproduction
 
 ```text

@@ -280,6 +280,8 @@ The AI's `FUN_004504f4` applies the **identical** increment inline when it place
 
 `[confirmed]`. Called from exactly one place, inside `FUN_004514ec`'s week-wrap branch, immediately after the quarterly economy:
 
+> **Correction (2026-09-27).** It has a **second caller**: New Game's setup `FUN_00448AA4` calls it once, right after the DAT reload has emptied all 50 slots, and that single pass is how every new game gets its starting offers. The whole-application dump lacks `FUN_00448AA4`, which is why only the quarterly call was found. See [decompiled-new-game-mercenary-fill.md](decompiled-new-game-mercenary-fill.md).
+
 ```c
 DAT_004a0330 = (week + 2) % 0xc;
 if (DAT_004a0330 == 1) {
