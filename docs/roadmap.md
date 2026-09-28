@@ -91,6 +91,12 @@ The melee 40%-loss-cap formula (`floor(0.4 × defenderTroops) + 1`) is now confi
 The strongest confirmation yet: decompiled the actual `TPremierForm_OpenGameFile`/`SaveGameFile` read/write code and found the **complete SAV file layout** in one place, byte-count for byte-count — independently reconfirming the map size, city/army/fleet/nation record strides, and, most importantly, the mercenary table's 50-slot capacity **directly in code** rather than only by testing where plausible data stopped. Also found a previously-unknown 61-byte count-prefixed record type, and a battle-in-progress code path with an extra block of tactical state — real in the code, but the user confirms saving mid-battle isn't possible in the game, so no real save file will ever contain it. See [decompiled-sav-file-layout.md](reports/decompiled-sav-file-layout.md).
 - [ ] Record each formula or rule with its source: manual topic, executable location, save comparison, or observed behavior. Mark guesses separately.
 - [ ] If static evidence is insufficient, plan controlled before/after experiments in an isolated environment. Running the original binary is a separate, explicitly approved step; this roadmap does not authorize it.
+- [ ] **Battle minigame: exchange log and sweeps.** Learn the tactical battle screen from the original running headless: log every exchange (attacker, defender, terrain, dice draw, resulting counts) from a hook on the exchange routine, and sweep army compositions from crafted saves, so the clone's tactical battle is designed against a measured dataset. Scheduled by the user on 2026-09-28; the work runs in the cloud feasibility session. Dependencies, in order:
+  1. The [autosave feasibility report](reports/2026-09-28-autosave-hook-feasibility.md)'s go verdict and the hook site it names (`FUN_004484d0`).
+  2. Battles finishing headless on the watch variant: the Gaul battle timeout that session is debugging ([battle minigame feasibility](reports/2026-09-28-battle-minigame-headless-feasibility.md)).
+  3. The exchange routine located in the decompilation.
+  4. The exchange-log hook, as a new `patch_exe.py` option.
+  5. A sweep runner, with its outputs published as a release in [`imp_conquest_fixtures`](https://github.com/diegoami/imp_conquest_fixtures).
 
 **Done when:** Each gameplay subsystem has testable inputs, outputs, edge cases, and an identified source of truth. Rules that remain uncertain are listed rather than silently invented.
 
