@@ -28,6 +28,8 @@ For these saves, the post-city army count is followed by 656-byte army records, 
 
 Adding the Ptolemaic player changes only **three bytes** in the entire save, with no map or city change. All three are in the Ptolemaic record: `+0x486` changes `45 → 90`, `+0x488` changes `55 → 186`, and `+0x490` changes `0 → 1`. The last field is strongly identified as the human-player flag by this controlled action and by Rome's existing value `1`. The meanings of the two other changed words remain unknown; they should not be treated as player flags or game rules yet.
 
+> **Update (2026-09-29):** the two words are the nation's **unit-map view origin**: `+0x488` is the x and `+0x486` the y of the top-left tile shown. Setting up the Ptolemaic human seat moved its view to (186, 90), over Egypt. See [2026-09-29-nation-view-origin-and-unit-map-clicks.md](2026-09-29-nation-view-origin-and-unit-map-clicks.md).
+
 The screenshots show Rome with **25 cities** and **2,535,000** population, Carthage with **34 cities** and **4,866,000** population. Summing the owned city population fields gives 845,000 and 1,622,000 respectively; multiplying by **three** reproduces both nation population displays exactly. This is a candidate aggregation rule, not yet proven for other nations or circumstances.
 
 ## Roman army information panel

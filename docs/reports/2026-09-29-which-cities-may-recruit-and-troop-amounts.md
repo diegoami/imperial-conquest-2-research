@@ -35,6 +35,8 @@ Found by decompiling the recruit dialog (`TArmyRecruits`), and checked against e
   - `1_rome_270_winter_3.sav`, `1_rome_270_winter_5.sav`, `1_rome_270_winter_11.sav` (`run-1-rome`);
   - `ng1_rome.sav`, `ng2_rome.sav`, `ng3_carthage.sav` (fixtures repo `saves/new-game-probes/`).
 
+> **Independently confirmed (2026-09-29)** by the `ic2-conquest` bot session, whose draft is `findings/2026-09-29-recruiting-cities-need-fortification-75.md` ([`diegoami/ic2-conquest`](https://github.com/diegoami/ic2-conquest), branch `claude/focused-knuth-ci59fz`). It reached the same rule from the code (the list fill at `0x454540`–`0x4545F3`), and live: on the new-game save the dialog listed exactly Luceria (77) and ROME (78). It adds one detail: the helper `0x44B8D0` only tests whether a town is any nation's capital, so that the dialog can print capital names in upper case (hence "ROME").
+
 ## Observations
 
 ### 1. The dialog's list of towns (`FUN_004544E0`)
