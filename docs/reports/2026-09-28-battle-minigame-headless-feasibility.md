@@ -50,6 +50,10 @@ TBattleMap.EndTurn (human side): 0x437A94 call FUN_00439c20; call FUN_00439c84
 
 - **Randomness.** `Random` (`0x40284C`, Delphi's LCG `seed = seed·0x08088405 + 1; result = (seed·n) >> 32`) is called from **12 sites** inside the battle code: copy-in 2, AI placement 1, rout 2, shooting 2, melee 4, `FUN_0043aa60` 1.
 - **`RandSeed` is not in the save.** It lives at `0x45E030`, and **the load routine reseeds it from the clock** (`0x448AB0` → `Randomize` `0x402744`). So every load starts a new random stream. This is why two runs from one save diverge in the strategic turns. Earlier reports disagreed on whether replayed turns are deterministic; this settles the mechanism: they are not, unless the seed is fixed.
+
+  > **Correction (2026-09-29):** the load routine does **not** reseed. `FUN_004487C4` (the loader) returns at `0x448AA0`. The `Randomize` call at `0x448AB0` is the first call of the **next** function, `FUN_00448AA4`, which is New Game's setup: [decompiled-new-game-mercenary-fill.md](decompiled-new-game-mercenary-fill.md) already names it. It is called only from the main form's `InitialiseForm` (`0x45A93A`, program start) and `NewGame` (`0x45AA32`). So `RandSeed` is seeded from the clock **at program start and at New Game**; a peace treaty also reseeds it ([decompiled-war-cascade-and-peace-paths.md](decompiled-war-cascade-and-peace-paths.md) §4).
+  >
+  > Runs A–E each started a fresh game process, which is why their strategic turns differed. The conclusions of §3 stand, because they rest on the seed being fixed at battle start. Found by the `ic2-conquest` bot session: loading one save twice in a single process with a fixed seed gives byte-identical turns (its `findings/2026-09-29-loading-a-save-does-not-reseed.md`), and confirmed here from the call sites.
 - **Delay does not matter.** `Delay` (`0x448FFC`) is the only timing, so on the `fast` build a whole battle computes in 1.3–1.9 s, 13–20 half-rounds, including a 135 KB snapshot write each.
 
 ## 3. What was run (all from `1_rome_270_winter_11.sav`, `run-1-rome`)
