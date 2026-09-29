@@ -8,6 +8,8 @@ The originals live in the repository [`diegoami/imp_conquest_fixtures`](https://
 
 ## The releases
 
+A few small probe saves are committed in the fixtures repository itself rather than in a release: `saves/new-game-probes/` (three new-game autosaves, 2026-09-29). Their rows in the table below link to the files in the repository.
+
 | Release | What it is | Saves | Screenshots | Recordings |
 |---|---|---|---|---|
 | [`run-1-rome`](https://github.com/diegoami/imp_conquest_fixtures/releases/tag/run-1-rome) | Run 1 — Rome (270 BC) | 16 | 5 | 8 |
@@ -40,6 +42,9 @@ The originals live in the repository [`diegoami/imp_conquest_fixtures`](https://
 
 | Save | Release | Cites |
 |---|---|---|
+| [`ng1_rome.sav`](https://github.com/diegoami/imp_conquest_fixtures/blob/main/saves/new-game-probes/ng1_rome.sav) | repo `saves/new-game-probes/` | 1 |
+| [`ng2_rome.sav`](https://github.com/diegoami/imp_conquest_fixtures/blob/main/saves/new-game-probes/ng2_rome.sav) | repo `saves/new-game-probes/` | 1 |
+| [`ng3_carthage.sav`](https://github.com/diegoami/imp_conquest_fixtures/blob/main/saves/new-game-probes/ng3_carthage.sav) | repo `saves/new-game-probes/` | 1 |
 | [`11_supply.sav`](https://github.com/diegoami/imp_conquest_fixtures/releases/download/legacy-probes/11_supply.sav) | `legacy-probes` | 9 |
 | [`1_rome_270_winter_7.sav`](https://github.com/diegoami/imp_conquest_fixtures/releases/download/run-1-rome/1_rome_270_winter_7.sav) | `run-1-rome` | 7 |
 | [`7.sav`](https://github.com/diegoami/imp_conquest_fixtures/releases/download/legacy-probes/7.sav) | `legacy-probes` | 6 |

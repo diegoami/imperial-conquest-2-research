@@ -40,7 +40,7 @@ The original's week-1 saves `1_cartago_271_spring_1.sav` and `1.sav` show Rome a
 | `ng2_rome.sav` | Rome | `fcb916825e1c254551d2e3330b58ee8582fe67fc05bb90b2708e40d720cb702a` | 10 |
 | `ng3_carthage.sav` | Carthage | `5c928d446624fe790cbf919b0614521c60c272d889344dbd4c4b107d1a192d64` | 11 |
 
-**The three saves are not yet in a release.** This session has no tool that creates a GitHub release, so they are held outside both repositories until they can be uploaded (proposed release: `new-game-probes`). They are not in [evidence-index.md](../evidence-index.md) until then. The hashes above identify them.
+**Where the saves are:** committed in `diegoami/imp_conquest_fixtures` at `saves/new-game-probes/` (commit `a67ba3e`), not in a release. See [evidence-index.md](../evidence-index.md).
 
 ## Observations
 
