@@ -167,6 +167,12 @@ Every firing wrote exactly one line, after the call, with its result.
 
 ### Build and check procedure (repeat after every change to the patch)
 
+> **Update (2026-09-29): shipped as the "Rollingsave" builds.** The option below was adopted into `patch_exe.py` in `diegoami/imp_conquest_fixtures`, on branch `claude/admiring-feynman-c46hmx`, with the outputs renamed:
+> - `Imperial Conquest 2 fast rollingsave.exe` (SHA-256 `95b93f03…a21fe`);
+> - `Imperial Conquest 2 watch rollingsave.exe` (SHA-256 `70aa4513…b452`).
+>
+> These are byte-identical to the `… autosave.exe` builds tested here, and the procedure is unchanged apart from the names.
+
 ```text
 # in the game folder, next to the untouched "Imperial Conquest 2.exe"
 py patch_exe.py
