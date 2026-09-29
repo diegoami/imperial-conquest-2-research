@@ -7,6 +7,8 @@
 - **Rate:** the order builds at **10 points per turn** at most.
 - **Cancellation:** a hostile army next to the town cancels the rest of the order without a refund.
 - **Bug:** an order that ends at **exactly 100%** with a last step smaller than 10 points leaves the town at **0%**. This was confirmed live in the headless game.
+- **Live, all of it:** the dialog's clamp, its cost and the up-front payment, the build rate and the cancellation by an enemy army were each confirmed live (§6).
+- **The AI never fortifies:** it places no fortification orders at all (§7).
 
 ## Method
 
@@ -89,6 +91,40 @@ All three match. Ariminum shows the bug: a town at 95% ordered to 100% is at **0
 
 - **Cost per point is population,** so small towns are cheap to fortify. The towns that reach 75% cheaply are mostly small ones.
 
+### 6. Live checks of the dialog and of cancellation
+
+**The dialog, driven headless.**
+- **Setup:** `ng1_rome.sav` was loaded, Capua was selected on the unit map, and **Unit map → City → Fortify city** opened the dialog "Fortify Capua" (initial 57%, cost 0).
+- **The clamp:** five presses of the 10s up-arrow stopped at **100%, cost 1,161**, which is 43 points × population 27.
+- **The order:** stepping back to 18 points showed **75%, cost 486**.
+- **Paid at once:** after OK, the Information panel showed `57% (under construction)`. A save made right away (`fort_ui_after_ok.sav`) had Rome's treasury at **1,714** (from 2,200, −486) and Capua's word at **1857**.
+- **One turn later** (`fort_ui_after_turn.sav`) the word was **867**, that is 67% with 8 pending.
+
+**Cancellation.**
+- **Setup** (`cancel_probe.sav`): in `ng1_rome.sav`, Gaul's army 9 was moved from (96,30) to (94,34), next to Pisae (93,35), by editing its record and the two map squares (an army square is `200 + terrain`). Rome and Gaul are at war in that save (relation 3 both ways). Orders were planted at Pisae (669: 69% + 6) and at Arretium (372: 72% + 3); Arretium's only neighbouring army is Roman.
+- **One turn later** (`cancel_probe_after.sav`): **Pisae 69** (the pending points dropped, nothing refunded) and **Arretium 75** (completed).
+- **It was the tick, not a siege.** In that game's turn order the weekly tick runs before Gaul's seat, so the tick saw the Gallic army first. The news log has no siege of Pisae. Gaul's army went on to take Tarquinii in its own seat.
+
+| File (fixtures `saves/fortification-probe/`) | SHA-256 |
+|---|---|
+| `fort_ui_after_ok.sav` | `6f736a962808666421680805af1f219683ee8800ae9dfb7d748a1683ebb8b54a` |
+| `fort_ui_after_turn.sav` | `50c62970270b7dd6dea17b762cdff1727d7bdd34883d8ffc4baf2730977e45c8` |
+| `cancel_probe.sav` | `36ab223fdc586b7ff77438d72e25227f66e787dea7efd17acea334b9a7484ff2` |
+| `cancel_probe_after.sav` | `cc28a69ebed076340a360c4136b5cb0a695620a61d0b823cadea158e0a1fb80d` |
+
+### 7. The AI does not fortify
+
+A sweep of the whole code section looked for word writes to a city record's `+0x1A` near a load of the city-table base (`0x479590`). It finds four writers besides the weekly tick, which walks the table with its own pointer:
+
+| Address | Function | Effect on the fortification word |
+|---|---|---|
+| `0x440801` | Fortify dialog `OK` (`0x4407E4`) | `+= points × 100` (places an order) |
+| `0x44B2B9` | siege attempt `FUN_0044B27C` | `%= 100` (drops a pending order) |
+| `0x44BE6F` | capital relocation `FUN_0044BD2C` | the new capital gets `min(99, fortification + 10)` |
+| `0x44C4E8` | rebirth `FUN_0044C360` | the same, for a reborn nation's new capital |
+
+**Only the dialog places orders, and only a human seat opens the dialog.** So the AI never fortifies. Its towns change fortification only through sieges and capital moves.
+
 ## Inferences
 
 - **For the build repository:**
@@ -104,13 +140,13 @@ All three match. Ariminum shows the bug: a town at 95% ordered to 100% is at **0
   - keep enemy armies away from a town while its order is pending.
 
   `[derived]`
+- **An AI town never fortifies.** An AI nation's recruiting towns stay the ones it starts with, plus a new capital's +10 when it moves, so only the human's recruiting base can grow. `[derived]`: §7.
 - **Why this was never seen in play:** no evidence save had an order in progress ([city-population-growth.md](city-population-growth.md), "What this does not establish"). A player who fortified a town to the top and saw it at 0% would have taken it for a siege.
 
 ## What this does not establish
 
-- **Only the tick was tested live.** The dialog was not driven in the live game: its clamp, cost display and payment come from the code. The live test planted pending orders directly in the save.
-- **Cancellation was not tested live.**
-- **The AI:** whether the AI places fortification orders, and whether it is exposed to the same bug. The AI's order code was not located in this pass.
+- Cancellation was observed once, through the tick. The siege path clears a pending order the same way, but in the code only.
+- The AI search is a pattern sweep, not an exhaustive data-flow proof. A writer that reaches the field through an unusual pointer would be missed. The four hits match every writer the decompiled dump shows.
 
 ## Reproduction
 
@@ -120,6 +156,4 @@ All three match. Ariminum shows the bug: a town at 95% ordered to 100% is at **0
 
 ## Next checks
 
-1. Drive the Fortify dialog live: order Arretium +3 and check that the treasury drops by 99 at once and the town reaches 75% after one turn.
-2. Test cancellation: put an enemy army next to a town with a pending order.
-3. Find whether and where the AI fortifies.
+1. Check that a fortified town (≥ 75%) appears in the recruit dialog's town list on the next turn, and accepts an order.

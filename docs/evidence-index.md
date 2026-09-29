@@ -42,6 +42,10 @@ A few small probe saves are committed in the fixtures repository itself rather t
 
 | Save | Release | Cites |
 |---|---|---|
+| [`fort_ui_after_ok.sav`](https://github.com/diegoami/imp_conquest_fixtures/blob/main/saves/fortification-probe/fort_ui_after_ok.sav) | repo `saves/fortification-probe/` | 1 |
+| [`fort_ui_after_turn.sav`](https://github.com/diegoami/imp_conquest_fixtures/blob/main/saves/fortification-probe/fort_ui_after_turn.sav) | repo `saves/fortification-probe/` | 1 |
+| [`cancel_probe.sav`](https://github.com/diegoami/imp_conquest_fixtures/blob/main/saves/fortification-probe/cancel_probe.sav) | repo `saves/fortification-probe/` | 1 |
+| [`cancel_probe_after.sav`](https://github.com/diegoami/imp_conquest_fixtures/blob/main/saves/fortification-probe/cancel_probe_after.sav) | repo `saves/fortification-probe/` | 1 |
 | [`fort_probe_before.sav`](https://github.com/diegoami/imp_conquest_fixtures/blob/main/saves/fortification-probe/fort_probe_before.sav) | repo `saves/fortification-probe/` | 1 |
 | [`fort_probe_after.sav`](https://github.com/diegoami/imp_conquest_fixtures/blob/main/saves/fortification-probe/fort_probe_after.sav) | repo `saves/fortification-probe/` | 1 |
 | [`ng1_rome.sav`](https://github.com/diegoami/imp_conquest_fixtures/blob/main/saves/new-game-probes/ng1_rome.sav) | repo `saves/new-game-probes/` | 1 |
