@@ -8,7 +8,7 @@ The originals live in the repository [`diegoami/imp_conquest_fixtures`](https://
 
 ## The releases
 
-A few small probe saves are committed in the fixtures repository itself rather than in a release: `saves/new-game-probes/` (three new-game autosaves, 2026-09-29). Their rows in the table below link to the files in the repository.
+A few small probe saves are committed in the fixtures repository itself rather than in a release: `saves/new-game-probes/` (three new-game autosaves, 2026-09-29) and `saves/fortification-probe/` (a planted-order pair, 2026-09-29). Their rows in the table below link to the files in the repository.
 
 | Release | What it is | Saves | Screenshots | Recordings |
 |---|---|---|---|---|
@@ -42,6 +42,8 @@ A few small probe saves are committed in the fixtures repository itself rather t
 
 | Save | Release | Cites |
 |---|---|---|
+| [`fort_probe_before.sav`](https://github.com/diegoami/imp_conquest_fixtures/blob/main/saves/fortification-probe/fort_probe_before.sav) | repo `saves/fortification-probe/` | 1 |
+| [`fort_probe_after.sav`](https://github.com/diegoami/imp_conquest_fixtures/blob/main/saves/fortification-probe/fort_probe_after.sav) | repo `saves/fortification-probe/` | 1 |
 | [`ng1_rome.sav`](https://github.com/diegoami/imp_conquest_fixtures/blob/main/saves/new-game-probes/ng1_rome.sav) | repo `saves/new-game-probes/` | 1 |
 | [`ng2_rome.sav`](https://github.com/diegoami/imp_conquest_fixtures/blob/main/saves/new-game-probes/ng2_rome.sav) | repo `saves/new-game-probes/` | 1 |
 | [`ng3_carthage.sav`](https://github.com/diegoami/imp_conquest_fixtures/blob/main/saves/new-game-probes/ng3_carthage.sav) | repo `saves/new-game-probes/` | 1 |
