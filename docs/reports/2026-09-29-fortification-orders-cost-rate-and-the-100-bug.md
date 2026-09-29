@@ -125,6 +125,16 @@ A sweep of the whole code section looked for word writes to a city record's `+0x
 
 **Only the dialog places orders, and only a human seat opens the dialog.** So the AI never fortifies. Its towns change fortification only through sieges and capital moves.
 
+### 8. A newly fortified town recruits the next turn
+
+- **Setup:** `cancel_probe_after.sav` is the turn after Arretium's order completed (72% → 75%). Loaded headless, **Strategy → Recruit unit** opened "Army recruits".
+- **The town list read "Arretium, Luceria, ROME":** the capital plus the two towns at ≥ 75%. Pisae (69%, its order cancelled) was not listed.
+- **The order:** Arretium was selected, Heavy infantry chosen, and the dialog showed the default **1,200** (6,000 ÷ 5), initial cost **120** and quarterly cost **12**. Recruit unit added "Hvy inf 1,200 not ready" under Arretium, and an **"All cities"** entry appeared, as the code predicts once two towns have units in training.
+- **In the save** (`recruit_after.sav`, SHA-256 `ce704324d830f4fa3539387ac87f60eaf3b8ded7755c245473b3de0c6a60d53a`), against the save loaded:
+  - the treasury went 2,200 → **2,080**;
+  - mobilisation went 30 → **31**;
+  - a new slot holds `state 0, type 1, 1,200 troops, city 81` (Arretium).
+
 ## Inferences
 
 - **For the build repository:**
@@ -156,4 +166,4 @@ A sweep of the whole code section looked for word writes to a city record's `+0x
 
 ## Next checks
 
-1. Check that a fortified town (≥ 75%) appears in the recruit dialog's town list on the next turn, and accepts an order.
+- None open for fortification. The AI search (§7) could be made exhaustive with a data-flow pass if it ever matters.

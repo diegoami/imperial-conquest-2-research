@@ -135,5 +135,5 @@ after every change:   amount = max(battalion / 5, min(battalion, amount))
 
 ## Next checks
 
-1. Drive the recruit dialog headless on one save, at a capital, a 76% town and a 60% town: confirm the listed towns and the refusal text.
+1. ~~Drive the recruit dialog headless~~ **Done 2026-09-29** (see [2026-09-29-fortification-orders-cost-rate-and-the-100-bug.md](2026-09-29-fortification-orders-cost-rate-and-the-100-bug.md) §8): the list read "Arretium, Luceria, ROME", which is the capital plus the two towns at ≥ 75%, with towns below 75% absent. A heavy-infantry order at Arretium defaulted to 1,200 for 120 and was saved as a new slot at city 81. The `fallen below 75%` refusal was not triggered live.
 2. Trace the fortification order: its cost, its points per turn, and how long a town takes to reach 75%.
