@@ -96,7 +96,7 @@ The strongest confirmation yet: decompiled the actual `TPremierForm_OpenGameFile
   2. Battles finishing headless on the watch variant: the Gaul battle timeout that session is debugging ([battle minigame feasibility](reports/2026-09-28-battle-minigame-headless-feasibility.md)).
   3. The exchange routine located in the decompilation.
   4. The exchange-log hook, as a new `patch_exe.py` option.
-  5. A sweep runner, with its outputs published as a release in [`imp_conquest_fixtures`](https://github.com/diegoami/imp_conquest_fixtures).
+  5. A sweep runner, with its outputs published as a release in [`imp_conquest_fixtures`](https://github.com/diegoami/imp_conquest_fixtures). Its outputs (one diff or sweep table per run, as stage 0 of the build repository's [evidence pipeline](https://github.com/diegoami/imperial_conquest_2/blob/main/docs/evidence-pipeline.md#the-stages) describes) are routed with [`scripts/jev-ask.ps1 -ItemsDir`](https://github.com/diegoami/imperial_conquest_2/blob/main/scripts/jev-ask.ps1) in the build repository ([Jev](https://github.com/diegoami/imperial_conquest_2/wiki/Jev)): one typed question per run, acting on 0.9 and above, discarding a Noul below 0.1, and sending the middle to a Claude pass.
 
 **Done when:** Each gameplay subsystem has testable inputs, outputs, edge cases, and an identified source of truth. Rules that remain uncertain are listed rather than silently invented.
 
