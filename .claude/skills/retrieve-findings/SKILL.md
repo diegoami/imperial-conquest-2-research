@@ -26,7 +26,7 @@ If there are no candidates, say so and stop.
 
 A draft is a claim, not evidence. For each one:
 
-- **Cited saves**: each bare filename must resolve in `docs/evidence-index.md`, or in ic2-conquest's `saves/README.md` / release `run-<id>`. A claim with no retrievable save is `deferred`.
+- **Cited saves**: each bare filename must resolve in `docs/evidence-index.md`, or in ic2-conquest's `saves/README.md` / release `run-<id>`. A claim with no retrievable save and no code corroboration is `deferred`. If the draft is honest that it is Wine-only or its saves are unpublished and the claims are consistent with existing reports, promote it as `promoted, provisional`: the status line says what is missing, and the ledger row names the follow-up (publish the release, add to `evidence-index.md`).
 - **Code claims** (addresses, function names): re-check against the Ghidra dumps on the researcher's machine when they are available (see README, Toolchain); say in the report when you could not.
 - **Overlap**: `grep -ril` the key terms in `docs/reports/`. A draft may confirm, extend, or contradict an existing report. Contradictions are the valuable ones: fix the old report's sentence and link the new one (see how `2026-09-29-loading-a-save-does-not-reseed.md` corrected the battle feasibility report).
 - **Scope**: keep "What this does not establish" honest. Do not promote an inference as an observation.

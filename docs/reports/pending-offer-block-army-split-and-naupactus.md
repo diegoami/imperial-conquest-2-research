@@ -75,6 +75,8 @@ The offer is addressed at the nation whose turn is starting (Rome in every save 
 
   So `FUN_00449F08`'s `money = 0`, `supplies = 0` are the *initial* values the dialog opens with, not the committed ones; the observed `156 / 100` is the player having pushed the money spinner, and the exact conservation of 256 talents is the dialog's reciprocal-transfer behaviour, not an accident. The decompiled constant and the observation agree once that is accounted for. `[confirmed]`
 
+*Placement.* A second split, run live, put the new army one step diagonally (+1,+1) from its parent, as here: [2026-10-02-unit-map-mouse-orders-and-tax-range.md](2026-10-02-unit-map-mouse-orders-and-tax-range.md).
+
 ### "Supplied from Mediolanum / Brixia" is descriptive, not a mechanic
 
 The note says one of the new armies is *"supplied from Mediolanum, the other from Brixia"*. There is **no home-city, garrison-of-origin or supply-source field** on an army record — `decompiled-unit-map-orders-and-record-fields.md` accounts for every word of the 16-byte army header (`x`, `y`, `owner`, covered map cell, moves, supplies, money, morale) and `army[+8]`, the one field that might have looked like a candidate, is the **terrain code of the cell the army is standing on** (army 0 reads 2 = plain, army 13 reads 5). Nothing persists a relationship to a city.
