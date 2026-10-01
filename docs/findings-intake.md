@@ -1,6 +1,6 @@
 # Findings intake from ic2-conquest
 
-The bot repository [`diegoami/ic2-conquest`](https://github.com/diegoami/ic2-conquest) explores the game by playing it headless and drafts rule discoveries in its `findings/` folder, in this repository's report format. It never writes here (its hard rule 2); this repository pulls. The procedure is the project skill `retrieve-findings` (`.claude/skills/retrieve-findings/SKILL.md`). This ledger is what makes the pull incremental: a draft is **new** until it has a row here.
+The bot repository [`diegoami/ic2-conquest`](https://github.com/diegoami/ic2-conquest) explores the game by playing it headless and drafts rule discoveries in its `findings/` folder, in this repository's report format. It never writes here (its hard rule 2); this repository pulls. The procedure is the project skill `retrieve-findings` (`.claude/skills/retrieve-findings/SKILL.md`). A daily GitHub Action (`.github/workflows/pending-drafts.yml`, script `scripts/pending-drafts.sh`) lists the drafts this ledger has not reviewed and keeps one open issue while any exist. This ledger is what makes the pull incremental: a draft is **new** until it has a row here.
 
 Rows are keyed by the draft's path and the blob it had when reviewed, so a draft that changes later shows up again.
 

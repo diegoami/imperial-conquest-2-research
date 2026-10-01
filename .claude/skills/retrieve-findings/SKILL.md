@@ -43,3 +43,7 @@ A draft is a claim, not evidence. For each one:
 ## 4. Report to the user
 
 For each candidate: outcome, what you corrected or could not verify, which existing reports changed. Mention that ic2-conquest still lists the draft: the player removes or marks it there, since this session must not write to that repo.
+
+## Daily check
+
+`.github/workflows/pending-drafts.yml` runs `scripts/pending-drafts.sh` every day and keeps one issue, "Pending ic2-conquest findings drafts", open while any draft is unledgered or changed since its reviewed commit; it closes the issue at zero. It reads ic2-conquest through the GitHub API only. Run the same script locally for step 1: `bash scripts/pending-drafts.sh`. It replaces the manual loop above and is the quickest way to see the queue.

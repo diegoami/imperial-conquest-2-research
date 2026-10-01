@@ -1,0 +1,40 @@
+name: Pending ic2-conquest drafts
+
+# Daily: lists finding drafts in diegoami/ic2-conquest that the ledger (docs/findings-intake.md)
+# has not reviewed, and keeps ONE issue in sync. Read-only toward ic2-conquest. Promoting a draft
+# is the retrieve-findings skill's job and needs a session; this only makes the queue visible.
+on:
+  schedule:
+    - cron: '17 6 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: List pending drafts
+        id: scan
+        run: |
+          bash scripts/pending-drafts.sh > pending.txt
+          cat pending.txt
+          echo "count=$(sed -n 's/^pending: //p' pending.txt)" >> "$GITHUB_OUTPUT"
+      - name: Sync the issue
+        run: |
+          title='Pending ic2-conquest findings drafts'
+          num=$(gh issue list --state open --search "\"$title\" in:title" --json number,title \
+                  --jq "map(select(.title==\"$title\"))[0].number // empty")
+          if [ "${{ steps.scan.outputs.count }}" = "0" ]; then
+            [ -n "$num" ] && gh issue close "$num" --comment "No drafts pending (daily check)."
+            exit 0
+          fi
+          body=$(printf 'Drafts in diegoami/ic2-conquest `findings/` with no row in `docs/findings-intake.md`, or changed since reviewed. Run the `retrieve-findings` skill in a research session to review and promote them.\n\n```\n%s\n```\n\nUpdated by the daily check.' "$(cat pending.txt)")
+          if [ -n "$num" ]; then gh issue edit "$num" --body "$body"
+          else gh issue create --title "$title" --body "$body"; fi
