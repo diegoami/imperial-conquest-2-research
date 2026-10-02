@@ -6,7 +6,7 @@
 > **Correction at promotion (research repository).** The draft's "literal model", a *continuous* factor `1 + U(0, 0.3)` on each side, is not what [decompiled-diplomacy-peace-terms-and-instant-battles.md](decompiled-diplomacy-peace-terms-and-instant-battles.md) reads from the code. The code's term is **discrete and integer**: `base = ships × condition / 10`, `strength = base + random(4) × (base / 10)` (a bonus of 0, 10, 20 or 30 % in four steps), and **the attacker wins only if the defender's strength is strictly smaller, so ties go to the defender**. Run exactly as written, with no free parameter, that rule fits the 160 battles **better** than the draft's uniform model: log-likelihood **−79.89** against −80.59 and Pearson chi-square **3.56** against 6.18 over the 8 cells (`scripts/naval-battle-model-check.py` on `trials.json`). It also explains the draft's unresolved puzzle: at exact parity (420 v 420) the attacker wins on only 6 of the 16 bonus pairs, **37.5 %** (observed 10 of 30), while at 444 v 441 it wins on 10 of 16, **62.5 %** (observed 18 of 30). The "P60 versus C60 difference", the γ above 1 and the attacker factor `k = 0.99` all follow from the strict inequality and need no further effect. Read the Answer below with that in mind: the widths and intervals are the draft's fits to the wrong (continuous) shape.
 
 **Answer.**
-- **The research formula read literally fits:** each fleet's strength `ships × condition / 10` is multiplied by `1 + U(0, 0.3)`, independently for the two sides, and the larger product wins. It is the best of the models tried by AIC (161.2), its Pearson chi-square over the 8 cells is **6.2** (a good fit), and no model with more freedom does better.
+- **The research formula read literally fits:** each fleet's strength `ships × condition / 10` is multiplied by `1 + U(0, 0.3)`, independently for the two sides, and the larger product wins. It is the best of the models tried by AIC (161.2), its Pearson chi-square over the 8 cells is **6.2** (a good fit), and no model with more freedom wins on AIC (H6 and H7 fit slightly better on log-likelihood, -80.23 and -79.88 against -80.61, which does not pay for their extra parameters).
 - **No attacker bonus:** an attacker factor `k` has a best value of **0.990** with an approximate 95 % interval of **0.970 to 1.015**.
 - **The width of the random term** is best at **0.32**, interval **0.24 to 0.54**, which contains 0.30. A term on the attacker only is rejected (AIC 1,206).
 - **The strength formula `ships × condition` stands:** fitting `ships × condition^γ` gives γ = 1.1, interval **1.0 to 1.2**.
@@ -18,7 +18,7 @@
 - **Build and seed:** `Imperial Conquest 2 fast rollingsave seed.exe` (SHA-256 `354d8265…532f`), Wine 9.0, Xvfb. One fresh process per trial, `SEED.TXT` = the trial's seed.
 - **Fixtures:** the T1 fixture of [2026-10-02-fleets-sail-and-drift.md](2026-10-02-fleets-sail-and-drift.md) at Ptolemaic's seat (`FIX_P`) and at Carthage's (`FIX_C`), as in [2026-10-02-naval-battles.md](2026-10-02-naval-battles.md), plus **`FIX_P2`**, made by `runs/experiments/fleet-battles/stage_p2.py`: at Carthage's seat Carthage splits 30 ships off its fleet (it keeps 60), ends its turn, and the autosave of Ptolemaic's next turn (0724) is the fixture. There Ptolemaic's fleet (70 ships, condition 60) and Carthage's (60 ships, condition 70) have **exactly equal strength, 420 v 420**, with the attacker role swapped.
 - **Cells** (attacker v defender; strength `ships × condition / 10`): C50 370 v 441, C55 407 v 441, **P60 420 v 420**, **C60 444 v 441**, C65 481 v 441, plus the earlier P 441 v 666, C70 518 v 441, C 666 v 441. C55, C60, C65, P60 have 30 seeds each; the others 10.
-- **Analysis** (`runs/experiments/fleet-battles/random_term.py`, fixed before the new data came in): the attacker wins when `k · A · (1 + ua) > D · (1 + ud)`, `ua ~ U(0, wa)`, `ud ~ U(0, wd)`; for each cell the probability that the attacker wins is computed on a fine grid and the binomial log-likelihood summed over cells; models are compared by log-likelihood and AIC; parameter intervals are the values within 1.92 log-likelihood units of the best.
+- **Analysis** (`runs/experiments/fleet-battles/random_term.py`; its models H1 to H6 and the cell list were fixed before the new data came in, while H7 (the γ fit), the parameter intervals and the chi-square were added with the final 160 trials): the attacker wins when `k · A · (1 + ua) > D · (1 + ud)`, `ua ~ U(0, wa)`, `ud ~ U(0, wd)`; for each cell the probability that the attacker wins is computed on a fine grid and the binomial log-likelihood summed over cells; models are compared by log-likelihood and AIC; parameter intervals are the values within 1.92 log-likelihood units of the best.
 
 ## Observations
 
@@ -51,9 +51,9 @@ Saves and `trials.json` are in [`run-exp-naval-battle`](https://github.com/diego
 
 **The first outlier.** In [2026-10-02-naval-battles.md](2026-10-02-naval-battles.md) the near-parity cell C60 had the attacker winning 9 of 10 (expected 5.3; about 1.7 % under the literal model). With seeds 11 to 30 added it is **18 of 30**, and the 20 new seeds alone gave 9 of 20.
 
-**The two exact-parity cells differ**, with Ptolemaic attacking at 420 v 420 winning **10 of 30** and Carthage attacking at 444 v 441 winning **18 of 30**. As a two-sample comparison that is a difference with p of about 0.04, **not corrected** for the eight cells looked at; against the model each cell is within |z| < 2 (P60: z = −1.83).
+**The two parity cells differ**, with Ptolemaic attacking at 420 v 420 (ratio 1.000) winning **10 of 30** and Carthage attacking at 444 v 441 (ratio 1.007) winning **18 of 30**. As a two-sample comparison that is a difference with p of about 0.04, **not corrected** for the eight cells looked at and treating the two cells as independent samples although equal seeds may share a draw; against the model each cell is within |z| < 2 (P60: z = −1.83).
 
-**Determinism.** Re-running seeds 1 and 2 of cells C and P through a later version of `Game.attack_fleet` (which added click verification) gave fleet records identical to the earlier runs in all four trials.
+**Determinism.** Re-running seeds 1 and 2 of cells C and P through a later version of `Game.attack_fleet` (which added click verification) gave fleet records identical to the earlier runs in all four trials: `determinism_check.json` in the release holds both versions of each record and the comparison.
 
 ## Inferences
 
@@ -76,7 +76,7 @@ setup/setup.sh
 python3 -m tests.make_fleet_battle_fixture                              # the T1 fixture (about 20 minutes)
 python3 runs/experiments/fleet-battles/stage_cells.py                   # FIX_C
 python3 runs/experiments/fleet-battles/stage_p2.py                      # FIX_P2
-python3 runs/experiments/fleet-battles/trials.py                        # P C C70 C60 C50, 10 seeds each
+python3 runs/experiments/fleet-battles/trials.py P C C70 C60 C50       # 10 seeds each (with no cell named, all eight cells run)
 python3 runs/experiments/fleet-battles/trials.py P60 --seeds 30         # about 25 minutes
 python3 runs/experiments/fleet-battles/trials.py C60 --seeds 30 --from 11
 python3 runs/experiments/fleet-battles/trials.py C65 C55 --seeds 30
@@ -90,4 +90,5 @@ python3 runs/experiments/fleet-battles/random_term.py                   # the fi
 - **Consequences for the draft's inferences.** "No attacker bonus" stands, and the code has none; what looks like a small attacker handicap at exact parity is the tie going to the defender. The practical rule the draft states (a 17 % edge nearly decides a battle) is close to the exact one: the exact win probabilities at the tested ratios are 0.81 (1.17), 0.69 (1.09 at C65) and 0.31 (0.92 at C55). The fitted width and γ are not needed.
 - **What it still does not show:** whether `random(4)` is uniform over 0 to 3 (win rates test it only in aggregate) and anything about armies aboard, rough sea or other seeds, as the draft says.
 - **Damage** is covered in [2026-10-02-naval-battles.md](2026-10-02-naval-battles.md): 160 of 160 battles match the code's formula exactly.
+- **Wording tightened by the bot after promotion** (commit `3a2cfbd`, carried above): H6 and H7 fit slightly better on log-likelihood but do not pay for their parameters on AIC; models H1 to H6 and the cell list were fixed before the new data, while H7, the intervals and the chi-square were added after; the parity-cell comparison treats the two cells as independent although equal seeds may share a draw; and the determinism check is now a file (`determinism_check.json`, four trials, all identical, re-read here). None of this changes the correction at the top.
 - **Not re-run.** No code address was re-read from the executable.
