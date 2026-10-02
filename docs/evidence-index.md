@@ -23,6 +23,7 @@ A few small probe saves are committed in the fixtures repository itself rather t
 | [`run-exp-fleet-orders`](https://github.com/diegoami/ic2-conquest/releases/tag/run-exp-fleet-orders) | Bot experiment (2026-10-02, **Wine-only**, repo `diegoami/ic2-conquest`): fleet orders live (launch, embark/unload, supply, repair, split, join, transfer, scuttle) | 12 | 11 | 0 |
 | [`run-exp-civ-sweep`](https://github.com/diegoami/ic2-conquest/releases/tag/run-exp-civ-sweep) | Bot experiment (2026-10-02, **Wine-only**, repo `diegoami/ic2-conquest`): New Game as each of the 16 nations, two turns each | 48 | 28 | 0 |
 | [`run-exp-two-humans`](https://github.com/diegoami/ic2-conquest/releases/tag/run-exp-two-humans) | Bot experiment (2026-10-02, **Wine-only**, repo `diegoami/ic2-conquest`): two human seats (Carthage + Ptolemaic) | 4 | 6 | 0 |
+| [`run-exp-fleet-battles`](https://github.com/diegoami/ic2-conquest/releases/tag/run-exp-fleet-battles) | Bot experiment (2026-10-02, **Wine-only**, repo `diegoami/ic2-conquest`): two fleets (Carthage 90, Ptolemaic 70 ships) sailing toward each other, three rounds | 7 | 0 | 0 |
 
 ### Which release to reach for
 
@@ -158,6 +159,14 @@ A few small probe saves are committed in the fixtures repository itself rather t
 | [`T0_NEWGAME_AUTO0720.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-two-humans/T0_NEWGAME_AUTO0720.SAV) | `run-exp-two-humans` (repo `ic2-conquest`) | 1 |
 | [`T0_P2_AUTO0721.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-two-humans/T0_P2_AUTO0721.SAV) | `run-exp-two-humans` (repo `ic2-conquest`) | 1 |
 | [`T0_P2_WAR.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-two-humans/T0_P2_WAR.SAV) | `run-exp-two-humans` (repo `ic2-conquest`) | 1 |
+| [`T1_0720_s02_Ptolemaic.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-fleet-battles/T1_0720_s02_Ptolemaic.SAV) | `run-exp-fleet-battles` (repo `ic2-conquest`) | 1 |
+| [`T1_0720_s13_Carthage.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-fleet-battles/T1_0720_s13_Carthage.SAV) | `run-exp-fleet-battles` (repo `ic2-conquest`) | 1 |
+| [`T1_0721_s02_Ptolemaic.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-fleet-battles/T1_0721_s02_Ptolemaic.SAV) | `run-exp-fleet-battles` (repo `ic2-conquest`) | 1 |
+| [`T1_0721_s13_Carthage.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-fleet-battles/T1_0721_s13_Carthage.SAV) | `run-exp-fleet-battles` (repo `ic2-conquest`) | 1 |
+| [`T1_0722_s02_Ptolemaic.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-fleet-battles/T1_0722_s02_Ptolemaic.SAV) | `run-exp-fleet-battles` (repo `ic2-conquest`) | 1 |
+| [`T1_0722_s13_Carthage.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-fleet-battles/T1_0722_s13_Carthage.SAV) | `run-exp-fleet-battles` (repo `ic2-conquest`) | 1 |
+| [`T1_0723_s02_Ptolemaic.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-fleet-battles/T1_0723_s02_Ptolemaic.SAV) | `run-exp-fleet-battles` (repo `ic2-conquest`) | 1 |
+| [`fleets-adjacent-at-sea-0723.SAV`](https://github.com/diegoami/ic2-conquest/blob/edf6d34/saves/fleets-adjacent-at-sea-0723.SAV) | repo `ic2-conquest` `saves/` | 1 |
 
 ## Recordings
 
