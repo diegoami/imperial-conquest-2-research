@@ -117,6 +117,10 @@ A few small probe saves are committed in the fixtures repository itself rather t
 | [`G_TAX_MAX.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-unitmap-mouse/G_TAX_MAX.SAV) | `run-exp-unitmap-mouse` (repo `ic2-conquest`) | 1 |
 | [`G_TAX_MIN.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-unitmap-mouse/G_TAX_MIN.SAV) | `run-exp-unitmap-mouse` (repo `ic2-conquest`) | 1 |
 | [`T_SPLIT.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-unitmap-mouse/T_SPLIT.SAV) | `run-exp-unitmap-mouse` (repo `ic2-conquest`) | 1 |
+| [`B2_PEACE_GENUA_BEFORE.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-unitmap-mouse/B2_PEACE_GENUA_BEFORE.SAV) | `run-exp-unitmap-mouse` (repo `ic2-conquest`) | 1 |
+| [`B2_PEACE_GENUA_AFTER.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-unitmap-mouse/B2_PEACE_GENUA_AFTER.SAV) | `run-exp-unitmap-mouse` (repo `ic2-conquest`) | 1 |
+| [`B2_WAR_FELSINA_BEFORE.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-unitmap-mouse/B2_WAR_FELSINA_BEFORE.SAV) | `run-exp-unitmap-mouse` (repo `ic2-conquest`) | 1 |
+| [`B2_WAR_FELSINA_AFTER.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-unitmap-mouse/B2_WAR_FELSINA_AFTER.SAV) | `run-exp-unitmap-mouse` (repo `ic2-conquest`) | 1 |
 
 ## Recordings
 
