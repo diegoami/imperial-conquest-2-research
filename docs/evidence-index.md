@@ -8,6 +8,8 @@ The originals live in the repository [`diegoami/imp_conquest_fixtures`](https://
 
 ## The releases
 
+The release `run-exp-unitmap-mouse` is in `diegoami/ic2-conquest`, not in the fixtures repository: it holds one bot experiment's saves and screenshots, which are Wine-only evidence (retrieve it with `gh release download run-exp-unitmap-mouse --repo diegoami/ic2-conquest`).
+
 A few small probe saves are committed in the fixtures repository itself rather than in a release: `saves/new-game-probes/` (three new-game autosaves, 2026-09-29) and `saves/fortification-probe/` (a planted-order pair, 2026-09-29). Their rows in the table below link to the files in the repository.
 
 | Release | What it is | Saves | Screenshots | Recordings |
@@ -17,6 +19,7 @@ A few small probe saves are committed in the fixtures repository itself rather t
 | [`run-1-thracia`](https://github.com/diegoami/imp_conquest_fixtures/releases/tag/run-1-thracia) | Run 1 — Thracia (271 BC) | 13 | 0 | 0 |
 | [`run-1-ptolemy`](https://github.com/diegoami/imp_conquest_fixtures/releases/tag/run-1-ptolemy) | Run 1 — Ptolemaic (270 BC), the whole year | 45 | 0 | 22 |
 | [`legacy-probes`](https://github.com/diegoami/imp_conquest_fixtures/releases/tag/legacy-probes) | Legacy probes | 15 | 25 | 3 |
+| [`run-exp-unitmap-mouse`](https://github.com/diegoami/ic2-conquest/releases/tag/run-exp-unitmap-mouse) | Bot experiment (2026-10-01/02, **Wine-only**, repo `diegoami/ic2-conquest`): Unit-map mouse orders and the Taxation range, from the fixed-seed start save | 15 | 15 | 0 |
 
 ### Which release to reach for
 
@@ -106,6 +109,14 @@ A few small probe saves are committed in the fixtures repository itself rather t
 | [`1_thracia_271_summer_3.sav`](https://github.com/diegoami/imp_conquest_fixtures/releases/download/run-1-thracia/1_thracia_271_summer_3.sav) | `run-1-thracia` | — |
 | [`1_thracia_271_summer_5.sav`](https://github.com/diegoami/imp_conquest_fixtures/releases/download/run-1-thracia/1_thracia_271_summer_5.sav) | `run-1-thracia` | — |
 | [`1_thracia_271_summer_7.sav`](https://github.com/diegoami/imp_conquest_fixtures/releases/download/run-1-thracia/1_thracia_271_summer_7.sav) | `run-1-thracia` | — |
+| [`A_AFTER_CLICKS.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-unitmap-mouse/A_AFTER_CLICKS.SAV) | `run-exp-unitmap-mouse` (repo `ic2-conquest`) | 1 |
+| [`B2_PEACE_GENUA_AFTER_NO.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-unitmap-mouse/B2_PEACE_GENUA_AFTER_NO.SAV) | `run-exp-unitmap-mouse` (repo `ic2-conquest`) | 1 |
+| [`C_AFTER_RIGHT_CLICK.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-unitmap-mouse/C_AFTER_RIGHT_CLICK.SAV) | `run-exp-unitmap-mouse` (repo `ic2-conquest`) | 1 |
+| [`D_AFTER_SHIFT_X.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-unitmap-mouse/D_AFTER_SHIFT_X.SAV) | `run-exp-unitmap-mouse` (repo `ic2-conquest`) | 1 |
+| [`E_AFTER_SPLIT.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-unitmap-mouse/E_AFTER_SPLIT.SAV) | `run-exp-unitmap-mouse` (repo `ic2-conquest`) | 1 |
+| [`G_TAX_MAX.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-unitmap-mouse/G_TAX_MAX.SAV) | `run-exp-unitmap-mouse` (repo `ic2-conquest`) | 1 |
+| [`G_TAX_MIN.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-unitmap-mouse/G_TAX_MIN.SAV) | `run-exp-unitmap-mouse` (repo `ic2-conquest`) | 1 |
+| [`T_SPLIT.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-unitmap-mouse/T_SPLIT.SAV) | `run-exp-unitmap-mouse` (repo `ic2-conquest`) | 1 |
 
 ## Recordings
 
@@ -138,6 +149,7 @@ The two `.txt` files in `legacy-probes` — `11_supply.txt` and `12_ptol.txt` �
 | [`run-1-rome`](https://github.com/diegoami/imp_conquest_fixtures/releases/tag/run-1-rome) | `1_rome_270_autumn_1_1.png`, `1_rome_270_autumn_3_1.png`, `1_rome_270_autumn_7_1.png`, `1_rome_270_summer_7_1.png`, `1_rome_270_summer_9_1.png` |
 | [`run-1-cartago`](https://github.com/diegoami/imp_conquest_fixtures/releases/tag/run-1-cartago) | `1_cartago_271_spring_1b_1.png`, `1_cartago_271_spring_3_1.png` |
 | [`legacy-probes`](https://github.com/diegoami/imp_conquest_fixtures/releases/tag/legacy-probes) | `11_supply.1.png`, `11_supply.2.png`, `11_supply.3.png`, `11_supply.4.png`, `11_supply.5.png`, `11_supply.6.png`, `11_supply.7.png`, `11_supply.8.png`, `11_supply.txt`, `12_ptol.1.png`, `12_ptol.txt`, `12_ptol_2.png`, `12_ptol_3.png`, `12_rom_1.png`, `12_rom_2.png`, `12_rom_3.png`, `7.1.png`, `7.2.png`, `7.3.png`, `7.4.png`, `7.5.png`, `7.6.png`, `7.7.png`, `7.8.png`, `Initial_world.1.png` |
+| [`run-exp-unitmap-mouse`](https://github.com/diegoami/ic2-conquest/releases/tag/run-exp-unitmap-mouse) (repo `ic2-conquest`) | `A_1_selected.png`, `A_2_after_moves.png`, `B2_PEACE_GENUA_click1.png`, `B2_PEACE_GENUA_click2.png`, `B2_WAR_FELSINA_click1.png`, `B_control_after_click.png`, `B_test_prompt.png`, `C_1_left_click.png`, `C_2_right_click.png`, `D_1_selected.png`, `D_2_after_shift_x.png`, `tax_end.png`, `tax_home.png`, `tax_open.png`, `X_end_turn_supplies_prompt.png` |
 
 ## Retrieving a file
 
