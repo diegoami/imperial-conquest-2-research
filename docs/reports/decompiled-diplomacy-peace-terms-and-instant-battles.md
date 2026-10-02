@@ -207,7 +207,7 @@ The helpers, from their own listings `[confirmed]`: `FUN_0044A66C(army)` returns
 
 **The storm reuses this function, with the arguments the other way round from the battle `[confirmed]`.** `FUN_004514EC`'s fleet tick (`0x00451823`–`0x00451832`: `MOV CX,[ESP+2]; ADD CX,0x64; MOV DX,0x64; MOV EAX,EDI; CALL 0x0044B4F8`) calls **`FUN_0044B4F8(fleet, 100, dmg + 100)`** for `dmg ≥ 6` (`CMP [ESP+2],5; JLE` at `0x0045181B`). So `r = 10000 / (dmg + 100)`, and `d` *falls* as `dmg` rises `[derived]`: `dmg` 7 → `d` 86, 9 → 82, 11 → 81, 13 → 77, 15 → 73, 17 → 72, and the winter spike 30 → 57. (Per [supply-driven-morale-and-fleet-attrition.md](supply-driven-morale-and-fleet-attrition.md), `dmg ≥ 6` is reached only away from a friendly coast, where it is odd, or through the winter spike.) Every heavy storm except the winter spike therefore has `d > 70`. An army aboard takes `FUN_0044AE20` at that `d` and loses `n + 1` whole units, the same as a winning fleet's army.
 
-The loser's fleet is destroyed outright regardless of margin — there is no partial naval defeat. Nothing in `docs/game-design.md` covers naval combat at all.
+The loser's fleet is destroyed outright regardless of margin — there is no partial naval defeat. **Run live (2026-10-02, Wine-only):** 160 battles between two fleets at war reproduce the winner's damage exactly in every case, and their win rates fit this discrete bonus rule with ties to the defender: [2026-10-02-naval-battles.md](2026-10-02-naval-battles.md), [2026-10-02-naval-battle-random-term.md](2026-10-02-naval-battle-random-term.md). Nothing in `docs/game-design.md` covers naval combat at all.
 
 ## Victory condition — it is in the code
 
