@@ -21,6 +21,8 @@ A few small probe saves are committed in the fixtures repository itself rather t
 | [`legacy-probes`](https://github.com/diegoami/imp_conquest_fixtures/releases/tag/legacy-probes) | Legacy probes | 15 | 25 | 3 |
 | [`run-exp-unitmap-mouse`](https://github.com/diegoami/ic2-conquest/releases/tag/run-exp-unitmap-mouse) | Bot experiment (2026-10-01/02, **Wine-only**, repo `diegoami/ic2-conquest`): Unit-map mouse orders and the Taxation range, from the fixed-seed start save | 15 | 15 | 0 |
 | [`run-exp-fleet-orders`](https://github.com/diegoami/ic2-conquest/releases/tag/run-exp-fleet-orders) | Bot experiment (2026-10-02, **Wine-only**, repo `diegoami/ic2-conquest`): fleet orders live (launch, embark/unload, supply, repair, split, join, transfer, scuttle) | 12 | 11 | 0 |
+| [`run-exp-civ-sweep`](https://github.com/diegoami/ic2-conquest/releases/tag/run-exp-civ-sweep) | Bot experiment (2026-10-02, **Wine-only**, repo `diegoami/ic2-conquest`): New Game as each of the 16 nations, two turns each | 48 | 28 | 0 |
+| [`run-exp-two-humans`](https://github.com/diegoami/ic2-conquest/releases/tag/run-exp-two-humans) | Bot experiment (2026-10-02, **Wine-only**, repo `diegoami/ic2-conquest`): two human seats (Carthage + Ptolemaic) | 4 | 6 | 0 |
 
 ### Which release to reach for
 
@@ -136,6 +138,26 @@ A few small probe saves are committed in the fixtures repository itself rather t
 | [`T_TRANSFER_SHIPS.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-fleet-orders/T_TRANSFER_SHIPS.SAV) | `run-exp-fleet-orders` (repo `ic2-conquest`) | 1 |
 | [`fleet-port-antium-0734.SAV`](https://github.com/diegoami/ic2-conquest/blob/feat/fleet-orders/saves/fleet-port-antium-0734.SAV) | repo `ic2-conquest` `saves/` | 1 |
 | [`fleet-split-antium-0734.SAV`](https://github.com/diegoami/ic2-conquest/blob/feat/fleet-orders/saves/fleet-split-antium-0734.SAV) | repo `ic2-conquest` `saves/` | 1 |
+| [`S00_Rome_AUTO0720.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-civ-sweep/S00_Rome_AUTO0720.SAV) | `run-exp-civ-sweep` (repo `ic2-conquest`) | 1 |
+| [`S01_Carthage_AUTO0720.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-civ-sweep/S01_Carthage_AUTO0720.SAV) | `run-exp-civ-sweep` (repo `ic2-conquest`) | 1 |
+| [`S02_Seleucid_AUTO0720.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-civ-sweep/S02_Seleucid_AUTO0720.SAV) | `run-exp-civ-sweep` (repo `ic2-conquest`) | 1 |
+| [`S03_Ptolemaic_AUTO0720.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-civ-sweep/S03_Ptolemaic_AUTO0720.SAV) | `run-exp-civ-sweep` (repo `ic2-conquest`) | 1 |
+| [`S04_Macedonia_AUTO0720.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-civ-sweep/S04_Macedonia_AUTO0720.SAV) | `run-exp-civ-sweep` (repo `ic2-conquest`) | 1 |
+| [`S05_Numidia_AUTO0720.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-civ-sweep/S05_Numidia_AUTO0720.SAV) | `run-exp-civ-sweep` (repo `ic2-conquest`) | 1 |
+| [`S06_Gaul_AUTO0720.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-civ-sweep/S06_Gaul_AUTO0720.SAV) | `run-exp-civ-sweep` (repo `ic2-conquest`) | 1 |
+| [`S07_Greece_AUTO0720.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-civ-sweep/S07_Greece_AUTO0720.SAV) | `run-exp-civ-sweep` (repo `ic2-conquest`) | 1 |
+| [`S08_Celtiberia_AUTO0720.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-civ-sweep/S08_Celtiberia_AUTO0720.SAV) | `run-exp-civ-sweep` (repo `ic2-conquest`) | 1 |
+| [`S09_Illyria_AUTO0720.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-civ-sweep/S09_Illyria_AUTO0720.SAV) | `run-exp-civ-sweep` (repo `ic2-conquest`) | 1 |
+| [`S10_Dacia_AUTO0720.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-civ-sweep/S10_Dacia_AUTO0720.SAV) | `run-exp-civ-sweep` (repo `ic2-conquest`) | 1 |
+| [`S11_Bithynia_AUTO0720.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-civ-sweep/S11_Bithynia_AUTO0720.SAV) | `run-exp-civ-sweep` (repo `ic2-conquest`) | 1 |
+| [`S12_Galatia_AUTO0720.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-civ-sweep/S12_Galatia_AUTO0720.SAV) | `run-exp-civ-sweep` (repo `ic2-conquest`) | 1 |
+| [`S13_Armenia_AUTO0720.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-civ-sweep/S13_Armenia_AUTO0720.SAV) | `run-exp-civ-sweep` (repo `ic2-conquest`) | 1 |
+| [`S14_Media_AUTO0720.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-civ-sweep/S14_Media_AUTO0720.SAV) | `run-exp-civ-sweep` (repo `ic2-conquest`) | 1 |
+| [`S15_Thracia_AUTO0720.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-civ-sweep/S15_Thracia_AUTO0720.SAV) | `run-exp-civ-sweep` (repo `ic2-conquest`) | 1 |
+| [`T0_AUTO0720.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-two-humans/T0_AUTO0720.SAV) | `run-exp-two-humans` (repo `ic2-conquest`) | 1 |
+| [`T0_NEWGAME_AUTO0720.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-two-humans/T0_NEWGAME_AUTO0720.SAV) | `run-exp-two-humans` (repo `ic2-conquest`) | 1 |
+| [`T0_P2_AUTO0721.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-two-humans/T0_P2_AUTO0721.SAV) | `run-exp-two-humans` (repo `ic2-conquest`) | 1 |
+| [`T0_P2_WAR.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-two-humans/T0_P2_WAR.SAV) | `run-exp-two-humans` (repo `ic2-conquest`) | 1 |
 
 ## Recordings
 
@@ -170,6 +192,8 @@ The two `.txt` files in `legacy-probes` â€” `11_supply.txt` and `12_ptol.txt` â€
 | [`legacy-probes`](https://github.com/diegoami/imp_conquest_fixtures/releases/tag/legacy-probes) | `11_supply.1.png`, `11_supply.2.png`, `11_supply.3.png`, `11_supply.4.png`, `11_supply.5.png`, `11_supply.6.png`, `11_supply.7.png`, `11_supply.8.png`, `11_supply.txt`, `12_ptol.1.png`, `12_ptol.txt`, `12_ptol_2.png`, `12_ptol_3.png`, `12_rom_1.png`, `12_rom_2.png`, `12_rom_3.png`, `7.1.png`, `7.2.png`, `7.3.png`, `7.4.png`, `7.5.png`, `7.6.png`, `7.7.png`, `7.8.png`, `Initial_world.1.png` |
 | [`run-exp-unitmap-mouse`](https://github.com/diegoami/ic2-conquest/releases/tag/run-exp-unitmap-mouse) (repo `ic2-conquest`) | `A_1_selected.png`, `A_2_after_moves.png`, `B2_PEACE_GENUA_click1.png`, `B2_PEACE_GENUA_click2.png`, `B2_WAR_FELSINA_click1.png`, `B_control_after_click.png`, `B_test_prompt.png`, `C_1_left_click.png`, `C_2_right_click.png`, `D_1_selected.png`, `D_2_after_shift_x.png`, `tax_end.png`, `tax_home.png`, `tax_open.png`, `X_end_turn_supplies_prompt.png` |
 | [`run-exp-fleet-orders`](https://github.com/diegoami/ic2-conquest/releases/tag/run-exp-fleet-orders) (repo `ic2-conquest`) | `disembark.png`, `embark_box.png`, `embark_ok.png`, `fleet4_join.png`, `fleet4_repair.png`, `fleet4_scuttle.png`, `fleet4_supply.png`, `fleet4_transfer.png`, `fleet_sel.png`, `fleet_split.png`, `sp2_all.png` |
+| [`run-exp-civ-sweep`](https://github.com/diegoami/ic2-conquest/releases/tag/run-exp-civ-sweep) (repo `ic2-conquest`) | `S00_Rome_army_selected.png`, `S00_Rome_recruit.png`, `S01_Carthage_army_selected.png`, `S01_Carthage_recruit.png`, `S02_Seleucid_army_selected.png`, `S02_Seleucid_recruit.png`, `S03_Ptolemaic_army_selected.png`, `S03_Ptolemaic_recruit.png`, `S04_Macedonia_army_selected.png`, `S04_Macedonia_recruit.png`, `S05_Numidia_recruit.png`, `S06_Gaul_army_selected.png`, `S06_Gaul_recruit.png`, `S07_Greece_recruit.png`, `S08_Celtiberia_army_selected.png`, `S08_Celtiberia_recruit.png`, `S09_Illyria_recruit.png`, `S10_Dacia_end_turn_stuck.png`, `S10_Dacia_recruit.png`, `S11_Bithynia_army_selected.png`, `S11_Bithynia_recruit.png`, `S12_Galatia_army_selected.png`, `S12_Galatia_recruit.png`, `S13_Armenia_recruit.png`, `S14_Media_army_selected.png`, `S14_Media_recruit.png`, `S15_Thracia_army_selected.png`, `S15_Thracia_recruit.png` |
+| [`run-exp-two-humans`](https://github.com/diegoami/ic2-conquest/releases/tag/run-exp-two-humans) (repo `ic2-conquest`) | `t0_after_A_end.png`, `t0_final.png`, `t0_p2_after_war.png`, `t0_p2_next_round.png`, `t0_relations_dialog_carthage.png`, `t0_seatA.png` |
 
 ## Retrieving a file
 

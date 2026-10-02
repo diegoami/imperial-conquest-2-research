@@ -58,7 +58,7 @@ The quarterly tick (`FUN_00451B40`, the function in `decompiled-quarterly-billin
 
 `TPolitics_OK` (`0x00453230`) commits the row. Notably, if you open trade with a nation that already has three partners, **that nation drops its poorest existing partner** — the one with the lowest nation field `+0x44C` (wealth) — back to peace.
 
-Declaring war is not only done from this screen: `TUnitMap_SelectUnit` auto-declares it. Clicking an enemy city, army or fleet with your own unit selected prompts *"Are you sure you want to attack this …?"* and, on yes, calls `FUN_00449B40(you, them, 3)` before resolving the attack. Attacking **is** declaring war, with the ally-dragging propagation above. A live run confirmed the box and the relation change, and found that **no box appears when the target is already at war**: [2026-10-02-unit-map-mouse-orders-and-tax-range.md](2026-10-02-unit-map-mouse-orders-and-tax-range.md) (Wine-only).
+Declaring war is not only done from this screen: `TUnitMap_SelectUnit` auto-declares it. Clicking an enemy city, army or fleet with your own unit selected prompts *"Are you sure you want to attack this …?"* and, on yes, calls `FUN_00449B40(you, them, 3)` before resolving the attack. Attacking **is** declaring war, with the ally-dragging propagation above. Between two human seats a war order is likewise immediate and symmetric (both relation entries become 3), run live in [2026-10-02-two-human-seats.md](2026-10-02-two-human-seats.md). A live run confirmed the box and the relation change, and found that **no box appears when the target is already at war**: [2026-10-02-unit-map-mouse-orders-and-tax-range.md](2026-10-02-unit-map-mouse-orders-and-tax-range.md) (Wine-only).
 
 ## The peace treaty and the reparation formula
 

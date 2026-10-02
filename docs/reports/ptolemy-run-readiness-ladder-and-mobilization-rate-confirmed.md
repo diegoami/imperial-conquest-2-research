@@ -103,7 +103,7 @@ the wealth regime where the truncation actually bites.
 ## 4. What did not reconcile
 
 **A 3-talent treasury gap.** The nation panel at `t=250s` reads `Treasury 615 talents`. `IP000B.sav`,
-written at `t=292s` of the same recording, holds **618**. `IP000.sav` holds 4,900, so the turn spent
+written at `t=292s` of the same recording, holds **618**. `IP000.sav` holds 4,900 (the same 4,900 as a fresh New Game started as the Ptolemaic nation: [2026-10-02-start-as-each-nation.md](2026-10-02-start-as-each-nation.md)), so the turn spent
 4,282 talents and the direction is not in doubt — but 615 and 618 are 42 seconds and an unknown number
 of clicks apart, and nothing in this pass accounts for the difference. **Recorded, not resolved.**
 

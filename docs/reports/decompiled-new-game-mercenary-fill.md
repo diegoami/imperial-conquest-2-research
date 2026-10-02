@@ -77,6 +77,7 @@ for slot in 0..49:                               // live slot s at 0x0049DA10 + 
   | left empty (p = 8/54) | `Random(6)`, `Random(9)` | 2 |
 
   That averages 3.72 draws a slot, about 186 for the fill. `[derived]`
+- **Seen live:** with the seed fixed, all sixteen New Game starts share one turn order, and each nation's start is the world after the AI seats before it have moved ([2026-10-02-start-as-each-nation.md](2026-10-02-start-as-each-nation.md)).
 - **Where it sits among New Game's draws:** `Randomize` (`nl:20`), **then this fill** (`nl:31`), then the weather overlay (`nl:32`), then 16 × `Random(12)` for the leaders (`nl:37`), then 16 × `Random(16)` for the turn-order shuffle (`nl:82`). The fill is the first thing to draw from the fresh seed. `[confirmed: code]`
 
 `Random(n)` is Delphi's `System.Random` (`FUN_0040284C`), `0 ≤ r < n`, as established in the restock report.

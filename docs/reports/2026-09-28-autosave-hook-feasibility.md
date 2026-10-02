@@ -105,7 +105,7 @@ The cave, in order:
 
 **Known behaviour worth stating.**
 
-- *Hot-seat* (several human nations): each human seat gets the same `nnnn`, so the last seat's save wins. The log shows every firing.
+- *Hot-seat* (several human nations): each human seat gets the same `nnnn`, so the last seat's save wins. The log shows every firing. **Run live (2026-10-02):** the second human's autosave overwrote the first's, as predicted ([2026-10-02-two-human-seats.md](2026-10-02-two-human-seats.md)).
 - *Reload and replay*: replaying a turn overwrites `AUTOnnnn.SAV` with the new line of play. The log keeps both lines.
 - The cave does not call `StoreFormPositions`, which records the current nation's window layout into its record and would record the wrong nation in hot-seat. In the single-player runs the files were identical anyway.
 
