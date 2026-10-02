@@ -100,6 +100,8 @@ if (fleet[+22] == -1) {                                  // fleet not already ca
 
 So a fleet carries **one army**, up to **500 troops per ship** — the same `ships × 500` number `fleet-order-at-caere.md` recorded as the order dialog's "5,000 soldiers", now confirmed as a real enforced capacity rather than a display value. `FUN_0044B79C` zeroes the fleet's moves, sets `fleet[+22] = armyIndex`, restores the army's covered map cell and sets `army[+8] = -1`, snaps the army's coordinates to the fleet's, zeroes the army's moves, and — for an AI nation only — trims the army to `ships × 500` troops if it is over capacity (`FUN_0044F8FC`). Everything downstream keys off those two fields: an embarked army cannot be joined, a carrying fleet cannot be repaired, scuttled, split or joined, and deleting a carrying fleet deletes the army with it (`FUN_0044AD38` → `FUN_0044AB90`).
 
+The fleet orders above were run live, and agree with this code reading: [2026-10-02-fleet-orders-live.md](2026-10-02-fleet-orders-live.md) (Wine-only).
+
 ### City fortification — a build order, and the field's dual encoding
 
 `TUnitMap_Fortify` (`0x00448004`) → `TFortifyCity` (`0x004404C0`):

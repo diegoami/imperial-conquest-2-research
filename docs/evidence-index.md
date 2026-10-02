@@ -8,7 +8,7 @@ The originals live in the repository [`diegoami/imp_conquest_fixtures`](https://
 
 ## The releases
 
-The release `run-exp-unitmap-mouse` is in `diegoami/ic2-conquest`, not in the fixtures repository: it holds one bot experiment's saves and screenshots, which are Wine-only evidence (retrieve it with `gh release download run-exp-unitmap-mouse --repo diegoami/ic2-conquest`).
+The releases `run-exp-*` are in `diegoami/ic2-conquest`, not in the fixtures repository: each holds one bot experiment's saves and screenshots, which are Wine-only evidence (retrieve with `gh release download <tag> --repo diegoami/ic2-conquest`).
 
 A few small probe saves are committed in the fixtures repository itself rather than in a release: `saves/new-game-probes/` (three new-game autosaves, 2026-09-29) and `saves/fortification-probe/` (a planted-order pair, 2026-09-29). Their rows in the table below link to the files in the repository.
 
@@ -20,6 +20,7 @@ A few small probe saves are committed in the fixtures repository itself rather t
 | [`run-1-ptolemy`](https://github.com/diegoami/imp_conquest_fixtures/releases/tag/run-1-ptolemy) | Run 1 — Ptolemaic (270 BC), the whole year | 45 | 0 | 22 |
 | [`legacy-probes`](https://github.com/diegoami/imp_conquest_fixtures/releases/tag/legacy-probes) | Legacy probes | 15 | 25 | 3 |
 | [`run-exp-unitmap-mouse`](https://github.com/diegoami/ic2-conquest/releases/tag/run-exp-unitmap-mouse) | Bot experiment (2026-10-01/02, **Wine-only**, repo `diegoami/ic2-conquest`): Unit-map mouse orders and the Taxation range, from the fixed-seed start save | 15 | 15 | 0 |
+| [`run-exp-fleet-orders`](https://github.com/diegoami/ic2-conquest/releases/tag/run-exp-fleet-orders) | Bot experiment (2026-10-02, **Wine-only**, repo `diegoami/ic2-conquest`): fleet orders live (launch, embark/unload, supply, repair, split, join, transfer, scuttle) | 12 | 11 | 0 |
 
 ### Which release to reach for
 
@@ -121,6 +122,20 @@ A few small probe saves are committed in the fixtures repository itself rather t
 | [`B2_PEACE_GENUA_AFTER.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-unitmap-mouse/B2_PEACE_GENUA_AFTER.SAV) | `run-exp-unitmap-mouse` (repo `ic2-conquest`) | 1 |
 | [`B2_WAR_FELSINA_BEFORE.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-unitmap-mouse/B2_WAR_FELSINA_BEFORE.SAV) | `run-exp-unitmap-mouse` (repo `ic2-conquest`) | 1 |
 | [`B2_WAR_FELSINA_AFTER.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-unitmap-mouse/B2_WAR_FELSINA_AFTER.SAV) | `run-exp-unitmap-mouse` (repo `ic2-conquest`) | 1 |
+| [`FLEET.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-fleet-orders/FLEET.SAV) | `run-exp-fleet-orders` (repo `ic2-conquest`) | 1 |
+| [`FLEET2.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-fleet-orders/FLEET2.SAV) | `run-exp-fleet-orders` (repo `ic2-conquest`) | 1 |
+| [`T_DISEMBARK.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-fleet-orders/T_DISEMBARK.SAV) | `run-exp-fleet-orders` (repo `ic2-conquest`) | 1 |
+| [`T_EMBARK.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-fleet-orders/T_EMBARK.SAV) | `run-exp-fleet-orders` (repo `ic2-conquest`) | 1 |
+| [`T_EMBARK_REFUSED.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-fleet-orders/T_EMBARK_REFUSED.SAV) | `run-exp-fleet-orders` (repo `ic2-conquest`) | 1 |
+| [`T_JOIN_FLEETS.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-fleet-orders/T_JOIN_FLEETS.SAV) | `run-exp-fleet-orders` (repo `ic2-conquest`) | 1 |
+| [`T_MOVE_FLEET.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-fleet-orders/T_MOVE_FLEET.SAV) | `run-exp-fleet-orders` (repo `ic2-conquest`) | 1 |
+| [`T_REPAIR_FLEET.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-fleet-orders/T_REPAIR_FLEET.SAV) | `run-exp-fleet-orders` (repo `ic2-conquest`) | 1 |
+| [`T_SCUTTLE_FLEET.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-fleet-orders/T_SCUTTLE_FLEET.SAV) | `run-exp-fleet-orders` (repo `ic2-conquest`) | 1 |
+| [`T_SPLIT_FLEET.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-fleet-orders/T_SPLIT_FLEET.SAV) | `run-exp-fleet-orders` (repo `ic2-conquest`) | 1 |
+| [`T_SUPPLY_FLEET.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-fleet-orders/T_SUPPLY_FLEET.SAV) | `run-exp-fleet-orders` (repo `ic2-conquest`) | 1 |
+| [`T_TRANSFER_SHIPS.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-fleet-orders/T_TRANSFER_SHIPS.SAV) | `run-exp-fleet-orders` (repo `ic2-conquest`) | 1 |
+| [`fleet-port-antium-0734.SAV`](https://github.com/diegoami/ic2-conquest/blob/feat/fleet-orders/saves/fleet-port-antium-0734.SAV) | repo `ic2-conquest` `saves/` | 1 |
+| [`fleet-split-antium-0734.SAV`](https://github.com/diegoami/ic2-conquest/blob/feat/fleet-orders/saves/fleet-split-antium-0734.SAV) | repo `ic2-conquest` `saves/` | 1 |
 
 ## Recordings
 
@@ -154,6 +169,7 @@ The two `.txt` files in `legacy-probes` — `11_supply.txt` and `12_ptol.txt` �
 | [`run-1-cartago`](https://github.com/diegoami/imp_conquest_fixtures/releases/tag/run-1-cartago) | `1_cartago_271_spring_1b_1.png`, `1_cartago_271_spring_3_1.png` |
 | [`legacy-probes`](https://github.com/diegoami/imp_conquest_fixtures/releases/tag/legacy-probes) | `11_supply.1.png`, `11_supply.2.png`, `11_supply.3.png`, `11_supply.4.png`, `11_supply.5.png`, `11_supply.6.png`, `11_supply.7.png`, `11_supply.8.png`, `11_supply.txt`, `12_ptol.1.png`, `12_ptol.txt`, `12_ptol_2.png`, `12_ptol_3.png`, `12_rom_1.png`, `12_rom_2.png`, `12_rom_3.png`, `7.1.png`, `7.2.png`, `7.3.png`, `7.4.png`, `7.5.png`, `7.6.png`, `7.7.png`, `7.8.png`, `Initial_world.1.png` |
 | [`run-exp-unitmap-mouse`](https://github.com/diegoami/ic2-conquest/releases/tag/run-exp-unitmap-mouse) (repo `ic2-conquest`) | `A_1_selected.png`, `A_2_after_moves.png`, `B2_PEACE_GENUA_click1.png`, `B2_PEACE_GENUA_click2.png`, `B2_WAR_FELSINA_click1.png`, `B_control_after_click.png`, `B_test_prompt.png`, `C_1_left_click.png`, `C_2_right_click.png`, `D_1_selected.png`, `D_2_after_shift_x.png`, `tax_end.png`, `tax_home.png`, `tax_open.png`, `X_end_turn_supplies_prompt.png` |
+| [`run-exp-fleet-orders`](https://github.com/diegoami/ic2-conquest/releases/tag/run-exp-fleet-orders) (repo `ic2-conquest`) | `disembark.png`, `embark_box.png`, `embark_ok.png`, `fleet4_join.png`, `fleet4_repair.png`, `fleet4_scuttle.png`, `fleet4_supply.png`, `fleet4_transfer.png`, `fleet_sel.png`, `fleet_split.png`, `sp2_all.png` |
 
 ## Retrieving a file
 

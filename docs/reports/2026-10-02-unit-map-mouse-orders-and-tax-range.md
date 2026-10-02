@@ -1,6 +1,6 @@
 # The Unit map's mouse orders (select, move, attack prompt, Shift+X, split position) and the Taxation range, measured live
 
-**Status:** promoted from the `ic2-conquest` draft of the same name (branch `experiment/unit-map-mouse`, commit `0a404f2`). **Wine-only: every result below is a candidate until the desktop original confirms it.** It answers the questions (a)–(e) and (g) relayed from the `imperial_conquest_2` main session for the clone's click-army-then-target model (bug #555 depends on (e); task T103 on (g)). **(f) (embark and unload by click) was not run.**
+**Status:** promoted from the `ic2-conquest` draft of the same name (branch `experiment/unit-map-mouse`, commit `0a404f2`). **Wine-only: every result below is a candidate until the desktop original confirms it.** It answers the questions (a)–(e) and (g) relayed from the `imperial_conquest_2` main session for the clone's click-army-then-target model (bug #555 depends on (e); task T103 on (g)). **(f) (embark and unload by click) was not run here; it is answered in [2026-10-02-fleet-orders-live.md](2026-10-02-fleet-orders-live.md).**
 
 **Answer.**
 - **(a)** With an army selected, a left-click on a reachable tile moves it at once; the army **stays selected while it has moves left** and is **deselected when its moves reach 0**.
