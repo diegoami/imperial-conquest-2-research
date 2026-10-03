@@ -208,6 +208,33 @@ Ordered by (value of the unknown) × (how directly a known form/string points at
 
     See [decompiled-new-game-mercenary-fill.md](reports/decompiled-new-game-mercenary-fill.md), for build repo [#457](https://github.com/diegoami/imperial_conquest_2/issues/457).
 
+27. [x] **How does New Game shuffle the turn order? Done 2026-10-03: a 16-swap shuffle on `Random(16)`, not Fisher–Yates.** Re-read `FUN_00448AA4` (`nl:72–86`), `TPremierForm_NewGame`, `TPremierForm_EndTurn`, `FUN_0044FA20`, `Random`/`Randomize`, and every reference to `0x0049EFE8`.
+    - The order starts as `0..15`. Then, for `i = 0..15`, the code swaps `order[i]` with `order[Random(16)]`. It runs after `Randomize`, the mercenary fill, the Spring week-1 weather overlay and the 16 leader draws, and before the New Game form, so the human's choice cannot change it.
+    - Nothing else writes the order. It is saved as 16 × int16 at `len − 55`.
+    - The replay `scripts/new-game-draw-chain.py` reproduces seed 12345 (436 draws before the shuffle). A search of all 86.4 M clock seeds recovers the seeds of two unpatched desktop games (`IP000.sav`, `1.sav`) from their leaders alone. Each recovered seed then reproduces that game's turn order, filled-slot count and storm cells.
+
+    See [2026-10-03-new-game-turn-order-shuffle.md](reports/2026-10-03-new-game-turn-order-shuffle.md), for build repo [#602](https://github.com/diegoami/imperial_conquest_2/issues/602).
+
+28. [x] **What does Army to army transfer's `OK` do with supply and money? Done 2026-10-03: the selected army pushes first, and the excess stays on it.** Re-read all `TArmyToArmy` methods, `FUN_00441B50`, `TUnitMap_ArmyToArmyTransfer`/`SplitArmy`, `FUN_0044A698`, `FUN_0044AB90`. Exported `FUN_00442310`, the dialog's supply room.
+    - Each army is capped at `troops div 100`, the selected army A first, then the partner B, each pushing its excess to the other. Both over: B ends at `capB` and A at `S − capB`.
+    - Money is never rebalanced.
+    - An emptied army's supply and money merge, uncapped, into the survivor.
+    - `OK` never refuses. The refusals are the menu gate (an own army at Chebyshev distance 1) and the per-unit limits (20 units, 100,000 troops, fleet capacity, regular disband near an own city).
+    - The dialog steppers: supply room `max(0, T div 100 − s + 1)`; money room `1000 − m`, unfloored.
+    - Corrects the "readiness-derived threshold" in `army-to-army-transfer-confirmed.md`.
+
+    See [2026-10-03-army-to-army-ok-supply-rebalancing.md](reports/2026-10-03-army-to-army-ok-supply-rebalancing.md), for build repo [#619](https://github.com/diegoami/imperial_conquest_2/issues/619).
+
+29. [x] **What opens the "End turn ?" box? Done 2026-10-03: six per-record triggers, human seats only, at most five lines.** Re-read `FUN_0045AF00`, `FUN_0045AE68`/`FUN_00459740`, the `TToEndTurn` methods and their `TPF0` resource, and the helpers `FUN_0044AAB4`, `FUN_0044AB0C`, `FUN_0044E670`, `FUN_0044E9A8`, `FUN_0044E920`, `FUN_004496BC`.
+    - Only records that have not acted this week are checked.
+    - Land army (not aboard): supply under 20 % of capacity (`500 × supplies < troops`) while the nation owns a city; purse below one round of mercenary pay.
+    - Launched fleet: no own city in its 3 × 3; supplies `< ships div 5` while the nation owns a port.
+    - Aboard army: the same two army tests, gated on the fleet.
+    - "Needs repairing" (`condition < 65`) is a line, never a trigger.
+    - End turn proceeds; Make more moves aborts.
+
+    See [2026-10-03-end-turn-warning-box.md](reports/2026-10-03-end-turn-warning-box.md), for build repo [#586](https://github.com/diegoami/imperial_conquest_2/issues/586).
+
 ## Method, per target
 
 1. Locate the form/procedure the same way prior reports did: Delphi RTTI method-name tables, the `TMainMenu`/form-adjacent streams, or a literal-string cross-reference (e.g. searching for dialog text like "quarterly", "Current tax", "New income") to find the owning code.
