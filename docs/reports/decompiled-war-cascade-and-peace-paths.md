@@ -84,6 +84,8 @@ A caller can still call the setter several times in a loop (`TPolitics_OK` walks
 | X–D | **peace** | war: `DeclareWar(X, C)` recurses into C's ally D |
 | News | "X declares war on A." / "X declares war on B." | the same two, then "X declares war on C." / "X declares war on D." |
 
+*Seen live (2026-10-03):* a declared war on Carthage dragged in its ally Numidia and not the nation on trade terms, with the two news lines in the order the setter prints them ([2026-10-03-fleet-peace-prompt.md](2026-10-03-fleet-peace-prompt.md)); the chain case above was not run.
+
 The original therefore leaves B at war with X while B is still allied to C, and C at peace with X. Nothing later corrects that. The AI's own turn has no "join an ally's war" rule, and its alliance pick only allies **with** a nation's enemy ([decompiled-ai-offers-to-human-seats.md](decompiled-ai-offers-to-human-seats.md) §1a) `[original: confirmed; engine: read from RelationTransitions.cs:211–244]`.
 
 **The alliance cascade.** A is at war with X, and X is allied to Z. Y forms an alliance with A.

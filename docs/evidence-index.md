@@ -28,6 +28,7 @@ A few small probe saves are committed in the fixtures repository itself rather t
 | [`run-exp-naval-battle-cargo`](https://github.com/diegoami/ic2-conquest/releases/tag/run-exp-naval-battle-cargo) | Bot experiment (2026-10-02/03, **Wine-only**, repo `diegoami/ic2-conquest`): 80 naval battles with an army aboard (a synthetic cargo edit), the eight fixtures and a natural-embark check (`t3_trials.json`) | 27 | 0 | 0 |
 | [`run-exp-storms`](https://github.com/diegoami/ic2-conquest/releases/tag/run-exp-storms) | Bot experiment (2026-10-03, **Wine-only**, repo `diegoami/ic2-conquest`): 90 storms on Carthage's fleet in 12 cells, some with condition, season or cargo edited (`t4_trials.json`), and a 7-turn natural idle run ending in a loss at sea | 87 | 0 | 0 |
 | [`run-exp-pair2`](https://github.com/diegoami/ic2-conquest/releases/tag/run-exp-pair2) | Bot experiment (2026-10-03, **Wine-only**, repo `diegoami/ic2-conquest`): Seleucid + Ptolemaic human, a built fleet at Issus, the refused attack, 20 battles of supplied fleets (`trials.json`) | 37 | 0 | 0 |
+| [`run-exp-peace-prompt`](https://github.com/diegoami/ic2-conquest/releases/tag/run-exp-peace-prompt) | Bot experiment (2026-10-03, **Wine-only**, repo `diegoami/ic2-conquest`): attacking a fleet of a nation on trade terms (No, Cancel, Yes) | 10 | 2 | 0 |
 
 ### Which release to reach for
 
@@ -335,6 +336,16 @@ A few small probe saves are committed in the fixtures repository itself rather t
 | [`P2_0735_s02_Ptolemaic.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-pair2/P2_0735_s02_Ptolemaic.SAV) | `run-exp-pair2` (repo `ic2-conquest`) | 1 |
 | [`P2_0735_s04_Seleucid.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-pair2/P2_0735_s04_Seleucid.SAV) | `run-exp-pair2` (repo `ic2-conquest`) | 1 |
 | [`P2_FIXTURE_seleucid_seat.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-pair2/P2_FIXTURE_seleucid_seat.SAV) | `run-exp-pair2` (repo `ic2-conquest`) | 1 |
+| [`PP_yes_seed1.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-peace-prompt/PP_yes_seed1.SAV) | `run-exp-peace-prompt` (repo `ic2-conquest`) | 1 |
+| [`PP_yes_seed1_AUTO0723.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-peace-prompt/PP_yes_seed1_AUTO0723.SAV) | `run-exp-peace-prompt` (repo `ic2-conquest`) | 1 |
+| [`T1P_0720_s02_Ptolemaic.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-peace-prompt/T1P_0720_s02_Ptolemaic.SAV) | `run-exp-peace-prompt` (repo `ic2-conquest`) | 1 |
+| [`T1P_0720_s13_Carthage.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-peace-prompt/T1P_0720_s13_Carthage.SAV) | `run-exp-peace-prompt` (repo `ic2-conquest`) | 1 |
+| [`T1P_0721_s02_Ptolemaic.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-peace-prompt/T1P_0721_s02_Ptolemaic.SAV) | `run-exp-peace-prompt` (repo `ic2-conquest`) | 1 |
+| [`T1P_0721_s13_Carthage.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-peace-prompt/T1P_0721_s13_Carthage.SAV) | `run-exp-peace-prompt` (repo `ic2-conquest`) | 1 |
+| [`T1P_0722_s02_Ptolemaic.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-peace-prompt/T1P_0722_s02_Ptolemaic.SAV) | `run-exp-peace-prompt` (repo `ic2-conquest`) | 1 |
+| [`T1P_0722_s13_Carthage.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-peace-prompt/T1P_0722_s13_Carthage.SAV) | `run-exp-peace-prompt` (repo `ic2-conquest`) | 1 |
+| [`T1P_0723_s02_Ptolemaic.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-peace-prompt/T1P_0723_s02_Ptolemaic.SAV) | `run-exp-peace-prompt` (repo `ic2-conquest`) | 1 |
+| [`T1P_FIXTURE_fleets_adjacent.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-peace-prompt/T1P_FIXTURE_fleets_adjacent.SAV) | `run-exp-peace-prompt` (repo `ic2-conquest`) | 1 |
 
 ## Recordings
 
@@ -372,6 +383,7 @@ The two `.txt` files in `legacy-probes` â€” `11_supply.txt` and `12_ptol.txt` â€
 | [`run-exp-civ-sweep`](https://github.com/diegoami/ic2-conquest/releases/tag/run-exp-civ-sweep) (repo `ic2-conquest`) | `S00_Rome_army_selected.png`, `S00_Rome_recruit.png`, `S01_Carthage_army_selected.png`, `S01_Carthage_recruit.png`, `S02_Seleucid_army_selected.png`, `S02_Seleucid_recruit.png`, `S03_Ptolemaic_army_selected.png`, `S03_Ptolemaic_recruit.png`, `S04_Macedonia_army_selected.png`, `S04_Macedonia_recruit.png`, `S05_Numidia_recruit.png`, `S06_Gaul_army_selected.png`, `S06_Gaul_recruit.png`, `S07_Greece_recruit.png`, `S08_Celtiberia_army_selected.png`, `S08_Celtiberia_recruit.png`, `S09_Illyria_recruit.png`, `S10_Dacia_end_turn_stuck.png`, `S10_Dacia_recruit.png`, `S11_Bithynia_army_selected.png`, `S11_Bithynia_recruit.png`, `S12_Galatia_army_selected.png`, `S12_Galatia_recruit.png`, `S13_Armenia_recruit.png`, `S14_Media_army_selected.png`, `S14_Media_recruit.png`, `S15_Thracia_army_selected.png`, `S15_Thracia_recruit.png` |
 | [`run-exp-two-humans`](https://github.com/diegoami/ic2-conquest/releases/tag/run-exp-two-humans) (repo `ic2-conquest`) | `t0_after_A_end.png`, `t0_final.png`, `t0_p2_after_war.png`, `t0_p2_next_round.png`, `t0_relations_dialog_carthage.png`, `t0_seatA.png` |
 | [`run-exp-naval-battle`](https://github.com/diegoami/ic2-conquest/releases/tag/run-exp-naval-battle) (repo `ic2-conquest`) | `probe_1_selected.png`, `probe_2_t00_1.png`, `probe_3_after.png` |
+| [`run-exp-peace-prompt`](https://github.com/diegoami/ic2-conquest/releases/tag/run-exp-peace-prompt) (repo `ic2-conquest`) | `peace_prompt_box_cancel_seed1.png`, `peace_prompt_box_no_seed1.png` |
 
 ## Retrieving a file
 
