@@ -24,3 +24,5 @@
 ## Reproduction
 
 `harness/driver.py`: `Game.view_origin()`, `Game.show(x, y)`.
+
+A later check agrees: two saves of the same position, one reached by clicks and one by editing the save, differ in exactly three bytes, and they are Carthage's view origin ([2026-10-02-naval-battle-army-aboard.md](2026-10-02-naval-battle-army-aboard.md), Review notes).

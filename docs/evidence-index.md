@@ -25,6 +25,7 @@ A few small probe saves are committed in the fixtures repository itself rather t
 | [`run-exp-two-humans`](https://github.com/diegoami/ic2-conquest/releases/tag/run-exp-two-humans) | Bot experiment (2026-10-02, **Wine-only**, repo `diegoami/ic2-conquest`): two human seats (Carthage + Ptolemaic) | 4 | 6 | 0 |
 | [`run-exp-fleet-battles`](https://github.com/diegoami/ic2-conquest/releases/tag/run-exp-fleet-battles) | Bot experiment (2026-10-02, **Wine-only**, repo `diegoami/ic2-conquest`): two fleets (Carthage 90, Ptolemaic 70 ships) sailing toward each other, three rounds | 7 | 0 | 0 |
 | [`run-exp-naval-battle`](https://github.com/diegoami/ic2-conquest/releases/tag/run-exp-naval-battle) | Bot experiment (2026-10-02, **Wine-only**, repo `diegoami/ic2-conquest`): 160 naval battles between two fleets at war (`trials.json`), the fixtures and a probe | 13 | 3 | 0 |
+| [`run-exp-naval-battle-cargo`](https://github.com/diegoami/ic2-conquest/releases/tag/run-exp-naval-battle-cargo) | Bot experiment (2026-10-02/03, **Wine-only**, repo `diegoami/ic2-conquest`): 60 naval battles with an army aboard (a synthetic cargo edit), the six fixtures and a natural-embark check (`t3_trials.json`) | 15 | 0 | 0 |
 
 ### Which release to reach for
 
@@ -181,6 +182,21 @@ A few small probe saves are committed in the fixtures repository itself rather t
 | [`NB_P_seed1.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-naval-battle/NB_P_seed1.SAV) | `run-exp-naval-battle` (repo `ic2-conquest`) | 2 |
 | [`PROBE_AFTER.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-naval-battle/PROBE_AFTER.SAV) | `run-exp-naval-battle` (repo `ic2-conquest`) | 2 |
 | [`PROBE_START.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-naval-battle/PROBE_START.SAV) | `run-exp-naval-battle` (repo `ic2-conquest`) | 2 |
+| [`FIX_T3_L25.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-naval-battle-cargo/FIX_T3_L25.SAV) | `run-exp-naval-battle-cargo` (repo `ic2-conquest`) | 1 |
+| [`FIX_T3_L10.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-naval-battle-cargo/FIX_T3_L10.SAV) | `run-exp-naval-battle-cargo` (repo `ic2-conquest`) | 1 |
+| [`FIX_T3_L15D5.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-naval-battle-cargo/FIX_T3_L15D5.SAV) | `run-exp-naval-battle-cargo` (repo `ic2-conquest`) | 1 |
+| [`FIX_T3_A5.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-naval-battle-cargo/FIX_T3_A5.SAV) | `run-exp-naval-battle-cargo` (repo `ic2-conquest`) | 1 |
+| [`FIX_T3_L15.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-naval-battle-cargo/FIX_T3_L15.SAV) | `run-exp-naval-battle-cargo` (repo `ic2-conquest`) | 1 |
+| [`FIX_T3_L5.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-naval-battle-cargo/FIX_T3_L5.SAV) | `run-exp-naval-battle-cargo` (repo `ic2-conquest`) | 1 |
+| [`NBC_L15D5_seed1.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-naval-battle-cargo/NBC_L15D5_seed1.SAV) | `run-exp-naval-battle-cargo` (repo `ic2-conquest`) | 1 |
+| [`NBC_L15_seed1.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-naval-battle-cargo/NBC_L15_seed1.SAV) | `run-exp-naval-battle-cargo` (repo `ic2-conquest`) | 1 |
+| [`NBC_L25_seed1.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-naval-battle-cargo/NBC_L25_seed1.SAV) | `run-exp-naval-battle-cargo` (repo `ic2-conquest`) | 1 |
+| [`NBC_L5_seed1.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-naval-battle-cargo/NBC_L5_seed1.SAV) | `run-exp-naval-battle-cargo` (repo `ic2-conquest`) | 1 |
+| [`T3_EDIT_CHECK.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-naval-battle-cargo/T3_EDIT_CHECK.SAV) | `run-exp-naval-battle-cargo` (repo `ic2-conquest`) | 1 |
+| [`T3_NATURAL_EMBARK.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-naval-battle-cargo/T3_NATURAL_EMBARK.SAV) | `run-exp-naval-battle-cargo` (repo `ic2-conquest`) | 1 |
+| [`NBC_L15D5_seed2.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-naval-battle-cargo/NBC_L15D5_seed2.SAV) | `run-exp-naval-battle-cargo` (repo `ic2-conquest`) | 1 |
+| [`NBC_L5_seed8.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-naval-battle-cargo/NBC_L5_seed8.SAV) | `run-exp-naval-battle-cargo` (repo `ic2-conquest`) | 1 |
+| [`NBC_L15_seed10.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-naval-battle-cargo/NBC_L15_seed10.SAV) | `run-exp-naval-battle-cargo` (repo `ic2-conquest`) | 1 |
 
 ## Recordings
 
