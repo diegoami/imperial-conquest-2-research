@@ -33,6 +33,12 @@ Frame extraction (1 frame/3s across the ~4-minute recording) caught the **"Army 
 - **`OK`** commits the whole working buffer back into the real global army-table slots for both armies, then does something not visible in this particular example: it checks whether either army's unit count reads zero after the transfer, and if so, **merges that now-empty army's supply and money into the other and disbands it** (`FUN_0044ab90`, the same disband routine seen in the nation-elimination cascade in `decompiled-defection-and-siege-attrition.md`). Neither army went to zero units here, so this branch didn't fire, but it's a real, previously-unknown consequence of transferring *every* unit out of an army via this dialog.
 - `OK` also contains a supply-rebalancing check comparing each army's stock against a readiness-derived threshold (`FUN_0044a698`, the same helper used in the nation-tax-base and mercenary-capacity code) and can silently move supply between the two armies if one falls short — not observed triggering in this example (both saves' supply values are consistent with ordinary weekly consumption from the surrounding turn, not a corrective transfer), but a mechanic worth watching for in future controlled saves.
 
+> **Correction (2026-10-03):** see [2026-10-03-army-to-army-ok-supply-rebalancing.md](2026-10-03-army-to-army-ok-supply-rebalancing.md).
+> - **There is no readiness threshold.** `FUN_0044A698` is the army's total troops, so the threshold is the supply capacity `troops div 100`.
+> - **`OK` caps the selected army first, then the partner.** The selected army pushes its excess above `troops div 100` to the partner, then the partner pushes its excess back.
+> - **The excess is kept, on the selected army.** When both armies end over capacity, the partner ends at exactly its capacity and the selected army holds the rest. Nothing is lost.
+> - **Money is never rebalanced.**
+
 ## What this does not establish
 
 - The auto-disband-on-empty-army branch — not exercised in this example, only read from code.

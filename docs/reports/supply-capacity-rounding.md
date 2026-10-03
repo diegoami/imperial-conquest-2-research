@@ -70,7 +70,7 @@ Two consequences of the code as written:
 | — called when a human's move ends against a non-hostile city (`TUnitMap_MoveHumanArmy` → `FUN_0044D734`'s tail) | same | `51646–51656` |
 | — called by the AI army pass (`FUN_0044F31C` → `FUN_0044E41C`) for every non-hostile city within 4 tiles | same | `52240–52247`, `52926` |
 | `FUN_0044F7E4(city, fleet)`: fleet resupply, AI fleet pass only (`FUN_0044F608` → `FUN_0044E1FC` / `FUN_0044E5DC`) | `min(ships × 8 − supplies, city stock)` | `53120–53158` |
-| `TArmyToArmy_OK`: each army's supplies above `troops div 100` are pushed to the other | `troops div 100` | `44604–44622` |
+| `TArmyToArmy_OK`: each army's supplies above `troops div 100` are pushed to the other, the selected army first and then the partner, so any excess ends on the selected army ([2026-10-03-army-to-army-ok-supply-rebalancing.md](2026-10-03-army-to-army-ok-supply-rebalancing.md)) | `troops div 100` | `44604–44622` |
 | `TBattleOver_OK`: the tactical winner absorbs the loser's supplies | `min(sum, troops div 100)` | `57620–57625` |
 | `FUN_0044AEE4`, instant battle, **attacker wins** | `min(sum, troops div 100)` | `49647–49654` |
 | `FUN_0044AEE4`, instant battle, **defender wins** | none: plain sum | `49687–49690` |
