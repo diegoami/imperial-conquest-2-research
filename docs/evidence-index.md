@@ -27,6 +27,7 @@ A few small probe saves are committed in the fixtures repository itself rather t
 | [`run-exp-naval-battle`](https://github.com/diegoami/ic2-conquest/releases/tag/run-exp-naval-battle) | Bot experiment (2026-10-02, **Wine-only**, repo `diegoami/ic2-conquest`): 160 naval battles between two fleets at war (`trials.json`), the fixtures and a probe | 13 | 3 | 0 |
 | [`run-exp-naval-battle-cargo`](https://github.com/diegoami/ic2-conquest/releases/tag/run-exp-naval-battle-cargo) | Bot experiment (2026-10-02/03, **Wine-only**, repo `diegoami/ic2-conquest`): 80 naval battles with an army aboard (a synthetic cargo edit), the eight fixtures and a natural-embark check (`t3_trials.json`) | 27 | 0 | 0 |
 | [`run-exp-storms`](https://github.com/diegoami/ic2-conquest/releases/tag/run-exp-storms) | Bot experiment (2026-10-03, **Wine-only**, repo `diegoami/ic2-conquest`): 90 storms on Carthage's fleet in 12 cells, some with condition, season or cargo edited (`t4_trials.json`), and a 7-turn natural idle run ending in a loss at sea | 87 | 0 | 0 |
+| [`run-exp-pair2`](https://github.com/diegoami/ic2-conquest/releases/tag/run-exp-pair2) | Bot experiment (2026-10-03, **Wine-only**, repo `diegoami/ic2-conquest`): Seleucid + Ptolemaic human, a built fleet at Issus, the refused attack, 20 battles of supplied fleets (`trials.json`) | 37 | 0 | 0 |
 
 ### Which release to reach for
 
@@ -297,6 +298,43 @@ A few small probe saves are committed in the fixtures repository itself rather t
 | [`NAT_seed1_11_0726_seat02.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/NAT_seed1_11_0726_seat02.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
 | [`NAT_seed1_12_0726_seat13.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/NAT_seed1_12_0726_seat13.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
 | [`NAT_seed1_13_0727_seat02.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/NAT_seed1_13_0727_seat02.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`FIX_S2_ptolemaic_seat_0735.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-pair2/FIX_S2_ptolemaic_seat_0735.SAV) | `run-exp-pair2` (repo `ic2-conquest`) | 1 |
+| [`FIX_S2_seleucid_seat_0735.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-pair2/FIX_S2_seleucid_seat_0735.SAV) | `run-exp-pair2` (repo `ic2-conquest`) | 1 |
+| [`P2B_P_seed1.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-pair2/P2B_P_seed1.SAV) | `run-exp-pair2` (repo `ic2-conquest`) | 1 |
+| [`P2B_S_seed1.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-pair2/P2B_S_seed1.SAV) | `run-exp-pair2` (repo `ic2-conquest`) | 1 |
+| [`P2_0720_s02_Ptolemaic.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-pair2/P2_0720_s02_Ptolemaic.SAV) | `run-exp-pair2` (repo `ic2-conquest`) | 1 |
+| [`P2_0720_s04_Seleucid.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-pair2/P2_0720_s04_Seleucid.SAV) | `run-exp-pair2` (repo `ic2-conquest`) | 1 |
+| [`P2_0721_s02_Ptolemaic.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-pair2/P2_0721_s02_Ptolemaic.SAV) | `run-exp-pair2` (repo `ic2-conquest`) | 1 |
+| [`P2_0721_s04_Seleucid.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-pair2/P2_0721_s04_Seleucid.SAV) | `run-exp-pair2` (repo `ic2-conquest`) | 1 |
+| [`P2_0722_s02_Ptolemaic.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-pair2/P2_0722_s02_Ptolemaic.SAV) | `run-exp-pair2` (repo `ic2-conquest`) | 1 |
+| [`P2_0722_s04_Seleucid.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-pair2/P2_0722_s04_Seleucid.SAV) | `run-exp-pair2` (repo `ic2-conquest`) | 1 |
+| [`P2_0723_s02_Ptolemaic.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-pair2/P2_0723_s02_Ptolemaic.SAV) | `run-exp-pair2` (repo `ic2-conquest`) | 1 |
+| [`P2_0723_s04_Seleucid.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-pair2/P2_0723_s04_Seleucid.SAV) | `run-exp-pair2` (repo `ic2-conquest`) | 1 |
+| [`P2_0724_s02_Ptolemaic.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-pair2/P2_0724_s02_Ptolemaic.SAV) | `run-exp-pair2` (repo `ic2-conquest`) | 1 |
+| [`P2_0724_s04_Seleucid.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-pair2/P2_0724_s04_Seleucid.SAV) | `run-exp-pair2` (repo `ic2-conquest`) | 1 |
+| [`P2_0725_s02_Ptolemaic.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-pair2/P2_0725_s02_Ptolemaic.SAV) | `run-exp-pair2` (repo `ic2-conquest`) | 1 |
+| [`P2_0725_s04_Seleucid.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-pair2/P2_0725_s04_Seleucid.SAV) | `run-exp-pair2` (repo `ic2-conquest`) | 1 |
+| [`P2_0726_s02_Ptolemaic.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-pair2/P2_0726_s02_Ptolemaic.SAV) | `run-exp-pair2` (repo `ic2-conquest`) | 1 |
+| [`P2_0726_s04_Seleucid.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-pair2/P2_0726_s04_Seleucid.SAV) | `run-exp-pair2` (repo `ic2-conquest`) | 1 |
+| [`P2_0727_s02_Ptolemaic.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-pair2/P2_0727_s02_Ptolemaic.SAV) | `run-exp-pair2` (repo `ic2-conquest`) | 1 |
+| [`P2_0727_s04_Seleucid.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-pair2/P2_0727_s04_Seleucid.SAV) | `run-exp-pair2` (repo `ic2-conquest`) | 1 |
+| [`P2_0728_s02_Ptolemaic.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-pair2/P2_0728_s02_Ptolemaic.SAV) | `run-exp-pair2` (repo `ic2-conquest`) | 1 |
+| [`P2_0728_s04_Seleucid.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-pair2/P2_0728_s04_Seleucid.SAV) | `run-exp-pair2` (repo `ic2-conquest`) | 1 |
+| [`P2_0729_s02_Ptolemaic.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-pair2/P2_0729_s02_Ptolemaic.SAV) | `run-exp-pair2` (repo `ic2-conquest`) | 1 |
+| [`P2_0729_s04_Seleucid.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-pair2/P2_0729_s04_Seleucid.SAV) | `run-exp-pair2` (repo `ic2-conquest`) | 1 |
+| [`P2_0730_s02_Ptolemaic.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-pair2/P2_0730_s02_Ptolemaic.SAV) | `run-exp-pair2` (repo `ic2-conquest`) | 1 |
+| [`P2_0730_s04_Seleucid.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-pair2/P2_0730_s04_Seleucid.SAV) | `run-exp-pair2` (repo `ic2-conquest`) | 1 |
+| [`P2_0731_s02_Ptolemaic.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-pair2/P2_0731_s02_Ptolemaic.SAV) | `run-exp-pair2` (repo `ic2-conquest`) | 1 |
+| [`P2_0731_s04_Seleucid.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-pair2/P2_0731_s04_Seleucid.SAV) | `run-exp-pair2` (repo `ic2-conquest`) | 1 |
+| [`P2_0732_s02_Ptolemaic.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-pair2/P2_0732_s02_Ptolemaic.SAV) | `run-exp-pair2` (repo `ic2-conquest`) | 1 |
+| [`P2_0732_s04_Seleucid.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-pair2/P2_0732_s04_Seleucid.SAV) | `run-exp-pair2` (repo `ic2-conquest`) | 1 |
+| [`P2_0733_s02_Ptolemaic.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-pair2/P2_0733_s02_Ptolemaic.SAV) | `run-exp-pair2` (repo `ic2-conquest`) | 1 |
+| [`P2_0733_s04_Seleucid.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-pair2/P2_0733_s04_Seleucid.SAV) | `run-exp-pair2` (repo `ic2-conquest`) | 1 |
+| [`P2_0734_s02_Ptolemaic.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-pair2/P2_0734_s02_Ptolemaic.SAV) | `run-exp-pair2` (repo `ic2-conquest`) | 1 |
+| [`P2_0734_s04_Seleucid.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-pair2/P2_0734_s04_Seleucid.SAV) | `run-exp-pair2` (repo `ic2-conquest`) | 1 |
+| [`P2_0735_s02_Ptolemaic.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-pair2/P2_0735_s02_Ptolemaic.SAV) | `run-exp-pair2` (repo `ic2-conquest`) | 1 |
+| [`P2_0735_s04_Seleucid.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-pair2/P2_0735_s04_Seleucid.SAV) | `run-exp-pair2` (repo `ic2-conquest`) | 1 |
+| [`P2_FIXTURE_seleucid_seat.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-pair2/P2_FIXTURE_seleucid_seat.SAV) | `run-exp-pair2` (repo `ic2-conquest`) | 1 |
 
 ## Recordings
 
