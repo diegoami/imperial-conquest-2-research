@@ -26,7 +26,7 @@ A few small probe saves are committed in the fixtures repository itself rather t
 | [`run-exp-fleet-battles`](https://github.com/diegoami/ic2-conquest/releases/tag/run-exp-fleet-battles) | Bot experiment (2026-10-02, **Wine-only**, repo `diegoami/ic2-conquest`): two fleets (Carthage 90, Ptolemaic 70 ships) sailing toward each other, three rounds | 7 | 0 | 0 |
 | [`run-exp-naval-battle`](https://github.com/diegoami/ic2-conquest/releases/tag/run-exp-naval-battle) | Bot experiment (2026-10-02, **Wine-only**, repo `diegoami/ic2-conquest`): 160 naval battles between two fleets at war (`trials.json`), the fixtures and a probe | 13 | 3 | 0 |
 | [`run-exp-naval-battle-cargo`](https://github.com/diegoami/ic2-conquest/releases/tag/run-exp-naval-battle-cargo) | Bot experiment (2026-10-02/03, **Wine-only**, repo `diegoami/ic2-conquest`): 80 naval battles with an army aboard (a synthetic cargo edit), the eight fixtures and a natural-embark check (`t3_trials.json`) | 27 | 0 | 0 |
-| [`run-exp-storms`](https://github.com/diegoami/ic2-conquest/releases/tag/run-exp-storms) | Bot experiment (2026-10-03, **Wine-only**, repo `diegoami/ic2-conquest`): 90 storms on Carthage's fleet in 12 cells, some with condition, season or cargo edited (`t4_trials.json`) | 74 | 0 | 0 |
+| [`run-exp-storms`](https://github.com/diegoami/ic2-conquest/releases/tag/run-exp-storms) | Bot experiment (2026-10-03, **Wine-only**, repo `diegoami/ic2-conquest`): 90 storms on Carthage's fleet in 12 cells, some with condition, season or cargo edited (`t4_trials.json`), and a 7-turn natural idle run ending in a loss at sea | 87 | 0 | 0 |
 
 ### Which release to reach for
 
@@ -284,6 +284,19 @@ A few small probe saves are committed in the fixtures repository itself rather t
 | [`ST_R85sA_seed1_AUTO0721.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/ST_R85sA_seed1_AUTO0721.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
 | [`ST_R85s_seed1_AUTO0721.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/ST_R85s_seed1_AUTO0721.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
 | [`ST_R85w_seed1_AUTO0739.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/ST_R85w_seed1_AUTO0739.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`NAT_seed1_01_0721_seat02.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/NAT_seed1_01_0721_seat02.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`NAT_seed1_02_0721_seat13.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/NAT_seed1_02_0721_seat13.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`NAT_seed1_03_0722_seat02.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/NAT_seed1_03_0722_seat02.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`NAT_seed1_04_0722_seat13.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/NAT_seed1_04_0722_seat13.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`NAT_seed1_05_0723_seat02.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/NAT_seed1_05_0723_seat02.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`NAT_seed1_06_0723_seat13.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/NAT_seed1_06_0723_seat13.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`NAT_seed1_07_0724_seat02.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/NAT_seed1_07_0724_seat02.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`NAT_seed1_08_0724_seat13.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/NAT_seed1_08_0724_seat13.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`NAT_seed1_09_0725_seat02.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/NAT_seed1_09_0725_seat02.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`NAT_seed1_10_0725_seat13.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/NAT_seed1_10_0725_seat13.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`NAT_seed1_11_0726_seat02.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/NAT_seed1_11_0726_seat02.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`NAT_seed1_12_0726_seat13.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/NAT_seed1_12_0726_seat13.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`NAT_seed1_13_0727_seat02.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/NAT_seed1_13_0727_seat02.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
 
 ## Recordings
 
