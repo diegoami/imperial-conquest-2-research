@@ -1,5 +1,8 @@
 # The same battle fought twice: the rout mechanic, the attacker-side cap, and two resolved constants
 
+> **Update (2026-10-04):** post-battle promotion is now located in code (`TBattleOver_OK`: `max(6, q)`, then +1 to at most 9 on `Random(4) = 0`), which confirms the 1-in-4 reading. The "axis ambiguity resolved" section reads the right indices from the wrong table. See [2026-10-04-decompiled-tactical-battle-rules.md](2026-10-04-decompiled-tactical-battle-rules.md).
+
+
 `notes/2_rome_s.txt`'s first entry — `1_rome_270_winter_7.sav → 1_rome_270_winter_7_b.sav`, recording `bandicam 2026-09-13 22-49-01-893.mp4` (9:38), the user's note reading *"Rome defeats army of Gaul (auto battle, complete, no freeze)"*.
 
 This is the **same starting save** as `full-battle-resolution-rome-vs-gaul.md`'s battle (`1_rome_270_winter_7.sav`), replayed. That makes it the first controlled A/B this project has had on the tactical resolver: identical pre-battle state, identical armies, fought twice. It also — because the per-action pause was neutralised this session, see the update appended to `battle-freeze-diagnosed-procmon.md` — is the first recording in which the individual `ATTACKS`/`SHOOTS AT` exchange panels are legible end to end. 23 shooting and 15 melee exchanges were read off it.

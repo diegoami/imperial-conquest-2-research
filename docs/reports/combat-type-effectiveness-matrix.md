@@ -1,5 +1,8 @@
 # The combat type-effectiveness matrix, located in the DAT file
 
+> **Correction (2026-10-04): this is not the melee matrix.** The DAT loader `FUN_004481A0` reads the DAT sequentially. It puts DAT `0x1F3B8` (the 25 values below) into `0x479078` (20 words: the AI placement formations) and `0x4790A0` (5 words: the AI type order). The melee code's `DAT_0047946C` comes from DAT **`0x1F7A6`**. The real `M[attacker][defender]` is LI 15 4 20 5 3 · HI 60 5 65 15 8 · Ar 10 3 18 5 3 · LC 25 8 28 15 8 · HC 18 12 20 12 8. Only the real one reproduces the recorded LI-vs-HI exchange that hit the attacker's cap. The orientation reasoning stands; the values do not. See [2026-10-04-decompiled-tactical-battle-rules.md](2026-10-04-decompiled-tactical-battle-rules.md) §5.
+
+
 Continuing from [unit-type-stat-table-in-dat.md](unit-type-stat-table-in-dat.md), which located the flat per-unit-type stat table. The melee formula in [decompiled-combat-formula-structure.md](decompiled-combat-formula-structure.md) also reads a **two-dimensional** `[type][type]` table (`DAT_0047946c` in the decompiled code, indexed with a row stride of 10 bytes = 5 words and a column stride of 2 bytes — exactly a 5×5 word matrix for the game's 5 unit types). Like the flat table, Ghidra couldn't read this memory from the running EXE image (uninitialized/BSS). It sits in the DAT file **immediately after** the unit-type stat table ends (`0x1f3b8`), as 25 small integers (0–4) — a clean, bounded 5×5 grid, with clearly different, larger-scale data immediately following it.
 
 ## The matrix

@@ -1,5 +1,8 @@
 # Combat resolution, decompiled: structure confirmed, constants partly open
 
+> **Correction (2026-10-04):** the melee morale rule compares `troops div loss`, not power: the side that lost the larger fraction takes −3, the other +2, and ties go against the attacker. `DAT_0047946C`'s values are **not** those in combat-type-effectiveness-matrix.md. See [2026-10-04-decompiled-tactical-battle-rules.md](2026-10-04-decompiled-tactical-battle-rules.md) §5.
+
+
 Continuing from [decompiled-recruitment-cost-formula.md](decompiled-recruitment-cost-formula.md). This traces the battle AI dispatch chain from `TBattleMap_ComputerGeneral` down to the actual shooting and melee resolution code — the part of the game that has never been recoverable from save files at all, since tactical battles aren't serialized.
 
 ## The AI dispatch chain

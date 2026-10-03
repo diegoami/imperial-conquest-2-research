@@ -235,6 +235,26 @@ Ordered by (value of the unknown) × (how directly a known form/string points at
 
     See [2026-10-03-end-turn-warning-box.md](reports/2026-10-03-end-turn-warning-box.md), for build repo [#586](https://github.com/diegoami/imperial_conquest_2/issues/586).
 
+30. [x] **The tactical battle module, decompiled in full. Done 2026-10-04.** All 57 functions were read:
+    - the 19 `TBattleMap` methods, `0x436FB4`–`0x437C30` (including `EnemyUnitDetails`, disassembled);
+    - all 38 functions `0x437C40`–`0x43ABB4`: copy-in, sort, placement, movement and its step, the rout check, shooting, melee, the half-round setup/end/loop, and the whole AI general (`0x439D0C`–`0x43ABB4`).
+
+    Also read: `TBattleOver_InitializeForm`/`OK`, the `TPremierForm` battle methods, `TBattleDelays`, `TInformation_BattleUnitMoves`, `FUN_0044A6C8`, the DAT loader, and the `TBATTLEMAP`/`TBATTLEOVER`/`TBATTLEDELAYS` resources.
+
+    Findings:
+    - The **real melee matrix is at DAT `0x1F7A6`**; the published one is wrong.
+    - There is no terrain, no turn limit and no siege battle.
+    - The 15 unit icons are 5 types × 3 sizes.
+    - Promotion is located, and slot `+2` is the origin label.
+
+    **Remaining, not read:**
+    - the `TInformation` paint and layout;
+    - `TBattlePols`/`THVHBatPols` and `FUN_0044A80C`/`FUN_0044AB90`/`FUN_0044A8CC` (re-reading them is optional; they are covered by earlier reports).
+
+    **Next step:** write the separate `2026-10-04-tactical-battle-spec.md`, a programmer-ready summary drawn from the report, if the build repository wants it apart from the report. Then run the EXPLORE golden master against the report's check list.
+
+    See [2026-10-04-decompiled-tactical-battle-rules.md](reports/2026-10-04-decompiled-tactical-battle-rules.md).
+
 ## Method, per target
 
 1. Locate the form/procedure the same way prior reports did: Delphi RTTI method-name tables, the `TMainMenu`/form-adjacent streams, or a literal-string cross-reference (e.g. searching for dialog text like "quarterly", "Current tax", "New income") to find the owning code.

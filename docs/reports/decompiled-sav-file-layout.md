@@ -1,5 +1,8 @@
 # The complete SAV file layout, from the actual read/write code
 
+> **Update (2026-10-04):** the battle block is fully named: flag, attacker, defender, side to move, placed, half-round counter, 40 × 44-byte slots and a 14 × 12 icon-code grid. See [2026-10-04-decompiled-tactical-battle-rules.md](2026-10-04-decompiled-tactical-battle-rules.md) §1.
+
+
 The single strongest confirmation this project has produced. Tracing forward from `TPremierForm_OpenGameFile`/`SaveGameFile(As)` (found directly in the recovered RTTI symbol list — no string search needed this time) reached `FUN_004487c4` (load) and `FUN_004484d0` (save), a matched pair of functions that read/write the exact same fields in the exact same order via a stream object's `Read`/`Write` virtual methods (vtable slot 0 and slot +4 respectively). This is, byte-count for byte-count, the authoritative SAV file format — not inferred from diffing, but read directly from the code that produces the files.
 
 ## The full sequence, in order

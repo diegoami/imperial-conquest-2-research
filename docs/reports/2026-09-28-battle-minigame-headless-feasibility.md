@@ -1,5 +1,13 @@
 # Battle minigame: research and replication through headless runs
 
+> **Correction (2026-10-04)**, from [2026-10-04-decompiled-tactical-battle-rules.md](2026-10-04-decompiled-tactical-battle-rules.md):
+>
+> - The grid holds **icon codes** (`type·3 + size`, +20 for the defender, 50 empty), not slot indices.
+> - Slot word `+2` is the unit's origin label (mercenary marker).
+> - All 22 slot words are now named.
+> - A lab snapshot is taken before the moving side's melee, and resuming one re-runs that side's half-round setup. A resume is therefore not a continuation.
+
+
 **Question.** Can the tactical battle minigame (the grid battle screen, `TBattleMap`) be researched and replicated in the build repository's game from headless runs of the original? The method asked about: provoke battles, record them, and extract the rules according to who took part. The deliverable is this feasibility report.
 
 **Answer: feasible, and better than the question assumed.** Three things this session proved on the running game (Wine 9.0, Xvfb, `fast` build with the autosave option from [2026-09-28-autosave-hook-feasibility.md](2026-09-28-autosave-hook-feasibility.md)) change what is possible. This project has so far treated a battle as "strongly stochastic", checkable only by distribution.
