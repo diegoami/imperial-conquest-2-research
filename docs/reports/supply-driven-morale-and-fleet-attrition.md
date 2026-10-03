@@ -181,6 +181,8 @@ Two consequences. The **death check precedes the supply penalty**, so `−random
 
 > **Addition (2026-09-23)**, from a targeted pass on [`imperial_conquest_2#290`](https://github.com/diegoami/imperial_conquest_2/issues/290). The heavier branch's call, `FUN_0044b4f8(i, 100, dmg + 100)`, is read at instruction level at `0x00451823`–`0x00451832` (`DX = 100`, `CX = dmg + 100`). Inside `FUN_0044B4F8`, the second argument is the numerator and the third the divisor, so **`r = 10000 / (dmg + 100)` and `d = r² / 100`** `[confirmed]`. `d` therefore *falls* as `dmg` rises: 86 at `dmg = 7`, 72 at `dmg = 17`, 57 at the winter spike's 30 `[derived]`. The fleet loses `ships × d / 300` ships and `condition × d / 300` condition, and **an army aboard takes `FUN_0044AE20(army, d)` and, when `d > 70`, loses `unitCount × d / 250 + 1` whole units**. The pseudocode above does not show the army. See [decompiled-diplomacy-peace-terms-and-instant-battles.md](decompiled-diplomacy-peace-terms-and-instant-battles.md#fun_0044b5d0-and-fun_0044b4f8-instruction-by-instruction-2026-09-23).
 
+*Storm pass run live (2026-10-03, Wine-only):* 90 storms in 12 cells (rough sea, calm sea, next to a city, Winter, condition 85 and 45, an army aboard) match this pass exactly, including the loss test before the out-of-supply term: [2026-10-03-storms-and-losses-at-sea.md](2026-10-03-storms-and-losses-at-sea.md).
+
 *Seen live (2026-10-02):* two fleets sailed 140 tiles for three rounds and their supplies, moves and condition followed these formulas on every reading after the first turn: [2026-10-02-fleets-sail-and-drift.md](2026-10-02-fleets-sail-and-drift.md) (Wine-only, calm sea).
 
 ### The data: a Carthaginian fleet starved at sea until it sank

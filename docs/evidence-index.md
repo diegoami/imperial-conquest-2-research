@@ -26,6 +26,7 @@ A few small probe saves are committed in the fixtures repository itself rather t
 | [`run-exp-fleet-battles`](https://github.com/diegoami/ic2-conquest/releases/tag/run-exp-fleet-battles) | Bot experiment (2026-10-02, **Wine-only**, repo `diegoami/ic2-conquest`): two fleets (Carthage 90, Ptolemaic 70 ships) sailing toward each other, three rounds | 7 | 0 | 0 |
 | [`run-exp-naval-battle`](https://github.com/diegoami/ic2-conquest/releases/tag/run-exp-naval-battle) | Bot experiment (2026-10-02, **Wine-only**, repo `diegoami/ic2-conquest`): 160 naval battles between two fleets at war (`trials.json`), the fixtures and a probe | 13 | 3 | 0 |
 | [`run-exp-naval-battle-cargo`](https://github.com/diegoami/ic2-conquest/releases/tag/run-exp-naval-battle-cargo) | Bot experiment (2026-10-02/03, **Wine-only**, repo `diegoami/ic2-conquest`): 80 naval battles with an army aboard (a synthetic cargo edit), the eight fixtures and a natural-embark check (`t3_trials.json`) | 27 | 0 | 0 |
+| [`run-exp-storms`](https://github.com/diegoami/ic2-conquest/releases/tag/run-exp-storms) | Bot experiment (2026-10-03, **Wine-only**, repo `diegoami/ic2-conquest`): 90 storms on Carthage's fleet in 12 cells, some with condition, season or cargo edited (`t4_trials.json`) | 74 | 0 | 0 |
 
 ### Which release to reach for
 
@@ -209,6 +210,80 @@ A few small probe saves are committed in the fixtures repository itself rather t
 | [`NBC_M15_seed5.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-naval-battle-cargo/NBC_M15_seed5.SAV) | `run-exp-naval-battle-cargo` (repo `ic2-conquest`) | 1 |
 | [`NBC_H15_seed10.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-naval-battle-cargo/NBC_H15_seed10.SAV) | `run-exp-naval-battle-cargo` (repo `ic2-conquest`) | 1 |
 | [`NBC_M15_seed10.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-naval-battle-cargo/NBC_M15_seed10.SAV) | `run-exp-naval-battle-cargo` (repo `ic2-conquest`) | 1 |
+| [`FIX_T4_H45s.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/FIX_T4_H45s.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`FIX_T4_H85s.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/FIX_T4_H85s.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`FIX_T4_K45s.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/FIX_T4_K45s.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`FIX_T4_K45w.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/FIX_T4_K45w.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`FIX_T4_K85s.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/FIX_T4_K85s.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`FIX_T4_K85w.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/FIX_T4_K85w.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`FIX_T4_R45s.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/FIX_T4_R45s.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`FIX_T4_R45sA.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/FIX_T4_R45sA.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`FIX_T4_R45w.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/FIX_T4_R45w.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`FIX_T4_R85s.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/FIX_T4_R85s.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`FIX_T4_R85sA.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/FIX_T4_R85sA.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`FIX_T4_R85w.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/FIX_T4_R85w.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`PROBE_seed1_AUTO0721.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/PROBE_seed1_AUTO0721.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`PROBE_seed2_AUTO0721.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/PROBE_seed2_AUTO0721.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`PROBE_seed3_AUTO0721.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/PROBE_seed3_AUTO0721.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`PROBE_seed4_AUTO0721.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/PROBE_seed4_AUTO0721.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`PROBE_seed5_AUTO0721.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/PROBE_seed5_AUTO0721.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`ST_H45s_seed1_AUTO0721.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/ST_H45s_seed1_AUTO0721.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`ST_H85s_seed1_AUTO0721.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/ST_H85s_seed1_AUTO0721.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`ST_K45s_seed10_AUTO0721.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/ST_K45s_seed10_AUTO0721.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`ST_K45s_seed1_AUTO0721.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/ST_K45s_seed1_AUTO0721.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`ST_K45s_seed2_AUTO0721.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/ST_K45s_seed2_AUTO0721.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`ST_K45s_seed3_AUTO0721.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/ST_K45s_seed3_AUTO0721.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`ST_K45s_seed4_AUTO0721.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/ST_K45s_seed4_AUTO0721.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`ST_K45s_seed5_AUTO0721.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/ST_K45s_seed5_AUTO0721.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`ST_K45s_seed6_AUTO0721.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/ST_K45s_seed6_AUTO0721.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`ST_K45s_seed7_AUTO0721.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/ST_K45s_seed7_AUTO0721.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`ST_K45s_seed8_AUTO0721.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/ST_K45s_seed8_AUTO0721.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`ST_K45s_seed9_AUTO0721.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/ST_K45s_seed9_AUTO0721.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`ST_K45w_seed10_AUTO0739.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/ST_K45w_seed10_AUTO0739.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`ST_K45w_seed1_AUTO0739.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/ST_K45w_seed1_AUTO0739.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`ST_K45w_seed2_AUTO0739.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/ST_K45w_seed2_AUTO0739.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`ST_K45w_seed3_AUTO0739.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/ST_K45w_seed3_AUTO0739.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`ST_K45w_seed4_AUTO0739.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/ST_K45w_seed4_AUTO0739.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`ST_K45w_seed5_AUTO0739.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/ST_K45w_seed5_AUTO0739.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`ST_K45w_seed6_AUTO0739.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/ST_K45w_seed6_AUTO0739.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`ST_K45w_seed7_AUTO0739.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/ST_K45w_seed7_AUTO0739.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`ST_K45w_seed8_AUTO0739.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/ST_K45w_seed8_AUTO0739.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`ST_K45w_seed9_AUTO0739.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/ST_K45w_seed9_AUTO0739.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`ST_K85s_seed1_AUTO0721.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/ST_K85s_seed1_AUTO0721.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`ST_K85w_seed1_AUTO0739.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/ST_K85w_seed1_AUTO0739.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`ST_R45sA_seed10_AUTO0721.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/ST_R45sA_seed10_AUTO0721.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`ST_R45sA_seed1_AUTO0721.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/ST_R45sA_seed1_AUTO0721.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`ST_R45sA_seed2_AUTO0721.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/ST_R45sA_seed2_AUTO0721.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`ST_R45sA_seed3_AUTO0721.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/ST_R45sA_seed3_AUTO0721.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`ST_R45sA_seed4_AUTO0721.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/ST_R45sA_seed4_AUTO0721.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`ST_R45sA_seed5_AUTO0721.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/ST_R45sA_seed5_AUTO0721.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`ST_R45sA_seed6_AUTO0721.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/ST_R45sA_seed6_AUTO0721.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`ST_R45sA_seed7_AUTO0721.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/ST_R45sA_seed7_AUTO0721.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`ST_R45sA_seed8_AUTO0721.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/ST_R45sA_seed8_AUTO0721.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`ST_R45sA_seed9_AUTO0721.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/ST_R45sA_seed9_AUTO0721.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`ST_R45s_seed10_AUTO0721.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/ST_R45s_seed10_AUTO0721.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`ST_R45s_seed1_AUTO0721.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/ST_R45s_seed1_AUTO0721.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`ST_R45s_seed2_AUTO0721.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/ST_R45s_seed2_AUTO0721.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`ST_R45s_seed3_AUTO0721.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/ST_R45s_seed3_AUTO0721.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`ST_R45s_seed4_AUTO0721.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/ST_R45s_seed4_AUTO0721.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`ST_R45s_seed5_AUTO0721.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/ST_R45s_seed5_AUTO0721.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`ST_R45s_seed6_AUTO0721.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/ST_R45s_seed6_AUTO0721.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`ST_R45s_seed7_AUTO0721.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/ST_R45s_seed7_AUTO0721.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`ST_R45s_seed8_AUTO0721.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/ST_R45s_seed8_AUTO0721.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`ST_R45s_seed9_AUTO0721.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/ST_R45s_seed9_AUTO0721.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`ST_R45w_seed10_AUTO0739.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/ST_R45w_seed10_AUTO0739.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`ST_R45w_seed1_AUTO0739.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/ST_R45w_seed1_AUTO0739.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`ST_R45w_seed2_AUTO0739.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/ST_R45w_seed2_AUTO0739.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`ST_R45w_seed3_AUTO0739.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/ST_R45w_seed3_AUTO0739.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`ST_R45w_seed4_AUTO0739.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/ST_R45w_seed4_AUTO0739.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`ST_R45w_seed5_AUTO0739.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/ST_R45w_seed5_AUTO0739.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`ST_R45w_seed6_AUTO0739.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/ST_R45w_seed6_AUTO0739.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`ST_R45w_seed7_AUTO0739.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/ST_R45w_seed7_AUTO0739.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`ST_R45w_seed8_AUTO0739.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/ST_R45w_seed8_AUTO0739.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`ST_R45w_seed9_AUTO0739.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/ST_R45w_seed9_AUTO0739.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`ST_R85sA_seed1_AUTO0721.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/ST_R85sA_seed1_AUTO0721.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`ST_R85s_seed1_AUTO0721.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/ST_R85s_seed1_AUTO0721.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`ST_R85w_seed1_AUTO0739.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/ST_R85w_seed1_AUTO0739.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
 
 ## Recordings
 

@@ -9,7 +9,8 @@ Rule (docs/reports/decompiled-diplomacy-peace-terms-and-instant-battles.md, FUN_
   strength = base + random(4) * (base // 10); the attacker wins only if strength(defender) < strength(attacker)
   r = max(1, loserStrength * 100 // winnerStrength); d = r * r // 100; the winner loses ships * d // 300 ships;
   its carried army takes casualties with ratio d (about d / (105..119) of its troops), and when d > 70 loses
-  unitCount * d // 250 + 1 whole units: a one-unit army is always destroyed.
+  unitCount * d // 250 + 1 whole units: a one-unit army is always destroyed. Per unit the loss is
+  (troops // (Random(15) + 105)) * d, which the script tests as 'k * d with k in troops//119 .. troops//105'.
 Prints (1) the exact win probability per cell against the observed wins, with the log-likelihood and a sweep of the
 cargo divisor; (2) for the won battles of one-unit armies, whether the army's loss agrees with 'all lost iff d > 70,
 otherwise a fraction within d/119 .. d/105', with d bounded by the observed ship loss.
@@ -50,7 +51,7 @@ def main(path):
         sweep[div] = round(tot, 1)
     print('divisor sweep (probabilities clipped to 1e-3):', sweep)
 
-    n_ok = n_bad = n_all = 0
+    n_ok = n_bad = n_all = n_exact = n_part = 0
     for t in trials:
         if t['cell'] == 'M15': continue          # a five-unit army: casualties fall unit by unit, see below
         a, d = t['attacker_before'], t['defender_before']
@@ -65,9 +66,14 @@ def main(path):
         dead = after['owner'] == -1
         frac = 1.0 if dead else 1 - after['troops'] / before['troops']
         ok = hi >= 71 if dead else (lo <= 70 and lo / 119 - 0.02 <= frac <= hi / 105 + 0.02)
+        if not dead:      # per-unit arithmetic: troops lost = (troops // (Random(15) + 105)) * d, for some consistent d
+            n_part += 1; T0 = before['troops']; loss = T0 - after['troops']
+            n_exact += any(loss == k * dd for dd in range(lo, hi + 1) for k in range(T0 // 119, T0 // 105 + 1))
         n_all += dead; n_ok += ok; n_bad += not ok
     print('won battles of one-unit armies: %d; all lost %d, partial %d; inconsistent with the rule: %d'
           % (n_ok + n_bad, n_all, n_ok + n_bad - n_all, n_bad))
+    print('partial losses of one-unit armies equal to (troops // (105..119)) * d for some d consistent with the ship loss: %d of %d'
+          % (n_exact, n_part))
     # the five-unit army (M15): total troops left against d, which the ship loss bounds
     m = []
     for t in trials:
