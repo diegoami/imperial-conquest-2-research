@@ -62,7 +62,7 @@
 - **International relations** for a non-Rome human (`Game.relation` assumes "Rome is row 0" in the radio rows): not exercised, so whether it works for another nation is unknown.
 - **The cause of the End turn failures:** unexplained; a deeper look (the click's position, focus after the recruit dialog, the calendar) was not made. The sweep did not retry beyond the driver's single retry.
 - **Whether the game's "coastal" test differs from ours** (Media): untested. **How the fleet port is chosen:** only the 13 results are listed; no rule is claimed.
-- **Other seeds:** the turn order and the seat-dependent start are one seed; a different `SEED.TXT` is not tested.
+- **Other seeds:** the turn order and the seat-dependent start are one seed; a different `SEED.TXT` is not tested. *(2026-10-03: the order is now reproduced from code for this seed and for two clock-seeded desktop games, and predicted for others; see [2026-10-03-new-game-turn-order-shuffle.md](2026-10-03-new-game-turn-order-shuffle.md).)*
 - **Wine-only.**
 
 ## Reproduction
