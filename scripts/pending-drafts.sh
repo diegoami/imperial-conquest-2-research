@@ -19,7 +19,7 @@ while read -r b sha; do
   if [[ -z "${tree_cache[$sha]+x}" ]]; then
     tree_cache[$sha]=$(gh api "repos/$src/git/trees/$sha?recursive=1" --jq '
       (if .truncated then "TRUNCATED x" else empty end),
-      (.tree[] | select(.type=="blob" and (.path|test("^findings/.+\\.md$")) and (.path|test("/(README|PROMPT)")|not))
+      (.tree[] | select(.type=="blob" and (.path|test("^findings/.+\\.md$")) and (.path|test("/(README|PROMPT)")|not) and (.path|test("\\.skeleton\\.md$")|not))
                | "\(.path|ltrimstr("findings/")) \(.sha)")')
     [[ ${tree_cache[$sha]} == TRUNCATED* ]] && { echo "tree of $b is truncated" >&2; exit 2; }
   fi
