@@ -8,6 +8,8 @@ much quota its provider has left with quota-tracker (see `docs/environment.md`).
 status is `exhausted` is not used until it is usable again: take the next model of the chain whose
 provider has quota, pass it explicitly (the model of an Agent call or of `opencode -m`), and say so
 in the run's report or the PR body ("GLM skipped: zai exhausted until 21:40; reviewed by Luna").
+Exception: `openai/gpt-5.6-luna` has its own weekly pool, so for light tasks openai stays usable
+while the `gpt-5.6-luna:7d` window in `/quota/openai` is under 95%, even if openai is exhausted.
 Where the service is not installed, go on without it and count a usage-limit error as `exhausted`.
 Model ids come from the provider's live list (`opencode models <provider>`), never memory.
 
