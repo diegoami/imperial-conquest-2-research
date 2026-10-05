@@ -32,7 +32,9 @@ while read -r draft; do
   if [[ -z "$reviewed" ]]; then
     echo "$draft $(awk -v d="$draft" '$2==d {print $1; exit}' <<<"$pairs") unledgered"; n=$((n+1)); continue
   fi
+  rb=$(gh api "repos/$src/contents/findings/$draft?ref=$reviewed" --jq .sha 2>/dev/null || true)
   while read -r b blob; do
+    [[ -n "$rb" && "$rb" == "$blob" ]] && continue   # byte-identical to the reviewed version
     # changed since the reviewed commit on this branch? A compare that fails is reported, not ignored.
     if files=$(gh api "repos/$src/compare/$reviewed...$b" --jq '.files[].filename' 2>/dev/null); then
       if grep -qxF "findings/$draft" <<<"$files"; then
