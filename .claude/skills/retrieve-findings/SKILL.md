@@ -47,3 +47,10 @@ For each candidate: outcome, what you corrected or could not verify, which exist
 ## Daily check
 
 `.github/workflows/pending-drafts.yml` runs `scripts/pending-drafts.sh` every day and keeps one issue, "Pending ic2-conquest findings drafts", open while any draft is unledgered or changed since its reviewed commit; it closes the issue at zero. It reads ic2-conquest through the GitHub API only. Run the same script locally for step 1: `bash scripts/pending-drafts.sh`. It replaces the manual loop above and is the quickest way to see the queue.
+
+## When a review is delegated to a model
+
+If a draft's review is handed to an OpenCode model or a Claude agent, read what the run returned
+before retrying, re-routing or calling it a failure: the model's final message from the session
+record (read-only sqlite, see "Delegated runs" in `CLAUDE.md`) or the agent's full hand-back. A run
+that stopped and reported a blocker gets an answer to its report, not a retry on another model.
