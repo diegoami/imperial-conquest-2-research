@@ -35,5 +35,6 @@ Rows are keyed by the draft's path and the blob it had when reviewed, so a draft
 | `2026-10-05-split-army-aboard-a-fleet.md` | `48609a6` | promoted, provisional (T111): spot-checked against existing reports as stated in the report's check block; play results and audit not re-read; Wine-only. |
 | `2026-10-05-end-of-game-screens.md` | `d6cefde` | promoted, provisional (T138): structure, 334-city victory, year 250 and conquered text agree with the decompiled reports; every state staged; reason order, debt threshold and audit not re-read; Wine-only. |
 | `2026-10-05-refusal-texts-and-conditions.md` | `970b1fe` | promoted, provisional (#721): texts spot-checked against earlier reports (join/transfer limits, fleet refusals, hire refusal, split); catalogue, conditions column (not audited by the bot, issue #58), plays and audit not re-read; Wine-only. |
+| `2026-10-06-leaders-form.md` | `f472367` | promoted, provisional (#719): leader pool, Random(12) draw and turn-order independence agree with the earlier turn-order and Ptolemy reports; control map, OK/Cancel semantics and audit not re-read; free-text wording checked by review only (bot caveat); Wine-only. |
 
 Outcomes: `promoted`, `promoted, corrected`, `promoted, provisional: <what is missing>`, `merged into <report>`, `rejected: <why>`, `deferred: <what evidence is missing>`.
