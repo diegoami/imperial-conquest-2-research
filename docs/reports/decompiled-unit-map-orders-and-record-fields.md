@@ -76,7 +76,7 @@ Not a correction, but the panel code names most of the 34-byte record in one pla
 
 | Order | Function | Rules recovered |
 | --- | --- | --- |
-| **Join fleets** | `TUnitMap_JoinFleets` `0x00447A48` | Combined ships < **100** (*"There are more than 100 ships in these fleets combined."*). Neither may carry an army. Ships, supplies and money add; the survivor's **moves are zeroed**; the absorbed fleet is deleted. |
+| **Join fleets** | `TUnitMap_JoinFleets` `0x00447A48` | Combined ships < **100** (*"There are more than 100 ships in these fleets combined."*). Neither may carry an army. Ships, supplies and money add; the survivor's **moves are zeroed**; the absorbed fleet is deleted. The strict `<` — combined **100 refused** — is settled in [2026-10-07-join-fleets-100-ships-boundary.md](2026-10-07-join-fleets-100-ships-boundary.md). |
 | **Split fleet** | `TUnitMap_SplitFleet` `0x00447CAC` | Needs ≥ **20** ships. Cannot split a fleet carrying an army. Can fail with *"You can not make any more fleets at this time."* (fleet-table cap). |
 | **Fleet-to-fleet transfer** | `TUnitMap_FleetToFleetTransfer` `0x004479F4` | Opens `TFleetToFleet` — reciprocal ships/supply/money transfer, the naval twin of `TArmyToArmy`. |
 | **Scuttle fleet** | `TUnitMap_ScuttleFleet` `0x00447E34` | Must be near one of your own cities; cannot scuttle while carrying an army; confirmation prompt. The fleet's **money** goes to the treasury and its **supplies** to the city. |
