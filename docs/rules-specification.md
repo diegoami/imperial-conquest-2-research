@@ -39,6 +39,16 @@ Field offsets are given in the sections that use them and in the individual repo
 *(assembled 2026-10-07 from the 111 reports in `docs/reports/`; the decompilation plan's
 priority queue is closed, so every subsystem now has code-level rules available)*
 
+*Reviewed 2026-10-07 by GPT-6.1 Sol (OpenCode), a different model family from the GLM-5.3 agents
+that drafted the sections — verdict "redo" with 18 blocking findings, all acted on the same day:
+two of the day's own reports were corrected (the JoinFleets boundary reversed — the guard is
+`< 0x65` = `< 101`, so exactly 100 is **accepted**; the AI-turn asymmetry "human's dialog requires
+the money" was wrong — there is no treasury check), superseded readings removed, qualifications
+restored, resolved Open items closed with pointers, and three missing subsections added
+(individual-unit join/split, battle pacing, interface commands). The reviewer's report is kept
+verbatim at [`rules-spec-review-2026-10-07.md`](rules-spec-review-2026-10-07.md). Known residual
+from its non-blocking list: evidence tags are not yet on every bullet in §§2, 3 and 9.*
+
 ## Turn sequence, calendar, and the weekly tick
 
 ### Seat and turn order
@@ -82,10 +92,10 @@ priority queue is closed, so every subsystem now has code-level rules available)
 
 ### Save-file layout facts needed to play and verify
 
-- The complete SAV sequence, read directly from the matched load/save pair `FUN_004487c4`/`FUN_004484d0`: map 89,600 bytes (320×140×2, `WorldPrefix.MapByteLength`); city table 11,356 (334 × 34); army count 2 then army records of 656 each; fleet count 2 then fleet records of 26 each; nation table 18,752 (16 × 1,172); mercenary table fixed at 50 × 12 bytes; a 2-byte count then (count+1) records of 61 bytes each (the news log, a 40-slot ring buffer where "count" is the most-recently-used slot index); then the 55-byte tail: 32-byte turn order, 4-byte pending offer, 2-byte current nation, 2+2+2+2 = turn-order index, week, year BC, season, 8 bytes of main-window geometry (UI state), 1-byte battle flag. [confirmed: code] (decompiled-sav-file-layout.md)
+- The complete SAV sequence, read directly from the matched load/save pair `FUN_004487c4`/`FUN_004484d0`: map 89,600 bytes (320×140×2, `WorldPrefix.MapByteLength`); city table 11,356 (334 × 34); army count 2 then army records of 656 each; fleet count 2 then fleet records of 26 each; nation table 18,752 (16 × 1,172); mercenary table fixed at 50 × 12 bytes; a 2-byte count then (count+1) records of 61 bytes each (the news log, a 40-slot shift register where "count" is the most-recently-used slot index); then the 55-byte tail: 32-byte turn order, 4-byte pending offer, 2-byte current nation, 2+2+2+2 = turn-order index, week, year BC, season, 8 bytes of main-window geometry (UI state), 1-byte battle flag. [confirmed: code] (decompiled-sav-file-layout.md)
 - The turn order is the 32-byte block written after the news log, at SAV offset `len − 55` as 16 × int16, with the current nation at `len − 19` and the turn position at `len − 17`. [confirmed: code + 54 saves] (2026-10-03-new-game-turn-order-shuffle.md; decompiled-sav-file-layout.md)
 - The earlier 3,042-byte gap measured from nation-table end to trailer start is exactly `600 + 2 + 40 × 61` (mercenary table + count field + full 40-slot log) — the previous ~6-byte reconciliation gap came from subtracting the 55-byte tail twice. [confirmed] (decompiled-sav-file-layout.md)
-- The battle-in-progress flag and its conditional block (2+2+2+1+2+1,760+336 bytes of tactical state) exist in the code, but saving during a battle is not possible in the game's UI, so every real save's length is fully accounted for by the fields above with no battle-state variant. [confirmed: code + user confirmation] (decompiled-sav-file-layout.md)
+- The battle-in-progress flag and its conditional block (2+2+2+1+2+1,760+336 bytes of tactical state) exist in the code; the ordinary turn flow never produces them — but **File → Save As inside a battle does work** in a human-controlled phase (Wine-only: the file carries the battle block and the battle continues; the toolbar Save button does nothing), so such saves are reachable. [confirmed: code + user confirmation] (decompiled-sav-file-layout.md)
 - Between two one-turn-apart saves, 311 map cells changed `1 → 0`, exactly reversing the DAT's `0 → 1` overlay differences — the transient New Game weather-overlay cells are cleared as the game progresses (the shuffle report independently uses these code-1 cells as storm evidence). [observed] (one-turn-save-comparison.md; strategic-recording-and-summer-saves.md)
 - City record word `+24` is the mutable city-supply field (changed in 331 of 334 records over one turn; Rome's capital rose 1,731 → 1,810 in one reported turn); word `+18` encodes owner nation (0 = Rome, 6 = Gaul, 3 = Ptolemaic, 2 = Seleucid). [observed; +18 label confirmed by later capture/defection evidence] (one-turn-save-comparison.md; strategic-recording-and-summer-saves.md)
 
@@ -99,7 +109,7 @@ priority queue is closed, so every subsystem now has code-level rules available)
 
 ### End-turn gating
 
-- `FUN_0045af00`, called at the very start of `TPremierForm_EndTurn`, is the end-turn validity check — but it never reads the moves field (`ArmyRecord +6`). The "has not acted" filter is `FUN_0044aab4`, which recomputes the army's full weekly maximum and returns `fullMoves != army[+6]`, i.e. "this army has not acted at all this week". For each such army the check warns on supply and money: `FUN_0045ae68` returns a required-supply and supply-percentage pair, and the ready flag is cleared when the percentage is under `0x14` with a further condition, or when the army's money (`+12`) is below the required amount. The fleet half of the loop is the same shape on the fleet record. [confirmed] (decompiled-turn-and-calendar-sequencing.md)
+- `FUN_0045af00`, called at the very start of `TPremierForm_EndTurn`, is the end-turn validity check — but it never reads the moves field (`ArmyRecord +6`). The "has not acted" filter is `FUN_0044aab4`, which recomputes the army's full weekly maximum and returns `fullMoves != army[+6]` — **true when the army has acted** (or otherwise lost moves); the warning loop processes the **false** result, i.e. armies whose moves still equal their full allowance (the sequencing report's older English reading inverted this; the end-turn-warning report gives the polarity with the `if (!FUN_0044aab4(a))` test). For each such army the check warns on supply and money: `FUN_0045ae68` returns a required-supply and supply-percentage pair, and the ready flag is cleared when the percentage is under `0x14` with a further condition, or when the army's money (`+12`) is below the required amount. The fleet half of the loop is the same shape on the fleet record. [confirmed] (decompiled-turn-and-calendar-sequencing.md)
 - The check never blocks an AI seat: the tail `(&DAT_00474b00)[currentNation * 0x494] == 0` forces ready `= 1`, one of four call sites fixing the flag's polarity as 0 = computer-controlled. [confirmed] (decompiled-turn-and-calendar-sequencing.md)
 - The original code carries a genuine inconsistency here: `FUN_0044aab4`'s low-supply test is `supplies × troops / 10000 < 10`, while the weekly tick that wrote the value uses `supplies × 10000 / troops < 10`; the two agree only near 10,000 troops, so the reference value is wrong for armies far from that size. [confirmed: code] (decompiled-turn-and-calendar-sequencing.md)
 - Observed UI: End turn can pop an "End turn ?" box — "An army of yours cannot afford to pay its mercenary units…" (a second wording of the "needs supplies" box) — followed by Confirm boxes, before play continues. Wine-only. [observed: Wine-only] (2026-10-02-two-human-seats.md)
@@ -107,12 +117,12 @@ priority queue is closed, so every subsystem now has code-level rules available)
 
 ### Open
 
-- The exact per-season growth-rate and supply-consumption table contents at `DAT_004794a8`/`DAT_004794a0` (10-byte stride, 4 seasons) were not extracted that pass. (decompiled-turn-and-calendar-sequencing.md)
-- The real treasury/tax-collection step in the weekly tick is still unfound — `FUN_00451304`, the step right after city/army/fleet processing, is a seasonal weather-event system, not taxes. (decompiled-turn-and-calendar-sequencing.md)
-- `FUN_0044a050` (fleet construction completion) was not decompiled, only inferred from its call site; the storm/loss odds are untested against a controlled Winter-transition save sequence. (decompiled-turn-and-calendar-sequencing.md)
+- ~~The per-season table contents~~ **Resolved:** the season value words are Spring 50 / Summer 80 / Autumn 80 / Winter 20 at DAT `0x1F7D8` (city-population-growth.md); the rest of those 10-byte records is still unexamined. (decompiled-turn-and-calendar-sequencing.md)
+- ~~Treasury/tax collection unfound~~ **Resolved:** collection is **quarterly**, not weekly — `FUN_00451b40` at the week-11→1 wrap (see §2); `FUN_00451304` is the weather-event system. (decompiled-turn-and-calendar-sequencing.md, decompiled-quarterly-billing-and-economy.md)
+- ~~Fleet completion not decompiled; storm odds untested~~ **Resolved:** `FUN_0044A050` is decompiled (launch writes in decompiled-unit-map-orders-and-record-fields.md) and the storm/loss odds reproduced exactly in all 12 live cells (2026-10-03-storms-and-losses-at-sea.md, Wine-only). (decompiled-turn-and-calendar-sequencing.md)
 - Whether the desktop original takes the `Randomize` branch when started from `SEED.TXT`; whether `Randomize`'s other call site (`0x456759`, handler with no direct caller) can re-seed mid-game; and the weather overlay's edge behaviour for a storm centre whose 17 × 17 box crosses the map edge. (2026-10-03-new-game-turn-order-shuffle.md; 2026-09-29-loading-a-save-does-not-reseed.md)
 - Repeatability through a tactical battle fought with *Computer general* inside the AI phase (no battle occurred in the tested turns). (2026-09-29-loading-a-save-does-not-reseed.md)
-- Trailer word `+38` changed 7 → 2 over one turn; its meaning is unknown. (ptolemaic-player-and-week9.md)
+- Trailer word `+38` is the **turn-order index** (the tail's fields after the current nation: turn-order index, week, year BC, season — decompiled-sav-file-layout.md); its 7 → 2 change was the seat advancing. (ptolemaic-player-and-week9.md)
 - In the two-human run: nothing after the war order (no fleets, no human–human battle), whether both humans are asked to place units when their units meet, whether the "mercenary pay" End-turn box appears for the same reason in every start, and whether a two-human round repeats byte for byte from the seed (same state observed twice, but saves not compared byte for byte). One and a half rounds, one seed, one pair. (2026-10-02-two-human-seats.md)
 - The cause of the intermittent End-turn click failures. (2026-10-02-start-as-each-nation.md)
 - Everything in the two Wine-only reports remains a candidate until the desktop original confirms it. (2026-10-02-start-as-each-nation.md; 2026-10-02-two-human-seats.md)
@@ -175,8 +185,8 @@ priority queue is closed, so every subsystem now has code-level rules available)
 ### City supply-stock production (the weekly step)
 
 - The weekly loop in `FUN_004514ec` writes the city's **supply stock** (`+0x18`), once per round before the army and fleet loops: `v = seasonValue[season]` (50 / 80 / 80 / 20); `s = (pop × (v − 40)) / 10`; `inc = s − (s × mobilized) / 200`; if threatened (`FUN_004497cc`), `inc = min(inc, 0)`; `supplies = max(0, min(supplies + inc, pop × 10))` [confirmed: 33 save pairs, 10,693 of 10,980 city-turns exact] (city-population-growth.md).
-- Per turn at mobilization 0: Spring `+pop`, Summer `+4 × pop`, Autumn `+4 × pop`, Winter `−2 × pop`. At mobilization 100 every figure is halved, gains and Winter losses alike (e.g. pop-50 city: +50 / +200 / +200 / −100). The ceiling `pop × 10` is where most cities sit most of the year (Rome's capital, pop 181, holds exactly 1,810) [confirmed] (city-population-growth.md).
-- The step is modulated by the owner's **mobilization** (`+0x442`), not loyalty — nations at mob 0 lose nothing in Winter, nations at 97–100 lose exactly half, Rome at 30 loses 15% [confirmed] (city-population-growth.md).
+- Per turn at mobilization 0 (pop-50 city): Spring `+50`, Summer `+200`, Autumn `+200`, Winter `−100`. At mobilization 100 every figure is halved, gains and Winter losses alike (pop-50 city: +25 / +100 / +100 / −50). The ceiling `pop × 10` is where most cities sit most of the year (Rome's capital, pop 181, holds exactly 1,810) [confirmed] (city-population-growth.md).
+- The step is modulated by the owner's **mobilization** (`+0x442`), not loyalty: the mobilisation term is zero at mob 0 — the full Winter loss still applies; the source's own "nations at mob 0 lose nothing in Winter" sentence conflicts with its formula and must not be read as no Winter loss — while nations at 97–100 have every figure halved and Rome at 30 loses 15 % of it [confirmed; mob-0 wording corrected from the source's internal inconsistency] (city-population-growth.md).
 - **Winter decline is loyalty, not population:** if `supplies == 0` and `season == Winter` and `Random(3) == 0`, `loyalty (+0x16) −= 1` (famine unrest; the loop's only Random draw) — 39 of 108 empty-stock Winter city-turns lost exactly 1 loyalty (≈ 1/3); cities with stock, and all cities outside Winter, never do [confirmed] (city-population-growth.md).
 - The supply loop runs before `FUN_00451b40` and before the season advances: city-ticks use the **pre-growth** population and the **ending** season [confirmed on 5 one-turn quarter pairs] (city-population-growth.md).
 - The fortify-order step (up to 10 points per turn when `fortification > 100`, cancelled to `fort % 100` when threatened) is read from code only; no save has an order in progress, and a literal reading would zero a city completed to exactly 100 with < 10 points pending — original bug or misreading, unsettled (city-population-growth.md).
@@ -190,7 +200,7 @@ priority queue is closed, so every subsystem now has code-level rules available)
 - **Transfer effects (`FUN_0044BED8`):** receiver: unity `min(990, +3)`, wealth `+ pop × 3000`, city count `+1`, treasury `+ contribution × 6`, tax base `+ contribution × 4`; old owner: unity `max(250, unity − 20)` (an owner below 270 is *raised* to 250), wealth `− pop × 3000`, count `−1`, tax base `− contribution × 4`, treasury unchanged. Loyalty after transfer: if `allegiance == receiver`, `L = min(90, 140 − L)`; else `L = min(65, max(50, 100 − L))` — at `L < 30` always 90 in (b) and 65 in (c)/(d). The old owner's recruitment slots targeting the city are removed from slot 39 down, but only those with troops > 0. Population, fortification, tribute, allegiance and the old owner's treasury are never written [confirmed] (decompiled-quarterly-rebellion.md).
 - Because the tick zeroes and rebuilds wealth/tax base around the city loop, a rebellion leaves both totals as if the city had always belonged to the receiver; the `× 6` treasury credit, unity changes and city counts land before the nation loop reads them for this quarter's income [derived] (decompiled-quarterly-rebellion.md).
 - News: one line per moved city, "*C defects from X to Y.*", sitting at the end of the week-11 round just before the new season's header [confirmed] (decompiled-quarterly-rebellion.md).
-- **Rebirth (`FUN_0044C360`)** [confirmed: listing]: counts every city (whoever owns it) with `allegiance == nation` and `loyalty < 40`; proceeds only if the count is `> 7`; moves exactly those cities. Resets: unity 450, conquered-by −1, treasury 0, tax base 0, city count 0, **tax rate 20, mobilization 50**, all 40 recruitment slots' troops to 0 (state/type/city kept); does not reset wealth (the loop refills it), the neighbour mask or the human flag. Its own relation row is zeroed, and a symmetric −8 cooldown is written per moved city with that city's owner. New leader: one `Random(12)`. New capital: the moved city with the greatest `FUN_0044A98C` strength (first by index on a tie; at loyalty 90, `90 × 150 + fortification × 250 + population × 200`); it gets loyalty `min(99, L + 8)` (so 98), fortification `min(99, F + 10)`, population `+10`, maximum population `+20`, tribute `+25`. Rebirth never happens outside a quarter tick (decompiled-quarterly-rebellion.md).
+- **Rebirth (`FUN_0044C360`)** [confirmed: listing]: counts every city (whoever owns it) with `allegiance == nation` and `loyalty < 40`; proceeds only if the count is `> 7`; moves exactly those cities. Resets: unity 450, conquered-by −1, treasury 0, tax base 0, city count 0, **tax rate 20, mobilization 50**, all 40 recruitment slots' troops to 0 (state/type/city kept); does not reset wealth (the loop refills it), the neighbour mask or the human flag. Its own relation row is zeroed, and a symmetric −8 cooldown is written per moved city with that city's owner. New leader: one `Random(12)`. New capital: the moved city with the greatest **full `FUN_0044A98C` result** (first by index on a tie; at loyalty 90 the base terms are `90 × 150 + fortification × 250 + population × 200`, and a former capital of another nation still passes the capital test through the stale `+0x444` pointer and gets the × 5/3 bonus — strongly favouring it `[derived]`); it gets loyalty `min(99, L + 8)` (so 98), fortification `min(99, F + 10)`, population `+10`, maximum population `+20`, tribute `+25`. Rebirth never happens outside a quarter tick (decompiled-quarterly-rebellion.md).
 - `FUN_0044C204` itself draws no Random and writes nothing — all effects come from the transfer or rebirth [confirmed] (decompiled-quarterly-rebellion.md).
 - No rebellion or rebirth has ever been observed in the 99 local saves (no city ever below 39 loyalty); the rule rests on the decompile alone, though the shared transfer routine is confirmed 8-for-8 on loyalty by cascade defections [confirmed: saves] (decompiled-quarterly-rebellion.md).
 
@@ -204,14 +214,14 @@ priority queue is closed, so every subsystem now has code-level rules available)
 
 ### Open:
 
-- The exact relationship between the tax dialog's displayed "income" and any stored nation field (rome-tax-increase-and-sidon-capture.md).
+- ~~Tax dialog "income" vs stored field~~ **Resolved:** the preview is `taxBase (+0x44C) × rate / 100` against the stored base (decompiled-fleet-tax-and-mercenary-formulas.md); what stays open is only that the preview is not a stored field and nets nothing — the treasury delta includes upkeep and events. (rome-tax-increase-and-sidon-capture.md)
 - The tax (120) and mobilization (300) growth divisors in isolation: code gives the immediates, one save city pins both terms together, but the controlled save pair (Laranda at tax 17 vs 18, mob 42) has not been run (city-population-growth.md).
-- The fortify-order step's reading and whether the "completes to exactly 100 with < 10 points pending → fortification 0" behaviour is an original bug (city-population-growth.md).
-- The mercenary cost formula's concrete table values (`troops × priceTable[type] / 1000 × qualityFactor` is visible but unsolved against the Felsina hire) and the label→name table's DAT backing (decompiled-fleet-tax-and-mercenary-formulas.md).
+- ~~Fortify-order reading unsettled~~ **Resolved:** the 100-completion bug is **confirmed live** (95 + 5 → 0; see §3), not a misreading — reproducing it is a fidelity decision, not an open question. (city-population-growth.md, 2026-09-29-fortification-orders-cost-rate-and-the-100-bug.md)
+- ~~Mercenary price values and label table unsolved~~ **Resolved:** the price lookup is the shared quarterly table (`DAT_00478FD4`; LI 1, HC 4 re-read from the DAT) and the label→name table is 52 names at DAT `0x1F8C6`, 20-byte stride (§4). Residual: only those two price bytes were re-read from the DAT directly. (decompiled-fleet-tax-and-mercenary-formulas.md, 2026-10-05-mercenary-hire-price-is-a-gate-not-a-charge.md)
 - No rebellion or rebirth has been seen in play — everything about `FUN_0044C204`/`FUN_0044C360` is from code; whether real games reach the stale-capital states that let a rebellion eliminate its owner, and the forced-capture `L′` values inferred from the erosion window, are unverified (decompiled-quarterly-rebellion.md).
 - A negative tax base (the `(x + 3) >> 2` tribute form) has not been seen in play; the tick's credit was not re-measured in the balance-sheet task itself (2026-10-05-balance-sheet-tribute-line.md).
 - Whether a captured city's allegiance later converges to its new owner (rome-tax-increase-and-sidon-capture.md).
-- The AI stability check's exact trigger ("collapse if unhealthy" as read, or something more nuanced) awaits an observed AI collapse; the quarterly-formula pass performed no numeric whole-tick cross-check of its own beyond the terms already verified (decompiled-quarterly-billing-and-economy.md).
+- ~~AI stability trigger unobserved~~ **Resolved:** the routine is **leader deposition** (`FUN_0044C8F0`) with the exact trigger (`Random(9) == 0` and the debt/unity test), confirmed on 2 of 15 in-debt AI nation-quarters (§2). (decompiled-quarterly-billing-and-economy.md, upkeep-payment-and-desertion.md)
 
 ## Cities, the map, capture and defection
 
@@ -281,7 +291,7 @@ priority queue is closed, so every subsystem now has code-level rules available)
 - Siege `FUN_0044b27c(army, city)`, in order: compute attacker strength; **strip any fortification order** (`fort > 100 → fort % 100`); compute defender strength; if `army.owner == city.allegiance`, `def = def × 9 / 10`; erode loyalty, fortification and population; apply the population floor `max(pop, maxPop / 6 + 1)`; repaint the marker; attacker casualties `FUN_0044ae20(army, max(1, min(15, def × 6 / atk)))` unconditionally; `army.moves = 0`; then the outcome test `[confirmed]` (decompiled-defection-and-siege-attrition.md)
 - **Outcome:** `atk > def` → "*{City} ({OldOwner}) falls to {NewOwner}.*" and the transfer `FUN_0044bb18`; otherwise "*{AttackerNation} fails to capture {CityName}.*" — **a tie goes to the defender**; the test compares the post-×9/10 defender strength `[confirmed]` (decompiled-city-capture-resolution.md; decompiled-defection-and-siege-attrition.md)
 - **Attacker strength** (`FUN_0044a930`): `Σ(troops × 3 for unit type 2/archers, troops otherwise) / 80 × morale (+0xE)` over the army's 20 slots `[confirmed]` (decompiled-defection-and-siege-attrition.md)
-- **Defender strength** (`FUN_0044a98c`): `loyalty × 150 + fortification × 250 + population × 200` (fortification decoded `> 100 → % 100`); `× 5 / 3` if the city is the capital and loyalty > 59; `× 4 / 5` if `owner != allegiance` (integer truncation — not exactly "−20 %"); `+ garrison troops assigned to the city / 2` — a captured city is measurably easier to attack again while unassimilated (decompiled-city-capture-resolution.md)
+- **Defender strength** (`FUN_0044a98c`): `loyalty × 150 + fortification × 250 + population × 200` (fortification decoded `< 100 verbatim, else % 100` — 100 itself is in the modulo branch, a 25,000-defence difference at raw 100); `× 5 / 3` if the city is the capital and loyalty > 59; `× 4 / 5` if `owner != allegiance` (integer truncation — not exactly "−20 %"); `+ garrison troops assigned to the city / 2` — a captured city is measurably easier to attack again while unassimilated (decompiled-city-capture-resolution.md)
 - **Ownership transfer** (`FUN_0044bb18`): `city.owner = newOwner`; new owner gets `unity +9` (clamped to 990), `wealth + population × 3000`, `cityCount + 1`, `taxBase + tribute × population / maxPopulation × 4` and treasury credited `contribution × 4`; old owner gets `unity −15`, `wealth − population × 3000`, `cityCount − 1`, `taxBase − contribution × 4` (the unity penalty is asymmetric: −15 vs +9) (decompiled-city-capture-resolution.md, as corrected 2026-09-14)
 - The old owner's recruitment slots targeting the city are **cleared** — the garrison is wiped on transfer (decompiled-city-capture-resolution.md)
 - **Loyalty after capture:** allegiant receiver `min(90, 140 − L′)`; otherwise `max(40, min(60, 100 − L′))`, with `L′` the loyalty after siege erosion (decompiled-city-capture-resolution.md, correction 2026-09-26)
@@ -319,7 +329,7 @@ priority queue is closed, so every subsystem now has code-level rules available)
 - Only the captures and their cascade defections get individual news lines; the conquest loop's transfers are silent under the banner (galatia-elimination-and-city-resupply-confirmed.md)
 - A human seat eliminated by conquest is shown "*Your nation has been conquerred by X*" (`FUN_0044C8F0`), turned over to the computer, and the game ends if no human seat is left; the defection path zeroes unity **before** this, so a human eliminated by defection ends at unity 150, not 0 `[confirmed: decompile]` (decompiled-elimination-cleanup.md)
 - The defection-path elimination block (`FUN_0044BED8` at city count 0) does the DisableNation, unity 0, conquered-by, relation reset and the same army/fleet loops — but writes no conquest news, no capital sentinel, and no slot wipe beyond the per-city one `[confirmed: decompile]` (decompiled-elimination-cleanup.md)
-- The turn order is untouched; the seat stays and is skipped while unity ≤ 0; every diplomatic path requires unity > 0, so **no one can declare war on an eliminated nation** `[confirmed]` (decompiled-elimination-cleanup.md)
+- The turn order is untouched; the seat stays and is skipped while unity ≤ 0; every diplomatic path requires unity > 0, so **no one can declare war on a nation at unity ≤ 0** `[confirmed]` — one exception: a **human eliminated by defection ends at unity 150, not 0**, keeps taking (empty) AI turns and **can still be targeted diplomatically** `[confirmed: decompile]` (decompiled-elimination-cleanup.md)
 - **Elimination is not permanent:** rebirth `FUN_0044C360` fires from the quarterly rebellion when the allegiance nation's unity < 1 and more than 7 cities still holding that allegiance have loyalty < 40; the nation returns with unity 450, zeroed treasury/tax base/city count, those cities defecting to it, and the strongest as new capital `[confirmed: decompile]` (decompiled-elimination-cleanup.md)
 - Elimination signature in saves: capital `0xFFFF`, unity 0, conquered-by set, stale city count `[confirmed: saves]` (galatia-elimination-and-city-resupply-confirmed.md)
 
@@ -330,14 +340,14 @@ priority queue is closed, so every subsystem now has code-level rules available)
 
 ### Open:
 
-- Whether the terrain-table DAT offset `0x1F622` is stable across DAT builds; what `FUN_0044d31c(...) < 10` actually measures; what sets an army's weekly `Moves` maximum (terrain-move-cost-table-in-dat.md)
+- Whether the terrain-table DAT offset `0x1F622` is stable across DAT builds; what `FUN_0044d31c(...) < 10` actually measures. ~~What sets an army's weekly moves maximum~~ **Resolved:** `10 − min(5, troops/20000)`, −1 below 10 % supply (army-moves-field-signed-and-the-ffff-underflow.md; stated in §1 and §5). (terrain-move-cost-table-in-dat.md)
 - Which cell codes the *original map* uses for Desert/Forest/Mountains awaits a render-vs-screenshot check; the human-vs-AI moves-zeroing asymmetry awaits a controlled save pair (terrain-move-cost-table-in-dat.md)
 - The rough-sea tile graphic; whether the AI steers fleets away from rough water; the bitwise RNG draw order (no seeded replay); why the 20 storm centres are where they are (decompiled-map-code1-overlay.md)
 - Whether city coordinates refer to the cell itself, a nearby symbol, or a visual anchor (map-layout.md)
 - Whether a demoted ex-capital's marker refresh is observable in a single save; the DAT's initial map variants were not read directly (2026-10-07-city-marker-variants.md)
 - The conquest neighbour-mask merge has never been observed changing a mask (the only conquest in the saves is a no-op for it); why the hand-authored frontier graph looks as it does (dat-neighbour-mask.md)
 - The `unity +9/−15` and `wealth ± population × 3000` capture formulas await a controlled same-turn save pair; the Galatian captures' actual `def / atk` windows were not reconstructed; no save pair has yet checked the failed-siege erosion prediction (decompiled-city-capture-resolution.md; decompiled-defection-and-siege-attrition.md)
-- The supply-capacity-per-troop ratio (~98–100) rests on two data points; what fully drained Army 0's supply by the save point; the resupply dialog's RTTI class is not yet located (galatia-elimination-and-city-resupply-confirmed.md)
+- ~~Supply-capacity ratio ~98–100 and the resupply form unnamed~~ **Resolved:** the capacity is exactly `troops div 100` tons (dialog `+1`) and the form is `TAFSupply` (supply-capacity-rounding.md; §5). What stays open from the old report is only what drained that one army. (galatia-elimination-and-city-resupply-confirmed.md)
 - No save shows an eliminated nation's armies or fleets being disposed of (Galatia had none) — the disposal is code-only; whether cross-nation embarkation exists; whether any path other than rebirth lets defection take a nation's last city; the capital move has not been checked against a save; the `DisableNation` UI reading was not verified against the form resources (decompiled-elimination-cleanup.md)
 
 ## Recruitment, mobilisation, and mercenaries
@@ -390,7 +400,7 @@ priority queue is closed, so every subsystem now has code-level rules available)
 
 ### The mobilisation rate
 
-- Placing a recruitment order raises it: `mobilized = min(100, mobilized + 1 + (troops × 1000) / wealth)` with `wealth` = nation `+0x430` = sum over cities of `population × 3000`, rebuilt quarterly. In game units the step is `1 + troops / (3 × totalPopulation)` `[confirmed]` (decompiled-mobilization-and-mercenary-restock.md). Cancelling an order and disbanding a queued entry apply the exact inverse without the cap: `mobilized = max(0, mobilized − 1 − (troops × 1000) / wealth)`. Quarterly decay is `max(0, mobilized − 3)`. The initial value at nation setup is 50 `[confirmed]` (decompiled-mobilization-and-mercenary-restock.md).
+- Placing a recruitment order raises it: `mobilized = min(100, mobilized + 1 + (troops × 1000) / wealth)` with `wealth` = the stored nation `+0x430` field (rebuilt quarterly as `Σ population × 3000`; between rebuilds the stored word, not the live sum, is divided) `[confirmed]`. The game-units reading `1 + troops / (3 × totalPopulation)` is a direct substitution of the rebuild value and is `[derived]` (decompiled-mobilization-and-mercenary-restock.md). Cancelling an order and disbanding a queued entry apply the exact inverse without the cap: `mobilized = max(0, mobilized − 1 − (troops × 1000) / wealth)`. Quarterly decay is `max(0, mobilized − 3)`. The initial value at nation setup is 50 `[confirmed]` (decompiled-mobilization-and-mercenary-restock.md).
 - Mobilizing units does not change the rate; only placing orders does `[confirmed]` (decompiled-mobilization-and-mercenary-restock.md). Three sites write it upward: `TArmyRecruits_RecruitUnit`, the AI's `FUN_004504f4` (identical inline increment, gated on `mobilized < 100`), and setup's `= 50` `[confirmed]` (decompiled-mobilization-and-mercenary-restock.md).
 - The rate is capped at exactly 100 ("Your mobilisation rate is already 100%.") `[confirmed]` (decompiled-recruitment-cost-formula.md, decompiled-mobilization-and-mercenary-restock.md). A nation's mobilization rate is its standing army expressed as a fraction of its people, accumulated one order at a time — which is why it feeds back into population growth and city supply production `[derived]` (decompiled-mobilization-and-mercenary-restock.md).
 - The division truncates: confirmed at a discriminating wealth scale — 13 Ptolemaic orders (wealth 30,573,000; largest step `10,000 × 1000 / 30,573,000 = 0` under integer division) moved the rate exactly 17% → 30%, +13 from the flat `+1` terms; real-valued division would have given 32–33 `[confirmed]` (ptolemy-run-readiness-ladder-and-mobilization-rate-confirmed.md).
@@ -428,9 +438,9 @@ Open:
 - The first quarterly charge of hired mercenaries was not run live (needs End turns to the week-11 tick); only LI q8 and HC q9 tested for the gate/display/pay triple; the refusal was tested at purse 20 only; Wine-only, so play results are candidates until the desktop original confirms them (2026-10-05-mercenary-hire-price-is-a-gate-not-a-charge.md).
 - The floor-vs-rounding separation for the regular-unit disband (5,900 → 2.29 under both); the refusal away from an own city, Cancel, the Army-to-army Disband buttons and multi-unit disbands are code-only; also Wine-only (2026-10-05-disbanding-a-regular-unit-lowers-mobilisation.md).
 - The multi-entry disband and the post-disband Balance sheet were not run in play; the price paid for entries already queued by the new-game fill was not observed (2026-10-05-disbanding-a-queued-recruitment.md).
-- Whether a scenario or option changes the start year and then uses different starting queues; where the new-game turn-order shuffle happens in code (2026-09-29-new-game-recruitment-queues-come-from-the-dat.md).
+- Whether a scenario or option changes the start year and then uses different starting queues. ~~Where the new-game turn-order shuffle happens~~ **Resolved:** `FUN_00448AA4` (§1). (2026-09-29-new-game-recruitment-queues-come-from-the-dat.md)
 - Whether the DAT unit-table offset `0x1f2f0` is stable across DAT builds; whether the mercenary price lookup is byte-identical to the shared quarterly table (only LI 1 and HC 4 re-read from the DAT for the hire test) (unit-type-stat-table-in-dat.md, 2026-10-05-mercenary-hire-price-is-a-gate-not-a-charge.md).
-- Seed-exact replay of the New Game mercenary fill (the seed is wall-clock milliseconds and is not stored) (decompiled-new-game-mercenary-fill.md).
+- Seed-exact replay: the fill itself was not replayed from a stored seed (there is none), but for two unpatched desktop games a clock-seed search matched the full draw chain — order, filled-slot count and storm cells included (§1). Residual: no per-draw replay of the fill branch counts in isolation. (decompiled-new-game-mercenary-fill.md, 2026-10-03-new-game-turn-order-shuffle.md)
 
 ## Armies: records, movement, supply, and purses
 
@@ -513,6 +523,13 @@ Open:
 - No free land tile: no army is created, the dialog does not open, no message `[derived]` (2026-10-05-split-army-aboard-a-fleet.md).
 - The AI's split of a landing army (when `ships × 500 < troops`) gives the new army `purse div 3` and a third of the supplies `[derived]` (2026-10-05-army-purse-writes-and-the-1000-cap.md).
 
+### Individual-unit join, split and disband (Change unit details)
+
+- `TUnitMap_ChangeUnitDetails` opens `TChangeArmyUnits` — rename, split, join and disband individual units inside one army (decompiled-unit-map-orders-and-record-fields.md).
+- **Unit-level join** (`TChangeArmyUnits_JoinUnits`): only **regular** units may be joined (*"You can only join regular units together."*), only units of the **same type** (*"You can only combine units of the same type."*), and the combined troop count must not exceed the type's **standard battalion size** — unit-type-table field `+0x1A` (LI 15,000 · HI 6,000 · Ar 3,500 · LC 7,000 · HC 2,500), which is what that field is actually *for*. The merged unit's quality is the **arithmetic mean** of the merged units' qualities (decompiled-unit-map-orders-and-record-fields.md).
+- **Unit-level split** (`TSplitArmyUnit_OK`): the split unit inherits type and quality and is auto-named with the next free ordinal for its type across all of the nation's armies and the city garrison (`1st/2nd/3rd/Nth` + `Foot`/`Guards`/`Bowmen`/`Lancers`/`Dragoons` + `Battalion`) — the naming pattern seen in every roster (decompiled-unit-map-orders-and-record-fields.md).
+- The disband paths and their mobilisation effects are in the recruitment section (§4, "Disbanding effects").
+
 ### Purses: the 1,000 cap and its writers
 
 - Only three paths cap a purse at 1,000, all minimum rules in a dialog or the own-city refill: the Supply army money arrows and the Army-to-army money arrows (both `min(step, 1000 − receiver's purse)`, no floor at 0, so a purse above 1,000 gets a negative step and is pulled back), and the own-city refill `FUN_0044F6D8` (excess above 1,000 goes to the treasury) `[derived]`; the Supply-army cap seen in play `[confirmed]` (2026-10-05-army-purse-writes-and-the-1000-cap.md).
@@ -566,7 +583,7 @@ Open:
 
 ### Field attrition and mobilization
 
-- One turn of movement/combat left every unit of an army between 2.50 % and 2.85 % of its troops — a single percentage applied uniformly army-wide, across unit types and qualities, rather than per-unit front-line losses; the pair cannot separate combat from supply attrition `[observed]` (field-recruitment-uniform-attrition-and-fleet-drift.md).
+- One turn of movement/combat: every unit **lost** between 2.50 % and 2.85 % of its troops (≈ 97.2–97.5 % survived), which strongly suggests — but cannot prove — a single percentage applied uniformly army-wide, across unit types and qualities, rather than per-unit front-line losses; the pair cannot separate combat from supply attrition `[observed]` (field-recruitment-uniform-attrition-and-fleet-drift.md).
 - A mercenary hire adds a new unit slot at the hired quantity and quality, named after the local nation, unlike mobilization or army creation (field-recruitment-uniform-attrition-and-fleet-drift.md).
 - Mobilizing city-unit garrison troops into field armies conserves troop count exactly (85,000 − 7,000 = 78,000 = 35,000 refilled + 43,000 new army) `[confirmed]` (mobilization-movement-and-city-capture-modes.md).
 - An army fills to exactly 20 units before the overflow creates a new army, placed on the last cell of a placement scan around the source (observed at Rome +(+1,+1)) `[confirmed]` (mobilization-movement-and-city-capture-modes.md correction).
@@ -585,7 +602,7 @@ Open:
 - The 16-bit purse wrap above 32,767, and rows 3, 8, 12, 13, 14 of the purse table are code-only; whether the dialog lets a human fund a purse from a negative treasury is untested (2026-10-05-army-purse-writes-and-the-1000-cap.md).
 - A foreign supply purchase has never been saved (the `money × 5` cap, `amount div 5` cost, and the credit to the seller); a second dialog fill with `troops mod 100 < 50` would show `div + 1` in a save (supply-capacity-rounding.md).
 - Whether a fleet can besiege a coastal city, or sieges are army-only (attack-and-siege-are-adjacency-orders.md).
-- The desertion supply deduction is code-only (both save cases had 0 supplies); the human debt game-over is code-only; the deposition's relation reset unobserved (upkeep-payment-and-desertion.md).
+- The desertion supply deduction is code-only (both save cases had 0 supplies); the deposition's relation reset unobserved. The human debt game-over is **staged under Wine** (every debt reason windowed, 2026-10-05-end-of-game-screens.md; desktop confirmation still owed). (upkeep-payment-and-desertion.md)
 - The 2:1 morale decay/regen asymmetry is confirmed as code but unexplained as design (supply-driven-morale-and-fleet-attrition.md).
 - The split-aboard, purse, and refused-attack play results are Wine-only candidates until the desktop original confirms them (2026-10-05-split-army-aboard-a-fleet.md; 2026-10-05-army-purse-writes-and-the-1000-cap.md; 2026-10-05-refused-attack-declares-nothing.md).
 
@@ -594,7 +611,7 @@ Open:
 ### Fleet record layout
 
 - Fleets are stored in a fixed table of **26-byte records** (fleet table at `0x49C26C` in memory, 26 bytes each; a fleet order appends exactly +26 bytes to the save) — confirmed (save diff / live memory read) (fleet-order-at-caere.md; 2026-10-02-fleet-orders-live.md).
-- `X`/`Y` at word offsets `+0`/`+2`: real map position once deployed; `(0,0)` marks a fleet under construction, and completed fleets sitting in port also read `(0,0)` — confirmed (save) (fleet-order-at-caere.md; fleet-owner-field-confirmed.md).
+- `X`/`Y` at word offsets `+0`/`+2`: real map position once deployed; `(0,0)` marks a fleet **under construction** (all four `(0,0)` fleets in the checked save were unlaunched records with 0 supplies and 0 money) — confirmed (save; the earlier "completed in-port fleets also read (0,0)" wording is corrected) (fleet-order-at-caere.md; fleet-owner-field-confirmed.md).
 - `OwnerCode` at word 4 (byte offset `+8`): the owning nation's code; matches 6 of 6 fleets against independent identity evidence (Rome's ordered fleet, Carthage's lost-at-sea fleet, in-port fleets vs their port's owner) — confirmed (save) (fleet-owner-field-confirmed.md).
 - `ShipCount` at `+18` — confirmed (controlled save diff) (fleet-order-at-caere.md).
 - Word at `+10`: the **construction countdown** (24 at order, `0xFFFF` once launched) — confirmed (decompile, via correction) (fleet-order-at-caere.md).
@@ -602,8 +619,7 @@ Open:
 - Word at `+22`: `0xFFFF` sentinel, unchanged across every fleet record seen — confirmed (save) (fleet-order-at-caere.md).
 - Covered-terrain field at offset `+24`: reads 1 when the fleet is on rough sea (used by the storm pass) — confirmed (save + decompile) (2026-10-03-storms-and-losses-at-sea.md).
 - The record also carries supplies (tons), money (talents) and a carried-army field (army index, −1 when none) — live (Wine-only) (2026-10-02-fleet-orders-live.md).
-- Map markers: fleet cells encode `owner + a size band` — 300/316/332 for `<25` / `25–50` / `≥50` ships (so 333 is Carthage's 90-ship fleet, 335 Ptolemaic's 70-ship) — confirmed (decompile + owner words) (fleet-order-at-caere.md).
-- `CityIndex` drifts away from the home port as a fleet acts; a stale `CityIndex` pointing at a city that changed hands is expected, so it is not an ownership field — confirmed (save) (fleet-owner-field-confirmed.md).
+- Map markers: fleet cells encode `owner + a size band` — 300/316/332 for `<25` / `25–49` / `≥50` ships (so 333 is Carthage's 90-ship fleet, 335 Ptolemaic's 70-ship) — confirmed (decompile + owner words) (fleet-order-at-caere.md).
 
 ### Ordering fleets (cost, countdown, placement)
 
@@ -659,7 +675,7 @@ Open:
 
 ### Fleet joins, splits and transfers
 
-- **Join proceeds only when `ships[selected] + ships[partner] < 100`; exactly 100 combined is refused** with "There are more than 100 ships in these fleets combined." (the message is wrong by one for that case); the AI's once-per-turn merge `FUN_00450b30` uses the same strict `< 100` — **[confirmed: decompile]** (2026-10-07-join-fleets-100-ships-boundary.md).
+- **Join proceeds when `ships[selected] + ships[partner] < 0x65` (`< 101`): exactly 100 combined is accepted, 101 and above refused** with "There are more than 100 ships in these fleets combined." — the message is then exactly right for every refused case. The AI's once-per-turn merge `FUN_00450b30` is stricter, a literal `< 100`, so the AI refuses a combined 100 the human may make — **[confirmed: decompile; the boundary report's first version mis-converted 0x65 as 100 and said the opposite, corrected 2026-10-07]** (2026-10-07-join-fleets-100-ships-boundary.md).
 - Join is one click with no dialog: ships, supplies and money are carried over, the partner record is deleted, and **the survivor's moves are set to 0** — confirmed (decompile; live, Wine-only) (2026-10-07-join-fleets-100-ships-boundary.md; 2026-10-02-fleet-orders-live.md).
 - Join refuses if either fleet is carrying an army ("You cannot join fleets if one is carrying an army.") — confirmed (decompile) (2026-10-07-join-fleets-100-ships-boundary.md).
 - **Split fleet**: the dialog divides ships, supplies and money between the two columns; the new fleet appears on an adjacent tile with **0 moves** (one observation: (101,46) → (101,47)) — live (Wine-only) (2026-10-02-fleet-orders-live.md).
@@ -674,18 +690,18 @@ Open:
 
 Open:
 
-- The peace prompt for attacking a fleet ("Are you sure you want to attack this fleet ?" and the war declaration on Yes) was never exercised (2026-10-02-naval-battles.md; 2026-10-03-pair-2-seleucid-ptolemaic.md).
+- ~~Fleet-attack peace prompt never exercised~~ **Resolved for trade terms:** five No/Cancel/Yes trials, the declaration, cascade and sinking line all observed (2026-10-03-fleet-peace-prompt.md). Residual: peace, alliance and cooldown relation values untested. (2026-10-02-naval-battles.md)
 - Whether `random(4)` is uniform over 0–3 (win rates test it only in aggregate) and whether equal seeds share a draw across cells (2026-10-02-naval-battle-random-term.md).
 - The cargo divisor: the data lean to `siegeStrength / 40` but `/50` is not excluded (the fit rests on duplicated cells sharing draws) (2026-10-02-naval-battle-army-aboard.md).
 - The exact distribution of the winner's-army casualties and of the small-unit deletion pass (`FUN_0044AE20`, which units go when `d > 70`) — seen only in outcome (2026-10-02-naval-battle-army-aboard.md).
 - The cargo's effect on moves (`troops/100/ships + 1` fewer) is untested; no battle was fought from a naturally embarked fleet (all T3 cargos were save edits) (2026-10-02-naval-battle-army-aboard.md).
 - The New-Game fill that sets fleet moves to 25 has not been read from the code (2026-10-02-fleets-sail-and-drift.md).
-- The P60-versus-C60 parity difference is unresolved; the strength exponent γ is consistent with 1 but pinned only to 1.0–1.2 (2026-10-02-naval-battle-random-term.md).
+- ~~P60-vs-C60 parity difference~~ **Resolved:** the differences follow from the strict attacker-must-be-stronger inequality and need no separate effect; γ pinned to 1.0–1.2 remains as stated. (2026-10-02-naval-battle-random-term.md, correction)
 - The Winter 1-in-20 damage spike is neither confirmed nor excluded; the weather's own rolls were not measured (2026-10-03-storms-and-losses-at-sea.md).
 - Whether a fleet on rough sea with its moves spent can leave (cost 3 per tile) was not run (2026-10-03-storms-and-losses-at-sea.md).
 - The docked-fleet attack refusal was tested at one geometry (fleet diagonal to the city); other sides and a 2-tile distance were not tried (2026-10-03-pair-2-seleucid-ptolemaic.md).
-- The exact meaning of the 333-vs-335-style marker distinction beyond owner+size band; several fleet-record words remain unlabelled (including word 3, nonzero only for the Carthage fleet in one sample); `OwnerCode` behaviour mid-construction is unverified (fleet-order-at-caere.md; fleet-owner-field-confirmed.md).
-- Not tested live though the code reports state them: the 20-ship minimum for Split, the 100-ship Join cap at the boundary, Scuttle returning the fleet's money to the treasury and its supplies to the city; whether the new fleet's tile after Split is a rule (one observation) (2026-10-02-fleet-orders-live.md).
+- ~~The 333/335 distinction~~ **Resolved:** owner + size band (§3's marker encoding); `333`/`335` are Carthage's and Ptolemaic's ≥ 50-ship fleets. Still open: several fleet-record words remain unlabelled (including word 3, nonzero only for the Carthage fleet in one sample) and `OwnerCode` mid-construction is unverified. (fleet-order-at-caere.md; fleet-owner-field-confirmed.md)
+- ~~The 20-ship Split minimum~~ **Confirmed live** (refusal R17, fixtures F01). Still not tested live: Scuttle's money/supplies return, and whether the new fleet's tile after Split follows a rule (one observation). The Join boundary is settled from code (≤ 100; see §6). (2026-10-02-fleet-orders-live.md; 2026-10-05-refusal-texts-and-conditions.md)
 
 ## Diplomacy and war
 
@@ -758,8 +774,8 @@ Open:
 Open:
 
 - Whether a nation with `unity > 0` but 0 cities can exist — the only case where the "ally is protected" test could fail for a direct ally; not checked (decompiled-ai-offers-to-human-seats.md).
-- An alliance offer, and a cascade that turns an alliance into war, have never been observed in a save; both are code-only. An upper-case war declaration has been observed only under Wine, never in a desktop-original save (decompiled-ai-offers-to-human-seats.md, news-log-format-and-messages.md).
-- The reparations formula is confirmed in code but not verified against the one recorded payment (the loser's tax base and city count were not read back from the pre-treaty save) (decompiled-diplomacy-peace-terms-and-instant-battles.md).
+- An alliance offer, and a cascade that turns an alliance into war, have never been observed in a save; both are code-only. An upper-case war declaration exists in a recorded original-game line ("CARTHAGE DECLARES WAR ON PTOLEMAIC.", ptolemy-run-news-log-vocabulary-verified.md) as well as under Wine. (decompiled-ai-offers-to-human-seats.md, news-log-format-and-messages.md)
+- Reparations vs the recorded payment: the payment **passes the formula's range check** (`W = 6188`, 48 cities → predicted [2027, 3573], observed 2,269) but the exact RNG draw was not recovered. (decompiled-diplomacy-peace-terms-and-instant-battles.md, correction)
 - Whether the ungated partner–ally −8 in the treaty's ally loop is intended is not argued; the ally loop was never exercised in the live battle probes (decompiled-war-cascade-and-peace-paths.md, 2026-10-05-battle-peace-offer.md).
 - The attack confirmation was tested only at trade terms (1): peace, alliance and cooldown values were not, and an attack on an ally may be refused outright; the cascade's reach beyond one step was predicted from code, not observed (2026-10-03-fleet-peace-prompt.md).
 - The `TBattlePols` results (open rate, Yes/No diff, thresholds) are Wine-only; `armies(W) == armies(L)`, human-versus-human `THVHBatPols` and more than one box per turn were not tested (2026-10-05-battle-peace-offer.md).
@@ -840,6 +856,12 @@ Open:
 - This supersedes two earlier readings: the withdrawn "adjacency rule" (average-quality units next to a destroyed slot promoted — a 1-in-84 coincidence of one battle) and the empirical 1-in-4 model inferred from 30 survivors (battle-replayed-rout-mechanic-and-combat-constants.md, `[derived, supersedes a prior derived rule]`).
 - Promotion happens after the battle, not incrementally during it (full-battle-resolution-rome-vs-gaul.md).
 
+### Battle pacing (the per-exchange delay)
+
+- Each combat message is followed by a deliberate pause: `Delay(n)` at `0x00448FFC` is a **busy-wait** `while (GetTickCount() − start) <= n × 100` — n × 100 ms, no message pumping (which is why the window reads "Not Responding" during it). The observed ~3.02 s gaps correspond to `n ≈ 30` (battle-freeze-diagnosed-procmon.md).
+- There is **one pause per exchange**, not one per sound (277 PlaySound threads but only 27 stalls in the traced window) (battle-freeze-diagnosed-procmon.md).
+- The delays are a **player-adjustable setting, stored per nation** (two values, the shooting and melee preferences a tactical side adopts from its opponent — see the copy-in rules above); **setting both to 0 makes battles run at full speed** (battle-freeze-diagnosed-procmon.md).
+
 ### The battle AI (ComputerGeneral)
 
 - `TBattleMap_ComputerGeneral` sets a "which side is thinking" flag; `FUN_00439c84` repeats the AI move until a human's turn or battle end; there is no initiative stat — sides alternate, attacker first (decompiled-combat-formula-structure.md; 2026-10-04-decompiled-tactical-battle-rules.md, `[confirmed: code]`).
@@ -884,7 +906,7 @@ Open:
 - Whether the instant path's small-unit deletion (`/10` national, `/5` mercenary) can lift a winner's total above the ratio — needs unit-level rosters (instant-resolver-cannot-reproduce-a-tactical-battle.md).
 - Win rates/odds: the sweep's 3 seeds per cell describe how battles unfold, not probabilities; mixed armies, swapped sides, terrain and human play are not covered; everything in the sweep, probe and hook is Wine-only, a candidate until the desktop original confirms it (2026-10-04-tactical-battle-sweep.md; 2026-10-04-battle-probe.md; 2026-10-04-battle-exchange-hook.md).
 - The AI general's *choices* (who it targets, where it moves) are observed from snapshots, not independently decompiled; the flank draw count is not predictable from snapshots (2026-10-04-battle-exchange-hook.md; 2026-10-04-tactical-battle-sweep.md).
-- What follows a Yes on the Offer of peace, and the full terms-row text beyond the clipped label, were not observed (2026-10-04-battle-probe.md).
+- ~~What follows a Yes on the Offer of peace~~ **Resolved:** Yes was tried in 12 pairs — the two relation words go 3 → −18, one news line, and the next End turn thaws −18 → −14 (2026-10-05-battle-peace-offer.md). Residual: the clipped terms-row text. (2026-10-04-battle-probe.md)
 - The `TInformation` window's pixel layout, and the int32 wrap the decompile warns about (melee `tr·D` above ~23,000 troops against a high-power defender), were not exercised (2026-10-04-decompiled-tactical-battle-rules.md, `[derived]`).
 
 ## The computer seat's turn
@@ -967,7 +989,7 @@ Source: 2026-10-07-strategic-ai-turn.md (decompilation of `FUN_0044fa20` and its
 ### The scorers' arithmetic
 
 - `FUN_0044a930(army)` — assault strength: `Σ troops ×3 for type 2 (Bowmen), else ×1`, divided by 80, times morale; the Bowmen triple weight is read literally, no design intent argued (2026-10-07-strategic-ai-turn.md).
-- `FUN_0044a98c(city)` — city defense: `loyalty(+0x16)×150 + fortification(+0x1A mod 100)×250 + population(+0x1C)×200`, ×5/3 for a capital with loyalty > 59, ×⅘ when the owner is not the original owner, plus half the troops queued in recruitment slots at that city (2026-10-07-strategic-ai-turn.md).
+- `FUN_0044a98c(city)` — city defense: `loyalty(+0x16)×150 + fortification(+0x1A, < 100 verbatim else % 100)×250 + population(+0x1C)×200`, ×5/3 for a capital with loyalty > 59, ×⅘ when the owner is not the original owner, plus half the troops queued in recruitment slots at that city (2026-10-07-strategic-ai-turn.md).
 - `FUN_0044aa54(fleet)` — fleet strength: `ships × condition / 10`, plus the carried army's assault strength / 50, **plus `Random(4) × value/10`** — every evaluation, including both sides of a naval battle, carries a fresh 0–30% jitter (2026-10-07-strategic-ai-turn.md).
 - `FUN_0044b8d0(city)` — the capital test: true if the city is some nation's capital (a scan of all 16 `+0x444` fields); this is what the "×2 on a weak capital" and "prefer defending capitals" modifiers key on (2026-10-07-strategic-ai-turn.md).
 - `FUN_0044cab4(army, xy)` — reachability: true if the nation owns any fleet, or both endpoints are in the same region box (`FUN_0044eb18`) (2026-10-07-strategic-ai-turn.md).
@@ -991,9 +1013,9 @@ Source: 2026-10-07-strategic-ai-turn.md (decompilation of `FUN_0044fa20` and its
 | 3 | End-turn warning never blocks an AI seat | army-moves-field-signed-and-the-ffff-underflow.md |
 | 4 | The AI changes its own tax rate (week 11); the human only via the slider [confirmed: decompile] | 2026-10-07-strategic-ai-turn.md §2.3 |
 | 5 | The AI hires mercenaries with no charge (gate: army money > 50); the human's gate is the full price [confirmed: decompile] | 2026-10-07-strategic-ai-turn.md §3.2 |
-| 6 | The AI recruits into treasury deficit down to `−wealth/500`; the human's dialog requires the money [confirmed: decompile] | 2026-10-07-strategic-ai-turn.md §2.2 |
+| 6 | The AI's recruitment is gated by a deficit floor (`treasury > −wealth/500`, else max 3 orders); the human's dialog has **no affordability check at all** — the treasury simply goes negative [confirmed: decompile; the AI-turn report's original "human's dialog requires the money" wording was wrong, corrected 2026-10-07] | 2026-10-07-strategic-ai-turn.md §2.2; 2026-09-29-which-cities-may-recruit-and-troop-amounts.md |
 
-- Also: the human's `TArmyRecruits_RecruitUnit` charges `(troops/200) × initialPrice`; the deficit gate is checked only in `FUN_004504f4` [confirmed: decompile]; a disembarking computer fleet picks its landing cell automatically (`FUN_0044b840`), where a human clicks (2026-10-07-strategic-ai-turn.md).
+- Also: the human's `TArmyRecruits_RecruitUnit` charges `(troops/200) × initialPrice` with **no treasury check** (2026-09-29-which-cities-may-recruit-and-troop-amounts.md); the deficit floor exists only in `FUN_004504f4` [confirmed: decompile]; a disembarking computer fleet picks its landing cell automatically (`FUN_0044b840`), where a human clicks (2026-10-07-strategic-ai-turn.md).
 
 Open:
 
@@ -1005,6 +1027,8 @@ Open:
 - The readers of the phase-mode flag `DAT_004a0340` were not traced [confirmed: decompile; the readers were not traced] (2026-10-07-strategic-ai-turn.md).
 
 ## Victory, defeat, and the player interface
+
+*(Evidence note: most `[confirmed]` claims in this section are **Wine-only observations** — staged in controlled runs, not confirmed on the desktop original; the sources say so explicitly and desktop confirmation is still owed. Code readings keep their `[derived]` tags.)*
 
 ### Victory and defeat conditions
 
@@ -1081,17 +1105,25 @@ Open:
 - **Army panel**: an own army shows Moves, Supply (tons and percent), Morale, Money, Terrain, the five type lines, Total troops, No. of units, Regulars cost and Mercenary pay; a foreign army shows only composition, terrain and total (a fog-of-war rule) `[confirmed]` (2026-10-05-information-window-fields-and-bands.md; ptolemy-run-ui-inventory-and-leader-draw.md)
 - Regulars cost = Σ s over regular slots with s = i16(trunc(troops / 200) x price[type]); Mercenary pay = Σ trunc((s x quality) / 5) over mercenary slots; the per-slot product is narrowed to signed 16 bits `[confirmed]` (2026-10-05-information-window-fields-and-bands.md)
 - **Fleet panel**: Capacity = ships x 500; Sea is `calm` when the map-code field (+0x18) is 0, otherwise `rough`; a foreign fleet shows Fleet of, Ships, Capacity and Sea only `[confirmed]` (2026-10-05-information-window-fields-and-bands.md)
-- **Bands**: unity word = table[trunc(unity / 100)] — very low below 500, low 500-599, normal 600-699, high 700-799, very high 800-899, excellent 900-999, blank at 1000+; loyalty uses the same table with div 10 (very low below 50 … excellent 90-99); morale indexes the same table from entry 4 via ((m - 51), or (m - 48) when negative) sar 2 (very low 40-54 … excellent 71-74, blank 75+); quality is a plain index 0-9 (0-3 not ready, 4 very poor, 5 poor, 6 average, 7 good, 8 very good, 9 elite) — 36 of 41 edges confirmed on both sides in play `[confirmed]` (2026-10-05-information-window-fields-and-bands.md)
+- **Bands**: unity word = table[trunc(unity / 100)] — very low below 500, low 500-599, normal 600-699, high 700-799, very high 800-899, excellent 900-999, blank within the table's finite range (unity 1000–1199, morale 75–80 — readings beyond the table are `[derived]`, not an unlimited blank); loyalty uses the same table with div 10 (very low below 50 … excellent 90-99); morale indexes the same table from entry 4 via ((m - 51), or (m - 48) when negative) sar 2 (excellent 71-74, blank 75-80; the 40-47 tail is code-only, not staged); quality is a plain index 0-9 (0-3 not ready, 4 very poor, 5 poor, 6 average, 7 good, 8 very good, 9 elite) — 36 of 41 edges confirmed on both sides in play, the rest code-only `[confirmed where staged; derived beyond]` (2026-10-05-information-window-fields-and-bands.md)
 
 ### Refusal texts and their conditions
 
 - The game holds **74 message-box calls: 57 refusals, 13 prompts, 3 notices** (plus the excluded battle Surrender); every refusal is an OK-only information box except embark's `The army is too large for this fleet ?`, which is a Confirmation `[derived]` (2026-10-05-refusal-texts-and-conditions.md)
-- When two refusals hold, **the first-tested is shown and only one box appears** (played: 20-units before 100,000-troops; 100-ships before carrying-an-army) `[confirmed]` (2026-10-05-refusal-texts-and-conditions.md)
+- When two refusals hold, **the first-tested is shown and only one box appears** within an ordered chain (played: 20-units before 100,000-troops; 100-ships before carrying-an-army) `[confirmed]` — **the transfer dialog is the exception**: its 20-unit and 100,000-troop refusals are an else-if, but the fleet-capacity refusal is a separate second box (2026-10-05-refusal-texts-and-conditions.md)
 - Most refusals drop the order and change nothing; the transfer dialogs' per-unit tests, the three disband paths and Mobilize instead **clamp** — units that pass are still moved or removed and the box follows `[confirmed/derived]` (2026-10-05-refusal-texts-and-conditions.md)
-- Order limits (conditions `[derived]`, most played `[confirmed]`): 20 units per army (`These 2 armies combined contain more than 20 units.`, tested before troops), 100,000 troops per army (100,000 itself allowed), troops at most ships x 500 on embark/transfer, 100 ships per fleet on join (sum < 101, tested before the army test), neither fleet carrying an army to join or split fleets, split needs 20+ ships, army split needs 2+ units, fortify refused under siege / at 100 / with a pending order (word >= 101), recruit refused at 40 queued units / 100% mobilisation / a city under 75% fortification that is not the capital, mercenary hire refused at under 15% supplies / enemy city / purse below the price (2026-10-05-refusal-texts-and-conditions.md)
+- Order limits (conditions `[derived]`, most played `[confirmed]`): 20 units per army (`These 2 armies combined contain more than 20 units.`, tested before troops), 100,000 troops per army (100,000 itself allowed), troops at most ships x 500 on embark/transfer, ≤ 100 ships per fleet on join (guard `< 101`: refused from 101, tested before the army test; the AI's own merge uses the stricter `< 100`), neither fleet carrying an army to join or split fleets, split needs 20+ ships, army split needs 2+ units, fortify refused under siege / at 100 / with a pending order (word >= 101), recruit refused at 40 queued units / 100% mobilisation / a city under 75% fortification that is not the capital, mercenary hire refused at under 15% supplies / enemy city / purse below the price (2026-10-05-refusal-texts-and-conditions.md)
 - Diplomacy refusals: `You can only trade with 3 nations.`; `<nation> does not want to trade with you.` on a negative (cooldown) relation; `You cannot trade with <nation>.` when the target has three partners or the relation is 2-3; `<nation> does not want to make peace at this time.` for an AI at war; `<nation> does not want to ally with your nation.` when you (or an ally) are at war or the relation is negative `[confirmed/derived]` (2026-10-05-refusal-texts-and-conditions.md)
 - Build fleet: `Only nations with coastal cities can build fleets.`, then `You do not have a free coastal city at this time.`, then `You cannot build a fleet at this time.` (fleet table full at 99) `[derived]` (2026-10-05-refusal-texts-and-conditions.md)
 - Orders that fail with **no box at all**: Join armies/fleets with no partner one tile away, Split army with no free adjacent tile or 198 armies, Recruit mercenaries with no offer one tile away, embarking without moves or onto a fleet already carrying an army `[derived]` (2026-10-05-refusal-texts-and-conditions.md)
+
+### Menu, view and interface commands
+
+- **Main speed-button bar**: Open, Save, End turn, News, International relations, Taxation, Balance sheet, Recruit unit, Build fleet, then 16 nation buttons and All nations — each routes to the same handler as its menu item (2026-10-05-player-facing-feature-inventory.md M02).
+- **Menu accelerators (Shift)**: Shift+W News, Shift+B Balance sheet, Shift+C Show cities, Shift+P Show capital, Shift+A Show armies, Shift+F Show fleets, Shift+L Show all, Shift+D Find a city, Shift+1–5 and Shift+M the mercenary views, Shift+X Cancel selection (2026-10-05-player-facing-feature-inventory.md K01, `[derived]` from the forms' ShortCut properties).
+- **Find a city**: dialog with 16 nation buttons and the nation's city list (capital in capitals); OK moves both maps to the chosen city (2026-10-05-player-facing-feature-inventory.md A08).
+- **Show hints**: a ticked toggle (default on); one click removes the speed-button hints, a second brings them back — the handler flips the application's ShowHint, the item's check and one per-nation flag byte (2026-10-05-player-facing-feature-inventory.md H02).
+- The full 146-row inventory (menus, dialogs, prompts, panels) is the source report itself; this section consolidates only the rule-bearing commands.
 
 ### Nation marker colours
 
@@ -1110,7 +1142,7 @@ Open:
 
 - End screens: the reason order for conquered against the others is derived only; where the start triple is first written (New Game or each nation's first move) is not separated; a window for an AI conqueror, the defection-elimination path, a fall with three or more humans, and 269 BC / years 2-19 were not played; every state that reached a window was staged (2026-10-05-end-of-game-screens.md)
 - Leaders form: the mid-game branches (New player / New nation: OK's untick redraw, an already-human row) and `FUN_00449078` are derived only; the original's clock seeding of the draw was not played (2026-10-06-leaders-form.md)
-- News log: an uppercase war declaration has never been saved; an alliance-offer dialog has never been observed; `finishes a new fleet at`, `sinks fleet of` and `have moved their capital to` are code-only (news-log-format-and-messages.md)
+- News log: an uppercase war declaration and `finishes a new fleet at` are attested in recorded original-game lines ("CARTHAGE DECLARES WAR ON PTOLEMAIC.", "Greece finishes a new fleet at Athens."), and `sinks fleet of` / the uppercase cascade lines were read back from saves in the fleet-peace-prompt run; an alliance-offer dialog has never been observed. (news-log-format-and-messages.md, ptolemy-run-news-log-vocabulary-verified.md, 2026-10-03-fleet-peace-prompt.md)
 - End-turn box: the five-line cap and the "not acted" filter were not exercised live; the fleet-allowance formula behind the not-acted test is unchecked against saves (2026-10-03-end-turn-warning-box.md)
 - Unit map: whether Split army's placement tile follows a rule (the one observation is (+1,+1)); the slider's opening position; embark/unload by click were not run here (2026-10-02-unit-map-mouse-orders-and-tax-range.md)
 - Information window: band edges outside the values the game produces (loyalty below 0 or above 109, unity 1000+, morale below 48 or above 75, relations above 5) are derived only; whether the panel is redrawn after an order was not studied (2026-10-05-information-window-fields-and-bands.md)

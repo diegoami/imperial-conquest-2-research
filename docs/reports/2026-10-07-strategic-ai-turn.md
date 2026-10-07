@@ -35,7 +35,7 @@ new to this report are tagged `[derived]`.
   from foreign non-war cities at ⅕ talent per ton, repair fleet condition at own ports, and **the
   AI hires mercenaries for free** — the only gate is army money > 50 `[confirmed: decompile]`.
 - **Six asymmetries against the human** are collected in §7, three of them new to this report
-  (auto-tax, free mercenary hires, deficit recruitment) `[confirmed: decompile]`.
+  (auto-tax, free mercenary hires, the AI's deficit-recruitment floor) `[confirmed: decompile]`.
 
 ## 1. The turn's shape [confirmed: decompile]
 
@@ -309,10 +309,12 @@ global stream, so AI draws shift a human offer's outcome and vice versa `[derive
 | 3 | end-turn warning never blocks an AI seat | known, [army-moves-field-signed-and-the-ffff-underflow.md](army-moves-field-signed-and-the-ffff-underflow.md) |
 | 4 | **the AI changes its own tax rate weekly (week 11); the human only via the slider** | this report §2.3 |
 | 5 | **the AI hires mercenaries with no charge (gate: army money > 50); the human's gate is the full price** | this report §3.2 |
-| 6 | **the AI recruits into treasury deficit down to `−wealth/500`; the human's dialog requires the money** | this report §2.2 |
+| 6 | **the AI's recruitment is gated by a deficit floor (`treasury > −wealth/500`, else max 3 orders) — the human's dialog has no affordability check at all and can drive the treasury arbitrarily negative** | this report §2.2; 2026-09-29-which-cities-may-recruit-and-troop-amounts.md |
 
-(For completeness: the human's `TArmyRecruits_RecruitUnit` charges `(troops/200) × initialPrice`;
-the deficit gate is checked only in `FUN_004504f4` `[confirmed: decompile]`. A disembarking
+(Correction, 2026-10-07, from the spec's cross-family review: the human's `TArmyRecruits_RecruitUnit` has **no
+treasury check at all** — it charges `(troops/200) × initialPrice` and the treasury simply goes negative
+([2026-09-29-which-cities-may-recruit-and-troop-amounts.md](2026-09-29-which-cities-may-recruit-and-troop-amounts.md));
+the deficit floor exists only in `FUN_004504f4` `[confirmed: decompile]`. A disembarking
 computer fleet also picks its landing cell automatically (`FUN_0044b840`), where a human clicks.)
 
 ## 8. What a reimplementation needs
