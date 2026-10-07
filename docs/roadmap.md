@@ -82,7 +82,7 @@ The melee 40%-loss-cap formula (`floor(0.4 × defenderTroops) + 1`) is now confi
 
 ## 3. Recover the game rules and UI behavior
 
-- [ ] Decode the full-version WinHelp topics and Delphi `TPF0` form resources. Use the help contents and UI event names to build a feature inventory. **Note (2026-10-07): the substance largely exists already** — the RTTI symbol recovery gave all 30 form classes and 282 methods, and the Wine passes produced the [player-facing feature inventory](reports/2026-10-05-player-facing-feature-inventory.md), the [information-window fields](reports/2026-10-05-information-window-fields-and-bands.md) and the [refusal catalogue](reports/2026-10-05-refusal-texts-and-conditions.md). The literal resource decode (HLP topics, TPF0 property streams) remains the last untouched research thread.**
+- [x] Decode the full-version WinHelp topics and Delphi `TPF0` form resources. **Done (2026-10-07): [rules-specification.md](rules-specification.md) and [2026-10-07-winhelp-tpf0-decoded.md](reports/2026-10-07-winhelp-tpf0-decoded.md) consolidate the substance; [scripts/winhelp_tpf0/](../scripts/winhelp_tpf0/) holds the re-runnable decoder (29 forms, 908 controls, byte-identical to the published release v3). The WinHelp phrase-decoder's 66-of-247 character loss stays open.** **Note (2026-10-07): the substance largely exists already** — the RTTI symbol recovery gave all 30 form classes and 282 methods, and the Wine passes produced the [player-facing feature inventory](reports/2026-10-05-player-facing-feature-inventory.md), the [information-window fields](reports/2026-10-05-information-window-fields-and-bands.md) and the [refusal catalogue](reports/2026-10-05-refusal-texts-and-conditions.md). The literal resource decode (HLP topics, TPF0 property streams) remains the last untouched research thread.**
 - [x] Inventory the main menu from the user walkthrough and embedded `TMainMenu` stream; [record command groups and observed dialogs](reports/menu-and-toolbar-inventory.md). Full form/help decoding and exact toolbar mappings remain open.
 - [x] Analyze the full v1.01 EXE statically, starting from DAT/SAV I/O, end-turn, city changes, movement, combat, diplomacy, AI, and victory messages. **Done (2026-10-07): the [prioritized decompilation plan](decompilation-plan.md) is fully closed** — every subsystem it queued (economy, movement, combat, diplomacy, AI dispatch, victory) has a decompiled report, and [rules-specification.md](rules-specification.md) consolidates them. The demo-EXE comparison sub-item was never needed and stays dropped unless demo-only behavior ever becomes a question.
 - [x] Write a rules specification for the turn sequence, calendar, economy/taxation, city management, recruitment, armies/fleets, terrain and supply, diplomacy, tactical battle, AI, and victory/defeat. **Done (2026-10-07): [`rules-specification.md`](rules-specification.md)** — ten sections consolidating all 111 reports, every rule tagged and sourced, per-section Open lists for what stays uncertain. Drafted by ten parallel GLM-5.3 read-only agents, assembled and spot-checked (nine load-bearing formulas re-verified against their sources) in this session.
@@ -155,18 +155,22 @@ The strongest confirmation yet: decompiled the actual `TPremierForm_OpenGameFile
 
 **Where we are (2026-10-07):** the [decompilation plan](decompilation-plan.md) is fully closed
 (all 17 items), [rules-specification.md](rules-specification.md) consolidates all 111 reports
-into a tagged, sourced spec, and the in-play corroborations for the strategic-AI-turn report are
-filed in `pending-requests.md` for the bot.
+into a tagged, sourced spec (cross-reviewed by GPT-6.1 Sol and corrected the same day —
+[review kept verbatim](rules-spec-review-2026-10-07.md)), the WinHelp/TPF0 decoder is in this
+repo and reproduces 29 forms / 908 controls byte-identically, the in-play corroborations for
+the strategic-AI-turn report are filed in `pending-requests.md` for the bot, and the AI-turn
+report's asymmetry row 6 and the JoinFleets boundary were both reversed after the spec's own
+cross-review caught them.
 
 **Next, in order:**
 
-1. A cross-family review of the rules specification (in flight), then corrections if needed.
-2. The bot's EXPLORE corroborations of the AI-turn report's decompile-only claims.
-3. The last research thread: the literal WinHelp-topic and `TPF0` form-resource decode —
-   everything else in section 3 is done or in the bot's queue.
-4. From here on, the centre of gravity moves to the build repository (sections 4–8): the engine
-   implements against the spec, and every fidelity correction found there flows back as a report
-   here.
+1. The bot's EXPLORE corroborations of the AI-turn report's decompile-only claims (the four
+   checks in `pending-requests.md`).
+2. The WinHelp phrase-decoder's 66-of-247 character loss (the decoder is here; the gap is the
+   phrase-table reverse plus the .hlp, which lives in `imp_conquest_fixtures`, not this repo).
+3. From here on, the centre of gravity moves to the build repository (sections 4–8): the
+   engine implements against the spec, and every fidelity correction found there flows back as
+   a report here.
 
 ## Scope decisions to revisit at the right time
 
