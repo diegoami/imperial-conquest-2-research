@@ -1,6 +1,6 @@
 # Coverage index for the rules specification
 
-*Generated 2026-10-07; mechanical - for each report in `docs/reports/`, lists which of the ten spec sections cites it. A report in `Cited only in the cross-review` is referenced by [`rules-spec-review-2026-10-07.md`](rules-spec-review-2026-10-07.md) but not by the spec body. One in `Not cited anywhere` is not referenced by either.*
+*Generated 2026-10-07; mechanical - for each report in `docs/reports/`, lists which of the ten spec sections cites it. A report in `Cited only in the cross-review` is referenced by [`rules-spec-review-2026-10-07.md`](rules-spec-review-2026-10-07.md) but not by the spec body. Twelve superseded-but-on-disk reports were moved to `docs/reports/archive/` — see that directory for the historical record.*
 
 *Total reports: **112**; cited in a spec section body: **99**; cited only in the cross-review: **1**; not cited: **12**.*
 
@@ -129,15 +129,4 @@
 
 ## Not cited anywhere
 
-- [`2026-09-28-autosave-hook-feasibility.md`](reports/2026-09-28-autosave-hook-feasibility.md)
-- [`2026-09-28-battle-minigame-headless-feasibility.md`](reports/2026-09-28-battle-minigame-headless-feasibility.md)
-- [`battle-code-entry-points.md`](reports/battle-code-entry-points.md)
-- [`battle-observation.md`](reports/battle-observation.md)
-- [`decompiled-news-log-identified.md`](reports/decompiled-news-log-identified.md)
-- [`decompiled-weather-events.md`](reports/decompiled-weather-events.md)
-- [`diplomatic-reparations-and-more-captures.md`](reports/diplomatic-reparations-and-more-captures.md)
-- [`impconq2-full-save-analysis.md`](reports/impconq2-full-save-analysis.md)
-- [`impconq2-initial-report.md`](reports/impconq2-initial-report.md)
-- [`pending-offer-block-army-split-and-naupactus.md`](reports/pending-offer-block-army-split-and-naupactus.md)
-- [`rome-city-recruitment-and-nations.md`](reports/rome-city-recruitment-and-nations.md)
-- [`saves-and-screenshots.md`](reports/saves-and-screenshots.md)
+These twelve superseded reports now live in `docs/reports/archive/` and are kept for historical reference.
