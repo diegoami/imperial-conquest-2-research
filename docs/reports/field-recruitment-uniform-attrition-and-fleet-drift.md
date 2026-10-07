@@ -40,7 +40,7 @@ Army 2 (which took Mediolanum this turn) lost troops in **every one of its twelv
 | 2nd Dragoons | 1,503 | 1,464 | −2.59% |
 | 5th Guards | 3,479 | 3,392 | −2.50% |
 
-Every unit lost between 2.50% and 2.85% of its troops — a band under half a point wide, across unit types (infantry, cavalry, archers) and quality levels (average through very good). This is the first quantitative evidence toward a battle/attrition formula (previously only static entry points were located, see [battle-code-entry-points.md](battle-code-entry-points.md)): it strongly suggests a single percentage applied uniformly to a whole army that turn, rather than losses concentrated in whichever units were "in the front line." This could be siege/combat losses from taking Mediolanum, ordinary attrition from low supply, or both combined into one multiplier — this pair can't separate those causes, only establish that the loss is proportional and army-wide rather than per-unit.
+Every unit lost between 2.50% and 2.85% of its troops — a band under half a point wide, across unit types (infantry, cavalry, archers) and quality levels (average through very good). This is the first quantitative evidence toward a battle/attrition formula (previously only static entry points were located, see [battle-code-entry-points.md](archive/battle-code-entry-points.md)): it strongly suggests a single percentage applied uniformly to a whole army that turn, rather than losses concentrated in whichever units were "in the front line." This could be siege/combat losses from taking Mediolanum, ordinary attrition from low supply, or both combined into one multiplier — this pair can't separate those causes, only establish that the loss is proportional and army-wide rather than per-unit.
 
 ## Mediolanum: a fifth capture confirming the same signature
 
@@ -49,7 +49,7 @@ before: Gaul, allegiance Gaul, population 37,000, fortification 66%, loyalty 77,
 after:  Rome, allegiance Gaul, population 27,000, fortification 49%, loyalty 43, tribute 16, supply 265
 ```
 
-Same rule as [four prior captures](diplomatic-reparations-and-more-captures.md): owner flips, allegiance and tribute untouched, population/fortification/loyalty drop.
+Same rule as [four prior captures](archive/diplomatic-reparations-and-more-captures.md): owner flips, allegiance and tribute untouched, population/fortification/loyalty drop.
 
 ## Taurasia: recaptured the same turn separates "siege damage" from "loyalty to current owner"
 

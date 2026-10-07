@@ -17,7 +17,7 @@ The single strongest confirmation this project has produced. Tracing forward fro
 | Fleet records × count | 26 each | `SaveFleetTable.RecordLength` — exact |
 | Nation table | 18,752 | `16 × 1,172` (`SaveNationLayout.NationRecordLength`) — exact |
 | **Mercenary table** | **50 × 12 bytes, fixed** | **`SaveMercenaryTable`'s 50-slot, 12-byte-record structure — confirmed directly in code**, not just inferred from where plausible data stopped in `mercenary-pool-record.md`. This is no longer a "candidate" finding. |
-| A count field, then `(count+1)` records | 61 bytes each | **The news/event log — identified in [decompiled-news-log-identified.md](decompiled-news-log-identified.md).** A 40-slot ring buffer of news messages; the "count" field is actually the index of the most-recently-used slot, not a record count. |
+| A count field, then `(count+1)` records | 61 bytes each | **The news/event log — identified in [decompiled-news-log-identified.md](archive/decompiled-news-log-identified.md).** A 40-slot ring buffer of news messages; the "count" field is actually the index of the most-recently-used slot, not a record count. |
 | Fixed block | 32 | unidentified |
 | Fixed block | 4 | unidentified |
 | Current nation | 2 | matches `DAT_004a0320`, used throughout this project's decompiled code as "current nation index" |

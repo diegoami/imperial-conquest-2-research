@@ -34,7 +34,7 @@ before: 25 cities · candidate population 2,535,000 · tax 15% · mobilized 65% 
 after:  25 cities · candidate population 2,571,000 · tax 20% · mobilized 62% · treasury -759 talents · unity value 825
 ```
 
-`NationRecord.TaxRatePercent` (nation record `+0x44A`) moved exactly `15 → 20`, matching the dialog. This upgrades that field from "matches static panel reading" ([rome-city-recruitment-and-nations.md](rome-city-recruitment-and-nations.md)) to a controlled-action confirmation. The dialog's "income" (366 → 488 talents) is not visibly stored as its own nation field near the known offsets; treasury instead fell further into deficit (-644 → -759) over the three turns, so weekly "income" as displayed is not the same thing as the stored treasury delta, and likely nets against recruitment/upkeep spending across those turns. This remains open.
+`NationRecord.TaxRatePercent` (nation record `+0x44A`) moved exactly `15 → 20`, matching the dialog. This upgrades that field from "matches static panel reading" ([rome-city-recruitment-and-nations.md](archive/rome-city-recruitment-and-nations.md)) to a controlled-action confirmation. The dialog's "income" (366 → 488 talents) is not visibly stored as its own nation field near the known offsets; treasury instead fell further into deficit (-644 → -759) over the three turns, so weekly "income" as displayed is not the same thing as the stored treasury delta, and likely nets against recruitment/upkeep spending across those turns. This remains open.
 
 ## Sidon's capture: owner and allegiance are decoupled, with directional effects on loyalty and population
 

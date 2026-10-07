@@ -1,6 +1,6 @@
 # Rivers, cities, and unit markers in the world grid
 
-This analysis reads the full-version DAT, `7.sav`, and screenshots `7.1.png`–`7.5.png` as data. It does not execute the original game. The five screenshots have previously been registered to the 320 × 140 grid; their map origins and alignment counts are in [saves and screenshots](saves-and-screenshots.md).
+This analysis reads the full-version DAT, `7.sav`, and screenshots `7.1.png`–`7.5.png` as data. It does not execute the original game. The five screenshots have previously been registered to the 320 × 140 grid; their map origins and alignment counts are in [saves and screenshots](archive/saves-and-screenshots.md).
 
 ## River tiles
 
@@ -23,7 +23,7 @@ The exceptions are mostly map-edge or endpoint cells and a few intersections wit
 
 In both the initial DAT and `7.sav`, exactly **334 cells** carry a city map marker, and all 334 coincide with the parsed city coordinates. **`20`–`199` is the range that was *searched*; `20`–`99` is the range actually *occupied*** — the formula below tops out at `20 + 15 + 64 = 99`, and [terrain-move-cost-table-in-dat.md](terrain-move-cost-table-in-dat.md) independently gives `20`–`99`. Do not derive a 180-value marker space from the search bound: it once propagated into a note in [decompiled-unit-map-orders-and-record-fields.md](decompiled-unit-map-orders-and-record-fields.md) (corrected in `c3cb609`) and from there into the build repo's asset specification, where it masked the more important error that the original has **five** city variants, not three. These values are city map markers. More specifically, every `7.sav` city satisfies `map code = 20 + owner code + 16 × variant`, with variants 0–4. The owner code is the separate city-record word at `+18`; its relation to the map code holds for **334/334 cities**. The variant's meaning (city size, icon, or another display category) still needs confirmation. **Resolved (2026-10-07):** variants 0–3 are population tiers at 25/50/100 and variant 4 is the national capital — see [2026-10-07-city-marker-variants.md](2026-10-07-city-marker-variants.md), which also gives the fleet markers' size bands behind the `332 + owner` fit below.
 
-Sampling the corners of registered city tiles gives the following screenshot colors by owner code: `0` purple `#800080`, `1` red `#FF0000`, `2` olive `#808000`, `3` navy `#000080`, `4` white, `5` lime, `6` maroon, `7` aqua, `9` navy, `10` green, `11` teal, `12` blue, and `15` gray. [Later screenshots](rome-city-recruitment-and-nations.md) provide the complete code-to-nation and icon-color mapping, including `8` yellow, `13` magenta, and `14` red.
+Sampling the corners of registered city tiles gives the following screenshot colors by owner code: `0` purple `#800080`, `1` red `#FF0000`, `2` olive `#808000`, `3` navy `#000080`, `4` white, `5` lime, `6` maroon, `7` aqua, `9` navy, `10` green, `11` teal, `12` blue, and `15` gray. [Later screenshots](archive/rome-city-recruitment-and-nations.md) provide the complete code-to-nation and icon-color mapping, including `8` yellow, `13` magenta, and `14` red.
 
 The remaining sparse high-valued cells are consistent with unit overlays:
 

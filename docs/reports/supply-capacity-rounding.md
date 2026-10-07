@@ -151,7 +151,7 @@ The `+1` looks like it exists so that a dialog fill reads 100 % rather than 99 %
 - [`decompiled-unit-map-orders-and-record-fields.md`](decompiled-unit-map-orders-and-record-fields.md) §TAFSupply: the dialog's army cap is `troops div 100 + 1`, not `troops / 100`. The Roman 482 t is the cap, not a 1-ton excess. The own-city path is `ChangeSupply`, which is free and has no money cap. The `money × 5` cap and the `amount / 5` cost belong to the foreign path only.
 - [`supply-driven-morale-and-fleet-attrition.md`](supply-driven-morale-and-fleet-attrition.md), "Auto-resupply": traced above (`FUN_0044F6D8`, `FUN_0044F7E4`).
 - [`city-population-growth.md`](city-population-growth.md), "Who withdraws from city stocks between ticks": the same functions.
-- [`pending-offer-block-army-split-and-naupactus.md`](pending-offer-block-army-split-and-naupactus.md) asked whether the split dialog's supply is capped. `TArmyToArmy_OK` pushes each side's supplies above `troops div 100` to the other army on `OK`.
+- [`pending-offer-block-army-split-and-naupactus.md`](archive/pending-offer-block-army-split-and-naupactus.md) asked whether the split dialog's supply is capped. `TArmyToArmy_OK` pushes each side's supplies above `troops div 100` to the other army on `OK`.
 
 ## Still open
 

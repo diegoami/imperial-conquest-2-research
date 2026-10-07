@@ -112,7 +112,7 @@ A battle can also move this field: the `+3` on battle entry, which only a comput
 - **Position identical** in all 13 saves: `(160, 30)`. No movement, so no attack and no siege.
 - **The entire unit-slot block is byte-identical** in all 13 saves — SHA-256 prefix `d55d02c58cf6` for every one. Seven units, 22,000 troops, unchanged names, types and qualities. A battle cannot leave troop counts untouched (melee always applies losses to both sides — [decompiled-combat-formula-structure.md](decompiled-combat-formula-structure.md)) and cannot leave qualities untouched either ([battle-quality-promotion-and-morale-array-decompiled.md](battle-quality-promotion-and-morale-array-decompiled.md)).
 - **The only other field that moved** is money: `100 → 46` at `summer_1`, `46 → 0` at `autumn_1` — both season boundaries, the quarterly upkeep in `FUN_00451B40` from [decompiled-quarterly-billing-and-economy.md](decompiled-quarterly-billing-and-economy.md), and the reason this army could never buy its way out at 1 talent per 5 tons.
-- **`FUN_00451304`**, the only other function the tick calls between the army loop and the calendar update, is the seasonal weather system ([decompiled-weather-events.md](decompiled-weather-events.md)). It writes no army field.
+- **`FUN_00451304`**, the only other function the tick calls between the army loop and the calendar update, is the seasonal weather system ([decompiled-weather-events.md](archive/decompiled-weather-events.md)). It writes no army field.
 
 ### It is the only supply-driven morale path in the binary
 
@@ -206,7 +206,7 @@ Two consequences. The **death check precedes the supply penalty**, so `−random
 
 **The `−random(0..1)` condition term, isolated by parity.** This looks untestable because the storm pass dominates, but the shapes separate them. Ship count never changed, so `dmg < 6` held every turn, and the magnitudes put the fleet on the `dmg × 2 + 1` branch — which is **always odd** and, bounded below 6, confined to `{3, 5}`. The supply rider adds `{0, 1}`. Every turn's total must therefore lie in `{3, 4, 5, 6}`, and **any even total proves the supply roll came up 1**. All five single-turn deltas — `−3, −4, −6, −5, −3` — fall inside that set, and **two are even**. The two-turn gaps agree (`−6 = 3+3`, `−10 = 5+5`).
 
-**Destruction below 40, from the game's own news log.** `summer_7` leaves the fleet at condition **48**; in `summer_9` the record is simply gone (2 fleets, not 3), with the ship count never having dropped — so not naval combat, which reduces `+18`. Reading the news-log ring buffer ([decompiled-news-log-identified.md](decompiled-news-log-identified.md)) out of `1_cartago_271_summer_9.sav` gives the literal string:
+**Destruction below 40, from the game's own news log.** `summer_7` leaves the fleet at condition **48**; in `summer_9` the record is simply gone (2 fleets, not 3), with the ship count never having dropped — so not naval combat, which reduces `+18`. Reading the news-log ring buffer ([decompiled-news-log-identified.md](archive/decompiled-news-log-identified.md)) out of `1_cartago_271_summer_9.sav` gives the literal string:
 
 ```
 A fleet belonging to Carthage is lost at sea.

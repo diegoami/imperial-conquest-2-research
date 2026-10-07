@@ -61,7 +61,7 @@ Recomputing `Σ over owned cities (tribute × population / maxPopulation) << 2` 
 | wealth `+0x430` | `768,000 → 843,000` | `2,490,000 → 2,415,000` | `± 25 × 3000` |
 | city count `+0x446` | `11 → 12` | `19 → 18` | `± 1` |
 
-Every number lands. This closes the open item in [`pending-offer-block-army-split-and-naupactus.md`](pending-offer-block-army-split-and-naupactus.md): the `+48` was the capture's treasury credit, and "wealth" is a separate field at `+0x430`, keyed to population, not fortification.
+Every number lands. This closes the open item in [`pending-offer-block-army-split-and-naupactus.md`](archive/pending-offer-block-army-split-and-naupactus.md): the `+48` was the capture's treasury credit, and "wealth" is a separate field at `+0x430`, keyed to population, not fortification.
 
 **The reparation formula, against its one data point.** [`decompiled-diplomacy-peace-terms-and-instant-battles.md`](decompiled-diplomacy-peace-terms-and-instant-battles.md) gives `reparations = W/4 + random(W/4) + cities × 10` with `W = nation[+0x44C]`. In `1_rome_270_autumn_9.sav`, before Ptolemaic's 2,269-talent payment, Ptolemaic has `+0x44c = 6188` and 48 cities: the formula's range is `[1547 + 480, 1547 + 1546 + 480] = [2027, 3573]`, and **2,269 is inside it** (a `random(W/4)` draw of 242). `W` is the tax base.
 

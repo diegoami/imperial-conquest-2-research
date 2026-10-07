@@ -11,7 +11,7 @@ The original's week-1 saves `1_cartago_271_spring_1.sav` and `1.sav` show Rome a
 
 ## Method
 
-- **Build:** `Imperial Conquest 2 watch autosave.exe`, SHA-256 `70aa4513c55eda4e2c164233afa5c3ae87d28e7ee95e2f551583666ce220b452`. This is the watch variant plus the autosave option of [2026-09-28-autosave-hook-feasibility.md](2026-09-28-autosave-hook-feasibility.md).
+- **Build:** `Imperial Conquest 2 watch autosave.exe`, SHA-256 `70aa4513c55eda4e2c164233afa5c3ae87d28e7ee95e2f551583666ce220b452`. This is the watch variant plus the autosave option of [2026-09-28-autosave-hook-feasibility.md](archive/2026-09-28-autosave-hook-feasibility.md).
 - **Environment:** Wine 9.0 and Xvfb, driven by xdotool, in a fresh game folder holding only the executable, the DAT (SHA-256 `94d0ccfc67148d727de4c4e60aefc3c53ba9e67775bd689f0fcb2e23c12e5fbd`), the help files and `WAVS`.
 - **The run:** *File → New*, tick one nation in *Human and computer leaders*, OK.
   - The autosave hook sits on the new-game route (`NewGame` → `FUN_00452034` → `call StartTurn` at `0x45217A`). It wrote `AUTO0720.SAV` (Spring week 1, 270 BC) just before the human's first turn started, with no end-turn and no other input.

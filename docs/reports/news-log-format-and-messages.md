@@ -1,6 +1,6 @@
 # The news log: 40 NUL-terminated 61-byte slots, 21 message templates, and no diplomatic offers
 
-The question: how exactly does the original store and format its news log? [`decompiled-news-log-identified.md`](decompiled-news-log-identified.md) found the ring buffer (`DAT_0049F994`, 40 slots of 61 bytes, newest index in `DAT_004A031E`) and the writer `FUN_00449240`, but left the slot layout, the SAV sizing gap and the message set open. The dev repo's T10 review then read the saves and reported five things: thousands separators in numbers, a 60-byte text limit, stored date headers and blank lines, literals missing from its corpus, and no "*wants to trade*" line in any save. This report settles each from the code and checks it against all 54 local saves.
+The question: how exactly does the original store and format its news log? [`decompiled-news-log-identified.md`](archive/decompiled-news-log-identified.md) found the ring buffer (`DAT_0049F994`, 40 slots of 61 bytes, newest index in `DAT_004A031E`) and the writer `FUN_00449240`, but left the slot layout, the SAV sizing gap and the message set open. The dev repo's T10 review then read the saves and reported five things: thousands separators in numbers, a 60-byte text limit, stored date headers and blank lines, literals missing from its corpus, and no "*wants to trade*" line in any save. This report settles each from the code and checks it against all 54 local saves.
 
 **Answer.**
 
@@ -270,11 +270,11 @@ In all six, the recipient is the save's current nation and the current relation 
 
 ## Corrections to existing reports
 
-- [`decompiled-news-log-identified.md`](decompiled-news-log-identified.md): the slot layout and the 6-byte gap are closed above. It is right that capture, defection and battle messages go through `FUN_00449240`. So does every other news line, including the week header and the blank line: 21 templates in all.
+- [`decompiled-news-log-identified.md`](archive/decompiled-news-log-identified.md): the slot layout and the 6-byte gap are closed above. It is right that capture, defection and battle messages go through `FUN_00449240`. So does every other news line, including the week header and the blank line: 21 templates in all.
 - [`decompiled-sav-file-layout.md`](decompiled-sav-file-layout.md): the reconciliation gap was the trailer counted twice. The "2+2+2+2 unidentified" fields are turn index, week, year and season. The 8-byte "calendar/turn block" is window geometry.
 - [`mercenary-pool-record.md`](mercenary-pool-record.md): the "~2,442 unidentified bytes" are the news index plus 40 slots.
 - [`one-turn-save-comparison.md`](one-turn-save-comparison.md): the added blank slot is the round tick's `" "` separator.
-- [`decompiled-turn-and-calendar-sequencing.md`](decompiled-turn-and-calendar-sequencing.md) and [`pending-offer-block-army-split-and-naupactus.md`](pending-offer-block-army-split-and-naupactus.md): "announces" means a `MessageDlg`, not a news line. `FUN_00452034` sets the block, and the code writes `2` for alliances.
+- [`decompiled-turn-and-calendar-sequencing.md`](decompiled-turn-and-calendar-sequencing.md) and [`pending-offer-block-army-split-and-naupactus.md`](archive/pending-offer-block-army-split-and-naupactus.md): "announces" means a `MessageDlg`, not a news line. `FUN_00452034` sets the block, and the code writes `2` for alliances.
 - [`fleet-owner-field-confirmed.md`](fleet-owner-field-confirmed.md) quotes the lost-at-sea line without its final period. [`decompiled-unit-map-orders-and-record-fields.md`](decompiled-unit-map-orders-and-record-fields.md) quotes the fleet-completion line without its period.
 - [`decompiled-diplomacy-peace-terms-and-instant-battles.md`](decompiled-diplomacy-peace-terms-and-instant-battles.md): the `N` in "*pays reparations of N talents*" is comma-grouped.
 

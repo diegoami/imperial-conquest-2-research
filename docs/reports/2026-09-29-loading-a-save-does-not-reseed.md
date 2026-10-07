@@ -1,6 +1,6 @@
 # Loading a save does not reseed the random generator; program start and New Game do
 
-**Provenance.** Found by the `ic2-conquest` bot session, and promoted from its draft `findings/2026-09-29-loading-a-save-does-not-reseed.md` ([`diegoami/ic2-conquest`](https://github.com/diegoami/ic2-conquest), branch `claude/focused-knuth-ci59fz`). The call sites were re-checked in the research session before promotion. It corrects one sentence of [2026-09-28-battle-minigame-headless-feasibility.md](2026-09-28-battle-minigame-headless-feasibility.md), which now carries a correction note.
+**Provenance.** Found by the `ic2-conquest` bot session, and promoted from its draft `findings/2026-09-29-loading-a-save-does-not-reseed.md` ([`diegoami/ic2-conquest`](https://github.com/diegoami/ic2-conquest), branch `claude/focused-knuth-ci59fz`). The call sites were re-checked in the research session before promotion. It corrects one sentence of [2026-09-28-battle-minigame-headless-feasibility.md](archive/2026-09-28-battle-minigame-headless-feasibility.md), which now carries a correction note.
 
 **Answer.**
 - `System.Randomize` (`0x402744`, `RandSeed := clock`) has two call sites. `0x448AB0` is inside **`FUN_00448AA4`, New Game's leader and turn-order draw**, not inside the load routine. `FUN_00448AA4` is called from `TPremierForm_InitialiseForm` (`0x45A93A`, program start) and from `TPremierForm_NewGame` (`0x45AA32`). The other site, `0x456759`, sits in a handler with no direct caller and never fired in these runs.

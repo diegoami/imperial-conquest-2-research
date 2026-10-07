@@ -27,7 +27,7 @@ Map changes include 115 cells changing `1 → 0` in 7→8, 60 changing `0 → 1`
 
 The previously established owner codes are `0 = Rome` and `6 = Gaul`. By `10.sav`, Tarquinii, Caere, and Ariminum all change from Gaul to Rome. The embedded news explicitly says “Tarquinii defects from Gaul to Rome.” and “Ariminum defects from Gaul to Rome.” No equally clear Caere message was identified in the inspected tail of the news list. This shows at least two ownership changes were reported as defections; it would be premature to call all three captures or assume identical causes.
 
-`8.sav` contains “Rome destroys army of Gaul.” following the recorded Rome–Gaul battle; see the [battle observation](battle-observation.md). The exact army record and post-battle state change are still to be located.
+`8.sav` contains “Rome destroys army of Gaul.” following the recorded Rome–Gaul battle; see the [battle observation](archive/battle-observation.md). The exact army record and post-battle state change are still to be located.
 
 ## Next checks
 
