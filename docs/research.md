@@ -112,9 +112,13 @@ under "Next checks" is now closed. The current state, as it lives in this repo:
   records now decode to their declared length exactly
   (`reports/2026-10-07-winhelp-tpf0-decoded.md`, "the phrase decoder fixed").
 
-- **In-flight from the ic2-conquest bot**: the in-play corroborations of the strategic-AI-turn
-  report's decompile-only claims (week-11 tax, free AI mercenary hire, homeland intercept,
-  fleet hunt-vs-port). Filed at `docs/pending-requests.md`.
+- **Corroborated in play (2026-10-07, promoted)**: the strategic-AI-turn report's week-11 tax
+  policy (18/18 decidable rows, with a placement correction: the write lands in the transition
+  INTO the week-11 save, one weekly tick before the quarterly tick) and the free AI mercenary
+  hire (two natural observations incl. a double hire, no payment anywhere) —
+  `reports/2026-10-07-ai-turn-corroboration.md`. Still not observed in play: the homeland
+  intercept dispatch and the fleet hunt-vs-port decision. Still pending at
+  `docs/pending-requests.md`: the AI-mover contact-resolution experiment.
 
 - **No original binaries** (EXE, DAT, HLP, SAV, screenshots, recordings) are committed here —
   every input the reports cite is published as a GitHub release; `docs/evidence-index.md` is

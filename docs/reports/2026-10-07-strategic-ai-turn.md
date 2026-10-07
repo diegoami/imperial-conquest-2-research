@@ -122,6 +122,14 @@ were already confirmed via the mercenary restock report).
 The block runs only when `DAT_004a0330 == 0xb` — the last week of the season, immediately before
 the quarterly tick (`(week+2) mod 12 == 11` in the weekly tick's own numbering):
 
+> **Placement, corrected in play (2026-10-07):** at save granularity the write lands **one weekly
+> tick earlier than "immediately before the quarterly tick" reads**: the new tax is already in the
+> **week-11 save** (the transition week 9 → 11), and the week-11 → new-season transition (the
+> quarterly tick itself) carries no tax write. The block therefore fires during the end-of-turn
+> processing leading INTO week 11 — consistent with §1 if the weekly tick runs at the seat-0 wrap
+> before the AI seats act, so their economy phases see the counter at `0xb`. See
+> [2026-10-07-ai-turn-corroboration.md](2026-10-07-ai-turn-corroboration.md).
+
 ```text
 if (unity < 650  or  treasury > wealth/2000):   tax = max(5, tax − 6)
 if (treasury < 0  or  (own ≤ threat and treasury < 1000)):
@@ -134,6 +142,13 @@ if (treasury > 0 and unity < 500):              tax = 0
 the AI writes the same field itself, once per season. The cuts respond to low unity or a treasury
 that is large relative to wealth; the raise responds to deficit, or to being threatened while
 nearly broke; a very low-unity nation with money zeroes its tax `[confirmed: decompile]`.
+
+**Corroborated in play** (2026-10-07, [2026-10-07-ai-turn-corroboration.md](2026-10-07-ai-turn-corroboration.md),
+Wine-only): across two season boundaries the three rules reproduce **18 of 18 decidable
+nation rows** (raise decided by `treasury < 0` or blocked at `≥ 1000`; the 12 rows where only
+the threat budget could add `+9` are consistent with and without it), **no AI tax moves at any
+non-week-11 transition**, and the human seat never auto-taxes (cut trigger held, tax unchanged).
+The zero rule never triggered (no nation's unity fell below 500) and stays `[derived]`.
 
 ### 2.4 The four tail sub-phases
 
@@ -173,6 +188,10 @@ For each of the 334 cities within Chebyshev 4 of the army:
   **No price is paid** — money > 50 is a gate, not a charge, exactly as the human's hire turned out
   to be ([2026-10-05-mercenary-hire-price-is-a-gate-not-a-charge.md](2026-10-05-mercenary-hire-price-is-a-gate-not-a-charge.md)),
   but the human's gate is the full price and the AI's is 50 talents flat.
+  **Corroborated in play** (2026-10-07, [2026-10-07-ai-turn-corroboration.md](2026-10-07-ai-turn-corroboration.md)):
+  Gaul hired one offer (Felsina) and Carthage hired **both** Theveste offers in a single army-turn
+  — the "every live offer" loop — with army money and treasury unchanged to the talent.
+  The `+0x274` gate itself remains unopened.
 
 ### 3.3 Per army with moves: the target tree
 
@@ -338,10 +357,12 @@ faithful mode would need:
 
 ## What this does not establish
 
-- **Nothing here was observed in play.** Every claim is decompile-only (`[confirmed: decompile]`
-  means the dump, not a listing or a save). The EXPLORE runner on a fixed seed could corroborate:
-  the week-11 tax moves, a free mercenary hire, an intercept dispatch, a hunt-vs-port fleet
-  decision.
+- **Two of the four in-play checks are now corroborated** (2026-10-07,
+  [2026-10-07-ai-turn-corroboration.md](2026-10-07-ai-turn-corroboration.md)): the week-11 tax
+  moves (§2.3, with the placement correction above) and a free AI mercenary hire (§3.2, two
+  natural observations incl. a double hire, no payment anywhere in the diff). Still not observed
+  in play: an intercept dispatch (§3.1), a hunt-vs-port fleet decision (§4). Everything else
+  remains decompile-only (`[confirmed: decompile]` means the dump, not a listing or a save).
 - **`FUN_0044a004`** (the fleet order itself) and the `+0x274` byte gate on mercenary hires were
   not opened; the fleet-size parameter's meaning is `[derived]`.
 - **The `+0x4` packed fleet destination** and the marker-range arithmetic in `FUN_0044e1fc`'s final
