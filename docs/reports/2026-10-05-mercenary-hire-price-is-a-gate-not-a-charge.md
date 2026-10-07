@@ -44,6 +44,8 @@ Army 1, read from the saves (`state/sav.py`; `claims_audit.py` recomputes the ga
 - The earlier fixture `saves/merc-hire-free-0720.SAV` (purse 100 → 100, treasury 2,200 → 2,200) is the same result at a purse far above the gate; the inventory's "free offer" was the dialog's Quarterly cost field reading 0 until a row is selected (the offer-selected screenshots show 30 and 34 once a row is selected).
 - Saves and screenshots: release `run-exp-v050-rules` (`batch-q4-q6.tar.gz`), hashes in `SAVES.sha256`.
 
+> **Extension (2026-10-07):** the AI's hire is a gate too, and a cheaper one — [`2026-10-07-strategic-ai-turn.md`](2026-10-07-strategic-ai-turn.md) §3.2: `FUN_0044e41c` hires every pool offer on a city tile within 4 of an at-war army, gated only on army money > 50, a free slot and a clear `+0x274` byte, with no payment at all.
+
 ## What this does not establish
 
 - **The first quarterly charge of these units was not run** (it needs End turns to the week-11 tick). The pay formula is `[derived]` from `FUN_00451B40`, and its panel twin was read on screen (30, then 58); the desertion rule and the tick's exactness on real quarters are the research repo's (`upkeep-payment-and-desertion.md`: 32 of 39 army-quarters exact).

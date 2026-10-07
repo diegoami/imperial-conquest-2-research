@@ -371,6 +371,11 @@ The troop split is the unique 7-unit subset summing to `35,000` (`15,000 + 2,500
 
 > **Correction to [mobilization-movement-and-city-capture-modes.md](mobilization-movement-and-city-capture-modes.md) (2026-09-19).** That report gives a freshly created army the fingerprint *"410 tons supply, 0 money, 8 moves, morale 2"* and [roadmap.md](../roadmap.md) still asks for a same-day pair to test it. **Only `0 money` is a creation value.** `FUN_00449f08` creates an army with **0 supplies, 0 money, 0 moves (1 for an AI nation) and morale 59**. The observed `8 moves` is the weekly tick's recomputation `10 − min(5, ⌊troops/20000⌋)`; the `410 tons` is a resupply the report itself suspected (*"multi-turn pairs conflate transfer, movement consumption, and city production"* — it was right); and the `morale 2` is not morale at all but the `+8` **covered map cell**, already corrected in [army-records-and-roman-roster.md](army-records-and-roman-roster.md) — the real morale word reads `60`, which is the created `59` plus the tick's `+1`. The same-day pair is still worth taking, but it now has a specific prediction to test rather than an unexplained fingerprint.
 
+> **Extension (2026-10-07):** `FUN_004504f4`'s remaining gates are now decompiled in
+[`2026-10-07-strategic-ai-turn.md`](2026-10-07-strategic-ai-turn.md) §2.2 — deficit spending down to
+`−wealth/500` (or 3 orders below it), a cap of 8 orders per turn, and the `FUN_004502e0` forward-city
+placement — and §2.1 gives the threat budget that computes its `threat − ownStrength` argument.
+
 ### Reproduction of this check
 
 ```python

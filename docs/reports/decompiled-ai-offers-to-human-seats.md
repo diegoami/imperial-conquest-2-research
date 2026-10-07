@@ -111,6 +111,8 @@ The alliance cascade cannot break an alliance. `me` allies only with an `m` that
 - **AI → AI:** trade and alliance are written directly, with no consent step, subject to the gates in §1a.
 - **War on an ally:** the AI's direct rule must exclude any ally holding a city. There is no alliance-break step. War overwrites alliance only through the setter's cascade, in the two cases in §4. AI units must attack only nations they are already at war with.
 
+> **Extension (2026-10-07):** `FUN_0044FA20`'s full phase order and the rest of the computer seat's turn (economy, armies, fleets) are now decompiled in [`2026-10-07-strategic-ai-turn.md`](2026-10-07-strategic-ai-turn.md); §1a here is its diplomacy phase.
+
 ## What this does not establish
 
 - **Whether a nation with `unity > 0` but 0 cities can exist.** That is the only case in which the "ally is protected" test fails for a direct ally. It has not been checked.

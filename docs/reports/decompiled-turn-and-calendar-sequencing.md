@@ -59,6 +59,8 @@ This is an exact, code-level confirmation of the pattern `rome-tax-increase-and-
 >
 > `FUN_0044aab4` also carries a genuine inconsistency in the original: its low-supply test is `supplies × troops / 10000 < 10`, while the weekly tick that *wrote* the value uses `supplies × 10000 / troops < 10`. The two agree only near 10,000 troops, so the reference value this check compares against is wrong for armies far from that size.
 
+> **Extension (2026-10-07):** the seat loop itself is now decompiled — [`2026-10-07-strategic-ai-turn.md`](2026-10-07-strategic-ai-turn.md) §1 spells out `FUN_00451fdc`'s computer-seat loop (with `FUN_00449050`'s any-human-left break) and `FUN_0044fa20`'s four phases: diplomacy, economy, armies, fleets.
+
 ## What this does not establish
 
 - The exact per-season growth-rate and supply-consumption table values (the tables' addresses are known, their contents weren't extracted this pass, unlike the unit-type table which was found in the DAT file).

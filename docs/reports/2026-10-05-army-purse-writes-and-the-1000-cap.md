@@ -76,6 +76,8 @@ All from copies of `mobilize-new-army-0720.SAV`; saves in release `run-exp-v050-
 - **No refill for a human move or click (row 10).** `Q1_00` → `Q1_01` (purse and supplies unchanged) and `Q1c_00` → `Q1c_01` (the click on the own city: army 1's purse, supplies, moves, position and the treasury unchanged) `[confirmed]`; the selection dropped by the click is a memory read (`SEL_ARMY` 1 → −1 in `q1c.log`) `[memory-only]`. The first, unsaved observation of the click (`Q1_02_army1_after_click_on_own_city` in `state_log.jsonl`) is superseded by the saved pair.
 - A first run of `q1_purse.py` was cut short by a mis-aimed click on Rome's tile (which only deselects) and by the driver's fixed Supply army coordinates; its entries stay in `steps.log` and `state_log.jsonl`, its saves are `Q1_00_start.SAV`, `Q1_01_army0_after_move_to_Rome.SAV` (army 0 did not move) and `Q1_00_start.v2.SAV` in the archive.
 
+> **Extension (2026-10-07):** the cap's writer on the AI side is found — [`2026-10-07-strategic-ai-turn.md`](2026-10-07-strategic-ai-turn.md) §3.2: `FUN_0044f6d8` deposits army money above 1000 into the national treasury and tops a purse below 500 back up by 500, once per own city within 4, on every computer seat's turn.
+
 ## What this does not establish
 
 - **The own-city refill (row 10, own city) was not seen in play**: no human path reaches it, and the AI path needs an End turn (a quarter or a turn of AI armies next to their own cities would show a `+500` or a `purse - 1000 → treasury` in a save pair). It stays `[derived]`. A save pair exists in the research repo's `upkeep-payment-and-desertion.md` ("purse exactly +500 over the prediction", 4 of 39 army-quarters, `FUN_0044F6D8`), which is the AI case.
