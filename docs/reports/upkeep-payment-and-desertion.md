@@ -317,6 +317,12 @@ Replayed turns are deterministic for the AI ([`battle-replayed-rout-mechanic-and
 
 **Recipe 2 (optional) — the supply cut and the morale knock-on.** Use any week 11 outside Winter, with a human army that holds a mercenary unit and stands next to one of its own cities that has stock. In the supply dialog, set its supplies to about half of capacity, empty its purse, and end turn. Save at week 1 and again at week 3, and repeat with the purse kept as the control. The prediction at week 1 is supplies = `S − ((90 − season) × troops) div 20000 − Σ deserters' troops div 100`. From week 3 the morale should follow [`supply-driven-morale-and-fleet-attrition.md`](supply-driven-morale-and-fleet-attrition.md)'s rule on the new percentage. Send the week-11 save first, and exact numbers can be worked out before the turn is ended.
 
+> **Extension (2026-10-07):** the full signedness picture is now enumerated in
+[`2026-10-07-army-supplies-and-money-signedness.md`](2026-10-07-army-supplies-and-money-signedness.md): the deserter's
+supply carry-off (:54760) is the application's only unguarded supplies subtraction, and the same loop floors
+**both** the purse (:54772) and supplies (:54774) at 0 per army — the transient overdraft this report found on
+money has an exact counterpart on supplies.
+
 ## Reproduction
 
 - **Billing:** `FUN_00451b40`, `54726–54800` (listing `00451b40–00451cd2`). The nation loop and AI debt test are at `54864–54905`.
