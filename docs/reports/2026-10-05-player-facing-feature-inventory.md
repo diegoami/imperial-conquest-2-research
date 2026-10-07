@@ -7,6 +7,8 @@
 
 > **Update 8ed3ca4 (2026-10-05):** a later revision (carried from the branch `experiment/battle-hook-b11`, which now holds it; `experiment/feature-inventory` is at `7afd830`): same 146 rows and tags, a few rows reworded (e.g. M02, M04), and a stricter coverage checker (tags validated against the manifest, named saves and coverage rows, with its self-test). Not diffed row by row here.
 
+> **Update 2026-10-07 (later):** the empirical phrase decoder's character loss this report carries ("loses a few characters in most paragraphs", 66/247) is fixed — a verbatim port of Wine's `HLPFILE_Uncompress3` decodes all 247 compressed records to their declared length exactly (`2026-10-07-winhelp-tpf0-decoded.md`, "the phrase decoder fixed"; byte-exact text in the ic2-conquest repo's `help_topics.v2.tsv`). The help-derived rows below were written from the lossy text; the five spec quotes taken from it were re-verified against the byte-exact text — all verbatim except one paraphrase, corrected in `rules-specification.md`.
+
 ## Answer
 
 - **146 feature rows**, in the groups the task names, each with a tag earned by its cited evidence: **86 [confirmed]** (a save, a screenshot or a `coverage.md` row) and **60 [derived]** (a function, a form, a help topic or a report section); **no [candidate]**. No row is inferred from the clone; inferences are in their own section.

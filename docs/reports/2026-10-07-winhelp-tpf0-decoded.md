@@ -19,8 +19,9 @@ repo, runs it deterministically against the canonical EXE, and publishes the res
   to the original 30 `TPF0` form classes.
 - **WinHelp resource definition:** the decoder tooling lives in
   [`scripts/winhelp_tpf0/`](../../scripts/winhelp_tpf0/) and is re-runnable on any copy of the
-  game files; this report does not decode the `.hlp` itself (the phrase decoder loses characters
-  in most paragraphs, per the inventory report's noted caveat).
+  game files; at first publication the phrase decoder lost characters in most paragraphs, and
+  the gap was closed the same day by porting Wine's `HLPFILE_Uncompress3`
+  (see "WinHelp: the phrase decoder fixed" below — 247/247 records now byte-complete).
 
 ## Method
 
@@ -44,12 +45,14 @@ never overwriting a measured output.
 | `common.py` | 32 | shared `write_new` / `latest` / `versions` (rule 6: never overwrite a measured output) |
 | `extract_forms.py` | 97 | the `TPF0` property-stream parser and writer |
 | `hlp_dir.py` | 42 | minimal WinHelp 3.x directory / internal-file reader |
-| `hlp_topics.py` | 111 | the Win95 phrase decoder + LZ77 topic-block decoder |
+| `hlp_topics.py` | 111 | the Win95 phrase decoder (Wine `HLPFILE_Uncompress3` port) + LZ77 topic-block decoder |
 | `extract_help.py` | 32 | glues the topic and contents extraction; produces `help_topics.tsv` |
-| `hlp_check.py` | 18 | sanity check: 66 of 247 compressed records match the declared length, the rest lose a few characters |
+| `hlp_check.py` | 18 | sanity check: 247 of 247 compressed records decode to the declared length (was 66 of 247 before the fix) |
 
-All seven are the **exact code** the bot's `run-exp-feature-inventory` ran, copied verbatim
-into the research repo with only the data path adjusted to read from a fixture-relative
+All seven were at first the **exact code** the bot's `run-exp-feature-inventory` ran, copied
+verbatim into the research repo; `hlp_topics.py` and `hlp_check.py` were then fixed in place
+by the Wine port above (the empirical originals remain in git history). Only the data path
+was adjusted to read from a fixture-relative
 location. License and provenance: ic2-conquest bot, Wine-only deterministic runs, EXE
 (SPEC.md of the fixtures repo: the original `Imperial Conquest 2.exe`, byte-equality with the
 fixture used by the inventory report).
@@ -123,14 +126,46 @@ help are consistent with each other, and both disagree with the live code** (the
 records the live code as `Ctrl+Q` and Wine as `Ctrl+P`, which the inventory report attributes
 to a help-file/wine/original mismatch — not the form-resource one).
 
-## WinHelp: a reproduction path that closes the inventory's caveat
+## WinHelp: the phrase decoder fixed (2026-10-07, later the same day)
 
-The inventory report notes the bot's WinHelp decoder "loses characters in most paragraphs" (66
-of 247 compressed records have the declared length). The decoder is now in
-`scripts/winhelp_tpf0/` and is re-runnable. The full HLP decode is **out of scope** here
-(it is a phrase-table reconstruction problem; the inventory report calls it out as the main
-remaining decoding gap); this report only publishes the decoder so any later session can pick
-it up, fix the missing-code reverse, and merge back.
+The inventory report noted the bot's WinHelp decoder "loses characters in most paragraphs"
+(66 of 247 compressed records have the declared length). The empirical `expand` had guessed
+half the Win95 scheme: it took even bytes below `0x80` for dropped controls (they are phrase
+references, `byte/2`), mapped only the `0x01`/`0x05`/`0x09` banks, invented a trailing-space
+rule, and missed the literal-run (`byte & 7 == 3`) and space/NUL-run (`byte & 7 == 7`) cases
+entirely.
+
+The fix ports `HLPFILE_Uncompress3` verbatim from Wine's `programs/winhlp32/hlpfile.c` (the
+reference WinHelp viewer; the file carries `|PhrIndex`/`|PhrImage`, so the Win95 scheme is the
+one in force — Win3 `|Phrases` and `HLPFILE_Uncompress2` do not apply). Every byte is one of:
+
+```text
+even                : phrase byte/2
+odd, byte & 3 == 1  : phrase (byte+1)*64 + next byte    (0x01 -> 128..383, 0x05 -> 384..639, ...)
+odd, byte & 7 == 3  : literal run of byte/8 + 1 raw bytes follows
+odd, byte & 7 == 7  : run of byte/16 + 1 bytes: spaces if byte & 0xF == 7, else NULs
+```
+
+Result, against the oracle every record carries (its declared decompressed length,
+`DataLen2`): **247 of 247 compressed records decode to exactly the declared length**, no
+unresolved phrase indices (682 phrases; the phrase table itself — PhrIndex bit-stream offsets
+into the LZ77-decoded PhrImage — was already correct). The decoded help text is byte-complete;
+the remaining non-text bytes are structural (NUL table-cell separators, literal-run escapes),
+not lost characters. Versioned outputs beside the originals (rule 6):
+`help_decode_check.v2.txt`, `help_topics.v2.tsv`, `help_records_raw.v2.tsv`,
+`help_decode_meta.v2.txt`, `help_contents_entries.v2.tsv` (the last is content-identical to
+v1; only the topics changed, 40,793 → 42,611 bytes). The `.hlp` itself (SHA-256
+`f240739d…49d4249d`, 52,661 bytes, byte-identical to the desktop copy) was placed in the
+ic2-conquest repo's `runs/experiments/data/run-exp-feature-inventory/` by the build
+repository's main session (its issue #831).
+
+**Follow-up, done same day:** the five rules-specification amendments taken from the earlier
+lossy decode (commit `0864573`) were re-read against the byte-exact `help_topics.v2.tsv`.
+Every quoted fragment is present verbatim except one paraphrase — "24 weeks to reach full
+effectiveness" — now corrected in the spec to the byte-exact "**a little longer, 24 weeks,
+before they reach full effectiveness**". The loss the old decoder caused is visible in the
+same topic: v1 reads "f you select ALL CITIES" where v2 reads "If you select ALL CITIES"
+(a phrase reference the old scheme dropped).
 
 ## What the four disagreements listed by the inventory report resolve to
 
@@ -150,10 +185,8 @@ The inventory report left four disagreements in §6. The TPF0 decode pins all fo
 
 ## Open
 
-- The WinHelp phrase decoder's character loss (66 of 247 records match the declared length)
-  is still a gap. The decoder is in the repo; the fix needs a recovered phrase-table reverse
-  and the HLP file — neither is in this repo (the HLP is in `imp_conquest_fixtures`, the
-  phrase table is recovered empirically).
+- ~~The WinHelp phrase decoder's character loss~~ closed above (Wine port, 247/247); the
+  remaining follow-up is the re-read of the five spec amendments against the byte-exact text.
 - The CLI's `mn_Caps|MenuItem` shortcuts for inputs Shift+1…Shift+5 and Shift+M (the
   mercenary view accelerators) are encoded the same way (`0x2031`/`0x2032`/`0x2033`/`0x2034`/
   `0x2035`/`0x204d`); they all decode and round-trip — fine.

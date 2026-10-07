@@ -107,8 +107,10 @@ under "Next checks" is now closed. The current state, as it lives in this repo:
   decoder is in `scripts/winhelp_tpf0/`, re-runnable against any EXE; the canonical run
   reproduces 29 forms / 908 controls **byte-identically** to the bot's published release v3.
   Every dialog already cited across the existing reports is named in the form tree. The WinHelp
-  phrase-decoder's 66-of-247 character loss stays open (needs the .hlp file, which lives in
-  `imp_conquest_fixtures`, and a phrase-table reconstruction).
+  phrase decoder was fixed the same day (2026-10-07) by porting Wine's
+  `HLPFILE_Uncompress3` against the .hlp placed in the ic2-conquest repo: 247/247 compressed
+  records now decode to their declared length exactly
+  (`reports/2026-10-07-winhelp-tpf0-decoded.md`, "the phrase decoder fixed").
 
 - **In-flight from the ic2-conquest bot**: the in-play corroborations of the strategic-AI-turn
   report's decompile-only claims (week-11 tax, free AI mercenary hire, homeland intercept,
