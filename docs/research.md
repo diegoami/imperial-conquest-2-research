@@ -72,3 +72,50 @@ The next three-save sequence resolves the city's parenthetical troop count. Rome
 2. Decode full-version WinHelp topics and Delphi form streams to inventory rules and UI actions.
 3. Obtain more paired saves around one controlled action at a time, especially a second supply transfer at another city/army, a money transfer, and recruitment, then compare bytes to identify state fields. Keep routine verification to three or four relevant saves.
 4. Map full-version executable references to DAT and SAV structures before implementing turn, economy, diplomacy, and combat rules.
+
+---
+
+## Where this stands (2026-10-07)
+
+This research note was first written while the decompilation was still ahead; almost everything
+under "Next checks" is now closed. The current state, as it lives in this repo:
+
+- **All 111 reports** in `docs/reports/` cover the original's rules end to end (turns, calendar,
+  weekly and quarterly ticks, cities and capture, recruitment and mercenaries, armies,
+  fleets and naval warfare, diplomacy, tactical battle, the computer seat's turn, victory and
+  the player interface). **Three independent Ghidra dumps** — at the researcher's machine and
+  through the bot's `analyzeHeadless` plus `ScanCalls`/`ScanDword` post-scripts — supply the
+  byte-level evidence for every decompile-only finding.
+
+- **A consolidated specification** at `docs/rules-specification.md`: ten sections, every rule
+  tagged with the strength its source report gave it (`[confirmed]` / `[confirmed: code]` /
+  `[confirmed: decompile]` / `[derived]` / `[Wine candidate]`) and cited to that report, with
+  per-section "Open:" lists for the questions that stay open. **Cross-reviewed by GPT-6.1 Sol
+  (OpenCode), a different model family from the GLM-5.3 agents that drafted the sections** —
+  verdict "redo" with 18 blocking findings, all corrected the same day. The reviewer's report
+  is preserved verbatim at `docs/rules-spec-review-2026-10-07.md`. Two reversals of work from
+  earlier in the same session were among the corrections: the JoinFleets guard is `< 0x65` =
+  `< 101` (combined 100 is **accepted**, not refused — the engine was right), and the strategic
+  AI report's asymmetry row 6 was wrong (the human recruit dialog has no treasury check; the
+  real asymmetry is the AI-only deficit floor).
+
+- **The full decompilation plan is closed** (17 items; see `docs/decompilation-plan.md`):
+  every priority-queue target — DAT/SAV layout, the weekly and quarterly ticks, economy,
+  movement, recruitment, combat, diplomacy, the AI turn, victory — has a decompiled report.
+
+- **The last research thread** (WinHelp topics and Delphi `TPF0` form resources) is done. The
+  decoder is in `scripts/winhelp_tpf0/`, re-runnable against any EXE; the canonical run
+  reproduces 29 forms / 908 controls **byte-identically** to the bot's published release v3.
+  Every dialog already cited across the existing reports is named in the form tree. The WinHelp
+  phrase-decoder's 66-of-247 character loss stays open (needs the .hlp file, which lives in
+  `imp_conquest_fixtures`, and a phrase-table reconstruction).
+
+- **In-flight from the ic2-conquest bot**: the in-play corroborations of the strategic-AI-turn
+  report's decompile-only claims (week-11 tax, free AI mercenary hire, homeland intercept,
+  fleet hunt-vs-port). Filed at `docs/pending-requests.md`.
+
+- **No original binaries** (EXE, DAT, HLP, SAV, screenshots, recordings) are committed here —
+  every input the reports cite is published as a GitHub release; `docs/evidence-index.md` is
+  the citation index. The rules specification and the WinHelp decoder scripts are the only new
+  artefacts that join `docs/reports/` in the repo's working tree.
+
