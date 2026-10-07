@@ -34,7 +34,11 @@ across the run. All 22 recordings are at least **scanned**; the table records an
 | `IP1 012` | 190s | **read** | t=2 | Continuity check against `IP1 011` (no gap) |
 
 **Saves**: all 45 dumped for calendar; `IP000`/`IP000B` inspected in full (nation + Alexandria);
-`IP011B`/`IP012` compared across the season boundary.
+`IP011B`/`IP012` compared across the season boundary. **All 44 consecutive diffs swept 2026-10-07**
+([2026-10-07-ptolemy-run-between-turn-sweep.md](reports/2026-10-07-ptolemy-run-between-turn-sweep.md)):
+the year's events dated, the player's eight assault captures and the capture cascade confirmed in
+unity arithmetic, the AI tax policy and rearmament confirmed in play, two player battles the dialog
+scan missed. All 45 saves moved to `saves-processed/`.
 
 ### Distinct screens found, and whether they were read
 
@@ -91,10 +95,14 @@ Runs arrive incrementally, so this is the standing shopping list. Updated 2026-0
 
 **Not present in any run so far, and worth a deliberate capture:**
 
-1. **A siege, fought and resolved.** Ptolemaic besieged nothing across the whole of 270 BC, and no
-   other run holds one either. The reimplementation's siege path is decompiled and twice-reviewed but
-   has **never been watched**. A single siege would confirm the defender-strength arithmetic against
-   the game's own screen the way the Army recruits dialog confirmed `quality = state / 4`.
+1. **A siege, fought and resolved.** *Corrected 2026-10-07:* the run's **saves** hold eight assault
+   captures by the player plus cascades
+   ([2026-10-07-ptolemy-run-between-turn-sweep.md](reports/2026-10-07-ptolemy-run-between-turn-sweep.md) §2) —
+   the earlier "Ptolemaic besieged nothing" claim was wrong. What no recording has yet shown is a
+   siege **watched on screen**: the reimplementation's siege path is decompiled and twice-reviewed
+   but has **never been watched**. A single recorded siege would confirm the defender-strength
+   arithmetic against the game's own screen the way the Army recruits dialog confirmed
+   `quality = state / 4`.
 2. **A siege of a city whose owner differs from its allegiance** — a recently captured one. Both
    adjustments that apply there are `[confirmed]` from decompilation and modelled, but neither has
    been seen in play.
