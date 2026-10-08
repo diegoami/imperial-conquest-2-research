@@ -47,7 +47,7 @@ The research side asked for it on 2026-10-08.
 **Byte differences between the before and after saves:**
 - c3 and c5 (refused): only Rome's unit-map view origin (nation 0 +0x486/+0x488), which the selection click scrolls.
 - c1 and c4: army 1's new slot, the pool record, and the view origin.
-- c1 only: the map word at (120,53), army 1's tile, went from 200 to 216. This is unexplained; it does not appear in c4.
+- c1 only: the map word at (120,53), army 1's tile, went from 200 to 216. It does not appear in c4. (Explained since as the marker's size band; see Not established.)
 
 Evidence: run-exp-merc-full-queue, `<case>_{PRE,BEFORE,AFTER}.SAV` for c1_full_queue, c2_empty_queue, c3_army_20_slots, c4_army_gap_0_18, c5_army_only_slot19 (release `run-exp-merc-full-queue`; SHA-256 in `runs/experiments/data/run-exp-merc-full-queue/SAVES.sha256`); `probe_merc.py`, `probe_merc.log`, `probe_merc_*.json`.
 
@@ -57,5 +57,5 @@ The fixture is `saves/run0-start-AUTO0720-seed12345.SAV`: Rome human, army 1 at 
 
 ## Not established
 
-- The map word change in c1 (200 → 216 at army 1's tile).
+- The map word change in c1 (200 → 216 at army 1's tile). **Explained since:** it is the army marker's size band; 22,000 + 3,868 = 25,868 crosses 25,000 (owner + 200 → owner + 216), while c4 (2,000 → 5,868) stays in the first band: [`2026-10-08-army-marker-size-band-on-the-map.md`](2026-10-08-army-marker-size-band-on-the-map.md).
 - Whether an edited save with slot 19 empty but a FUN_0044a66c value of 20 can exist. It cannot: the value is the last occupied slot + 1, so 20 means slot 19 is occupied, and R08 covers that.

@@ -195,7 +195,7 @@ marker = owner + (band < 25 ? 200 : band < 50 ? 216 : 232);
 if (-1 < army.covered) map[army.x][army.y] = marker;      // not aboard a fleet
 ```
 
-Three army marker bands at **25,000 and 50,000 troops** `[confirmed]`.
+Three army marker bands at **25,000 and 50,000 troops** `[confirmed]`. Seen in play at 24,999 / 25,000 / 49,999 / 50,000 (200 / 216 / 216 / 232), and the marker is written only when the army changes, not on a load: [`2026-10-08-army-marker-size-band-on-the-map.md`](2026-10-08-army-marker-size-band-on-the-map.md).
 
 ---
 
