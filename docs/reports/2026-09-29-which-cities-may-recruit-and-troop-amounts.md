@@ -63,7 +63,7 @@ If more than one town already has units in training, an **"All cities"** entry i
 - **"Fallen below"** matches the case the list allows: a town still listed only because it has units in training, whose fortification has since dropped.
 - **No treasury check:** `RecruitUnit` has no money check, so the treasury can go negative through recruitment.
 - **When accepted:**
-  - the first empty slot gets `state 0, type, troops, city`, and **"All cities"** means the capital;
+  - the first empty slot gets `state 0, type, troops, city`, and **"All cities"** means the capital (first empty slot, treasury and mobilisation seen in play: [`2026-10-08-recruit-lands-in-first-free-slot.md`](2026-10-08-recruit-lands-in-first-free-slot.md));
   - the treasury (`+0x438`) drops by `troops / 200 × cost(type)`, matching [decompiled-recruitment-cost-formula.md](decompiled-recruitment-cost-formula.md);
   - mobilisation rises by `troops × 1000 / wealth(+0x430) + 1`, capped at 100.
 

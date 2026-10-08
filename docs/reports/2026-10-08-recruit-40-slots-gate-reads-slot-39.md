@@ -30,7 +30,7 @@ Rome's slot 0 is empty and slots 1-39 are occupied (39 queued units, so one slot
 | this run: slot 0 empty, slots 1-39 occupied | 1 | refuse | accept (into slot 0) | **refused**, queue unchanged |
 | 40-slot finding: all 40 occupied | 0 | refuse | refuse | refused |
 
-The gate is the test R46 quotes, `nation +0x420 < 1` (slot 39's troops; `TArmyRecruits_RecruitUnit` L55949), and nothing else. A free slot lower in the queue is never used while slot 39 is occupied. In play the queue is presumably filled from the front, so slot 39 is the last one taken. That is `[derived]`: this run did not show where an accepted recruit lands.
+The gate is the test R46 quotes, `nation +0x420 < 1` (slot 39's troops; `TArmyRecruits_RecruitUnit` L55949), and nothing else. A free slot lower in the queue is never used while slot 39 is occupied. In play the queue is presumably filled from the front, so slot 39 is the last one taken. That was `[derived]` here; [`2026-10-08-recruit-lands-in-first-free-slot.md`](2026-10-08-recruit-lands-in-first-free-slot.md) has since confirmed it (first free slot).
 
 Evidence: `MIRROR_PRE.SAV` (`39c16c9ad05d43f1…`), `MIRROR_BEFORE.SAV` and `MIRROR_AFTER.SAV` (both `c57740050bc9ba6f…`), all in release `run-exp-l11-40-recruit-slots`; `runs/experiments/data/run-exp-l11-40-recruit-slots/probe_mirror.py`, `probe_mirror.json`, `probe_mirror.log`, `SAVES.sha256`.
 
@@ -42,4 +42,4 @@ Evidence: `MIRROR_PRE.SAV` (`39c16c9ad05d43f1…`), `MIRROR_BEFORE.SAV` and `MIR
 ## Not established
 
 - The mercenary path at a full slot 39.
-- Where an accepted recruit lands (first free slot, presumably).
+- Where an accepted recruit lands (first free slot, presumably). Settled since: the first slot whose troops are 0, seen in play in [`2026-10-08-recruit-lands-in-first-free-slot.md`](2026-10-08-recruit-lands-in-first-free-slot.md).

@@ -149,6 +149,17 @@ A few small probe saves are committed in the fixtures repository itself rather t
 | [`MIRROR_PRE.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-l11-40-recruit-slots/MIRROR_PRE.SAV) | `run-exp-l11-40-recruit-slots` (repo `ic2-conquest`) | 1 |
 | [`MIRROR_BEFORE.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-l11-40-recruit-slots/MIRROR_BEFORE.SAV) | `run-exp-l11-40-recruit-slots` (repo `ic2-conquest`) | 1 |
 | [`MIRROR_AFTER.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-l11-40-recruit-slots/MIRROR_AFTER.SAV) | `run-exp-l11-40-recruit-slots` (repo `ic2-conquest`) | 1 |
+| [`c1_empty_PRE.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-recruit-slot-landing/c1_empty_PRE.SAV) | `run-exp-recruit-slot-landing` (repo `ic2-conquest`) | 1 |
+| [`c1_empty_0.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-recruit-slot-landing/c1_empty_0.SAV) | `run-exp-recruit-slot-landing` (repo `ic2-conquest`) | 1 |
+| [`c1_empty_1.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-recruit-slot-landing/c1_empty_1.SAV) | `run-exp-recruit-slot-landing` (repo `ic2-conquest`) | 1 |
+| [`c2_gap_slot1_PRE.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-recruit-slot-landing/c2_gap_slot1_PRE.SAV) | `run-exp-recruit-slot-landing` (repo `ic2-conquest`) | 1 |
+| [`c2_gap_slot1_0.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-recruit-slot-landing/c2_gap_slot1_0.SAV) | `run-exp-recruit-slot-landing` (repo `ic2-conquest`) | 1 |
+| [`c2_gap_slot1_1.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-recruit-slot-landing/c2_gap_slot1_1.SAV) | `run-exp-recruit-slot-landing` (repo `ic2-conquest`) | 1 |
+| [`c3_gap_slot0_PRE.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-recruit-slot-landing/c3_gap_slot0_PRE.SAV) | `run-exp-recruit-slot-landing` (repo `ic2-conquest`) | 1 |
+| [`c3_gap_slot0_0.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-recruit-slot-landing/c3_gap_slot0_0.SAV) | `run-exp-recruit-slot-landing` (repo `ic2-conquest`) | 1 |
+| [`c3_gap_slot0_1.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-recruit-slot-landing/c3_gap_slot0_1.SAV) | `run-exp-recruit-slot-landing` (repo `ic2-conquest`) | 1 |
+| [`c3_gap_slot0_2.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-recruit-slot-landing/c3_gap_slot0_2.SAV) | `run-exp-recruit-slot-landing` (repo `ic2-conquest`) | 1 |
+| [`c3_gap_slot0_3.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-recruit-slot-landing/c3_gap_slot0_3.SAV) | `run-exp-recruit-slot-landing` (repo `ic2-conquest`) | 1 |
 | [`fleet-port-antium-0734.SAV`](https://github.com/diegoami/ic2-conquest/blob/feat/fleet-orders/saves/fleet-port-antium-0734.SAV) | repo `ic2-conquest` `saves/` | 1 |
 | [`fleet-split-antium-0734.SAV`](https://github.com/diegoami/ic2-conquest/blob/feat/fleet-orders/saves/fleet-split-antium-0734.SAV) | repo `ic2-conquest` `saves/` | 1 |
 | [`S00_Rome_AUTO0720.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-civ-sweep/S00_Rome_AUTO0720.SAV) | `run-exp-civ-sweep` (repo `ic2-conquest`) | 1 |
