@@ -78,5 +78,5 @@ run-exp-join-20-units: `<case>_{PRE,BEFORE,AFTER}.SAV` for c1_10_10, c2_10_11, c
 
 ## Not established
 
-- The transfer-dialog path (`TArmyToArmy_Army1Transfer`, its 20-unit branch).
+- The transfer-dialog path (`TArmyToArmy_Army1Transfer`, its 20-unit branch). Since tested: [`2026-10-08-transfer-dialog-20-units-and-slot-gaps.md`](2026-10-08-transfer-dialog-20-units-and-slot-gaps.md).
 - Whether normal play can produce an army with slot 0 empty (case 5's unit loss).
