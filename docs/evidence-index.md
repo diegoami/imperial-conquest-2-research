@@ -285,6 +285,15 @@ A few small probe saves are committed in the fixtures repository itself rather t
 | [`move_cover1_PRE.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-naval-loser-rough-sea/move_cover1_PRE.SAV) | `run-exp-naval-loser-rough-sea` (repo `ic2-conquest`) | 1 |
 | [`move_cover1_BEFORE.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-naval-loser-rough-sea/move_cover1_BEFORE.SAV) | `run-exp-naval-loser-rough-sea` (repo `ic2-conquest`) | 1 |
 | [`move_cover1_AFTER.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-naval-loser-rough-sea/move_cover1_AFTER.SAV) | `run-exp-naval-loser-rough-sea` (repo `ic2-conquest`) | 1 |
+| [`disband_PRE.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-army-removal-tile/disband_PRE.SAV) | `run-exp-army-removal-tile` (repo `ic2-conquest`) | 1 |
+| [`disband_BEFORE.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-army-removal-tile/disband_BEFORE.SAV) | `run-exp-army-removal-tile` (repo `ic2-conquest`) | 1 |
+| [`disband_AFTER.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-army-removal-tile/disband_AFTER.SAV) | `run-exp-army-removal-tile` (repo `ic2-conquest`) | 1 |
+| [`join_PRE.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-army-removal-tile/join_PRE.SAV) | `run-exp-army-removal-tile` (repo `ic2-conquest`) | 1 |
+| [`join_BEFORE.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-army-removal-tile/join_BEFORE.SAV) | `run-exp-army-removal-tile` (repo `ic2-conquest`) | 1 |
+| [`join_AFTER.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-army-removal-tile/join_AFTER.SAV) | `run-exp-army-removal-tile` (repo `ic2-conquest`) | 1 |
+| [`battle_PRE.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-army-removal-tile/battle_PRE.SAV) | `run-exp-army-removal-tile` (repo `ic2-conquest`) | 1 |
+| [`battle_BEFORE.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-army-removal-tile/battle_BEFORE.SAV) | `run-exp-army-removal-tile` (repo `ic2-conquest`) | 1 |
+| [`battle_AFTER.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-army-removal-tile/battle_AFTER.SAV) | `run-exp-army-removal-tile` (repo `ic2-conquest`) | 1 |
 | [`fleet-port-antium-0734.SAV`](https://github.com/diegoami/ic2-conquest/blob/feat/fleet-orders/saves/fleet-port-antium-0734.SAV) | repo `ic2-conquest` `saves/` | 1 |
 | [`fleet-split-antium-0734.SAV`](https://github.com/diegoami/ic2-conquest/blob/feat/fleet-orders/saves/fleet-split-antium-0734.SAV) | repo `ic2-conquest` `saves/` | 1 |
 | [`S00_Rome_AUTO0720.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-civ-sweep/S00_Rome_AUTO0720.SAV) | `run-exp-civ-sweep` (repo `ic2-conquest`) | 1 |
