@@ -41,7 +41,7 @@ Evidence: `T_SPLIT_198_ARMIES.SAV` (sha256 `af56f25bbfae35f7…`), `probe-197-af
 These correct ic2-conquest's 2026-10-08 evening handover, not any report on this side.
 
 1. The handover said "the game clamps Rome's armies to 188 on load". It does not. That save held 200 armies (12 AI + 188 Rome), and the memory table has room for exactly 198 records (0x47C1EC + 656 × 198). Reading the first 198 records gave 12 AI + 186 Rome = 198, and the earlier count of 188 came from that reading, not from a clamp. A save with more than 198 armies overflows the table and is not a valid pre-state.
-2. The handover said "no `controls("Split army")`; the gate fires before the dialog or the click misses". The gate did fire. `Game.open_dialog` also reported the dialog as open, because **Wine's tooltip window for a toolbar button has the button's caption as its window name**. A title match alone is therefore not proof that a dialog opened. The new tests require a window wider than 200 px. Other `open_dialog` calls on toolbar buttons have the same latent false positive, which has not been fixed yet.
+2. The handover said "no `controls("Split army")`; the gate fires before the dialog or the click misses". The gate did fire. `Game.open_dialog` also reported the dialog as open, because **Wine's tooltip window for a toolbar button has the button's caption as its window name**. A title match alone is therefore not proof that a dialog opened. The new tests require a window wider than 200 px. Other `open_dialog` calls on toolbar buttons had the same latent false positive. It is fixed in the harness at ic2-conquest `e1ed7f2`: `find_windows` now leaves out Wine tooltip windows (1 < height < 24) unless asked. No promoted finding relied on a title-only match.
 
 ## Method
 
