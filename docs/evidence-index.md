@@ -144,6 +144,7 @@ A few small probe saves are committed in the fixtures repository itself rather t
 | [`T_SPLIT_FLEET.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-fleet-orders/T_SPLIT_FLEET.SAV) | `run-exp-fleet-orders` (repo `ic2-conquest`) | 1 |
 | [`T_SUPPLY_FLEET.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-fleet-orders/T_SUPPLY_FLEET.SAV) | `run-exp-fleet-orders` (repo `ic2-conquest`) | 1 |
 | [`T_TRANSFER_SHIPS.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-fleet-orders/T_TRANSFER_SHIPS.SAV) | `run-exp-fleet-orders` (repo `ic2-conquest`) | 1 |
+| [`T_SPLIT_198_ARMIES.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-l11-198-armies/T_SPLIT_198_ARMIES.SAV) | `run-exp-l11-198-armies` (repo `ic2-conquest`) | 1 |
 | [`fleet-port-antium-0734.SAV`](https://github.com/diegoami/ic2-conquest/blob/feat/fleet-orders/saves/fleet-port-antium-0734.SAV) | repo `ic2-conquest` `saves/` | 1 |
 | [`fleet-split-antium-0734.SAV`](https://github.com/diegoami/ic2-conquest/blob/feat/fleet-orders/saves/fleet-split-antium-0734.SAV) | repo `ic2-conquest` `saves/` | 1 |
 | [`S00_Rome_AUTO0720.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-civ-sweep/S00_Rome_AUTO0720.SAV) | `run-exp-civ-sweep` (repo `ic2-conquest`) | 1 |

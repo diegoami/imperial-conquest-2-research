@@ -204,7 +204,7 @@ A prompt is `mtConfirmation` with Yes, No and Cancel; the call returns 6 for Yes
 ### Orders that fail without a box [derived]
 
 - Join armies with no army one tile away (`L46975 «if (-1 < (short)uStack_10) {»`), Join fleets with no partner fleet (`L47232 «if (-1 < (short)local_10) {»`): nothing happens.
-- Split army after R01 passes: no free tile next to the army, or 198 armies already: nothing happens (`L48725 «(-1 < (short)local_12) && (DAT_004a0324 < 0xc6)»`).
+- Split army after R01 passes: no free tile next to the army, or 198 armies already: nothing happens (`L48725 «(-1 < (short)local_12) && (DAT_004a0324 < 0xc6)»`). The 198-army case is seen in play in [`2026-10-08-split-army-198-armies-cap-in-play.md`](2026-10-08-split-army-198-armies-cap-in-play.md): the count covers all nations, and at 197 the record is taken as the dialog opens.
 - Recruit mercenaries with no offer one tile away: the button does nothing (`L46882 «if (-1 < (short)local_14) {»`).
 - Embark: an army without moves, a fleet that is not one tile away, or a fleet already carrying an army: the click only selects the fleet (`L46592 «if ((bVar4) && ((&DAT_0049c282)[*(short *)(param_1 + 0x224) * 0xd] == -1)) {»`).
 - Rename unit, Split unit with no unit selected, Join units with fewer than two, the transfer and disband paths with nothing selected, Recruit unit with no unit type chosen: nothing happens (`L45489 «if (iVar2 == 1) {»`, `L45609 «if (1 < iVar6) {»`, `L55959 «if (-1 < *(short *)(param_1 + 0x23e)) {»`).
