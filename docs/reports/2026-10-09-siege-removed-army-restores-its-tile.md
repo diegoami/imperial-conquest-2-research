@@ -28,7 +28,7 @@ player asked for it.
   unguarded `IDIV` by zero in the first `FUN_0044b230` call (`0x0044B249`). A siege that silently does
   nothing, leaving even the save byte-identical, fits that division faulting and the order being
   abandoned (`[derived]`). By the same formula, any army under 80 heavy-infantry men (or under 27
-  archers) should behave the same; that is untested.
+  archers) should behave the same. **Confirmed since:** 79 / 26 archers do not besiege, 80 / 27 archers do: [`2026-10-09-siege-needs-attack-strength-1.md`](2026-10-09-siege-needs-attack-strength-1.md).
 - **Removal path.** A besieger emptied by attrition goes `FUN_0044ac3c` → `FUN_0044ab90`, as that
   report says, and so its cover is restored, as seen here.
 
