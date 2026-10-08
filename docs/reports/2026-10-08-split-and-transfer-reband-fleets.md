@@ -60,4 +60,4 @@ Evidence: run-exp-fleet-reband-orders, `<case>_{PRE,BEFORE,AFTER}.SAV` for sp1_s
 ## Not established
 
 - **Storms and naval-battle losses in play:** they change ships at the turn end or in a battle and could not be forced here. From code they re-band through `FUN_0044b4f8` (review note).
-- **The losing fleet's map word** after a naval battle (`FUN_0044ad38` tombstones it).
+- **The losing fleet's map word** after a naval battle (`FUN_0044ad38` tombstones it). **Settled since (on sea):** it goes to 0, and the survivors are re-banded: [`2026-10-08-naval-battle-loser-clears-its-tile.md`](2026-10-08-naval-battle-loser-clears-its-tile.md).

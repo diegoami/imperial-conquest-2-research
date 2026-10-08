@@ -81,3 +81,5 @@ python3 runs/experiments/fleet-battles/trials.py                 # all five cell
 - **Which bonus pair each battle drew is not observed**, so the random term's shape (a uniform choice of 0 to 3) is tested only through the win rates; the draft's seeds-share-a-draw question is open.
 - **Consistent with the code and with no contradiction:** the click opens no box at war, the loser's fleet is destroyed whole, the attacker spends its moves, and the "You cannot attack a fleet docked at its own city" and peace-prompt branches were not exercised.
 - **Not re-run.** No code address was re-read from the executable (no Ghidra dumps in this review); the formulas are those of the code report cited.
+
+**Follow-up (2026-10-08):** the same saves, read again for the map words: the losing fleet's tile goes to 0 (it is tombstoned, owner −1), and every survivor's word matches owner + its ship band: [`2026-10-08-naval-battle-loser-clears-its-tile.md`](2026-10-08-naval-battle-loser-clears-its-tile.md).
