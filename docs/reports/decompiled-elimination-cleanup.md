@@ -215,7 +215,7 @@ FUN_0044BD2C(loser, &moved):                                       // :50234
 
 ### Why defection almost never empties a nation `[derived]`
 
-`FUN_0044BA1C` and the rebellion caller of `FUN_0044C204` both skip capitals. A live nation always holds its capital: when the capital is captured, it is either moved or the whole nation is conquered. So `FUN_0044BED8` can take a nation's last city only through `FUN_0044C360` (rebirth), which calls `FUN_0044BED8` **without** a capital check, or from a state where the capital pointer is already stale.
+`FUN_0044BA1C` and the rebellion caller of `FUN_0044C204` both skip capitals. A live nation always holds its capital: when the capital is captured, it is either moved or the whole nation is conquered. So `FUN_0044BED8` can take a nation's last city only through `FUN_0044C360` (rebirth), which calls `FUN_0044BED8` **without** a capital check, or from a state where the capital pointer is already stale. Two concrete chains to either, both starting from a capital moved onto a conquered city whose allegiance is a dead nation, are worked out in [`2026-10-09-defection-elimination-reachable-in-principle.md`](2026-10-09-defection-elimination-reachable-in-principle.md) (`[derived]`, not seen in any save).
 
 ### `FUN_0044BED8`, :50307: the defection path's elimination block (from :50382) `[confirmed: decompile]`
 
