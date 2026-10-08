@@ -132,7 +132,7 @@ void FUN_0044a120(short *armyOut, short *slotOut, undefined4 unused, int frame)
           *armyOut = a;                       // no break: the LAST match wins
     }
   if (-1 < *armyOut) {
-    *slotOut = FUN_0044a66c(*armyOut);        // first free unit slot
+    *slotOut = FUN_0044a66c(*armyOut);        // last occupied slot + 1 (not the first free one; see below and the 2026-10-08 Join-armies run)
     if (*slotOut != 0x14 &&
         FUN_0044a698(*armyOut) + slot.troops < 0x186a1) return;     // accepted
     *armyOut = -1;                            // army full -> caller creates a new one
@@ -143,7 +143,7 @@ void FUN_0044a120(short *armyOut, short *slotOut, undefined4 unused, int frame)
 - **`FUN_00449018` is Chebyshev distance** `[confirmed]` — `max(|x1-x2|, |y1-y2|)`, via two `abs` idioms feeding `FUN_00448fd8` (`max`). This **closes the open question in [attack-and-siege-are-adjacency-orders.md](attack-and-siege-are-adjacency-orders.md)**: the game's grid metric is Chebyshev, 8-way, not Manhattan. The reimplementation's `LandingTile.ChebyshevDistance` choice is faithful, and that report's `[derived]` caveat can be retired.
 - **`d == 1`, not `d <= 1`** `[confirmed]`. The receiving army must be *adjacent* to the city. This is consistent with — and independent corroboration of — that same report's observation that an army never occupies a city tile.
 - **The AI gets a radius of 5, the player a radius of 1** `[confirmed]`. `(&DAT_00474b00)[nation × 0x494] == 0` is *computer-controlled* (polarity fixed in [army-moves-field-signed-and-the-ffff-underflow.md](army-moves-field-signed-and-the-ffff-underflow.md)). A real, asymmetric AI advantage.
-- **`FUN_0044a66c` returns `lastOccupiedSlot + 1`, not the first hole** `[confirmed]` — it scans all 20 slots and remembers the highest index with `troops > 0`. Gaps are never reused. Returning `20` is the rejection.
+- **`FUN_0044a66c` returns `lastOccupiedSlot + 1`, not the first hole** `[confirmed]` — it scans all 20 slots and remembers the highest index with `troops > 0`. Gaps are never reused. Returning `20` is the rejection. Seen in play on Join armies in [`2026-10-08-join-armies-20-unit-gate-counts-last-slot.md`](2026-10-08-join-armies-20-unit-gate-counts-last-slot.md): slots {0, 15} + 5 units is refused as 16 + 5 = 21.
 - **The 20-unit cap is enforced here** `[confirmed]`, and **an army may not exceed 100,000 troops** `[confirmed]` — `total + incoming < 0x186A1`, the same constant behind the mercenary dialog's literal *"An army can not contain more than 100,000 troops."*
 
 ### `FUN_00449f08` — create a new army when none will take it
