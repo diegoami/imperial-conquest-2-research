@@ -50,4 +50,4 @@ The fixture is `saves/run0-start-AUTO0720-seed12345.SAV`: Rome army 1 at (120,53
 
 ## Not established
 
-- Whether the band is shown on screen (a different marker icon). The unit-map icon was not compared.
+- Whether the band is shown on screen (a different marker icon). The unit-map icon was not compared. **Settled since:** three icon sizes, chosen by the stored word, not by the troops: [`2026-10-08-army-icon-follows-the-size-band.md`](2026-10-08-army-icon-follows-the-size-band.md).
