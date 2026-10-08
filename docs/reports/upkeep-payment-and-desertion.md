@@ -95,7 +95,7 @@ It has seven call sites, and none of them is a "degrade" state. They are this de
 
 - **Mercenary slots only, in slot order 0 → 19.** A mercenary leaves if the purse is already at 0 or below when the loop reaches it. The one that drives the purse negative still gets paid; the overdraft is written off at the end.
 - **The army's last unit fills each hole, and the loop does not go back for it.** A mercenary moved into an already-visited slot escapes both payment and desertion this quarter. A regular moved there skips its upkeep, so the treasury is charged less.
-- **So an unpaid all-mercenary army of `n` units loses `⌈n/2⌉` of them per quarter**, and the last one deletes the army. Which mercenaries go depends on slot positions, not on cost, type or quality.
+- **So an unpaid all-mercenary army of `n` units loses `⌈n/2⌉` of them per quarter**, and the last one deletes the army. *(Seen in play 2026-10-09: 7 units → 4 desert and the three predicted by slot position survive; a single unit deletes the army and its tile gets its cover back: [`2026-10-09-turn-end-and-ai-army-removals-restore-their-tile.md`](2026-10-09-turn-end-and-ai-army-removals-restore-their-tile.md).)* Which mercenaries go depends on slot positions, not on cost, type or quality.
 - **Whole units, not troop fractions.** The `troops div 100` is subtracted from supplies. It equals the deserting unit's share of the army's supply capacity (`troops div 100`, [`supply-capacity-rounding.md`](supply-capacity-rounding.md)), so the mercenaries leave with their rations.
 
 ### No morale write, and no message [derived, confirmed once]
