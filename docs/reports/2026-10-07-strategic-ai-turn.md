@@ -363,12 +363,17 @@ faithful mode would need:
   natural observations incl. a double hire, no payment anywhere in the diff). Still not observed
   in play: an intercept dispatch (§3.1), a hunt-vs-port fleet decision (§4). Everything else
   remains decompile-only (`[confirmed: decompile]` means the dump, not a listing or a save).
+- **The `FUN_0044d734` contact resolution question is now settled** (2026-10-07,
+  [2026-10-07-ai-mover-contact.md](2026-10-07-ai-mover-contact.md)): the AI mover and the human
+  mover share the resolver; the AI-mover army-tile branch resolves instantly through
+  `FUN_0044aee4` whenever both seats are computer (no battle screen), and the
+  human-involved branch opens the tactical battle. The clone's faithful-AI path can therefore
+  share one contact resolver with the human twin (the design goal of the pending request that
+  named this gap).
 - **`FUN_0044a004`** (the fleet order itself) and the `+0x274` byte gate on mercenary hires were
   not opened; the fleet-size parameter's meaning is `[derived]`.
 - **The `+0x4` packed fleet destination** and the marker-range arithmetic in `FUN_0044e1fc`'s final
   step are read at decompile granularity only.
-- **Whether `FUN_0044d734`'s contact resolution differs when the mover is AI** was not re-checked;
-  this report inherits the attack gating from the diplomacy and capture reports.
 - The **Bowmen ×3** assault weight is literal; whether it is a design choice or a decompile
   artefact of the type encoding is not argued.
 
