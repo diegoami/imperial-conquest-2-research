@@ -52,5 +52,5 @@ Evidence: release `run-exp-naval-battle` (`PROBE_AFTER.SAV`, `NB_*_seed1.SAV`) a
 
 ## Not established
 
-- A loser on rough sea, which would separate "cleared to 0" from "covered terrain restored".
+- A loser on rough sea, which would separate "cleared to 0" from "covered terrain restored". **Settled since: cleared to 0**, even with covered cell 1; a fleet that sails away restores its cell: [`2026-10-08-sunk-fleet-sets-its-tile-to-plain-sea.md`](2026-10-08-sunk-fleet-sets-its-tile-to-plain-sea.md).
 - Storm losses in play (research's code reading covers them).
