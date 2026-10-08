@@ -64,4 +64,4 @@ Evidence: run-exp-fleet-marker-band. The Part A saves are `s24/s25/s49/s50_{PRE,
 ## Not established
 
 - Other owners' colours (only Rome was drawn).
-- Which orders, besides Join fleets, re-band a fleet. Split fleet, Transfer ships, storms and battle losses were not run.
+- Which orders, besides Join fleets, re-band a fleet. Split fleet, Transfer ships, storms and battle losses were not run. **Settled since:** Split fleet and Transfer ships re-band in play, and storms and the winner's battle losses do so in code: [`2026-10-08-split-and-transfer-reband-fleets.md`](2026-10-08-split-and-transfer-reband-fleets.md).

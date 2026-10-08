@@ -31,7 +31,7 @@ tiers" the asset specification assumed?
 (:49145–49172) writes `owner + 300 / + 316 / + 332` at **< 25, 25–49, ≥ 50 ships** (unsigned), and
 it is called wherever a fleet's ship count changes: joins and splits (`TFleetToFleet_OK`,
 `TUnitMap_JoinFleets`, construction completion `FUN_0044a050`), storm damage `FUN_0044b4f8`, and
-the AI merge `FUN_00450b30`. This explains the `332 + owner` and `333`/`335` fleet codes
+the AI merge `FUN_00450b30` (split and transfer seen re-banding in play: [`2026-10-08-split-and-transfer-reband-fleets.md`](2026-10-08-split-and-transfer-reband-fleets.md)). This explains the `332 + owner` and `333`/`335` fleet codes
 [rivers-and-map-markers.md](rivers-and-map-markers.md) could only fit **[confirmed: decompile]**.
 Army markers are the known three bands at 25,000/50,000 troops (`FUN_0044a80c`, same shape).
 

@@ -264,6 +264,18 @@ A few small probe saves are committed in the fixtures repository itself rather t
 | [`w300_s50.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-fleet-marker-band/w300_s50.SAV) | `run-exp-fleet-marker-band` (repo `ic2-conquest`) | 1 |
 | [`w300_s50_tile.png`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-fleet-marker-band/w300_s50_tile.png) | `run-exp-fleet-marker-band` (repo `ic2-conquest`) | 1 |
 | `montage_bands.png` (fleet) | `run-exp-fleet-marker-band` (repo `ic2-conquest`) | 1 |
+| [`sp1_split_30_by_10_PRE.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-fleet-reband-orders/sp1_split_30_by_10_PRE.SAV) | `run-exp-fleet-reband-orders` (repo `ic2-conquest`) | 1 |
+| [`sp1_split_30_by_10_BEFORE.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-fleet-reband-orders/sp1_split_30_by_10_BEFORE.SAV) | `run-exp-fleet-reband-orders` (repo `ic2-conquest`) | 1 |
+| [`sp1_split_30_by_10_AFTER.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-fleet-reband-orders/sp1_split_30_by_10_AFTER.SAV) | `run-exp-fleet-reband-orders` (repo `ic2-conquest`) | 1 |
+| [`sp2_split_50_by_1_PRE.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-fleet-reband-orders/sp2_split_50_by_1_PRE.SAV) | `run-exp-fleet-reband-orders` (repo `ic2-conquest`) | 1 |
+| [`sp2_split_50_by_1_BEFORE.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-fleet-reband-orders/sp2_split_50_by_1_BEFORE.SAV) | `run-exp-fleet-reband-orders` (repo `ic2-conquest`) | 1 |
+| [`sp2_split_50_by_1_AFTER.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-fleet-reband-orders/sp2_split_50_by_1_AFTER.SAV) | `run-exp-fleet-reband-orders` (repo `ic2-conquest`) | 1 |
+| [`tr1_transfer_25_24_by_1_PRE.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-fleet-reband-orders/tr1_transfer_25_24_by_1_PRE.SAV) | `run-exp-fleet-reband-orders` (repo `ic2-conquest`) | 1 |
+| [`tr1_transfer_25_24_by_1_BEFORE.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-fleet-reband-orders/tr1_transfer_25_24_by_1_BEFORE.SAV) | `run-exp-fleet-reband-orders` (repo `ic2-conquest`) | 1 |
+| [`tr1_transfer_25_24_by_1_AFTER.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-fleet-reband-orders/tr1_transfer_25_24_by_1_AFTER.SAV) | `run-exp-fleet-reband-orders` (repo `ic2-conquest`) | 1 |
+| [`tr2_transfer_50_10_by_1_PRE.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-fleet-reband-orders/tr2_transfer_50_10_by_1_PRE.SAV) | `run-exp-fleet-reband-orders` (repo `ic2-conquest`) | 1 |
+| [`tr2_transfer_50_10_by_1_BEFORE.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-fleet-reband-orders/tr2_transfer_50_10_by_1_BEFORE.SAV) | `run-exp-fleet-reband-orders` (repo `ic2-conquest`) | 1 |
+| [`tr2_transfer_50_10_by_1_AFTER.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-fleet-reband-orders/tr2_transfer_50_10_by_1_AFTER.SAV) | `run-exp-fleet-reband-orders` (repo `ic2-conquest`) | 1 |
 | [`fleet-port-antium-0734.SAV`](https://github.com/diegoami/ic2-conquest/blob/feat/fleet-orders/saves/fleet-port-antium-0734.SAV) | repo `ic2-conquest` `saves/` | 1 |
 | [`fleet-split-antium-0734.SAV`](https://github.com/diegoami/ic2-conquest/blob/feat/fleet-orders/saves/fleet-split-antium-0734.SAV) | repo `ic2-conquest` `saves/` | 1 |
 | [`S00_Rome_AUTO0720.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-civ-sweep/S00_Rome_AUTO0720.SAV) | `run-exp-civ-sweep` (repo `ic2-conquest`) | 1 |
