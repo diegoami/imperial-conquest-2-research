@@ -61,3 +61,5 @@ python3 runs/experiments/v050_rules/q4_merc_hire.py     # about 4 minutes
 python3 runs/experiments/v050_rules/fetch_archive.py      # once: the released saves and screenshots into artifacts/ (hash-checked)
 python3 runs/experiments/v050_rules/claims_audit.py       # inputs: the saves, the tracked code extracts and readings; row_source_audit.py checks each rule row
 ```
+
+**Follow-up (2026-10-08):** the price is again not charged with a full recruitment queue (purse 100 → 100, treasury unchanged), and the queue does not block the hire: [`2026-10-08-merc-hire-ignores-queue-r08-guards-slot-20.md`](2026-10-08-merc-hire-ignores-queue-r08-guards-slot-20.md).
