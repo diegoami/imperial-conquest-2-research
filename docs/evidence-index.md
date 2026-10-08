@@ -146,6 +146,9 @@ A few small probe saves are committed in the fixtures repository itself rather t
 | [`T_TRANSFER_SHIPS.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-fleet-orders/T_TRANSFER_SHIPS.SAV) | `run-exp-fleet-orders` (repo `ic2-conquest`) | 1 |
 | [`T_SPLIT_198_ARMIES.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-l11-198-armies/T_SPLIT_198_ARMIES.SAV) | `run-exp-l11-198-armies` (repo `ic2-conquest`) | 1 |
 | [`T_RECRUIT_40SLOTS.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-l11-40-recruit-slots/T_RECRUIT_40SLOTS.SAV) | `run-exp-l11-40-recruit-slots` (repo `ic2-conquest`) | 1 |
+| [`MIRROR_PRE.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-l11-40-recruit-slots/MIRROR_PRE.SAV) | `run-exp-l11-40-recruit-slots` (repo `ic2-conquest`) | 1 |
+| [`MIRROR_BEFORE.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-l11-40-recruit-slots/MIRROR_BEFORE.SAV) | `run-exp-l11-40-recruit-slots` (repo `ic2-conquest`) | 1 |
+| [`MIRROR_AFTER.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-l11-40-recruit-slots/MIRROR_AFTER.SAV) | `run-exp-l11-40-recruit-slots` (repo `ic2-conquest`) | 1 |
 | [`fleet-port-antium-0734.SAV`](https://github.com/diegoami/ic2-conquest/blob/feat/fleet-orders/saves/fleet-port-antium-0734.SAV) | repo `ic2-conquest` `saves/` | 1 |
 | [`fleet-split-antium-0734.SAV`](https://github.com/diegoami/ic2-conquest/blob/feat/fleet-orders/saves/fleet-split-antium-0734.SAV) | repo `ic2-conquest` `saves/` | 1 |
 | [`S00_Rome_AUTO0720.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-civ-sweep/S00_Rome_AUTO0720.SAV) | `run-exp-civ-sweep` (repo `ic2-conquest`) | 1 |

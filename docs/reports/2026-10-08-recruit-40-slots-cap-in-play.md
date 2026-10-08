@@ -41,4 +41,4 @@ Evidence: `T_RECRUIT_40SLOTS.SAV` (sha256 `aca5cebb84d41eee…`, release `run-ex
 ## Not established
 
 - The mercenary path (`TRecruitMercs_RecruitMercUnit`), which L11 also cites.
-- Whether the gate tests only slot 39 (R46's reading) or the whole queue. A save with slots 0-38 empty and slot 39 occupied (RC01) refuses as well, which is consistent with the slot-39 test.
+- Whether the gate tests only slot 39 (R46's reading) or the whole queue. A save with slots 0-38 empty and slot 39 occupied (RC01) refuses as well, which is consistent with the slot-39 test. Settled since: the mirror case (slot 0 empty, slots 1-39 occupied) is refused too, so the gate reads slot 39 only ([`2026-10-08-recruit-40-slots-gate-reads-slot-39.md`](2026-10-08-recruit-40-slots-gate-reads-slot-39.md)).
