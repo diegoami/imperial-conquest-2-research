@@ -382,7 +382,7 @@ Each check is seeded and taken half-round for half-round.
 - No battle was run in this pass. Everything is static, and the golden master is still to come.
 - The `TInformation` window's own painting and layout were not read. The text lines are known; their pixel layout is not.
 - `FUN_0044A80C`, `FUN_0044AB90`, `FUN_0044A8CC`, `TBattlePols` and `THVHBatPols` are taken from earlier reports, not re-read.
-- The nation colour fields `+0x424/+0x428/+0x42C` are named only by their use here. Which colours each nation has was not read.
+- The nation colour fields `+0x424/+0x428/+0x42C` are named only by their use here. Which colours each nation has was not read. **Read since:** `FUN_00448aa4` sets all 48 dwords at new game, and they equal each nation's city art except Numidia's fill (grey, against teal art): [`2026-10-09-unit-icon-recolour-and-nation-glyphs.md`](2026-10-09-unit-icon-recolour-and-nation-glyphs.md).
 
 ## Reproduction
 

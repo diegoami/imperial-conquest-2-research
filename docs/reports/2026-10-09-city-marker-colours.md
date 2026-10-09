@@ -59,7 +59,7 @@ research side asked for it on 2026-10-09, to settle the five figure-colour misma
 
   For these four, the cities agree with the unit icons, not with the table. So, of the five mismatches at `74fd9b5`, Numidia is explained (the table read a city, and Numidia's city fill differs from its unit fill), while Macedonia, Gaul, Illyria and Media remain differences between the Wine drawing and the 2026-09-29 strip.
 - **Which variant the strip's temples are:** variant 4 (the capital) is the only temple on a coloured square, so the strip's temples are variant-4 icons or the toolbar's nation buttons (below). Where the strip came from (desktop or Wine) is unknown here.
-- **The toolbar's 16 nation buttons** (temples, 22×22 crops at y 48) are a different drawing. Each shows the background, the outline colour as the main glyph colour (104 px) and white (about 41 px, part of it the button bevel). They carry no fill colour (no teal for Numidia, no blue for Rome beyond 40 px). This is in `analyse_cities.json` → `toolbar` and not interpreted further.
+- **The toolbar's 16 nation buttons** (temples, 22×22 crops at y 48) are a different drawing. Each shows the background, the outline colour as the main glyph colour (104 px) and white (about 41 px, part of it the button bevel). They carry no fill colour (no teal for Numidia, no blue for Rome beyond 40 px). This is in `analyse_cities.json` → `toolbar` and not interpreted further. **Corrected (ic2-conquest, 2026-10-09):** these crops were misaligned (guessed x). The buttons are the capital glyphs and show their fill colours, Numidia's teal included: [`2026-10-09-unit-icon-recolour-and-nation-glyphs.md`](2026-10-09-unit-icon-recolour-and-nation-glyphs.md).
 
 | Owner | Nation | Background | Outline (city) | Fill (city) | Unit A, B | 2026-09-29 (outline, fg) |
 |---:|---|---|---|---|---|---|
@@ -93,7 +93,7 @@ research side asked for it on 2026-10-09, to settle the five figure-colour misma
 
 - **Save:** `artifacts/run-exp-army-marker-band/t24999_AFTER.SAV`, view origin (114,46), 13 × 12 tiles. The 80 words go on the visible tiles in order; the controls (Rome army 1, and the five Roman cities with word 36) are skipped; then the 12 repeats.
 - **Run:** fast rollingsave seed exe, seed 12345, Xvfb. Screen 1 is taken after `Game.show(120,53)`. Screen 2 is taken after `Game.show(101,43)` (an Area map click), where the real cities around Rome are unpatched.
-- **Measure:** crops at `UNIT_PAINT + 32·(c, r)`, 8-bit RGB, inset 2 px. Templates are compared as pixel sets per colour.
+- **Measure:** crops at `UNIT_PAINT + 32·(c, r)`, 8-bit RGB, inset 2 px. *(2026-10-09: the drawn tile sits 1 px left of these crops, offset (−1, 0); comparisons among the crops still hold, but a comparison with the stored images needs the shift: [`2026-10-09-unit-icon-recolour-and-nation-glyphs.md`](2026-10-09-unit-icon-recolour-and-nation-glyphs.md).)* Templates are compared as pixel sets per colour.
 - **Comparisons:** against the research reports `2026-10-09-owner-colours-by-band.md` (`ba103a0`, columns A and B) and `2026-09-29-nation-marker-colours.md`, parsed in `analyse_cities.py`.
 
 ## Evidence
@@ -105,4 +105,4 @@ research side asked for it on 2026-10-09, to settle the five figure-colour misma
 
 - **The desktop original:** the 2026-09-29 strip's origin and the desktop palette were not checked. The player will run the desktop check later (steps prepared separately).
 - **Which of the strip and the Wine drawing is the desktop's**, for Gaul, Illyria, Media (and Macedonia, if not a role swap): the desktop check (`runs/experiments/data/run-exp-desktop-palette/STEPS.md` in ic2-conquest) is with the player.
-- **Why Numidia's unit icons use grey** where its cities use teal: not read from code. It could be in the bitmaps themselves; the resources were not inspected.
+- **Why Numidia's unit icons use grey** where its cities use teal: **answered since.** The unit icons are recoloured at run time from three colour dwords per nation, set in code at new game, and Numidia's fill there is grey. The city art is baked in and teal: [`2026-10-09-unit-icon-recolour-and-nation-glyphs.md`](2026-10-09-unit-icon-recolour-and-nation-glyphs.md). Not read from code at the time. It could be in the bitmaps themselves; the resources were not inspected.

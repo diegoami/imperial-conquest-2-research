@@ -25,7 +25,7 @@ and [`2026-10-08-fleet-marker-band-and-icon.md`](2026-10-08-fleet-marker-band-an
   owners. They differ for 5 (Macedonia, Numidia, Gaul, Illyria, Media; Macedonia only by swapping
   the two). Either the unit icons are separate bitmaps with their own figure colours, or the
   2026-09-29 reading (a user-supplied strip, snapped to the palette) is off for those nations.
-  This run cannot tell which, and the city icons were not drawn here. The table below lists both. **Since drawn** ([`2026-10-09-city-marker-colours.md`](2026-10-09-city-marker-colours.md)): the cities share the unit icons' (A, B) for 15 owners, with A as the outline role. Numidia's city fill is teal, so its grey is a unit-icon difference. The other four remain differences between the strip and Wine.
+  This run cannot tell which, and the city icons were not drawn here. The table below lists both. **Since drawn** ([`2026-10-09-city-marker-colours.md`](2026-10-09-city-marker-colours.md)): the cities share the unit icons' (A, B) for 15 owners, with A as the outline role. Numidia's city fill is teal, so its grey is a unit-icon difference. **Explained:** the unit icons are Rome-coloured templates recoloured from nation fields `+0x424/+0x428/+0x42C`, which new-game setup fills with grey for Numidia: [`2026-10-09-unit-icon-recolour-and-nation-glyphs.md`](2026-10-09-unit-icon-recolour-and-nation-glyphs.md). The other four remain differences between the strip and Wine.
 - **Table corrected** (see the note under it): the draft ordered the two figure colours by
   frequency, which flips between icons. They are now listed by fixed pixel role.
 
@@ -69,7 +69,7 @@ roles and the comparison with the city markers are from my own reading of the sa
 - **Save:** `artifacts/run-exp-army-marker-band/t24999_AFTER.SAV` (Rome army 1 at (120,53)). The unit-map view is at origin (114,46) after the load, checked in memory: 13 × 12 tiles, (120,53) at screen (545,366).
 - **Patch:** every visible tile except (120,53) gets one word: the 96 words above, then 12 repeats (200, 238, 333 four times each) on other tiles. Map words only; no records changed.
 - **Run:** fast rollingsave seed exe, seed 12345, Xvfb. Load, `Game.show(120,53)` (the view does not move), pointer parked off the map, one screenshot.
-- **Measure:** every tile cropped at `UNIT_PAINT + 32·(c, r)` and hashed as 8-bit RGB, whole and inset by 2 px. The memory word of every tile equals the patched word (`mem_word`).
+- **Measure:** every tile cropped at `UNIT_PAINT + 32·(c, r)` and hashed as 8-bit RGB, whole and inset by 2 px. *(2026-10-09: the drawn tile sits 1 px left of these crops, offset (−1, 0); comparisons among the crops still hold, but a comparison with the stored images needs the shift: [`2026-10-09-unit-icon-recolour-and-nation-glyphs.md`](2026-10-09-unit-icon-recolour-and-nation-glyphs.md).)* The memory word of every tile equals the patched word (`mem_word`).
 
 ## Evidence
 

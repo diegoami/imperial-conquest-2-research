@@ -696,6 +696,38 @@ A few small probe saves are committed in the fixtures repository itself rather t
 | [`cities_screen1.png`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-city-marker-colours/cities_screen1.png) | `run-exp-city-marker-colours` (repo `ic2-conquest`) | 1 |
 | [`cities_screen2.png`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-city-marker-colours/cities_screen2.png) | `run-exp-city-marker-colours` (repo `ic2-conquest`) | 1 |
 | [`montage_cities.png`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-city-marker-colours/montage_cities.png) | `run-exp-city-marker-colours` (repo `ic2-conquest`) | 1 |
+| [`TUnitMap_ArmiesList.bmp`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-unit-icon-resources/TUnitMap_ArmiesList.bmp) | `run-exp-unit-icon-resources` (repo `ic2-conquest`) | 1 |
+| [`TUnitMap_ArmiesList_mask.bmp`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-unit-icon-resources/TUnitMap_ArmiesList_mask.bmp) | `run-exp-unit-icon-resources` (repo `ic2-conquest`) | 1 |
+| [`TUnitMap_CapitalsList.bmp`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-unit-icon-resources/TUnitMap_CapitalsList.bmp) | `run-exp-unit-icon-resources` (repo `ic2-conquest`) | 1 |
+| [`TUnitMap_CapitalsList_mask.bmp`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-unit-icon-resources/TUnitMap_CapitalsList_mask.bmp) | `run-exp-unit-icon-resources` (repo `ic2-conquest`) | 1 |
+| [`TUnitMap_Cities1List.bmp`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-unit-icon-resources/TUnitMap_Cities1List.bmp) | `run-exp-unit-icon-resources` (repo `ic2-conquest`) | 1 |
+| [`TUnitMap_Cities1List_mask.bmp`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-unit-icon-resources/TUnitMap_Cities1List_mask.bmp) | `run-exp-unit-icon-resources` (repo `ic2-conquest`) | 1 |
+| [`TUnitMap_Cities2List.bmp`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-unit-icon-resources/TUnitMap_Cities2List.bmp) | `run-exp-unit-icon-resources` (repo `ic2-conquest`) | 1 |
+| [`TUnitMap_Cities2List_mask.bmp`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-unit-icon-resources/TUnitMap_Cities2List_mask.bmp) | `run-exp-unit-icon-resources` (repo `ic2-conquest`) | 1 |
+| [`TUnitMap_Cities3List.bmp`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-unit-icon-resources/TUnitMap_Cities3List.bmp) | `run-exp-unit-icon-resources` (repo `ic2-conquest`) | 1 |
+| [`TUnitMap_Cities3List_mask.bmp`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-unit-icon-resources/TUnitMap_Cities3List_mask.bmp) | `run-exp-unit-icon-resources` (repo `ic2-conquest`) | 1 |
+| [`TUnitMap_Cities4List.bmp`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-unit-icon-resources/TUnitMap_Cities4List.bmp) | `run-exp-unit-icon-resources` (repo `ic2-conquest`) | 1 |
+| [`TUnitMap_Cities4List_mask.bmp`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-unit-icon-resources/TUnitMap_Cities4List_mask.bmp) | `run-exp-unit-icon-resources` (repo `ic2-conquest`) | 1 |
+| [`TUnitMap_FleetsList.bmp`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-unit-icon-resources/TUnitMap_FleetsList.bmp) | `run-exp-unit-icon-resources` (repo `ic2-conquest`) | 1 |
+| [`TUnitMap_FleetsList_mask.bmp`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-unit-icon-resources/TUnitMap_FleetsList_mask.bmp) | `run-exp-unit-icon-resources` (repo `ic2-conquest`) | 1 |
+| [`TUnitMap_TerrainList.bmp`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-unit-icon-resources/TUnitMap_TerrainList.bmp) | `run-exp-unit-icon-resources` (repo `ic2-conquest`) | 1 |
+| [`TUnitMap_TerrainList_mask.bmp`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-unit-icon-resources/TUnitMap_TerrainList_mask.bmp) | `run-exp-unit-icon-resources` (repo `ic2-conquest`) | 1 |
+| [`glyph_sb_Armenia.bmp`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-unit-icon-resources/glyph_sb_Armenia.bmp) | `run-exp-unit-icon-resources` (repo `ic2-conquest`) | 1 |
+| [`glyph_sb_Bithynia.bmp`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-unit-icon-resources/glyph_sb_Bithynia.bmp) | `run-exp-unit-icon-resources` (repo `ic2-conquest`) | 1 |
+| [`glyph_sb_Carthage.bmp`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-unit-icon-resources/glyph_sb_Carthage.bmp) | `run-exp-unit-icon-resources` (repo `ic2-conquest`) | 1 |
+| [`glyph_sb_Celtiberia.bmp`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-unit-icon-resources/glyph_sb_Celtiberia.bmp) | `run-exp-unit-icon-resources` (repo `ic2-conquest`) | 1 |
+| [`glyph_sb_Dacia.bmp`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-unit-icon-resources/glyph_sb_Dacia.bmp) | `run-exp-unit-icon-resources` (repo `ic2-conquest`) | 1 |
+| [`glyph_sb_Galatia.bmp`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-unit-icon-resources/glyph_sb_Galatia.bmp) | `run-exp-unit-icon-resources` (repo `ic2-conquest`) | 1 |
+| [`glyph_sb_Gaul.bmp`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-unit-icon-resources/glyph_sb_Gaul.bmp) | `run-exp-unit-icon-resources` (repo `ic2-conquest`) | 1 |
+| [`glyph_sb_Greece.bmp`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-unit-icon-resources/glyph_sb_Greece.bmp) | `run-exp-unit-icon-resources` (repo `ic2-conquest`) | 1 |
+| [`glyph_sb_Illyria.bmp`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-unit-icon-resources/glyph_sb_Illyria.bmp) | `run-exp-unit-icon-resources` (repo `ic2-conquest`) | 1 |
+| [`glyph_sb_Macedonia.bmp`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-unit-icon-resources/glyph_sb_Macedonia.bmp) | `run-exp-unit-icon-resources` (repo `ic2-conquest`) | 1 |
+| [`glyph_sb_Media.bmp`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-unit-icon-resources/glyph_sb_Media.bmp) | `run-exp-unit-icon-resources` (repo `ic2-conquest`) | 1 |
+| [`glyph_sb_Numidia.bmp`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-unit-icon-resources/glyph_sb_Numidia.bmp) | `run-exp-unit-icon-resources` (repo `ic2-conquest`) | 1 |
+| [`glyph_sb_Ptolemaic.bmp`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-unit-icon-resources/glyph_sb_Ptolemaic.bmp) | `run-exp-unit-icon-resources` (repo `ic2-conquest`) | 1 |
+| [`glyph_sb_Rome.bmp`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-unit-icon-resources/glyph_sb_Rome.bmp) | `run-exp-unit-icon-resources` (repo `ic2-conquest`) | 1 |
+| [`glyph_sb_Seleucid.bmp`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-unit-icon-resources/glyph_sb_Seleucid.bmp) | `run-exp-unit-icon-resources` (repo `ic2-conquest`) | 1 |
+| [`glyph_sb_Thracia.bmp`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-unit-icon-resources/glyph_sb_Thracia.bmp) | `run-exp-unit-icon-resources` (repo `ic2-conquest`) | 1 |
 
 ## Recordings
 
