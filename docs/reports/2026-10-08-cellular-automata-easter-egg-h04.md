@@ -56,7 +56,8 @@ chooses to render it.
    repo's tracked data; a faithful clone would need to read `SaveBMP` byte-exact
    or pick a simple default (e.g. 1 bit per cell, 1 byte per pixel = `BMP` mode).
    **Mostly answered since:** the file is `ca` + the 10 rule digits + `.BMP` in the current directory,
-   and holds `Image1`'s 300 × 400 bitmap, which is never cleared. Its pixel format is still open: [`2026-10-09-cellular-automata-rule-h04.md`](2026-10-09-cellular-automata-rule-h04.md).
+   and holds `Image1`'s 300 × 400 bitmap, which is never cleared. Its pixel format was open at that point: [`2026-10-09-cellular-automata-rule-h04.md`](2026-10-09-cellular-automata-rule-h04.md).
+   **Answered since:** a 24-bit bottom-up BMP under Wine, made at the first N, white at first, then carrying over between patterns; the depth on a desktop is open: [`2026-10-09-cellular-automata-savebmp-format.md`](2026-10-09-cellular-automata-savebmp-format.md).
 3. **The About-box layout has two buttons (`OK` and `CAncell`); the clone's
    `godot/UI/AboutDialog.cs:43–52` has only `OK`.** The reproduction question is
    whether the second button should exist at all. If yes: the misspelling must be

@@ -31,7 +31,7 @@ one N press; `[derived]` for the RTL/VCL helper identities and the SaveBMP detai
 ### The rule `[confirmed: decompile]`, checked in Wine
 
 - **Cells and states:** a row of **300 cells** (indices 0-299) with **4 states**. Two boundary cells, −1 and 300, always stay 0.
-- **The rule table is random:** each press of **N** fills a 10-entry table `T[0..9]` with `Random(4)` (0x4567c5 to 0x4567df, table at form field `+0x688`), after `Randomize` (0x456759) `[derived]`. So every press gives a new rule from **4^10 = 1,048,576**. Because `Randomize` reseeds from the clock, `SEED.TXT` does not make a pattern repeatable `[derived]`.
+- **The rule table is random:** each press of **N** fills a 10-entry table `T[0..9]` with `Random(4)` (0x4567c5 to 0x4567df, table at form field `+0x688`), after `Randomize` (0x456759) `[derived]`. So every press gives a new rule from **4^10 = 1,048,576**. Because `Randomize` reseeds from the clock, `SEED.TXT` does not make a pattern repeatable `[derived]`. **Corrected (2026-10-09):** wrong for the harness's seed build. Its patch sends `Randomize` itself through the SEED.TXT cave, so every N reseeds from SEED.TXT, and seed 12345 always gives `1102211003`. That is also the rule fitted below. Only the original exe uses the clock: [`2026-10-09-cellular-automata-savebmp-format.md`](2026-10-09-cellular-automata-savebmp-format.md).
 - **The seed row:** all 0, except **cells 144-155 (12 cells) = state 1** (0x4567e1 to 0x456810).
 - **The update:** a totalistic radius-1 rule, `next[i] = T[old[i−1] + old[i] + old[i+1]]` for i = 0-299, applied to a copy of the row (`+0x42E`) (0x456946 to 0x45699b). The sum runs from 0 to 9, hence 10 entries.
 - **400 generations** (rows 0-399), the seed row included (0x45699d: the counter runs to 0x190). The cursor is the hourglass (−11) while it computes, then back to the default.
@@ -49,7 +49,7 @@ one N press; `[derived]` for the RTL/VCL helper identities and the SaveBMP detai
 
 - **What was checked:** `FI_b1_05_cellauto_N.png` (one N press), canvas at screen (493, 355). The model is the rule plus the drawing above (`check_cellauto.py`, `cellauto_check.json`):
   - row 0 matches on all 300 pixels: cells 144-154 red, and 155 white (the end of its run);
-  - fitting `T` row by row gives **one table only: `T = 1 1 0 2 2 1 1 · · ·`**. The sums 7-9 never occur in this pattern, so `T[7..9]` and state 3 (green) are not seen;
+  - fitting `T` row by row gives **one table only: `T = 1 1 0 2 2 1 1 · · ·`**. *(The full seed-12345 table, read from memory since: `1 1 0 2 2 1 1 0 0 3`.)* The sums 7-9 never occur in this pattern, so `T[7..9]` and state 3 (green) are not seen;
   - **redrawing all 400 rows gives 0 mismatching pixels** over the 118,742 pixels outside the 1,258 hidden by the "New structure" tooltip (box x 4-77, y 2-18 of the canvas).
 - **This pattern:** row 1 is red, with blue at 145-154. After a short transient the rows alternate blue / red, because `T[3] = 2` and `T[6] = 1`, with a 15-cell band in the middle in opposite phase. That is the stripe in the screenshot.
 
@@ -58,7 +58,7 @@ one N press; `[derived]` for the RTL/VCL helper identities and the SaveBMP detai
 - **The file name is `ca` + the 10 table digits + `.BMP`**, for example `ca1102211xyz.BMP` for the pattern above. It is built from the literals `ca` and `.BMP` at 0x456a64 / 0x456a6c and the digits `'0' + T[i]`, then passed to `Image1.Picture.SaveToFile` (0x456a38).
   - It is a relative name, so the file goes to the current directory.
   - The name records the rule, so a saved pattern can be regenerated: the seed row is fixed.
-- **Its content is `Image1`'s 300 × 400 bitmap.** It is never cleared in `NewPattern`, unlike the form canvas, so the unpainted run ends keep whatever that bitmap held before: its initial contents at the first press, the previous pattern's pixel after that.
+- **Its content is `Image1`'s 300 × 400 bitmap.** *(Corrected 2026-10-09: the picture is empty at open, so the bitmap is the one `TImage.GetCanvas` makes at the first draw, white. Before the first N, Save writes nothing. Format: 24-bit bottom-up BMP under Wine: [`2026-10-09-cellular-automata-savebmp-format.md`](2026-10-09-cellular-automata-savebmp-format.md).)* It is never cleared in `NewPattern`, unlike the form canvas, so the unpainted run ends keep whatever that bitmap held before: its initial contents at the first press, the previous pattern's pixel after that.
 
 ## Evidence
 
@@ -68,7 +68,7 @@ one N press; `[derived]` for the RTL/VCL helper identities and the SaveBMP detai
 
 ## Not established
 
-- **The saved BMP's pixel format and its initial contents:** it is a device-dependent `TBitmap`, so the format likely follows the screen depth. No file was saved and read.
+- **The saved BMP's pixel format and its initial contents:** it is a device-dependent `TBitmap`, so the format likely follows the screen depth. No file was saved and read. **Answered since,** except the depth on a desktop: [`2026-10-09-cellular-automata-savebmp-format.md`](2026-10-09-cellular-automata-savebmp-format.md).
 - **The identity of the RTL and VCL helpers** (`Randomize` 0x402744, `Random` 0x40284c, `Rectangle` 0x419ed4, `Pixels` 0x41a0e8, `MoveTo` 0x419e70, `LineTo` 0x419e38, the bitmap's width and height setters): they are identified by their arguments and use. The screenshot fit supports the drawing reading, including the missing run ends.
-- **A pattern that uses green** (sums 7-9) was not drawn.
+- **A pattern that uses green** (sums 7-9) was not drawn. *(Drawn since: seed 777, in the SaveBMP report.)*
 - **Open item 3 of H04** (whether the clone keeps the `CAncell` button) is the clone owner's decision, not data.
