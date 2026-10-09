@@ -752,6 +752,13 @@ A few small probe saves are committed in the fixtures repository itself rather t
 | [`D_20261009-175644_AUTO0721.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-peace-radio/D_20261009-175644_AUTO0721.SAV) | `run-exp-peace-radio` (repo `ic2-conquest`) | 1 |
 | [`20261009-183238_FB_after_1.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-fleet-build-city/20261009-183238_FB_after_1.SAV) | `run-exp-fleet-build-city` (repo `ic2-conquest`) | 1 |
 | [`20261009-183238_FB_end.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-fleet-build-city/20261009-183238_FB_end.SAV) | `run-exp-fleet-build-city` (repo `ic2-conquest`) | 1 |
+| [`P5_20261009-193415_split.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-supply-transfer-clamps/P5_20261009-193415_split.SAV) | `run-exp-supply-transfer-clamps` (repo `ic2-conquest`) | 1 |
+| [`Ta2_20261009-194517_after.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-supply-transfer-clamps/Ta2_20261009-194517_after.SAV) | `run-exp-supply-transfer-clamps` (repo `ic2-conquest`) | 1 |
+| [`Ta4_20261009-194605_before.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-supply-transfer-clamps/Ta4_20261009-194605_before.SAV) | `run-exp-supply-transfer-clamps` (repo `ic2-conquest`) | 1 |
+| [`Ta4_20261009-194605_after.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-supply-transfer-clamps/Ta4_20261009-194605_after.SAV) | `run-exp-supply-transfer-clamps` (repo `ic2-conquest`) | 1 |
+| [`U1_20261009-194123_after.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-supply-transfer-clamps/U1_20261009-194123_after.SAV) | `run-exp-supply-transfer-clamps` (repo `ic2-conquest`) | 1 |
+| [`U3_20261009-194306_after.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-supply-transfer-clamps/U3_20261009-194306_after.SAV) | `run-exp-supply-transfer-clamps` (repo `ic2-conquest`) | 1 |
+| [`U3b_20261009-194355_after.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-supply-transfer-clamps/U3b_20261009-194355_after.SAV) | `run-exp-supply-transfer-clamps` (repo `ic2-conquest`) | 1 |
 
 ## Recordings
 

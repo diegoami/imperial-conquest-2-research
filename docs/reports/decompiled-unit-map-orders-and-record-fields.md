@@ -138,6 +138,12 @@ target.money         -= amount / 5;      // from the army's/fleet's own purse
 > ambiguous whether the fleet-as-provider path was reachable in play or merely present in code; the
 > testimony says it is reachable, and in both directions. The **army-buys-from-a-fleet** direction is the
 > half no code in the reimplementation currently exposes.
+>
+> **Corrected (2026-10-09).** Played in Wine, an **army is never a provider**, for an army or a fleet.
+> An army does supply from an own fleet. With no provider, Supply army / Supply fleet does nothing and
+> shows no box. Fleet-from-fleet works only from some directions: `FUN_00449e50` keeps the last own-fleet
+> marker of its 3×3 scan, including the fleet's own tile, so a partner at x−1 or directly north opens
+> nothing. See [`2026-10-09-supply-providers-and-transfer-clamps.md`](2026-10-09-supply-providers-and-transfer-clamps.md).
 
 > **Correction (2026-09-14):** see [`supply-capacity-rounding.md`](supply-capacity-rounding.md). The dialog's army cap is **`troops div 100 + 1`**: integer `IDIV` by 100, then `INC`, with no rounding. That makes 48,173 troops → **482**, which is the cap, not a 1-ton excess. The fleet cap is `ships × 8`, with no `+1`. The own-city path is a different function, `TAFSupply_ChangeSupply`. It is free, applies each press immediately, and has the same caps but no money cap. The `money × 5` cap and the `amount / 5` cost above apply only to the foreign-city path. Every non-dialog writer (automatic resupply `FUN_0044F6D8`/`FUN_0044F7E4`, army-to-army, battle absorption) caps at `troops div 100`, with no `+1`.
 
