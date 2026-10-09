@@ -676,6 +676,15 @@ A few small probe saves are committed in the fixtures repository itself rather t
 | [`hi-hi-one_start.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-battle-sweep/hi-hi-one_start.SAV) | `run-exp-battle-sweep` (repo `ic2-conquest`) | 2 |
 | [`stray_b2_BATTLE01.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-battle-sweep/stray_b2_BATTLE01.SAV) … `stray_b2_BATTLE06.SAV` (6 files, the same series, one file per half-round or trial) | `run-exp-battle-sweep` (repo `ic2-conquest`) | 2 |
 | [`stray_b3_c0_control_BATTLE01.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-battle-sweep/stray_b3_c0_control_BATTLE01.SAV) … `stray_b3_c0_control_BATTLE11.SAV` (11 files, the same series, one file per half-round or trial) | `run-exp-battle-sweep` (repo `ic2-conquest`) | 2 |
+| [`sieges_PRE.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-elimination-army-aboard/sieges_PRE.SAV) | `run-exp-elimination-army-aboard` (repo `ic2-conquest`) | 1 |
+| [`sieges_BEFORE.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-elimination-army-aboard/sieges_BEFORE.SAV) | `run-exp-elimination-army-aboard` (repo `ic2-conquest`) | 1 |
+| [`sieges_AFTER.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-elimination-army-aboard/sieges_AFTER.SAV) | `run-exp-elimination-army-aboard` (repo `ic2-conquest`) | 1 |
+| [`sieges_cover1_PRE.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-elimination-army-aboard/sieges_cover1_PRE.SAV) | `run-exp-elimination-army-aboard` (repo `ic2-conquest`) | 1 |
+| [`sieges_cover1_BEFORE.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-elimination-army-aboard/sieges_cover1_BEFORE.SAV) | `run-exp-elimination-army-aboard` (repo `ic2-conquest`) | 1 |
+| [`sieges_cover1_AFTER.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-elimination-army-aboard/sieges_cover1_AFTER.SAV) | `run-exp-elimination-army-aboard` (repo `ic2-conquest`) | 1 |
+| [`sieges_end_turn_PRE.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-elimination-army-aboard/sieges_end_turn_PRE.SAV) | `run-exp-elimination-army-aboard` (repo `ic2-conquest`) | 1 |
+| [`sieges_end_turn_BEFORE.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-elimination-army-aboard/sieges_end_turn_BEFORE.SAV) | `run-exp-elimination-army-aboard` (repo `ic2-conquest`) | 1 |
+| [`sieges_end_turn_AFTER.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-elimination-army-aboard/sieges_end_turn_AFTER.SAV) | `run-exp-elimination-army-aboard` (repo `ic2-conquest`) | 1 |
 
 ## Recordings
 

@@ -72,4 +72,4 @@ Evidence: run-exp-turn-end-army-removal, `<case>_{PRE,BEFORE,AFTER}.SAV` for mer
 ## Not established
 
 - The defection elimination path `FUN_0044BED8` (by code the same army loop: `FUN_0044AB90`).
-- Armies aboard a fleet when their nation is eliminated.
+- Armies aboard a fleet when their nation is eliminated. **Answered since:** the army aboard is tombstoned without a map write, and the fleet's tile is written 0, even over a covered cell of 1: [`2026-10-09-elimination-removes-fleet-and-army-aboard.md`](2026-10-09-elimination-removes-fleet-and-army-aboard.md).
