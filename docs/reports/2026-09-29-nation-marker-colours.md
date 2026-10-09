@@ -63,6 +63,8 @@ Shared backgrounds, each told apart by its foreground:
   shows blue columns in a white outline. The two views may render the glyph differently: the strip is an
   icon, the map glyph is smaller.
 
+- **The army and fleet icons** (2026-10-09, Wine, every owner and size band drawn) have the same 16 backgrounds and shared pairs. Their two figure colours agree with this table's (outline, foreground) for 11 nations and differ for Macedonia (swapped), Numidia, Gaul, Illyria and Media: [`2026-10-09-owner-colours-by-band.md`](2026-10-09-owner-colours-by-band.md). Whether this table or the unit icons are the odd one out for those five is open.
+
 ## Inferences (candidates, not confirmed)
 
 - The pre-T94 "dark glyph" list {4, 5, 7, 8, 13, 14} matches this table's black outlines for 4, 5, 7, 8 and

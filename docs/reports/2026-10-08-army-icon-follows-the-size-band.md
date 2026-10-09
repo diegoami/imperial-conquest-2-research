@@ -48,4 +48,4 @@ Each variant is loaded with the fast rollingsave seed exe, seed 12345, Xvfb :99.
 ## Not established
 
 - The fleet icons (bands 300 / 316 / 332 by ships, `FUN_0044a878` in the research reports). **Settled since:** a small sailboat, a galley with three shields and a larger galley with four, also chosen by the stored word: [`2026-10-08-fleet-marker-band-and-icon.md`](2026-10-08-fleet-marker-band-and-icon.md).
-- Other owners' colours by band (only Rome was drawn).
+- Other owners' colours by band (only Rome was drawn). **Answered since:** all 16 owners × 3 bands draw distinct icons, with the same shapes and one background per owner: [`2026-10-09-owner-colours-by-band.md`](2026-10-09-owner-colours-by-band.md).

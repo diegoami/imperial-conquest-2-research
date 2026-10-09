@@ -685,6 +685,12 @@ A few small probe saves are committed in the fixtures repository itself rather t
 | [`sieges_end_turn_PRE.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-elimination-army-aboard/sieges_end_turn_PRE.SAV) | `run-exp-elimination-army-aboard` (repo `ic2-conquest`) | 1 |
 | [`sieges_end_turn_BEFORE.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-elimination-army-aboard/sieges_end_turn_BEFORE.SAV) | `run-exp-elimination-army-aboard` (repo `ic2-conquest`) | 1 |
 | [`sieges_end_turn_AFTER.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-elimination-army-aboard/sieges_end_turn_AFTER.SAV) | `run-exp-elimination-army-aboard` (repo `ic2-conquest`) | 1 |
+| [`colours_PRE.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-owner-colours/colours_PRE.SAV) | `run-exp-owner-colours` (repo `ic2-conquest`) | 1 |
+| [`colours_AFTER.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-owner-colours/colours_AFTER.SAV) | `run-exp-owner-colours` (repo `ic2-conquest`) | 1 |
+| [`colours_screen.png`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-owner-colours/colours_screen.png) | `run-exp-owner-colours` (repo `ic2-conquest`) | 1 |
+| [`montage_army.png`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-owner-colours/montage_army.png) | `run-exp-owner-colours` (repo `ic2-conquest`) | 1 |
+| [`montage_fleet.png`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-owner-colours/montage_fleet.png) | `run-exp-owner-colours` (repo `ic2-conquest`) | 1 |
+| [`montage_both.png`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-owner-colours/montage_both.png) | `run-exp-owner-colours` (repo `ic2-conquest`) | 1 |
 
 ## Recordings
 
