@@ -73,6 +73,6 @@ In all three cases, Rome's third capture leaves Numidia with 5 cities, and the n
 
 ## Not established
 
-- **A natural pre-state:** the fleet and the army aboard come from save edits. A Numidian fleet that embarked an army in play, and an AI nation conquered in an AI-side capture, were not run.
+- **A natural pre-state:** the fleet and the army aboard come from save edits. A Numidian fleet that embarked an army in play, and an AI nation conquered in an AI-side capture, were not run. **Searched since, none found:** 7,618 existing saves and 11 idle seeds (334 end turns) show loaded fleets only for Carthage, Ptolemaic and Greece, none of which fell: [`2026-10-09-no-natural-ai-conquest-with-army-aboard.md`](2026-10-09-no-natural-ai-conquest-with-army-aboard.md).
 - ~~**Code path**~~: settled from code (see the review note). The army loop calls `FUN_0044AB90` on the army aboard first, and then the fleet loop calls `FUN_0044AD38`.
 - **Other elimination paths:** defection elimination (`FUN_0044BED8`, via rebirth) was recorded by code only and was not run here.

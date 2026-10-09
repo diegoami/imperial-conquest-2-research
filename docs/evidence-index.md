@@ -728,6 +728,9 @@ A few small probe saves are committed in the fixtures repository itself rather t
 | [`glyph_sb_Rome.bmp`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-unit-icon-resources/glyph_sb_Rome.bmp) | `run-exp-unit-icon-resources` (repo `ic2-conquest`) | 1 |
 | [`glyph_sb_Seleucid.bmp`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-unit-icon-resources/glyph_sb_Seleucid.bmp) | `run-exp-unit-icon-resources` (repo `ic2-conquest`) | 1 |
 | [`glyph_sb_Thracia.bmp`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-unit-icon-resources/glyph_sb_Thracia.bmp) | `run-exp-unit-icon-resources` (repo `ic2-conquest`) | 1 |
+| [`IW_seed14_039_0759.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-ai-conquest-aboard/IW_seed14_039_0759.SAV) | `run-exp-ai-conquest-aboard` (repo `ic2-conquest`) | 1 |
+| [`IW_seed15_034_0754.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-ai-conquest-aboard/IW_seed15_034_0754.SAV) | `run-exp-ai-conquest-aboard` (repo `ic2-conquest`) | 1 |
+| [`IW_seed17_036_0756.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-ai-conquest-aboard/IW_seed17_036_0756.SAV) | `run-exp-ai-conquest-aboard` (repo `ic2-conquest`) | 1 |
 
 ## Recordings
 
