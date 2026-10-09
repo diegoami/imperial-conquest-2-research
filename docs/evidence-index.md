@@ -750,6 +750,8 @@ A few small probe saves are committed in the fixtures repository itself rather t
 | [`D_20261009-175644_start_rome_illyria_allied.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-peace-radio/D_20261009-175644_start_rome_illyria_allied.SAV) | `run-exp-peace-radio` (repo `ic2-conquest`) | 1 |
 | [`D_20261009-175644_D_after.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-peace-radio/D_20261009-175644_D_after.SAV) | `run-exp-peace-radio` (repo `ic2-conquest`) | 1 |
 | [`D_20261009-175644_AUTO0721.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-peace-radio/D_20261009-175644_AUTO0721.SAV) | `run-exp-peace-radio` (repo `ic2-conquest`) | 1 |
+| [`20261009-183238_FB_after_1.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-fleet-build-city/20261009-183238_FB_after_1.SAV) | `run-exp-fleet-build-city` (repo `ic2-conquest`) | 1 |
+| [`20261009-183238_FB_end.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-fleet-build-city/20261009-183238_FB_end.SAV) | `run-exp-fleet-build-city` (repo `ic2-conquest`) | 1 |
 
 ## Recordings
 

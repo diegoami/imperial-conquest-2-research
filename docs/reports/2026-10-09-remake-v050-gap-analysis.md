@@ -49,6 +49,7 @@ against v0.5.0.
   the rows above, and any Godot UI.
 
 - **NEW-g1-2's condition holds** (original-side check 1, 2026-10-09): the original's Peace radio ends a trade (→ −8) and an alliance (→ −24) on both sides, so the remake's Make Peace being enabled only at war is an unconditional block. Counts are unchanged, since the row was already counted as blocking: [`2026-10-09-peace-radio-ends-trade-and-alliance.md`](2026-10-09-peace-radio-ends-trade-and-alliance.md).
+- **NEW-g1-3 confirmed on the original side** (2026-10-09): the original builds at the own coastal city nearest the capital that is not already building, while the remake takes the first free coastal city in world order. A city already building is not free on either side, which answers g2 check 8. Counts are unchanged: [`2026-10-09-fleet-build-city-nearest-capital.md`](2026-10-09-fleet-build-city-nearest-capital.md).
 
 **Tag:** as the draft. Remake rows are "(CLI observed)" or "(code reading)"; the original side is
 Wine-only. Severity is proposed; the call is the main session's.

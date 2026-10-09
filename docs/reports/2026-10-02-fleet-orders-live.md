@@ -53,6 +53,7 @@ Screenshots in the release: `embark_box.png`, `embark_ok.png`, `disembark.png`, 
 - "Both units' moves become 0" on embark and on unload makes a landing a whole turn for both; a fleet that is out of moves cannot unload.
 - The fleet's condition was 97 % about two turns after launch (supplies had also fallen from 50 to 0); what caused the 3 points (a storm, rough sea on the way) was not traced, and no storm message was looked for.
 - The fleet's launch tile is the sea tile next to the build city; Caere (99,42) and the fleet (98,43) are diagonal neighbours.
+- *(2026-10-09)* Which city builds: six orders in one turn went to Rome's water-touching cities in order of distance from the capital, skipping a city already building: [`2026-10-09-fleet-build-city-nearest-capital.md`](2026-10-09-fleet-build-city-nearest-capital.md).
 
 ## What this does not establish
 
