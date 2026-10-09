@@ -1,5 +1,7 @@
 # Player-facing feature inventory of the original (battle excluded)
 
+*Re-checked 2026-10-09 against the remake v0.5.0, row by row, with the rows this inventory missed added: [`2026-10-09-remake-v050-gap-analysis.md`](2026-10-09-remake-v050-gap-analysis.md).*
+
 **Status:** promoted from the `ic2-conquest` draft of the same name (branch `experiment/feature-inventory`, commit `8ed3ca4`), **provisional: the 146 rows were not re-verified one by one**. Evidence is the bot's own extractor outputs and Wine screenshots (release [`run-exp-feature-inventory`](https://github.com/diegoami/ic2-conquest/releases/tag/run-exp-feature-inventory)); **where a run is cited it is Wine-only and a candidate until the desktop original confirms it.** The clone was not read by the bot.
 
 
