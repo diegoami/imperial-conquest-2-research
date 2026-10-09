@@ -62,7 +62,7 @@ roles and the comparison with the city markers are from my own reading of the sa
 | 14 | Media | `#ff0000` red | `#c0c0c0` silver | `#800080` purple | white, purple | A differs (silver vs white) |
 | 15 | Thracia | `#808080` grey | `#ffffff` white | `#000000` black | white, black | match |
 
-*Table rebuilt on promotion (see the review note).* Every icon uses exactly three colours, on the same pixels for every owner: the background, colour A and colour B. Summed over an owner's six icons, they cover 3,357, 740 and 607 pixels of the 28×28 insets, for every owner. Which of A and B is more frequent depends on the icon (Rome: white leads in the army icons and the small fleet, blue in the medium and large fleets). So the draft's frequency order of the "next two colours" was not a fixed role, and seven rows listed them the other way round. The set of colours per owner is the draft's.
+*Table rebuilt on promotion (see the review note).* Every icon uses exactly three colours, on the same pixels for every owner: the background, colour A and colour B. Summed over an owner's six icons, they cover 3,357, 740 and 607 pixels of the 28×28 insets, for every owner. Which of A and B is more frequent depends on the icon (Rome: white leads in the army icons and the small fleet, blue in the medium and large fleets). So the draft's frequency order of the "next two colours" was not a fixed role, and six rows (Rome, Seleucid, Ptolemaic, Illyria, Media, Thracia) listed them the other way round. The set of colours per owner is the draft's.
 
 ## Method
 
