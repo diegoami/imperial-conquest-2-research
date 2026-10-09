@@ -426,8 +426,8 @@ A few small probe saves are committed in the fixtures repository itself rather t
 | [`ST_H45s_seed1_AUTO0721.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/ST_H45s_seed1_AUTO0721.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
 | [`ST_H85s_seed1_AUTO0721.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/ST_H85s_seed1_AUTO0721.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
 | [`ST_K45s_seed10_AUTO0721.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/ST_K45s_seed10_AUTO0721.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
-| [`ST_K45s_seed1_AUTO0721.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/ST_K45s_seed1_AUTO0721.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
-| [`ST_K45s_seed2_AUTO0721.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/ST_K45s_seed2_AUTO0721.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`ST_K45s_seed1_AUTO0721.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/ST_K45s_seed1_AUTO0721.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 2 |
+| [`ST_K45s_seed2_AUTO0721.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/ST_K45s_seed2_AUTO0721.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 2 |
 | [`ST_K45s_seed3_AUTO0721.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/ST_K45s_seed3_AUTO0721.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
 | [`ST_K45s_seed4_AUTO0721.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/ST_K45s_seed4_AUTO0721.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
 | [`ST_K45s_seed5_AUTO0721.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/ST_K45s_seed5_AUTO0721.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
@@ -458,9 +458,9 @@ A few small probe saves are committed in the fixtures repository itself rather t
 | [`ST_R45sA_seed8_AUTO0721.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/ST_R45sA_seed8_AUTO0721.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
 | [`ST_R45sA_seed9_AUTO0721.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/ST_R45sA_seed9_AUTO0721.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
 | [`ST_R45s_seed10_AUTO0721.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/ST_R45s_seed10_AUTO0721.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
-| [`ST_R45s_seed1_AUTO0721.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/ST_R45s_seed1_AUTO0721.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`ST_R45s_seed1_AUTO0721.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/ST_R45s_seed1_AUTO0721.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 2 |
 | [`ST_R45s_seed2_AUTO0721.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/ST_R45s_seed2_AUTO0721.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
-| [`ST_R45s_seed3_AUTO0721.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/ST_R45s_seed3_AUTO0721.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`ST_R45s_seed3_AUTO0721.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/ST_R45s_seed3_AUTO0721.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 2 |
 | [`ST_R45s_seed4_AUTO0721.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/ST_R45s_seed4_AUTO0721.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
 | [`ST_R45s_seed5_AUTO0721.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/ST_R45s_seed5_AUTO0721.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
 | [`ST_R45s_seed6_AUTO0721.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/ST_R45s_seed6_AUTO0721.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
@@ -490,9 +490,9 @@ A few small probe saves are committed in the fixtures repository itself rather t
 | [`NAT_seed1_08_0724_seat13.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/NAT_seed1_08_0724_seat13.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
 | [`NAT_seed1_09_0725_seat02.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/NAT_seed1_09_0725_seat02.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
 | [`NAT_seed1_10_0725_seat13.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/NAT_seed1_10_0725_seat13.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
-| [`NAT_seed1_11_0726_seat02.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/NAT_seed1_11_0726_seat02.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`NAT_seed1_11_0726_seat02.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/NAT_seed1_11_0726_seat02.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 2 |
 | [`NAT_seed1_12_0726_seat13.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/NAT_seed1_12_0726_seat13.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
-| [`NAT_seed1_13_0727_seat02.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/NAT_seed1_13_0727_seat02.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 1 |
+| [`NAT_seed1_13_0727_seat02.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-storms/NAT_seed1_13_0727_seat02.SAV) | `run-exp-storms` (repo `ic2-conquest`) | 2 |
 | [`FIX_S2_ptolemaic_seat_0735.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-pair2/FIX_S2_ptolemaic_seat_0735.SAV) | `run-exp-pair2` (repo `ic2-conquest`) | 1 |
 | [`FIX_S2_seleucid_seat_0735.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-pair2/FIX_S2_seleucid_seat_0735.SAV) | `run-exp-pair2` (repo `ic2-conquest`) | 1 |
 | [`P2B_P_seed1.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-pair2/P2B_P_seed1.SAV) | `run-exp-pair2` (repo `ic2-conquest`) | 1 |

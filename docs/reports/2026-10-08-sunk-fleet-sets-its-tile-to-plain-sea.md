@@ -54,5 +54,5 @@ Evidence: run-exp-naval-loser-rough-sea, `cover0_{PRE,BEFORE,AFTER}.SAV`, `cover
 
 ## Not established
 
-- A fleet sunk by a storm, or a loser on a real (unpatched) rough-sea tile. The patched field is what the game reads, so the result should carry over (`[derived]`).
+- A fleet sunk by a storm, or a loser on a real (unpatched) rough-sea tile. The patched field is what the game reads, so the result should carry over (`[derived]`). **Storm: answered since.** A storm loss clears the tile too (0, or 1 where the next week's overlay paints it), and it goes through the same `FUN_0044ad38`: [`2026-10-09-storm-sunk-fleet-clears-its-tile.md`](2026-10-09-storm-sunk-fleet-clears-its-tile.md). A loser on a real rough-sea tile is still not run.
 - Armies: whether a destroyed army also writes 0, or restores its covered cell. From code, army removal writes 0 too (`decompiled-map-code1-overlay.md`). An army covers land codes 2-11, which no weekly pass repaints, so that predicts a destroyed army leaves code 0 (calm sea) on a land tile. That is untested in play (`[derived]`). **Answered since: no.** Disband, Join armies and a tactical-battle loss all restore the army's covered cell (`FUN_0044ab90`), and the overlay report's "army removal writes 0" has been corrected: [`2026-10-08-removed-army-restores-its-tile.md`](2026-10-08-removed-army-restores-its-tile.md).

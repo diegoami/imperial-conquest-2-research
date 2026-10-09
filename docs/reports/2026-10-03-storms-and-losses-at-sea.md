@@ -38,7 +38,7 @@ Saves, fixtures, `t4_trials.json` and the logs are in the release [`run-exp-stor
 | K45w *condition + season* | calm, away, Winter | 10 | lost × 7; (0, 6) × 3 | lost 0.65; (0, 5) 0.18, (0, 6) 0.17 |
 | H45s *condition edited* | next to a city | 10 | (0, 3) × 4, (0, 1) × 3, (0, 2) × 2, (0, 0) × 1 | (0, 1) 0.37, (0, 2) 0.31, (0, 0) 0.19, (0, 3) 0.14 |
 
-**The covered field.** On rough sea the record read 1 before End turn and 0 afterwards (the paint is gone at the next tick); the storm used the state at the tick. **News:** a hit that costs ships says "A fleet belonging to X is damaged in a storm."; a loss says "A fleet belonging to X is lost at sea." (all 43 losses of Carthage's fleet, in R45s, R45w, R45sA, K45s and K45w).
+**The covered field.** On rough sea the record read 1 before End turn and 0 afterwards (the paint is gone at the next tick); the storm used the state at the tick. A lost fleet leaves no marker on its tile: it reads 0, or 1 where the new week's overlay paints it ([`2026-10-09-storm-sunk-fleet-clears-its-tile.md`](2026-10-09-storm-sunk-fleet-clears-its-tile.md)). **News:** a hit that costs ships says "A fleet belonging to X is damaged in a storm."; a loss says "A fleet belonging to X is lost at sea." (all 43 losses of Carthage's fleet, in R45s, R45w, R45sA, K45s and K45w).
 
 **The loss threshold.** Four survivors ended at condition 39 (K45s seed 3: damage 5 and a supply drop of 1; the three K45w survivors: damage 5 and a drop of 1) and one at 40 (K45s seed 1): the fleet is lost when the condition after the storm damage is below 40, **before** the out-of-supply term is taken off.
 
