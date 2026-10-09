@@ -25,7 +25,7 @@ and [`2026-10-08-fleet-marker-band-and-icon.md`](2026-10-08-fleet-marker-band-an
   owners. They differ for 5 (Macedonia, Numidia, Gaul, Illyria, Media; Macedonia only by swapping
   the two). Either the unit icons are separate bitmaps with their own figure colours, or the
   2026-09-29 reading (a user-supplied strip, snapped to the palette) is off for those nations.
-  This run cannot tell which, and the city icons were not drawn here. The table below lists both.
+  This run cannot tell which, and the city icons were not drawn here. The table below lists both. **Since drawn** ([`2026-10-09-city-marker-colours.md`](2026-10-09-city-marker-colours.md)): the cities share the unit icons' (A, B) for 15 owners, with A as the outline role. Numidia's city fill is teal, so its grey is a unit-icon difference. The other four remain differences between the strip and Wine.
 - **Table corrected** (see the note under it): the draft ordered the two figure colours by
   frequency, which flips between icons. They are now listed by fixed pixel role.
 

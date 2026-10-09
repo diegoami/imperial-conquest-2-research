@@ -691,6 +691,11 @@ A few small probe saves are committed in the fixtures repository itself rather t
 | [`montage_army.png`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-owner-colours/montage_army.png) | `run-exp-owner-colours` (repo `ic2-conquest`) | 1 |
 | [`montage_fleet.png`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-owner-colours/montage_fleet.png) | `run-exp-owner-colours` (repo `ic2-conquest`) | 1 |
 | [`montage_both.png`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-owner-colours/montage_both.png) | `run-exp-owner-colours` (repo `ic2-conquest`) | 1 |
+| [`cities_PRE.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-city-marker-colours/cities_PRE.SAV) | `run-exp-city-marker-colours` (repo `ic2-conquest`) | 1 |
+| [`cities_AFTER.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-city-marker-colours/cities_AFTER.SAV) | `run-exp-city-marker-colours` (repo `ic2-conquest`) | 1 |
+| [`cities_screen1.png`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-city-marker-colours/cities_screen1.png) | `run-exp-city-marker-colours` (repo `ic2-conquest`) | 1 |
+| [`cities_screen2.png`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-city-marker-colours/cities_screen2.png) | `run-exp-city-marker-colours` (repo `ic2-conquest`) | 1 |
+| [`montage_cities.png`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-city-marker-colours/montage_cities.png) | `run-exp-city-marker-colours` (repo `ic2-conquest`) | 1 |
 
 ## Recordings
 

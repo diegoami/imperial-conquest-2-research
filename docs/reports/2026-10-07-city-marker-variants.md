@@ -17,6 +17,7 @@ tiers" the asset specification assumed?
   exact: in eighteen saves (five evidence-indexed fixtures plus thirteen local
   ic2-conquest saves), every live nation's capital city and only those carry variant 4 (16/16 in seventeen,
   15/15 in the one with an eliminated nation) **[confirmed: saves]**.
+- **What they look like** (Wine, every owner drawn, 2026-10-09): a small house (v0), a house (v1), a small castle (v2), a large castle (v3) and a temple (v4), each a fixed three-colour template in the owner's colours: [`2026-10-09-city-marker-colours.md`](2026-10-09-city-marker-colours.md).
 - **There is no "three size tiers"** — the asset specification's premise was wrong twice over:
   four size tiers, plus the capital marker as the fifth variant.
 - **The tier is refreshed only when the city changes owner, never by growth.** The writer's

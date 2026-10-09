@@ -63,7 +63,7 @@ Shared backgrounds, each told apart by its foreground:
   shows blue columns in a white outline. The two views may render the glyph differently: the strip is an
   icon, the map glyph is smaller.
 
-- **The army and fleet icons** (2026-10-09, Wine, every owner and size band drawn) have the same 16 backgrounds and shared pairs. Their two figure colours agree with this table's (outline, foreground) for 11 nations and differ for Macedonia (swapped), Numidia, Gaul, Illyria and Media: [`2026-10-09-owner-colours-by-band.md`](2026-10-09-owner-colours-by-band.md). Whether this table or the unit icons are the odd one out for those five is open.
+- **The army and fleet icons** (2026-10-09, Wine, every owner and size band drawn) have the same 16 backgrounds and shared pairs. Their two figure colours agree with this table's (outline, foreground) for 11 nations and differ for Macedonia (swapped), Numidia, Gaul, Illyria and Media: [`2026-10-09-owner-colours-by-band.md`](2026-10-09-owner-colours-by-band.md). Whether this table or the unit icons are the odd one out for those five is open. **Narrowed since** ([`2026-10-09-city-marker-colours.md`](2026-10-09-city-marker-colours.md), every owner's five city markers drawn in Wine): the cities use the unit icons' colours for 15 owners. Numidia's cities really are black and teal, as here; only its unit icons use grey. For Macedonia (possibly a role swap: in the capital temple the "outline" role is most of the glyph), Gaul, Illyria and Media, Wine's cities differ from this table too. So the open question is now strip vs Wine, for the desktop check.
 
 ## Inferences (candidates, not confirmed)
 
