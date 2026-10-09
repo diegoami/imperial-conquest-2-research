@@ -34,16 +34,22 @@ by [`2026-10-07-ai-turn-corroboration.md`](2026-10-07-ai-turn-corroboration.md),
   The only exception is a ratio of exactly 100 at 18 or more tiles. Distance still matters for
   *which* target ranks first: a near stronger fleet can outrank a far weaker one and suppress the
   hunt.
-- **Not re-checkable from tracked data:** the `FUN_0044d9a8.asm` excerpt ends at 0x44da22, after the
-  fleet selection (nearest own fleet: empty, launched, with moves), and before any `+4` write. So
-  "it sets the fleet's destination", and "only two places write `+4`", are ic2-conquest's reading,
-  not re-checked here. The staged ferry link is `[derived]`, as the draft says.
+- **The ferry write, re-checked after ic2-conquest extended the excerpts (`a3e4f1a`):**
+  - In `FUN_0044d9a8.v2.asm`, 0x44da5a pushes the chosen fleet's `+4` (`[ebx*2 + 0x49c270]`) as
+    `FUN_0044cd08`'s stack argument. The adjacent case calls 0x44b79c (embark) instead.
+  - In `FUN_0044dba8_head.asm`, an army aboard (cell −1) finds its fleet via 0x449970 and passes
+    that fleet's `+4` in ECX (0x44dbe1).
+  - `FUN_0044cd08.asm` saves ECX at `[ebp-0xc]` and writes path points through both on return:
+    0x44ceb4 through the ECX pointer, 0x44cebc through `[ebp+8]`.
+  - So **both army-mover sites write the fleet's destination** `[confirmed: decompile]`.
+  - *Narrowed:* "only two places write `+4`" means only two **absolute** references to the field.
+    Writes through a fleet pointer in a register, such as a human sail order, were not scanned.
+  - The staged ferry *link* (army 3 called fleet 1 in that turn) stays `[derived]`.
 - **Not re-run:** the intercept-side distance and radius checks (`analyze.py`), apart from the
   target-position sweep above.
 
 **Tag:** `[confirmed]` (Wine, natural play with an inert hook) for checks 3 and 4; `[confirmed:
-decompile]` for the four corrections; ferry: decompile (partly re-checkable) + `[derived]` link (L1
-staged).
+decompile]` for the four corrections; ferry: `[confirmed: decompile]` for the write, `[derived]` for the staged link (L1).
 
 ## How it was observed
 
@@ -116,7 +122,7 @@ staged).
 - **It never hunted** (`staged_hunt.jsonl`):
   - In 3 seeds on v3, Carthage's fleet logged neither a hunt nor a port move.
   - The v4 run shows why: the fleet already had a **stored destination, (96,78), at decision time**, although it was −1 in the save. It sailed there, ending the round at (96,78).
-- **What set the destination** `[confirmed: decompile]` per ic2-conquest; see the review note, since the tracked excerpt ends before the write: only two places in the code write a fleet's +4 destination, and both are in the army movers.
+- **What set the destination** `[confirmed: decompile]` (re-checked; see the review note): the two absolute references to a fleet's +4 destination are both in the army movers, and both write it (other writes through a register pointer were not scanned).
   - `FUN_0044d9a8`, called from 0x44db8b: an army whose target lies in another region box takes the nearest own launched, empty fleet with moves. If the fleet is adjacent, the army embarks; otherwise the fleet's destination is set to come to the army.
   - 0x44dbc9: an army already aboard steers its fleet.
 - **The link here** `[derived]`: Carthage's army 3 stood 3 tiles from (96,78) before the turn, so it most likely called the fleet. The army phase runs before the fleet phase, so **a fleet called as a ferry skips the hunt and the port choice that turn.**
