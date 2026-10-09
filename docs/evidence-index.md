@@ -742,7 +742,7 @@ A few small probe saves are committed in the fixtures repository itself rather t
 | [`20261009-141127_NUM_placement_window.png`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-battle-numidia-colour/20261009-141127_NUM_placement_window.png) | `run-exp-battle-numidia-colour` (repo `ic2-conquest`) | 1 |
 | [`20261009-141127_NUM_after_end_turn_1_window.png`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-battle-numidia-colour/20261009-141127_NUM_after_end_turn_1_window.png) | `run-exp-battle-numidia-colour` (repo `ic2-conquest`) | 1 |
 | [`run-exp-ai-intercept-hunt-saves.tar.gz`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-ai-intercept-hunt/run-exp-ai-intercept-hunt-saves.tar.gz) (213 saves, incl. `hook_s2_AUTO0751.SAV`, `hook_s2_AUTO0755.SAV`, `hook_s14_AUTO0758.SAV`, `staged_hunt_s1_AUTO0724.SAV`) | `run-exp-ai-intercept-hunt` (repo `ic2-conquest`) | 1 |
-| [`run-exp-gap-v050-saves.tar.gz`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-gap-v050/run-exp-gap-v050-saves.tar.gz) (1,342 remake v0.5.0 JSON saves; `g3_cafter_debt.sav` and `g3_cafter_unity.sav` differ from their `SAVES.sha256` lines) | `run-exp-gap-v050` (repo `ic2-conquest`) | 1 |
+| [`run-exp-gap-v050-saves.tar.gz`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-gap-v050/run-exp-gap-v050-saves.tar.gz) (1,342 remake v0.5.0 JSON saves; all match `SAVES.sha256` since ic2-conquest `e823910`) | `run-exp-gap-v050` (repo `ic2-conquest`) | 1 |
 
 ## Recordings
 
