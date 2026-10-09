@@ -47,11 +47,16 @@ chooses to render it.
    states and how rows are drawn are not read `[derived]` from the excerpt
    `word_array_456940.asm` (ic2-conquest `b2abac3`, `run-exp-battle-numidia-colour`), noted in
    [`2026-10-09-battle-map-units-use-the-nation-recolour.md`](2026-10-09-battle-map-units-use-the-nation-recolour.md).
+   **Answered since:** a random 4-state totalistic rule (`T[0..9] = Random(4)` at every N), 300 cells,
+   seed 144-155 = 1, 400 generations; colours white/red/blue/green. One N press is reproduced pixel
+   for pixel in Wine: [`2026-10-09-cellular-automata-rule-h04.md`](2026-10-09-cellular-automata-rule-h04.md).
 2. **The SaveBMP format is unspecified.** `TCellAuto_SaveBMP @ 0x004569c0` writes
    a `*.BMP` file. The size of the bitmap (the Image1 width × height), the palette
    (16-colour VGA? 256-colour?), and the cell-to-pixel mapping are not in this
    repo's tracked data; a faithful clone would need to read `SaveBMP` byte-exact
    or pick a simple default (e.g. 1 bit per cell, 1 byte per pixel = `BMP` mode).
+   **Mostly answered since:** the file is `ca` + the 10 rule digits + `.BMP` in the current directory,
+   and holds `Image1`'s 300 × 400 bitmap, which is never cleared. Its pixel format is still open: [`2026-10-09-cellular-automata-rule-h04.md`](2026-10-09-cellular-automata-rule-h04.md).
 3. **The About-box layout has two buttons (`OK` and `CAncell`); the clone's
    `godot/UI/AboutDialog.cs:43–52` has only `OK`.** The reproduction question is
    whether the second button should exist at all. If yes: the misspelling must be
