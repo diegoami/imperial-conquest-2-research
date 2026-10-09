@@ -31,6 +31,8 @@ Each nation record carries a **16-entry `short` array at `+0x26`** holding its r
 | --- | ---: |
 | trade (1) | **−8** |
 | alliance (2) | **−24** |
+
+*(Seen in play 2026-10-09, Wine: the Peace radio on Rome's trade partner Illyria gives −8 on both sides, and on a staged ally −24 on both sides. Both persist after End turn: [`2026-10-09-peace-radio-ends-trade-and-alliance.md`](2026-10-09-peace-radio-ends-trade-and-alliance.md).)*
 | war (3) | **−18** |
 
 Two propagation rules live in the same function:

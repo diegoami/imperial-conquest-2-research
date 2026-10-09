@@ -48,6 +48,8 @@ against v0.5.0.
 - **Not re-run here:** the remake CLI (no .NET on this machine), the g1/g2/g3 transcripts beyond
   the rows above, and any Godot UI.
 
+- **NEW-g1-2's condition holds** (original-side check 1, 2026-10-09): the original's Peace radio ends a trade (→ −8) and an alliance (→ −24) on both sides, so the remake's Make Peace being enabled only at war is an unconditional block. Counts are unchanged, since the row was already counted as blocking: [`2026-10-09-peace-radio-ends-trade-and-alliance.md`](2026-10-09-peace-radio-ends-trade-and-alliance.md).
+
 **Tag:** as the draft. Remake rows are "(CLI observed)" or "(code reading)"; the original side is
 Wine-only. Severity is proposed; the call is the main session's.
 

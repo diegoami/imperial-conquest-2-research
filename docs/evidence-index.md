@@ -743,6 +743,13 @@ A few small probe saves are committed in the fixtures repository itself rather t
 | [`20261009-141127_NUM_after_end_turn_1_window.png`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-battle-numidia-colour/20261009-141127_NUM_after_end_turn_1_window.png) | `run-exp-battle-numidia-colour` (repo `ic2-conquest`) | 1 |
 | [`run-exp-ai-intercept-hunt-saves.tar.gz`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-ai-intercept-hunt/run-exp-ai-intercept-hunt-saves.tar.gz) (213 saves, incl. `hook_s2_AUTO0751.SAV`, `hook_s2_AUTO0755.SAV`, `hook_s14_AUTO0758.SAV`, `staged_hunt_s1_AUTO0724.SAV`) | `run-exp-ai-intercept-hunt` (repo `ic2-conquest`) | 1 |
 | [`run-exp-gap-v050-saves.tar.gz`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-gap-v050/run-exp-gap-v050-saves.tar.gz) (1,342 remake v0.5.0 JSON saves; all match `SAVES.sha256` since ic2-conquest `e823910`) | `run-exp-gap-v050` (repo `ic2-conquest`) | 1 |
+| [`A_20261009-175015_A_before.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-peace-radio/A_20261009-175015_A_before.SAV) | `run-exp-peace-radio` (repo `ic2-conquest`) | 1 |
+| [`A_20261009-175015_A_after.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-peace-radio/A_20261009-175015_A_after.SAV) | `run-exp-peace-radio` (repo `ic2-conquest`) | 1 |
+| [`A_20261009-175015_AUTO0721.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-peace-radio/A_20261009-175015_AUTO0721.SAV) | `run-exp-peace-radio` (repo `ic2-conquest`) | 1 |
+| [`B_20261009-175604_B_after_cancel.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-peace-radio/B_20261009-175604_B_after_cancel.SAV) | `run-exp-peace-radio` (repo `ic2-conquest`) | 1 |
+| [`D_20261009-175644_start_rome_illyria_allied.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-peace-radio/D_20261009-175644_start_rome_illyria_allied.SAV) | `run-exp-peace-radio` (repo `ic2-conquest`) | 1 |
+| [`D_20261009-175644_D_after.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-peace-radio/D_20261009-175644_D_after.SAV) | `run-exp-peace-radio` (repo `ic2-conquest`) | 1 |
+| [`D_20261009-175644_AUTO0721.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-peace-radio/D_20261009-175644_AUTO0721.SAV) | `run-exp-peace-radio` (repo `ic2-conquest`) | 1 |
 
 ## Recordings
 
