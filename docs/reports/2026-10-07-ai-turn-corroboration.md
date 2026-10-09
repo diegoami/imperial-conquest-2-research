@@ -105,7 +105,7 @@ saves (bare filenames; SHA-256 in `runs/experiments/data/run-exp-ai-turn/SAVES.s
 - **The `+0x274` byte gate** on the hire remains unopened `[derived]` (report's own open list).
 - **The exact intra-transition ordering** (weekly tick before the AI seats vs. the block reading the counter
   another way) is inferred from where the write lands, not disassembled.
-- **Checks 3 (homeland intercept dispatch) and 4 (fleet hunt-vs-port)** were not attempted (the owner's
+- **Checks 3 (homeland intercept dispatch) and 4 (fleet hunt-vs-port)** *(done since, 2026-10-09: [`2026-10-09-ai-intercept-and-fleet-hunt-in-play.md`](2026-10-09-ai-intercept-and-fleet-hunt-in-play.md))* were not attempted (the owner's
   routing stopped after checks 1 and 2).
 - **Wine-only**: a desktop run should repeat the two hire observations before the clone treats them as
   platform-independent.

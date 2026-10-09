@@ -116,9 +116,10 @@ under "Next checks" is now closed. The current state, as it lives in this repo:
   policy (18/18 decidable rows, with a placement correction: the write lands in the transition
   INTO the week-11 save, one weekly tick before the quarterly tick) and the free AI mercenary
   hire (two natural observations incl. a double hire, no payment anywhere) —
-  `reports/2026-10-07-ai-turn-corroboration.md`. Still not observed in play: the homeland
-  intercept dispatch and the fleet hunt-vs-port decision. Still pending at
-  `docs/pending-requests.md`: the AI-mover contact-resolution experiment.
+  `reports/2026-10-07-ai-turn-corroboration.md`. The homeland intercept dispatch and the fleet
+  hunt-vs-port decision were seen in play on 2026-10-09, with four corrections to the hunt score,
+  the jitter and the intercept rule (`reports/2026-10-09-ai-intercept-and-fleet-hunt-in-play.md`).
+  The AI-mover contact-resolution experiment was done and promoted (`reports/2026-10-07-ai-mover-contact.md`).
 
 - **No original binaries** (EXE, DAT, HLP, SAV, screenshots, recordings) are committed here —
   every input the reports cite is published as a GitHub release; `docs/evidence-index.md` is

@@ -169,7 +169,10 @@ coast boxes of `FUN_0044eb18`), within 20 of the capital if at war, within 10 ot
 attack (no army or city target scoring ≥ 100 reachable this turn, or the capital within 3× their
 moves) are dispatched: toward the nearest threatening army if it is at war and on land, otherwise
 back to the capital. A threat that is aboard a fleet cannot be intercepted — the responder goes to
-the capital.
+the capital. **Correction (2026-10-09):** a threat whose owner is not at war is accepted only by a
+responder at least 20 from the capital (`cmp [esp+6], 0x14` at 0x44f257). The dispatch was seen
+in play: 102 dispatches toward an enemy army, and 7 sent home under that rule. Details in
+[`2026-10-09-ai-intercept-and-fleet-hunt-in-play.md`](2026-10-09-ai-intercept-and-fleet-hunt-in-play.md).
 
 ### 3.2 Per army: resupply and hire — `FUN_0044e41c` (:52218), every own army
 
@@ -275,8 +278,18 @@ For every own launched fleet (construction countdown `+0x0A == -1`) with no pend
    reachable by sea (`FUN_0044e920`: water in the 3×3 around the city and a sea path exists).
 3. **Hunt** — `FUN_0044f4f8` (:52976): the best enemy fleet at sea, not docked at its own city
    (`FUN_004494e4`, the same predicate behind refusal R07), scored
-   `myStrength×100/theirStrength − distance`, doubled when the enemy is weaker and within 18.
-   Score ≥ 100: chase it. Otherwise: sail to the port from step 2.
+   ~~`myStrength×100/theirStrength − distance`, doubled when the enemy is weaker and within 18.
+   Score ≥ 100: chase it.~~ **Corrected 2026-10-09:**
+   - Candidates are ranked by `my×100/their − d`, doubled when the target is weaker and
+     `d < 18`.
+   - The chosen target's `d` is then **added back** (0x44f5f4), so the score tested is
+     `my×100/their`, or `2 × (ratio − d) + d` for a weaker target closer than 18.
+   - Score **> 100** (strictly): chase it. Otherwise: sail to the port from step 2.
+   - Distance ranks the candidates but does not stop a hunt: AI fleets were seen chasing across
+     26-181 tiles.
+   - A fleet that already has a stored destination (for example, called as a ferry by an army)
+     sails there, with no hunt or port choice.
+   Seen in play: [`2026-10-09-ai-intercept-and-fleet-hunt-in-play.md`](2026-10-09-ai-intercept-and-fleet-hunt-in-play.md).
 4. **Move** — `FUN_0044e1fc` (:52115), the fleet's `FUN_0044dba8`: walks the sea path spending
    moves; on the final step, a land cell disembarks the carried army (for a computer nation the
    free cell is picked automatically, `FUN_0044b840`), a **city** cell resupplies through
@@ -294,7 +307,9 @@ For every own launched fleet (construction countdown `+0x0A == -1`) with no pend
   queued in recruitment slots at that city.
 - `FUN_0044aa54(fleet)` — fleet strength: `ships × condition / 10`, plus the carried army's assault
   strength / 50, **plus `Random(4) × value/10`** — every evaluation of a fleet's strength, including
-  both sides of a naval battle, carries a fresh 0–30 % jitter.
+  both sides of a naval battle, carries a fresh 0–30 % jitter. *(Corrected 2026-10-09: exactly
+  `v + Random(4) × (v div 10)`, rounded as written; the carried army's term uses its morale at the
+  moment of evaluation: [`2026-10-09-ai-intercept-and-fleet-hunt-in-play.md`](2026-10-09-ai-intercept-and-fleet-hunt-in-play.md).)*
 - `FUN_0044b8d0(city)` — the city is **some nation's capital** (a scan of all 16 `+0x444` fields).
   This corrects nothing published (it had not been named), but it is what the "×2 on a weak
   capital" and "prefer defending capitals" modifiers key on, and it is why capitals never defect in
@@ -311,7 +326,7 @@ For every own launched fleet (construction countdown `+0x0A == -1`) with no pend
 | `Random(16)`, `Random(3)` | human-side offer roll (`FUN_00452034`) | not AI-turn proper |
 | `Random(100)` | new order's unit type | buckets 35/25/15/15/10 |
 | `Random(std×4/5)` | new order's troop count | uniform addend over ⅘ of standard size |
-| `Random(4) × v/10` | every fleet-strength evaluation | 0–30 % jitter, both sides of a battle |
+| `Random(4) × (v div 10)` *(corrected 2026-10-09)* | every fleet-strength evaluation | 0–30 % jitter, both sides of a battle |
 
 Two interactions with earlier findings: the post-battle treaty **reseeds the global RNG**
 (`RandSeed := winner + loser`,
@@ -351,7 +366,7 @@ faithful mode would need:
    8-order cap.
 3. **The week-11 tax policy** (§2.3) writing `+0x44A` directly.
 4. **The army decision tree** (§3.3) with its exact thresholds (100 / 85 / 71 / distance terms) and
-   the mercenary run, and the fleet hunt/port choice with the 100-score boundary.
+   the mercenary run, and the fleet hunt/port choice with the 100-score boundary (strictly above 100, with the distance added back: see the §4 correction).
 5. **Free AI mercenary hires** and **free-for-100-talents fleet repair**, if fidelity is the goal —
    both are quirks, and §7 makes them explicit rather than accidental.
 
@@ -362,7 +377,7 @@ faithful mode would need:
   moves (§2.3, with the placement correction above) and a free AI mercenary hire (§3.2, two
   natural observations incl. a double hire, no payment anywhere in the diff). Still not observed
   in play: an intercept dispatch (§3.1), a hunt-vs-port fleet decision (§4). Everything else
-  remains decompile-only (`[confirmed: decompile]` means the dump, not a listing or a save).
+  remains decompile-only (`[confirmed: decompile]` means the dump, not a listing or a save). **Both seen since** (2026-10-09, an inert hook over 144 End turns, 457 decisions): [`2026-10-09-ai-intercept-and-fleet-hunt-in-play.md`](2026-10-09-ai-intercept-and-fleet-hunt-in-play.md).
 - **The `FUN_0044d734` contact resolution question is now settled** (2026-10-07,
   [2026-10-07-ai-mover-contact.md](2026-10-07-ai-mover-contact.md)): the AI mover and the human
   mover share the resolver; the AI-mover army-tile branch resolves instantly through
