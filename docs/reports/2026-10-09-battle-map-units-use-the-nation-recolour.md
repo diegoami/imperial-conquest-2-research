@@ -73,6 +73,6 @@ Numidia, since no Numidian battle was drawn.
 
 ## Not established
 
-- **A Numidian battle drawn in Wine:** none was run. It would need a battle with a Numidian army, for example an L1 owner edit of the defender army, or a game played as Numidia.
+- **A Numidian battle drawn in Wine:** none was run. It would need a battle with a Numidian army, for example an L1 owner edit of the defender army, or a game played as Numidia. **Drawn since** (L1 start): Numidia's 5 battle cells are lime, black and grey, equal to the recoloured templates: [`2026-10-09-numidian-battle-drawn-in-wine.md`](2026-10-09-numidian-battle-drawn-in-wine.md).
 - **Images 15 and 16 of `BatMapList`** (lime, green, olive, white and black; white and black): not recoloured. Image 15 is the empty-ground tile (462 of 462 empty cells equal it); image 16 is unidentified.
 - **The desktop original:** Wine only, as for the unit map.
