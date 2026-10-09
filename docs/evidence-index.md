@@ -599,11 +599,11 @@ A few small probe saves are committed in the fixtures repository itself rather t
 | [`SI_post_battle.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-battle-probe/SI_post_battle.SAV) | `run-exp-battle-probe` (repo `ic2-conquest`) | 2 |
 | [`WIN_post_battle.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-battle-probe/WIN_post_battle.SAV) | `run-exp-battle-probe` (repo `ic2-conquest`) | 2 |
 | [`B2_after_end2.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-battle-sweep/B2_after_end2.SAV) | `run-exp-battle-sweep` (repo `ic2-conquest`) | 2 |
-| [`B2_after_end_turn_1.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-battle-sweep/B2_after_end_turn_1.SAV) | `run-exp-battle-sweep` (repo `ic2-conquest`) | 2 |
-| [`B2_after_end_turn_2.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-battle-sweep/B2_after_end_turn_2.SAV) | `run-exp-battle-sweep` (repo `ic2-conquest`) | 2 |
+| [`B2_after_end_turn_1.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-battle-sweep/B2_after_end_turn_1.SAV) | `run-exp-battle-sweep` (repo `ic2-conquest`) | 3 |
+| [`B2_after_end_turn_2.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-battle-sweep/B2_after_end_turn_2.SAV) | `run-exp-battle-sweep` (repo `ic2-conquest`) | 3 |
 | [`B2_nat_p1.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-battle-sweep/B2_nat_p1.SAV) | `run-exp-battle-sweep` (repo `ic2-conquest`) | 2 |
 | [`B2_nat_p2.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-battle-sweep/B2_nat_p2.SAV) | `run-exp-battle-sweep` (repo `ic2-conquest`) | 2 |
-| [`B2_placement.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-battle-sweep/B2_placement.SAV) | `run-exp-battle-sweep` (repo `ic2-conquest`) | 2 |
+| [`B2_placement.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-battle-sweep/B2_placement.SAV) | `run-exp-battle-sweep` (repo `ic2-conquest`) | 3 |
 | [`b3_c0_control_BATTLE01.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-battle-sweep/b3_c0_control_BATTLE01.SAV) … `b3_c0_control_BATTLE16.SAV` (16 files, the same series, one file per half-round or trial) | `run-exp-battle-sweep` (repo `ic2-conquest`) | 2 |
 | [`b3_c0_control_post.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-battle-sweep/b3_c0_control_post.SAV) | `run-exp-battle-sweep` (repo `ic2-conquest`) | 2 |
 | [`b3_c1_noop_BATTLE01.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-battle-sweep/b3_c1_noop_BATTLE01.SAV) … `b3_c1_noop_BATTLE16.SAV` (16 files, the same series, one file per half-round or trial) | `run-exp-battle-sweep` (repo `ic2-conquest`) | 2 |
@@ -731,6 +731,9 @@ A few small probe saves are committed in the fixtures repository itself rather t
 | [`IW_seed14_039_0759.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-ai-conquest-aboard/IW_seed14_039_0759.SAV) | `run-exp-ai-conquest-aboard` (repo `ic2-conquest`) | 1 |
 | [`IW_seed15_034_0754.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-ai-conquest-aboard/IW_seed15_034_0754.SAV) | `run-exp-ai-conquest-aboard` (repo `ic2-conquest`) | 1 |
 | [`IW_seed17_036_0756.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-ai-conquest-aboard/IW_seed17_036_0756.SAV) | `run-exp-ai-conquest-aboard` (repo `ic2-conquest`) | 1 |
+| [`b2_placement_window.png`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-battle-sweep/b2_placement_window.png) | `run-exp-battle-sweep` (repo `ic2-conquest`) | 1 |
+| [`b2_after_end_turn_1_window.png`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-battle-sweep/b2_after_end_turn_1_window.png) | `run-exp-battle-sweep` (repo `ic2-conquest`) | 1 |
+| [`b2_after_end_turn_2_window.png`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-battle-sweep/b2_after_end_turn_2_window.png) | `run-exp-battle-sweep` (repo `ic2-conquest`) | 1 |
 
 ## Recordings
 

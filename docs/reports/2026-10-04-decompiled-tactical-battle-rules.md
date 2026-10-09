@@ -335,7 +335,7 @@ There is no menu.
 **How a unit is drawn:**
 
 - In each unit icon, the purple background `0x800080` becomes nation colour `+0x424`, white becomes `+0x428` and blue becomes `+0x42C` (`FUN_0044A6C8`). The green dotted cell border is kept.
-- The attacker's 15 recoloured copies are `UnitsList` 0–14, and the defender's are 15–29.
+- The attacker's 15 recoloured copies are `UnitsList` 0–14, and the defender's are 15–29. *(Seen in Wine, 2026-10-09: call sites 0x43711e / 0x437161 under flag `0x4A0B7C`, with Rome's and Gaul's drawn sprites matching: [`2026-10-09-battle-map-units-use-the-nation-recolour.md`](2026-10-09-battle-map-units-use-the-nation-recolour.md).)*
 - The **size thresholds** are `troops < std div 3` → small, `< 2·(std div 3)` → medium, otherwise large. That gives LI 5,000/10,000, HI 2,000/4,000, archers 1,166/2,332, LC 2,333/4,666 and HC 833/1,666. The icon is recomputed after every loss.
 - There is no routed, selected or wounded image. Selection and the AI's highlight of attacker and target use the cursor overlay.
 

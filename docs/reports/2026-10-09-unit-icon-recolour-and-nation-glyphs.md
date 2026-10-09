@@ -41,7 +41,7 @@ and the Gaul / Illyria / Media differences against
   path end to end and the 1 px offset correction.
 - **Consequence beyond the map** `[derived]`: the tactical battle map recolours its unit icons
   through the same function and fields, so Numidia's battle units should be grey-filled too.
-  Not drawn.
+  Not drawn. **Checked since:** the battle form's sprite build calls the same routine for both sides, and Rome's and Gaul's battle sprites are drawn recoloured from the save's dwords. Numidia itself is still not drawn: [`2026-10-09-battle-map-units-use-the-nation-recolour.md`](2026-10-09-battle-map-units-use-the-nation-recolour.md).
 
 **Tag:** `[confirmed: resources]` and `[confirmed: decompile]`, as listed in the draft's tags;
 `[confirmed]` (Wine) for the toolbar match; `[derived]` for the reading of the 2026-09-29 strip.
