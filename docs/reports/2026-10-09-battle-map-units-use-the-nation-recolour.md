@@ -13,7 +13,7 @@ sites (0x43711e, 0x437161) and the flag `0x4A0B7C`.
 
 **Review note:**
 - The 3 saves and 3 window screenshots hash OK.
-- **The template list is not published.** `TBattleMap_BatMapList.png` has a line in
+- **At promotion, the template list was not published** (uploaded since; see the redone simulation below). `TBattleMap_BatMapList.png` has a line in
   `run-exp-unit-icon-resources/SAVES.sha256`, but neither it nor the `.bmp` the draft names is a release
   asset (56 assets, none matching). So I could not redo the template simulation of
   `check_battle_recolour.py`. Instead I checked the screenshots without the templates:
@@ -25,14 +25,27 @@ sites (0x43711e, 0x437161) and the flag `0x4A0B7C`.
     here.
   - So the drawn sprites are shared templates recoloured per side from the save's dwords
     `[confirmed]` (Wine). The template-exact match (0 differing pixels against `BatMapList`) rests on
-    ic2-conquest's run.
+    ic2-conquest's run (since redone here, below).
+- **Template simulation, redone (2026-10-09, after the upload at ic2-conquest `b2abac3`):**
+  `TBattleMap_BatMapList.bmp`, `_mask.bmp` and `.png` are now release assets and hash OK. With my own
+  script (a 4-column grid of 32×32 images; templates 0-14 recoloured with each side's dwords from
+  `B2_placement.SAV`):
+  - **42 of 42** sprite cells equal a recoloured template over the full 32×32 tile (Rome 9, Gaul 5
+    per screen).
+  - **462 of 462** empty cells equal image 15 exactly. So image 15 *is* the ground tile `[confirmed]`
+    (Wine), no longer only very likely.
+  - Template 4 with Numidia's dwords gives lime 684, black 174 and grey 166, as the draft says.
 - **Code:** the excerpt `battlemap_sprites_436fb4.asm` reads `[0x4A0B74]` / `[0x4A0B76]` and calls
   `0x44a6c8` at 0x43711e and 0x437161, as the draft says. `xrefs.txt` also lists `0x456969 movsx edx,
   word ptr [ebx + eax*2 + 0x42c]`. That is a word read at +0x42C from an unidentified base, probably
   another table; it is not explained in the draft. The claim that "the dwords are read only inside
   FUN_0044a6c8" holds for the absolute addresses `0x474a94/98/9c`, but this line is not ruled out.
+  **Resolved since** (`word_array_456940.asm`, ic2-conquest `b2abac3`): 0x456940 lies inside
+  `TCellAuto_NewPattern` (0x456744 to 0x4569c0), the easter-egg automaton. The loop copies a 301-word
+  row from `+0x1D2` to `+0x42E`, then sets each cell from a rule table at `+0x688` indexed by the sum of
+  the three neighbours at `+0x42C/+0x42E/+0x430`. That is form data, not the nation colours `[derived]`.
 - **Corrected on promotion:** the empty battlefield is a textured tile, not pure lime (see below). Image
-  15 is very likely that tile.
+  15 is that tile.
 
 **Tag:** `[confirmed: decompile]` for the mechanism; `[confirmed]` (Wine) for Rome and Gaul; `[derived]` for
 Numidia, since no Numidian battle was drawn.
@@ -49,7 +62,7 @@ Numidia, since no Numidian battle was drawn.
 - **In Wine this reproduces the drawn sprites exactly** `[confirmed]`. All 42 occupied cells of B2's 3 save/screenshot pairs match with 0 differing pixels over the whole 32×32 tile: 14 cells per pair, Rome as attacker and Gaul as defender, 2 distinct screenshots (`battle_recolour_check.json`). Each cell is the sprite of its grid word, the template recoloured with its side's owner dwords from the save.
   - **Pixel offset correction:** the tiles are drawn at window y = 30 + 32·row, which is 2 px lower than the `y0 = 28` of `b2_probe.py`. That script's occupied-or-empty test, 4 px inside the corner, is not affected.
 - **So Numidia's units in battle** `[derived]`: with Numidia's dwords (`00ff00`, `000000`, `808080`), the purple background becomes **lime**, the white outline black, and the blue fill **grey**. In the large sprite (template 4) that gives lime 684 px, black 174 px and grey 166 px.
-  - The templates' frame is lime `00ff00`. *Corrected on promotion:* the empty ground is not pure lime. Every empty cell in the three screenshots is one textured tile: lime 752, green 75, olive 73, white 64 and black 60 px of 1,024. Those are the colours listed below for `BatMapList` image 15, which is very likely that ground tile `[derived]`. `b2_probe.py`'s test samples a lime pixel, which is why it reads the ground as pure lime. **A Numidian sprite's background is the same colour as the ground's lime base** (about three quarters of a ground tile): its black outline and grey fill stand out, and so does the absence of the ground's grass pattern.
+  - The templates' frame is lime `00ff00`. *Corrected on promotion:* the empty ground is not pure lime. Every empty cell in the three screenshots is one textured tile: lime 752, green 75, olive 73, white 64 and black 60 px of 1,024. Those are the colours listed below for `BatMapList` image 15, which is that ground tile (confirmed after the upload; see the review note). `b2_probe.py`'s test samples a lime pixel, which is why it reads the ground as pure lime. **A Numidian sprite's background is the same colour as the ground's lime base** (about three quarters of a ground tile): its black outline and grey fill stand out, and so does the absence of the ground's grass pattern.
 - **Grey fill is not unique to Numidia in battle:** the fill dword is `808080` for Macedonia, Numidia and Gaul (`recolour_check.json` of `run-exp-unit-icon-resources`). Gaul's B2 sprites were drawn grey-filled. Numidia is the only one whose city artwork's fill (teal) differs from that dword.
 
 ## Evidence
@@ -61,7 +74,5 @@ Numidia, since no Numidian battle was drawn.
 ## Not established
 
 - **A Numidian battle drawn in Wine:** none was run. It would need a battle with a Numidian army, for example an L1 owner edit of the defender army, or a game played as Numidia.
-- **Images 15 and 16 of `BatMapList`** (lime, green, olive, white and black; white and black): not recoloured. Image 15 is very likely the empty-ground tile, by its colours (see the correction above); image 16 is unidentified.
-- **`0x456969`** (a word read at +0x42C from another base, in `xrefs.txt`): not identified.
-- **The template list as a release asset:** `TBattleMap_BatMapList.png` is hashed but not uploaded.
+- **Images 15 and 16 of `BatMapList`** (lime, green, olive, white and black; white and black): not recoloured. Image 15 is the empty-ground tile (462 of 462 empty cells equal it); image 16 is unidentified.
 - **The desktop original:** Wine only, as for the unit map.

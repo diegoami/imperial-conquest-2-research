@@ -734,6 +734,8 @@ A few small probe saves are committed in the fixtures repository itself rather t
 | [`b2_placement_window.png`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-battle-sweep/b2_placement_window.png) | `run-exp-battle-sweep` (repo `ic2-conquest`) | 1 |
 | [`b2_after_end_turn_1_window.png`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-battle-sweep/b2_after_end_turn_1_window.png) | `run-exp-battle-sweep` (repo `ic2-conquest`) | 1 |
 | [`b2_after_end_turn_2_window.png`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-battle-sweep/b2_after_end_turn_2_window.png) | `run-exp-battle-sweep` (repo `ic2-conquest`) | 1 |
+| [`TBattleMap_BatMapList.bmp`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-unit-icon-resources/TBattleMap_BatMapList.bmp) | `run-exp-unit-icon-resources` (repo `ic2-conquest`) | 1 |
+| [`TBattleMap_BatMapList.png`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-unit-icon-resources/TBattleMap_BatMapList.png) | `run-exp-unit-icon-resources` (repo `ic2-conquest`) | 1 |
 
 ## Recordings
 

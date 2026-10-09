@@ -40,6 +40,13 @@ chooses to render it.
    reproduction needs the rule (Conway Game-of-Life? a Wolfram 1D rule? an
    L-system?). The clone can render the *form* from the controls above; the
    *content* of the canvas is the open piece.
+   **Partly answered (2026-10-09):** a loop inside `TCellAuto_NewPattern` (0x456940-0x456985) is a
+   **one-dimensional totalistic automaton**. It copies a 301-cell row of words (`+0x1D2` → `+0x42E`,
+   with a cell of padding on each side), then gives each cell the rule-table entry at `+0x688`
+   indexed by the sum of its left, centre and right neighbours. The table's contents, the cell
+   states and how rows are drawn are not read `[derived]` from the excerpt
+   `word_array_456940.asm` (ic2-conquest `b2abac3`, `run-exp-battle-numidia-colour`), noted in
+   [`2026-10-09-battle-map-units-use-the-nation-recolour.md`](2026-10-09-battle-map-units-use-the-nation-recolour.md).
 2. **The SaveBMP format is unspecified.** `TCellAuto_SaveBMP @ 0x004569c0` writes
    a `*.BMP` file. The size of the bitmap (the Image1 width × height), the palette
    (16-colour VGA? 256-colour?), and the cell-to-pixel mapping are not in this
