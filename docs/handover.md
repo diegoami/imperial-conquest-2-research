@@ -29,7 +29,7 @@ Asked 2026-10-10. Check, and report anything missing instead of working around i
 - Last promotion: `2026-10-09-supply-providers-and-transfer-clamps.md` (ic2-conquest `48d59bd`, ack
   sent). It answered g2 checks 1, 2 and 6 of the gap analysis. Not re-checked on our side:
   `FUN_00449e50`'s scan order, `TAFSupply_FindProviders` and the `TFleetToFleet` handlers (beyond our
-  excerpts), and the money and supplies the surviving fleet takes over.
+  excerpts). The money and supplies claim was re-checked 2026-10-10 and corrected: not shown in play (all 0) and not in `FUN_0044ad38`; the OK handler is open.
 - `docs/pending-requests.md` has one open item, the **desktop palette check**. It waits on the player;
   the steps are in ic2-conquest's `runs/experiments/data/run-exp-desktop-palette/STEPS.md`, which also
   covers the CA SaveBMP depth.
@@ -40,9 +40,8 @@ Asked 2026-10-10. Check, and report anything missing instead of working around i
 - Leave alone: untracked `.claude/settings.local.json.clother-*.bak`, and
   `docs/ideas/2026-10-07-sitting-recorder.md` (ic2-conquest's idea; the user decides whether it is
   committed or moved).
-- **Stale doc, not fixed (the user decides):** `docs/environment.md` says `.claude/settings.local.json`
-  routes this project to Z.ai's GLM (the file now holds only permissions), and its model table still
-  lists DeepSeek under opencode_go. Follow the user's global CLAUDE.md and quota-tracker instead.
+- `docs/environment.md` was rewritten 2026-10-10 (`d521fd1`) as a pointer to the user's global
+  CLAUDE.md; the stale GLM routing and DeepSeek table are gone.
 
 ## Intake procedure (per draft)
 1. **Fetch** the draft at the relayed commit:

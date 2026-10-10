@@ -11,7 +11,11 @@
   - Tb1: 100 and 5 ships. U1: army 13 goes from 98,000 to 100,000 with 10 units, and army 0 keeps 1 unit of 1,000. U2: army 0 aboard reaches 13,900, and army 12 keeps 1,600.
   - U3: army 0 aboard reaches **15,499** on 30 ships, and army 12 becomes a tombstone (owner −1, 0 troops). U3b: nothing changes (10,700 and 4,800).
 - **Wording corrected:** "deleted" in the draft means the record is tombstoned (owner −1) with its map word zeroed. The tables are not compacted. This matches the earlier `FUN_0044ad38` reports ([`2026-10-09-elimination-removes-fleet-and-army-aboard.md`](2026-10-09-elimination-removes-fleet-and-army-aboard.md), [`2026-10-08-naval-battle-loser-clears-its-tile.md`](2026-10-08-naval-battle-loser-clears-its-tile.md)).
-- **Code:** our tracked excerpts do not reach `FUN_00449e50`'s scan order, `TAFSupply_FindProviders` or the `TFleetToFleet` handlers. The scan-order quirk and the clamp code are the peer's reading (capstone), and play corroborates them in one direction (P5) and at the boundaries (Tb1, U1, U3/U3b). The U3/U3b boundary matches the `ships < (troops + unit) div 500` test already in [`2026-10-03-army-to-army-ok-supply-rebalancing.md`](2026-10-03-army-to-army-ok-supply-rebalancing.md). The money and supplies moving to the surviving fleet were not re-read; the fleet record offsets for them are not in my parser.
+- **Code:** our tracked excerpts do not reach `FUN_00449e50`'s scan order, `TAFSupply_FindProviders` or the `TFleetToFleet` handlers. The scan-order quirk and the clamp code are the peer's reading (capstone), and play corroborates them in one direction (P5) and at the boundaries (Tb1, U1, U3/U3b). The U3/U3b boundary matches the `ships < (troops + unit) div 500` test already in [`2026-10-03-army-to-army-ok-supply-rebalancing.md`](2026-10-03-army-to-army-ok-supply-rebalancing.md). The money and supplies moving to the surviving fleet: see the correction below (2026-10-10).
+- **Corrected (2026-10-10, research): the money and supplies of an emptied fleet.** The draft said the other fleet takes them, through `FUN_0044ad38`. Neither half holds:
+  - **Not seen in play.** Re-read at fleet `+14` (supplies) and `+16` (money) in every Ta/Tb/Tc save, before and after: both fleets hold **0 and 0 in every case**, so no case could show a transfer. All 87 files in `SAVES.sha256` re-hashed.
+  - **Not in `FUN_0044ad38`.** Our own decompile of it ([`decompiled-elimination-cleanup.md`](decompiled-elimination-cleanup.md) §2) does three things: it zeroes the map word of a launched fleet, deletes the army aboard, and tombstones the fleet. It writes no money or supplies.
+  - **Still open:** whether the OK handler (`0x443b48`) adds them to the other fleet before it calls `FUN_0044ad38`. Our excerpts do not reach it. Moved to *Not established*.
 - **Not re-checked:** P1–P4 (the dialogs and screenshots), and Ta1/Ta3/Tc1/Tc2.
 
 **Tag:** `[confirmed]` (Wine) for the played cases; `[code]` for the scan order, provider list and clamp handlers (peer's capstone reading); `[derived]` for the north and diagonal tiles of the fleet quirk.
@@ -59,7 +63,7 @@
 | Tc2 | fleet 2 gives all 20 | fleet 2 deleted; fleet 5 has 30 | none |
 
 - **The arrows clamp; OK applies; nothing is refused** `[confirmed]` `[code]`. The ship arrow handler (`0x443924`) moves `min(step, ships left on the giving side, 100 − ships on the receiving side)`. The OK handler (`0x443b48`) writes both fleet copies back and re-bands both markers (`FUN_0044a878`).
-- **A fleet left with 0 ships is deleted, and the other fleet takes its money and supplies** (`FUN_0044ad38`). That function also deletes a carried army, so emptying a carrying fleet destroys its army without a word `[confirmed]` (Ta4).
+- **A fleet left with 0 ships is deleted** (`FUN_0044ad38`). Whether the other fleet takes its money and supplies is not established (see the review note). That function also deletes a carried army, so emptying a carrying fleet destroys its army without a word `[confirmed]` (Ta4).
 - **No army or capacity test** anywhere in `TFleetToFleet` `[code]`. A carrying fleet can give or take ships, and can end below the army's needs `[confirmed]` (Ta2).
 - **The remake** refuses all three (an armed fleet, over 100 ships, every ship moved), so it differs. Ta4's army loss is likely an original defect the remake need not copy; that is for the remake to decide.
 
@@ -93,4 +97,5 @@
 - **The Supply dialog with several providers:** whether the player can choose among them, and in what order they are listed.
 - **A purchase from a foreign city at peace:** the dialog was opened and closed, but nothing was bought.
 - **An army aboard a fleet as Supply army's target** (the selected-fleet branch of `0x446f50`).
+- **The money and supplies of a fleet emptied by Transfer ships:** every played fleet held 0 of both, and `FUN_0044ad38` does not move them. Whether the OK handler (`0x443b48`) passes them to the other fleet first, or they are lost, needs that handler's code or a case staged with money and supplies on the emptied fleet.
 - **The desktop original.**
