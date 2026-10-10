@@ -759,6 +759,13 @@ A few small probe saves are committed in the fixtures repository itself rather t
 | [`U1_20261009-194123_after.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-supply-transfer-clamps/U1_20261009-194123_after.SAV) | `run-exp-supply-transfer-clamps` (repo `ic2-conquest`) | 1 |
 | [`U3_20261009-194306_after.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-supply-transfer-clamps/U3_20261009-194306_after.SAV) | `run-exp-supply-transfer-clamps` (repo `ic2-conquest`) | 1 |
 | [`U3b_20261009-194355_after.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-supply-transfer-clamps/U3b_20261009-194355_after.SAV) | `run-exp-supply-transfer-clamps` (repo `ic2-conquest`) | 1 |
+| [`Td0_20261010-213628_before.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-fleet-empty-transfer/Td0_20261010-213628_before.SAV) | `run-exp-fleet-empty-transfer` (repo `ic2-conquest`) | 1 |
+| [`Td0_20261010-213628_after.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-fleet-empty-transfer/Td0_20261010-213628_after.SAV) | `run-exp-fleet-empty-transfer` (repo `ic2-conquest`) | 1 |
+| [`Td1_20261010-213503_before.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-fleet-empty-transfer/Td1_20261010-213503_before.SAV) | `run-exp-fleet-empty-transfer` (repo `ic2-conquest`) | 1 |
+| [`Td1_20261010-213503_after.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-fleet-empty-transfer/Td1_20261010-213503_after.SAV) | `run-exp-fleet-empty-transfer` (repo `ic2-conquest`) | 1 |
+| [`Td2_20261010-213548_before.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-fleet-empty-transfer/Td2_20261010-213548_before.SAV) | `run-exp-fleet-empty-transfer` (repo `ic2-conquest`) | 1 |
+| [`Td2_20261010-213548_after.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-fleet-empty-transfer/Td2_20261010-213548_after.SAV) | `run-exp-fleet-empty-transfer` (repo `ic2-conquest`) | 1 |
+| [`Td1_20261010-213503_dialog_before_ok.png`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-fleet-empty-transfer/Td1_20261010-213503_dialog_before_ok.png) | `run-exp-fleet-empty-transfer` (repo `ic2-conquest`) | 1 |
 
 ## Recordings
 
