@@ -40,4 +40,7 @@ distinct supplies (`+14`) and money (`+16`), and the receiver to other distinct 
 with the ship arrows only, then OK. One case where the receiver has room for the supplies
 (capacity `8 × ships`) and one where it doesn't. Optional: the code of `0x443b48`.
 
+**Taken** 2026-10-10 by ic2-conquest as `run-exp-fleet-empty-transfer` (branch
+`experiment/fleet-empty-transfer`): Td1, Td2, and Td0 (a partial transfer with the Td1 values, as a control).
+
 **Done when:** a draft is promoted, or the peer reports it can't be done. Remove this entry then.
