@@ -29,7 +29,7 @@ Saves marked *(git)* are in `ic2-conquest`'s `saves/`; the others are in the rel
 | army 0 | 10,700 troops, (101,45), 3 moves | the same |
 | click on the fleet | the army **boards**: position (101,46) = the fleet's tile, moves **0**, cell **−1** (embarked); the fleet's moves 29 → **0**, carried-army field **0** | box "The army is too large for this fleet ?", **OK only**; army 0 stays at (101,45) with 3 moves; the click **selects the fleet** |
 
-With the first save, army 0 was first 23,700 and then 16,600 troops (earlier staging steps, not kept): both were refused against the 30-ship fleet (15,000), the 10,700 one boarded. An army produced by Split army has **0 moves** and cannot be selected that turn, so it cannot embark that turn.
+With the first save, army 0 was first 23,700 and then 16,600 troops (earlier staging steps, not kept): both were refused against the 30-ship fleet (15,000), the 10,700 one boarded. An army produced by Split army has **0 moves** and cannot be selected that turn, so it cannot embark that turn. **Answered since / Corrected (2026-10-11, [`2026-10-11-g2-original-checks.md`](2026-10-11-g2-original-checks.md)):** a 0-move army can be selected (army 12 at moves 0, in `C3_20261011-185659_zero_moves_loaded.SAV`), and it cannot embark because embarking needs moves; why the split-off army was not selected in this run was not isolated.
 
 **Unload** (`T_EMBARK.SAV` → end turn → `T_DISEMBARK.SAV`): after the turn army 0 had 9 moves and fleet 2 had 25 (still aboard, same tile). Select fleet 2, click the land tile (101,45): army 0 at (101,45), cell 2 (plain), moves **0**; the fleet's moves **0**, carried-army −1; both selected-unit variables −1.
 

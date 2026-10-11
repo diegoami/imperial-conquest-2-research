@@ -20,14 +20,14 @@ Every comparison and every sign-extension in the binary treats `+6` as a signed 
 
 | Site | Instruction | Meaning at `moves = −1` |
 | --- | --- | --- |
-| `FUN_004466CC` (unit selection) | `004466EF CMP word ptr [EAX*0x8 + 0x47C1F2],0x0` / `004466F8 JLE` | army **cannot be selected or ordered** |
+| `FUN_004466CC` (unit selection) | `004466EF CMP word ptr [EAX*0x8 + 0x47C1F2],0x0` / `004466F8 JLE` | army **cannot be selected or ordered** **[Corrected 2026-10-11, [`2026-10-11-g2-original-checks.md`](2026-10-11-g2-original-checks.md): this compare is on the army that is already selected (`DAT_004a0328`) and only withholds an attack on the clicked marker; selecting an army has no moves test, and a 0-move army is selected and kept (check 3). By the same code a `-1` army can be selected like any other (no test), but it cannot move or attack.]** |
 | `FUN_0044D420` (one movement step) | `0044D70E CMP AX,word ptr [EBX + 0x6]` / `0044D712 JLE` | terrain cost is never affordable |
 | `FUN_0044DBA8` (strategic move) | `0044DC48 TEST AX,AX` / `0044DC4B JLE`; `0044DC85 CMP word ptr [EBX + 0x6],0x0` / `0044DC8A JLE` | both further-move branches are skipped |
 | `FUN_0044F31C` (AI army driver) | `0044F37C CMP word ptr [EBX + 0x6],0x0` / `0044F381 JLE` | army is skipped for the rest of the AI turn |
 | `TUnitMap_MoveHumanArmy` | `0 < (short)army[+6]` | no further path segment is attempted |
 | `TInformation_ShowArmyDetails` | `0043C3C6 MOVSX EAX,word ptr [EAX + 0x6]` | the panel **sign-extends** before formatting |
 
-A signed read makes `0xFFFF` mean `−1`. It is therefore not a sentinel value the code tests for — nothing anywhere compares `+6` against `−1` or `0xFFFF`. Its only effect is that every guard fails, so **the army is frozen: it cannot be selected, moved, or acted on for the remainder of the turn.** It is repaired by the next weekly tick (§4), so the bug is self-healing within one week.
+A signed read makes `0xFFFF` mean `−1`. It is therefore not a sentinel value the code tests for — nothing anywhere compares `+6` against `−1` or `0xFFFF`. Its only effect is that every guard fails, so **the army is frozen: it cannot be selected, moved, or acted on for the remainder of the turn.** **Corrected 2026-10-11 ([2026-10-11-g2-original-checks.md](2026-10-11-g2-original-checks.md)):** "cannot be selected" is wrong: the selection has no moves test, so a click selects a 0-move or `-1` army; it cannot move or attack. It is repaired by the next weekly tick (§4), so the bug is self-healing within one week.
 
 ## 2. Every write to `+6`, and the one that has no floor `[confirmed]`
 

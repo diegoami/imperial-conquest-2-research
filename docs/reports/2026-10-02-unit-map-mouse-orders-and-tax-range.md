@@ -3,7 +3,7 @@
 **Status:** promoted from the `ic2-conquest` draft of the same name (branch `experiment/unit-map-mouse`, commit `0a404f2`). **Wine-only: every result below is a candidate until the desktop original confirms it.** It answers the questions (a)–(e) and (g) relayed from the `imperial_conquest_2` main session for the clone's click-army-then-target model (bug #555 depends on (e); task T103 on (g)). **(f) (embark and unload by click) was not run here; it is answered in [2026-10-02-fleet-orders-live.md](2026-10-02-fleet-orders-live.md).**
 
 **Answer.**
-- **(a)** With an army selected, a left-click on a reachable tile moves it at once; the army **stays selected while it has moves left** and is **deselected when its moves reach 0**.
+- **(a)** With an army selected, a left-click on a reachable tile moves it at once; the army **stays selected while it has moves left** and is **deselected when its moves reach 0**. **Answered since / Corrected (2026-10-11, [`2026-10-11-g2-original-checks.md`](2026-10-11-g2-original-checks.md)):** that is the end of a move; an own army that already has 0 moves can be selected by a click and stays selected, with its toolbar dialogs opening. An unreachable target walks as far as the moves allow, with no box.
 - **(b)** Clicking an adjacent enemy **city** with the army selected: **at war, no prompt**, the siege resolves on the click. **At peace, a Yes/No/Cancel box "Are you sure you want to attack this city?"**; **No** changes nothing (relation, position, moves, selection all unchanged); **Yes writes war** (relation 0 → 3, news "ROME DECLARES WAR ON GREECE.") and the siege follows on the same click. An adjacent army was not tried.
 - **(c)** A left-click on the own army selects it and the Information panel shows its details; a right-click on it replaces the panel with the unit list. Neither opens a window.
 - **(d)** Shift+X drops the selection (selected army index 0 → −1); nothing else changes.
@@ -57,7 +57,7 @@ No box appeared for either move.
 ## Inferences
 
 - The prompt belongs to **non-war targets**: it appeared at peace and not at war, and Yes is what writes the war (relation 0 → 3, the news line), in line with `rules-digest.md` §Attack confirmation. The clone can treat "target nation not at war with the actor" as the trigger and "Yes declares war, then resolves the attack" as the sequence; a No leaves the order unissued and the army selected.
-- A click on the own army selects it and only a selected army can issue move or attack orders; the selection ends when moves reach 0 or on Shift+X (so the clone's selection state is: none, or one army with moves > 0).
+- A click on the own army selects it and only a selected army can issue move or attack orders; the selection ends when moves reach 0 or on Shift+X (so the clone's selection state is: none, or one army with moves > 0). **Corrected (2026-10-11, [`2026-10-11-g2-original-checks.md`](2026-10-11-g2-original-checks.md)):** the selected army may have 0 moves; only the end of a move clears the selection, and the moves test in `TUnitMap_SelectUnit` (line 46514) is on the already selected army, for attacks.
 - For bug #555: the new army from Split army sits at distance 1, so Join armies and Army to army transfer have their partner in reach right after a split. Whether the game picks the tile by a rule (first free neighbour in some order, terrain, owner) is not established; the one observation is (+1,+1).
 - The Taxation range for the clone's set-tax command (T103) is the integers 0–40 with a keyboard step of 1 and a page step of 5.
 
