@@ -55,7 +55,8 @@ The user picks the model (`CLAUDE.md`, "Choosing models: the user decides"):
   session or a subagent, and which model; rule 1). Show quota-tracker's `/recommend` only as a
   suggestion (rule 3). The reviewer is never of the implementer's family.
 - **For a review of a PR:** ask which external model reviews (rule 2). Run it alone, and relay its
-  findings in full.
+  findings in full. The brief carries the section in `docs/review-brief.md`, pasted right after
+  "Blocking means".
 - **Record** who ran it, the model, and the suggestion's reasons on the issue or PR (rule 5).
 - **Watch background runs** under rules 8-13: start with stdin from a file, use one monitor that
   reports only changes, flag a run as possibly stuck after about 10 minutes, and resume a run that
