@@ -50,7 +50,19 @@ For each candidate: outcome, what you corrected or could not verify, which exist
 
 ## When a review is delegated to a model
 
-If a draft's review is handed to an OpenCode model or a Claude agent, read what the run returned
-before retrying, re-routing or calling it a failure: the model's final message from the session
-record (read-only sqlite, see "Delegated runs" in `CLAUDE.md`) or the agent's full hand-back. A run
-that stopped and reported a blocker gets an answer to its report, not a retry on another model.
+The user picks the model (`CLAUDE.md`, "Choosing models: the user decides"):
+- **Before handing a draft's review or any fix to someone else:** ask the user ONE question (main
+  session or a subagent, and which model; rule 1). Show quota-tracker's `/recommend` only as a
+  suggestion (rule 3). The reviewer is never of the implementer's family.
+- **For a review of a PR:** ask which external model reviews (rule 2). Run it alone, and relay its
+  findings in full.
+- **Record** who ran it, the model, and the suggestion's reasons on the issue or PR (rule 5).
+- **Watch background runs** under rules 8-13: start with stdin from a file, use one monitor that
+  reports only changes, flag a run as possibly stuck after about 10 minutes, and resume a run that
+  hit our own timeout instead of restarting it.
+
+Before retrying, re-routing or calling a run a failure, read what it returned: the model's final
+message from the session record (read-only sqlite, see "Delegated runs" in `CLAUDE.md`) or the
+agent's full hand-back. A run that stopped and reported a blocker gets an answer to its report, not
+a retry on another model. Another model is used only when the provider does not answer and the user
+names one (rule 7).

@@ -8,13 +8,18 @@ provider, free models, time-of-day pricing and what to do when the service is do
 does not copy them, because copies go stale (the model table here listed DeepSeek after it was
 blacklisted).
 
-The short version, for choosing or delegating a model (CLAUDE.md L50/L51):
-- `curl -sf localhost:8765/health` first; if it fails, follow the global instructions.
-- `curl -s 'localhost:8765/recommend?tier=heavy'` (or `tier=light`): follow `rank`; `pair` gives an
-  implementer and a reviewer of a different family. `tight` rows are usable, `skipped` rows are not.
+**Who chooses:** the user (`CLAUDE.md`, "Choosing models: the user decides", 2026-10-11). Here the
+quota service gives only the suggestion shown with each question (`/recommend?tier=heavy|light`). If
+it doesn't answer (`curl -sf localhost:8765/health`), ask without one.
+
+*Superseded 2026-10-11, kept as history:* the earlier short version (CLAUDE.md L50/L51) chose the
+model itself. It followed `/recommend`'s `rank` and `pair`, moved to the next model of the chain when
+a provider was exhausted, and used `openai/gpt-5.6-luna` (effort high) as the default reviewer. None
+of these choose a model any more.
+
+Still in force:
 - Model ids come from `opencode models <provider>`, never memory.
-- DeepSeek (any route) is blacklisted and Alibaba is not used, unless the owner asks.
-- The default reviewer is `openai/gpt-5.6-luna`, effort `high`.
+- DeepSeek is never used, and Alibaba only when the user asks.
 - Never read `~/.config/quota-tracker/config.toml` or any OpenCode `auth.json`.
 
 ## This repo in particular

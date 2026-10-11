@@ -138,12 +138,13 @@ Asked 2026-10-10. Check, and report anything missing instead of working around i
   - NEW-g1-3 is confirmed: Build fleet uses the free coastal city nearest the capital.
 
 ## Standing rules (CLAUDE.md, memory)
-- **Models:**
-  - Check quota-tracker before delegating. `/recommend?tier=…` gives a `pair` (implementer plus a
-    reviewer of a different family). Follow `rank`: a `tight` row is still usable, only `skipped`
-    rows are not.
-  - DeepSeek is **blacklisted** unless the user asks. Alibaba: **don't use** unless asked.
-  - Reviewer default: Luna = `openai/gpt-5.6-luna`, effort high.
+- **Models: the user decides** (CLAUDE.md, owner's decision of 2026-10-11).
+  - Ask before implementing (who, and which model) and at every review (which external model).
+  - Show `/recommend` only as a suggestion.
+  - The reviewer is never of the implementer's family. DeepSeek is never used, and Alibaba only
+    when the user asks.
+  - *Superseded, kept as history:* "follow `/recommend`'s `rank`/`pair`" and "reviewer default:
+    Luna".
 - **Delegated runs:** read a run's final message before retrying it.
 - **Never read** `~/.config/quota-tracker/config.toml` or any opencode `auth.json`, not even its key
   names. Never print a key, a token, or the contents of `ai-keys.env`, `settings.local.json` or
