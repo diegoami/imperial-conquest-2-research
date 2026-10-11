@@ -97,8 +97,9 @@ Asked 2026-10-10. Check, and report anything missing instead of working around i
   - Battle-map cells at x = 32·col, y = 30 + 32·row.
   - Image lists (`*List.bmp`) are 4-column grids of 32×32.
 - **PIL:** `uv run -q --no-project --with pillow python -I -` (pillow is not installed globally).
-- **Not on this machine (as of 2026-10-10):** Ghidra, the full dump, Wine and .NET (the remake CLI
-  can't be run).
+- **On this machine (checked 2026-10-11):** the full Ghidra dump at
+  `/mnt/c/Users/diego/AppData/Local/ReTools/all_app_functions.txt` (59,228 lines; `$LOCALAPPDATA/ReTools/`
+  on Windows), and Wine 10.0. **Not on it:** Ghidra itself and .NET, so the remake CLI can't be run.
 - **Remake code:** read with `gh api "repos/diegoami/imperial_conquest_2/contents/<path>?ref=37f3062"`.
 
 ## Done 2026-10-10 (pushed)
