@@ -42,7 +42,8 @@ Facts for running the model the user names (not a choice rule):
 
 8. Start every OpenCode run in the background, with stdin from a file (never an inherited pipe:
    `opencode run` waits for stdin's end-of-file before it creates a session). Never wait on it
-   blind.
+   blind. Reviews run with `--agent reviewer` (`.opencode/agents/reviewer.md`: read-only, `/tmp`
+   open), and their briefs start with the run rules in `docs/review-brief.md`.
 9. Watch it with one monitor that checks every 1-2 minutes and reports only changes:
    - the session started (`opencode session list` in the run's directory, or the run's
      "session ses_... started" line), and the run's exit;

@@ -14,6 +14,36 @@ brief file, or a review-request PR body. Owner's rule of 2026-10-04.
 - **Which model reviews:** the user picks it at every review (`CLAUDE.md`, rule 2). Its family must
   differ from the implementer's.
 
+## Running an OpenCode review (since 2026-10-11)
+
+- **Use the reviewer agent:** `opencode run --agent reviewer -m <model> --dir <review worktree>`,
+  in the background with stdin from a file (`< /dev/null`), watched under rules 8-13. The agent
+  (`.opencode/agents/reviewer.md`) denies edits, commits, pushes, comments and merges, and opens
+  `/tmp` for scratch.
+- **Outside files:** anything the reviewer must read from outside its worktree and `/tmp` (the dump
+  under `/mnt/c/...`, logs, another repo) is copied into the worktree (git-excluded) or into a
+  `/tmp` folder before the run, and the brief points there. Never widen the permission to the
+  outside folder.
+- **A refused call:** stop after the first refusal and fix the cause (the agent's permissions or
+  the brief's run rules), then resume the same session (`--session <ses_...>`). Never retry the
+  same model with a reworded brief. On 2026-10-11 the PR #12 review was refused twice, first on
+  `/tmp` and then on `cd release` plus a `../` path.
+
+## The run rules, to paste at the top of every OpenCode brief, before the task text
+
+```
+## Run rules
+
+1. Never `cd`, and never write `..`: run every command from the worktree root with relative
+   paths. OpenCode resolves `cd X && ...` and `../...` against the worktree and refuses anything
+   that lands outside it.
+2. /tmp is open to you: use it freely for scratch files, your own scripts and a TMPDIR
+   (e.g. /tmp/ic2r-review-<pr>).
+3. Run commands directly, one per call (with `TMPDIR=<folder>` in front where it matters), not
+   through a wrapper script you write. Your own parsers for reading saves are fine: run them as
+   `python3 -I /tmp/<folder>/<script>.py <file>`.
+```
+
 ## The section, to paste
 
 ```
