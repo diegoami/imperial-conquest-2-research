@@ -1,47 +1,88 @@
-# Handover: ic2-research (imperial-conquest-2-research), 2026-10-10
+# Handover: ic2-research (imperial-conquest-2-research), 2026-10-12
 
 ## Role
 You are the research session. ic2-conquest (the bot/experiment session, `diegoami/ic2-conquest`) relays
-finding drafts over SendMessage. You verify each draft, promote it into `docs/reports/`, commit, and
-**push to origin/main automatically**, then ack the peer. When the user says "ask ic2-conquest to …",
-write a concrete request: the why, what to look for (from our reports and code), a suggested method,
-and what to report.
+finding drafts over SendMessage. You verify each draft, promote it into `docs/reports/`, and ack the
+peer after the merge. When the user says "ask ic2-conquest to …", write a concrete request: the why,
+what to look for (from our reports and code), a suggested method, and what to report.
+- **Since 2026-10-11 every change goes through `CLAUDE.md` rules 1-13** ("Choosing models: the user
+  decides"). That includes intakes, doc fixes and the handover itself:
+  - ask the user who implements and with which model;
+  - work in a worktree and open a PR;
+  - ask the user which external model reviews, or whether to merge without review;
+  - record each choice on the PR or issue.
+  Nothing is pushed straight to main any more.
 - **Never write to ic2-conquest or imperial_conquest_2.** Read them only, with `gh api` /
-  `gh release download`.
-- Wait for the next paste-prompt or peer message. Nothing is in flight on this side.
+  `gh release download`. ic2-conquest does not message the imperial_conquest_2 session; news for it
+  goes through the user.
+- Wait for the next paste-prompt or peer message.
 
-## First turn: the project may have moved to a new computer
-Asked 2026-10-10. Check, and report anything missing instead of working around it:
-- `git fetch && git status -sb`: main should equal origin/main at `fcb0be0` or later.
+## First turn
+- `git fetch --prune && git status -sb`: main should equal origin/main at `d546e05` or later.
 - `gh auth status`: account diegoami, repo scope, git over SSH.
-- `curl -sf localhost:8765/health`: quota-tracker. If it fails, follow the user's global CLAUDE.md.
-- The memory folder loaded (MEMORY.md lists 4 memories). It is keyed by the path: the project must
-  sit at `/home/diego/projects/imperial-conquest-2-research`, or the folder under
-  `~/.claude/projects/` must be renamed to match.
-- `uv`, `python3`, `jq` present. Pillow comes through `uv run --with pillow`.
+- `curl -sf localhost:8765/health`: quota-tracker, used for suggestions only. If it fails, follow the
+  user's global CLAUDE.md.
+- The memory folder loaded (MEMORY.md lists 4 memories). It is keyed by the path
+  `/home/diego/projects/imperial-conquest-2-research`.
 - The peer's socket address changes per session: use `ListAgents` to find `ic2-conquest`, never an
-  old `uds:` path.
+  old `uds:` path. When a peer session restarts, a send to its old address fails; re-list and resend.
+- `bash scripts/pending-drafts.sh` (it can take more than 120 s; give it a long timeout).
 
-## State at handover
-- HEAD `fcb0be0` on main, pushed. No other branches, stashes or worktrees; nothing uncommitted.
-  README count: **167** reports. `scripts/pending-drafts.sh` → 0. The script can take more than
-  120 s: run it with a longer timeout, or in the background.
-- Last promotion: `2026-10-09-supply-providers-and-transfer-clamps.md` (ic2-conquest `48d59bd`, ack
-  sent). It answered g2 checks 1, 2 and 6 of the gap analysis. Not re-checked on our side:
-  `FUN_00449e50`'s scan order, `TAFSupply_FindProviders` and the `TFleetToFleet` handlers (beyond our
-  excerpts). The money and supplies claim was re-checked 2026-10-10 and corrected: not shown in play (all 0) and not in `FUN_0044ad38`; the OK handler is open.
-- `docs/pending-requests.md` has one open item, the **desktop palette check**. It waits on the player;
-  the steps are in ic2-conquest's `runs/experiments/data/run-exp-desktop-palette/STEPS.md`, which also
-  covers the CA SaveBMP depth.
-- **Optional, not requested,** offered to ic2-conquest: bound the 22 early remake captures without an
-  adjacent capturer at t-1 (compute the ratio at t-1 strengths against 1550 ‰).
-- The main session (imperial_conquest_2) consumes `2026-10-09-remake-v050-gap-analysis.md` via its own
-  `/process-evidence`. That command is not run here. Offer to notify the main session if the user asks.
-- Leave alone: untracked `.claude/settings.local.json.clother-*.bak`, and
-  `docs/ideas/2026-10-07-sitting-recorder.md` (ic2-conquest's idea; the user decides whether it is
-  committed or moved).
-- `docs/environment.md` was rewritten 2026-10-10 (`d521fd1`) as a pointer to the user's global
-  CLAUDE.md; the stale GLM routing and DeepSeek table are gone.
+## State at handover (2026-10-12)
+- HEAD `d546e05` on main, pushed. No other branches, worktrees or stashes; nothing uncommitted except
+  the files to leave alone (below). README count: **170** reports. Open PRs: none.
+- **Open issue:** #5 (does the strategic AI mover's contact resolution `FUN_0044d734` differ for an AI
+  mover?), a research question that has not been taken.
+- **pending-drafts → 1:** `2026-10-11-g1-original-checks.md` on ic2-conquest's branch
+  `experiment/g1-original-checks`, unledgered and **not relayed yet**, so probably still in progress.
+  Wait for the relay.
+- `docs/pending-requests.md`: one open item, the **desktop palette check**. It waits on the player.
+- **On this machine:**
+  - the full Ghidra dump at `/mnt/c/Users/diego/AppData/Local/ReTools/all_app_functions.txt`
+    (sha256 `2018c205…`);
+  - Wine 10.0;
+  - not Ghidra itself, and not .NET.
+- **OpenCode reviews:**
+  - run them with `--agent reviewer` (`.opencode/agents/reviewer.md`: read-only, `/tmp` open);
+  - paste the run rules and the "report every blocking finding" section from
+    `docs/review-brief.md` into the brief;
+  - copy the dump into the review worktree (git-excluded) before the run;
+  - read results with `~/.opencode/bin/opencode export <ses_…>` to a file, then `jq`. Never use the
+    first `opencode` on PATH: it can be the Windows install, which can't see this database.
+  - The reviewer agent has not had a live review run yet.
+- **Monitoring:** check liveness with `kill -0 <pid>`, not `pgrep -f "<pattern>"`. The pattern also
+  matches the watcher's own command line, and parentheses in a title break it.
+- **Leave alone:**
+  - untracked `.claude/settings.local.json`;
+  - `docs/ideas/2026-10-07-sitting-recorder.md`, ic2-conquest's idea. The user asked about it
+    2026-10-11 ("coaching sessions"); the open decision is whether desktop-Wine is enough as the
+    confirmation standard.
+- **Not run here:** the main session (imperial_conquest_2) consumes the gap analysis through its own
+  `/process-evidence`.
+
+## Done 2026-10-11 (all merged)
+- **PR #8:** model choice is now the user's (CLAUDE.md rules 1-13), with monitoring rules for
+  background runs. Reviewed by MiniMax-M2.7.
+- **PR #9, issue #7 closed:** the AI's army and fleet merges decompiled
+  (`2026-10-11-decompiled-ai-merge-armies-and-fleets.md`), for IC2's T159.
+  - Both §2.4 rows were wrong. Armies have no "orders outstanding" gate. In the fleet merge, the idle
+    fleet survives, and "no destination" is `+0xA == -1`.
+  - Written by a Sonnet subagent and reviewed by Sol in one review and two re-checks.
+- **PR #10:** the handover and environment notes now say the dump and Wine are on this machine.
+- **PR #11:** `docs/review-brief.md`: the review-brief section and the two-rounds rule, moved out of
+  memory.
+- **PR #12:** promoted `2026-10-11-g2-original-checks.md` (ic2-conquest `70c51eb`, ack sent).
+  - Checks 3, 4, 5 and 7 of g2.
+  - Corrections: the Split spinner clamp is in the code; the moves test in `TUnitMap_SelectUnit` only
+    gates attacks.
+  - Open: why the split-off army in `2026-10-02-fleet-orders-live.md` wasn't selected.
+  - Done by a Sonnet subagent, reviewed by MiniMax-M3.
+- **PR #13:** the OpenCode reviewer agent and the run rules, after the PR #12 review was refused twice
+  (on `/tmp`, then on `cd` + `..`). After isles-pro's fix.
+- **Pushed to main earlier on 2026-10-10/11, before the rule change:**
+  - `6b96537`: promoted `2026-10-10-fleet-emptied-by-transfer-money-and-supplies` (an emptied fleet's
+    money and supplies go to the other fleet, uncapped);
+  - `cf7a6c1`, `8ab6702`: corrections to the supply-clamps and cosmetic-gaps reports.
 
 ## Intake procedure (per draft)
 1. **Fetch** the draft at the relayed commit:
@@ -71,9 +112,9 @@ Asked 2026-10-10. Check, and report anything missing instead of working around i
 6. **`docs/findings-intake.md`:** add a row `| `<f>` | `<short sha>` | (notes) |`. Column 2 must be a
    bare SHA.
 7. **Finish:** bump README's count, check pending-drafts, commit
-   (`Promote <name>: <one-line> [tag]` plus the Co-Authored-By trailer), push, and ack via SendMessage
-   to `ic2-conquest` (reply to the `from` of its message). Put the real hash in the ack *after* the
-   commit.
+   (`Promote <name>: <one-line> [tag]` plus the Co-Authored-By trailer) on the intake branch, and open a
+   PR. After the review the user chose, merge, then ack via SendMessage to `ic2-conquest` (re-list
+   with `ListAgents` first). Put the merge hash in the ack.
 - **Status-line edits:** after a promotion, ic2-conquest edits the draft's Status line, and
   pending-drafts shows `changed-since-review`. Check `gh api repos/…/compare/<old>...main`. If only
   Status changed, or the change mirrors your own correction, move the row's SHA to upstream main's
@@ -102,7 +143,7 @@ Asked 2026-10-10. Check, and report anything missing instead of working around i
   on Windows), and Wine 10.0. **Not on it:** Ghidra itself and .NET, so the remake CLI can't be run.
 - **Remake code:** read with `gh api "repos/diegoami/imperial_conquest_2/contents/<path>?ref=37f3062"`.
 
-## Done 2026-10-10 (pushed)
+## Done 2026-10-10 (pushed to main, before the rule change)
 - **Supply and transfer clamps** promoted (`fcb0be0`):
   - no army provider, and silence when there is no provider;
   - the fleet-from-fleet scan-order quirk;
