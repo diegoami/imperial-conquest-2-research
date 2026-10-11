@@ -26,5 +26,6 @@ Still in force:
 - Claude Code sessions here run on the model the session was started with. As of 2026-10-10,
   `.claude/settings.local.json` holds only permissions; it no longer routes the project to Z.ai's
   GLM. If a session does run on a non-Anthropic backend, the `non-claude-backend` skill covers it.
-- Not on this machine (2026-10-10): Ghidra, the full dump, Wine and .NET (the remake CLI can't be
-  run). Pillow comes through `uv run -q --no-project --with pillow python -I -`.
+- On this machine (2026-10-11): the full Ghidra dump at
+  `/mnt/c/Users/diego/AppData/Local/ReTools/all_app_functions.txt`, and Wine 10.0. Not on it: Ghidra
+  itself and .NET (the remake CLI can't be run). Pillow comes through `uv run -q --no-project --with pillow python -I -`.
