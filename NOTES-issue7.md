@@ -11,6 +11,7 @@
 - Commit 1: new report, the corrections, README count, intake row, these notes.
 - Commit 2: END block with the PR URL.
 - Commit 3: review fixes R1-R6, a, b (Sol): owner gate, fleet fall-through, same-tile settled (A13), compaction timing (C2), slot-0 donor (A12), spec local tags.
+- Commit 4: second review round: spec tombstone clause qualified, A13 same-tile qualified and tagged, C2 tag split.
 
 ## END
 Done: all four points of the issue established; report, corrections and review fixes R1-R6, a, b applied (PR #9 updated).
