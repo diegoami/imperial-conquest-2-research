@@ -70,7 +70,7 @@ of Ptolemaic."* after Week 1 — written by play, not seeded);
 
 **L06 — Treaty block** | `"B sues A for peace and;"` + three indented
 lines (`ends all trading agreements`, `ends all alliances`, `pays
-reparations of N talents`) + `"A and B have agreed to end their war."`
+reparations of N talents`), or, instead of the block when the code's strength test holds, `"A and B have agreed to end their war."` (dump 54121-54126; the destroys line is written before either: [`2026-10-12-g3-original-checks.md`](2026-10-12-g3-original-checks.md))
 | `SS:FI_b1_01_main.png` (Ptolemaic sues Seleucid ... 2,242 talents);
 `X:FUN_00450c68 @ 0x00450c68`;
 `news-log-format-and-messages.md Q4 #14–#18`. `[confirmed]`.

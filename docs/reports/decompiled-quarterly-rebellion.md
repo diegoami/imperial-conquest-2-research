@@ -215,7 +215,7 @@ These points add to it:
   - **mobilization 50** (`+0x442`);
   - all 40 slots' troops 0 (state, type and city are kept).
 
-  It does not reset wealth, which the quarterly loop has already zeroed and which the moves then refill. It also leaves the neighbour mask and the human flag alone. A human seat that fell was turned over to the computer, and it comes back as a computer nation.
+  It does not reset wealth, which the quarterly loop has already zeroed and which the moves then refill (cities with a higher index than the trigger are then added again when the loop reaches them, so wealth and tax base end above the cities' sums for the reborn nation and below for the old owner: [`2026-10-12-g3-original-checks.md`](2026-10-12-g3-original-checks.md)). It also leaves the neighbour mask and the human flag alone. A human seat that fell was turned over to the computer, and it comes back as a computer nation.
 - **The leader** is one `Random(12)` from the nation's 12 names, with no "differs from the current name" retry, unlike `FUN_0044C8F0`.
 - **The capital** is the city now owned by the nation with the greatest `FUN_0044A98C` strength, first by index on a tie. The search starts at `best = 0` with a strict `>`.
   - Every moved city has loyalty 90 and is allegiant, so the strength is `90 × 150 + fortification × 250 + population × 200`.
@@ -274,13 +274,13 @@ These points add to it:
   - 9 are the scenario's scripted history (the DAT's seed log, [news-log-format-and-messages.md](news-log-format-and-messages.md) Q1).
   - The other 14 all directly follow a "*falls to*" by the same receiver against the same old owner, in the same round. They are **capture-cascade** defections (`FUN_0044BA1C`).
   - None sits at the end of a week-11 round, where a rebellion would appear.
-- **The rule cannot be checked on a real rebellion.** The saves do check the shared transfer: the §3 table is 8 of 8 on loyalty, and population and fortification are unchanged in every one of them.
+- **The rule cannot be checked on a real rebellion.** The saves do check the shared transfer: the §3 table is 8 of 8 on loyalty, and population and fortification are unchanged in every one of them. **Played since (2026-10-12, [`2026-10-12-g3-original-checks.md`](2026-10-12-g3-original-checks.md)):** on staged saves (a city at loyalty 2 at week 11; Greece at unity 0 with nine disloyal cities) the rule held in every case played: (b) Heraclea to Greece at 90, (c) a war army 8 and 9 tiles away, (d) the score, the receiver's +3 and the old owner's -20, and the rebirth (nine lines, Tarrentum capital, unity 483). A rebellion has still not been seen in a natural game.
 
 **What would confirm it.** Take an AI city with low loyalty and a high tax rate, such as Sidon (39–40, Ptolemaic, allegiance Seleucid). Save at week 11 before the quarter tick and again at week 1. If Sidon falls below 30 at the tick, branch (b) predicts: Sidon goes to Seleucid, loyalty 90, and "*Sidon defects from Ptolemaic to Seleucid.*" appears just before the `Week  1` header. Raising the owner's tax makes the fall more likely: each draw at `taxRate` costs up to `taxRate / 8`.
 
 ## What this does not establish
 
-- No save shows a rebellion or a rebirth. Everything in the Answer and §4 is from code.
+- No natural save shows a rebellion or a rebirth. The Answer and §4 are from code and were played on staged saves on 2026-10-12 ([`2026-10-12-g3-original-checks.md`](2026-10-12-g3-original-checks.md)): all the cases played agreed. Two war armies in range at once ("the last matching army wins") were not staged.
 - Whether a real game reaches the stale-capital states that let a rebellion eliminate its owner.
 - The forced-capture `L′` values in §3 were inferred from the erosion window, not recomputed from the sieges' strengths.
 - `FUN_0044B8F4`'s list insertion order was not checked (whether it sorts). It changes no game rule read here.

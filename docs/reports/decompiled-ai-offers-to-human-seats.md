@@ -58,7 +58,7 @@ TPremierForm_StartTurn()
 (game-over check for h)
 ```
 
-The target is always the human whose turn is starting, and the roll never touches the relation matrix. Read from the saved state, which is written later in the same human turn, all six observed offers pass the trade test. All six also fail the alliance gate, which is why none became an alliance offer: Rome is at war with Gaul in its three saves, and none of Thracia's three proposers borders Thracia **[confirmed: saves]**. One example is `1_thracia_271_summer_9.sav`, Rome → Thracia. Thracia has no partners, so the floor is 0. Rome trades with Seleucid, Macedonia and Numidia, and Numidia's tax base, 440, is below Thracia's 652 **[confirmed: save]**. An alliance offer additionally needs `r` to border `h` and `h` to be at war with nobody. No alliance offer has been observed.
+The target is always the human whose turn is starting, and the roll never touches the relation matrix. Read from the saved state, which is written later in the same human turn, all six observed offers pass the trade test. All six also fail the alliance gate, which is why none became an alliance offer: Rome is at war with Gaul in its three saves, and none of Thracia's three proposers borders Thracia **[confirmed: saves]**. One example is `1_thracia_271_summer_9.sav`, Rome → Thracia. Thracia has no partners, so the floor is 0. Rome trades with Seleucid, Macedonia and Numidia, and Numidia's tax base, 440, is below Thracia's 652 **[confirmed: save]**. An alliance offer additionally needs `r` to border `h` and `h` to be at war with nobody. None of these six saves holds an alliance offer (one was seen later, on a staged start: [`2026-10-12-g3-original-checks.md`](2026-10-12-g3-original-checks.md)).
 
 ## 2. What `TPremierForm_StartTurn` does with it [confirmed: listing]
 
@@ -116,7 +116,7 @@ The alliance cascade cannot break an alliance. `me` allies only with an `m` that
 ## What this does not establish
 
 - **Whether a nation with `unity > 0` but 0 cities can exist.** That is the only case in which the "ally is protected" test fails for a direct ally. It has not been checked.
-- **An alliance offer, or a cascade that turns an alliance into war,** has never been observed in a save. Both are code-only.
+- **An alliance offer, or a cascade that turns an alliance into war,** has never been observed in a save. Both are code-only. **Update (2026-10-12, [`2026-10-12-g3-original-checks.md`](2026-10-12-g3-original-checks.md)):** an alliance offer has now been seen, 9 in 120 turn starts of a staged peace-only start (Gaul 4, Illyria 4, Carthage 1; the three nations in Rome's neighbour mask), as the code predicts; the cascade is still code-only.
 - **The two "busy" conditions, mobilization > 40 and season 3,** are read literally from the listing. Their design intent is not argued here, and no save pair was used to test the war rule's other terms: the power ratio, the neighbour test and the 1-in-10 chance.
 - **The `+0x46` "neighbour" name** rests on three saves' masks being symmetric and geographic. Where the mask is built (the DAT or a map pass) was not traced. **Resolved (2026-09-25)** in [dat-neighbour-mask.md](dat-neighbour-mask.md): the DAT holds it at nation-record `+0x2B`, and every save matches it. Only conquest (`FUN_0044C528`) changes it during play.
 

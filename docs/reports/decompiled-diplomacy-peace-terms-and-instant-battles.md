@@ -246,5 +246,5 @@ The 2026-09-23 naval section is from the machine code (headless Ghidra, `-noanal
 ## Next checks
 
 1. Read `nation[+0x44C]` (wealth) and `nation[+0x446]` (cities) for Ptolemaic out of the save immediately before the `999 → −1270` reparation and check `2269` falls in the formula's range.
-2. Search the news logs of existing saves for the literal strings `"sues "`, `" destroys army of "` and `" sinks fleet of "` — every one found is a free confirmation of one of the three resolvers above, with no new play session needed.
+2. Search the news logs of existing saves for the literal strings `"sues "`, `" destroys army of "` and `" sinks fleet of "` — every one found is a free confirmation of one of the three resolvers above, with no new play session needed. **Done 2026-10-12** ([`2026-10-12-g3-original-checks.md`](2026-10-12-g3-original-checks.md)): in every treaty block found in the saves the destroys line of the same two nations stands directly before it (5 distinct blocks; the saves hold 925 copies).
 3. Re-read the turn loop for a year-250 end-of-game check to confirm or refute the time limit.
