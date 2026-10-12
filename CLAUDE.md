@@ -18,7 +18,9 @@ kept only as history where docs still show them.
 2. At every review (first review, re-review, re-check of named fixes), ask the user ONE question:
    which external model reviews? Run that review alone (one at a time), and relay its findings to
    the user in full. A PR gets one review unless the user asks for more. Every review brief
-   carries the section in `docs/review-brief.md`.
+   carries the section in `docs/review-brief.md`. A PR whose review (or last re-check) approves is
+   merged right away, without asking (owner's rule, 2026-10-12); then clean up its worktrees and
+   branch, and ack ic2-conquest if it was an intake.
 3. With each question, show the quota service's recommendation as a SUGGESTION ONLY:
    `curl -s "http://localhost:8765/recommend?tier=heavy"` for heavy work, `tier=light` for small
    work (its `pick`/`pair` with rank, outlook and reliability). If it doesn't answer, ask without
