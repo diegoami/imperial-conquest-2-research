@@ -35,7 +35,7 @@ The expected values are recomputed from the saves by `claims_audit.py` (taxBase,
 | Debt limit | `wealth div 500`, capped at 20,000, then rounded down: to a multiple of 100 below 5,001; of 500 from 5,001 to 10,000; of 1,000 from 10,001 to 20,000 (:55541-55553). 2,577,000 div 500 = 5,154 → multiple of 500 → | 5,000 | 5,000 |
 
 - Saves and screenshots are in release `run-exp-v050-rules` (`batch-q1-q3.tar.gz`), hashes in `SAVES.sha256`.
-- Rome trades only with Illyria at 0720 (`relations {'Gaul': 3, 'Illyria': 1, 'Macedonia': -8}` in the save), so Trade is Illyria's `taxBase div 12`.
+- Rome trades only with Illyria at 0720 (`relations {'Gaul': 3, 'Illyria': 1, 'Macedonia': -8}` in the save), so Trade is Illyria's `taxBase div 12`. (**Seed-dependent, 2026-10-12:** that is the BASE seed 12345; in seeds 1-4 and 6-10 Rome starts with Macedonia and Illyria as trade partners and Trade reads 114, in seed 5 85: [`2026-10-11-g1-original-checks.md`](2026-10-11-g1-original-checks.md). The same report adds the expenditure lines: the Total includes Mercenary units and fleets under construction at 3 per ship, and the Debt limit rounding is display only.)
 
 ## What this does not establish
 

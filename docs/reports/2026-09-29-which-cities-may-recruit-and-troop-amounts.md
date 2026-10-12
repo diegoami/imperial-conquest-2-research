@@ -3,7 +3,7 @@
 **Question** ([imperial_conquest_2#515](https://github.com/diegoami/imperial_conquest_2/issues/515)): which cities may train regiments in the original? The player recalls that a non-capital town needs a high fortification level to recruit. The build repository applies no such rule. The follow-up asks for the dialog's troop-amount rule per unit type (maximum, minimum, step, default), and whether it equals the DAT's standard battalion sizes.
 
 **Answer.**
-- **A town may recruit if it is the nation's capital, or if its fortification is at least 75%.** The recruit dialog also keeps listing a town that already has units in training, but a new recruitment there is refused once its fortification is below 75%.
+- **A town may recruit if it is the nation's capital, or if its fortification is at least 75%.** The recruit dialog also keeps listing a town that already has units in training, but a new recruitment there is refused once its fortification is below 75% (played 2026-10-12 at fort 60, the capital at fort 50 still recruits: [`2026-10-11-g1-original-checks.md`](2026-10-11-g1-original-checks.md)).
 - The AI's own recruitment obeys the same threshold.
 - **Amounts:**
   - the dialog allows from **one fifth of the standard battalion up to the full battalion**, in steps of 100 and 1,000;
