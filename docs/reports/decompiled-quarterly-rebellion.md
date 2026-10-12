@@ -215,7 +215,7 @@ These points add to it:
   - **mobilization 50** (`+0x442`);
   - all 40 slots' troops 0 (state, type and city are kept).
 
-  It does not reset wealth, which the quarterly loop has already zeroed and which the moves then refill. It also leaves the neighbour mask and the human flag alone. A human seat that fell was turned over to the computer, and it comes back as a computer nation.
+  It does not reset wealth, which the quarterly loop has already zeroed and which the moves then refill (cities with a higher index than the trigger are then added again when the loop reaches them, so wealth and tax base end above the cities' sums for the reborn nation and below for the old owner: [`2026-10-12-g3-original-checks.md`](2026-10-12-g3-original-checks.md)). It also leaves the neighbour mask and the human flag alone. A human seat that fell was turned over to the computer, and it comes back as a computer nation.
 - **The leader** is one `Random(12)` from the nation's 12 names, with no "differs from the current name" retry, unlike `FUN_0044C8F0`.
 - **The capital** is the city now owned by the nation with the greatest `FUN_0044A98C` strength, first by index on a tie. The search starts at `best = 0` with a strict `>`.
   - Every moved city has loyalty 90 and is allegiant, so the strength is `90 × 150 + fortification × 250 + population × 200`.

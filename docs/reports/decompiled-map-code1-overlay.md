@@ -149,7 +149,7 @@ The asset key `terrain.sea_deep.tile` ("darker blue, same wave motif") and the r
 
 ## What this does not establish
 
-- **Played since (2026-10-12, [`2026-10-12-g3-original-checks.md`](2026-10-12-g3-original-checks.md)):** code-1 cells are on the live map and in autosaves (106-335 cells in 27 of 84 rounds of three runs); a fleet step onto a staged code-1 cell cost 3 moves against 1, and the fleet panel text was read as `Sea rough` by OCR (the code builds `Sea-` plus the word); the storm roll tripled in 20 pairs at condition 60. The cell and the fleet's covered-cell word were staged, not painted by the weather beside a fleet.
+- **Played since (2026-10-12, [`2026-10-12-g3-original-checks.md`](2026-10-12-g3-original-checks.md)):** code-1 cells are on the live map and in autosaves (106-335 cells in 27 of 84 rounds of three runs); a fleet step onto a staged code-1 cell cost 3 moves against 1, and the fleet panel text was read as `Sea rough` by OCR (the code builds `Sea-` plus the word); the capped x3 on the storm roll gave mean 2.15 against 0.30 over 20 pairs at condition 60 next to a city. The cell and the fleet's covered-cell word were staged, not painted by the weather beside a fleet.
 - **The tile graphic.** Nothing here shows what image 1 in the terrain image list looks like. Presumably rough water. `[open]`
 - **Whether the AI steers fleets away from rough water deliberately.** The only avoidance found is the walker's local cheaper-step choice. No AI routine was found that reads the flag. `[open]`
 - **The bitwise exactness of the RNG order against a live run.** The corpus confirms shapes, placement, radii and the 50 % ring. It cannot confirm the draw order without a seeded replay. `[derived from code]`
