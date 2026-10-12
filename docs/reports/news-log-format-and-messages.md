@@ -255,7 +255,7 @@ TPremierForm_StartTurn (58175–58235):
 | `1_thracia_271_spring_11.sav` | Armenia, 1 | Armenia wants to trade with Thracia. | — | 0 |
 | `1_thracia_271_summer_9.sav` | Rome, 1 | Rome wants to trade with Thracia. | — | 0 |
 
-In all six, the recipient is the save's current nation and the current relation is 0. No slot among the 2,101 contains "wants". The three notes recorded what the dialog said. An alliance offer (`2`) is written by the code but has never been observed.
+In all six, the recipient is the save's current nation and the current relation is 0. No slot among the 2,101 contains "wants". The three notes recorded what the dialog said. An alliance offer (`2`) is written by the code; it was first observed on 2026-10-12, 9 times in 120 staged turn starts ([`2026-10-12-g3-original-checks.md`](2026-10-12-g3-original-checks.md)), none of those saves being among the 2,101 slots counted here.
 
 ## What an implementation needs
 
@@ -281,7 +281,7 @@ In all six, the recipient is the save's current nation and the current relation 
 ## Still open
 
 - **An uppercase war declaration** has never been saved. Declaring war on anyone as Rome, then saving, would show "*ROME DECLARES WAR ON …*".
-- **An alliance offer** (`offer.type = 2`) and its dialog text have not been observed.
+- **An alliance offer** (`offer.type = 2`) and its dialog text: the offer was seen 9 times on 2026-10-12 (pending offer in the autosave tail and the box text read by OCR, [`2026-10-12-g3-original-checks.md`](2026-10-12-g3-original-checks.md)); the dialog was not inspected by eye here.
 - "*finishes a new fleet at*", "*sinks fleet of*" and "*have moved their capital to*" are code-only so far.
 - `FUN_00452034`'s trade/alliance decision rule was read only as far as needed here. It is AI decision code.
 

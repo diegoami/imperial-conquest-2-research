@@ -291,10 +291,10 @@ Both news logs carry the literal line, "*Galatia depose their leader Gunthemunde
 
 ## Still open
 
-- **The supply deduction on desertion** is read from code only. Both save cases had 0 supplies, so the `− troops div 100` was floored away.
+- **The supply deduction on desertion** is read from code only. Both save cases had 0 supplies, so the `− troops div 100` was floored away. **Played since (2026-10-12, [`2026-10-12-g3-original-checks.md`](2026-10-12-g3-original-checks.md)):** on staged mercenaries at purse 0 the supplies fell 170 -> 87 (the ordinary use 53 plus `troops div 100` = 30), the unit was removed, the last unit took its slot and nothing was written to the news; at purse 100 all units stayed.
 - **An army emptied by desertion** being deleted, and the resulting indirect morale effect, are both code-only.
 - **The human debt game-over** is code-only. Rome's deepest debt in the data, −904, is far above its −5,856 line. **User testimony (2026-09-14):** the user has played long stretches with a negative treasury without being deposed, and some nations start the game with a negative treasury. Both fit the rule, because "in debt" here does not mean "treasury below 0". It means below `−(wealth div 500)`, which is about 6 talents per 1,000 population and capped at 20,000, or unity below 400. A human deposition would contradict the rule only if it happened, or failed to happen, when the treasury was below that line or unity was under 400.
-- **The deposition's relation reset** (−5 … −1 → 0) is not observed: neither deposed nation had such a relation.
+- **The deposition's relation reset** (−5 … −1 → 0) is not observed: neither deposed nation had such a relation. Still not observed after the 312 staged deposition trials of [`2026-10-12-g3-original-checks.md`](2026-10-12-g3-original-checks.md) (no deposed nation held such a relation); that run also deposed a solvent nation at unity 350 (2 of 12), the unity half of the trigger.
 - `TAFSupply_ChangeMoney` has no treasury sign check in code. Whether the dialog lets a human fund a purse from a negative treasury is untested.
 
 ## Controlled-save recipe

@@ -22,6 +22,9 @@ cell-level evidence without re-tagging. The dominant tag is `[derived]`;
 the `[confirmed]` sub-rows are listed in the relay's highlights
 (E02 / E05 / E06 / E09 / E10 / E11 / E20 / E23 / E24 / E27 / E28).
 
+**Played since (2026-10-12):** E01, E03, E07, E13, E15, E16, E17, E19, E27, L05 and L06 were played on the original side, on staged saves, in
+[`2026-10-12-g3-original-checks.md`](2026-10-12-g3-original-checks.md); the tags below are as written then.
+
 ## Per-row sources
 
 **E01 — Diplomatic offer box at turn start** |
@@ -226,13 +229,17 @@ Part 1. `docs/rules-digest.md §2 "Supply drives morale and moves"`.
 2. **E13's "no save held a city below loyalty 39"** is `[derived]`
    carry-over per the inventory's row prose. Reproduction would need a
    controlled save that takes a city below 30 loyalty (a long siege with
-   high tax).
+   high tax). **Answered since (2026-10-12):** played on staged saves
+   (loyalty set to 2), [`2026-10-12-g3-original-checks.md`](2026-10-12-g3-original-checks.md).
 3. **E15's "desertion takes the army's last unit's place; supplies
    troops div 100 tons"** is the only `[code]` carry-over; not in
-   literals.
+   literals. **Answered since (2026-10-12):** played on staged
+   mercenaries ([`2026-10-12-g3-original-checks.md`](2026-10-12-g3-original-checks.md)).
 4. **E19's "winter famine / loyalty -1 with 1/3 chance"** is
    `[derived]` — no save held an empty winter stock (every test's cities
-   had positive supply going into winter).
+   had positive supply going into winter). **Answered since (2026-10-12):**
+   played on staged empty stocks and on cities that ran out by themselves
+   ([`2026-10-12-g3-original-checks.md`](2026-10-12-g3-original-checks.md)).
 5. **E25's fleet-moves formula details (30 - (ships-50)/10 -
    troops/100/ships - 3 at zero supplies; (70 - condition) >> 2 when
    below 70)** are `[derived]` carry-over from the inventory's row
