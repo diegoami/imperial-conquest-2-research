@@ -293,3 +293,5 @@ python3 runs/experiments/end_of_game/claims_audit.py                            
 | distinct reasons that produced a window | 5 |
 | staged inputs (rows of the staging table, distinct files) | 21 |
 | two-human scenarios (rows of after_game with two humans before) | 4 |
+
+**Cross-link (2026-10-12, [`2026-10-12-g4-followups.md`](2026-10-12-g4-followups.md)):** case C plays the other deposition conditions of `FUN_00452034` (year 250, unity < 400, cities > 333 — the first three disjuncts of the decompile above) and observes the End-of-Game box text for each: "Your unpopularity has forced the army to overthrow you" at unity 399, "You have reached the end of your allotted 20 years." at year 250 (also reached by the natural year-251-to-250 winter-week-11 roll), and the conquest text "You have conquerred the Mediterranean..." (sic) at city-count word 334. The cities > 333 conquest state is staged with `give_cities` (the receiver-side byte-change assertion catches the recruit-queue slot 0 +0x2e4 overrun the original buggy loop made when filling all 334 words).
