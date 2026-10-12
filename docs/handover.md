@@ -1,4 +1,4 @@
-# Handover: ic2-research (imperial-conquest-2-research), 2026-10-12
+# Handover: ic2-research (imperial-conquest-2-research), 2026-10-12 (mid-evening cycle)
 
 ## Role
 You are the research session. ic2-conquest (the bot/experiment session, `diegoami/ic2-conquest`) relays
@@ -11,87 +11,73 @@ what to look for (from our reports and code), a suggested method, and what to re
   - work in a worktree and open a PR;
   - ask the user which external model reviews, or whether to merge without review;
   - record each choice on the PR or issue;
-  - **merge as soon as the review (or the last re-check) approves, without asking** (owner's rule
+  - **merge as soon as the review (or last re-check) approves, without asking** (owner's rule
     of 2026-10-12, in rule 2), then clean up the worktrees and branch, and ack ic2-conquest for an
     intake.
   Nothing is pushed straight to main any more.
 - **Never write to ic2-conquest or imperial_conquest_2.** Read them only, with `gh api` /
   `gh release download`. ic2-conquest does not message the imperial_conquest_2 session; news for it
   goes through the user.
-- Wait for the next paste-prompt or peer message.
+- Wait for the next paste-prompt or peer message. The peer may be a different Claude backend
+  (claude / openai / MiniMax / GLM etc.); you read the backend off env vars, not memory.
 
 ## First turn
-- `git fetch --prune && git status -sb`: main should equal origin/main at `472fba8` or later.
+- Check what model you are by `echo $ANTHROPIC_BASE_URL $ANTHROPIC_MODEL
+  $ANTHROPIC_DEFAULT_OPUS_MODEL $ANTHROPIC_DEFAULT_SONNET_MODEL
+  $ANTHROPIC_DEFAULT_HAIKU_MODEL`. The `docs/handover-2026-10-12b.md` paragraph titled "What
+  changes on MiniMax / GLM" only applies if `ANTHROPIC_BASE_URL` is `https://api.minimax.io/anthropic`
+  (or `https://api.z.ai/api/anthropic`). If you are on Claude, that section is not relevant.
+- `git fetch --prune && git status -sb`: main should equal origin/main at `07c2bd1` or later.
 - `gh auth status`: account diegoami, repo scope, git over SSH.
-- `curl -sf localhost:8765/health`: quota-tracker, used for suggestions only. If it fails, follow the
-  user's global CLAUDE.md.
-- The memory folder loaded (MEMORY.md lists 5 memories). It is keyed by the path
+- `curl -sf localhost:8765/health`: quota-tracker, used for suggestions only. If it fails, follow
+  the user's global CLAUDE.md.
+- The memory folder loaded (MEMORY.md lists 5 memories). Keyed by the path
   `/home/diego/projects/imperial-conquest-2-research`.
 - The peer's socket address changes per session: use `ListAgents` to find `ic2-conquest`, never an
   old `uds:` path. When a peer session restarts, a send to its old address fails; re-list and resend.
 - `bash scripts/pending-drafts.sh` (it can take more than 120 s; give it a long timeout).
 
-## State at handover (2026-10-12, end of day)
-- HEAD `472fba8` on main, pushed (this handover's PR merges on top). No other branches, worktrees or
-  stashes; nothing uncommitted except the files to leave alone (below). README count: **175** reports
-  (convention, stated in the README since PR #15: every tracked `.md` under `docs/reports/`, archive
-  included; recount, never just increment). Open PRs: none.
-- **Open issue:** #5 (does the strategic AI mover's contact resolution `FUN_0044d734` differ for an AI
-  mover?), a research question that has not been taken. The static half (is it gated by the mover's
-  human flag?) can be done here with the dump.
-- **pending-drafts:** g1 and g3 are ledgered. ic2-conquest is marking its g1 and g2 drafts promoted in
-  its PR #82 (with our corrections copied in); g3 was acked at 472fba8. Expect `changed-since-review`
-  rows when those Status lines change: see "Status-line edits" below.
-- `docs/pending-requests.md`: one open item, the **desktop palette check**. It waits on the player.
-- **Possible future checks for ic2-conquest** (listed in the acks, not requested):
-  - g1: a mercenary hired in play; ally/war trade target; the other deposition disjuncts (year 250,
-    unity < 400, cities > 333); the other mobilise branches; a real X-button click; where File > New
-    clears the `0x4a0334` save flag.
-  - g3: rough sea painted by the game; the unhalved storm branch; two war armies within 9 tiles; AI
-    quarter income; the unexplained −8 relations drops; offer eligibility beyond the start; the
-    deposition relation reset (−5..−1 → 0); whether the remake's deposition has the unity < 400 test.
-- **On this machine:**
-  - the full Ghidra dump at `/mnt/c/Users/diego/AppData/Local/ReTools/all_app_functions.txt`
-    (sha256 `2018c205…`);
-  - the unpatched exe at `/home/diego/ic2-work/build/Imperial Conquest 2.exe` (sha256 `9d753d5d…`);
-  - Wine 10.0;
-  - not Ghidra itself, and not .NET.
-- **OpenCode reviews (the reviewer agent has now run live: PR #15 and PR #17, no refusals):**
-  - make a detached review worktree at the PR head (e.g. `~/ic2-work/review-pr<N>`), and put the
-    inputs under `review-inputs/` (add it to the common `info/exclude`): the brief
-    (`REVIEW-BRIEF.md`), the dump, the exe, the draft (`git show origin/main:findings/<f>`) and the
-    run's data folder (`git archive origin/main runs/experiments/data/<run> saves/README.md | tar -x -m`).
-    Tell the reviewer to download single release assets into `/tmp/ic2r-review-<N>`, not all of them;
-  - run `~/.opencode/bin/opencode run --agent reviewer -m <model> --variant medium --dir <wt>
-    --title "PR<N> review …" "Read review-inputs/REVIEW-BRIEF.md and do exactly what it says."
-    < /dev/null` in the background (nohup, pid to a file);
-  - get the session id from `~/.opencode/bin/opencode session list` run in the worktree (by title),
-    **not** by grepping the log (it matched a stray `ses_x6`);
-  - read the verdict with `opencode export <ses_…> > file` and
-    `jq -r '[.messages[]|select(.info.role=="assistant")|.parts[]|select(.type=="text")|.text]|last'`;
-  - re-checks resume the same session: `git checkout --detach` the new head in the review worktree,
-    then `opencode run --session <ses_…> "<named fixes only>"`;
-  - post each review in full on the PR (`gh pr comment -F`), and relay it in full to the user.
-- **Subagent intakes (Agent tool, Sonnet, `isolation: worktree`):**
-  - the brief carries the g1 review lessons (see "Done 2026-10-12"); fix rounds resume the same agent
-    with SendMessage and tell it to read the review comment on the PR in full, not a summary;
-  - **an Esc in the terminal stops background subagents for good** ("stopped by the user", cannot
-    be resumed). Start a fresh agent in the same worktree, pointing it at the notes file; only when
-    the user asks;
-  - monitor the transcript with `stat -L` (the task `.output` path is a symlink to
-    `~/.claude/projects/…/subagents/agent-<id>.jsonl`; plain `stat` measured the link and gave a
-    false "possibly stuck").
-- **Monitoring:** check liveness with `kill -0 <pid>`, not `pgrep -f "<pattern>"`. The pattern also
-  matches the watcher's own command line, and parentheses in a title break it.
-- **Leave alone:**
-  - untracked `.claude/settings.local.json`;
-  - `docs/ideas/2026-10-07-sitting-recorder.md`, ic2-conquest's idea. The user asked about it
-    2026-10-11 ("coaching sessions"); the open decision is whether desktop-Wine is enough as the
-    confirmation standard.
-- **Not run here:** the main session (imperial_conquest_2) consumes the gap analysis through its own
-  `/process-evidence`.
+## State at this handover (2026-10-12, mid-evening)
+- HEAD `07c2bd1` on main, pushed (this handover's squash). No other branches, worktrees or stashes;
+  nothing uncommitted except the files to leave alone (below). Reports count: **175** (recount, never
+  just increment). Open PRs: none.
+- **Worktree preserved for the g4 intake:** `/home/diego/ic2-work/intake-g4-followups`,
+  branch `intake/g4-followups`, head `7f60251` (no commits yet — created at main, untouched). It
+  sits there ready for the next session to start work in once ic2-conquest relays a complete, reviewed
+  g4 draft. **Don't delete this worktree** even when cleaning up; check it exists with `git worktree
+  list` before every PR create. If it's gone, recreate from main on `intake/g4-followups`.
+- **Open PR / intake: g4 hold.** The `findings/2026-10-12-g4-followups.md` draft in ic2-conquest at
+  branch `experiment/g4-followups` head `b85a526` is **8/12 of the cases** complete (F, C, B, A, D,
+  H, I, J); the Status line notes "(G, K, L, E: below)". ic2-conquest is finishing G, K, L, E (their
+  progress notes `docs/progress/g4-followups.md` confirm L and E haven't been run yet). When the
+  bot's relay arrives, the next session is expected to verify all 12 cases at once (not partial).
+- **Status-line sweep done 2026-10-12 mid-cycle:** PR #19 merged as `07c2bd1`. Only diff is
+  `docs/findings-intake.md`, two "Re-checked at `5d24142`" notes appended:
+  - g2 row: Status line only (now reads "promoted ... research PR #12 at `1ff54ab`" with the
+    intake corrections listed).
+  - g1 row: Status line + a new "Intake corrections" block (mirrors PR #15); the block restates the
+    F04/S05a/S04/S02a/S05/NEW-g1-5 corrections and lists A–F as "still open" items, noting that
+    A, B, C, D, F are now covered by the in-flight g4 intake and E (real X-button click) is the
+    only one open.
+  Reviewed by `openai/gpt-5.6-luna` via OpenCode (this session's override); verdict APPROVE on both
+  re-exported sessions; comment posted on PR; merged + worktrees cleaned. No ack to ic2-conquest
+  because the sweep is internal ledger bookkeeping, not an intake.
+- **Relay sent to ic2-conquest this session:** issue `diegoami/imperial_conquest_2#1010` (v0.5.3,
+  unit-map selection drawing: army / fleet / town selection frame shape, size, colours and whether
+  it blinks; marker's own colour change). `2026-10-02-unit-map-mouse-orders-and-tax-range.md` case d
+  (`D_1_selected.png`) is the only existing report to mention "the selection diamond" for a selected
+  army; towns and fleets aren't covered. The relay message is in the cross-session record between
+  this session and ic2-conquest (`msg_id` available in this session's outbound log); if the next
+  session needs to confirm the relay landed, `ListAgents` ic2-conquest and check its unread inbox.
 
-## Done 2026-10-12 (all merged)
+## Done 2026-10-12 (latest cycle first)
+
+- **PR #19, `07c2bd1`:** status-line sweep. Two-cell edit on `docs/findings-intake.md` for the g1
+  and g2 rows. Reviewed by gpt-5.6-luna via OpenCode (this session's in-session override hard-pinned
+  the reviewer; that override does NOT carry to the next session — re-ask the user for the new
+  session). No corrections from the review. Approve → merge right away.
+
+## Done 2026-10-12 (earlier cycles, all merged)
 - **PR #14:** the previous handover (no review, the user's choice).
 - **PR #15, `442261d`:** promoted `2026-10-11-g1-original-checks.md` (ic2-conquest `82151a5`; rows
   S04, S02a, F04, F06, NEW-g1-5, S05, S05a, S01), ack sent.
@@ -116,34 +102,7 @@ what to look for (from our reports and code), a suggested method, and what to re
     observed" among them). README 175.
   - Two Sonnet subagents (the first stopped by an accidental Esc after step 1); reviewed by
     gpt-6.1-sol: review (R1-R7), re-check (N1, the alive-Greece tax base), re-check, approve.
-- **Lessons from both reviews, now in the intake briefs:** propagate every correction to every copy
-  (feature inventory, refusal texts, gap analysis, rules spec, summary lines in the new report);
-  don't generalise from a fixture; an address must be the start of what it names; scope words
-  ("most of the N tested …"); recount the README; check denominators and double counting.
-
-## Done 2026-10-11 (all merged)
-- **PR #8:** model choice is now the user's (CLAUDE.md rules 1-13), with monitoring rules for
-  background runs. Reviewed by MiniMax-M2.7.
-- **PR #9, issue #7 closed:** the AI's army and fleet merges decompiled
-  (`2026-10-11-decompiled-ai-merge-armies-and-fleets.md`), for IC2's T159.
-  - Both §2.4 rows were wrong. Armies have no "orders outstanding" gate. In the fleet merge, the idle
-    fleet survives, and "no destination" is `+0xA == -1`.
-  - Written by a Sonnet subagent and reviewed by Sol in one review and two re-checks.
-- **PR #10:** the handover and environment notes now say the dump and Wine are on this machine.
-- **PR #11:** `docs/review-brief.md`: the review-brief section and the two-rounds rule, moved out of
-  memory.
-- **PR #12:** promoted `2026-10-11-g2-original-checks.md` (ic2-conquest `70c51eb`, ack sent).
-  - Checks 3, 4, 5 and 7 of g2.
-  - Corrections: the Split spinner clamp is in the code; the moves test in `TUnitMap_SelectUnit` only
-    gates attacks.
-  - Open: why the split-off army in `2026-10-02-fleet-orders-live.md` wasn't selected.
-  - Done by a Sonnet subagent, reviewed by MiniMax-M3.
-- **PR #13:** the OpenCode reviewer agent and the run rules, after the PR #12 review was refused twice
-  (on `/tmp`, then on `cd` + `..`). After isles-pro's fix.
-- **Pushed to main earlier on 2026-10-10/11, before the rule change:**
-  - `6b96537`: promoted `2026-10-10-fleet-emptied-by-transfer-money-and-supplies` (an emptied fleet's
-    money and supplies go to the other fleet, uncapped);
-  - `cf7a6c1`, `8ab6702`: corrections to the supply-clamps and cosmetic-gaps reports.
+- **PR #18:** the previous handover (no review, the user's choice).
 
 ## Intake procedure (per draft)
 1. **Fetch** the draft at the relayed commit:
@@ -204,41 +163,19 @@ what to look for (from our reports and code), a suggested method, and what to re
   on Windows), and Wine 10.0. **Not on it:** Ghidra itself and .NET, so the remake CLI can't be run.
 - **Remake code:** read with `gh api "repos/diegoami/imperial_conquest_2/contents/<path>?ref=37f3062"`.
 
-## Done 2026-10-10 (pushed to main, before the rule change)
-- **Supply and transfer clamps** promoted (`fcb0be0`):
-  - no army provider, and silence when there is no provider;
-  - the fleet-from-fleet scan-order quirk;
-  - Transfer ships clamps at 100 with no army or capacity test, and emptying a carrying fleet
-    destroys the army aboard;
-  - Transfer unit's fleet test truncates (30 ships take 15,499).
-  Spec, gap analysis and the 2026-09-18 testimony note were updated.
-- **Questions answered from the reports** (nothing changed):
-  - town "garrison" numbers are the recruitment slots at that city, seeded by the DAT's starting
-    queues;
-  - the remake's AI never besieges because of its 1550 ‰ gate (gap analysis AI-01/AI-02).
-- **Move check** for the new computer: the repo was clean and pushed. The external dependencies were
-  listed for the user: memory folder, gh, uv, opencode logins, quota-tracker service, ai-keys.env.
-
-## Done 2026-10-09 (all pushed)
-- **Storms, conquest and fleets:** storm loss and conquest both write 0 to the fleet's tile; the army
-  aboard goes first. Negative result: no natural AI conquest of a nation with a loaded fleet.
-- **Colours:**
-  - Unit icons are 3 + 3 Rome templates, recoloured from nation +0x424/+0x428/+0x42C, which new-game
-    setup fills. Numidia's fill is grey in code against teal art; seen in battle too (L1).
-  - Cities, capitals and toolbar glyphs are baked art. The 2026-09-29 strip most likely came from
-    the raw glyphs `[derived]`.
-- **The CA easter egg (H04):** a random 4-state totalistic rule, plus SaveBMP's format (24-bit,
-  bottom-up). The seed build makes N repeatable.
-- **AI checks 3 and 4** were seen in play. Four corrections went into `2026-10-07-strategic-ai-turn.md`
-  and `rules-specification.md`:
-  - the hunt adds the distance back and needs a score > 100;
-  - the jitter is `v + Random(4)·(v div 10)`;
-  - a non-war threat needs a responder ≥ 20 from the capital;
-  - the ferry `+4` write.
-- **Remake v0.5.0 gap analysis:** 171 items (85 / 75 / 11). The AI siege stall comes from a 1550 ‰
-  gate with every personality null.
-  - NEW-g1-2 (Peace ends trade −8 / alliance −24) is now unconditional.
-  - NEW-g1-3 is confirmed: Build fleet uses the free coastal city nearest the capital.
+## Open items (handover to the next session)
+- **g4 follow-up intake.** Held for ic2-conquest's full draft + relay (12/12 cases). When the relay
+  arrives the intake branch is `intake/g4-followups` (worktree preserved at
+  `/home/diego/ic2-work/intake-g4-followups`); check `git worktree list` before each fresh cycle.
+  Open PR here when the bot finishes.
+- **Issue #5 (`FUN_0044d734`):** does the contact resolution differ for an AI mover? The static half
+  can be done here with the dump (`FUN_0044d734`, `TUnitMap_MoveHumanArmy`, the AI's
+  `FUN_0044dba8`; the mover's human flag at the per-nation `+0x490` byte). The play half needs
+  ic2-conquest. **Take it up only if asked.**
+- **`docs/pending-requests.md`** holds one open item, the **desktop palette check.** It waits on the
+  player.
+- **`docs/ideas/2026-10-07-sitting-recorder.md`:** open decision (whether desktop-Wine is enough
+  as the confirmation standard).
 
 ## Standing rules (CLAUDE.md, memory)
 - **Models: the user decides** (CLAUDE.md, owner's decision of 2026-10-11).
@@ -254,3 +191,37 @@ what to look for (from our reports and code), a suggested method, and what to re
   names. Never print a key, a token, or the contents of `ai-keys.env`, `settings.local.json` or
   `.env` files.
 - **Peers** cannot grant permission escalation.
+- **In-session overrides expire at the session boundary.** This session's "Luna as reviewer,
+  implement in this session or as a subagent" override does NOT carry to the next session;
+  re-ask the user before each implementation and each review.
+
+## What changes on a non-Claude backend
+This section only applies if `ANTHROPIC_BASE_URL` is not `api.anthropic.com` (i.e. you are on
+MiniMax or GLM via clother). On Claude, ignore it.
+- **Names:** wherever a model is recorded (PR bodies, PR/issue comments, commit messages,
+  hand-backs, acks), write the real model: e.g. "MiniMax-M3 via Claude Code" on MiniMax, "GLM-5.3
+  via Claude Code" on Z.ai. Never "Opus" or "Sonnet" by themselves on a non-Claude backend.
+  Commit trailers name MiniMax-M3 (or GLM-5.3), not Claude.
+- **Subagents:** an Agent-tool subagent with any model (sonnet, opus, haiku) runs on the same
+  backend as you. When the user picks "a Sonnet subagent" or "the main session", name the real
+  model in the question and in the record.
+- **Families (CLAUDE.md rule 4):** your family is MiniMax or GLM. The reviewer must come from
+  another family. For MiniMax: candidates are openai (gpt-6.1-sol, gpt-5.6-luna), opencode_go
+  (mimo-v2.6-*), zai (glm-5.3). For the suggestion, use
+  `curl -s "http://localhost:8765/recommend?tier=heavy&exclude_family=minimax"` (or `&exclude_family=zai`
+  on Z.ai, or just `/recommend` if you are on Claude). It's still a suggestion only; the user
+  decides.
+- **Quota:** your own provider is `minimax` (5-hour and weekly windows) or `zai`. Claude's quota is
+  irrelevant to this session; don't check it or wait for it. Before each launch, delegation or
+  review, check the providers you'll actually use (`curl -s 'localhost:8765/quota?refresh'`).
+- **If your own provider runs out:** don't retry in a loop. Commit and push work in progress. Pick
+  the replacement from `curl -s localhost:8765/best` (only the user can choose claude back).
+  One-paragraph state summary, then the user runs the clother swap:
+  `/exit`, then Ctrl+C until the shell prompt
+  WSL:        ~/projects/clother/clother <glm|minimax|claude> --project <this project's root>
+  PowerShell: clother <glm|minimax|claude> --project <this project's root>
+  claude --continue`
+- **Limits:** WebSearch may fail; use gh / the repos or ask the user. Image input may not work:
+  in intakes, screenshots are evidence you can't check, so read the logs' OCR and memory values
+  instead and say so in the report. Never guess at a picture's contents.
+- **Leave `.claude/settings.local.json` alone:** clother's backend env block lives there.
