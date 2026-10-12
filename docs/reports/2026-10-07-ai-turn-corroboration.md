@@ -122,3 +122,5 @@ python3 runs/experiments/ai_turn/analyze_merc.py
 Saves: release `run-exp-ai-turn`, batches b1 (the run's `AUTO0720.SAV`–`AUTO0724.SAV`, plus the aborted
 attempt's own 0720–0725 autosaves preserved under `pre-run-game-folder/`) and b2 (0725–0732); hashes in
 `runs/experiments/data/run-exp-ai-turn/SAVES.sha256` and `MANIFEST-b{1,2}.txt`.
+
+**Cross-link (2026-10-12, [`2026-10-12-g4-followups.md`](2026-10-12-g4-followups.md)):** case I extends this corroboration to AI *quarter income*: 9 of 15 AI nation-quarters reproduce the `FUN_00451b40` / `FUN_004499ec` formula exactly (Rome: predicted 2,221 = observed in all four openings, the g3 +21; Seleucid, Macedonia, Numidia, Illyria unadjusted; Gaul, Ptolemaic, Bithynia, Media, Thracia pulled in by the seat-based trade-row fix). After the spending estimate 40 of 64 exact. Unity `min(990, max(300, unity + 25 - tax div 2 - mobilisation' div 5))` reproduced for 52 of 64 nation-openings. The four openings of the staged week-11 start are not independent.

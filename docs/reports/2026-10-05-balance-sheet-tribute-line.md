@@ -52,3 +52,5 @@ python3 runs/experiments/v050_rules/q2_ocr_rows.py     # reads the screenshots i
 python3 runs/experiments/v050_rules/fetch_archive.py      # once: the released saves and screenshots into artifacts/ (hash-checked)
 python3 runs/experiments/v050_rules/claims_audit.py       # inputs: the saves, the tracked code extracts and readings; row_source_audit.py checks each rule row
 ```
+
+**Cross-link (2026-10-12, [`2026-10-12-g4-followups.md`](2026-10-12-g4-followups.md)):** case A confirms the Mercenary units line on a *hired* (not staged) unit — Samnite light infantry 3,868 / quality 8 hired in play at Heraclea adds **Mercenary units 30** to the Expenditure column and brings Total 877 → 907 = 877 + 30, the g1 formula `quality x ((troops div 200) x price) div 5` (memory and OCR agree).

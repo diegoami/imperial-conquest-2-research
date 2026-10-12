@@ -358,3 +358,5 @@ python3 test_runner.py                                     # runner self-test
 - [`decompiled-unit-map-orders-and-record-fields.md`](decompiled-unit-map-orders-and-record-fields.md)
   — `TUnitMap_SupplyArmy` and `TUnitMap_SupplyFleet` open the dialog this report
   measured.
+
+**Cross-link (2026-10-12, [`2026-10-12-g4-followups.md`](2026-10-12-g4-followups.md)):** case E reads M04/M05/M06 on a real window: the main window on xfwm4 4.20 has `_NET_FRAME_EXTENTS` 0,0,24,0 with the title bar's X button at (1269,10), which is what the report measured (the 4 title-bar fragments, the `TPremierForm_StoreFormPositions @ 0x0045bb1c` exact address match, the ten WAV filename prefixes). The case runs on its own Xvfb display `:98` with xfwm4 started 10 s before the game (the M04-era observation that a game started within 3 s of the manager stayed undecorated is now reproduced and avoided).

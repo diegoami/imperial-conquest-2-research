@@ -63,3 +63,5 @@ python3 runs/experiments/v050_rules/claims_audit.py       # inputs: the saves, t
 ```
 
 **Follow-up (2026-10-08):** the price is again not charged with a full recruitment queue (purse 100 → 100, treasury unchanged), and the queue does not block the hire: [`2026-10-08-merc-hire-ignores-queue-r08-guards-slot-20.md`](2026-10-08-merc-hire-ignores-queue-r08-guards-slot-20.md).
+
+**Cross-link (2026-10-12, [`2026-10-12-g4-followups.md`](2026-10-12-g4-followups.md)):** case A extends the "price is not charged" finding to the Balance sheet — a Samnite light infantry 3,868 men (slot 6, quality 8) hired by play at Heraclea adds **Mercenary units 30** to the Expenditure column and brings Total 877 → 907 = 877 + 30 (memory and OCR agree; the OCR psm 8 read "-30" because the crop clipped the label's border). The g1 formula `quality x ((troops div 200) x price) div 5` gives 8 x (19 x 1) div 5 = 30 with price 1 for light infantry; purse 100, supplies and treasury 2,200 all unchanged at hire. The hire lands at last-occupied-slot + 1, as in the 2026-10-08 follow-up.
