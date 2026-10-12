@@ -141,7 +141,7 @@ news(" ")                                                        // one space, 0
 news("Week  " + Str(week) + "      " + seasonName[season] + "      " + Str(year) + "BC")
 ```
 
-- It is called **once per completed round**, after the calendar has advanced (week `+2`), so the header names the week that is starting. Weeks are always odd: 1, 3, 5, 7, 9, 11. The spacing is "Week" + 2 spaces, then 6 spaces on each side of the season name, and no space before "BC". Season names are the DAT's season table at `0x1F7D8`: `Spring`, `Summer`, `Autumn`, `Winter`.
+- It is called **once per completed round**, after the calendar has advanced (week `+2`), so the header names the week that is starting. Weeks are always odd: 1, 3, 5, 7, 9, 11. The spacing is "Week" + 2 spaces, then 6 spaces on each side of the season name, and no space before "BC". Season names are the DAT's season table at `0x1F7D8`: `Spring`, `Summer`, `Autumn`, `Winter`. (Read from the game's memory in play, 2026-10-12, six rounds: `Week  3      Spring      270BC`, `Week  11 ...`, `Week  1      Summer ...`; the seeded first header keeps `Week 1      Spring      270 BC`: [`2026-10-11-g1-original-checks.md`](2026-10-11-g1-original-checks.md).)
 - **Both lines are ordinary writer calls and use up slots.** A quiet round costs 2 of the 40 slots.
 - **They come after everything else in the tick.** Storm and loss-at-sea lines, fleet completions and the quarterly tick's deposed-leader lines all come first. So those lines appear under the *old* week's header. Everything a seat does in the new round follows the new header.
 

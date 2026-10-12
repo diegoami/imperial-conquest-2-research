@@ -158,7 +158,7 @@ Recruit/Mobilize/Disband/OK buttons (per the form's TPF0). Coverage:
 "Mobilize" + `saves/mobilize-new-army-0720.SAV` (army 14, HI 4,000,
 0 supplies, 0 moves, morale 59). `coverage.md §1 'Mobilize' ✅`. Refusal
 `"You cannot mobilise a unit at this time."` (`[derived]` carry-over; not in
-`dump_string_literals.v2.tsv`).
+`dump_string_literals.v2.tsv`; pinned at exe 0x54784 and played 2026-10-12, 2026-10-11-g1-original-checks.md).
 
 #### S05b — Recruit unit: Disband
 
@@ -199,7 +199,7 @@ fleet). Help topic 15 ("Build fleet") records the 24-week countdown ×
    in `dump_string_literals.v2.tsv` (`[derived]` carry-over in the
    inventory). The dialog has been reproduced
    (`saves/mobilize-new-army-0720.SAV`); the byte-exact refusal text isn't
-   pinned.
+   pinned. **Pinned since 2026-10-12:** exe 0x54784, played with the army table full (../reports/2026-10-11-g1-original-checks.md).
 3. **S05b's `"Are you sure you want to disband …"` literal** is in
    `dump_string_literals.v2.tsv` row 250 but the trailing text
    (`unit`/`s`/`.`) is split across rows 251–254. The full concatenation is

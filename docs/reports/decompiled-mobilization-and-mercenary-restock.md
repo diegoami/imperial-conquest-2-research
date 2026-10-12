@@ -203,7 +203,7 @@ Three army marker bands at **25,000 and 50,000 troops** `[confirmed]`. Seen in p
 
 `[confirmed]`. `DAT_004a0320` is the **index of the nation whose turn is being processed**, assigned in the turn loop as `DAT_004a0320 = *(short *)(&DAT_0049efe8 + DAT_004a0322 * 2)` — the same global every other report reads as "current nation". It is not a player index; the AI path passes it for itself.
 
-**Call site B (line 56077) — `TArmyRecruits_MobilizeUnits`, the player's dialog** `[confirmed]`. It walks the listbox selection backwards, maps each selected row to a slot through the form's `+0x4DE` row-to-slot table, applies the `> 15` gate, and calls `FUN_0044a4e0`. If any call cleared the flag it shows *"You cannot mobilise a unit at this time."*
+**Call site B (line 56077) — `TArmyRecruits_MobilizeUnits`, the player's dialog** `[confirmed]`. It walks the listbox selection backwards, maps each selected row to a slot through the form's `+0x4DE` row-to-slot table, applies the `> 15` gate, and calls `FUN_0044a4e0`. If any call cleared the flag it shows *"You cannot mobilise a unit at this time."* (played 2026-10-12 with the army table full, exe 0x54784: 2026-10-11-g1-original-checks.md)
 
 **Call site A (line 53794) — `FUN_004504f4`, the AI's recruit-and-mobilize routine** `[confirmed]`. Called once per AI turn from `FUN_0044ffbc` as `FUN_004504f4(threat - ownStrength)`, i.e. with a **strength deficit as a budget**. Its policy:
 
