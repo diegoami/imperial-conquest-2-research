@@ -38,7 +38,15 @@ At that pin: 282 complete exact, 36 residual; 283 exact draw sequences. The old
 registry set plus `hi-ar-three_s3_r5_hook`; later 63/48 and post-T175 90 target/draw
 registry entries are different snapshots/counting units, not residual series counts.
 
-**Still open:** every one of the 36 residual whole-path causes. Nineteen series
+**Fresh original progress:** the [decision trace](reports/2026-10-16-tactical25-original-decision-trace.md)
+reproduces all 325 legacy draw tuples and all 15 full saves in both runs, with NEW original
+claims/pass observations. At half-round 6, Gaul slot 22, original and port share all decoded
+slots/names, grid and equivalent claim counts immediately before choosing goals;
+original (5,3) versus port (6,4) is attributable to the actor-versus-enemy archer
+condition. Rankings already differ at half-round 4 but choose the same goal there. This is
+an observed shared-input decision cause, not a verified full corrected battle.
+
+**Still open:** complete corrected battle matching for all 36 residual paths. Nineteen series
 have a reproduced local rule discrepancy on a model phase input, seventeen have
 none in the evaluated probes. Original runtime claims and the general pass of
 original shots are not in legacy logs/SAVs; these gaps cannot be filled by local
@@ -49,12 +57,14 @@ The requested `mix-rg_s1` starting case is now pinned: draw 24, HR6, site
 `Random(172)=56`. The changed actor/target pair prevents treating it as a simple
 range correction. Local threat aim/order differs, but complete causality is not proved.
 
-**Next:** evaluate the accepted local source rules in bounded build-side correction
-contracts, then rerun unchanged full comparisons and identify exactly which residual
-paths disappear. Additional original runtime observations may be needed for the
-missing claims/pass state and 24 stopped-before-shot Pass2 stages. Preserve original
-fixtures/draw bounds and strict comparison behavior. No new expected-failure entry,
-fixture repair or gameplay patch is authorized by this research report.
+**Next:** evaluate a bounded actor/enemy threat-key correction against the pinned
+source rules, then perform a separately reviewed sensitivity/full comparison and
+identify exactly which complete residual paths disappear. The new original trace
+supplies claims/pass input through HR6 for mix-rg_s1 only; it does not fill missing
+legacy fields or the other cases. Further original observations may still be needed
+for other paths and the 24 stopped-before-shot Pass2 stages. Preserve immutable
+fixtures/draw bounds and strict comparison behavior; no gameplay, expected-failure
+or fixture change is authorized merely by promoting this report.
 
 **Done when:** a reviewed report establishes the surviving complete causal paths.
 Partial rule findings remain evidence for build evaluation; unexplained cases and

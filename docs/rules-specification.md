@@ -869,6 +869,8 @@ Open:
 
 ### The battle AI (ComputerGeneral)
 
+- Fresh mix-rg_s1 trace: both control/state observers reproduce all 325 legacy draw tuples and all 15 whole SAVs. New original claims and pass observations show shared gameplay input at HR6/Gaul22, original threat goal (5,3) versus port (6,4); original actor-archer condition versus port enemy-archer condition explains that first differing selected goal. Computed rankings differ earlier at HR4, with the same goal. New Wine snapshots are not backfilled into legacy records; no native confirmation or full corrected-battle proof ([original decision trace](reports/2026-10-16-tactical25-original-decision-trace.md)).
+
 - Corrected comparison at build `257f2d2` reports **282 complete exact / 36 residual**, with 283 exact bound/result streams. Nineteen residual series have locally reproduced rule discrepancies, seventeen do not in the evaluated probes; **all 36** remain open for complete original causal-path confirmation. Original claims and shot-general-pass fields are absent from legacy logs/SAVs and remain unknown ([partial attribution report](reports/2026-10-16-tactical-target-and-draw-attribution.md)).
 
 - The control predicate is active-nation computer **OR active-side general on**, shared by setup and Walk/step/shooting. It applies in placement too; the slow gate reads counter < 10 before increment. General-on preserves an existing setup budget; Information-window interruption clears the human side's flag without refilling moves. Reload performs setup before clearing runtime general flags; fresh/same-process reload can therefore differ. Copy-in morale/sort remain nation-only. Code and Wine observations (2026-10-16-computer-general-predicate-and-reload.md); no native confirmation.

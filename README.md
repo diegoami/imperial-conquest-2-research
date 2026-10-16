@@ -13,7 +13,7 @@ No original game files (EXE, DAT, HLP, SAV, screenshots, recordings) are include
 - `docs/decompilation-plan.md` — the Ghidra static-decompilation priority queue and status.
 - `docs/rules-specification.md` — the consolidated rules specification: every recovered rule, tagged and sourced, across ten subsystems.
 - `scripts/winhelp_tpf0/` — the re-runnable WinHelp/TPF0 form decoder (29 forms, 908 controls).
-- `docs/reports/` — 179 individual findings (every tracked .md under `docs/reports/`, the 12 archived ones included), from initial file-format analysis through fully decompiled game formulas (economy, combat, movement, diplomacy, AI dispatch, and more).
+- `docs/reports/` — 180 individual findings (every tracked .md under `docs/reports/`, the 12 archived ones included), from initial file-format analysis through fully decompiled game formulas (economy, combat, movement, diplomacy, AI dispatch, and more).
 
 ## Toolchain
 

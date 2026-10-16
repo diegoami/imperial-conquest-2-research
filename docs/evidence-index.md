@@ -14,6 +14,7 @@ A few small probe saves are committed in the fixtures repository itself rather t
 
 | Release | What it is | Saves | Screenshots | Recordings |
 |---|---|---|---|---|
+| [`run-exp-tactical25-trace`](https://github.com/diegoami/ic2-conquest/releases/tag/run-exp-tactical25-trace) | Fresh mix-rg_s1 original/Wine decision trace, all 325 legacy draws/all 15 saves matched in both runs; also four EXEs and three buffers | 33 | 0 | 0 |
 | [`run-exp-ai-oct16`](https://github.com/diegoami/ic2-conquest/releases/tag/run-exp-ai-oct16) | Original strategic AI regions/resupply and tactical Computer General; code/x86 + staged Wine, turn 0734/0743; five EXEs also released, never copied here | 252 | 0 | 0 |
 | [`run-1-rome`](https://github.com/diegoami/imp_conquest_fixtures/releases/tag/run-1-rome) | Run 1 — Rome (270 BC) | 16 | 5 | 8 |
 | [`run-1-cartago`](https://github.com/diegoami/imp_conquest_fixtures/releases/tag/run-1-cartago) | Run 1 — Carthage (271 BC) | 10 | 2 | 0 |
@@ -1871,3 +1872,63 @@ new model captures/x86 local probes; no native Windows confirmation.
 | [`mix-rg_s1_r5_hook_BATTLE06.SAV`](https://github.com/diegoami/ic2-test-fixtures/blob/6319802a75067e7730e4f6a27dce3b4e296ddd9b/battles/hook/mix-rg_s1_r5_hook_BATTLE06.SAV) | `de69151203cd4bb20c34a136b32a1ce68110ddc9fb2e0e685940a06eeb082ae9` |
 | [`mix-rg_s2_r5_hook_BATTLE06.SAV`](https://github.com/diegoami/ic2-test-fixtures/blob/6319802a75067e7730e4f6a27dce3b4e296ddd9b/battles/hook/mix-rg_s2_r5_hook_BATTLE06.SAV) | `953a8c3941b5d523cc51ab9c131324eacad93b676a089a912c491a81b716db6d` |
 | [`mix-rg_s3_r5_hook_BATTLE04.SAV`](https://github.com/diegoami/ic2-test-fixtures/blob/6319802a75067e7730e4f6a27dce3b4e296ddd9b/battles/hook/mix-rg_s3_r5_hook_BATTLE04.SAV) | `02aa2f0f9144259532bb1d81566fa027218fdee2cc3a96a5498e1003128f0add` |
+
+## Tactical25 original decision trace (2026-10-16)
+
+Pinned source: ic2-conquest `f872057ed455e977c33fc9ca2439b73a3a6f3c91`,
+`runs/experiments/data/run-exp-tactical25-trace/`. All 40 local artifact hashes
+match the pinned `SAVES.sha256`, release mapping and live release digests.
+The 33 saves include starts; four EXEs and three buffers are linked for complete
+recorder provenance. No binary is copied into this research tree.
+
+Working alias `MIX-RG_start.SAV` is an unedited copy of already-indexed
+`FLD-RG_0743_rome_army0_at_86_28.SAV`, hash
+`39edecd1fa74776ef7ed817794b2f2bea951b6b2b36ef09ab42813208095f0ad`;
+its three uniquely prefixed released copies below have the same bytes.
+Both fresh runs' fifteen BATTLE files match the corresponding immutable legacy
+mix-rg_s1 files byte-for-byte. In particular the new state-observer
+`20261016-191329-1302174-BATTLE06.SAV` equals the previously indexed
+`mix-rg_s1_r5_hook_BATTLE06.SAV`, turn 0743.
+
+| Released artifact | Kind |
+|---|---|
+| [`20261016-190528-1258374-BATTLE01.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-tactical25-trace/20261016-190528-1258374-BATTLE01.SAV) | save |
+| [`20261016-190528-1258374-BATTLE02.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-tactical25-trace/20261016-190528-1258374-BATTLE02.SAV) | save |
+| [`20261016-190528-1258374-BATTLE03.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-tactical25-trace/20261016-190528-1258374-BATTLE03.SAV) | save |
+| [`20261016-190528-1258374-BATTLE04.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-tactical25-trace/20261016-190528-1258374-BATTLE04.SAV) | save |
+| [`20261016-190528-1258374-BATTLE05.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-tactical25-trace/20261016-190528-1258374-BATTLE05.SAV) | save |
+| [`20261016-190528-1258374-BATTLE06.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-tactical25-trace/20261016-190528-1258374-BATTLE06.SAV) | save |
+| [`20261016-190528-1258374-BATTLE07.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-tactical25-trace/20261016-190528-1258374-BATTLE07.SAV) | save |
+| [`20261016-190528-1258374-BATTLE08.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-tactical25-trace/20261016-190528-1258374-BATTLE08.SAV) | save |
+| [`20261016-190528-1258374-BATTLE09.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-tactical25-trace/20261016-190528-1258374-BATTLE09.SAV) | save |
+| [`20261016-190528-1258374-BATTLE10.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-tactical25-trace/20261016-190528-1258374-BATTLE10.SAV) | save |
+| [`20261016-190528-1258374-BATTLE11.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-tactical25-trace/20261016-190528-1258374-BATTLE11.SAV) | save |
+| [`20261016-190528-1258374-BATTLE12.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-tactical25-trace/20261016-190528-1258374-BATTLE12.SAV) | save |
+| [`20261016-190528-1258374-BATTLE13.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-tactical25-trace/20261016-190528-1258374-BATTLE13.SAV) | save |
+| [`20261016-190528-1258374-BATTLE14.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-tactical25-trace/20261016-190528-1258374-BATTLE14.SAV) | save |
+| [`20261016-190528-1258374-BATTLE15.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-tactical25-trace/20261016-190528-1258374-BATTLE15.SAV) | save |
+| [`20261016-190528-1258374-Imperial.Conquest.2.tactical25.standard.exe`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-tactical25-trace/20261016-190528-1258374-Imperial.Conquest.2.tactical25.standard.exe) | observer EXE |
+| [`20261016-190528-1258374-MIX-RG_start.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-tactical25-trace/20261016-190528-1258374-MIX-RG_start.SAV) | save |
+| [`20261016-190528-1258374-hookbuf.bin`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-tactical25-trace/20261016-190528-1258374-hookbuf.bin) | raw recorder buffer |
+| [`20261016-191329-1302174-BATTLE01.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-tactical25-trace/20261016-191329-1302174-BATTLE01.SAV) | save |
+| [`20261016-191329-1302174-BATTLE02.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-tactical25-trace/20261016-191329-1302174-BATTLE02.SAV) | save |
+| [`20261016-191329-1302174-BATTLE03.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-tactical25-trace/20261016-191329-1302174-BATTLE03.SAV) | save |
+| [`20261016-191329-1302174-BATTLE04.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-tactical25-trace/20261016-191329-1302174-BATTLE04.SAV) | save |
+| [`20261016-191329-1302174-BATTLE05.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-tactical25-trace/20261016-191329-1302174-BATTLE05.SAV) | save |
+| [`20261016-191329-1302174-BATTLE06.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-tactical25-trace/20261016-191329-1302174-BATTLE06.SAV) | save |
+| [`20261016-191329-1302174-BATTLE07.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-tactical25-trace/20261016-191329-1302174-BATTLE07.SAV) | save |
+| [`20261016-191329-1302174-BATTLE08.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-tactical25-trace/20261016-191329-1302174-BATTLE08.SAV) | save |
+| [`20261016-191329-1302174-BATTLE09.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-tactical25-trace/20261016-191329-1302174-BATTLE09.SAV) | save |
+| [`20261016-191329-1302174-BATTLE10.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-tactical25-trace/20261016-191329-1302174-BATTLE10.SAV) | save |
+| [`20261016-191329-1302174-BATTLE11.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-tactical25-trace/20261016-191329-1302174-BATTLE11.SAV) | save |
+| [`20261016-191329-1302174-BATTLE12.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-tactical25-trace/20261016-191329-1302174-BATTLE12.SAV) | save |
+| [`20261016-191329-1302174-BATTLE13.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-tactical25-trace/20261016-191329-1302174-BATTLE13.SAV) | save |
+| [`20261016-191329-1302174-BATTLE14.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-tactical25-trace/20261016-191329-1302174-BATTLE14.SAV) | save |
+| [`20261016-191329-1302174-BATTLE15.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-tactical25-trace/20261016-191329-1302174-BATTLE15.SAV) | save |
+| [`20261016-191329-1302174-Imperial.Conquest.2.tactical25.state.exe`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-tactical25-trace/20261016-191329-1302174-Imperial.Conquest.2.tactical25.state.exe) | observer EXE |
+| [`20261016-191329-1302174-MIX-RG_start.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-tactical25-trace/20261016-191329-1302174-MIX-RG_start.SAV) | save |
+| [`20261016-191329-1302174-hookbuf.bin`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-tactical25-trace/20261016-191329-1302174-hookbuf.bin) | raw recorder buffer |
+| [`20261016-191329-1302174-statebuf.bin`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-tactical25-trace/20261016-191329-1302174-statebuf.bin) | raw recorder buffer |
+| [`20261016-210410-1249075-Imperial.Conquest.2.tactical25.standard.exe`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-tactical25-trace/20261016-210410-1249075-Imperial.Conquest.2.tactical25.standard.exe) | observer EXE |
+| [`20261016-210410-1249075-MIX-RG_start.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-tactical25-trace/20261016-210410-1249075-MIX-RG_start.SAV) | save |
+| [`state-observer-20261016-191329.exe`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-tactical25-trace/state-observer-20261016-191329.exe) | observer EXE |
