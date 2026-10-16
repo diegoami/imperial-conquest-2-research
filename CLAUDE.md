@@ -1,5 +1,9 @@
 # Agent rules
 
+These rules apply to Claude Code, Codex and external agents. `AGENTS.md` is Codex's entry
+point to this file. Explicit instructions from the user take precedence, including a
+task-specific choice to implement directly; do not ask again for a choice already made.
+
 ## Choosing models: the user decides (owner's decision, 2026-10-11)
 
 This replaces every earlier model-choice rule of the project (L50/L51 of harness_imperial, the
@@ -7,10 +11,12 @@ quota-tracker "follow `/recommend`" rule, default reviewers, chains, substitute 
 kept only as history where docs still show them.
 
 1. Before implementing anything (a task, a fix, a plan change), ask the user ONE question with the
-   question tool: does the main session implement it, or a subagent, and which model?
+   question tool when available (otherwise plain chat): does the main session implement it,
+   or a subagent, and which model?
    - The main session: it implements itself, in its own git worktree (never the main checkout).
-   - A subagent: the Agent tool with the model the user names (any model this session's backend
-     offers), or an external run (e.g. OpenCode) with the model the user names.
+   - A subagent: the client's delegation tool with the model the user names (only if that
+     client offers it), or an external run (e.g. OpenCode) with the model the user names.
+     Do not assume a Claude Agent tool or a particular model exists in Codex.
    Whoever implements works in its own worktree, keeps a short running-notes file there (plan, a
    progress line per commit, an END block before stopping), pushes after every commit, and opens
    the PR. When a subagent ends, the main session reads its final report before acting and posts
@@ -22,7 +28,7 @@ kept only as history where docs still show them.
    merged right away, without asking (owner's rule, 2026-10-12); then clean up its worktrees and
    branch, and ack ic2-conquest if it was an intake.
 3. With each question, show the quota service's recommendation as a SUGGESTION ONLY:
-   `curl -s "http://localhost:8765/recommend?tier=heavy"` for heavy work, `tier=light` for small
+   `curl -fsS --max-time 3 "http://localhost:8765/recommend?tier=heavy"` for heavy work, `tier=light` for small
    work (its `pick`/`pair` with rank, outlook and reliability). If it doesn't answer, ask without
    the suggestion.
 4. The only fixed rules: the reviewer is never of the implementer's model family; DeepSeek is never
@@ -55,6 +61,8 @@ Facts for running the model the user names (not a choice rule):
      branch but not on origin for ~15 minutes (push it for the run and record it);
    - free memory, if the machine is short of it: run reviews and builds one at a time.
    For a Claude subagent, the progress signal is its transcript file's size plus its worktree.
+   For Codex delegation, use the client's agent status/messages plus the worktree; do not
+   assume a Claude transcript path exists.
 10. Tell the user, in plain language, what each running agent is doing: the step it is on, what it
     committed, what it found (from its notes, commits and latest session messages). Never raw log
     lines or byte counts.
@@ -93,6 +101,8 @@ failure, read what it returned. Never retry blind.
 
   Open it read-only. Never read auth.json in that directory.
 - Claude agents: read the agent's final report (its hand-back) in full before acting.
+- Codex agents: read the completed agent's final message in full before acting. Use the
+  client's agent tools; do not query a Claude or OpenCode session store for a Codex run.
 - A run that stopped and reported gets an answer to its report: amend the task, decide, or
   escalate. Post the report on the task's issue so it is kept.
 - Treat any earlier "model X ends runs early" verdict as unconfirmed until its runs' final messages

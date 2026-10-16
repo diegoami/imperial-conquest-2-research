@@ -7,7 +7,18 @@ description: Pull new rule-discovery drafts from the ic2-conquest bot repository
 
 `ic2-conquest` (local clone `../ic2-conquest`, remote `diegoami/ic2-conquest`) plays the original game headless and drafts discoveries in `findings/`. This repo is the gate: nothing enters `docs/reports/` unreviewed. **Never write to ic2-conquest**; everything below is read-only there. State lives in `docs/findings-intake.md`.
 
+This skill is shared by Claude Code and Codex. Read `CLAUDE.md` for the current workflow
+policy and `docs/environment.md` for tool and messaging fallbacks. Resolve paths from the
+research worktree root, not this skill folder. A sibling clone is optional; its location
+must be checked separately when working in a worktree.
+
 ## 1. Find candidates
+
+Start with `bash scripts/pending-drafts.sh`: it reads all remote branches through the
+GitHub API and works without a sibling checkout. It needs authenticated `gh` access.
+An authentication or network failure is not an empty queue.
+
+If an existing local clone is available, the manual alternative is:
 
 ```bash
 cd ../ic2-conquest && git fetch --all --prune
@@ -28,7 +39,7 @@ A draft is a claim, not evidence. For each one:
 
 - **Cited saves**: each bare filename must resolve in `docs/evidence-index.md`, or in ic2-conquest's `saves/README.md` / release `run-<id>`. A claim with no retrievable save and no code corroboration is `deferred`. If the draft is honest that it is Wine-only or its saves are unpublished and the claims are consistent with existing reports, promote it as `promoted, provisional`: the status line says what is missing, and the ledger row names the follow-up (publish the release, add to `evidence-index.md`).
 - **Code claims** (addresses, function names): re-check against the Ghidra dumps on the researcher's machine when they are available (see README, Toolchain); say in the report when you could not.
-- **Overlap**: `grep -ril` the key terms in `docs/reports/`. A draft may confirm, extend, or contradict an existing report. Contradictions are the valuable ones: fix the old report's sentence and link the new one (see how `2026-09-29-loading-a-save-does-not-reseed.md` corrected the battle feasibility report).
+- **Overlap**: use `rg -il` for the key terms in `docs/reports/`. A draft may confirm, extend, or contradict an existing report. Contradictions are the valuable ones: fix the old report's sentence and link the new one (see how `2026-09-29-loading-a-save-does-not-reseed.md` corrected the battle feasibility report).
 - **Scope**: keep "What this does not establish" honest. Do not promote an inference as an observation.
 
 ## 3. Promote
@@ -38,11 +49,17 @@ A draft is a claim, not evidence. For each one:
 3. New saves go into `docs/evidence-index.md`; bare filenames only, no binaries in git.
 4. Update the report count in `README.md` if it states one.
 5. Add a row to `docs/findings-intake.md`, including for rejected and deferred drafts, so they are not re-reviewed.
-6. Commit with a body listing each draft, what was corrected, and `Drafts from diegoami/ic2-conquest, branch <b>, commit <sha>`. Do not push unless asked.
+6. Follow `CLAUDE.md` for worktrees, running notes, commits, pushes and PR review, subject to
+   the user's explicit instructions for this task. The commit body lists each draft, what
+   was corrected, and `Drafts from diegoami/ic2-conquest, branch <b>, commit <sha>`.
 
 ## 4. Report to the user
 
 For each candidate: outcome, what you corrected or could not verify, which existing reports changed. Mention that ic2-conquest still lists the draft: the player removes or marks it there, since this session must not write to that repo.
+
+After merge, acknowledge the peer only through an available, authorized messaging tool.
+If none is available, give the user the acknowledgment text with the draft and merged PR
+identifiers; do not substitute an issue, PR comment or another communication channel.
 
 ## Daily check
 

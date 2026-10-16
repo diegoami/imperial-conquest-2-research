@@ -18,3 +18,10 @@ No original game files (EXE, DAT, HLP, SAV, screenshots, recordings) are include
 ## Toolchain
 
 The local decompilation toolchain (Ghidra, recovered Delphi symbols, decompiled-function dumps) lives outside both repositories, on the researcher's own machine — not checked into either repo, consistent with never distributing the original game's files or a full disassembly of its executable.
+
+## Agent workflow
+
+Claude Code and Codex share the rules in [CLAUDE.md](CLAUDE.md); Codex enters through
+[AGENTS.md](AGENTS.md). See [docs/environment.md](docs/environment.md) for startup,
+validation, evidence access and messaging fallbacks. The `retrieve-findings` skill is
+shared through `.claude/skills/` and `.agents/skills/`, with one maintained source.

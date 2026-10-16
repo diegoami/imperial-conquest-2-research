@@ -1,5 +1,14 @@
 # Handover: ic2-research (imperial-conquest-2-research), 2026-10-12 (mid-evening cycle)
 
+## Client compatibility (updated 2026-10-16)
+
+This handover records the 2026-10-12 session. Start with `docs/environment.md` for current,
+portable startup instructions, and `CLAUDE.md` for shared policy (Codex reaches it through
+`AGENTS.md`). Verify dated paths and commit IDs before acting. The Claude memory folder,
+`ANTHROPIC_*` identity check, `ListAgents`, `SendMessage` and clother instructions below
+apply only in a client where those capabilities exist. Without peer messaging, give the
+user concrete text to relay; do not send it through a different channel.
+
 ## Role
 You are the research session. ic2-conquest (the bot/experiment session, `diegoami/ic2-conquest`) relays
 finding drafts over SendMessage. You verify each draft, promote it into `docs/reports/`, and ack the
@@ -214,8 +223,10 @@ MiniMax or GLM via clother). On Claude, ignore it.
 - **Quota:** your own provider is `minimax` (5-hour and weekly windows) or `zai`. Claude's quota is
   irrelevant to this session; don't check it or wait for it. Before each launch, delegation or
   review, check the providers you'll actually use (`curl -s 'localhost:8765/quota?refresh'`).
-- **If your own provider runs out:** don't retry in a loop. Commit and push work in progress. Pick
-  the replacement from `curl -s localhost:8765/best` (only the user can choose claude back).
+- **If your own provider runs out:** don't retry in a loop. Preserve work under `CLAUDE.md`
+  and the user's task instructions. Ask the user to choose the replacement model; quota
+  recommendations do not authorize a switch. The following clother commands apply only
+  when the user chooses a Claude Code backend switch.
   One-paragraph state summary, then the user runs the clother swap:
   `/exit`, then Ctrl+C until the shell prompt
   WSL:        ~/projects/clother/clother <glm|minimax|claude> --project <this project's root>
