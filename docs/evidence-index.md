@@ -1814,3 +1814,60 @@ and source references remain in that pinned data folder. No native Windows evide
 | [`reg_same_right_plain-20261016-145723-529357-post.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-ai-oct16/reg_same_right_plain-20261016-145723-529357-post.SAV) | `run-exp-ai-oct16` |
 | [`reg_same_right_plain-20261016-150204-535849-AUTO0734.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-ai-oct16/reg_same_right_plain-20261016-150204-535849-AUTO0734.SAV) | `run-exp-ai-oct16` |
 | [`reg_same_right_plain-20261016-150204-535849-post.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-ai-oct16/reg_same_right_plain-20261016-150204-535849-post.SAV) | `run-exp-ai-oct16` |
+
+## Tactical target and draw attribution (2026-10-16)
+
+No new binary artifacts were produced. The existing original corpus is in
+[run-exp-battle-hook](https://github.com/diegoami/ic2-conquest/releases/tag/run-exp-battle-hook).
+The pinned private fixture mirror is `diegoami/ic2-test-fixtures` commit
+`6319802a75067e7730e4f6a27dce3b4e296ddd9b`; its `battles/README.md` records
+release mapping and CSV line endings. Intake checked all 318 hook hashes and the
+following raw first-divergence boundaries against its `battles/SHA256SUMS`.
+
+`mix-rg_s1_r5_hook_BATTLE06.SAV` is also an exact member of the published
+[`b11-hook-batch-v2-mix.tar.gz`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-battle-hook/b11-hook-batch-v2-mix.tar.gz),
+archive SHA256 `463596123364e6d6ac739bc6ab4e4f7e584d9501f9fdfbee01cae05063d9e020`.
+The downloaded member matches the pinned fixture bytes. The start
+`FLD-RG_0743_rome_army0_at_86_28.SAV` is already indexed above under battle-sweep.
+Full text captures/inventory: ic2-conquest `586d361`,
+`runs/experiments/data/run-exp-tactical25/`. These are old Wine originals plus
+new model captures/x86 local probes; no native Windows confirmation.
+
+| First differing boundary save (turn 0743) | SHA256 |
+|---|---|
+| [`ar-hc-three_s1_r5_hook_BATTLE14.SAV`](https://github.com/diegoami/ic2-test-fixtures/blob/6319802a75067e7730e4f6a27dce3b4e296ddd9b/battles/hook/ar-hc-three_s1_r5_hook_BATTLE14.SAV) | `642964ad85a2a197e00d14d2b8354cec27b5b71cbf748a609f81a5a4992015cf` |
+| [`ar-hi-three_s2_r5_hook_BATTLE19.SAV`](https://github.com/diegoami/ic2-test-fixtures/blob/6319802a75067e7730e4f6a27dce3b4e296ddd9b/battles/hook/ar-hi-three_s2_r5_hook_BATTLE19.SAV) | `6a6fb4c7dae75cda7becfc4af259a1a1aa8b6c1a5fa29127847d7c3f2c98b655` |
+| [`ar-hi-three_s3_r5_hook_BATTLE19.SAV`](https://github.com/diegoami/ic2-test-fixtures/blob/6319802a75067e7730e4f6a27dce3b4e296ddd9b/battles/hook/ar-hi-three_s3_r5_hook_BATTLE19.SAV) | `d1418830551c0efad887065e4b825b238be657f1d13bbf5fe4e0956d66c02718` |
+| [`ar-lc-three_s2_r5_hook_BATTLE08.SAV`](https://github.com/diegoami/ic2-test-fixtures/blob/6319802a75067e7730e4f6a27dce3b4e296ddd9b/battles/hook/ar-lc-three_s2_r5_hook_BATTLE08.SAV) | `3e5e8efb1545187acc66c6e4629834b8bf4a970f512b023935364be08d468366` |
+| [`ar-li-three_s1_r5_hook_BATTLE08.SAV`](https://github.com/diegoami/ic2-test-fixtures/blob/6319802a75067e7730e4f6a27dce3b4e296ddd9b/battles/hook/ar-li-three_s1_r5_hook_BATTLE08.SAV) | `65e1830ab838bbec2998d6cdcfae48e4644e15d6d9e834f945ff1963c17d4083` |
+| [`ar-li-three_s2_r5_hook_BATTLE08.SAV`](https://github.com/diegoami/ic2-test-fixtures/blob/6319802a75067e7730e4f6a27dce3b4e296ddd9b/battles/hook/ar-li-three_s2_r5_hook_BATTLE08.SAV) | `7104c8cb9522c8b8c97d52b3b8c492944ac9470c4d36d2aa7ead2cd365b4be29` |
+| [`ar-li-three_s3_r5_hook_BATTLE08.SAV`](https://github.com/diegoami/ic2-test-fixtures/blob/6319802a75067e7730e4f6a27dce3b4e296ddd9b/battles/hook/ar-li-three_s3_r5_hook_BATTLE08.SAV) | `885607aabc737d69fe197334278d4ae051d3ad2c025434154c568bfc77f73574` |
+| [`hc-ar-three_s1_r5_hook_BATTLE16.SAV`](https://github.com/diegoami/ic2-test-fixtures/blob/6319802a75067e7730e4f6a27dce3b4e296ddd9b/battles/hook/hc-ar-three_s1_r5_hook_BATTLE16.SAV) | `50e3991a64976a925b2fa7915ec502663a5de88ee3478de7027f81c7464d850d` |
+| [`hc-ar-three_s3_r5_hook_BATTLE20.SAV`](https://github.com/diegoami/ic2-test-fixtures/blob/6319802a75067e7730e4f6a27dce3b4e296ddd9b/battles/hook/hc-ar-three_s3_r5_hook_BATTLE20.SAV) | `4e84c1b531ea96947ec38db155fcd93b09de812140e9926d6ea6113e3589a45c` |
+| [`hc-hc-three_s2_r5_hook_BATTLE11.SAV`](https://github.com/diegoami/ic2-test-fixtures/blob/6319802a75067e7730e4f6a27dce3b4e296ddd9b/battles/hook/hc-hc-three_s2_r5_hook_BATTLE11.SAV) | `00b7a7aa63301b842d115931b9bf565f9ff8e5a84a79f4ea971802e830ff6a80` |
+| [`hc-hi-three_s3_r5_hook_BATTLE08.SAV`](https://github.com/diegoami/ic2-test-fixtures/blob/6319802a75067e7730e4f6a27dce3b4e296ddd9b/battles/hook/hc-hi-three_s3_r5_hook_BATTLE08.SAV) | `768e73258abfedec118549a1de7b840a11f814b5075dd12ca07cfc1d13143c02` |
+| [`hi-ar-three_s1_r5_hook_BATTLE07.SAV`](https://github.com/diegoami/ic2-test-fixtures/blob/6319802a75067e7730e4f6a27dce3b4e296ddd9b/battles/hook/hi-ar-three_s1_r5_hook_BATTLE07.SAV) | `a760387bba1e63d310e7144c0c8e892a9e897bd4b0aa4047e5a6856646d78462` |
+| [`hi-ar-three_s2_r5_hook_BATTLE07.SAV`](https://github.com/diegoami/ic2-test-fixtures/blob/6319802a75067e7730e4f6a27dce3b4e296ddd9b/battles/hook/hi-ar-three_s2_r5_hook_BATTLE07.SAV) | `90e2bc9f6b7e9f1aa616fde6337b1547df66ec6c0599db022b3d29e4fd4ba00e` |
+| [`hi-ar-three_s3_r5_hook_BATTLE07.SAV`](https://github.com/diegoami/ic2-test-fixtures/blob/6319802a75067e7730e4f6a27dce3b4e296ddd9b/battles/hook/hi-ar-three_s3_r5_hook_BATTLE07.SAV) | `f6a3b63a071ba5a9ce50eceb46072032e2ef37459eadfd0e1dbd8db6824f468a` |
+| [`hi-lc-three_s1_r5_hook_BATTLE07.SAV`](https://github.com/diegoami/ic2-test-fixtures/blob/6319802a75067e7730e4f6a27dce3b4e296ddd9b/battles/hook/hi-lc-three_s1_r5_hook_BATTLE07.SAV) | `7cff7f515f280deb1010654bb77acfe7857ac3b92f9fd444773c036b009f0d7d` |
+| [`hi-li-three_s3_r5_hook_BATTLE06.SAV`](https://github.com/diegoami/ic2-test-fixtures/blob/6319802a75067e7730e4f6a27dce3b4e296ddd9b/battles/hook/hi-li-three_s3_r5_hook_BATTLE06.SAV) | `ade5261f08ed242a4a9bfb2a331fc290dc65d77d74d369ccb506f1613b7c4bd1` |
+| [`lc-ar-three_s1_r5_hook_BATTLE09.SAV`](https://github.com/diegoami/ic2-test-fixtures/blob/6319802a75067e7730e4f6a27dce3b4e296ddd9b/battles/hook/lc-ar-three_s1_r5_hook_BATTLE09.SAV) | `aaf11f228ce731e7ebf502e66913a09d86ae1175e1732363dab71d27a422c334` |
+| [`lc-ar-three_s2_r5_hook_BATTLE09.SAV`](https://github.com/diegoami/ic2-test-fixtures/blob/6319802a75067e7730e4f6a27dce3b4e296ddd9b/battles/hook/lc-ar-three_s2_r5_hook_BATTLE09.SAV) | `dbedbb6d956089bc8c37076c4c0978d0cf29a537808b5503dd9eff00c45edc20` |
+| [`lc-hi-three_s1_r5_hook_BATTLE07.SAV`](https://github.com/diegoami/ic2-test-fixtures/blob/6319802a75067e7730e4f6a27dce3b4e296ddd9b/battles/hook/lc-hi-three_s1_r5_hook_BATTLE07.SAV) | `af0e5fa239a8de87356748e283235cbd1b7f75b22f125faa4691856f5d2e2e31` |
+| [`lc-hi-three_s2_r5_hook_BATTLE07.SAV`](https://github.com/diegoami/ic2-test-fixtures/blob/6319802a75067e7730e4f6a27dce3b4e296ddd9b/battles/hook/lc-hi-three_s2_r5_hook_BATTLE07.SAV) | `e1d2eaf42a365af69fe9e01ce08b8b5d2f6fead5b7fdfd93c7cfce24d54184ea` |
+| [`lc-li-three_s2_r5_hook_BATTLE11.SAV`](https://github.com/diegoami/ic2-test-fixtures/blob/6319802a75067e7730e4f6a27dce3b4e296ddd9b/battles/hook/lc-li-three_s2_r5_hook_BATTLE11.SAV) | `daffbc267add5e2bd830cc6b81477db076ea6c148a9b4f5cc34a02ce81faad34` |
+| [`lc-li-three_s3_r5_hook_BATTLE08.SAV`](https://github.com/diegoami/ic2-test-fixtures/blob/6319802a75067e7730e4f6a27dce3b4e296ddd9b/battles/hook/lc-li-three_s3_r5_hook_BATTLE08.SAV) | `fa8bed462f3480d2a1f7b705163390628031161f713e0ec579f0db9cff80fb22` |
+| [`li-ar-three_s2_r5_hook_BATTLE09.SAV`](https://github.com/diegoami/ic2-test-fixtures/blob/6319802a75067e7730e4f6a27dce3b4e296ddd9b/battles/hook/li-ar-three_s2_r5_hook_BATTLE09.SAV) | `24d24e378d16f215b56230a56c4d3335969a539c6456c455e31780527cc1895d` |
+| [`li-hc-three_s1_r5_hook_BATTLE09.SAV`](https://github.com/diegoami/ic2-test-fixtures/blob/6319802a75067e7730e4f6a27dce3b4e296ddd9b/battles/hook/li-hc-three_s1_r5_hook_BATTLE09.SAV) | `48583435948db462e7ca4f63847a76d1fda5b8f707374606819343b64558bf8d` |
+| [`li-hc-three_s3_r5_hook_BATTLE11.SAV`](https://github.com/diegoami/ic2-test-fixtures/blob/6319802a75067e7730e4f6a27dce3b4e296ddd9b/battles/hook/li-hc-three_s3_r5_hook_BATTLE11.SAV) | `9375c1e3698efbc2c38e50998d7463db9acd324b08384c21a3e603cc9e63e035` |
+| [`li-hi-half-three_s1_r5_hook_BATTLE07.SAV`](https://github.com/diegoami/ic2-test-fixtures/blob/6319802a75067e7730e4f6a27dce3b4e296ddd9b/battles/hook/li-hi-half-three_s1_r5_hook_BATTLE07.SAV) | `049e723fd9a1fc7b7f76aa965f9798deea14aaa491e8670406a23b82ee649439` |
+| [`li-hi-half-three_s3_r5_hook_BATTLE07.SAV`](https://github.com/diegoami/ic2-test-fixtures/blob/6319802a75067e7730e4f6a27dce3b4e296ddd9b/battles/hook/li-hi-half-three_s3_r5_hook_BATTLE07.SAV) | `543bdc8087bfbb203f8d42387a999709b3dc22f53c147dfa76c42920d1483458` |
+| [`li-hi-one-three_s1_r5_hook_BATTLE07.SAV`](https://github.com/diegoami/ic2-test-fixtures/blob/6319802a75067e7730e4f6a27dce3b4e296ddd9b/battles/hook/li-hi-one-three_s1_r5_hook_BATTLE07.SAV) | `46ce077ebc1eb51ddcdec31fb2f270bd26de64d9b902a80a60efc63897219bdb` |
+| [`li-hi-one-three_s3_r5_hook_BATTLE07.SAV`](https://github.com/diegoami/ic2-test-fixtures/blob/6319802a75067e7730e4f6a27dce3b4e296ddd9b/battles/hook/li-hi-one-three_s3_r5_hook_BATTLE07.SAV) | `f4d0957937872c90a594829111914bc667bf784fb818a86fda8588b5cd026c7a` |
+| [`li-hi-three_s2_r5_hook_BATTLE07.SAV`](https://github.com/diegoami/ic2-test-fixtures/blob/6319802a75067e7730e4f6a27dce3b4e296ddd9b/battles/hook/li-hi-three_s2_r5_hook_BATTLE07.SAV) | `4306eb1e7efb3ff2d107ac045aab9b5ace074826bafe8519de8be8670b412537` |
+| [`li-lc-three_s1_r5_hook_BATTLE08.SAV`](https://github.com/diegoami/ic2-test-fixtures/blob/6319802a75067e7730e4f6a27dce3b4e296ddd9b/battles/hook/li-lc-three_s1_r5_hook_BATTLE08.SAV) | `6fb505c9c49594623a90df25531e4afbcb64092e0e122c9020dd6c788617264c` |
+| [`li-lc-three_s2_r5_hook_BATTLE10.SAV`](https://github.com/diegoami/ic2-test-fixtures/blob/6319802a75067e7730e4f6a27dce3b4e296ddd9b/battles/hook/li-lc-three_s2_r5_hook_BATTLE10.SAV) | `25472ca1829f34321f8755fe50e4001245b9b6b44157b87af3a02d5d81fcf727` |
+| [`li-lc-three_s3_r5_hook_BATTLE08.SAV`](https://github.com/diegoami/ic2-test-fixtures/blob/6319802a75067e7730e4f6a27dce3b4e296ddd9b/battles/hook/li-lc-three_s3_r5_hook_BATTLE08.SAV) | `dffd4d8f09e245a65b5c790f2c0a2b24f18cd516b6cff950397ba003b0bf37f7` |
+| [`mix-rg_s1_r5_hook_BATTLE06.SAV`](https://github.com/diegoami/ic2-test-fixtures/blob/6319802a75067e7730e4f6a27dce3b4e296ddd9b/battles/hook/mix-rg_s1_r5_hook_BATTLE06.SAV) | `de69151203cd4bb20c34a136b32a1ce68110ddc9fb2e0e685940a06eeb082ae9` |
+| [`mix-rg_s2_r5_hook_BATTLE06.SAV`](https://github.com/diegoami/ic2-test-fixtures/blob/6319802a75067e7730e4f6a27dce3b4e296ddd9b/battles/hook/mix-rg_s2_r5_hook_BATTLE06.SAV) | `953a8c3941b5d523cc51ab9c131324eacad93b676a089a912c491a81b716db6d` |
+| [`mix-rg_s3_r5_hook_BATTLE04.SAV`](https://github.com/diegoami/ic2-test-fixtures/blob/6319802a75067e7730e4f6a27dce3b4e296ddd9b/battles/hook/mix-rg_s3_r5_hook_BATTLE04.SAV) | `02aa2f0f9144259532bb1d81566fa027218fdee2cc3a96a5498e1003128f0add` |

@@ -28,24 +28,34 @@ on the desktop too.
 
 ## Tactical target/draw divergences (research #25)
 
-The original-side #24 predicate/timing evidence is promoted in
-[2026-10-16-computer-general-predicate-and-reload.md](reports/2026-10-16-computer-general-predicate-and-reload.md).
-The build's independently reviewed general-control correction must be integrated,
-alongside build #1103 (`6d2d2fee`) and #1105 (`269a826c`), before a valid comparison.
-Research intake is not that correction. Build #1104 was still open at intake.
+The prerequisite gate is now cleared at reviewed build PR #1156, merge
+`257f2d2cd7510451d229a983553a54b89065b06c`, including the control correction
+alongside #1103/#1105. The 318-hook comparison and recovered historical inventory
+are promoted as [confirmed, partial](reports/2026-10-16-tactical-target-and-draw-attribution.md).
 
-The ic2-conquest `caf2a17` inventory audit (no comparison run) reproduces the
-historical issue-1107 subset as 57 cases / 41 diagnostic series (T129 `9664936e`);
-the recorded current subset is 63 / 48, registry blob `c0402c89`. Eight case IDs
-were newly linked and two no longer linked. The old 42-series survey ID list is
-missing; its unmatched series has not been identified or declared fixed.
+At that pin: 282 complete exact, 36 residual; 283 exact draw sequences. The old
+42-series recovered working survey contains the historical 57-case/41-series
+registry set plus `hi-ar-three_s3_r5_hook`; later 63/48 and post-T175 90 target/draw
+registry entries are different snapshots/counting units, not residual series counts.
 
-After the prerequisites, begin with `mix-rg_s1` BATTLE06, Gaul slots 22/23:
-reported first mismatch draw 24, half-round 6, site `0x439557`, original range
-1085 versus port 172. Pin the comparison revision and preserve immutable draws,
-fixtures and all first divergences. Attribute each cluster by original target
-claims, pass/slot order, ties and flank rules; no range rebaseline or combined
-emulation as proof. Return a reviewed findings draft through intake.
+**Still open:** every one of the 36 residual whole-path causes. Nineteen series
+have a reproduced local rule discrepancy on a model phase input, seventeen have
+none in the evaluated probes. Original runtime claims and the general pass of
+original shots are not in legacy logs/SAVs; these gaps cannot be filled by local
+x86 execution on model state. Retain the state-only `ar-hi-three_s3` residual.
 
-**Done when:** the gated comparison has an attributed, sourced report promoted,
-with unexplained cases kept open. Full scope: research issue #25 / build #1107.
+The requested `mix-rg_s1` starting case is now pinned: draw 24, HR6, site
+`0x439557`, original Gaul23 -> Rome2 `Random(1085)=357`, model Gaul22 -> Rome1
+`Random(172)=56`. The changed actor/target pair prevents treating it as a simple
+range correction. Local threat aim/order differs, but complete causality is not proved.
+
+**Next:** evaluate the accepted local source rules in bounded build-side correction
+contracts, then rerun unchanged full comparisons and identify exactly which residual
+paths disappear. Additional original runtime observations may be needed for the
+missing claims/pass state and 24 stopped-before-shot Pass2 stages. Preserve original
+fixtures/draw bounds and strict comparison behavior. No new expected-failure entry,
+fixture repair or gameplay patch is authorized by this research report.
+
+**Done when:** a reviewed report establishes the surviving complete causal paths.
+Partial rule findings remain evidence for build evaluation; unexplained cases and
+research #25 / build #1107 stay open until that attribution is established.

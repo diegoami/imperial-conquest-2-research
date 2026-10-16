@@ -246,7 +246,14 @@ if either side has no live unit: battle over
 
 ## 7. The AI general (area 7) `[confirmed: code]`
 
-The AI's movement half-round is `FUN_0043A31C`. It takes types in the order `[1, 4, 3, 0, 2]` from `0x4790A0` (HI, HC, LC, LI, archers). Within each type, it takes the side's live units in slot order.
+**Source precision and partial attribution, 2026-10-16:** [2026-10-16-tactical-target-and-draw-attribution.md](2026-10-16-tactical-target-and-draw-attribution.md)
+recovers the exact local rules below. The corrected pinned comparison has 282 complete
+matches and 36 residuals; none of the latter has a proved complete causal path.
+
+Pass 1 (`FUN_0043A31C`) takes types `[1, 4, 3, 0, 2]` from `0x4790A0`
+(HI, HC, LC, LI, archers), then live slots in ascending order. Pass2
+(`FUN_0043A544`) and the threat/flank loops in `FUN_0043ABB4` instead use
+ascending own slot directly. Type ordering is not a shared rule of every pass.
 
 **Pass 1, choose and engage.**
 
@@ -264,17 +271,40 @@ The AI's movement half-round is `FUN_0043A31C`. It takes types in the order `[1,
 
 **Pass 2** (`FUN_0043A544`). For each unit with moves > 0 and no target:
 
-- If it has shots, it picks the in-range enemy minimising `troops div s`, where `s = shotBound` (`n` above), plus `s div 4` if the enemy has shots. It fires until moves = 0 or the target is removed. **This loop does not check shots**, so shots can go negative.
-- It then takes as melee target the adjacent enemy minimising `theirs' = theirs − focus·theirs`, subject to `2·theirs' div 3 < mine`.
+- If it has shots, it picks the live in-range enemy minimizing `trunc(troops / s)`,
+  where `s = shotBound` (`n` above), first replaced by the signed-word
+  `s + trunc(s/4)` if the enemy has shots. The adjustment is **inside the divisor**,
+  not added to the ratio (`FUN_00439d0c`, :39374–39419; code-only clarification).
+  Best ratio starts at 20000, strict `<` retains the first equal candidate. It fires
+  until moves = 0 or the target is removed. **The loop does not check shots**, so
+  shots can go negative; there is no moves recheck before the melee scan.
+- For each adjacent candidate, compute `S(u,v) = trunc(troops[u]*quality[u]/100)
+  * morale[u] * M[type[u]][type[v]]`, preserving original 32-bit wrapping and
+  signed division. Let `adjusted = S(enemy,actor) - focus*S(enemy,actor)`.
+  Filter **each candidate** by `trunc(2*adjusted/3) < S(actor,enemy)`, then retain
+  the strict minimum adjusted value below initial 100000000. Focus scans all
+  20 own target words, including dead slots. A global troops-only choice followed
+  by one eligibility test is not this rule.
 
 **Pass 3** (`FUN_0043ABB4`):
 
-- For units with moves > 0 and no target: sort the enemies by threat (ascending `tr·q·m·M[their][my] div 10000`; archers with shots use `−shotBound`, so the most damage comes first), with a selection sort. Pick the first enemy with a clear line, or an empty cell with a clear line in its box, and move there.
+- For units with moves > 0 and no target, `FUN_0043A718` sets ranged mode from
+  the **actor** being an archer with shots > 0. In ranged mode every enemy key is
+  `-ShotBound(actor,enemy)` and box radius is 2; otherwise keys are enemy weighted
+  strength `tr*q*m*M[enemy][actor] / 10000` and radius is 1, including exhausted
+  archers. Fill all 20 enemy entries, dead key 1000000; choose the first strict
+  suffix minimum, then perform **one swap** per outer iteration. Stop at keys > 999999.
+  This preserves the original tie/dead-slot behavior. Pick the first enemy with a
+  clear line, or an empty cell with a clear line in its box, and move there.
 - Then run pass 2.
 - Then the **flank**: each unit with no target whose moves are untouched (or `= 1` with `counter < 10` and type ≠ HI) gets a horizontal direction `h`:
-  - `h = −1` if the enemy's `minX ≤ 13 − maxX`, else `+1`;
+  - Enemy min/maxX and the horizontal flag are captured **before** threat movement
+    and nested Pass2, not recomputed per flank actor. `h = −1` if the captured
+    enemy `minX ≤ 13 − maxX`, else `+1`;
   - `Random(3) = 0` flips `h`;
-  - the vertical direction is the sign of (enemies below − enemies above), with 0 taken as −1;
+  - vertical balance is +1 for each live enemy strictly below the actor and −1
+    otherwise (**equal Y counts with above**); direction is +1 only when balance
+    is positive, otherwise −1;
   - the unit tries `(x+moves·h, y+moves·v)`, then `(x+moves·h, y)`, clamped, each needing an empty cell and a clear line.
 - Then pass 2 again.
 
