@@ -249,6 +249,11 @@ if either side has no live unit: battle over
 **Source precision and partial attribution, 2026-10-16:** [2026-10-16-tactical-target-and-draw-attribution.md](2026-10-16-tactical-target-and-draw-attribution.md)
 recovers the exact local rules below. The corrected pinned comparison has 282 complete
 matches and 36 residuals; none of the latter has a proved complete causal path.
+The [fresh original trace](2026-10-16-tactical25-original-decision-trace.md)
+reproduces all 325 mix-rg_s1 draws/all 15 saves and establishes HR6 Gaul22
+actor-versus-enemy threat-key condition as the first selected-goal difference
+on shared original input; the earlier HR4 ranking difference keeps the same goal.
+A complete corrected battle remains unverified.
 
 Pass 1 (`FUN_0043A31C`) takes types `[1, 4, 3, 0, 2]` from `0x4790A0`
 (HI, HC, LC, LI, archers), then live slots in ascending order. Pass2

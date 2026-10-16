@@ -45,6 +45,14 @@ on a model phase input is still not a recovered complete original process histor
 
 **Pins:** build `257f2d2cd7510451d229a983553a54b89065b06c` (T175 control correction, PR1156, merged after MiniMax review); fixtures `6319802a75067e7730e4f6a27dce3b4e296ddd9b`; original EXE `354d8265cba1dac2a80a0a96ce76367a368e37a4e79c30eb4f0bb587b35c532f`; DAT `94d0ccfc67148d727de4c4e60aefc3c53ba9e67775bd689f0fcb2e23c12e5fbd`. Source decompile SHA256 `2018c205a4e4ea4a4079f2d166623fb571062832d76e19b72e11d1f0edac87d8`. The build worktree remained clean throughout. A fresh pinned full suite passed Data248 / Engine7366, with three Windows platform skips.
 
+**Fresh original follow-up:** [2026-10-16-tactical25-original-decision-trace.md](2026-10-16-tactical25-original-decision-trace.md)
+now reproduces the full legacy mix-rg_s1 recording and captures NEW runtime
+claims/pass inputs. On shared inputs at HR6 Gaul22, original goal (5,3) differs
+from port (6,4) because the threat condition reads actor versus enemy. Rankings
+already differ at HR4 with the same selected goal. This proves that earlier
+selected-goal cause in a fresh trace, not a complete corrected-battle match;
+this older packet's missing legacy fields remain missing and all 36 full paths stay open.
+
 ## Evidence and reconstruction limits
 
 The original hook/save corpus is published in [run-exp-battle-hook](https://github.com/diegoami/ic2-conquest/releases/tag/run-exp-battle-hook). No new binary artifacts were produced.
