@@ -16,5 +16,10 @@ checked independently. UI timelines, raw hooks and x86 tests are upstream eviden
 Commit 1: promote reports and corrections, add CSV/evidence/ledger and reusable
 intake checker; open a PR and run the owner-selected MiniMax M3 review.
 
-END (implementation handoff): ready for MiniMax review; #25 is still gated on
+Commit 2: correct the second interruption-handler citation to FUN_0043abb4;
+source 40254–40257 lies after its definition at 40192, not in FUN_0043a544.
+MiniMax completed the full pass with no blockers but omitted its final verdict;
+resume that same session for this citation correction and the required verdict.
+
+END (implementation handoff): full review returned, final verdict pending; #25 is still gated on
 build integration, no native Windows evidence or remake implementation claimed.

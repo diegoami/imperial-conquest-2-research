@@ -25,6 +25,9 @@ using the pinned manifest, final observations JSON, release metadata and
 downloaded artifacts. Save citations resolve in [the evidence index](../evidence-index.md#original-ai-probes-2026-10-16).
 
 Research #25 remains gated on the build-side reviewed control correction; promoting this report alone does not clear that gate.
+Intake corrects the second Information-window interruption handler's symbol to
+`FUN_0043abb4` at source 40254–40257; the upstream draft named `FUN_0043a544`.
+The observed behavior and cited line range are unchanged.
 
 **Provenance:** `[code]` pinned original decompile/instructions; `[x86]` original
 instructions under Unicorn; `[Wine]` direct original execution, including
@@ -119,7 +122,7 @@ the observed-build human-off boundary.
 1; it is not a symmetric bit toggle. The general's targeting/movement passes
 poll mouse-down messages on the **Information** window. A human-side click
 there clears that side's general bit and sets interruption byte `0x45e6a7`.
-The relevant clear sites are in `FUN_0043a31c` / `FUN_0043a544` (39835-39838,
+The relevant clear sites are in `FUN_0043a31c` / `FUN_0043abb4` (39835-39838,
 40254-40257). AI-nation control remains true even with general off.
 
 `[Wine]` Queuing an Information-window click after general-on produced flags
