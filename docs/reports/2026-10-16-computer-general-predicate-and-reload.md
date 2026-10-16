@@ -24,7 +24,10 @@ evidence, not a second execution. Reproduce the save checks with
 using the pinned manifest, final observations JSON, release metadata and
 downloaded artifacts. Save citations resolve in [the evidence index](../evidence-index.md#original-ai-probes-2026-10-16).
 
-Research #25 remains gated on the build-side reviewed control correction; promoting this report alone does not clear that gate.
+At the first intake, research #25 was gated on the reviewed build control correction;
+promotion alone did not clear it. That correction is now integrated at build `257f2d2`;
+the [subsequent partial attribution](2026-10-16-tactical-target-and-draw-attribution.md)
+keeps all 36 residual complete causal paths open.
 Intake corrects the second Information-window interruption handler's symbol to
 `FUN_0043abb4` at source 40254–40257; the upstream draft named `FUN_0043a544`.
 The observed behavior and cited line range are unchanged.
