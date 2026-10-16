@@ -110,6 +110,14 @@
 
 **The loop** `[confirmed: code]`. There is no initiative stat: sides alternate, and the attacker moves first.
 
+**Control and timing clarified 2026-10-16:** [2026-10-16-computer-general-predicate-and-reload.md](2026-10-16-computer-general-predicate-and-reload.md)
+shows that `FUN_00438378` means active nation computer **OR** active-side general on.
+It governs setup, Walk/step and shooting checks, including eligible placement;
+copy-in morale/sorting remain nation-only. Enabling general does not redo setup.
+Resume runs setup **before** clearing both runtime general flags, so a same-process
+reload can briefly get slow moves where a fresh process gets full moves. These
+flags are not serialized in the battle block. Code plus Wine, no native confirmation.
+
 **Half-round setup** (`FUN_00439968`, which is also the resume path):
 
 1. Set the side's nation and its own/enemy slot bases. Set the caption `"A  v  D          N to place units."` (or `to move units.`).
@@ -368,7 +376,7 @@ Each check is seeded and taken half-round for half-round.
 1. **Copy-in morale:** every slot's morale equals the formula under the seed. The AI army's unit order equals the §2 sort, and the strategic `+14` goes up by 3.
 2. **AI placement:** the positions match `Form[Random(5)]`. An army of more than 9 HI + archers should show stacked cells.
 3. **Grid codes:** they equal `type·3 + size (+20)` after every exchange.
-4. **Setup:** moves are reset, targets are −1, and moves = 1 for non-HI AI units while `dmin > 2` and the counter is ≤ 10.
+4. **Setup:** moves are reset, targets are −1, and moves = 1 for non-HI AI units while `dmin > 2` and the pre-increment counter is < 10 (the saved post-setup counter can be 10).
 5. **Every shot:** the loss from `n` and the logged seed, the morale −min(3, …) and the shot/move decrements. AI shots can go negative.
 6. **Every melee:** both losses, the cap, the `(5−f)/(2f+5)` factors, and the ±2/−3 by troop ratio.
 7. **The real matrix:** an LI-vs-HI melee should produce the attacker's cap often. It discriminates against the old table.

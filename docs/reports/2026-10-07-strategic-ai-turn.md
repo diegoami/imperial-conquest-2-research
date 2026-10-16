@@ -12,6 +12,11 @@ source. Field names reused from earlier reports (army `+0x0A` supplies, fleet `+
 city `+0x1A` fortification, nation `+0x44A` tax rate, …) carry those reports' confirmations; names
 new to this report are tagged `[derived]`.
 
+**Corrections and corroboration, 2026-10-16:** [2026-10-16-strategic-ai-regions-resupply.md](2026-10-16-strategic-ai-regions-resupply.md)
+transcribes region/coast boundaries and signed scoring, demonstrates embarked-army
+resupply, and corrects fleet grants/repair below. Evidence remains code/x86 and staged
+Wine; no native Windows confirmation.
+
 ## Answer
 
 - **A computer seat's turn is four fixed phases, per nation, in this order: diplomacy, economy,
@@ -176,7 +181,13 @@ in play: 102 dispatches toward an enemy army, and 7 sent home under that rule. D
 
 ### 3.2 Per army: resupply and hire — `FUN_0044e41c` (:52218), every own army
 
-For each of the 334 cities within Chebyshev 4 of the army:
+For each of the 334 cities within Chebyshev 4 of the army (positive stock for an own city):
+
+**Corroborated 2026-10-16:** the loop runs before the moves test and includes embarked
+armies, using the army record coordinates without following the fleet link. Aboard/land
+controls each gain 250 tons from the city while fleet stores are unchanged; distance 4
+qualifies and 5 does not. See [2026-10-16-strategic-ai-regions-resupply.md](2026-10-16-strategic-ai-regions-resupply.md)
+(code plus staged Wine; transported-coordinate synchronization remains outside the claim).
 
 - **Own city** (`FUN_0044f6d8`, :53077): the army takes
   `min(troops/100 − supplies, city supply stock)` tons free; its purse is then normalised against
@@ -210,14 +221,22 @@ Three scorers run per army (`FUN_0044f31c`, :52919–52971):
 
   ```text
   score = strength×110 / cityDefense − distance      // strength = FUN_0044a930, §5
-  score −= score/2 if the city is in another region
+  score -= trunc(score/2) if the (region index, coast flag) pair differs
   score ×2 if cityDefense < strength and distance < 7
   score ×2 if the city is a capital and cityDefense×⅔ < strength
   return (city, score + distance, distance)
   ```
 - `FUN_0044ee60` (:52715) — **best enemy field army** (on land, at war, reachable): the same
-  `strength×110/theirStrength − distance`, halved across regions, capped at 1000, **+1000** when
-  the enemy is weaker and within 7.
+  `strength×110/theirStrength − distance`, then `score -= trunc(score/2)` across
+  region/coast pairs, capped at 1000, **+1000** when the enemy is weaker and within 7;
+  add the selected distance back on return. Signed examples: 107 becomes 54, −3 becomes −2.
+
+The region is a pair, not only a city-to-box index: eight strict-interior boxes, last
+match wins, index −1 fallback, and a separate coast flag. Both components must match.
+[2026-10-16-strategic-ai-regions-resupply.md](2026-10-16-strategic-ai-regions-resupply.md) gives the full table, 334-city CSV,
+integer operation order and observed scorer controls (110 vs 57 at equal distance 3).
+The city scorer also reduces defense by `trunc(defense*9/10)` when the attacker owns
+the city's original allegiance; do this before the ratio and later modifiers.
 
 The decision, with `moves` the army's remaining moves:
 
@@ -265,13 +284,19 @@ go to the capital `[confirmed: decompile]`.
 For every own launched fleet (construction countdown `+0x0A == -1`) with no pending destination
 (the packed `xy` at `+0x4`, read as "no destination" when negative `[derived]`):
 
-1. **Resupply and repair** — `FUN_0044e5dc` (:52278) for each city within 4, then
-   `FUN_0044f7e4` (:53120):
-   - own port: take `min(ships×8 − supplies, city stock)` tons free; purse topped to 100 from the
-     treasury when below 100 and the treasury exceeds 100; **condition repaired** — below 95 it is
-     restored to 100 for `(100 − condition) × ships / 5` talents (this can drive the treasury
-     negative), or for a flat 100 talents when the treasury is above 100;
-   - foreign non-war port: buy tons at `amount/5`, paid to the port owner's treasury.
+1. **Resupply and repair** — `FUN_0044e5dc` (:52278) visits cities at Chebyshev distance
+   **< 4**, then `FUN_0044f7e4` (:53120):
+   - own city: compute `min(ships×8 − supplies, city stock)` free tons; if purse < 100
+     and treasury > 100, **add 100** to purse and subtract 100 from treasury (99 → 199,
+     not a top-up to 100). If condition < 95, restore it to 100 and subtract
+     `trunc((100 − condition) × ships / 5)` from treasury, with no solvency gate;
+     treasury can become negative. There is **no alternative flat-100 repair**.
+     Supply/stock writes follow the purse and repair operations. Own-city eligibility
+     has no stock or coastal test in this handler; port-selection tests below are separate.
+   - foreign non-war city with stock and positive entry purse: buy tons at `amount/5`,
+     paid to the city's owner. The complete foreign-purchase matrix was not played.
+   **Corrected and corroborated 2026-10-16:** [2026-10-16-strategic-ai-regions-resupply.md](2026-10-16-strategic-ai-regions-resupply.md)
+   (code plus staged Wine). The old text conflated the separate purse grant with repair.
 2. **Pick a port** — `FUN_0044e9a8` (:52471): own coastal city with stock > 20 (score = distance,
    −1 to dock when already adjacent and supplied), or a foreign non-war city with stock > 120 and
    money > 10 at distance + 50; fallback: the nearest own coastal city. All candidates must be
@@ -315,7 +340,9 @@ For every own launched fleet (construction countdown `+0x0A == -1`) with no pend
   capital" and "prefer defending capitals" modifiers key on, and it is why capitals never defect in
   the quarterly rebellion.
 - `FUN_0044cab4(army, xy)` — reachable: true if the nation owns any fleet, or both endpoints are in
-  the same region box (`FUN_0044eb18`).
+  the same (region index, coast flag) pair (`FUN_0044ca30`, byte-identical classifier
+  to `FUN_0044eb18`). Owning any fleet suffices in this test, irrespective of launch state;
+  this is not a sea-path test. See [2026-10-16-strategic-ai-regions-resupply.md](2026-10-16-strategic-ai-regions-resupply.md).
 
 ## 6. Randomness in the AI turn
 
@@ -367,8 +394,9 @@ faithful mode would need:
 3. **The week-11 tax policy** (§2.3) writing `+0x44A` directly.
 4. **The army decision tree** (§3.3) with its exact thresholds (100 / 85 / 71 / distance terms) and
    the mercenary run, and the fleet hunt/port choice with the 100-score boundary (strictly above 100, with the distance added back: see the §4 correction).
-5. **Free AI mercenary hires** and **free-for-100-talents fleet repair**, if fidelity is the goal —
-   both are quirks, and §7 makes them explicit rather than accidental.
+5. **Free AI mercenary hires** and **automatic fleet repair without a solvency gate**,
+   with a separate 100-talent purse grant (§4, corrected 2026-10-16). Repair costs the
+   missing-condition formula, not a flat 100.
 
 ## What this does not establish
 
