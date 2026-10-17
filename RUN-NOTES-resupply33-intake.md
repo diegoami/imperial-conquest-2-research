@@ -45,3 +45,28 @@ edits, whole-matrix rerun or native/natural claim.
   Draft PR34 opened; no issue-closing keyword or false publication/merge status.
 - Prepared complete read-only MiniMax review brief/evidence copy under /tmp.
   Source packet is the pushed branch, not main; both upstream review notes retained.
+
+- Commit0ac0c8d pushed: full MiniMax draft-review brief. MiniMax-M3 session
+  ses_eb6fd7a66ffeaRTTx2XUQxqFUI exited0; complete returned report read in full
+  before acting. Approves technical intake with no blocking findings. No fixes
+  requested and no extra review launched. Full review posted on PR34 and retained
+  in docs/data/resupply33-intake-review.json. No original Wine/native rerun.
+- Negative checks reject a wrong fresh-release digest and a wrong claimed queue
+  cost even with scratch blob metadata updated to match. Only scratch copies edited.
+- Draft PR34 GitGuardian passes; this does not resolve PR96's separate skipped scan.
+- Seven pending-draft candidates found. Only research33 was verified here;
+  historical changed-branch entries and unit-map-selection-rendering left alone.
+
+## END
+
+- Branch intake/resupply33, draft PR34. Technical intake approved by MiniMax.
+- NOT promoted or merged. Research #33 remains OPEN. User's explicit upstream
+  publication notice: PR96 OPEN, NEUTRAL skipped security scan, owner exception
+  requested/pending. No automatic merge while that boundary remains unresolved.
+- Next: receive PR96 owner-exception/merge receipt; verify exact evidence/finding
+  remains pinned, update publication status (preserving historical branch audit),
+  finalize promotion under repository review rules, then close33 and acknowledge.
+- All implementation/evidence remains pushed and recoverable. Retain the intake
+  worktree for completion; detached reviewer checkout can be removed. Main research
+  checkout and unrelated untracked files are unchanged. No build/T177/fixtures or
+  research25 work touched.
