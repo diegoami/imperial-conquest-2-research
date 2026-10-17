@@ -69,3 +69,21 @@ Progress:
 - Next integration work remains task35: command-approval behavior in print/plan
   mode, least-privilege execution and truthful result validation. No broader
   permission bypass or configuration change was made.
+
+## voice-teacher PR74 investigation requested by owner
+
+- Read PR74 body, full integration/runbook/schema/adapter/test diff at
+  head4811d3739efbee5d8fe51510344ffc437a73a60d; PR OPEN at inspection. No sibling
+  files modified, credentials accessed or additional model review launched.
+- Their successful adapter intentionally DENIES shell commands; it prepares a
+  committed task/diff/source packet for supplemental STATIC review. Fresh profile,
+  bwrap read-only namespace/egress boundary, explicit policy, JSON schema and
+  strict parser are the workflow integration, not unrestricted terminal execution.
+- It keeps --sandbox and always eligible:false/modelIdentityVerified:false. Their
+  existing review gate remains. Recorded trial is Sonnet medium, conversation
+  b518e7c4-9b88-45e2-807e-2be541fbc91a. Did not rerun their tests or native trial.
+- Official headless docs explain soft-denial/exit0 for tools needing unavailable
+  approval; this explains the observed failure mode independently of sandbox flag.
+  Earlier trial diagnosis should have consulted that documented policy sooner.
+- Added pinned adoption reference to task35/environment notes; no new adapter
+  implementation or global permission/authentication changes made in this check.

@@ -122,6 +122,32 @@ review before changes; this trial did not modify the promoted evidence.
 The owner-requested [repeat without `--sandbox`](data/agy-sonnet35-nosandbox.json)
 retained plan mode and the same conversation. It still reported `request-review`,
 denied RunCommand and returned only an intent despite status SUCCESS. The trial
-therefore does not establish that `--sandbox` caused the command denial. Exact
-command-approval behavior remains unresolved; no broader permission bypass was
-used and no new complete review resulted from this repeat.
+therefore does not establish that `--sandbox` caused the command denial. The official [headless permission documentation](https://antigravity.google/docs/cli/headless/#permissions-in-headless-mode)
+explains that commands requiring unavailable approval are soft-denied while the
+process may exit0. Command approval is separate from terminal sandboxing. No
+broader permission bypass was used, and this repeat produced no complete review.
+
+### Reuse reference: voice-teacher PR74
+
+[PR74](https://github.com/diegoami/voice-teacher/pull/74), inspected at head
+`4811d3739efbee5d8fe51510344ffc437a73a60d` while OPEN, implements a successful
+**supplemental static** route. Its
+[runbook](https://github.com/diegoami/voice-teacher/blob/4811d3739efbee5d8fe51510344ffc437a73a60d/docs/reference/agy-review.md)
+and [adapter](https://github.com/diegoami/voice-teacher/blob/4811d3739efbee5d8fe51510344ffc437a73a60d/tools/review/agy.mjs)
+are task35 adoption references, not code installed here.
+
+The operator prepares a committed task/diff/source packet; Sonnet is explicitly
+asked to inspect it without shell commands or tests. A fresh profile allows only
+packet reads and denies commands/writes/web/MCP; an OS read-only boundary protects
+the packet separately. Invocation keeps `--sandbox`, adds
+`--disable-slash-commands`, JSON/schema output and bounded execution. The adapter
+checks exact base/head, schema, findings, test limitations and agreement between
+`structured_output` and raw response, preserving the original response.
+
+It always returns `eligible:false`, `modelIdentityVerified:false`; the existing
+independent review/merge gate remains in force. The recorded successful Sonnet
+trial therefore demonstrates a reusable static-review workflow, not successful
+terminal execution. For research, packet source/evidence reading can follow this
+pattern; executable evidence audits need a separately defined command policy or
+remain checks performed by the main session. Do not copy the user's whole profile,
+change global permissions or claim this reference PR is already merged/reviewed.
