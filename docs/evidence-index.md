@@ -14,6 +14,7 @@ A few small probe saves are committed in the fixtures repository itself rather t
 
 | Release | What it is | Saves | Screenshots | Recordings |
 |---|---|---|---|---|
+| [`run-exp-resupply33`](https://github.com/diegoami/ic2-conquest/releases/tag/run-exp-resupply33) | Hostile-control recruitment ledger: 3 fresh staged Wine endpoint replays; reviewed source packet merged in PR96 | 9 | 0 | 0 |
 | [`run-exp-resupply31`](https://github.com/diegoami/ic2-conquest/releases/tag/run-exp-resupply31) | Foreign-city automatic support, original code/x86 + 56 staged Wine cases; 227 complete saves, interrupted/empty copy excluded | 227 | 0 | 0 |
 | [`run-exp-tactical25-trace`](https://github.com/diegoami/ic2-conquest/releases/tag/run-exp-tactical25-trace) | Fresh mix-rg_s1 original/Wine decision trace, all 325 legacy draws/all 15 saves matched in both runs; also four EXEs and three buffers | 33 | 0 | 0 |
 | [`run-exp-ai-oct16`](https://github.com/diegoami/ic2-conquest/releases/tag/run-exp-ai-oct16) | Original strategic AI regions/resupply and tactical Computer General; code/x86 + staged Wine, turn 0734/0743; five EXEs also released, never copied here | 252 | 0 | 0 |
@@ -1970,3 +1971,48 @@ case resolve via the manifest and matrix above):
 
 No native Windows confirmation. All other pending research requests retain their
 own scope; these assets do not authorize build or T177 changes.
+
+## Hostile-control recruitment ledger (2026-10-17)
+
+For the [promoted report](reports/2026-10-17-hostile-control-recruitment-treasury-ledger.md),
+source is conquest `main` merge `356171b0e27d6f188a9f45f60eceda277c5dbfd5`
+([PR96](https://github.com/diegoami/ic2-conquest/pull/96)). All35 packet blobs
+match the original reviewed experiment pin `4e4eed591ab1696e761a0cc9fafa6ba7ad50f178`.
+The owner explicitly approved the source merge despite its NEUTRAL size-skipped
+security scan; no successful scan is claimed. The
+[publication receipt](data/resupply33-publication.json) preserves both pins.
+
+- [Canonical packet README](https://github.com/diegoami/ic2-conquest/blob/4e4eed591ab1696e761a0cc9fafa6ba7ad50f178/runs/experiments/data/run-exp-resupply33/README.md),
+  [summary](https://github.com/diegoami/ic2-conquest/blob/4e4eed591ab1696e761a0cc9fafa6ba7ad50f178/runs/experiments/data/run-exp-resupply33/summary-canonical-20261017.json),
+  [all nine bare filenames and hashes](https://github.com/diegoami/ic2-conquest/blob/4e4eed591ab1696e761a0cc9fafa6ba7ad50f178/runs/experiments/data/run-exp-resupply33/SAVES.sha256),
+  [release verification](https://github.com/diegoami/ic2-conquest/blob/4e4eed591ab1696e761a0cc9fafa6ba7ad50f178/runs/experiments/data/run-exp-resupply33/release-verification-20261017-1031.json).
+- [Source ranges](https://github.com/diegoami/ic2-conquest/blob/4e4eed591ab1696e761a0cc9fafa6ba7ad50f178/runs/experiments/data/run-exp-resupply33/source-provenance-initial.json),
+  [instruction bytes](https://github.com/diegoami/ic2-conquest/blob/4e4eed591ab1696e761a0cc9fafa6ba7ad50f178/runs/experiments/data/run-exp-resupply33/recruitment-disassembly-20261017.txt),
+  [UI exception source](https://github.com/diegoami/ic2-conquest/blob/4e4eed591ab1696e761a0cc9fafa6ba7ad50f178/runs/experiments/data/run-exp-resupply33/ui-size-source-20261017.txt),
+  [source-phase controls/runners](https://github.com/diegoami/ic2-conquest/blob/4e4eed591ab1696e761a0cc9fafa6ba7ad50f178/runs/experiments/resupply33).
+- [Research checker](../scripts/resupply33-intake-check.py) and
+  [intake result](data/resupply33-intake.json). It needs external pinned EXE/DAT/dump,
+  source text, fresh/legacy saves and live release/tree metadata; none of those
+  original binaries are stored in research git.
+
+All rows are turn **0734**. Legacy input/loaded/post files resolve through
+[run-exp-resupply31](https://github.com/diegoami/ic2-conquest/releases/tag/run-exp-resupply31);
+fresh replay files resolve through
+[run-exp-resupply33](https://github.com/diegoami/ic2-conquest/releases/tag/run-exp-resupply33).
+Append `-input.SAV`, `-loaded.SAV`, `-post.SAV` to a legacy stem. Fresh stems have
+`-loaded.SAV`, `-auto.SAV`, `-post.SAV`. Nine new and nine selected legacy saves
+were independently hashed against their release digests; all three loaded/post
+replay pairs are byte-identical. The historical31 matrix remains unchanged.
+
+| Case | Legacy stem | Fresh replay stem |
+|---|---|---|
+| land | `land-war-20261017-083008-11228` | `land-war-20261017-083008-11228-replay-20261017-101820-85339` |
+| aboard | `aboard-war-20261017-084100-17426` | `aboard-war-20261017-084100-17426-replay-20261017-101914-87061` |
+| fleet | `fleet-war-20261017-084059-17272` | `fleet-war-20261017-084059-17272-replay-20261017-101915-87214` |
+
+All four original phase boundaries are emulator controls initialized with fresh
+**pre-click** runtime observations, not Wine phase-entry captures or a recovered
+legacy seed. The canonical three `phases-*-byte-audit-20261017.json` records retain
+the next-human Bithynia UI mismatch. Input→loaded UI normalization in Armenia is
+also explicit in the independent intake result. No native/natural/full-world or
+complete-turn equivalence, foreign supply charge, build/T177 or fixture change.
