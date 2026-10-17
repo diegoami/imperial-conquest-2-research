@@ -86,3 +86,68 @@ Still in force:
 - On this machine (2026-10-11): the full Ghidra dump at
   `/mnt/c/Users/diego/AppData/Local/ReTools/all_app_functions.txt`, and Wine 10.0. Not on it: Ghidra
   itself and .NET (the remake CLI can't be run). Pillow comes through `uv run -q --no-project --with pillow python -I -`.
+
+## Experimental agy review route (task #35)
+
+[Task #35](https://github.com/diegoami/imperial-conquest-2-research/issues/35)
+tracks integration; this is a trial, not an established replacement for the
+OpenCode reviewer. On this host, agy1.4.0 is installed at
+`/home/diego/.local/bin/agy`. Use `agy models` for live model IDs and preserve the
+owner's choice. The owner-selected trial used `claude-sonnet-5-5-medium` on the
+completed research33 promotion; do not assume that ID remains current.
+
+The CLI starts a localhost service and writes its own logs outside the workspace;
+restricted model discovery failed on those operations and required runtime
+approval. Never read credentials or work around the execution boundary.
+
+Trial invocation used `--mode plan --sandbox --output-format stream-json`, a
+`--log-file` under `/tmp`, `--print` and stdin from `/dev/null`, under the managed
+background runner with one monitor. The init event exposed `conversation_id`,
+model and `permission_mode: request-review`; `--conversation <id>` successfully
+resumed the same Sonnet session. No permission-bypass flag was used.
+
+The first run exited0 with `result.status: SUCCESS`, but `denied_actions` contained
+RunCommand and the response was only an intent to start. Resuming with file-read
+tools produced an actual **static** review with verdict `rework` and six findings;
+no tests or digest checks were executed by that reviewer. Validate the complete
+final response, coverage, denied actions and verdict before counting a review.
+Plan/sandbox flags alone have not been validated as general read-only enforcement.
+
+The [complete trial receipt](data/agy-sonnet35-review.json) preserves both outcomes.
+Remaining work: least-privilege command permissions, complete result validation,
+monitoring/resume and repository review-brief integration. Scientific follow-up
+findings from the static review require source/line verification and appropriate
+review before changes; this trial did not modify the promoted evidence.
+
+The owner-requested [repeat without `--sandbox`](data/agy-sonnet35-nosandbox.json)
+retained plan mode and the same conversation. It still reported `request-review`,
+denied RunCommand and returned only an intent despite status SUCCESS. The trial
+therefore does not establish that `--sandbox` caused the command denial. The official [headless permission documentation](https://antigravity.google/docs/cli/headless/#permissions-in-headless-mode)
+explains that commands requiring unavailable approval are soft-denied while the
+process may exit0. Command approval is separate from terminal sandboxing. No
+broader permission bypass was used, and this repeat produced no complete review.
+
+### Reuse reference: voice-teacher PR74
+
+[PR74](https://github.com/diegoami/voice-teacher/pull/74), inspected at head
+`4811d3739efbee5d8fe51510344ffc437a73a60d` while OPEN, implements a successful
+**supplemental static** route. Its
+[runbook](https://github.com/diegoami/voice-teacher/blob/4811d3739efbee5d8fe51510344ffc437a73a60d/docs/reference/agy-review.md)
+and [adapter](https://github.com/diegoami/voice-teacher/blob/4811d3739efbee5d8fe51510344ffc437a73a60d/tools/review/agy.mjs)
+are task35 adoption references, not code installed here.
+
+The operator prepares a committed task/diff/source packet; Sonnet is explicitly
+asked to inspect it without shell commands or tests. A fresh profile allows only
+packet reads and denies commands/writes/web/MCP; an OS read-only boundary protects
+the packet separately. Invocation keeps `--sandbox`, adds
+`--disable-slash-commands`, JSON/schema output and bounded execution. The adapter
+checks exact base/head, schema, findings, test limitations and agreement between
+`structured_output` and raw response, preserving the original response.
+
+It always returns `eligible:false`, `modelIdentityVerified:false`; the existing
+independent review/merge gate remains in force. The recorded successful Sonnet
+trial therefore demonstrates a reusable static-review workflow, not successful
+terminal execution. For research, packet source/evidence reading can follow this
+pattern; executable evidence audits need a separately defined command policy or
+remain checks performed by the main session. Do not copy the user's whole profile,
+change global permissions or claim this reference PR is already merged/reviewed.
