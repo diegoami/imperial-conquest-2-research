@@ -21,3 +21,13 @@ No build edits, T177 expansion, original fixture edits or new Wine experiments.
   receipt. Approved with one non-blocking citation correction applied before merge.
 - Live GitHub tree proves all 42 local finding/data/runner blobs equal the supplied
   merge. Live release lists 227 assets. Independent decoding/source audit underway.
+
+- Commit4981e2a pushed: promoted report, independent checker/result, evidence index,
+  ledger/count and narrow overlap updates. PR32 opened. Raw checker passes all
+  counts; fresh pinned emulator output is byte-equivalent as JSON to canonical.
+- All42 packet files/227 saves, original dump/EXE and metadata copied to a private
+  /tmp review-evidence directory. Live MiniMax model list includes MiniMax-M3.
+- Pending-drafts scan found six candidates: this task, unit-map-selection-rendering,
+  and four historical changed-branch entries. Only this requested finding is in
+  this promotion; none of the unrelated candidates was promoted.
+- Full promotion review brief prepared for the owner-selected MiniMax reviewer.
