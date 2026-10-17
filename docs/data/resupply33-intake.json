@@ -1,0 +1,79 @@
+{
+  "source_branch": "research/resupply33-hostile-ledger",
+  "source_commit": "4e4eed591ab1696e761a0cc9fafa6ba7ad50f178",
+  "source_merged": false,
+  "packet_blobs": 35,
+  "source_lines_verified": 997,
+  "disassembly_instructions_verified": 286,
+  "new_saves_verified": 9,
+  "legacy_saves_verified": 9,
+  "whole_loaded_post_pairs": 3,
+  "fresh_pinned_x86_reruns": 3,
+  "cases": [
+    {
+      "case": "land",
+      "debits": [
+        128,
+        92,
+        330,
+        460
+      ],
+      "treasury_after": -10,
+      "mobilization_after": 43,
+      "budget_target": 8250,
+      "treasury_residual": 0,
+      "fresh_Wine_endpoint_bytes_identical": true,
+      "nation_UI_mismatch_retained": true,
+      "input_to_loaded_UI_change": {
+        "nation": 13,
+        "offset": "0x482",
+        "before": 708,
+        "after": 704
+      }
+    },
+    {
+      "case": "aboard",
+      "debits": [
+        128,
+        92,
+        330,
+        460
+      ],
+      "treasury_after": -10,
+      "mobilization_after": 43,
+      "budget_target": 8250,
+      "treasury_residual": 0,
+      "fresh_Wine_endpoint_bytes_identical": true,
+      "nation_UI_mismatch_retained": true,
+      "input_to_loaded_UI_change": {
+        "nation": 13,
+        "offset": "0x482",
+        "before": 708,
+        "after": 704
+      }
+    },
+    {
+      "case": "fleet",
+      "debits": [
+        128,
+        92,
+        330,
+        460,
+        435
+      ],
+      "treasury_after": -445,
+      "mobilization_after": 47,
+      "budget_target": 15000,
+      "treasury_residual": 0,
+      "fresh_Wine_endpoint_bytes_identical": true,
+      "nation_UI_mismatch_retained": true,
+      "input_to_loaded_UI_change": {
+        "nation": 13,
+        "offset": "0x482",
+        "before": 708,
+        "after": 704
+      }
+    }
+  ],
+  "limits": "No Wine/native run by intake; fresh x86 uses pinned upstream runner. UI difference preserved; no complete-turn/world equivalence."
+}

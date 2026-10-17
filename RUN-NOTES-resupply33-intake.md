@@ -27,3 +27,16 @@ edits, whole-matrix rerun or native/natural claim.
   runner and validator. Re-read recruitment/guard/cost/army-power/UI source paths.
 - All35 local finding/data/runner/review-receipt blobs match the supplied branch
   tree. No upstream merge commit exists at intake start.
+
+- Commit00c20f2 pushed: source branch pin and explicit pending publication gate.
+- Independent checker passes35 blobs,997 numbered source lines,286 instructions,
+ 9 new+9 legacy saves/release digests,3 whole loaded/post replay identities. Raw
+ queue ledger debits128+92+330+460(+435 fleet) exactly exhaust observed losses.
+- Reran upstream offline validator and all3 pinned four-phase emulator controls;
+ original instruction/site0x45070e only,4/4/5 writes, no other phase treasury debit.
+- Initial broad input/loaded byte assertion exposed only Armenia UIword708→704,
+ nation13/+0x482, in each control. Refined assertion requires exactly that byte
+ difference and equality of gameplay fields. This is distinct from nation11
+ Bithynia's documented x86/Wine endpoint mismatch. Both retained in report/result.
+- PR96 still OPEN with NEUTRAL skipped scan; no source merge/owner exception
+ recorded. Prepared verified DRAFT report/ledger/evidence entry, not promotion.
