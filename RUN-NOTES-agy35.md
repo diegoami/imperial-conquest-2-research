@@ -19,3 +19,32 @@ Progress:
 - Will try plan+sandbox modes with structured output, no permission-bypass flag.
   These flags' actual permissions/results are part of the trial, not assumed
   equivalent to the existing OpenCode reviewer agent.
+
+- Commitfbad0aa pushed: task35, selected live Sonnet ID and trial protocol.
+- agy conversation b856691c-11f7-4200-b8d9-8f4f99cc2649, model
+  claude-sonnet-5-5-medium, plan+sandbox reports permission_mode request-review.
+- First managed run exited0/CLI SUCCESS in8.7s but denied RunCommand and returned
+  only an intent to start. Read full result; it is NOT a completed review/approval.
+- Resumed same conversation/model with unchanged permission restrictions and a
+  full operator-captured diff, using view_file only. No bypass flag or new model.
+- Resumed run exited0/CLI SUCCESS in218.9s and returned actual STATIC review:
+  rework,6findings (2medium provenance/receipt,4low checker/status/coverage).
+  Complete returned report read and retained in docs/data/agy-sonnet35-review.json.
+- No reviewer tests/digests/runtime execution. The supplied evidence kit retained
+  old OPEN PR96 metadata, not the later merge JSON; this limits its R2 assessment.
+  Some line references refer to captured diff positions; normalize before fixes.
+- No original research evidence, source report, runtime or fixtures changed by
+  this trial. Existing source/MiniMax approvals and merged PR34 remain historical.
+
+## END
+
+- Issue35 created: integrate agy review route; still OPEN, trial is partial evidence
+  rather than full harness integration. Sonnet produced a useful static review,
+  not executed evidence verification or approval.
+- Need explicit read-only command policy, structured result/verdict/denial checks,
+  conversation resume and monitor integration before routine use. CLI exit0 or
+  status SUCCESS alone is insufficient. Never use permission bypass as a fix.
+- Preserve raw CLI logs/events and briefs under /tmp/ic2r35-*; internal CLI logs
+  stay outside git. Published receipt contains only model review/result metadata.
+- Full review goes on PR34 and issue35; proposed environment notes/receipt retained
+  on an isolated branch/draft PR. No further model review or scientific fix launched.

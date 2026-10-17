@@ -86,3 +86,35 @@ Still in force:
 - On this machine (2026-10-11): the full Ghidra dump at
   `/mnt/c/Users/diego/AppData/Local/ReTools/all_app_functions.txt`, and Wine 10.0. Not on it: Ghidra
   itself and .NET (the remake CLI can't be run). Pillow comes through `uv run -q --no-project --with pillow python -I -`.
+
+## Experimental agy review route (task #35)
+
+[Task #35](https://github.com/diegoami/imperial-conquest-2-research/issues/35)
+tracks integration; this is a trial, not an established replacement for the
+OpenCode reviewer. On this host, agy1.4.0 is installed at
+`/home/diego/.local/bin/agy`. Use `agy models` for live model IDs and preserve the
+owner's choice. The owner-selected trial used `claude-sonnet-5-5-medium` on the
+completed research33 promotion; do not assume that ID remains current.
+
+The CLI starts a localhost service and writes its own logs outside the workspace;
+restricted model discovery failed on those operations and required runtime
+approval. Never read credentials or work around the execution boundary.
+
+Trial invocation used `--mode plan --sandbox --output-format stream-json`, a
+`--log-file` under `/tmp`, `--print` and stdin from `/dev/null`, under the managed
+background runner with one monitor. The init event exposed `conversation_id`,
+model and `permission_mode: request-review`; `--conversation <id>` successfully
+resumed the same Sonnet session. No permission-bypass flag was used.
+
+The first run exited0 with `result.status: SUCCESS`, but `denied_actions` contained
+RunCommand and the response was only an intent to start. Resuming with file-read
+tools produced an actual **static** review with verdict `rework` and six findings;
+no tests or digest checks were executed by that reviewer. Validate the complete
+final response, coverage, denied actions and verdict before counting a review.
+Plan/sandbox flags alone have not been validated as general read-only enforcement.
+
+The [complete trial receipt](data/agy-sonnet35-review.json) preserves both outcomes.
+Remaining work: least-privilege command permissions, complete result validation,
+monitoring/resume and repository review-brief integration. Scientific follow-up
+findings from the static review require source/line verification and appropriate
+review before changes; this trial did not modify the promoted evidence.
