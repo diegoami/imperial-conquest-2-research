@@ -87,3 +87,7 @@ Progress:
   Earlier trial diagnosis should have consulted that documented policy sooner.
 - Added pinned adoption reference to task35/environment notes; no new adapter
   implementation or global permission/authentication changes made in this check.
+
+## Owner-requested Claude CLI review
+
+Piped the pinned PR36 diff at e8b61a3 into Claude Code 2.1.293 print mode, safe mode, tools disabled. Requested sonnet alias; runtime reported MiniMax-M3[1m]. Completed exit 0, success, no permission denials; full result retained in docs/data/claude-cli35-review.json. Static review approved with no blocking findings and minor readability observations. External references and original trial execution were not independently verified by this reviewer. This is not an Anthropic Sonnet review. No routing/authentication changes; task35 remains open and PR36 remains draft.

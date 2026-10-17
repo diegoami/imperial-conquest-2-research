@@ -1,0 +1,94 @@
+{
+  "target_pr": 36,
+  "reviewed_head": "e8b61a3008e4e4e159bf0258d18b34c6318a409c",
+  "requested_model_alias": "sonnet",
+  "reported_model": "MiniMax-M3[1m]",
+  "scope": "Static supplied diff only; tools disabled. Not an Anthropic Sonnet review or executed verification.",
+  "result": {
+    "duration_api_ms": 78763,
+    "stop_reason": "end_turn",
+    "session_id": "e9a74b31-1bb6-4751-b1a4-a3b38393784d",
+    "total_cost_usd": 0.23883900000000002,
+    "usage": {
+      "input_tokens": 8125,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 128,
+      "output_tokens": 7926,
+      "output_tokens_details": {
+        "thinking_tokens": 0
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "",
+      "iterations": [],
+      "speed": "standard",
+      "fallback_credit": null
+    },
+    "modelUsage": {
+      "MiniMax-M3[1m]": {
+        "inputTokens": 8125,
+        "outputTokens": 7926,
+        "cacheReadInputTokens": 128,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.23883900000000002,
+        "contextWindow": 1000000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 0,
+        "canonicalModel": "minimax-m3[1m]",
+        "provider": "firstParty",
+        "costBasis": "unknown"
+      }
+    },
+    "permission_denials": [],
+    "terminal_reason": "completed",
+    "fast_mode_state": "off",
+    "fast_mode_disabled_reason": "sdk_opt_in_required",
+    "subagent_stats": {
+      "spawned": 0,
+      "requested": {
+        "background": 0,
+        "foreground": 0,
+        "unset": 0
+      },
+      "started_in_background": 0,
+      "max_depth": 0,
+      "spawned_by_subagents": 0,
+      "completed": 0,
+      "failed": 0,
+      "killed": {
+        "parent": 0,
+        "user": 0,
+        "system": 0
+      },
+      "refused": {
+        "depth_limit": 0,
+        "concurrency_limit": 0,
+        "budget": 0
+      },
+      "by_type": {}
+    },
+    "safety_stops": 0,
+    "is_error": false,
+    "num_turns": 1,
+    "subtype": "success",
+    "api_error_status": null,
+    "result": "# PR36 static review (base 64adfb1 \u2192 head e8b61a3)\n\nReviewed the supplied diff text only; no external fetches or tool execution per instructions.\n\n## Findings\n\nNo blocking findings (R1, R2, \u2026 list is empty).\n\nThe diff is documentation and receipts only. Added files: `RUN-NOTES-agy35.md`, `docs/data/agy-sonnet35-nosandbox.json`, `docs/data/agy-sonnet35-review.json`, and an update to `docs/environment.md`. None of these touch code, fixtures, data, scripts, approval policy, or scientific claims.\n\n### Verified internally consistent claims\n\n- **Static-vs-executed labeling.** Both receipts and `RUN-NOTES-agy35.md` repeatedly state this is `view_file`-only static review with no tests/digests/runtime. The embedded Sonnet response opens with \"I could only read files, so this is a static review\u2026\" and `agy-sonnet35-nosandbox.json` sets `\"actual_review_completed\": false`.\n- **Permission diagnosis corrected, not re-asserted.** `RUN-NOTES-agy35.md` \"Owner-requested repeat without sandbox\" and `docs/environment.md` both explicitly disclaim that `--sandbox` caused the command denial and cite headless policy. No re-statement of the earlier overclaim.\n- **No credentials / policy changes.** Only public-form metadata appears in the receipts (model id, conversation id, token counts, mode string). `RUN-NOTES-agy35.md` states \"No changes to gameplay, fixtures, scientific claims or approval policy\" and the no-sandbox repeat notes record \"No broader permission bypass or configuration change was made.\"\n- **Scope honesty about trial vs. harness.** `RUN-NOTES` and `environment.md` both say \"this is a trial, not an established replacement for the OpenCode reviewer\"; the embedded static-review verdict (rework, 6 findings) is identified as the historical PR34 review preserved as a receipt, not as a verdict on PR36.\n- **Duration caveat present.** Both receipts and `RUN-NOTES` flag that `duration_seconds` is conversation-level and not isolated runtime.\n\n### Non-blocking style/process notes (not findings)\n\n- The repeated review inside `docs/data/agy-sonnet35-review.json` is stored as a JSON-escaped string in `resumed_result.response`; valid JSON but unwieldy. Acceptable for an evidence receipt; consider a sibling `.md` if humans will diff future revisions.\n- `RUN-NOTES-agy35.md` uses three `## END`/`##` headers separating the three investigations chronologically; readable, slightly informal.\n- Voice-teacher PR74 claims are descriptive (\"adapter \u2026 keeps --sandbox \u2026 eligible:false/modelIdentityVerified:false\") and not copied into this repo, so no local change is made.\n\n## Coverage limits\n\n- Cannot verify any external URL (PR74 references, headless permission docs, issue #35, model catalog) \u2014 the operator's own verification stands.\n- Cannot read `/tmp/ic2r35-sonnet-brief.md`, `/tmp/ic2r35-task33.diff`, `/tmp/ic2r35-operator-proof.json`, `/tmp/ic2r35-agy-nosandbox-*` event/log captures, or `/tmp/ic2r33-review-evidence/` content.\n- Cannot independently confirm that `claude-sonnet-5-5-medium` is the live discoverable model id for `agy 1.4.0`, nor that the embedded text in `resumed_result.response` is byte-for-byte Sonnet's actual output.\n- Cannot verify that PR34 actually merged at `64adfb1aedb6a277bcf3fa41537f574d9448a905` or that PR96's merge/tree state matched the cited 35-blob claim \u2014 that was explicitly the Sonnet reviewer's R2 limitation and is re-acknowledged in `RUN-NOTES`.\n- Review covers only the four files in this PR; no new gameplay, fixture, scientific, or policy code is being shipped here.\n\nFinal pass done\n\napprove",
+    "ttft_ms": 70820,
+    "type": "result",
+    "duration_ms": 78836,
+    "uuid": "d510f88b-020f-4fd0-945c-4969cec3ddda",
+    "ttft_stream_ms": 1635,
+    "time_to_request_ms": 71,
+    "first_content_frame_ms": 1635,
+    "queued_turn_count": 0,
+    "result_index": 0
+  }
+}
