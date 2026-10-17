@@ -1,0 +1,13 @@
+{
+  "source_repository": "diegoami/ic2-conquest",
+  "source_pr": 96,
+  "source_merge": "356171b0e27d6f188a9f45f60eceda277c5dbfd5",
+  "source_head": "41ca53d9c5d1059d2d7751bc79e6413db0cb1d98",
+  "original_intake_pin": "4e4eed591ab1696e761a0cc9fafa6ba7ad50f178",
+  "unchanged_packet_blobs": 35,
+  "owner_authorization": "yes, check that we can skip as much CI as possible. You can merge if it is reviewed",
+  "upstream_scan": "NEUTRAL, skipped for evidence size/API budget; not a passing scan",
+  "research_reviewed_head": "0ac0c8d9360c30169f1baf0dd021bf673f877a3b",
+  "research_review_session": "ses_eb6fd7a66ffeaRTTx2XUQxqFUI",
+  "publication_hold_resolved": true
+}

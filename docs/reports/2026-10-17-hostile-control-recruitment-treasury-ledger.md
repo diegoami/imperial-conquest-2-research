@@ -1,6 +1,6 @@
 # Hostile resupply controls: recruitment accounts for the treasury losses
 
-**Status: verified intake draft; not promoted.** Source: `diegoami/ic2-conquest`, pushed experiment branch `research/resupply33-hostile-ledger`, commit `4e4eed591ab1696e761a0cc9fafa6ba7ad50f178` ([PR96](https://github.com/diegoami/ic2-conquest/pull/96), OPEN at intake; independent MiniMax M3 approval). Upstream GitGuardian is NEUTRAL: scan skipped for evidence size/API-budget limits, not a passing scan. The owner merge exception remains pending. Research [#33](https://github.com/diegoami/imperial-conquest-2-research/issues/33) stays open; no publication or upstream merge is implied.
+**Status: promoted, [confirmed, partial].** Source: `diegoami/ic2-conquest`, branch `main`, merge `356171b0e27d6f188a9f45f60eceda277c5dbfd5` ([PR96](https://github.com/diegoami/ic2-conquest/pull/96), head `41ca53d9c5d1059d2d7751bc79e6413db0cb1d98`). Original-game evidence and independent research intake were approved by MiniMax M3. All 35 packet blobs are unchanged from the reviewed experiment pin `4e4eed591ab1696e761a0cc9fafa6ba7ad50f178`. The owner explicitly authorized the source merge despite GitGuardian's NEUTRAL size-skipped scan; no successful scan is claimed. Research [#33](https://github.com/diegoami/imperial-conquest-2-research/issues/33).
 
 Implementer Codex/OpenAI; owner-selected reviewer MiniMax M3. This attributes the three hostile treasury confounds retained in [research31's promoted report](https://github.com/diegoami/imperial-conquest-2-research/blob/2ed46252e28a5ac48ff7aafccecced12b48ed090/docs/reports/2026-10-17-foreign-city-automatic-resupply.md). Its historical matrix and confound labels remain unchanged.
 
@@ -36,7 +36,10 @@ observation, not a legacy seed backfill or a Wine phase-entry trace.
 [Recorded intake result](../data/resupply33-intake.json) and
 [evidence index](../evidence-index.md#hostile-control-recruitment-ledger-2026-10-17)
 provide reproduction inputs. Source, x86 control and staged-Wine evidence retain
-their separate confidence. Publication remains pending as stated above.
+their separate confidence. The result records the original pushed-branch checkpoint;
+[publication receipt](../data/resupply33-publication.json) independently verifies
+its unchanged packet in the authorized source merge. Independent research MiniMax
+approval is retained in the [complete review](../data/resupply33-intake-review.json).
 
 ## Evidence and pins
 
@@ -93,4 +96,4 @@ The first x86 control supplied the seed-file value 12345 and completed but faile
 
 Only the three hostile cases were replayed under Wine 10.0/Xvfb, using the already staged inputs and original EXE. Fresh read-only memory snapshots taken immediately **before the End-turn click**, after the same hover/reset as the prior runner, record RandSeed **4169717509**, original unit stats, regions and coasts. This is a new observation, not a missing legacy seed backfill or a phase-entry snapshot. The x86 controls load retained SAV records using the pinned original loader layout, advance the current seat from the loaded human nation 13 to the known intervening Roman AI nation 0, apply those fresh runtime inputs and invoke the four original phases in source order. UI/caller work and the next human turn are outside that control. Its precise endpoint agreement and explicit UI exception support this bounded attribution.
 
-No support matrix rerun, native Windows observation, natural game proof, build/fixture/T177 change or new foreign-supply rule is included. The original31 three whole-seat confounds stay in that historical matrix; this companion finding supplies their recruitment attribution. Research #33 remains for independent intake/promotion. Complete corrected battles for task #25 remain unverified and untouched.
+No support matrix rerun, native Windows observation, natural game proof, build/fixture/T177 change or new foreign-supply rule is included. The original31 three whole-seat confounds stay in that historical matrix; this companion finding supplies their recruitment attribution. Research #33 is addressed by this independently verified promotion. Complete corrected battles for task #25 remain unverified and untouched.

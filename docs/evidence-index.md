@@ -14,7 +14,7 @@ A few small probe saves are committed in the fixtures repository itself rather t
 
 | Release | What it is | Saves | Screenshots | Recordings |
 |---|---|---|---|---|
-| [`run-exp-resupply33`](https://github.com/diegoami/ic2-conquest/releases/tag/run-exp-resupply33) | Hostile-control recruitment ledger: 3 fresh staged Wine endpoint replays; source branch PR96 publication pending | 9 | 0 | 0 |
+| [`run-exp-resupply33`](https://github.com/diegoami/ic2-conquest/releases/tag/run-exp-resupply33) | Hostile-control recruitment ledger: 3 fresh staged Wine endpoint replays; reviewed source packet merged in PR96 | 9 | 0 | 0 |
 | [`run-exp-resupply31`](https://github.com/diegoami/ic2-conquest/releases/tag/run-exp-resupply31) | Foreign-city automatic support, original code/x86 + 56 staged Wine cases; 227 complete saves, interrupted/empty copy excluded | 227 | 0 | 0 |
 | [`run-exp-tactical25-trace`](https://github.com/diegoami/ic2-conquest/releases/tag/run-exp-tactical25-trace) | Fresh mix-rg_s1 original/Wine decision trace, all 325 legacy draws/all 15 saves matched in both runs; also four EXEs and three buffers | 33 | 0 | 0 |
 | [`run-exp-ai-oct16`](https://github.com/diegoami/ic2-conquest/releases/tag/run-exp-ai-oct16) | Original strategic AI regions/resupply and tactical Computer General; code/x86 + staged Wine, turn 0734/0743; five EXEs also released, never copied here | 252 | 0 | 0 |
@@ -1974,11 +1974,13 @@ own scope; these assets do not authorize build or T177 changes.
 
 ## Hostile-control recruitment ledger (2026-10-17)
 
-For the [verified intake draft](reports/2026-10-17-hostile-control-recruitment-treasury-ledger.md),
-source is conquest **pushed experiment branch** `research/resupply33-hostile-ledger`
-at `4e4eed591ab1696e761a0cc9fafa6ba7ad50f178`. [PR96](https://github.com/diegoami/ic2-conquest/pull/96) is OPEN at
-intake; source review approves but GitGuardian is NEUTRAL/skipped and owner
-exception is pending. This evidence entry does not imply source merge/promotion.
+For the [promoted report](reports/2026-10-17-hostile-control-recruitment-treasury-ledger.md),
+source is conquest `main` merge `356171b0e27d6f188a9f45f60eceda277c5dbfd5`
+([PR96](https://github.com/diegoami/ic2-conquest/pull/96)). All35 packet blobs
+match the original reviewed experiment pin `4e4eed591ab1696e761a0cc9fafa6ba7ad50f178`.
+The owner explicitly approved the source merge despite its NEUTRAL size-skipped
+security scan; no successful scan is claimed. The
+[publication receipt](data/resupply33-publication.json) preserves both pins.
 
 - [Canonical packet README](https://github.com/diegoami/ic2-conquest/blob/4e4eed591ab1696e761a0cc9fafa6ba7ad50f178/runs/experiments/data/run-exp-resupply33/README.md),
   [summary](https://github.com/diegoami/ic2-conquest/blob/4e4eed591ab1696e761a0cc9fafa6ba7ad50f178/runs/experiments/data/run-exp-resupply33/summary-canonical-20261017.json),

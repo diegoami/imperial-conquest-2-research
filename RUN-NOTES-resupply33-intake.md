@@ -13,7 +13,7 @@ blobs, source/disassembly/DAT pins, nine fresh saves, legacy/fresh identity,
 raw queued costs, phase writes and the retained nation UI mismatch. Prepare
 a narrow research follow-up and appropriate independent review.
 
-Publication boundary: upstream PR96 is OPEN; MiniMax approves but GitGuardian
+Historical publication boundary at intake: upstream PR96 was OPEN; MiniMax approves but GitGuardian
 is NEUTRAL (scan skipped for evidence size/API budget), not green. Owner merge
 exception pending. Do not describe this source as merged or the research draft
 as promoted. Keep #33 open until publication is resolved. No build/T177/fixture
@@ -57,16 +57,23 @@ edits, whole-matrix rerun or native/natural claim.
 - Seven pending-draft candidates found. Only research33 was verified here;
   historical changed-branch entries and unit-map-selection-rendering left alone.
 
+## Publication completion
+
+- Owner explicitly approved skipping optional CI and merging independently reviewed
+  work. PR96 verified MERGED at356171b0e27d6f188a9f45f60eceda277c5dbfd5,
+  exact head41ca53d9c5d1059d2d7751bc79e6413db0cb1d98. Upstream scan stays
+  NEUTRAL/skipped; no scan/config/check disabled or successful scan invented.
+- Compared all35 finding/data/runner/review-receipt blobs in original intake pin
+  4e4eed5 to the source merge: byte-identical. Existing MiniMax approval retained;
+  only publication/status/receipt metadata changes after review, no evidence or
+  scientific-claim changes. No extra model review or optional CI run requested.
+- Original branch-check result remains immutable historical evidence; separate
+  publication receipt records source merge/equality and explicit authorization.
+
 ## END
 
-- Branch intake/resupply33, draft PR34. Technical intake approved by MiniMax.
-- NOT promoted or merged. Research #33 remains OPEN. User's explicit upstream
-  publication notice: PR96 OPEN, NEUTRAL skipped security scan, owner exception
-  requested/pending. No automatic merge while that boundary remains unresolved.
-- Next: receive PR96 owner-exception/merge receipt; verify exact evidence/finding
-  remains pinned, update publication status (preserving historical branch audit),
-  finalize promotion under repository review rules, then close33 and acknowledge.
-- All implementation/evidence remains pushed and recoverable. Retain the intake
-  worktree for completion; detached reviewer checkout can be removed. Main research
-  checkout and unrelated untracked files are unchanged. No build/T177/fixtures or
-  research25 work touched.
+- Branch intake/resupply33, PR34 technical intake approved by MiniMax; owner has
+  resolved publication hold and authorized reviewed promotion/merge.
+- Finalize PR34 and close33, then acknowledge conquest with canonical report/merge.
+- Preserve all original31 matrix labels, original binaries, unrelated untracked
+  paths and pre-existing worktrees. No build/T177/research25/runtime changes.
