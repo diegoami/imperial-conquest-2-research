@@ -181,6 +181,8 @@ in play: 102 dispatches toward an enemy army, and 7 sent home under that rule. D
 
 ### 3.2 Per army: resupply and hire — `FUN_0044e41c` (:52218), every own army
 
+**Corroborated 2026-10-17:** [Foreign-city automatic resupply](2026-10-17-foreign-city-automatic-resupply.md) distinguishes entry-purse eligibility from live-purse quantity/cost, army `relation != 3` from fleet signed `< 3`, and own-only grants/repair; its 56 staged Wine cases retain three hostile buyer-treasury confounds.
+
 For each of the 334 cities within Chebyshev 4 of the army (positive stock for an own city):
 
 **Corroborated 2026-10-16:** the loop runs before the moves test and includes embarked
