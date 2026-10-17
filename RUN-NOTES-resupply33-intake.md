@@ -40,3 +40,8 @@ edits, whole-matrix rerun or native/natural claim.
  Bithynia's documented x86/Wine endpoint mismatch. Both retained in report/result.
 - PR96 still OPEN with NEUTRAL skipped scan; no source merge/owner exception
  recorded. Prepared verified DRAFT report/ledger/evidence entry, not promotion.
+
+- Commit7ce7624 pushed: verified draft report/checker/result and evidence index.
+  Draft PR34 opened; no issue-closing keyword or false publication/merge status.
+- Prepared complete read-only MiniMax review brief/evidence copy under /tmp.
+  Source packet is the pushed branch, not main; both upstream review notes retained.
