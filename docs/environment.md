@@ -118,3 +118,10 @@ Remaining work: least-privilege command permissions, complete result validation,
 monitoring/resume and repository review-brief integration. Scientific follow-up
 findings from the static review require source/line verification and appropriate
 review before changes; this trial did not modify the promoted evidence.
+
+The owner-requested [repeat without `--sandbox`](data/agy-sonnet35-nosandbox.json)
+retained plan mode and the same conversation. It still reported `request-review`,
+denied RunCommand and returned only an intent despite status SUCCESS. The trial
+therefore does not establish that `--sandbox` caused the command denial. Exact
+command-approval behavior remains unresolved; no broader permission bypass was
+used and no new complete review resulted from this repeat.

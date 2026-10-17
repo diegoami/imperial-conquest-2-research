@@ -48,3 +48,24 @@ Progress:
   stay outside git. Published receipt contains only model review/result metadata.
 - Full review goes on PR34 and issue35; proposed environment notes/receipt retained
   on an isolated branch/draft PR. No further model review or scientific fix launched.
+
+## Owner-requested repeat without sandbox
+
+- Owner: "ok then repeat it without sandbox". Live model list rechecked; same
+  claude-sonnet-5-5-medium available. Resumed conversationb856691c-11f7-4200-b8d9-8f4f99cc2649
+  without --sandbox, retaining plan mode/read-only brief and no bypass flag.
+- Added later PR96 merge/tree metadata to the review inputs to address the earlier
+  static review's missing publication-evidence context.
+- Managed run exited0/CLI SUCCESS but again denied RunCommand and returned only
+  "Terminal access should work now, so I'll start with the provenance commands."
+  Read complete result. This is NOT a completed repeat review or an approval.
+- Init still says permission_mode request-review. Omitting --sandbox alone did
+  not enable terminal execution; earlier sandbox-specific causal attribution was
+  too strong. Exact policy reason is not exposed by denied_actions.
+- Receipt: docs/data/agy-sonnet35-nosandbox.json. Raw new events/logs remain under
+  /tmp/ic2r35-agy-nosandbox-*. Existing complete static review remains unchanged.
+- CLI duration_seconds appears conversation-level; do not interpret the returned
+  duration as isolated runtime without verifying its semantics.
+- Next integration work remains task35: command-approval behavior in print/plan
+  mode, least-privilege execution and truthful result validation. No broader
+  permission bypass or configuration change was made.
