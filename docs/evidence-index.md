@@ -341,8 +341,8 @@ A few small probe saves are committed in the fixtures repository itself rather t
 | [`ai_battle_PRE.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-turn-end-army-removal/ai_battle_PRE.SAV) | `run-exp-turn-end-army-removal` (repo `ic2-conquest`) | 1 |
 | [`ai_battle_BEFORE.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-turn-end-army-removal/ai_battle_BEFORE.SAV) | `run-exp-turn-end-army-removal` (repo `ic2-conquest`) | 1 |
 | [`ai_battle_AFTER.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-turn-end-army-removal/ai_battle_AFTER.SAV) | `run-exp-turn-end-army-removal` (repo `ic2-conquest`) | 1 |
-| [`fleet-port-antium-0734.SAV`](https://github.com/diegoami/ic2-conquest/blob/feat/fleet-orders/saves/fleet-port-antium-0734.SAV) | repo `ic2-conquest` `saves/` | 2 |
-| [`fleet-split-antium-0734.SAV`](https://github.com/diegoami/ic2-conquest/blob/feat/fleet-orders/saves/fleet-split-antium-0734.SAV) | repo `ic2-conquest` `saves/` | 1 |
+| [`fleet-port-antium-0734.SAV`](https://github.com/diegoami/ic2-conquest/blob/feat/fleet-orders/saves/fleet-port-antium-0734.SAV) | repo `ic2-conquest` `saves/` | 3 |
+| [`fleet-split-antium-0734.SAV`](https://github.com/diegoami/ic2-conquest/blob/feat/fleet-orders/saves/fleet-split-antium-0734.SAV) | repo `ic2-conquest` `saves/` | 2 |
 | [`S00_Rome_AUTO0720.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-civ-sweep/S00_Rome_AUTO0720.SAV) | `run-exp-civ-sweep` (repo `ic2-conquest`) | 1 |
 | [`S01_Carthage_AUTO0720.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-civ-sweep/S01_Carthage_AUTO0720.SAV) | `run-exp-civ-sweep` (repo `ic2-conquest`) | 1 |
 | [`S02_Seleucid_AUTO0720.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-civ-sweep/S02_Seleucid_AUTO0720.SAV) | `run-exp-civ-sweep` (repo `ic2-conquest`) | 1 |
@@ -1003,7 +1003,9 @@ A few small probe saves are committed in the fixtures repository itself rather t
 | [`Q5_20261012-091054_staged_q5_storm_calm_c60_fleet-port-antium-0734.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-g3-original-checks/Q5_20261012-091054_staged_q5_storm_calm_c60_fleet-port-antium-0734.SAV) | `run-exp-g3-original-checks` (repo `ic2-conquest`) | 1 |
 | [`Q5_20261012-091054_autosave01_q5_storm_rough_01_t735_AUTO0735.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-g3-original-checks/Q5_20261012-091054_autosave01_q5_storm_rough_01_t735_AUTO0735.SAV) | `run-exp-g3-original-checks` (repo `ic2-conquest`) | 1 |
 | [`Q5_20261012-091054_autosave02_q5_storm_calm_01_t735_AUTO0735.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-g3-original-checks/Q5_20261012-091054_autosave02_q5_storm_calm_01_t735_AUTO0735.SAV) | `run-exp-g3-original-checks` (repo `ic2-conquest`) | 1 |
-| [`run0-start-AUTO0720-seed12345.SAV`](https://github.com/diegoami/ic2-conquest/blob/main/saves/run0-start-AUTO0720-seed12345.SAV) | repo `ic2-conquest` `saves/` | 1 |
+| [`run0-start-AUTO0720-seed12345.SAV`](https://github.com/diegoami/ic2-conquest/blob/main/saves/run0-start-AUTO0720-seed12345.SAV) | repo `ic2-conquest` `saves/` | 2 |
+| [`mobilize-new-army-0720.SAV`](https://github.com/diegoami/ic2-conquest/blob/ac958a0fa58984098641a7992a42d0fbf517d473/saves/mobilize-new-army-0720.SAV) | repo `ic2-conquest` `saves/` | 1 |
+| [`det-AUTO0721-seed12345.SAV`](https://github.com/diegoami/ic2-conquest/blob/ac958a0fa58984098641a7992a42d0fbf517d473/saves/det-AUTO0721-seed12345.SAV) | repo `ic2-conquest` `saves/` | 1 |
 
 ## Recordings
 
@@ -2016,3 +2018,7 @@ legacy seed. The canonical three `phases-*-byte-audit-20261017.json` records ret
 the next-human Bithynia UI mismatch. Input→loaded UI normalization in Armenia is
 also explicit in the independent intake result. No native/natural/full-world or
 complete-turn equivalence, foreign supply charge, build/T177 or fixture change.
+
+## SAV export safety packet (2026-10-17)
+
+The [pinned ic2-conquest packet](https://github.com/diegoami/ic2-conquest/blob/ac958a0fa58984098641a7992a42d0fbf517d473/runs/experiments/data/run-exp-sav-export37/README.md) contains the authoritative `nation-matrix-v2.csv`, source inventory/extracts, public-save scalar audit, DAT profile, ten bounded original-x86 controls and validation receipt. `nation-matrix-initial.csv` is a retained draft and is not the matrix cited by the [promoted report](reports/2026-10-17-sav-export-live-regions-and-safe-rejection-policy.md). Fourteen already-public saves were sampled; the report names five examples, whose save-table rows above provide retrieval links. There are no new save release assets, candidate exports, private owner inputs or Windows outputs from this packet.

@@ -69,3 +69,9 @@ or fixture change is authorized merely by promoting this report.
 **Done when:** a reviewed report establishes the surviving complete causal paths.
 Partial rule findings remain evidence for build evaluation; unexplained cases and
 research #25 / build #1107 stay open until that attribution is established.
+
+## SAV export semantic and native Windows gate (research #37)
+
+The [partial safety finding](reports/2026-10-17-sav-export-live-regions-and-safe-rejection-policy.md) establishes the live city list, historical baselines, 31 UNKNOWN nation bytes and constructor residue. It does not clear changed-state export. Main #1194/T185 stays open. An unchanged authentic identity path still requires complete-state and framing/version validation; same-template lineage does not establish safe changed-state inheritance.
+
+**Next:** establish the missing semantic/record-residue policy and produce applicable candidate exports without modifying private originals. With owner coordination and a native Windows runtime, open at least three distinct representative outputs, inspect state, perform an ordinary action/end turn, save each to a new copy and reopen. Preserve private inputs/outputs outside code repositories; record approved redacted/scalar evidence. No owner-private inputs, candidate paths or coordinated Windows run were supplied to this intake. Wine and self-reader checks do not satisfy this gate. Task #25 remains a separate open request above.
