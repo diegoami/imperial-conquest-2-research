@@ -1,0 +1,26 @@
+{
+  "source_merge": "27488fa4fe2a1918eff4a66f3f21fe886a67a58b",
+  "merged_packet_blobs": 42,
+  "source_sha256": "2018c205a4e4ea4a4079f2d166623fb571062832d76e19b72e11d1f0edac87d8",
+  "source_numbered_lines_checked": 1055,
+  "saves_verified": 227,
+  "release_digest_matches": 227,
+  "completed_wine_cases": 56,
+  "land_aboard_pairs": 17,
+  "carrier_far_matches": true,
+  "upstream_x86_inputs": 58,
+  "upstream_x86_full_field_matches_reconciled": 53,
+  "hostile_buyer_treasury_confounds": [
+    "aboard:war",
+    "fleet:war",
+    "land:war"
+  ],
+  "interrupted_inputs": [
+    "aboard-peace-20261017-082729-8913-input.SAV",
+    "fleet-war-20261017-083008-11228-input.SAV"
+  ],
+  "retained_failures": 2,
+  "fresh_pinned_x86_replay_matches": true,
+  "fresh_x86_sha256": "4597e788f70d748bb86968d74fca096695f7b3f58cf0079bbe59d7aa9603d56d",
+  "limits": "No Wine/native execution by intake. Fresh x86 verification, when supplied, reruns the pinned upstream runner; the raw decoder is independent."
+}

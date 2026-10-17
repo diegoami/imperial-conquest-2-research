@@ -80,7 +80,7 @@ All from copies of `mobilize-new-army-0720.SAV`; saves in release `run-exp-v050-
 
 ## What this does not establish
 
-- **The own-city refill (row 10, own city) was not seen in play**: no human path reaches it, and the AI path needs an End turn (a quarter or a turn of AI armies next to their own cities would show a `+500` or a `purse - 1000 → treasury` in a save pair). It stays `[derived]`. A save pair exists in the research repo's `upkeep-payment-and-desertion.md` ("purse exactly +500 over the prediction", 4 of 39 army-quarters, `FUN_0044F6D8`), which is the AI case.
+- **Follow-up, 2026-10-17:** own-city additive refill and foreign-purchase/refund paths are now observed in staged Wine; see [foreign-city automatic resupply](2026-10-17-foreign-city-automatic-resupply.md). Natural play and native Windows remain unconfirmed.
 - **Rows 3 (both the normal and the signed negative-amount case), 8, 12, 13 and 14 are `[derived]` only.** Buy supplies needs an army next to a non-hostile foreign city (not staged); Disband army and the captured purse were not run for this finding (the captured purse and its "captured N talents" panel are in `findings/2026-10-04-battle-probe.md` territory but the purse was not read there).
 - **The 16-bit wrap** of a purse above 32,767 (repeated joins of rich armies) is code only.
 - **Row 4 and the Split dialog's money arrows** were not pressed in play; they share `min(step, 1000 - receiver)` with row 1 by the code.

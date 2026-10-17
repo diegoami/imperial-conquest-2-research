@@ -234,6 +234,8 @@ a flat 100 talents when treasury is above 100" conflate the purse increment
 with repair. The original code and these cases distinguish them. No other
 repository was edited to apply that correction.
 
+**Follow-up, 2026-10-17:** [Foreign-city automatic resupply](2026-10-17-foreign-city-automatic-resupply.md) now covers the bounded foreign-provider matrix, entry-purse versus live-purse order and separated-carrier control (source + staged Wine; hostile treasury confounds and native confirmation limits retained).
+
 ## Limits
 
 All played cases are staged Wine observations. Native Windows repetition is

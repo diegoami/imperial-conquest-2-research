@@ -14,6 +14,7 @@ A few small probe saves are committed in the fixtures repository itself rather t
 
 | Release | What it is | Saves | Screenshots | Recordings |
 |---|---|---|---|---|
+| [`run-exp-resupply31`](https://github.com/diegoami/ic2-conquest/releases/tag/run-exp-resupply31) | Foreign-city automatic support, original code/x86 + 56 staged Wine cases; 227 complete saves, interrupted/empty copy excluded | 227 | 0 | 0 |
 | [`run-exp-tactical25-trace`](https://github.com/diegoami/ic2-conquest/releases/tag/run-exp-tactical25-trace) | Fresh mix-rg_s1 original/Wine decision trace, all 325 legacy draws/all 15 saves matched in both runs; also four EXEs and three buffers | 33 | 0 | 0 |
 | [`run-exp-ai-oct16`](https://github.com/diegoami/ic2-conquest/releases/tag/run-exp-ai-oct16) | Original strategic AI regions/resupply and tactical Computer General; code/x86 + staged Wine, turn 0734/0743; five EXEs also released, never copied here | 252 | 0 | 0 |
 | [`run-1-rome`](https://github.com/diegoami/imp_conquest_fixtures/releases/tag/run-1-rome) | Run 1 — Rome (270 BC) | 16 | 5 | 8 |
@@ -1932,3 +1933,40 @@ mix-rg_s1 files byte-for-byte. In particular the new state-observer
 | [`20261016-210410-1249075-Imperial.Conquest.2.tactical25.standard.exe`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-tactical25-trace/20261016-210410-1249075-Imperial.Conquest.2.tactical25.standard.exe) | observer EXE |
 | [`20261016-210410-1249075-MIX-RG_start.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-tactical25-trace/20261016-210410-1249075-MIX-RG_start.SAV) | save |
 | [`state-observer-20261016-191329.exe`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-tactical25-trace/state-observer-20261016-191329.exe) | observer EXE |
+
+## Foreign-city automatic resupply (2026-10-17)
+
+For [the promoted report](reports/2026-10-17-foreign-city-automatic-resupply.md),
+source is ic2-conquest merge `27488fa4fe2a1918eff4a66f3f21fe886a67a58b` ([PR93](https://github.com/diegoami/ic2-conquest/pull/93)).
+Binary evidence is [release run-exp-resupply31](https://github.com/diegoami/ic2-conquest/releases/tag/run-exp-resupply31).
+All 227 complete saves match both local SHA256 and GitHub asset digests at intake.
+The retained zero-byte interrupted copy is not a valid save or release asset.
+
+- [Packet selection and limits](https://github.com/diegoami/ic2-conquest/blob/27488fa4fe2a1918eff4a66f3f21fe886a67a58b/runs/experiments/data/run-exp-resupply31/README.md).
+- [Full 56-case matrix](https://github.com/diegoami/ic2-conquest/blob/27488fa4fe2a1918eff4a66f3f21fe886a67a58b/runs/experiments/data/run-exp-resupply31/matrix-final.md),
+  [canonical raw-save summary](https://github.com/diegoami/ic2-conquest/blob/27488fa4fe2a1918eff4a66f3f21fe886a67a58b/runs/experiments/data/run-exp-resupply31/summary-final-20261017.json),
+  [58-input original-x86 audit](https://github.com/diegoami/ic2-conquest/blob/27488fa4fe2a1918eff4a66f3f21fe886a67a58b/runs/experiments/data/run-exp-resupply31/audit-final-20261017.json).
+- [All complete bare filenames and SHA256](https://github.com/diegoami/ic2-conquest/blob/27488fa4fe2a1918eff4a66f3f21fe886a67a58b/runs/experiments/data/run-exp-resupply31/SAVES.sha256),
+  [release verification](https://github.com/diegoami/ic2-conquest/blob/27488fa4fe2a1918eff4a66f3f21fe886a67a58b/runs/experiments/data/run-exp-resupply31/release-verified-final-20261017.json),
+  [excluded interrupted copy](https://github.com/diegoami/ic2-conquest/blob/27488fa4fe2a1918eff4a66f3f21fe886a67a58b/runs/experiments/data/run-exp-resupply31/incomplete-artifacts.json).
+- [Source ranges and caller inventory](https://github.com/diegoami/ic2-conquest/blob/27488fa4fe2a1918eff4a66f3f21fe886a67a58b/runs/experiments/data/run-exp-resupply31/complete-source-provenance.json)
+  and [runners](https://github.com/diegoami/ic2-conquest/blob/27488fa4fe2a1918eff4a66f3f21fe886a67a58b/runs/experiments/resupply31).
+- Research [raw-byte intake checker](../scripts/resupply31-intake-check.py) and
+  [recorded result](data/resupply31-intake.json). It needs the pinned conquest text,
+  external saves, live release/tree metadata and original dump, all outside research git.
+
+Representative post saves (all turn **0734**; loaded/input partners and every other
+case resolve via the manifest and matrix above):
+
+| Case | Post save | Provenance / limit |
+|---|---|---|
+| land peace | `land-peace-20261017-082729-8913-post.SAV` | staged Wine, supply50→150/purse500→480 |
+| embarked peace | `aboard-peace-20261017-083008-11228-post.SAV` | same army support fields; human-owned carrier |
+| fleet peace | `fleet-peace-20261017-083008-11228-post.SAV` | supply50→150/purse500→480; condition94 unchanged |
+| separated carrier | `aboard-carrier_far-20261017-084100-17426-post.SAV` | army(102,49), carrier(150,90); no synchronization claim |
+| two providers | `land-two_foreign-20261017-084057-17118-post.SAV` | city88 then89; quantities5 then4; purse25→24 |
+| above capacity | `fleet-above-20261017-084059-17272-post.SAV` | supply730→720/purse500→502; seller treasury−2 |
+| hostile fleet | `fleet-war-20261017-084059-17272-post.SAV` | support unchanged; buyer treasury1000→−445 is a full-seat confound |
+
+No native Windows confirmation. All other pending research requests retain their
+own scope; these assets do not authorize build or T177 changes.
