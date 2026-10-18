@@ -2022,3 +2022,9 @@ complete-turn equivalence, foreign supply charge, build/T177 or fixture change.
 ## SAV export safety packet (2026-10-17)
 
 The [pinned ic2-conquest packet](https://github.com/diegoami/ic2-conquest/blob/ac958a0fa58984098641a7992a42d0fbf517d473/runs/experiments/data/run-exp-sav-export37/README.md) contains the authoritative `nation-matrix-v2.csv`, source inventory/extracts, public-save scalar audit, DAT profile, ten bounded original-x86 controls and validation receipt. `nation-matrix-initial.csv` is a retained draft and is not the matrix cited by the [promoted report](reports/2026-10-17-sav-export-live-regions-and-safe-rejection-policy.md). Fourteen already-public saves were sampled; the report names five examples, whose save-table rows above provide retrieval links. There are no new save release assets, candidate exports, private owner inputs or Windows outputs from this packet.
+
+## Bound-tax public source pointer (2026-10-18)
+
+| Save | Public retrieval / SHA-256 | Scope |
+| --- | --- | --- |
+| [`det-AUTO0721-clock.SAV`](https://github.com/diegoami/ic2-conquest/blob/88ac03972d9f8d972fd7a72344c7406a4b4f0c96/saves/det-AUTO0721-clock.SAV) | `ee4550c1094847310fe3eafaa8077481474d0ef3b4a5259acd397f4a74b862eb` | Existing public turn-0721 clock fixture; source for two in-memory tax projections in the [tax profile report](reports/2026-10-18-sav-export-bound-tax-subset-and-binary-alias-evidence.md). Independently retrieved/hashed at intake; no new save output or release. |
