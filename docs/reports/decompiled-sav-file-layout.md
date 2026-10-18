@@ -38,6 +38,8 @@ Immediately after the (now code-confirmed) mercenary table, the save reads a 2-b
 
 This single pair of functions independently reconfirms, from the actual serialization code rather than inference, nearly every structural fact this project has built up from save-diffing over many reports: the map size, city table size and stride, the army/fleet/nation table record lengths, and — most importantly — the mercenary table's 50-slot capacity that `mercenary-pool-record.md` had to discover empirically by testing where plausible data stopped. It also reveals the conditional battle-state block. Human-controlled File → Save As has produced that variant under Wine; its 2,105 bytes must be included when the saved battle flag is set. The strategic sequence accounts for saves with the flag clear.
 
+For the provisional original-bound current-human tax transformation and the distinction between serialized byte projections and complete GUI/native validation, see the [tax profile evidence](2026-10-18-sav-export-bound-tax-subset-and-binary-alias-evidence.md). The serializer still consumes all 31 UNKNOWN nation bytes wholesale.
+
 ## What this does not establish
 
 - Whether arbitrary changed native state can safely inherit unmapped original record bytes; see the [SAV export safety finding](2026-10-17-sav-export-live-regions-and-safe-rejection-policy.md).

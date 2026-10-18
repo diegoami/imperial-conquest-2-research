@@ -10,6 +10,8 @@
 
 This is a byte-complete classification and **minimal safe rejection policy**, not a completed semantic exporter or original-compatibility approval. Missing meanings, missing native history/fields, new-record residue policy and the three required Windows round trips remain gates. In particular, the twelve owner JSON saves have not been inspected or converted here; their convertibility is not established. No owner files, generated SAVs, remake code, original fixtures or task #25 work were changed.
 
+**Later evidence (2026-10-18):** [Bounded access/record-lineage controls](2026-10-18-sav-export-unknown-access-and-record-lineage-boundaries.md) preserve the general rejection policy; lexical absence does not prove alias absence. The [current-human tax profile](2026-10-18-sav-export-bound-tax-subset-and-binary-alias-evidence.md) adds three `nation+450` address-forming LEAs whose actual consumers are viewport `+486/+488`, and a provisional tax-only serialized projection with authentic envelope/native-edit binding, pending source -1 and fresh unselected/stable UI obligations. This narrow profile preserves all 31 UNKNOWN bytes; it does not authorize arbitrary native JSON inheritance or establish Windows compatibility.
+
 ## Evidence and boundaries
 
 The [source packet](https://github.com/diegoami/ic2-conquest/blob/ac958a0fa58984098641a7992a42d0fbf517d473/runs/experiments/data/run-exp-sav-export37/README.md) pins scripts, outputs, source extracts and methods. Important artifacts:
