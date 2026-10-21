@@ -58,6 +58,8 @@
 - Codes: `50` is empty; `type·3 + size` for the attacker (0–14); `type·3 + size + 20` for the defender (20–34). The size is `min(2, troops div (std div 3))`.
 - The slot at a cell is found by scanning the 40 slots for a live unit with that position (`FUN_004383BC`). When two units share a cell, the last one in the scan wins.
 
+**Clarified 2026-10-21:** [crafted-grid source audit](2026-10-21-crafted-battle-grid-movement-and-line.md) establishes stored-icon transport on movement, grid/slot independence and the equal-coordinate false clear-line branch. Retained crafted Wine boundaries corroborate the rules; corrected full replay remains open.
+
 **Geometry and terrain.** The grid is 14 × 12 cells of 32 px. The map is drawn at `(32x, 32y + 30)` in a 448 × 414 client area. The distance is Chebyshev, `max(|dx|,|dy|)` (`FUN_00449018`), and adjacent means distance 1. There is no terrain, no impassable cell, and no movement-cost or modifier table. `[confirmed: code]`
 
 ## 2. Deployment (area 2)
