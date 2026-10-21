@@ -1,113 +1,56 @@
 # Agent rules
 
-These rules apply to Claude Code, Codex and external agents. `AGENTS.md` is Codex's entry
-point to this file. Explicit instructions from the user take precedence, including a
-task-specific choice to implement directly; do not ask again for a choice already made.
+These rules apply to Claude Code, Codex and external agents. Read AGENTS.md and
+`docs/environment.md`; for cloud continuation read `docs/cloud-continuation.md`.
+Explicit user instructions take precedence.
 
-## Choosing models: the user decides (owner's decision, 2026-10-11)
+## Session-led workflow (owner decision, 2026-10-21)
 
-This replaces every earlier model-choice rule of the project (L50/L51 of harness_imperial, the
-quota-tracker "follow `/recommend`" rule, default reviewers, chains, substitute orders). Those are
-kept only as history where docs still show them.
+The active session chooses suitable tools, models, implementation method and validation.
+Use the supplied checkout and a branch when useful. Worktrees and separate reviews are
+optional. There is no compulsory model-choice question, model-family restriction,
+quota-service dependency, automatic external review or approval-triggered merge sequence.
+This supersedes the 2026-10-11/12 rules and historical instructions in old briefs,
+reports and PR notes. Respect explicit user choices and GitHub's enforced checks.
 
-1. Before implementing anything (a task, a fix, a plan change), ask the user ONE question with the
-   question tool when available (otherwise plain chat): does the main session implement it,
-   or a subagent, and which model?
-   - The main session: it implements itself, in its own git worktree (never the main checkout).
-   - A subagent: the client's delegation tool with the model the user names (only if that
-     client offers it), or an external run (e.g. OpenCode) with the model the user names.
-     Do not assume a Claude Agent tool or a particular model exists in Codex.
-   Whoever implements works in its own worktree, keeps a short running-notes file there (plan, a
-   progress line per commit, an END block before stopping), pushes after every commit, and opens
-   the PR. When a subagent ends, the main session reads its final report before acting and posts
-   its notes on the issue.
-2. At every review (first review, re-review, re-check of named fixes), ask the user ONE question:
-   which external model reviews? Run that review alone (one at a time), and relay its findings to
-   the user in full. A PR gets one review unless the user asks for more. Every review brief
-   carries the section in `docs/review-brief.md`. A PR whose review (or last re-check) approves is
-   merged right away, without asking (owner's rule, 2026-10-12); then clean up its worktrees and
-   branch, and ack ic2-conquest if it was an intake.
-3. With each question, show the quota service's recommendation as a SUGGESTION ONLY:
-   `curl -fsS --max-time 3 "http://localhost:8765/recommend?tier=heavy"` for heavy work, `tier=light` for small
-   work (its `pick`/`pair` with rank, outlook and reliability). If it doesn't answer, ask without
-   the suggestion.
-4. The only fixed rules: the reviewer is never of the implementer's model family; DeepSeek is never
-   used; Alibaba only when the user asks.
-5. Record each choice (who, which model, the suggestion's reasons) on the issue or PR.
-6. These rules hold whatever model the orchestrating session runs on; they never name it.
-7. A failed run is diagnosed and fixed, not silently re-routed: another model only when the
-   provider does not answer, and the user names it.
+Make the requested work concrete, validate it appropriately, commit and push useful
+progress and durable continuation notes without asking again. Preserve unrelated edits,
+active branches and unique evidence. Stage named task files rather than the whole tree.
+Use a PR when useful; the session decides whether additional review is warranted and
+whether validated work is ready to merge. Record material checks and limitations.
 
-Facts for running the model the user names (not a choice rule):
-- Model ids come from the provider's live list (`opencode models <provider>`), never memory.
-- "Luna" on OpenAI is `openai/gpt-5.6-luna` (direct route), not `openai/gpt-6-luna`. Never run a
-  Luna through OpenCode Go (`opencode-go/...`): a proxy behind it returns `Bad Request` in long
-  agent loops.
-- Effort: for heavy models prefer medium over high, or light when medium is not needed, unless the
-  user says otherwise.
+## Research and privacy
 
-## Monitoring OpenCode sessions (and any other background agent)
+A draft is a claim, not evidence. Follow `.claude/skills/retrieve-findings/SKILL.md`
+for intake. Separate observation, code-backed interpretation and inference; preserve
+scope, uncertainty, provenance and contradictions. An unavailable input is a verification
+limit, never a passing check. Keep original game files, private saves, screenshots,
+full decompilations and their private manifests outside Git and public releases.
+Publish hashes and scalar summaries only where the evidence policy permits them.
+Never publish private JSON paths or per-save hashes from the owner's preflight set.
 
-8. Start every OpenCode run in the background, with stdin from a file (never an inherited pipe:
-   `opencode run` waits for stdin's end-of-file before it creates a session). Never wait on it
-   blind. Reviews run with `--agent reviewer` (`.opencode/agents/reviewer.md`: read-only, `/tmp`
-   open), and their briefs start with the run rules in `docs/review-brief.md`.
-9. Watch it with one monitor that checks every 1-2 minutes and reports only changes:
-   - the session started (`opencode session list` in the run's directory, or the run's
-     "session ses_... started" line), and the run's exit;
-   - progress: the OpenCode log's size and the session's `updated` time, the worktree's changed
-     files, new lines in the running-notes file, and new commits pushed to the branch;
-   - "possibly stuck" after ~10 minutes with no change; "unpushed" when a commit sits on the
-     branch but not on origin for ~15 minutes (push it for the run and record it);
-   - free memory, if the machine is short of it: run reviews and builds one at a time.
-   For a Claude subagent, the progress signal is its transcript file's size plus its worktree.
-   For Codex delegation, use the client's agent status/messages plus the worktree; do not
-   assume a Claude transcript path exists.
-10. Tell the user, in plain language, what each running agent is doing: the step it is on, what it
-    committed, what it found (from its notes, commits and latest session messages). Never raw log
-    lines or byte counts.
-11. On a "possibly stuck" flag: check the process is alive, read its newest session messages
-    (`opencode export <ses_...>` or the session reader under "Delegated runs" below); a long build
-    or test step is not stuck. A dead or 20-minute-silent run is stuck: record the cause, fix it
-    if it is ours.
-12. When a run ends, read its final message before doing anything else. A run that stopped and
-    reported a blocker gets an answer (fix the brief or the setup), not a retry on another model.
-13. A run interrupted by our own limits (an idle or total timeout) is RESUMED in its own session
-    and worktree (`opencode run --session <ses_...>`, with a short "continue where you stopped"
-    message and a longer limit), not restarted from scratch.
+ic2-conquest and imperial_conquest_2 are read-only unless the owner explicitly authorizes
+a change there. Peer messages to ic2-conquest are authorized by the owner; use an actual
+available messaging tool and report delivery accurately. Do not invent a cloud bridge or
+substitute an unrelated channel. Migration preparation does not authorize game runs;
+experiments and bots remain paused until explicitly requested.
 
-For findings reviews, see `.claude/skills/retrieve-findings/SKILL.md`.
+Never read, print, commit or bundle credential files: local settings and backups, `.env`,
+OpenCode `auth.json`, quota-tracker configuration, rclone configuration contents or keys.
+Use secret injection for authentication. An existing rclone config may be passed by path
+to rclone without displaying its contents. Preserve excluded files in place.
 
-## Delegated runs: read what they returned (owner rule, 2026-10-05)
+## Optional delegation and reviews
 
-Before you retry a delegated run, re-route it to another model (only under rule 7), or call it a
-failure, read what it returned. Never retry blind.
+Delegate only when authorized by the user or applicable instructions. Choose the scope,
+model and isolation appropriate to the task, honoring explicit user preferences. Review
+guidance is in `docs/review-brief.md`; `.opencode/agents/reviewer.md` is an optional
+read-only reviewer role, not a required gate. Do not claim an external review occurred
+when only the main session checked the work.
 
-- OpenCode runs (implement.mjs / review.mjs): exit 1 with an empty diff looks the same for an early
-  end and for a run that stopped and reported a blocker. The log's tail shows only the last tool
-  output, not the model's final message. Read the final message from the session record:
-
-  ```
-  python3 - <<'EOF'
-  import sqlite3, json
-  db = 'file:/home/diego/.local/share/harness-opencode/data/opencode/opencode.db?mode=ro'
-  c = sqlite3.connect(db, uri=True)
-  sid = 'ses_...'   # the "session ses_..." line in the run's log
-  parts = c.execute("select data from part where session_id=? order by time_created", (sid,)).fetchall()
-  texts = [json.loads(d) for (d,) in parts if json.loads(d).get('type') == 'text']
-  print(texts[-1]['text'] if texts else 'no text part')
-  EOF
-  ```
-
-  Open it read-only. Never read auth.json in that directory.
-- Claude agents: read the agent's final report (its hand-back) in full before acting.
-- Codex agents: read the completed agent's final message in full before acting. Use the
-  client's agent tools; do not query a Claude or OpenCode session store for a Codex run.
-- A run that stopped and reported gets an answer to its report: amend the task, decide, or
-  escalate. Post the report on the task's issue so it is kept.
-- Treat any earlier "model X ends runs early" verdict as unconfirmed until its runs' final messages
-  have been read.
-
-Why: in goal2-archaeology, T23's GLM-5.3 run stopped correctly and reported a real blocker in the
-Done-when. Its report was only in the session record; the main session misread it as an early end
-and moved the task to another model, which spent quota on a contract that could not be met.
+Monitor any launched background work and communicate useful progress. Before retrying,
+rerouting or declaring a delegated run failed, read its complete final/native record.
+An exit status or log tail is insufficient: a run may have reported a legitimate blocker.
+Address that blocker and preserve its report on the relevant issue or PR. Resume an
+interrupted useful session when possible instead of blindly starting it again.
+Do not read authentication stores while retrieving a session record.
