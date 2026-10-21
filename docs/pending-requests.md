@@ -74,7 +74,48 @@ research #25 / build #1107 stay open until that attribution is established.
 
 The [partial safety finding](reports/2026-10-17-sav-export-live-regions-and-safe-rejection-policy.md) establishes the live city list, historical baselines, 31 UNKNOWN nation bytes and constructor residue. It does not clear changed-state export. Main #1194/T185 stays open. An unchanged authentic identity path still requires complete-state and framing/version validation; same-template lineage does not establish safe changed-state inheritance.
 
+**Historical next-step record (previous intake; superseded below).**
+
 **Next:** establish the missing semantic/record-residue policy and produce applicable candidate exports without modifying private originals. With owner coordination and a native Windows runtime, open at least three distinct representative outputs, inspect state, perform an ordinary action/end turn, save each to a new copy and reopen. Preserve private inputs/outputs outside code repositories; record approved redacted/scalar evidence. No owner-private inputs, candidate paths or coordinated Windows run were supplied to this intake. Wine and self-reader checks do not satisfy this gate. Task #25 remains a separate open request above.
+
+
+**Superseding status (2026-10-21):** [promoted native Windows report](reports/2026-10-18-sav-export-original-windows-tax-candidates.md)
+records three physical bound-original tax candidates completing open → Recruit →
+one End turn → new save → normal close → fresh reopen/new save. The native tax
+gate is **3/3 for that tax-only profile**. The separate **native-JSON gate is
+still 0/12**; no tax case counts as a native-JSON conversion. Internal callback
+instruction traces remain UNVERIFIED and UNKNOWN31 remains unknown. This intake
+could verify committed receipts and accessible source/EXE hashes, but the full
+private-byte validator is blocked by candidate availability/native-output access.
+
+**Current-gates handoff:** folded from ic2-conquest
+[main `7fe20be`](https://github.com/diegoami/ic2-conquest/blob/7fe20bedba0b9cdbb012b1b348c96507f6a65768/findings/2026-10-21-sav-export37-current-gates-and-input-preflight.md),
+blob `3bde157c4217183a32a7f05fed69babe53ae5b01`; it is a status handoff, not
+a new native result. Its aggregate-only upstream inspection found 12 JSON files,
+11 unique hashes (two byte-identical files), 11 format 4 and one format 7,
+null source provenance in all 12, 16 nations/334 cities each, turn indices 0–6,
+and the expected save78 basename absent. This is not proof of the authoritative
+twelve-input selection and was not independently reopened by this intake.
+No private path, individual native-JSON hash or private inventory is included.
+Do not silently substitute/rename files or drop the duplicate-content input.
+
+The handoff records main PR1202 merged on 2026-10-20 at `e5f1bd76802ef583cf48a63c7582ee87b80a586a`;
+that writer groundwork does not complete the native writer/export bridge.
+Research #37 remains open. Four gates remain:
+
+1. Confirm the authoritative **twelve-input manifest**, including any rename or
+   content equivalence; preserve each input identity and source unchanged.
+2. Complete the applicable **UNKNOWN/new-record policy**, history/profile,
+   inactive/text residue, record ordering/relocation and carrier representation,
+   or define evidence-backed refusals. No arbitrary template inheritance.
+3. Independently review **T185 migration/export** (format 4 → current), checked
+   capacities/encoding/indices and no-overwrite publication before candidates.
+4. Validate supported outputs from **that native-JSON set**: independent decode,
+   deterministic/rejection/full-suite checks, then the required original-Windows
+   order/End-turn/new-save/fresh-reopen gate. Existing tax-only 3/3 does not waive it.
+
+The main project evaluates the promoted revision and routes evidence into
+T184–T186/#1191; no Evaluated marker or downstream completion is asserted here.
 
 ## Crafted battle-grid fidelity (research #40)
 

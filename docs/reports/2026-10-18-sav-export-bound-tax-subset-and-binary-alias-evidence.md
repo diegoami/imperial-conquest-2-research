@@ -92,3 +92,12 @@ This packet does not end with a generic request for more research. The finite re
 **[Owner relay received for this intake](https://github.com/diegoami/imperial-conquest-2-research/issues/37#issuecomment-6246902413):** the three private reference inputs `1.sav`, `1_thracia_271_spring_1.sav` and `1_rome_270_winter_7.sav` are **PASS REPORTED for file-checkable gates**, conditionally usable for planning. This supersedes earlier NOT EVALUATED / NOT ESTABLISHED file-checkable classifications. The intake author did not access or independently rerun these private inputs. They are not eligible attested candidates: authentic source/native baseline binding, trusted tax-only edit journal, same-turn/no-other-delta proof, the reviewed typed API, binding implementation and all fresh-load/UI/close/save runtime obligations remain conditional. Each target rate still needs its own check. Preserve current-nation/controller BYTE 1, integer tax 0..40, pending source -1 and identity viewport clamp; never clear an offer to qualify.
 
 **Candidate files: NONE; paths/hashes unavailable.** Windows coordination remains unestablished and validation remains **0/3**. The three private references are distinct from the three public envelopes/six memory projections above, and from the **twelve native JSON conversion inputs, still unresolved**. No original/private input upload, game run, candidate write, other-repo/build/T177/task25 change or RNG-equivalence claim occurred. This is provisional research promotion for a finite candidate profile, not completion of candidate delivery, compatibility approval, research #37 or the downstream writer tasks.
+
+> **Superseding note (2026-10-21):** the historical paragraph above described this
+> earlier intake. [Native Windows tax-candidate evidence](2026-10-18-sav-export-original-windows-tax-candidates.md)
+> now records three physical writer outputs and **3/3 observed native tax-only
+> sequences**. The separate **native-JSON gate remains 0/12**; none of the tax
+> cases converts those twelve inputs. Internal GUI callbacks remain UNVERIFIED,
+> UNKNOWN31 stays unknown and #37 stays open. Current intake verified the public
+> receipts and accessible source/EXE hashes; retained candidate/output access
+> prevents a fresh complete private-byte validator pass.

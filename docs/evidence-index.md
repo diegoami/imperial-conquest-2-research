@@ -2028,3 +2028,33 @@ The [pinned ic2-conquest packet](https://github.com/diegoami/ic2-conquest/blob/a
 | Save | Public retrieval / SHA-256 | Scope |
 | --- | --- | --- |
 | [`det-AUTO0721-clock.SAV`](https://github.com/diegoami/ic2-conquest/blob/88ac03972d9f8d972fd7a72344c7406a4b4f0c96/saves/det-AUTO0721-clock.SAV) | `ee4550c1094847310fe3eafaa8077481474d0ef3b4a5259acd397f4a74b862eb` | Existing public turn-0721 clock fixture; source for two in-memory tax projections in the [tax profile report](reports/2026-10-18-sav-export-bound-tax-subset-and-binary-alias-evidence.md). Independently retrieved/hashed at intake; no new save output or release. |
+
+
+## Native Windows bound-tax candidates (2026-10-18; promoted 2026-10-21)
+
+For the [native report](reports/2026-10-18-sav-export-original-windows-tax-candidates.md),
+source is ic2-conquest main `7fe20bedba0b9cdbb012b1b348c96507f6a65768`,
+original [PR104](https://github.com/diegoami/ic2-conquest/pull/104) merge
+`c8193ca1ebbb8f024963c4961bac8be02e940542`.
+**These are private native artifacts, not downloadable release assets.** No
+SAV/PNG/original bytes are stored or uploaded here. Bare basenames resolve to
+the committed scalar/hash receipts below; private location/access must be
+coordinated separately. Current intake could not rehash candidate/stage/PNG
+bytes. The [sanitized intake receipt](data/sav37-native-intake.json) records
+metadata consistency and fresh accessible source/EXE hashes only.
+
+| Artifact basename / case | SHA-256 | Scalar provenance / access |
+|---|---|---|
+| `t184-tax-1-n0-0.SAV` / Rome tax 0 | `5e85a985382dc56ae964889ed01d4fda56b0e2414ccaede5e18d03b3bd2a314c` | [v3 manifest](https://github.com/diegoami/ic2-conquest/blob/7fe20bedba0b9cdbb012b1b348c96507f6a65768/runs/experiments/data/run-exp-sav-export37-native/native-packet-validation-v3.json), case 1; private bytes unavailable to intake |
+| `t184-tax-thracia-n15-40.SAV` / Thracia tax 40 | `2afa2d64170a63fefbf12c5678700a02024f01eb0f682a0cbc7efffa63b7288f` | same v3 manifest, case 2; private bytes unavailable to intake |
+| `t184-tax-rome-n0-30.SAV` / Rome tax 30 | `5d82f47aa77f2736afddeac8c23754305455afa7e524636b98d12b4c2a88669a` | same v3 manifest, case 3; private bytes unavailable to intake |
+
+[Packet README](https://github.com/diegoami/ic2-conquest/blob/7fe20bedba0b9cdbb012b1b348c96507f6a65768/runs/experiments/data/run-exp-sav-export37-native/README.md),
+[three completion/control records](https://github.com/diegoami/ic2-conquest/tree/7fe20bedba0b9cdbb012b1b348c96507f6a65768/runs/experiments/data/run-exp-sav-export37-native),
+and [read-only validator](https://github.com/diegoami/ic2-conquest/blob/7fe20bedba0b9cdbb012b1b348c96507f6a65768/runs/experiments/sav_export37_native/verify_native_packet.py)
+retain source/candidate/input/load/order/post-turn/reopen hashes. Initial/save
+and post-turn/reopen pairs agree in all three recorded cases. Controls 2/3
+are exact candidate matches; control 1 retains area-map and earlier baseline
+Information-window geometry differences. No capture image or private path is
+reproduced. Internal callback traces remain UNVERIFIED, UNKNOWN31 unknown;
+this 3/3 tax-only result is zero of twelve native-JSON conversions.

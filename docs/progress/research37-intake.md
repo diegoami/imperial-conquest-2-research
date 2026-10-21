@@ -35,3 +35,77 @@ The ten-control result was JSON-equal and SHA256-equal (`69d640e9ee224dd6e9878fb
 Progress — commit 2: made the independent check receipt durable with pinned packet hashes, raw offset and assertion method, and bounded x86 reproduction command.
 
 END: research #37 and main #1194/T185 remain open; three native Windows output round trips and changed-state semantics remain unmet. Task #25 and immutable fixtures were not changed. PR review and merge belong to the parent session.
+
+
+## Native tax observation and current-gates promotion (2026-10-21)
+
+The earlier END/0-output statement above is historical. This follow-up promotes
+ONLY the requested native-tax draft and current-gates status from conquest
+main7fe20bedba0b9cdbb012b1b348c96507f6a65768. Native blob749755e9b38b74b365669c002c2e522170530fa9;
+status blob3bde157c4217183a32a7f05fed69babe53ae5b01. Native remains identical
+to PR104c8193ca; full Kimi review/dispositions at95d906e3 read (static/private
+path limits,three nonblocking notes). Status PR106 reviewed0e9457e/final631d105e;
+complete GLM report/dispositions read; aggregate inventory is reported-only.
+
+Owner: main Codex/OpenAI session implements, GLM5.3Flash independently reviews,
+retaining this session's explicit choices; commit/push without another question.
+Previously live-verified route opencode-go/glm-5.3-flash on native OpenCode1.18.32
+fallback. No replacement model or quota choice inferred (suggestion unavailable).
+Own worktree branchintake/37-native-tax, basef698190d65bf3c6cc3445cfb0982301e4202fae9.
+
+Plan: check exact draft blobs,latest packet/validator and writer delivery;
+rehash accessible private sources without copying; attempt no-game validator;
+check committed scalar chains and strict guard; write bounded native report,
+fold aggregate status/four gates into pending requests,add superseding notes,
+ledger/evidence/progress/count; validate public diff; PR/review/approved merge;
+keep37open and post short promotion-commit link for main evidence pipeline.
+
+Validation so far:
+- Packet README/v3 is current; draft v2link/334JSON count stale. V2/v3 same
+  input/stage/capture/check records; historicalv3 parsed336JSON and38PNGhashes;
+  current committed tree337JSON includes v3 itself. All337parse, six Python
+  modules inspected/compile check available without executing UI orchestration.
+- Exact verify_native_packet.py attempted unchanged with isolated Python and
+  bytecode disabled, normal and unsandboxed. Recorded source path unavailable;
+  same function retried with SOURCE relocated to accessible current fixtures,
+  then stops at unavailable candidates. NO validation output/PASS produced.
+  Dated native evidence is ACCESS DENIED even direct known-file opens/native
+  read-only probes; do not call it deleted or infer absence. No ACL/ownership
+  modification,game/GUI/bridge action or private-byte copying.
+- All3 accessible sourceSAV digests and runtimeEXE digest freshly match published
+  values. Candidate digests match writer8c31728 production-delivery comment
+  https://github.com/diegoami/imperial-conquest-2-research/issues/37#issuecomment-6247428351
+  and v3/completions/controls. This is documentary candidate provenance, not
+  a fresh candidate-byte check; no delivery manifest was recoverable locally.
+- New metadata-only checker validates recorded3case chains,initial/candidate
+  equality,three distinct phase digests,reopen identity,ordinary recruit effects,
+  controls2/3 and control1's5changed bytes. Actual v3assert tested with3synthetic
+  phase patterns. Normal and optimized checker results equal; an in-memory
+  L==E==R corruption is rejected. Allprivate stage/capture byte claims remain
+  upstream observations. Metadata checker is not the private validator.
+- Control1 before/after=tax+area left/top; source/baseline additionally moves
+  Information window; candidate/final-control=8geometry bytes,not tax difference.
+  No extra gameplay-byte changes in published full-span record; no callback
+  movement cause inferred. Preserve blank case1capture,case3one-confirmation
+  continuation and ad-hoc UI/script-coverage limits.
+
+Reproduce committed-record check from repository root:
+`python3 -I scripts/sav37-native-metadata-check.py CONQUEST_CHECKOUT --output NEW.json`.
+It reads exact7fe20be Git blobs only,never private SAV/PNG/JSON inventory, and
+refuses an existing output. Full no-game private validator remains separately
+required wherever retained source/candidate/native-output access is available;
+choose NEW output and do not run UI orchestration or rewrite old measurements.
+
+Progress — author commit: report with requested bounded native tag/tables/limits;
+current-gates folded into pending37,old0/3paragraph preserved with superseding
+3/3tax/0/12nativeJSON note; both ledger commit/blob pins; scalar-only evidence
+index/receipt/checker; README189. No private paths/native-JSON hashes/inventory,
+original bytes,private saves or PNGs enter researchGit. Allbranch scan applies
+only for candidate visibility; unrelated drafts are not promoted.
+
+END (author candidate)
+- Work remains: independent exact-head GLM review,approved merge,short issue37
+  link with promotion SHA and peer acknowledgment. No downstream Evaluated marker
+  or T184–T186/#1191 completion asserted; main owns evaluation/routing.
+- Native tax gate3/3 OBSERVED; nativeJSON gate0/12,callbackUNVERIFIED,UNKNOWN31
+  unknown,#37OPEN. Fresh full private-byte rerun blocked by actual evidence access.

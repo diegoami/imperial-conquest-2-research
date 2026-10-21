@@ -1,0 +1,60 @@
+{
+  "scope": "committed scalar/hash consistency only; no private-byte rehash or game",
+  "upstream_pin": "7fe20bedba0b9cdbb012b1b348c96507f6a65768",
+  "metadata_checks": "PASS",
+  "cases": [
+    {
+      "case": 1,
+      "candidate_sha256": "5e85a985382dc56ae964889ed01d4fda56b0e2414ccaede5e18d03b3bd2a314c",
+      "candidate_size": 131313,
+      "postturn_and_reopen_sha256": "96ef516dda14b154928684ad9635e9bc254aa45d52a3d3b56a65181dd618684c",
+      "recorded_phase_hash_relations": "PASS"
+    },
+    {
+      "case": 2,
+      "candidate_sha256": "2afa2d64170a63fefbf12c5678700a02024f01eb0f682a0cbc7efffa63b7288f",
+      "candidate_size": 131557,
+      "postturn_and_reopen_sha256": "13a64beae3e90d60ad4179e24b0d51e178698347725e567af3096a2887df4498",
+      "recorded_phase_hash_relations": "PASS"
+    },
+    {
+      "case": 3,
+      "candidate_sha256": "5d82f47aa77f2736afddeac8c23754305455afa7e524636b98d12b4c2a88669a",
+      "candidate_size": 132149,
+      "postturn_and_reopen_sha256": "3e867d29fc18a69e6e9a9d6569f3246c1dff16b2062687952b143d362e703d3d",
+      "recorded_phase_hash_relations": "PASS"
+    }
+  ],
+  "current_packet_JSON_files": 337,
+  "historical_v2_parsed_JSON_files": 334,
+  "historical_v3_parsed_JSON_files": 336,
+  "historical_private_capture_hashes": 38,
+  "actual_v3_guard_synthetic_cases": 3,
+  "native_JSON_conversions": 0,
+  "internal_callback_trace": "UNVERIFIED",
+  "packet_artifact_sha256": {
+    "runs/experiments/data/run-exp-sav-export37-native/case1-completion-v1.json": "ade12d10e85f29b68a73c43389e53d02a15a9f6397721f4664f32f990fa250a4",
+    "runs/experiments/data/run-exp-sav-export37-native/case2-completion-v1.json": "32e9aaed60f402c2a9d0793f893ecb081fb590e8abb0087d9f6434a763389047",
+    "runs/experiments/data/run-exp-sav-export37-native/case3-completion-v1.json": "f9ce664f804a786a7674861630c3dafe54314c0f00e1410ed35e8c4d96d44c9b",
+    "runs/experiments/data/run-exp-sav-export37-native/control1-comparison-v1.json": "acee69075054f59d8771113f5d908cd9ae08c1fbfeb2b7874643b4ecaaea7540",
+    "runs/experiments/data/run-exp-sav-export37-native/control2-comparison-v1.json": "dd19c571a4c16ea31de208c54298ae5fc360bbb4b90be038adef90dc2e29f5d7",
+    "runs/experiments/data/run-exp-sav-export37-native/control3-comparison-v1.json": "1b63cc0b06310ca021a9e17b00047bf3dc4a4688f3dea8215c0de0e54a91a3ac",
+    "runs/experiments/data/run-exp-sav-export37-native/native-packet-validation-v2.json": "c84416b235fc28ed71a52cdf6f4c9004ca5c02dbeb6993732c07575bc8b751e6",
+    "runs/experiments/data/run-exp-sav-export37-native/native-packet-validation-v3.json": "4e4ea828aa174fca4bde694c78b94b657d193179288ec21304282ad21b18266d",
+    "runs/experiments/sav_export37_native/verify_native_packet.py": "a49493c379650aae85191bc764a8b5504fc57cc315e31cbf0872cc4005fba4cd"
+  },
+  "draft_native_blob": "749755e9b38b74b365669c002c2e522170530fa9",
+  "draft_current_gates_blob": "3bde157c4217183a32a7f05fed69babe53ae5b01",
+  "fresh_source_hashes_matched": 3,
+  "fresh_runtime_executable_hash_matched": true,
+  "writer_delivery_candidate_hashes_matched": 3,
+  "writer_delivery_commit": "8c31728bf4124cd87465568e4429d202ddaf2f8d",
+  "writer_delivery_receipt": "https://github.com/diegoami/imperial-conquest-2-research/issues/37#issuecomment-6247428351",
+  "full_private_validator_rerun": "ATTEMPTED/BLOCKED: retained candidate location unavailable; native-output directory access denied",
+  "private_byte_validation_result_created": false,
+  "fresh_candidate_or_stage_hashes_recomputed": false,
+  "private_capture_bytes_inspected": false,
+  "native_JSON_preflight": "aggregate-only upstream report; not independently reopened in this intake",
+  "metadata_checker_private_evidence_files_opened": 0,
+  "metadata_checker_sha256": "63569fff4a84754af941b8f646e787da927b58df5187ea3063c363e1c539cfe9"
+}
