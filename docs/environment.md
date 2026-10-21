@@ -40,7 +40,10 @@ new native Windows result.
 
 Claude, Codex and OpenCode agent/session tools differ. Use only capabilities actually
 available, and never claim delivery without a successful messaging result. The owner
-allows messages to ic2-conquest. Without that bridge, supply a concrete relay message.
+allows messages to ic2-conquest. Owner rule (2026-10-21): send newly consolidated
+research directly to the main-project cloud session titled "OIMP2"
+(imperial_conquest_2; `session_01AY2hoWxpgkz4qN6t6FtLKM` on that date — re-check the
+session list if it is gone). Raw, unreviewed drafts are not consolidated research. Without that bridge, supply a concrete relay message.
 
 Separate reviews are optional; [review-brief.md](review-brief.md) offers guidance.
 The OpenCode reviewer agent is read-only and does not configure Codex permissions.
