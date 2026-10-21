@@ -2039,15 +2039,17 @@ original [PR104](https://github.com/diegoami/ic2-conquest/pull/104) merge
 **These are private native artifacts, not downloadable release assets.** No
 SAV/PNG/original bytes are stored or uploaded here. Bare basenames resolve to
 the committed scalar/hash receipts below; private location/access must be
-coordinated separately. Current intake could not rehash candidate/stage/PNG
-bytes. The [sanitized intake receipt](data/sav37-native-intake.json) records
-metadata consistency and fresh accessible source/EXE hashes only.
+coordinated separately. Fresh intake rehashed all21manifested SAVs and38captures using owner-provided
+readable copies, then reran the unchanged no-game validator. Original writer
+folder/manifests remain unavailable; retained transport bytes match the fixed
+writer candidate digests. The [sanitized receipt](data/sav37-native-intake.json)
+records both private-copy validation and separate metadata consistency.
 
 | Artifact basename / case | SHA-256 | Scalar provenance / access |
 |---|---|---|
-| `t184-tax-1-n0-0.SAV` / Rome tax 0 | `5e85a985382dc56ae964889ed01d4fda56b0e2414ccaede5e18d03b3bd2a314c` | [v3 manifest](https://github.com/diegoami/ic2-conquest/blob/7fe20bedba0b9cdbb012b1b348c96507f6a65768/runs/experiments/data/run-exp-sav-export37-native/native-packet-validation-v3.json), case 1; private bytes unavailable to intake |
-| `t184-tax-thracia-n15-40.SAV` / Thracia tax 40 | `2afa2d64170a63fefbf12c5678700a02024f01eb0f682a0cbc7efffa63b7288f` | same v3 manifest, case 2; private bytes unavailable to intake |
-| `t184-tax-rome-n0-30.SAV` / Rome tax 30 | `5d82f47aa77f2736afddeac8c23754305455afa7e524636b98d12b4c2a88669a` | same v3 manifest, case 3; private bytes unavailable to intake |
+| `t184-tax-1-n0-0.SAV` / Rome tax 0 | `5e85a985382dc56ae964889ed01d4fda56b0e2414ccaede5e18d03b3bd2a314c` | [v3 manifest](https://github.com/diegoami/ic2-conquest/blob/7fe20bedba0b9cdbb012b1b348c96507f6a65768/runs/experiments/data/run-exp-sav-export37-native/native-packet-validation-v3.json), case 1; retained transport bytes freshly hash-verified; no download |
+| `t184-tax-thracia-n15-40.SAV` / Thracia tax 40 | `2afa2d64170a63fefbf12c5678700a02024f01eb0f682a0cbc7efffa63b7288f` | same v3 manifest, case 2; retained transport bytes freshly hash-verified; no download |
+| `t184-tax-rome-n0-30.SAV` / Rome tax 30 | `5d82f47aa77f2736afddeac8c23754305455afa7e524636b98d12b4c2a88669a` | same v3 manifest, case 3; retained transport bytes freshly hash-verified; no download |
 
 [Packet README](https://github.com/diegoami/ic2-conquest/blob/7fe20bedba0b9cdbb012b1b348c96507f6a65768/runs/experiments/data/run-exp-sav-export37-native/README.md),
 [three completion/control records](https://github.com/diegoami/ic2-conquest/tree/7fe20bedba0b9cdbb012b1b348c96507f6a65768/runs/experiments/data/run-exp-sav-export37-native),

@@ -109,3 +109,35 @@ END (author candidate)
   or T184–T186/#1191 completion asserted; main owns evaluation/routing.
 - Native tax gate3/3 OBSERVED; nativeJSON gate0/12,callbackUNVERIFIED,UNKNOWN31
   unknown,#37OPEN. Fresh full private-byte rerun blocked by actual evidence access.
+
+
+### Readable owner-copy follow-up (before independent PR review)
+
+Initial failures above are retained as history, now superseded for private-byte
+verification. Owner provided readable retained copies outside researchGit.
+Fresh21SAV+38PNG lengths/hashes match the historicalv3 manifest59/59; four extra
+copied files are not silently counted as manifested evidence. Original writer
+folder/candidate basenames/manifests remain unavailable. Bound candidate names
+were supplied as temporary links OUTSIDEGit to retained Itransport copies; their
+fresh SHA256s match fixed production-delivery digests. SOURCE and PRIVATE were
+explicitly relocated; verify_native_packet.main FUNCTION BYTE-UNCHANGED, no
+assertion/input repair, candidate regeneration or input-byte copying byintake.
+
+Actual no-game validator EXIT0/PASS:3cases,337current measurementJSON,38capture
+hashes,0active originals; all casechecks/immutable-input/stage/capture/EXErecords
+exactly equal retainedv3. Current337 vs historical336 includes v3itself. Source
+and EXE hashes checked afresh. Additional independent whole-byte comparisons:
+all3I/L pairs,all3E/R pairs,controls2/3after==candidate copies; control1 tax+
+area5byte mask, source/baseline Information4bytes, candidate/finalcontrol8geometry
+bytes all match. Captures hash-checked, not visually replayed. No game,GUI,
+bridge,save creation,ACL/ownership change or research-private input copy.
+
+Updated final candidate report/superseding notes/ledger/evidence/receipt before
+review; native3/3 and JSON0/12 limits unchanged. Earlier commit8a05910/draftPR48
+captured inaccessible-input state, not the final verification claim. This next
+commit records the successful rerun and retained-copy provenance honestly.
+
+END (updated author candidate)
+- Pending: independent exact-head GLM review/approved merge,short issue37 link.
+- Main evidence pipeline owns Evaluated/routing intoT184–T186/#1191.
+- Native tax3/3 observed; nativeJSON0/12; callbackUNVERIFIED;UNKNOWN31;37OPEN.

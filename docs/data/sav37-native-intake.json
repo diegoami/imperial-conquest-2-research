@@ -1,5 +1,5 @@
 {
-  "scope": "committed scalar/hash consistency only; no private-byte rehash or game",
+  "scope": "committed scalar/hash audit plus fresh read-only private-copy validator and whole-file comparisons; no game/UI or bytes copied into research",
   "upstream_pin": "7fe20bedba0b9cdbb012b1b348c96507f6a65768",
   "metadata_checks": "PASS",
   "cases": [
@@ -50,11 +50,47 @@
   "writer_delivery_candidate_hashes_matched": 3,
   "writer_delivery_commit": "8c31728bf4124cd87465568e4429d202ddaf2f8d",
   "writer_delivery_receipt": "https://github.com/diegoami/imperial-conquest-2-research/issues/37#issuecomment-6247428351",
-  "full_private_validator_rerun": "ATTEMPTED/BLOCKED: retained candidate location unavailable; native-output directory access denied",
-  "private_byte_validation_result_created": false,
-  "fresh_candidate_or_stage_hashes_recomputed": false,
-  "private_capture_bytes_inspected": false,
+  "full_private_validator_rerun": "PASS: unchanged function; explicit SOURCE/PRIVATE relocation and outside-Git candidate-basename aliases to fixed-production-digest retained I transports",
+  "private_byte_validation_result_created": true,
+  "fresh_candidate_or_stage_hashes_recomputed": true,
   "native_JSON_preflight": "aggregate-only upstream report; not independently reopened in this intake",
   "metadata_checker_private_evidence_files_opened": 0,
-  "metadata_checker_sha256": "63569fff4a84754af941b8f646e787da927b58df5187ea3063c363e1c539cfe9"
+  "metadata_checker_sha256": "63569fff4a84754af941b8f646e787da927b58df5187ea3063c363e1c539cfe9",
+  "private_capture_pixels_inspected": false,
+  "private_capture_hashes_verified": 38,
+  "private_SAV_hashes_verified": 21,
+  "fresh_validator_measurement_JSON_files": 337,
+  "fresh_validator_active_original_processes": 0,
+  "fresh_validator_records_equal_retained_v3": true,
+  "candidate_binding": "retained byte-identical transport copies freshly match fixed writer-delivery SHA256; original writer directory/manifests not recovered",
+  "initial_private_access_failures": "superseded by owner-provided readable copies; original dated folder remains inaccessible",
+  "fresh_comparison_scalars": {
+    "all3_initial_load_complete_byte_pairs": true,
+    "all3_postturn_reopen_complete_byte_pairs": true,
+    "controls2_3_complete_candidate_pairs": true,
+    "control1_before_after_offsets": [
+      111294,
+      111330,
+      111331,
+      111332,
+      111333
+    ],
+    "control1_source_baseline_offsets": [
+      111346,
+      111347,
+      111348,
+      111349
+    ],
+    "control1_candidate_after_offsets": [
+      111330,
+      111331,
+      111332,
+      111333,
+      111346,
+      111347,
+      111348,
+      111349
+    ],
+    "private_bytes_copied_by_intake": false
+  }
 }

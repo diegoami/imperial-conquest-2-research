@@ -29,24 +29,37 @@ byte-value distinctness, closing the possible load==post-turn!=order gap.
 Research executed the actual v3 guard on synthetic counterexamples; it rejects
 both duplicate-phase cases and accepts three distinct phases.
 
-**Intake verification limit:** the exact read-only validator was attempted,
-including a retry outside the sandbox and a source-relocation retry. It did
-not complete or produce a validation result: the published candidate location
-is unavailable here and the native-output directory denies access. Research
-freshly rehashed all three accessible original sources and the original EXE;
-all match their published digests. Candidate digests match the writer's
+**Fresh read-only intake validation passed.** Initial attempts could not access
+the historical source/candidate/output locations. The owner subsequently made
+retained private native copies readable. Research reran the **unchanged
+`verify_native_packet.main` function**, configuring relocated source and native
+folders. The original writer directory/manifests remain unavailable: temporary
+candidate-basename links **outside Git** point to retained input transport copies
+whose freshly computed digests exactly match the fixed writer outputs in the
 [published production-delivery receipt](https://github.com/diegoami/imperial-conquest-2-research/issues/37#issuecomment-6247428351)
-at writer `8c31728bf4124cd87465568e4429d202ddaf2f8d`, plus the committed native
-manifest and completion/control records. Candidate/stage/PNG bytes were not
-freshly rehashed or visually inspected by this intake. The observed native
-sequences below are upstream measurements, not new research-session game runs.
+for `8c31728bf4124cd87465568e4429d202ddaf2f8d`. No candidate was regenerated,
+no validator condition was disabled, and no input bytes were copied by intake.
+This binds accessible retained bytes to the published candidate digests; it
+does not claim recovery of the missing original writer directory or manifests.
 
-The [metadata checker](../../scripts/sav37-native-metadata-check.py) independently
-checks all 337 committed JSON records, the three recorded phase-hash chains,
-controls and v3 guard. Its [sanitized receipt](../data/sav37-native-intake.json)
-is **metadata consistency only**, not a substitute for the unavailable
-private-byte validator. No game file, private save, capture, private JSON
-inventory, private path or native-JSON input hash is copied into research Git.
+All **21 manifested stage/reference SAV files and 38 manifested PNG captures**
+match their recorded lengths and hashes. The validator passes all three
+sequences, current 337 measurement JSON files, script compilation, full strategic
+framing and zero current original processes. Its case checks, immutable-input,
+stage/capture and EXE records match v3 exactly; the JSON count is now 337 rather
+than the historical 336. Fresh source/EXE hashes match too. Research additionally
+compared every byte of all three candidate-transport/load and post-turn/reopen
+pairs, both exact controls, and control 1's geometry masks. **This rerun launches
+no game, creates no save and supplies no new native UI observations.** Capture
+hashes were checked; pixels were not newly inspected by intake.
+
+The [metadata checker](../../scripts/sav37-native-metadata-check.py) separately
+checks the 337 committed JSON records, recorded chains and actual v3 guard. Its
+normal/optimized results agree; corrupted phase metadata is rejected. It is
+**metadata consistency only**, not the private-byte validator. The
+[sanitized combined receipt](../data/sav37-native-intake.json) distinguishes those
+checks from the fresh private-copy validation. No game file, private save,
+capture, private JSON inventory/path or native-JSON input hash enters research Git.
 
 ## Runtime and physical writer outputs
 

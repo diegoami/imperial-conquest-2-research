@@ -85,8 +85,9 @@ one End turn → new save → normal close → fresh reopen/new save. The native
 gate is **3/3 for that tax-only profile**. The separate **native-JSON gate is
 still 0/12**; no tax case counts as a native-JSON conversion. Internal callback
 instruction traces remain UNVERIFIED and UNKNOWN31 remains unknown. This intake
-could verify committed receipts and accessible source/EXE hashes, but the full
-private-byte validator is blocked by candidate availability/native-output access.
+verified committed receipts and freshly rehashed retained private copies with
+the unchanged read-only validator. Original writer-folder/manifests remain
+unavailable; retained transport digests bind the candidate bytes. No game ran.
 
 **Current-gates handoff:** folded from ic2-conquest
 [main `7fe20be`](https://github.com/diegoami/ic2-conquest/blob/7fe20bedba0b9cdbb012b1b348c96507f6a65768/findings/2026-10-21-sav-export37-current-gates-and-input-preflight.md),

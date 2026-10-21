@@ -99,5 +99,5 @@ This packet does not end with a generic request for more research. The finite re
 > sequences**. The separate **native-JSON gate remains 0/12**; none of the tax
 > cases converts those twelve inputs. Internal GUI callbacks remain UNVERIFIED,
 > UNKNOWN31 stays unknown and #37 stays open. Current intake verified the public
-> receipts and accessible source/EXE hashes; retained candidate/output access
-> prevents a fresh complete private-byte validator pass.
+> receipts and freshly rehashed retained source/candidate-transport/native-output
+> evidence using the unchanged read-only validator; no new game run was made.
