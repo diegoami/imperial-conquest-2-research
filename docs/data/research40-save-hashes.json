@@ -1,0 +1,23 @@
+{
+  "conquest_commit": "c8193ca1ebbb8f024963c4961bac8be02e940542",
+  "release": "run-exp-battle-sweep",
+  "manifest_sha256": "f354d41f77fbe18f9b006f7cef691f330eeb1daadf08c19b88864ab045d0dd6b",
+  "saves": {
+    "CRAFT_c5_stale_grid.SAV": "3d7ca51cba266f86b1f73f770a8313b9692c70bf17005f42302227e6f113a581",
+    "CRAFT_c6_same_cell.SAV": "9f2d7eecc91b855789ee78bfaad9c02722bd4a8f2dd3cd3301961f07a54ef7fd",
+    "CRAFT_d5_stale_grid.SAV": "eb5c62e4ee4bb7305df6b3e9bf034a0f2360013ab16c88590ef360745e2d3e9d",
+    "CRAFT_d6_same_cell.SAV": "8e59b4c86357a7698260de0beb83c17ef9b96be13c2062309bff227b0a355f78",
+    "b3_c5_stale_grid_BATTLE01.SAV": "a5fe05569fd1bba272360135447e45e68d3f376beb38f608b583358d525f88ee",
+    "b3_c5_stale_grid_BATTLE02.SAV": "dd1d39b8114798c6b9d1dccdb16c26659ddb1a079fc6c661c28b6a94e24f78e1",
+    "b3_c5_stale_grid_BATTLE03.SAV": "03abdfd0f70f558e36b97f14e8cc169aae83e14447821027478472819647257b",
+    "b3_c6_same_cell_BATTLE01.SAV": "a5fe05569fd1bba272360135447e45e68d3f376beb38f608b583358d525f88ee",
+    "b3_c6_same_cell_BATTLE02.SAV": "dd1d39b8114798c6b9d1dccdb16c26659ddb1a079fc6c661c28b6a94e24f78e1",
+    "b3_c6_same_cell_BATTLE03.SAV": "03abdfd0f70f558e36b97f14e8cc169aae83e14447821027478472819647257b",
+    "b3_d5_stale_grid_BATTLE01.SAV": "3eff485f9dac5a6d41b2d0c583e81b87e2f4b37d0dd8220d53d74ca43f7e6d8a",
+    "b3_d5_stale_grid_BATTLE02.SAV": "51e4ea05d6603a9ac0b7637e6f9b9c44cb90a640875981f8052a5ba4d2605bc2",
+    "b3_d5_stale_grid_BATTLE03.SAV": "130c5c529c755d15851946c554ccba42d8e0cb49c50cfeae72df683429759f0b",
+    "b3_d6_same_cell_BATTLE01.SAV": "75adb49e39936e0442fa21924d30bcba937cff242ab7074c40c067679754b301",
+    "b3_d6_same_cell_BATTLE02.SAV": "7afe72e9c8b2e7349720d3326a1ea0e0101c863ccf23548bedfd137d2bb53024",
+    "b3_d6_same_cell_BATTLE03.SAV": "aca683ab8b8da0463c608e333544f9228eb09dc6508d0e0c66b7f5d29d6ba49c"
+  }
+}

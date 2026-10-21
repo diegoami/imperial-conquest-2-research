@@ -809,6 +809,8 @@ Open:
 - Human placement: click unit, click an empty cell in the side's home rows (attacker `y < 3`, defender `y > 8`); free and repeatable; not placing keeps copy-in positions (2026-10-04-decompiled-tactical-battle-rules.md, `[confirmed: code]`).
 - Unit icons: 5 types × 3 sizes; `size = min(2, troops div (standardBattalion div 3))` — thresholds LI 5,000/10,000, HI 2,000/4,000, Ar 1,166/2,332, LC 2,333/4,666, HC 833/1,666, confirmed exact on both sides (2026-10-04-decompiled-tactical-battle-rules.md `[confirmed: code]`; 2026-10-04-tactical-battle-sweep.md `[O]`).
 
+- Tactical movement transports the old stored icon, including empty50, clears the old cell, then writes the copied value at the new slot position; repaint does not rebuild occupancy. Clear-line between identical endpoints returns false. These original code rules explain bounded crafted-grid discrepancies, with retained Wine boundaries; corrected replay remains open ([crafted-grid source audit](reports/2026-10-21-crafted-battle-grid-movement-and-line.md), `[confirmed, partial]`).
+
 ### The exchange formulas
 
 **Shooting** (`FUN_0043910C`, `[confirmed: code]`, replayed exactly in 318 hooked battles):

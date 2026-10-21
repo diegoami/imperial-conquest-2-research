@@ -118,3 +118,15 @@ Outcomes: `promoted`, `promoted, corrected`, `promoted, provisional: <what is mi
 
 | `2026-10-18-sav-export-unknown-access-and-record-lineage-boundaries.md` | `ed1a411ac3ac47fa07d3dc179511515bd6cdc04c` | promoted, provisional `[confirmed, partial]` from `main`, PR #102. Full first/recheck reviews read; local source hash, 468 exact lines/680 refs and retained six-control consistency checked; public start hash resolved. No x86 rerun (dependencies absent), no fresh EXE/DAT hash, no GUI/native execution. General UNKNOWN/lineage policy preserved; subsequent tax subset crosslinked. | `2026-10-18-sav-export-unknown-access-and-record-lineage-boundaries.md`; safety/layout crosslinks | 2026-10-18 |
 | `2026-10-18-sav-export-bound-tax-subset-and-binary-alias-evidence.md` | `88ac03972d9f8d972fd7a72344c7406a4b4f0c96` | promoted, provisional `[confirmed, partial]` from `main`, PR #103. Full static Kimi review read; 1,800 exact source lines checked; six pure memory projections/three rejections independently reproduced with public hashes, CFG/span accounting checked. No x86/CFG rerun or EXE/DAT rehash. Private three-reference file gates PASS REPORTED only; binding/API/runtime conditional, no candidates, Windows 0/3/uncoordinated, twelve JSON inputs unresolved. Follow-up: reviewed typed binding/writer amendment, actual candidate manifests and fresh-load/full GUI plus coordinated native validation. | `2026-10-18-sav-export-bound-tax-subset-and-binary-alias-evidence.md`; safety/layout crosslinks; public clock-save pointer | 2026-10-18 |
+
+## Direct peer research handoffs
+
+These are research-authored reports from authorized messages, not `findings/`
+drafts. They do not advance the automated draft scan's reviewed commit rows.
+
+- 2026-10-21, research #40: `RESEARCH40-SOURCE-ANALYSIS.md`, SHA256
+  `c972a30db004ab24acb2c5218389a53fb18a84e83aafe1625fb9bbd193e40def`.
+  Historical packet pin ic2-conquest `c8193ca1ebbb8f024963c4961bac8be02e940542`.
+  [Research-authored report](reports/2026-10-21-crafted-battle-grid-movement-and-line.md):
+  independent sixteen-save hash/raw audit and source/instruction reads;
+  no new game execution or corrected replay. #40 stays open.

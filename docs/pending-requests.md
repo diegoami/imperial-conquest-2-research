@@ -75,3 +75,14 @@ research #25 / build #1107 stay open until that attribution is established.
 The [partial safety finding](reports/2026-10-17-sav-export-live-regions-and-safe-rejection-policy.md) establishes the live city list, historical baselines, 31 UNKNOWN nation bytes and constructor residue. It does not clear changed-state export. Main #1194/T185 stays open. An unchanged authentic identity path still requires complete-state and framing/version validation; same-template lineage does not establish safe changed-state inheritance.
 
 **Next:** establish the missing semantic/record-residue policy and produce applicable candidate exports without modifying private originals. With owner coordination and a native Windows runtime, open at least three distinct representative outputs, inspect state, perform an ordinary action/end turn, save each to a new copy and reopen. Preserve private inputs/outputs outside code repositories; record approved redacted/scalar evidence. No owner-private inputs, candidate paths or coordinated Windows run were supplied to this intake. Wine and self-reader checks do not satisfy this gate. Task #25 remains a separate open request above.
+
+## Crafted battle-grid fidelity (research #40)
+
+[Source and retained-save audit](reports/2026-10-21-crafted-battle-grid-movement-and-line.md)
+identifies stored-icon movement (c5/c6/d5) and equal-coordinate clear-line false
+(d6), with an operation matrix and exact legacy save hashes. The intermediate
+first write/branch is source-derived; later Wine save boundaries are observed.
+Next: reviewed bounded build correction including explicit GeneralLine ownership,
+then immutable complete comparisons and ordinary-grid controls. Additional grid
+gates and combat repaint ordering remain separately scoped. No corrected replay,
+native confirmation or natural occurrence is established; #40/#1106 stay open.
