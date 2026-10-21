@@ -15,6 +15,10 @@ n=0
 # version of a draft, not per branch: the cost stays small as branches pile up.
 declare -A tree_cache
 pairs=""   # "<branch> <draft> <blob>"
+# Fetched up front: a failure inside `< <(...)` would escape set -e and read as an empty queue.
+branches=$(gh api "repos/$src/branches" --paginate --jq '.[] | "\(.name) \(.commit.sha)"') \
+  || { echo "cannot list $src branches (auth/network): queue unknown" >&2; exit 2; }
+[[ -n "$branches" ]] || { echo "no branches listed for $src: queue unknown" >&2; exit 2; }
 while read -r b sha; do
   if [[ -z "${tree_cache[$sha]+x}" ]]; then
     tree_cache[$sha]=$(gh api "repos/$src/git/trees/$sha?recursive=1" --jq '
@@ -24,7 +28,7 @@ while read -r b sha; do
     [[ ${tree_cache[$sha]} == TRUNCATED* ]] && { echo "tree of $b is truncated" >&2; exit 2; }
   fi
   while read -r draft blob; do [[ -n "$draft" ]] && pairs+="$b $draft $blob"$'\n'; done <<<"${tree_cache[$sha]}"
-done < <(gh api "repos/$src/branches" --paginate --jq '.[] | "\(.name) \(.commit.sha)"')
+done <<<"$branches"
 
 # a draft is judged once per distinct blob: first by ledger, then by compare against the reviewed commit.
 while read -r draft; do

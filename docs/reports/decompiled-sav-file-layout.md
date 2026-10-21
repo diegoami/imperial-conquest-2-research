@@ -1,5 +1,7 @@
 # The complete SAV file layout, from the actual read/write code
 
+> **Update (2026-10-21):** the whole-file field ledger, with every field's writers/readers, the INERT nation bytes, trailer ClientHeight/ClientWidth and the fleet +4/+6 AI waypoint, is promoted in the [2026-10-21 SAV atlas intake](2026-10-21-original-sav-semantic-atlas.md).
+>
 > **Correction (2026-10-17):** The news log is a shift register, and [Save As during a human-controlled battle](2026-10-04-battle-probe.md) produces the conditional tactical block. The [SAV export safety finding](2026-10-17-sav-export-live-regions-and-safe-rejection-policy.md) maps the nation record and record-residue limits; this layout alone does not establish changed-state export readiness. The table below incorporates the later corrections.
 >
 > **Update (2026-10-04):** the battle block is fully named: flag, attacker, defender, side to move, placed, half-round counter, 40 × 44-byte slots and a 14 × 12 icon-code grid. See [2026-10-04-decompiled-tactical-battle-rules.md](2026-10-04-decompiled-tactical-battle-rules.md) §1.

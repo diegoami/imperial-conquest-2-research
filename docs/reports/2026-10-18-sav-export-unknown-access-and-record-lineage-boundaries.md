@@ -62,3 +62,5 @@ Required next evidence remains operation-complete dependency/alias analysis or m
 
 
 **Subsequent bounded extension:** The [bound-current-human tax profile](2026-10-18-sav-export-bound-tax-subset-and-binary-alias-evidence.md) supplies a concrete serialized tax projection under explicit binding/UI conditions. It does not prove general UNKNOWN-byte semantics, canonical residue policy or arbitrary native JSON export. Its later owner relay supersedes this packet's historical private-reference availability statement for file-checkable planning gates only.
+
+**Later evidence (2026-10-21):** the [2026-10-21 SAV atlas intake](2026-10-21-original-sav-semantic-atlas.md) closes the unknown-byte access question at its stated scope (INERT: only the SAV stream transfers touch the 31 bytes; one Wine round showed no influence). The lineage, residue and historical-profile boundaries here still stand.
