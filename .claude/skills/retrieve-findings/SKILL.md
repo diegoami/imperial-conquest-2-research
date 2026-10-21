@@ -5,7 +5,7 @@ description: Pull new rule-discovery drafts from the ic2-conquest bot repository
 
 # Retrieve findings from ic2-conquest
 
-`ic2-conquest` (local clone `../ic2-conquest`, remote `diegoami/ic2-conquest`) plays the original game headless and drafts discoveries in `findings/`. This repo is the gate: nothing enters `docs/reports/` unreviewed. **Never write to ic2-conquest**; everything below is read-only there. State lives in `docs/findings-intake.md`.
+`ic2-conquest` (local clone `../ic2-conquest`, remote `diegoami/ic2-conquest`) plays the original game headless and drafts discoveries in `findings/`. This repo is the evidence gate: the active session checks every claim before promotion; a separate external review is optional. **Never write to ic2-conquest**; everything below is read-only there. State lives in `docs/findings-intake.md`.
 
 This skill is shared by Claude Code and Codex. Read `CLAUDE.md` for the current workflow
 policy and `docs/environment.md` for tool and messaging fallbacks. Resolve paths from the
@@ -49,8 +49,8 @@ A draft is a claim, not evidence. For each one:
 3. New saves go into `docs/evidence-index.md`; bare filenames only, no binaries in git.
 4. Update the report count in `README.md` if it states one.
 5. Add a row to `docs/findings-intake.md`, including for rejected and deferred drafts, so they are not re-reviewed.
-6. Follow `CLAUDE.md` for worktrees, running notes, commits, pushes and PR review, subject to
-   the user's explicit instructions for this task. The commit body lists each draft, what
+6. Follow `CLAUDE.md` for session-led validation, commits and pushes. Worktrees and
+   separate reviews are optional; honor explicit user instructions. The commit body lists each draft, what
    was corrected, and `Drafts from diegoami/ic2-conquest, branch <b>, commit <sha>`.
 
 ## 4. Report to the user
@@ -65,22 +65,13 @@ identifiers; do not substitute an issue, PR comment or another communication cha
 
 `.github/workflows/pending-drafts.yml` runs `scripts/pending-drafts.sh` every day and keeps one issue, "Pending ic2-conquest findings drafts", open while any draft is unledgered or changed since its reviewed commit; it closes the issue at zero. It reads ic2-conquest through the GitHub API only. Run the same script locally for step 1: `bash scripts/pending-drafts.sh`. It replaces the manual loop above and is the quickest way to see the queue.
 
-## When a review is delegated to a model
+## Optional delegated review
 
-The user picks the model (`CLAUDE.md`, "Choosing models: the user decides"):
-- **Before handing a draft's review or any fix to someone else:** ask the user ONE question (main
-  session or a subagent, and which model; rule 1). Show quota-tracker's `/recommend` only as a
-  suggestion (rule 3). The reviewer is never of the implementer's family.
-- **For a review of a PR:** ask which external model reviews (rule 2). Run it alone, and relay its
-  findings in full. The brief carries the section in `docs/review-brief.md`, pasted right after
-  "Blocking means".
-- **Record** who ran it, the model, and the suggestion's reasons on the issue or PR (rule 5).
-- **Watch background runs** under rules 8-13: start with stdin from a file, use one monitor that
-  reports only changes, flag a run as possibly stuck after about 10 minutes, and resume a run that
-  hit our own timeout instead of restarting it.
+The session decides whether separate review would help and selects appropriate tools
+and isolation, honoring explicit owner choices. There is no required external model,
+model-family exclusion, quota lookup or worktree. Use `docs/review-brief.md` for scope
+and complete findings. Record actual checks, reviewer identity when exposed and limits.
 
-Before retrying, re-routing or calling a run a failure, read what it returned: the model's final
-message from the session record (read-only sqlite, see "Delegated runs" in `CLAUDE.md`) or the
-agent's full hand-back. A run that stopped and reported a blocker gets an answer to its report, not
-a retry on another model. Another model is used only when the provider does not answer and the user
-names one (rule 7).
+Monitor launched work. Before retrying, rerouting or calling a run a failure, read its
+complete final/native record. Respond to a reported blocker instead of blindly retrying.
+Never read authentication stores to retrieve that record.

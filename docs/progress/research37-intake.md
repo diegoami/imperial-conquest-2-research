@@ -153,3 +153,20 @@ no meaning/default inferred for inactive state24. Ordinary totals/native3/3
 unchanged. The in-progress GLM client was interrupted and its returned text
 read; resume SAME session ses_e9fc448fdffer68N42uWq5reJa/model on correctedhead,
 not a fresh review/model. Full interruption/continuation record kept outsideGit.
+
+### Completion receipt added for cloud continuation (2026-10-21)
+
+PR48 merged at `16f019397e65ba521bbcee7acea2a7d2c9bd7c93`. The same owner-selected
+GLM5.3Flash session completed its interrupted coverage at author head
+`4d20d8b014ed6c37d0957ee34896276453a79ef3`; its complete
+[final review](https://github.com/diegoami/imperial-conquest-2-research/pull/48#issuecomment-6326559898)
+was read and returned APPROVE with two nonblocking notes. The reviewer checked
+source/receipts and metadata, not private bytes or pixels; the author's separate
+private-byte validator rerun is recorded above. No original writer manifests were
+recovered. This supersedes the earlier pending-review/merge instructions.
+
+[Research37 promotion comment](https://github.com/diegoami/imperial-conquest-2-research/issues/37#issuecomment-6326579112)
+links the merge. Tax-only native3/3, nativeJSON0/12, callbackUNVERIFIED and UNKNOWN31
+remain unchanged; research37 is open. No downstream Evaluated marker or
+T184–T186/#1191 routing is asserted. See
+[../cloud-continuation.md](../cloud-continuation.md) for the durable cloud checkpoint.

@@ -25,3 +25,7 @@ Claude Code and Codex share the rules in [CLAUDE.md](CLAUDE.md); Codex enters th
 [AGENTS.md](AGENTS.md). See [docs/environment.md](docs/environment.md) for startup,
 validation, evidence access and messaging fallbacks. The `retrieve-findings` skill is
 shared through `.claude/skills/` and `.agents/skills/`, with one maintained source.
+
+For cloud authentication, private input restoration and the next research task, read
+[docs/cloud-continuation.md](docs/cloud-continuation.md). Reviews and worktrees are
+optional under the session-led workflow.
