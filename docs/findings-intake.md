@@ -130,3 +130,10 @@ drafts. They do not advance the automated draft scan's reviewed commit rows.
   [Research-authored report](reports/2026-10-21-crafted-battle-grid-movement-and-line.md):
   independent sixteen-save hash/raw audit and source/instruction reads;
   no new game execution or corrected replay. #40 stays open.
+
+- 2026-10-21, research #41: `RESEARCH41-SOURCE-ANALYSIS.md`, SHA256
+  `f0f94bacbb290b42a39d4720304c084524a6551000f0f5df7dddc07b136e13ab`.
+  [Research-authored source report](reports/2026-10-21-transported-army-coordinate-lifecycle.md):
+  independently rehashed source/EXE and read boarding/step/unload/save/load and
+  support phase instructions. No bot draft row, new save, emulator or native run;
+  no fixture/build changes. Native lifecycle confirmation keeps #41 open.

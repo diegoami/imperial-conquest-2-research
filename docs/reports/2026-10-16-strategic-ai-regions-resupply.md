@@ -250,3 +250,5 @@ nation city lists, and relocated carrier records in the early army-distance
 cases do not rebuild the whole strategic overlay. No movement/pathfinding or
 natural reachability claim rests on those cases; the tested resupply loop reads
 the recorded coordinates, ownership, stock and links directly.
+
+**Source follow-up 2026-10-21:** [transported-army coordinate lifecycle](2026-10-21-transported-army-coordinate-lifecycle.md) locates shared fleet-step synchronization, unloading and raw-record persistence, and distinguishes pre-fleet army-support timing. Source/static instruction evidence only; coordinated native moving-provider controls remain open.

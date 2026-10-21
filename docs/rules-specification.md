@@ -788,6 +788,8 @@ Open:
 - The conquest merge of the neighbour mask has never been observed changing a mask (the one conquest in the saves is a no-op for it), and only one DAT/scenario exists locally (dat-neighbour-mask.md).
 - The "season 3 = Winter" reading is derived, and the war rule's other terms (power ratio, neighbour test, 1-in-10 chance) were not tested against save pairs (decompiled-ai-offers-to-human-seats.md).
 
+- A successful ordinary fleet step synchronizes the linked carried army's current X/Y with the new fleet X/Y; human and AI callers share this step. Army support reads army X/Y, and the AI seat runs army support before fleet movement. Unload clears the fleet link and sets army landing coordinates; raw save/load preserves both records independently. Source/static-instruction evidence only; native lifecycle controls remain open ([transported coordinates](reports/2026-10-21-transported-army-coordinate-lifecycle.md), `[confirmed, partial]`).
+
 ## Tactical battle
 
 ### When a tactical battle happens (vs the instant resolver)
