@@ -1,0 +1,28 @@
+{
+  "date": "2026-10-21",
+  "evidence_class": "static source/instruction inspection; no execution",
+  "peer_handoff_sha256": "f0f94bacbb290b42a39d4720304c084524a6551000f0f5df7dddc07b136e13ab",
+  "listing_sha256": "2018c205a4e4ea4a4079f2d166623fb571062832d76e19b72e11d1f0edac87d8",
+  "executable_sha256": "9d753d5de78801f2368d06125cc87f296b92f671b686c39fd6ac149838ebba31",
+  "disassembly_ranges": {
+    "board_unload": [
+      "0x44B79C",
+      "0x44B8D0"
+    ],
+    "fleet_step": [
+      "0x44DD70",
+      "0x44E094"
+    ],
+    "loader": [
+      "0x4487C4",
+      "0x448AA4"
+    ],
+    "army_support": [
+      "0x44E41C",
+      "0x44E4B2"
+    ]
+  },
+  "new_runtime_controls": 0,
+  "native_windows_lifecycle_confirmation": false,
+  "complete_call_graph_or_corrupt_input_policy_claimed": false
+}

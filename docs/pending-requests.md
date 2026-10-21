@@ -86,3 +86,14 @@ Next: reviewed bounded build correction including explicit GeneralLine ownership
 then immutable complete comparisons and ordinary-grid controls. Additional grid
 gates and combat repaint ordering remain separately scoped. No corrected replay,
 native confirmation or natural occurrence is established; #40/#1106 stay open.
+
+## Transported-army coordinate lifecycle (research #41)
+
+[Source lifecycle report](reports/2026-10-21-transported-army-coordinate-lifecycle.md)
+locates successful-step army/fleet X/Y synchronization, unload writes, independent
+whole-record persistence and army-support-before-fleet-movement order. This
+extends the settled aboard-support matrix without repeating it. Next: coordinated
+native Windows near-to-far/far-to-near carrier movement, budget-refresh and blocked
+controls, saveNEW/reopen and actual landing observations with both records and
+provider/accounting fields. Static evidence does not complete those controls;
+#41/build759 remain open. No remake correction is selected by this report.
