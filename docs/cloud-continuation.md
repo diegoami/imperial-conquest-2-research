@@ -63,6 +63,14 @@ a negative literal-offset search is not whole-program non-access proof. Do not
 restart the atlas or run a game merely to verify framing. Research changes belong
 here; send proposed upstream corrections through the authorized peer channel.
 
+**Status 2026-10-21 (later):** done. PR108 merged and the atlas reached increment 4
+(conquest main `29cc3a8`, ledger `field-map-v4.csv`). It was promoted, provisional, as
+[reports/2026-10-21-original-sav-semantic-atlas.md](reports/2026-10-21-original-sav-semantic-atlas.md).
+The 31 bytes are INERT at the stated scope, and research47 is narrowed to new-record residue,
+slot/text lineage and historical-profile applicability. Notes are in
+[progress/research47-atlas-intake.md](progress/research47-atlas-intake.md). Consolidated results
+go to the OIMP2 session (see [environment.md](environment.md)).
+
 At this checkpoint research open issues were 47,42,39,37,35,25,20. Reports from
 research40/41/42 are already on main; check issue state rather than repeating their
 completed intakes. Existing PR30 (`docs/session-handover-oct17`) and draft PR36

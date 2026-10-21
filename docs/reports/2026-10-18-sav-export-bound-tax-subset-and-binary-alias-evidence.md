@@ -101,3 +101,5 @@ This packet does not end with a generic request for more research. The finite re
 > UNKNOWN31 stays unknown and #37 stays open. Current intake verified the public
 > receipts and freshly rehashed retained source/candidate-transport/native-output
 > evidence using the unchanged read-only validator; no new game run was made.
+
+**Later evidence (2026-10-21):** the CFG receipt above ran on the seed build (`354d8265…`). The [2026-10-21 SAV atlas intake](2026-10-21-original-sav-semantic-atlas.md) repeats the three +450 anchors on the pinned original EXE (`9d753d5d…`) and finds no overlapping, reaching or bulk access to the 31 bytes.
