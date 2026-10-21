@@ -1,0 +1,24 @@
+{
+  "date": "2026-10-21",
+  "upstream_merge": "16a0f6e50063a090b509e230cdd7fa44913496f5",
+  "reviewed_head": "9e139abb5fc9c265c0a289abb414fc447f21a77b",
+  "final_head": "002fffba0a164d48e5ccbd73447f72236c246595",
+  "source_listing_sha256": "2018c205a4e4ea4a4079f2d166623fb571062832d76e19b72e11d1f0edac87d8",
+  "runner_sha256": "d7d9852c154b82f201ffe38b103fd6add0debd423870108aa7f6dcd5eaacdaa6",
+  "result_sha256": "3c4d39186df46ae46faf88699c1e1fe00cc539c14e60c4e523daf62b6ff13831",
+  "exe_sha256": "9d753d5de78801f2368d06125cc87f296b92f671b686c39fd6ac149838ebba31",
+  "dat_sha256": "94d0ccfc67148d727de4c4e60aefc3c53ba9e67775bd689f0fcb2e23c12e5fbd",
+  "source_save_sha256": "050bc354f1cbbe374b6a627f06054f2043b9f91a268f6fbfbc18ed1e7e65574c",
+  "unicorn_version": "2.1.4",
+  "step_controls": 11,
+  "source_save_walks": 2,
+  "entire_retained_json_reproduced": true,
+  "inputs_unchanged": true,
+  "presentation_calls_intercepted": [
+    "0x445B38",
+    "0x45BF28"
+  ],
+  "native_windows_execution": false,
+  "wine_execution": false,
+  "whole_program_or_remake_parity": false
+}

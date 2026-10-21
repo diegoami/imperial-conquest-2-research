@@ -1003,7 +1003,7 @@ A few small probe saves are committed in the fixtures repository itself rather t
 | [`Q5_20261012-091054_staged_q5_storm_calm_c60_fleet-port-antium-0734.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-g3-original-checks/Q5_20261012-091054_staged_q5_storm_calm_c60_fleet-port-antium-0734.SAV) | `run-exp-g3-original-checks` (repo `ic2-conquest`) | 1 |
 | [`Q5_20261012-091054_autosave01_q5_storm_rough_01_t735_AUTO0735.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-g3-original-checks/Q5_20261012-091054_autosave01_q5_storm_rough_01_t735_AUTO0735.SAV) | `run-exp-g3-original-checks` (repo `ic2-conquest`) | 1 |
 | [`Q5_20261012-091054_autosave02_q5_storm_calm_01_t735_AUTO0735.SAV`](https://github.com/diegoami/ic2-conquest/releases/download/run-exp-g3-original-checks/Q5_20261012-091054_autosave02_q5_storm_calm_01_t735_AUTO0735.SAV) | `run-exp-g3-original-checks` (repo `ic2-conquest`) | 1 |
-| [`run0-start-AUTO0720-seed12345.SAV`](https://github.com/diegoami/ic2-conquest/blob/main/saves/run0-start-AUTO0720-seed12345.SAV) | repo `ic2-conquest` `saves/` | 2 |
+| [`run0-start-AUTO0720-seed12345.SAV`](https://github.com/diegoami/ic2-conquest/blob/main/saves/run0-start-AUTO0720-seed12345.SAV) | repo `ic2-conquest` `saves/` | 3 |
 | [`mobilize-new-army-0720.SAV`](https://github.com/diegoami/ic2-conquest/blob/ac958a0fa58984098641a7992a42d0fbf517d473/saves/mobilize-new-army-0720.SAV) | repo `ic2-conquest` `saves/` | 1 |
 | [`det-AUTO0721-seed12345.SAV`](https://github.com/diegoami/ic2-conquest/blob/ac958a0fa58984098641a7992a42d0fbf517d473/saves/det-AUTO0721-seed12345.SAV) | repo `ic2-conquest` `saves/` | 1 |
 

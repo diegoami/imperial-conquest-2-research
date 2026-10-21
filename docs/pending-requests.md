@@ -97,3 +97,14 @@ native Windows near-to-far/far-to-near carrier movement, budget-refresh and bloc
 controls, saveNEW/reopen and actual landing observations with both records and
 provider/accounting fields. Static evidence does not complete those controls;
 #41/build759 remain open. No remake correction is selected by this report.
+
+## Strategic lateral steps and callers (research #42)
+
+[Promoted source/x86 finding](reports/2026-10-21-strategic-lateral-steps-and-callers.md)
+settles cheaper-lateral selection, first-after-swap ties, final-destination bypass
+and post-selection affordability. Separate army/sea helpers and human/AI callers
+are pinned. Independent11-step/2-walk rerun reproduces the retained JSON exactly;
+redraw/sound stubs and synthetic parent frames are explicit. Next: narrowly
+owned build evaluation with normal/contact/endpoint/edge controls and separately
+coordinated native routing evidence. Historical C4 Wine totals remain endpoints,
+not observed crossed tiles; #42/build1012 stay open. Contact#5 remains separate.
