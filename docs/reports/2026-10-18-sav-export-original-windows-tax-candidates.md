@@ -116,8 +116,11 @@ status remains a chronological record, superseded by the consolidated result.
 
 All initially loaded with offer source -1 and sampled army/fleet/cell selectors
 -1. Recorded Tax-dialog observations were tax/income 0/0, 40/262 and 30/787;
-the dialogs were cancelled without a tax change. In case 3, an inactive queue
-slot retained type 24 with zero troops before the original UI replaced it.
+the dialogs were cancelled without a tax change. In case 3, the unused queue
+slot had raw words `[24,0,0,0]` in `(state,type,troops,city)` order before the
+original UI replaced it with `[0,0,3000,85]`. The draft calls 24 a type; it is
+the first/state word, while the type word is 0. This does not establish any
+canonical default or general semantic meaning for the unused state value.
 Recruitment was permitted despite the negative treasury; no balance was patched.
 
 Case 3's single End-turn command raised the supply warning. One confirmation

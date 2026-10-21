@@ -92,5 +92,95 @@
       111349
     ],
     "private_bytes_copied_by_intake": false
-  }
+  },
+  "fresh_raw_order_and_calendar_decode": [
+    {
+      "case": 1,
+      "queue_slot": 4,
+      "before_words": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "after_words": [
+        0,
+        0,
+        3000,
+        85
+      ],
+      "treasury": [
+        2200,
+        2170
+      ],
+      "mobilization": [
+        30,
+        32
+      ],
+      "postturn_week": 3,
+      "year": 270,
+      "season": 0
+    },
+    {
+      "case": 2,
+      "queue_slot": 3,
+      "before_words": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "after_words": [
+        0,
+        0,
+        3000,
+        192
+      ],
+      "treasury": [
+        520,
+        490
+      ],
+      "mobilization": [
+        22,
+        25
+      ],
+      "postturn_week": 3,
+      "year": 270,
+      "season": 0
+    },
+    {
+      "case": 3,
+      "queue_slot": 1,
+      "before_words": [
+        24,
+        0,
+        0,
+        0
+      ],
+      "after_words": [
+        0,
+        0,
+        3000,
+        85
+      ],
+      "treasury": [
+        -818,
+        -848
+      ],
+      "mobilization": [
+        59,
+        61
+      ],
+      "postturn_week": 9,
+      "year": 270,
+      "season": 3
+    }
+  ],
+  "recruitment_WORD_order": [
+    "state",
+    "type",
+    "troops",
+    "city"
+  ],
+  "upstream_label_correction": "case3unused entry first/stateWORD24, typeWORD0; not type24"
 }

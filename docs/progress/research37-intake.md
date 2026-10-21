@@ -141,3 +141,15 @@ END (updated author candidate)
 - Pending: independent exact-head GLM review/approved merge,short issue37 link.
 - Main evidence pipeline owns Evaluated/routing intoT184–T186/#1191.
 - Native tax3/3 observed; nativeJSON0/12; callbackUNVERIFIED;UNKNOWN31;37OPEN.
+
+
+### Author raw-save field-label correction during the same review
+
+Independent raw L/O/E/R decoding confirms all3queue/treasury/mobilization/
+calendar values. It catches one inherited draft label error: case3before entry
+[24,0,0,0] uses(state,type,troops,city), so24is first/stateWORD and typeWORD0;
+original UI replaces it with[0,0,3000,85]. Report/scalar receipt corrected;
+no meaning/default inferred for inactive state24. Ordinary totals/native3/3
+unchanged. The in-progress GLM client was interrupted and its returned text
+read; resume SAME session ses_e9fc448fdffer68N42uWq5reJa/model on correctedhead,
+not a fresh review/model. Full interruption/continuation record kept outsideGit.
