@@ -32,8 +32,9 @@ The policy says what an exporter writes for every SAV field class:
   fleet markers. The stale army band and the stale count of an eliminated nation are allowed.
 - **Refused:** an open battle block, tombstones, invariant violations, and a missing allegiance.
 
-Research agrees that this answers gate 2's *policy* question, with **one checker defect**: the
-allegiance refusal is stated but not implemented (below). Gates 1, 3 and 4 are untouched.
+Research agrees that this answers gate 2's *policy* question. The one checker defect found
+here, an allegiance refusal that was stated but not implemented, is now fixed upstream and the
+fix is verified (below). Gates 1, 3 and 4 are untouched.
 
 ## Method and observations
 
@@ -76,16 +77,25 @@ allegiance refusal is stated but not implemented (below). Gates 1, 3 and 4 are u
 | City marker of the wrong owner | refuse | 15/15 |
 | Building fleet with moves 5 | refuse | 3/3 (the saves with a building fleet) |
 | Carried army moved off its fleet's tile | refuse | 1/1 (the aboard save) |
-| **`CITY.allegiance` = −1 (missing)** | refuse | **0/15: accepted** |
-| **`CITY.allegiance` = 99 (out of range)** | refuse | **0/15: accepted** |
+| **`CITY.allegiance` = −1 (missing)** | refuse | **0/15 with `bad8477a`; 15/15 refused after the fix** |
+| **`CITY.allegiance` = 99 (out of range)** | refuse | **0/15 with `bad8477a`; 15/15 refused after the fix** |
 
-**Defect:** the policy (point 8 and point 10) refuses "a campaign with no allegiance profile",
-but the checker has no allegiance rule. A candidate whose city allegiance is −1 or 99 passes
-both modes. An out-of-range allegiance is used as a nation index by the defence, capture,
-defection, rebellion and revival code (increments 5, 8 and 10). In all 56 original saves, all
-18,704 allegiance values (and owner values) are in 0..15. So a `city_allegiance_in_range` rule
-(0 ≤ allegiance ≤ 15) would accept every original save and close the gap. Proposed upstream; it
-is not fixed here.
+**Defect (fixed upstream):** the policy (points 8 and 10) refuses "a campaign with no allegiance
+profile", but checker `bad8477a…` had no allegiance rule. A candidate whose city allegiance was
+−1 or 99 passed both modes. An out-of-range allegiance is used as a nation index by the defence,
+capture, defection, rebellion and revival code (increments 5, 8 and 10). In all 56 original
+saves, all 18,704 allegiance values (and owner values) are in 0..15.
+
+On research's proposal, ic2-conquest added the required rule `city_allegiance_in_range`
+(0..15, both modes) in `2fd663a` (PR #131, checker `eaee1ef0…`).
+
+**Fix verified here:**
+- the test passes (8 cases);
+- the rerun ([`gate2-policy-adversarial-v2.json`](../data/gate2-policy-adversarial-v2.json))
+  refuses both allegiance mutations in 15/15 saves;
+- every other result is unchanged (15/15 canonical saves accepted, 0 unexpected);
+- all 28 public per-file verdicts are equal in upstream's `export-policy-v2` and
+  `export-policy-v3`.
 
 ## Inferences and scope
 
@@ -104,7 +114,6 @@ is not fixed here.
 - **Not checked by the checker:**
   - record-order equivalence with a source (the policy assigns it to exporter tests);
   - news text tails;
-  - the allegiance profile (defect above);
   - aggregate fields that are stored live rather than derived (nation wealth and tax base). The
     policy does not say how an exporter supplies them consistently;
     [nation-tax-base-and-city-economy-fields](nation-tax-base-and-city-economy-fields.md) has

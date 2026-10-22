@@ -111,8 +111,8 @@ Research #37 remains open. Four gates remain:
    or define evidence-backed refusals. No arbitrary template inheritance.
    **Status 2026-10-22:** the policy is answered by the
    [gate-2 export policy](reports/2026-10-22-sav-export-gate2-policy.md) (ic2-conquest `80a3963`),
-   promoted provisional. One open defect: its checker does not enforce the stated allegiance
-   refusal (allegiance −1 or 99 is accepted). The proposed fix is a 0..15 range rule.
+   promoted provisional. The one checker defect found at intake (the allegiance refusal was not
+   enforced) was fixed upstream in `2fd663a`, and the fix is verified here.
 3. Independently review **T185 migration/export** (format 4 → current), checked
    capacities/encoding/indices and no-overwrite publication before candidates.
 4. Validate supported outputs from **that native-JSON set**: independent decode,

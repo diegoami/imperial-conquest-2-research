@@ -185,3 +185,6 @@ The owner confirmed this intake after the IC2 Conquest session's relay
 
 Report: [2026-10-22-sav-export-gate2-policy](../reports/2026-10-22-sav-export-gate2-policy.md).
 Gates 1, 3 and 4 are unchanged, and research #37 stays open.
+
+The allegiance defect was fixed upstream in `2fd663a` (PR #131). Research reran its controls
+(`gate2-policy-adversarial-v2.json`): 0 unexpected results, and no original verdict changed.
