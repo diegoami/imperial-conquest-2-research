@@ -356,7 +356,7 @@ quarterly loop). **Intake (2026-10-22):**
 | Galatia after | unity 480, capital 218 (Ancyra), count 8, conqueror −1, tax 20, new leader, all 8 allegiance cities owned |
 | Moved cities' loyalty after | 90 (one shows 89), capital 98 = 90 + 8 |
 | Capital map marker | 96 = Galatia 12 + 84 |
-| Relations toward Galatia | Before: Seleucid −18, Media −8. After: Seleucid ↔ Galatia −7 (the −8 cooldown after one thaw), Media −8 kept, and trades (1) with Numidia, Gaul and Armenia made during the round. **Not peace with everyone** |
+| Relations toward Galatia | Before: Seleucid −18, Media −8. After: Seleucid ↔ Galatia −7 (the −8 cooldown after one thaw), Media −8 kept, and trades (1) with Numidia, Gaul and Armenia made during the round. **Not peace with everyone.** Media's −8 is kept for two reasons. The revival touches only Galatia's own row. The quarterly thaw also never visits the pair Media(14)/Galatia(12), because it walks only columns 0–7; see [war cascade](decompiled-war-cascade-and-peace-paths.md) row 8 |
 | Agrigentum (owner Carthage, allegiance Greece) | goes to Greece |
 | Ebora (owner = allegiance = Celtiberia) | Celtiberia's only war is with Carthage, and no Carthaginian army is within Chebyshev 10, so the neighbour rule applies: Gaul −83, Carthage −124 → Gaul |
 | Control: Carthago, a capital at loyalty 5 | stays Carthaginian |
