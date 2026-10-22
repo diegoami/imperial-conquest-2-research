@@ -90,3 +90,20 @@ owner-authorized game run, and it is recorded in the report and in `cloud-contin
 The saves were re-hashed and decoded here. With this, every research #47 item has an answer,
 and the issue is closed. Still open: spending leftover moves on the launch turn (not exercised),
 the GitHub releases for both runs' saves, and review of increments 3–6.
+
+## 2026-10-22: increments 7–8 (conquest `b4f17a4`, `e8c8e5d`; checked at `1642f6d`)
+
+Done after the owner confirmed it.
+- **Reproduction:** the invariants receipts reproduce.
+- **Independent recount:** city lists, markers, counts and capitals over the 56 saves.
+- **Code reads:** `FUN_0044B8F4` and `FUN_0044C360`.
+
+**Results.**
+- City lists are ordered by name. Three research reports said only "sorted"; they now name the
+  key.
+- Increment 8's revival wording was corrected against the existing rebellion report: only the
+  revived nation's own relation row is zeroed, then a −8 cooldown per moved city; only the
+  troops word of recruit entries is zeroed.
+
+**Not recomputed:** fleet and army marker bands, countdown parity, merc placement and fort
+encoding.

@@ -304,3 +304,5 @@ analyzeHeadless.bat %LOCALAPPDATA%\ReTools\ghidra_projects IC2 -process "Imperia
 ```
 
 The saves were read with an ad-hoc Python reader, which was not committed. It reads cities at `320 × 140 × 2` (334 × 34 bytes: owner `+0x12`, allegiance `+0x14`, loyalty `+0x16`, fortification `+0x1A`, population `+0x1C`). Then come the army count and table (`× 0x290`), the fleet count and table (`× 26`), and the 16 nation records (`× 0x494`). The news log was read as 61-byte slots behind the index word.
+
+**Later cross-check (2026-10-22):** ic2-conquest's SAV atlas increment 8 restates this rule; its differences (relations and recruitment on revival) are resolved in favour of §4 here, see the [2026-10-21 atlas](2026-10-21-original-sav-semantic-atlas.md).
