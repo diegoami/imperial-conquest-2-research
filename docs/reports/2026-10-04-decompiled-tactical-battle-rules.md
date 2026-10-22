@@ -345,7 +345,7 @@ There is no other strategic morale change. The AI army's `+3` from copy-in stays
 
 ## 10. UI and unit drawing (area 10) `[confirmed: code + TBATTLEMAP resource]`
 
-**The form.** `TBattleMap` is titled "Battlefield", has a 448 × 414 client area and is stay-on-top. It is placed at left 2, and the Information window is moved beside it (x 458, 330 × 414).
+**The form.** `TBattleMap` is titled "Battlefield" at design time (in play the runtime caption is `<A>  v  <B>` plus the phase, e.g. `Rome  v  Gaul          Rome to place units.`, [2026-10-04-battle-probe.md](2026-10-04-battle-probe.md)), has a 448 × 414 client area and is stay-on-top. It is placed at left 2, and the Information window is moved beside it (x 458, 330 × 414).
 
 **The toolbar.** A 28 px panel holds eight 22 × 22 speed buttons with 20 × 20 glyphs, left to right:
 

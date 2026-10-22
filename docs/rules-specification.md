@@ -642,7 +642,7 @@ Open:
 ### Movement, supplies and drift
 
 - Moves per turn: **`30 − (ships − 50)/10`**, minus **3 at zero supplies**, minus **`(70 − condition) >> 2` below condition 70** — confirmed in 6 of 6 post-first-turn readings, live (Wine-only; formula from code) (2026-10-02-fleets-sail-and-drift.md).
-- A fleet has **0 moves on its launch turn**; the next turn it gets the full formula (30 ships → 32, 60 → 29) — live (Wine-only) (2026-10-02-fleet-orders-live.md; 2026-10-03-pair-2-seleucid-ptolemaic.md).
+- A fleet has **0 moves on its launch turn** when its table index is fresh. Launch does not set moves, so a fleet launched into an index reused after compaction keeps the old fleet's moves until the next tick (increment 6 of [the SAV atlas](reports/2026-10-21-original-sav-semantic-atlas.md): 17 against 0, Wine); the next turn it gets the full formula (30 ships → 32, 60 → 29) — live (Wine-only) (2026-10-02-fleet-orders-live.md; 2026-10-03-pair-2-seleucid-ptolemaic.md).
 - Supplies burn **`ships` tons per turn** (90 ships: 80 → 0 in one turn; 70 ships: 80 → 10 → 0) — live (Wine-only; formula from code) (2026-10-02-fleets-sail-and-drift.md).
 - Sailing costs 1 move per calm-sea tile (29 → 27 over two tiles); the game accepted every one-tile click along a computed path — live (Wine-only) (2026-10-02-fleet-orders-live.md; 2026-10-02-fleets-sail-and-drift.md).
 - On calm sea away from any own city, condition drifts down **3 to 5 points a turn** (the storm formula's ordinary damage plus the zero-supply rider) — live (Wine-only) (2026-10-02-fleets-sail-and-drift.md; 2026-10-03-storms-and-losses-at-sea.md).

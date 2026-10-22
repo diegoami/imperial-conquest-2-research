@@ -88,7 +88,7 @@ batches:
 | `Ctrl+A` | 0x4000 \| 0x41 | Show armies — of the viewed nation | (no standalone manifest hash in the searched batch — covered by the same area-map-clear baseline `ecb0a7e9…`; the click sequence in `explore_b2.py` exercises it on the same window state) |
 | `Ctrl+F` | 0x4000 \| 0x46 | Show fleets — of the viewed nation | (same — `explore_b2.py` click sequence) |
 | `Ctrl+L` | 0x4000 \| 0x4C | Show all — of the viewed nation | (same — `explore_b2.py` click sequence) |
-| `Ctrl+P` | 0x4000 \| 0x50 | **does nothing** | `FI_b1_30_area_ctrl_p.png` (hash `b3da86b40f4af3548050841a812495a3c943f5d843ccb71d63b025fb1710abf0`) — pixel-identical to the cleared baseline `FI_b1_30_area_cleared.png` (hash `ecb0a7e957b13011eeeaf427d51ef3bcec952c0c6a308d4c67c428d9e67ac523`) |
+| `Ctrl+P` | 0x4000 \| 0x50 | **does nothing** (correction 2026-10-22: the two PNG hashes differ, so the files are **not** byte-identical; pixel identity is not re-checked here, see [2026-10-22 manual consolidation](2026-10-22-manual133-contradictions-consolidated.md)) | `FI_b1_30_area_ctrl_p.png` (hash `b3da86b40f4af3548050841a812495a3c943f5d843ccb71d63b025fb1710abf0`) — pixel-identical to the cleared baseline `FI_b1_30_area_cleared.png` (hash `ecb0a7e957b13011eeeaf427d51ef3bcec952c0c6a308d4c67c428d9e67ac523`) |
 | `Ctrl+N` | 0x4000 \| 0x4E | Show status — passes the **current seat** (the leader's own nation), unique among the ctrl cases | code-cited (same dispatcher) |
 
 The byte-identical hash for `FI_b1_30_area_cleared.png` and

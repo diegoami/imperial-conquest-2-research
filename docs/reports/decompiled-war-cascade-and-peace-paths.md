@@ -109,6 +109,18 @@ The original therefore leaves B at war with X while B is still allied to C, and 
 | 7 | Rebirth, `FUN_0044C360` :50558 | reborn–(each defecting city's owner) → −8 | none | rebirth | none for the relations |
 | 8 | Quarterly thaw, `FUN_00451B40` :54925 | cooldown → towards 0 | none | negative entries, first 8 columns | none |
 
+> **Detail of row 8 (2026-10-22, re-read at :54908–54931):**
+> - **The loop:** the thaw loops over rows `a = 0..15` and columns `b = 0..7` only.
+> - **The new value:** for a negative `rel[a][b]` it computes `rel + 1`, or with `Random(3) == 0` instead `min(0, rel + 3)`.
+> - **The write:** it writes the new value through the setter `FUN_00449B40(a, b, v)`, which stores the value in **both** `[a][b]` and `[b][a]`. (A result of 0 stays 0: the setter's 0-mapping applies only to relations 1–3.)
+>
+> Consequences:
+> - **One nation below 8:** a pair with exactly one index below 8 thaws on both sides, once a quarter.
+> - **Both below 8:** the pair is visited twice, so it can thaw twice in a quarter.
+> - **Both 8 or higher:** the pair never thaws. For example, an asymmetric −8 from Media (14) toward Galatia (12) is permanent.
+>
+> Observed in ic2-conquest `run-exp-sav-rebellion107`: after Galatia's revival, Seleucid (2) ↔ Galatia (12) went from −8 to −7 on both sides, and Media → Galatia stayed −8. See the [2026-10-21 atlas](2026-10-21-original-sav-semantic-atlas.md), increment 11.
+
 Rows 5–8 never turn a war into peace **by anyone's decision**. Row 5 ends a war only because one side has ceased to exist, and rows 6–8 only move an existing cooldown. **Only row 3 ends a live human–AI war, and it needs the human's Yes** `[confirmed: all 22 setter calls in §1.3 classified]`. No code writes the relation matrix outside the setter except the rebirth's own row reset (:50548) and `TPolitics_OK`'s diagonal (:55390) `[confirmed: decompile]`.
 
 ### 2.1 The human's Politics screen `[confirmed: listing]`
