@@ -70,6 +70,9 @@ The 31 bytes are INERT at the stated scope, and research47 is narrowed to new-re
 slot/text lineage and historical-profile applicability. Notes are in
 [progress/research47-atlas-intake.md](progress/research47-atlas-intake.md). Consolidated results
 go to the OIMP2 session (see [environment.md](environment.md)).
+Increment 5 (conquest `ad0af2d`, ledger v5) was added on 2026-10-22, and research47 was
+closed. Increment 6 (`22b450d`, run-exp-sav-fleetmoves107) observed the fleet-leftover effect
+in Wine. Releases for the inert107 and fleetmoves107 saves are still to be published.
 
 At this checkpoint research open issues were 47,42,39,37,35,25,20. Reports from
 research40/41/42 are already on main; check issue state rather than repeating their
