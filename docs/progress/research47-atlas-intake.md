@@ -121,3 +121,14 @@ Done after the owner confirmed it.
 - Increment 10's two "new" allegiance effects were already documented in research.
 - Its revival correction matches the one made here in increment 8.
 - Increment 10 is a same-model second look, not an independent review.
+
+## 2026-10-22: increment 11 (conquest `b3cf8dc`)
+
+Done separately after merging PR #53, as the owner asked.
+- **Saves:** the 4 saves were fetched read-only from Drive and their hashes match. The input
+  equals research's natural week-11 save.
+- **Decode:** the cities, nation records and relations were decoded independently, and Ebora's
+  neighbour scores were recomputed.
+- **Result:** this independently reproduces g3 §1a–1c (staged) on a natural save. The at-war
+  branch (c) is already observed in g4 H. Correction to an earlier draft of this intake: it
+  is not the first game observation of the rule.
