@@ -63,6 +63,7 @@ gate at `< 101`**.
    no-op. **No "X cannot join fleets" / "100 ships exceeded" refusal
    text exists** — the gate is purely numerical. A reproduction that
    expects a refusal dialog will not find one.
+   > **Correction (2026-10-22, [2026-10-22 manual consolidation](2026-10-22-manual133-contradictions-consolidated.md)):** wrong. A box **is** shown: refusal row R15 of [2026-10-05-refusal-texts-and-conditions.md](2026-10-05-refusal-texts-and-conditions.md) was played (UF05b, with a screenshot) and shows *"There are more than 100 ships in these fleets combined."* (`TUnitMap_JoinFleets`:47260). This run compared saves only, so it could not see the box. No news line is written, and the `< 101` boundary stands.
 3. **`@ +X +18` ships field** — the SAV's actual fleet-record offset
    for the FLEET_SPLIT run-0 save is **110196** (not the address a
    simple `ARMY_OFF + 2 + A*ARMY_LEN + 2` arithmetic would predict). The

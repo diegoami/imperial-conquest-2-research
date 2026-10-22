@@ -70,7 +70,7 @@ Functions:
 @ 0x00447a30` and `TUnitMap_SplitFleet @ 0x00447d65` — **two callers of
 the same form**, the Split-fleet caller passing the alternate title (see
 UF04 below). Refusal *"There are more than 100 ships in these fleets
-combined."* `[derived]` (not in literals). Live evidence:
+combined."* `[derived]` (not in literals). **Correction (2026-10-22, [2026-10-22 manual consolidation](2026-10-22-manual133-contradictions-consolidated.md)):** this refusal belongs to Join fleets (UF05, row R15), not to Transfer ships. `TFleetToFleet` shows no box: the ship arrows clamp at 100, nothing is refused, and emptying a carrying fleet destroys its army silently ([2026-10-09-supply-providers-and-transfer-clamps.md](2026-10-09-supply-providers-and-transfer-clamps.md) §2, played and code-read). Live evidence:
 `T_TRANSFER_SHIPS.SAV`. Coverage: `coverage.md §3 'Transfer ships'`. Help
 topic 36 ("Transfer ships"). Plus `saves/fleet-split-antium-0734.SAV` for
 the related split path.
