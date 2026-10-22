@@ -16,12 +16,15 @@ bent-claim self-test are tracked at `runs/experiments/data/run-exp-cosmetic-gaps
 >   or the audit scripts.
 > - **Release:** all five archives were downloaded from the release, and all 128 members match the tracked
 >   manifests.
-> - **Audit:** `claims_audit.py` gives **350 checks, 0 mismatches**; the tracked v13 report says 348. The
->   script and the finding are unchanged, and the source of the two extra checks was not traced.
-> - **Tests:** the bent-claim tests (12) and `test_runner.py` (17) pass. Both hard-code
->   `<repo>/artifacts/run-exp-cosmetic-gaps` and ignore `IC2_ARTIFACTS`, so they were run with that path
->   patched to a scratch copy.
-> - **SAV atlas:** ledger `field-map-v12.csv` agrees with §4 and §5. It lists +0x46C as the area-map toggle,
+> - **Audit:** `claims_audit.py` gives **350 checks, 0 mismatches**. The tracked v13 report (348) dates from
+>   `1c7925b` (2026-10-07). The finding, the audit and the tests changed after it, in the 2026-10-10 correction
+>   `3c9f552`, so v13 is simply stale.
+> - **Tests:** the bent-claim tests (12) and `test_runner.py` (17) pass. At `e337798` both hard-coded
+>   `<repo>/artifacts/run-exp-cosmetic-gaps`. On research's report, ic2-conquest made them honour
+>   `IC2_ARTIFACTS` ([PR #148](https://github.com/diegoami/ic2-conquest/pull/148), `f92d2f1`); both pass
+>   that way here.
+> - **SAV atlas:** ledger `field-map-v12.csv` (and v13, which only rewords the stale +0x46D note research
+>   flagged; classes unchanged) agrees with §4 and §5. It lists +0x46C as the area-map toggle,
 >   +0x46E–0x485 as the three windows' Left/Top/Height/Width (UI geometry), and the main window as trailer
 >   +0x2E/+0x30/+0x32/+0x34.
 > - **§5's "save tail … +0, +2, +4, +6":** this counts from the start of that 8-byte block
