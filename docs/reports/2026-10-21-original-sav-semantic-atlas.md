@@ -7,7 +7,7 @@
 (blob `217de9d6`), increments 1–4 of
 [conquest #107](https://github.com/diegoami/ic2-conquest/issues/107). The authoritative ledger
 is [`field-map-v4.csv`](https://github.com/diegoami/ic2-conquest/blob/29cc3a8/runs/experiments/data/run-exp-sav-atlas107/field-map-v4.csv)
-(SHA-256 `52ba0fd7…936e`). Increments 5–10 (conquest `ad0af2d` through `de952d1`; ledgers v5–v10) have their own sections below. Research intake by the research session (2026-10-21): every receipt
+(SHA-256 `52ba0fd7…936e`). Increments 5–11 (conquest `ad0af2d` through `b3cf8dc`; ledgers v5–v11) have their own sections below. Research intake by the research session (2026-10-21): every receipt
 rerun from the restored private bundle, the twelve native-run saves retrieved and diffed, and an
 independent instruction-level adversarial check of the INERT claim. No upstream review was run
 on increments 3–4, and none is claimed here. This session launched no game.
@@ -333,6 +333,47 @@ Increment 10 corrections, re-read here:
 - **Neighbours writer.** `FUN_0044B8F4` was credited as a `NATION.neighbours` writer only by a
   lead-index artefact (its terminator write reaches +0x46 when the count is 0). No research
   report relied on it.
+
+## Increment 11: rebellion and revival observed in a game
+
+**Provenance:** conquest `main` `b3cf8dc` (PR #126), ledger `field-map-v11.csv`
+(`f5de0e7e…13b4`). The run is
+[run-exp-sav-rebellion107](https://github.com/diegoami/ic2-conquest/blob/b3cf8dc/runs/experiments/data/run-exp-sav-rebellion107/README.md),
+owner-approved upstream, on the seed build, seed 12345, under Wine, with one End turn (one
+quarterly loop). **Intake (2026-10-22):**
+- Ledger v10 → v11 changes only the notes, evidence and uncertainty of two rows.
+- The 4 saves were copied read-only from `gdrive:IC2/artifacts/run-exp-sav-rebellion107/` and
+  match `SAVES.sha256`.
+- The input equals research's natural `1_rome_270_winter_11.sav` (`76b09ee3…`). The same file
+  is in the `imp_conquest_fixtures` release `run-1-rome` and the conquest release
+  `run-exp-battle-probe`.
+- Everything below was decoded independently.
+
+| Check | Observed |
+|---|---|
+| Crafted input vs natural save | 11 bytes differ: the loyalty words of 11 cities. The 8 Galatian-allegiance cities → 20, Agrigentum → 5, Ebora → 5, Carthago → 5 |
+| Galatia, dead before the revival | unity 0, capital −1, **stale count 5**, conqueror 2 |
+| Galatia after | unity 480, capital 218 (Ancyra), count 8, conqueror −1, tax 20, new leader, all 8 allegiance cities owned |
+| Moved cities' loyalty after | 90 (one shows 89), capital 98 = 90 + 8 |
+| Capital map marker | 96 = Galatia 12 + 84 |
+| Relations toward Galatia | Before: Seleucid −18, Media −8. After: Seleucid ↔ Galatia −7 (the −8 cooldown after one thaw), Media −8 kept, and trades (1) with Numidia, Gaul and Armenia made during the round. **Not peace with everyone** |
+| Agrigentum (owner Carthage, allegiance Greece) | goes to Greece |
+| Ebora (owner = allegiance = Celtiberia) | Celtiberia's only war is with Carthage, and no Carthaginian army is within Chebyshev 10, so the neighbour rule applies: Gaul −83, Carthage −124 → Gaul |
+| Control: Carthago, a capital at loyalty 5 | stays Carthaginian |
+| Plain control run | only Messene changes owner, as part of the round |
+
+This is the first game observation of the
+[decompiled quarterly rebellion](decompiled-quarterly-rebellion.md):
+- branch (a), revival, with all 8 cities moved and the capital chosen as the strongest;
+- branch (b), return to the allegiance nation;
+- branch (d), the neighbour score;
+- the capital exemption.
+
+Limits:
+- Branch (c), the at-war army, was not exercised.
+- Unity, mobilisation and treasury had already moved on by the autosave, because the rest of
+  the loop and the round ran first.
+- It is Wine on the seed build.
 
 ## What this does not establish
 
