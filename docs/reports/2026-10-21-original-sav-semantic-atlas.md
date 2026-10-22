@@ -7,7 +7,7 @@
 (blob `217de9d6`), increments 1–4 of
 [conquest #107](https://github.com/diegoami/ic2-conquest/issues/107). The authoritative ledger
 is [`field-map-v4.csv`](https://github.com/diegoami/ic2-conquest/blob/29cc3a8/runs/experiments/data/run-exp-sav-atlas107/field-map-v4.csv)
-(SHA-256 `52ba0fd7…936e`). Increments 5–8 (conquest `ad0af2d`, `22b450d`, `b4f17a4` and `e8c8e5d`; ledgers v5–v8) have their own sections below. Research intake by the research session (2026-10-21): every receipt
+(SHA-256 `52ba0fd7…936e`). Increments 5–10 (conquest `ad0af2d` through `de952d1`; ledgers v5–v10) have their own sections below. Research intake by the research session (2026-10-21): every receipt
 rerun from the restored private bundle, the twelve native-run saves retrieved and diffed, and an
 independent instruction-level adversarial check of the INERT claim. No upstream review was run
 on increments 3–4, and none is claimed here. This session launched no game.
@@ -249,10 +249,11 @@ owner nor the counts; its callers do.
 
 Not recomputed here, and upstream's results only:
 - fleet markers;
-- army marker bands, which lag in 17 of 362 natural armies;
+- army marker bands, which lag in 17 of 362 natural private-bundle armies;
 - fleet countdown parity;
-- merc placement;
-- fort encoding.
+- merc placement.
+
+The v1 fort-encoding line was void; see Increments 9–10.
 
 Untestable on this corpus: aboard links (no army is aboard in any save) and the battle-grid
 icon count (the only battle saves are the crafted research40 cases).
@@ -287,6 +288,52 @@ The reset values (unity 450, treasury 0, tax base 0, cities 0, tax 20, mobilisat
 conqueror −1) and the capital bonuses (loyalty and fort +8/+10 capped at 99, pop +10, max pop
 +20, tribute +25, marker owner + 84) agree. The revival is not observed natively.
 
+## Increments 9–10: natural aboard and battle-grid checks, and a second-look review
+
+**Provenance:** conquest `main` `de952d1` (PRs #123, #124; #125 is notes only), ledger
+`field-map-v10.csv` (`bb4dba7e…8cb2`). Increment 10 is a review of increments 3–8 by a second
+agent of the same model family. It is a second look, **not an independent review**.
+**Intake (2026-10-22, at `a4e2293`):**
+- The five atlas test suites pass.
+- Ledgers v8 → v10 change no class, offset or value policy, only notes, evidence and one writer
+  list.
+- All four v2 invariants receipts reproduce exactly, except for the ledger they cite: private
+  bundle, public saves, battle releases and aboard run.
+  - For the battle-release receipt, the 23 `run-exp-battle-probe` saves were downloaded from
+    the public release and match `invariants-battle-releases-v1.sha256`.
+  - For the aboard receipt, the 2 `run-exp-sav-aboard107` saves were copied read-only from
+    `gdrive:IC2/artifacts/run-exp-sav-aboard107/` and match `SAVES.sha256`.
+
+Observations:
+- **Battle grid** (increment 9): one icon per live battle slot holds in 6/6 Save-As-in-battle
+  saves and 15/15 half-round saves. The crafted research40 cases are the only failures.
+- **Aboard links, natural embark** (Wine, seed build). Decoded independently:
+  - army 0 has cell −1 at fleet 2's tile (101,46), and fleet 2's cargo is army 0, same owner;
+  - the tile's marker is 316, i.e. owner 0 + 316 (30 ships);
+  - moves are 0/0 after the embark and 9/25 after the tick.
+
+  The research `run-exp-naval-battle-cargo` saves also pass, but they are synthetic edits and
+  carry no weight as game evidence.
+
+Increment 10 corrections, re-read here:
+- **Fort-encoding invariant.** The v1 test was vacuous and read the population word, so any v1
+  fort-encoding count is void. The v2 check (fort ≥ 0, pending + current ≤ 100) has
+  0 violations on all four corpora. This report never relied on the v1 line.
+- **Revival relations.** The same correction this intake already made from `FUN_0044C360`
+  (Increment 8 section).
+- **Route residue.** `FUN_0044CD08` initialises only the low word of its last-tile local
+  (`0xFFFF`) and stores the whole dword. So a walk that ends at once writes route x = −1 with
+  stack residue in y; the round tick is not the only x = −1 writer.
+- **Two more allegiance effects** are already in research and agree with the code:
+  - the defection cascade `FUN_0044BA1C` divides a city's defence by 3 when its allegiance is
+    the new owner ([decompiled-defection-and-siege-attrition](decompiled-defection-and-siege-attrition.md));
+  - on elimination (`FUN_0044C528`) a city whose allegiance is the winner gets loyalty
+    min(80, 120 − L), otherwise min(70, max(40, 100 − L)), then + Random(6)
+    ([decompiled-elimination-cleanup](decompiled-elimination-cleanup.md)).
+- **Neighbours writer.** `FUN_0044B8F4` was credited as a `NATION.neighbours` writer only by a
+  lead-index artefact (its terminator write reaches +0x46 when the count is 0). No research
+  report relied on it.
+
 ## What this does not establish
 
 - Semantic completion for the CONTEXTUAL rows: domains, sentinels and cross-record invariants.
@@ -294,4 +341,4 @@ conqueror −1) and the capital bonuses (loyalty and fort +8/+10 capped at 99, p
   EXE.
 - An AI-set waypoint observed natively.
 - Whether leftover moves can be spent on the launch turn (not exercised in increment 6).
-- Independent review of increments 3–8 or of this intake's checker.
+- Independent review of increments 3–10 or of this intake's checker. Increment 10 is a same-model second look.
