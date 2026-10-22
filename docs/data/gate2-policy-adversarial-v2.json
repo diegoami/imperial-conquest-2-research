@@ -1,0 +1,1906 @@
+{
+ "checker_sha256": "eaee1ef0807c51bcb50374f6cea965ce750a92a689600a5475c3fce1baf3f812",
+ "method": "canonical from-scratch rewrite of each input must be accepted; each single mutation of a canonical save must be refused",
+ "canonical": {
+  "n": 15,
+  "accepted": 15
+ },
+ "mutations": {
+  "inert_byte_nonzero": {
+   "n": 15,
+   "refused": 15
+  },
+  "city_name_tail_dirty": {
+   "n": 15,
+   "refused": 15
+  },
+  "slot_unpacked": {
+   "n": 15,
+   "refused": 15
+  },
+  "slot_troops_negative": {
+   "n": 15,
+   "refused": 15
+  },
+  "army_tombstone": {
+   "n": 15,
+   "refused": 15
+  },
+  "fleet_tombstone": {
+   "n": 15,
+   "refused": 15
+  },
+  "city_list_order_swapped": {
+   "n": 15,
+   "refused": 15
+  },
+  "live_nation_count_wrong": {
+   "n": 15,
+   "refused": 15
+  },
+  "city_marker_wrong_owner": {
+   "n": 15,
+   "refused": 15
+  },
+  "city_allegiance_missing": {
+   "n": 15,
+   "refused": 15
+  },
+  "city_allegiance_out_of_range": {
+   "n": 15,
+   "refused": 15
+  },
+  "building_fleet_moves_5": {
+   "n": 3,
+   "refused": 3
+  },
+  "carried_army_off_fleet_tile": {
+   "n": 1,
+   "refused": 1
+  }
+ },
+ "unexpected": [],
+ "rows": [
+  {
+   "input": "det-AUTO0721-clock.SAV",
+   "case": "canonical",
+   "expect": "accept",
+   "accepted": true,
+   "failed": [],
+   "as_expected": true
+  },
+  {
+   "input": "det-AUTO0721-clock.SAV",
+   "case": "inert_byte_nonzero",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "inert_bytes_carried_or_zero"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "det-AUTO0721-clock.SAV",
+   "case": "city_name_tail_dirty",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "text_tails_canonical"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "det-AUTO0721-clock.SAV",
+   "case": "slot_unpacked",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "slots_packed"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "det-AUTO0721-clock.SAV",
+   "case": "slot_troops_negative",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "empty_slots_zero",
+    "slot_troops_nonnegative",
+    "slots_packed"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "det-AUTO0721-clock.SAV",
+   "case": "army_tombstone",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "no_army_tombstones"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "det-AUTO0721-clock.SAV",
+   "case": "fleet_tombstone",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "no_fleet_tombstones"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "det-AUTO0721-clock.SAV",
+   "case": "city_list_order_swapped",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "city_list_sorted"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "det-AUTO0721-clock.SAV",
+   "case": "live_nation_count_wrong",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "city_count"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "det-AUTO0721-clock.SAV",
+   "case": "city_marker_wrong_owner",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "city_marker"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "det-AUTO0721-clock.SAV",
+   "case": "city_allegiance_missing",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "city_allegiance_in_range"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "det-AUTO0721-clock.SAV",
+   "case": "city_allegiance_out_of_range",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "city_allegiance_in_range"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "det-AUTO0721-seed12345.SAV",
+   "case": "canonical",
+   "expect": "accept",
+   "accepted": true,
+   "failed": [],
+   "as_expected": true
+  },
+  {
+   "input": "det-AUTO0721-seed12345.SAV",
+   "case": "inert_byte_nonzero",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "inert_bytes_carried_or_zero"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "det-AUTO0721-seed12345.SAV",
+   "case": "city_name_tail_dirty",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "text_tails_canonical"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "det-AUTO0721-seed12345.SAV",
+   "case": "slot_unpacked",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "slots_packed"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "det-AUTO0721-seed12345.SAV",
+   "case": "slot_troops_negative",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "empty_slots_zero",
+    "slot_troops_nonnegative",
+    "slots_packed"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "det-AUTO0721-seed12345.SAV",
+   "case": "army_tombstone",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "no_army_tombstones"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "det-AUTO0721-seed12345.SAV",
+   "case": "fleet_tombstone",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "no_fleet_tombstones"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "det-AUTO0721-seed12345.SAV",
+   "case": "city_list_order_swapped",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "city_list_sorted"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "det-AUTO0721-seed12345.SAV",
+   "case": "live_nation_count_wrong",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "city_count"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "det-AUTO0721-seed12345.SAV",
+   "case": "city_marker_wrong_owner",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "city_marker"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "det-AUTO0721-seed12345.SAV",
+   "case": "city_allegiance_missing",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "city_allegiance_in_range"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "det-AUTO0721-seed12345.SAV",
+   "case": "city_allegiance_out_of_range",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "city_allegiance_in_range"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "det-AUTO0721-seed999.SAV",
+   "case": "canonical",
+   "expect": "accept",
+   "accepted": true,
+   "failed": [],
+   "as_expected": true
+  },
+  {
+   "input": "det-AUTO0721-seed999.SAV",
+   "case": "inert_byte_nonzero",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "inert_bytes_carried_or_zero"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "det-AUTO0721-seed999.SAV",
+   "case": "city_name_tail_dirty",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "text_tails_canonical"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "det-AUTO0721-seed999.SAV",
+   "case": "slot_unpacked",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "slots_packed"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "det-AUTO0721-seed999.SAV",
+   "case": "slot_troops_negative",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "empty_slots_zero",
+    "slot_troops_nonnegative",
+    "slots_packed"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "det-AUTO0721-seed999.SAV",
+   "case": "army_tombstone",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "no_army_tombstones"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "det-AUTO0721-seed999.SAV",
+   "case": "fleet_tombstone",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "no_fleet_tombstones"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "det-AUTO0721-seed999.SAV",
+   "case": "city_list_order_swapped",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "city_list_sorted"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "det-AUTO0721-seed999.SAV",
+   "case": "live_nation_count_wrong",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "city_count"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "det-AUTO0721-seed999.SAV",
+   "case": "city_marker_wrong_owner",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "city_marker"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "det-AUTO0721-seed999.SAV",
+   "case": "city_allegiance_missing",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "city_allegiance_in_range"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "det-AUTO0721-seed999.SAV",
+   "case": "city_allegiance_out_of_range",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "city_allegiance_in_range"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "fleet-port-antium-0734.SAV",
+   "case": "canonical",
+   "expect": "accept",
+   "accepted": true,
+   "failed": [],
+   "as_expected": true
+  },
+  {
+   "input": "fleet-port-antium-0734.SAV",
+   "case": "inert_byte_nonzero",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "inert_bytes_carried_or_zero"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "fleet-port-antium-0734.SAV",
+   "case": "city_name_tail_dirty",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "text_tails_canonical"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "fleet-port-antium-0734.SAV",
+   "case": "slot_unpacked",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "slots_packed"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "fleet-port-antium-0734.SAV",
+   "case": "slot_troops_negative",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "empty_slots_zero",
+    "slot_troops_nonnegative",
+    "slots_packed"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "fleet-port-antium-0734.SAV",
+   "case": "army_tombstone",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "no_army_tombstones"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "fleet-port-antium-0734.SAV",
+   "case": "fleet_tombstone",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "no_fleet_tombstones"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "fleet-port-antium-0734.SAV",
+   "case": "building_fleet_moves_5",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "building_fleet_moves_0_route_x_minus1"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "fleet-port-antium-0734.SAV",
+   "case": "city_list_order_swapped",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "city_list_sorted"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "fleet-port-antium-0734.SAV",
+   "case": "live_nation_count_wrong",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "city_count"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "fleet-port-antium-0734.SAV",
+   "case": "city_marker_wrong_owner",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "city_marker"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "fleet-port-antium-0734.SAV",
+   "case": "city_allegiance_missing",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "city_allegiance_in_range"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "fleet-port-antium-0734.SAV",
+   "case": "city_allegiance_out_of_range",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "city_allegiance_in_range"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "fleet-split-antium-0734.SAV",
+   "case": "canonical",
+   "expect": "accept",
+   "accepted": true,
+   "failed": [],
+   "as_expected": true
+  },
+  {
+   "input": "fleet-split-antium-0734.SAV",
+   "case": "inert_byte_nonzero",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "inert_bytes_carried_or_zero"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "fleet-split-antium-0734.SAV",
+   "case": "city_name_tail_dirty",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "text_tails_canonical"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "fleet-split-antium-0734.SAV",
+   "case": "slot_unpacked",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "slots_packed"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "fleet-split-antium-0734.SAV",
+   "case": "slot_troops_negative",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "empty_slots_zero",
+    "slot_troops_nonnegative",
+    "slots_packed"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "fleet-split-antium-0734.SAV",
+   "case": "army_tombstone",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "no_army_tombstones"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "fleet-split-antium-0734.SAV",
+   "case": "fleet_tombstone",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "no_fleet_tombstones"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "fleet-split-antium-0734.SAV",
+   "case": "building_fleet_moves_5",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "building_fleet_moves_0_route_x_minus1"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "fleet-split-antium-0734.SAV",
+   "case": "city_list_order_swapped",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "city_list_sorted"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "fleet-split-antium-0734.SAV",
+   "case": "live_nation_count_wrong",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "city_count"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "fleet-split-antium-0734.SAV",
+   "case": "city_marker_wrong_owner",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "city_marker"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "fleet-split-antium-0734.SAV",
+   "case": "city_allegiance_missing",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "city_allegiance_in_range"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "fleet-split-antium-0734.SAV",
+   "case": "city_allegiance_out_of_range",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "city_allegiance_in_range"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "fleets-adjacent-at-sea-0723.SAV",
+   "case": "canonical",
+   "expect": "accept",
+   "accepted": true,
+   "failed": [],
+   "as_expected": true
+  },
+  {
+   "input": "fleets-adjacent-at-sea-0723.SAV",
+   "case": "inert_byte_nonzero",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "inert_bytes_carried_or_zero"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "fleets-adjacent-at-sea-0723.SAV",
+   "case": "city_name_tail_dirty",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "text_tails_canonical"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "fleets-adjacent-at-sea-0723.SAV",
+   "case": "slot_unpacked",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "slots_packed"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "fleets-adjacent-at-sea-0723.SAV",
+   "case": "slot_troops_negative",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "empty_slots_zero",
+    "slot_troops_nonnegative",
+    "slots_packed"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "fleets-adjacent-at-sea-0723.SAV",
+   "case": "army_tombstone",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "no_army_tombstones"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "fleets-adjacent-at-sea-0723.SAV",
+   "case": "fleet_tombstone",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "no_fleet_tombstones"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "fleets-adjacent-at-sea-0723.SAV",
+   "case": "city_list_order_swapped",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "city_list_sorted"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "fleets-adjacent-at-sea-0723.SAV",
+   "case": "live_nation_count_wrong",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "city_count"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "fleets-adjacent-at-sea-0723.SAV",
+   "case": "city_marker_wrong_owner",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "city_marker"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "fleets-adjacent-at-sea-0723.SAV",
+   "case": "city_allegiance_missing",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "city_allegiance_in_range"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "fleets-adjacent-at-sea-0723.SAV",
+   "case": "city_allegiance_out_of_range",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "city_allegiance_in_range"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "fortify-arretium-0720.SAV",
+   "case": "canonical",
+   "expect": "accept",
+   "accepted": true,
+   "failed": [],
+   "as_expected": true
+  },
+  {
+   "input": "fortify-arretium-0720.SAV",
+   "case": "inert_byte_nonzero",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "inert_bytes_carried_or_zero"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "fortify-arretium-0720.SAV",
+   "case": "city_name_tail_dirty",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "text_tails_canonical"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "fortify-arretium-0720.SAV",
+   "case": "slot_unpacked",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "slots_packed"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "fortify-arretium-0720.SAV",
+   "case": "slot_troops_negative",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "empty_slots_zero",
+    "slot_troops_nonnegative",
+    "slots_packed"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "fortify-arretium-0720.SAV",
+   "case": "army_tombstone",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "no_army_tombstones"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "fortify-arretium-0720.SAV",
+   "case": "fleet_tombstone",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "no_fleet_tombstones"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "fortify-arretium-0720.SAV",
+   "case": "city_list_order_swapped",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "city_list_sorted"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "fortify-arretium-0720.SAV",
+   "case": "live_nation_count_wrong",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "city_count"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "fortify-arretium-0720.SAV",
+   "case": "city_marker_wrong_owner",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "city_marker"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "fortify-arretium-0720.SAV",
+   "case": "city_allegiance_missing",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "city_allegiance_in_range"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "fortify-arretium-0720.SAV",
+   "case": "city_allegiance_out_of_range",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "city_allegiance_in_range"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "merc-hire-free-0720.SAV",
+   "case": "canonical",
+   "expect": "accept",
+   "accepted": true,
+   "failed": [],
+   "as_expected": true
+  },
+  {
+   "input": "merc-hire-free-0720.SAV",
+   "case": "inert_byte_nonzero",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "inert_bytes_carried_or_zero"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "merc-hire-free-0720.SAV",
+   "case": "city_name_tail_dirty",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "text_tails_canonical"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "merc-hire-free-0720.SAV",
+   "case": "slot_unpacked",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "slots_packed"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "merc-hire-free-0720.SAV",
+   "case": "slot_troops_negative",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "empty_slots_zero",
+    "slot_troops_nonnegative",
+    "slots_packed"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "merc-hire-free-0720.SAV",
+   "case": "army_tombstone",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "no_army_tombstones"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "merc-hire-free-0720.SAV",
+   "case": "fleet_tombstone",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "no_fleet_tombstones"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "merc-hire-free-0720.SAV",
+   "case": "city_list_order_swapped",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "city_list_sorted"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "merc-hire-free-0720.SAV",
+   "case": "live_nation_count_wrong",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "city_count"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "merc-hire-free-0720.SAV",
+   "case": "city_marker_wrong_owner",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "city_marker"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "merc-hire-free-0720.SAV",
+   "case": "city_allegiance_missing",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "city_allegiance_in_range"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "merc-hire-free-0720.SAV",
+   "case": "city_allegiance_out_of_range",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "city_allegiance_in_range"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "mobilize-new-army-0720.SAV",
+   "case": "canonical",
+   "expect": "accept",
+   "accepted": true,
+   "failed": [],
+   "as_expected": true
+  },
+  {
+   "input": "mobilize-new-army-0720.SAV",
+   "case": "inert_byte_nonzero",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "inert_bytes_carried_or_zero"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "mobilize-new-army-0720.SAV",
+   "case": "city_name_tail_dirty",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "text_tails_canonical"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "mobilize-new-army-0720.SAV",
+   "case": "slot_unpacked",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "slots_packed"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "mobilize-new-army-0720.SAV",
+   "case": "slot_troops_negative",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "empty_slots_zero",
+    "slot_troops_nonnegative",
+    "slots_packed"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "mobilize-new-army-0720.SAV",
+   "case": "army_tombstone",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "no_army_tombstones"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "mobilize-new-army-0720.SAV",
+   "case": "fleet_tombstone",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "no_fleet_tombstones"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "mobilize-new-army-0720.SAV",
+   "case": "city_list_order_swapped",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "city_list_sorted"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "mobilize-new-army-0720.SAV",
+   "case": "live_nation_count_wrong",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "city_count"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "mobilize-new-army-0720.SAV",
+   "case": "city_marker_wrong_owner",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "city_marker"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "mobilize-new-army-0720.SAV",
+   "case": "city_allegiance_missing",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "city_allegiance_in_range"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "mobilize-new-army-0720.SAV",
+   "case": "city_allegiance_out_of_range",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "city_allegiance_in_range"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "phase0-scripted-turn-AUTO0721.SAV",
+   "case": "canonical",
+   "expect": "accept",
+   "accepted": true,
+   "failed": [],
+   "as_expected": true
+  },
+  {
+   "input": "phase0-scripted-turn-AUTO0721.SAV",
+   "case": "inert_byte_nonzero",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "inert_bytes_carried_or_zero"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "phase0-scripted-turn-AUTO0721.SAV",
+   "case": "city_name_tail_dirty",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "text_tails_canonical"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "phase0-scripted-turn-AUTO0721.SAV",
+   "case": "slot_unpacked",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "slots_packed"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "phase0-scripted-turn-AUTO0721.SAV",
+   "case": "slot_troops_negative",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "empty_slots_zero",
+    "slot_troops_nonnegative",
+    "slots_packed"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "phase0-scripted-turn-AUTO0721.SAV",
+   "case": "army_tombstone",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "no_army_tombstones"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "phase0-scripted-turn-AUTO0721.SAV",
+   "case": "fleet_tombstone",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "no_fleet_tombstones"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "phase0-scripted-turn-AUTO0721.SAV",
+   "case": "city_list_order_swapped",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "city_list_sorted"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "phase0-scripted-turn-AUTO0721.SAV",
+   "case": "live_nation_count_wrong",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "city_count"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "phase0-scripted-turn-AUTO0721.SAV",
+   "case": "city_marker_wrong_owner",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "city_marker"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "phase0-scripted-turn-AUTO0721.SAV",
+   "case": "city_allegiance_missing",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "city_allegiance_in_range"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "phase0-scripted-turn-AUTO0721.SAV",
+   "case": "city_allegiance_out_of_range",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "city_allegiance_in_range"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "recruit-hi3200-0720.SAV",
+   "case": "canonical",
+   "expect": "accept",
+   "accepted": true,
+   "failed": [],
+   "as_expected": true
+  },
+  {
+   "input": "recruit-hi3200-0720.SAV",
+   "case": "inert_byte_nonzero",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "inert_bytes_carried_or_zero"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "recruit-hi3200-0720.SAV",
+   "case": "city_name_tail_dirty",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "text_tails_canonical"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "recruit-hi3200-0720.SAV",
+   "case": "slot_unpacked",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "slots_packed"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "recruit-hi3200-0720.SAV",
+   "case": "slot_troops_negative",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "empty_slots_zero",
+    "slot_troops_nonnegative",
+    "slots_packed"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "recruit-hi3200-0720.SAV",
+   "case": "army_tombstone",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "no_army_tombstones"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "recruit-hi3200-0720.SAV",
+   "case": "fleet_tombstone",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "no_fleet_tombstones"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "recruit-hi3200-0720.SAV",
+   "case": "city_list_order_swapped",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "city_list_sorted"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "recruit-hi3200-0720.SAV",
+   "case": "live_nation_count_wrong",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "city_count"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "recruit-hi3200-0720.SAV",
+   "case": "city_marker_wrong_owner",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "city_marker"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "recruit-hi3200-0720.SAV",
+   "case": "city_allegiance_missing",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "city_allegiance_in_range"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "recruit-hi3200-0720.SAV",
+   "case": "city_allegiance_out_of_range",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "city_allegiance_in_range"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "run0-start-AUTO0720-seed12345.SAV",
+   "case": "canonical",
+   "expect": "accept",
+   "accepted": true,
+   "failed": [],
+   "as_expected": true
+  },
+  {
+   "input": "run0-start-AUTO0720-seed12345.SAV",
+   "case": "inert_byte_nonzero",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "inert_bytes_carried_or_zero"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "run0-start-AUTO0720-seed12345.SAV",
+   "case": "city_name_tail_dirty",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "text_tails_canonical"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "run0-start-AUTO0720-seed12345.SAV",
+   "case": "slot_unpacked",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "slots_packed"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "run0-start-AUTO0720-seed12345.SAV",
+   "case": "slot_troops_negative",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "empty_slots_zero",
+    "slot_troops_nonnegative",
+    "slots_packed"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "run0-start-AUTO0720-seed12345.SAV",
+   "case": "army_tombstone",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "no_army_tombstones"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "run0-start-AUTO0720-seed12345.SAV",
+   "case": "fleet_tombstone",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "no_fleet_tombstones"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "run0-start-AUTO0720-seed12345.SAV",
+   "case": "city_list_order_swapped",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "city_list_sorted"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "run0-start-AUTO0720-seed12345.SAV",
+   "case": "live_nation_count_wrong",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "city_count"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "run0-start-AUTO0720-seed12345.SAV",
+   "case": "city_marker_wrong_owner",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "city_marker"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "run0-start-AUTO0720-seed12345.SAV",
+   "case": "city_allegiance_missing",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "city_allegiance_in_range"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "run0-start-AUTO0720-seed12345.SAV",
+   "case": "city_allegiance_out_of_range",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "city_allegiance_in_range"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "siege-felsina-failed-0721.SAV",
+   "case": "canonical",
+   "expect": "accept",
+   "accepted": true,
+   "failed": [],
+   "as_expected": true
+  },
+  {
+   "input": "siege-felsina-failed-0721.SAV",
+   "case": "inert_byte_nonzero",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "inert_bytes_carried_or_zero"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "siege-felsina-failed-0721.SAV",
+   "case": "city_name_tail_dirty",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "text_tails_canonical"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "siege-felsina-failed-0721.SAV",
+   "case": "slot_unpacked",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "slots_packed"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "siege-felsina-failed-0721.SAV",
+   "case": "slot_troops_negative",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "empty_slots_zero",
+    "slot_troops_nonnegative",
+    "slots_packed"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "siege-felsina-failed-0721.SAV",
+   "case": "army_tombstone",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "no_army_tombstones"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "siege-felsina-failed-0721.SAV",
+   "case": "fleet_tombstone",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "no_fleet_tombstones"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "siege-felsina-failed-0721.SAV",
+   "case": "city_list_order_swapped",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "city_list_sorted"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "siege-felsina-failed-0721.SAV",
+   "case": "live_nation_count_wrong",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "city_count"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "siege-felsina-failed-0721.SAV",
+   "case": "city_marker_wrong_owner",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "city_marker"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "siege-felsina-failed-0721.SAV",
+   "case": "city_allegiance_missing",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "city_allegiance_in_range"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "siege-felsina-failed-0721.SAV",
+   "case": "city_allegiance_out_of_range",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "city_allegiance_in_range"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "trade-numidia-0720.SAV",
+   "case": "canonical",
+   "expect": "accept",
+   "accepted": true,
+   "failed": [],
+   "as_expected": true
+  },
+  {
+   "input": "trade-numidia-0720.SAV",
+   "case": "inert_byte_nonzero",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "inert_bytes_carried_or_zero"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "trade-numidia-0720.SAV",
+   "case": "city_name_tail_dirty",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "text_tails_canonical"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "trade-numidia-0720.SAV",
+   "case": "slot_unpacked",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "slots_packed"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "trade-numidia-0720.SAV",
+   "case": "slot_troops_negative",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "empty_slots_zero",
+    "slot_troops_nonnegative",
+    "slots_packed"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "trade-numidia-0720.SAV",
+   "case": "army_tombstone",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "no_army_tombstones"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "trade-numidia-0720.SAV",
+   "case": "fleet_tombstone",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "no_fleet_tombstones"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "trade-numidia-0720.SAV",
+   "case": "city_list_order_swapped",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "city_list_sorted"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "trade-numidia-0720.SAV",
+   "case": "live_nation_count_wrong",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "city_count"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "trade-numidia-0720.SAV",
+   "case": "city_marker_wrong_owner",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "city_marker"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "trade-numidia-0720.SAV",
+   "case": "city_allegiance_missing",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "city_allegiance_in_range"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "trade-numidia-0720.SAV",
+   "case": "city_allegiance_out_of_range",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "city_allegiance_in_range"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "AB_aboard_saveas.SAV",
+   "case": "canonical",
+   "expect": "accept",
+   "accepted": true,
+   "failed": [],
+   "as_expected": true
+  },
+  {
+   "input": "AB_aboard_saveas.SAV",
+   "case": "inert_byte_nonzero",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "inert_bytes_carried_or_zero"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "AB_aboard_saveas.SAV",
+   "case": "city_name_tail_dirty",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "text_tails_canonical"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "AB_aboard_saveas.SAV",
+   "case": "slot_unpacked",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "slots_packed"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "AB_aboard_saveas.SAV",
+   "case": "slot_troops_negative",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "empty_slots_zero",
+    "slot_troops_nonnegative",
+    "slots_packed"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "AB_aboard_saveas.SAV",
+   "case": "army_tombstone",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "aboard_link_fleet_side",
+    "no_army_tombstones"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "AB_aboard_saveas.SAV",
+   "case": "fleet_tombstone",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "no_fleet_tombstones"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "AB_aboard_saveas.SAV",
+   "case": "building_fleet_moves_5",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "building_fleet_moves_0_route_x_minus1"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "AB_aboard_saveas.SAV",
+   "case": "city_list_order_swapped",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "city_list_sorted"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "AB_aboard_saveas.SAV",
+   "case": "live_nation_count_wrong",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "city_count"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "AB_aboard_saveas.SAV",
+   "case": "city_marker_wrong_owner",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "city_marker"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "AB_aboard_saveas.SAV",
+   "case": "city_allegiance_missing",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "city_allegiance_in_range"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "AB_aboard_saveas.SAV",
+   "case": "city_allegiance_out_of_range",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "city_allegiance_in_range"
+   ],
+   "as_expected": true
+  },
+  {
+   "input": "AB_aboard_saveas.SAV",
+   "case": "carried_army_off_fleet_tile",
+   "expect": "refuse",
+   "accepted": false,
+   "failed": [
+    "carried_army_on_fleet_tile"
+   ],
+   "as_expected": true
+  }
+ ]
+}

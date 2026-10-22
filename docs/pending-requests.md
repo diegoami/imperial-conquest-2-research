@@ -109,6 +109,10 @@ Research #37 remains open. Four gates remain:
 2. Complete the applicable **UNKNOWN/new-record policy**, history/profile,
    inactive/text residue, record ordering/relocation and carrier representation,
    or define evidence-backed refusals. No arbitrary template inheritance.
+   **Status 2026-10-22:** the policy is answered by the
+   [gate-2 export policy](reports/2026-10-22-sav-export-gate2-policy.md) (ic2-conquest `80a3963`),
+   promoted provisional. The one checker defect found at intake (the allegiance refusal was not
+   enforced) was fixed upstream in `2fd663a`, and the fix is verified here.
 3. Independently review **T185 migration/export** (format 4 → current), checked
    capacities/encoding/indices and no-overwrite publication before candidates.
 4. Validate supported outputs from **that native-JSON set**: independent decode,
