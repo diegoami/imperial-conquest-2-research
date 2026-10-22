@@ -362,15 +362,19 @@ quarterly loop). **Intake (2026-10-22):**
 | Control: Carthago, a capital at loyalty 5 | stays Carthaginian |
 | Plain control run | only Messene changes owner, as part of the round |
 
-This is the first game observation of the
-[decompiled quarterly rebellion](decompiled-quarterly-rebellion.md):
-- branch (a), revival, with all 8 cities moved and the capital chosen as the strongest;
-- branch (b), return to the allegiance nation;
-- branch (d), the neighbour score;
-- the capital exemption.
+This independently **reproduces** earlier Wine observations of the
+[decompiled quarterly rebellion](decompiled-quarterly-rebellion.md), now on a natural start
+save changed only in loyalty. The earlier observations were all on staged saves:
+- [g3 §1a–1c](2026-10-12-g3-original-checks.md): rebellion, return and rebirth, including the
+  seven-city control in which nothing moves;
+- [g4 H](2026-10-12-g4-followups.md): the at-war branch (c), where the highest-index war army
+  within distance 10 wins;
+- [g4 J](2026-10-12-g4-followups.md): the −8 relation cooldown.
+
+Every branch has therefore been seen in a game, each on a staged state.
 
 Limits:
-- Branch (c), the at-war army, was not exercised.
+- This run does not exercise branch (c); g4 H covers it.
 - Unity, mobilisation and treasury had already moved on by the autosave, because the rest of
   the loop and the round ran first.
 - It is Wine on the seed build.

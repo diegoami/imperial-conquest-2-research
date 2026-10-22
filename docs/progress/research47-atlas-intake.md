@@ -129,5 +129,6 @@ Done separately after merging PR #53, as the owner asked.
   equals research's natural week-11 save.
 - **Decode:** the cities, nation records and relations were decoded independently, and Ebora's
   neighbour scores were recomputed.
-- **Result:** the rebellion report's branches (a), (b) and (d) and the capital exemption are
-  observed in Wine. Branch (c) was not exercised.
+- **Result:** this independently reproduces g3 §1a–1c (staged) on a natural save. The at-war
+  branch (c) is already observed in g4 H. Correction to an earlier draft of this intake: it
+  is not the first game observation of the rule.
