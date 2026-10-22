@@ -89,7 +89,7 @@ owner-authorized game run, and it is recorded in the report and in `cloud-contin
 
 The saves were re-hashed and decoded here. With this, every research #47 item has an answer,
 and the issue is closed. Still open: spending leftover moves on the launch turn (not exercised),
-the GitHub releases for both runs' saves, and review of increments 3–6.
+~~the GitHub releases for both runs' saves~~ (published 2026-10-22), and review of increments 3–6.
 
 ## 2026-10-22: increments 7–8 (conquest `b4f17a4`, `e8c8e5d`; checked at `1642f6d`)
 

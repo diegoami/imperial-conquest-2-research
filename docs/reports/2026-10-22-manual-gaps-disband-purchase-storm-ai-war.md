@@ -12,7 +12,9 @@ The run log is [`run-exp-manual-gaps/`](https://github.com/diegoami/ic2-conquest
 
 All four use **staged** saves: positions, owners or relations were set by save edits, and every edit is logged in
 `staged-edits.jsonl`. Natural play follows on the seed build `354d8265…` under Wine, seed 12345 unless named. The
-binaries are on the owner's Drive (`IC2/artifacts/run-exp-manual-gaps/`), not in a release.
+binaries are in release [`run-exp-manual-gaps`](https://github.com/diegoami/ic2-conquest/releases/tag/run-exp-manual-gaps)
+(published 2026-10-22: 46 saves and 39 screenshots, the hashes checked against `SAVES.sha256` before upload) and on
+the owner's Drive (`IC2/artifacts/run-exp-manual-gaps/`).
 
 **Intake by the research session (2026-10-22).**
 - The 46 saves were fetched read-only from Drive, and all 46 match `SAVES.sha256`.
@@ -185,4 +187,3 @@ and trade offers.
 - **Staged positions:** the unit placements, the fleets and Carthage's peace with Celtiberia are save edits. In the
   unedited start Carthage is at war with Celtiberia and cannot declare.
 - **Environment:** Wine and the seed build only. There was no native Windows run and no independent review.
-- **Binaries:** the saves and screenshots are on Drive only. Release `run-exp-manual-gaps` is not made.
