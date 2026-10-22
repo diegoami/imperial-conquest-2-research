@@ -7,7 +7,7 @@
 (blob `217de9d6`), increments 1–4 of
 [conquest #107](https://github.com/diegoami/ic2-conquest/issues/107). The authoritative ledger
 is [`field-map-v4.csv`](https://github.com/diegoami/ic2-conquest/blob/29cc3a8/runs/experiments/data/run-exp-sav-atlas107/field-map-v4.csv)
-(SHA-256 `52ba0fd7…936e`). Increments 5 and 6 (conquest `ad0af2d` and `22b450d`; ledgers `field-map-v5.csv` and `field-map-v6.csv`) have their own sections below. Research intake by the research session (2026-10-21): every receipt
+(SHA-256 `52ba0fd7…936e`). Increments 5–8 (conquest `ad0af2d`, `22b450d`, `b4f17a4` and `e8c8e5d`; ledgers v5–v8) have their own sections below. Research intake by the research session (2026-10-21): every receipt
 rerun from the restored private bundle, the twelve native-run saves retrieved and diffed, and an
 independent instruction-level adversarial check of the INERT claim. No upstream review was run
 on increments 3–4, and none is claimed here. This session launched no game.
@@ -221,6 +221,72 @@ This confirms in Wine what increment 5 predicted. Launch does not set moves, so 
 its index's leftover moves, x,y, route and other unwritten words until the next round tick. A
 reused index can therefore carry a moved fleet's pre-tick values.
 
+## Increment 7: cross-record invariants
+
+**Provenance:** conquest `main` `b4f17a4` (PR #120). The checker is
+[`scripts/sav_atlas_invariants.py`](https://github.com/diegoami/ic2-conquest/blob/e8c8e5d/scripts/sav_atlas_invariants.py),
+with receipts `invariants-{private-bundle,public}-v1.json` (counts, indices and observed domains
+only). The ledger is `field-map-v7.csv`. **Intake (2026-10-22, at `1642f6d`):**
+- The five atlas test suites pass.
+- Both receipts reproduce exactly, except for the ledger they cite (v8 is now the default).
+- Ledgers v6 → v8 change no class, offset or value policy, only the notes, evidence and
+  uncertainty of 13 rows.
+
+The main invariants were recomputed independently over the same 56 saves:
+
+| Invariant | Independent result |
+|---|---|
+| City marker: `(m − 20) mod 16 = owner`, with 20 ≤ m < 100 | 18,704/18,704 |
+| Each nation's city list (+0x48, −1-terminated) is exactly the set of its owned cities | 896/896 |
+| **The list is ordered by city name** | 896/896 in name order. Only the 25 empty lists (dead nations) are also in index order |
+| A live nation's count (+0x446) equals its list length, and its capital is owned | 871/871 and 871/871 |
+| A dead nation keeps a stale count | 25/25 |
+
+**Code check of the order:** `FUN_0044B8F4` removes the city from its old owner's list. It then
+inserts it into the new owner's list before the first entry with
+`StrComp(new name, entry name) < 0`, i.e. in byte-wise name order. The helper writes neither the
+owner nor the counts; its callers do.
+
+Not recomputed here, and upstream's results only:
+- fleet markers;
+- army marker bands, which lag in 17 of 362 natural armies;
+- fleet countdown parity;
+- merc placement;
+- fort encoding.
+
+Untestable on this corpus: aboard links (no army is aboard in any save) and the battle-grid
+icon count (the only battle saves are the crafted research40 cases).
+
+## Increment 8: the rebellion and revival rule
+
+**Provenance:** conquest `main` `e8c8e5d` (PR #121), ledger `field-map-v8.csv`
+(`277b4636…e920`). Static only. It restates
+[decompiled-quarterly-rebellion](decompiled-quarterly-rebellion.md), which research already
+holds in more detail. The trigger and branch order agree: quarterly, non-capital, loyalty < 30.
+- **Owner = allegiance:** an at-war army within Chebyshev distance < 10; otherwise the
+  best-scoring living neighbour (cities − 2 × distance to its capital).
+- **Owner ≠ allegiance:** the city returns to its allegiance nation, or the revival is
+  attempted when that nation is dead. The revival needs more than 7 allegiant cities with
+  loyalty < 40.
+
+**Corrections to increment 8** (re-read in `FUN_0044C360`):
+- **Relations:** "at peace with everyone" overstates it. Only the revived nation's **own**
+  16-entry relation row (+0x26) is zeroed; other nations' entries toward it are left alone.
+  Then `FUN_00449B40(reborn, old owner, −8)` writes a symmetric −8 cooldown for each moved
+  city.
+- **Recruitment:** "recruit entries emptied" means that only the troops word of each of the
+  40 entries is zeroed; state, type and city stay.
+
+The research report's other details are not in increment 8:
+- wealth is not reset;
+- the leader draw has no "differs" retry;
+- moved cities get loyalty 90;
+- a former capital is favoured by × 5/3.
+
+The reset values (unity 450, treasury 0, tax base 0, cities 0, tax 20, mobilisation 50,
+conqueror −1) and the capital bonuses (loyalty and fort +8/+10 capped at 99, pop +10, max pop
++20, tribute +25, marker owner + 84) agree. The revival is not observed natively.
+
 ## What this does not establish
 
 - Semantic completion for the CONTEXTUAL rows: domains, sentinels and cross-record invariants.
@@ -228,4 +294,4 @@ reused index can therefore carry a moved fleet's pre-tick values.
   EXE.
 - An AI-set waypoint observed natively.
 - Whether leftover moves can be spent on the launch turn (not exercised in increment 6).
-- Independent review of increments 3–6 or of this intake's checker.
+- Independent review of increments 3–8 or of this intake's checker.

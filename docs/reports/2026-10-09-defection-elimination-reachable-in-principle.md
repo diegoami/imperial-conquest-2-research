@@ -31,7 +31,7 @@ It closes the last army-removal path left open in
 
 ## Why not a hand-built test
 
-Testing the end state needs edited city ownership, both nations' sorted city lists, the counts, the capital pointer and the city markers, all consistent. An inconsistent count already corrupted the nation table in this repository's first elimination attempt (`run-exp-turn-end-army-removal`, `attempt_elimination_patched_count.tar.gz`). The state would also be artificial, and the tile question is already answered by the code plus the seven paths run in play.
+Testing the end state needs edited city ownership, both nations' city lists, sorted by city name, the counts, the capital pointer and the city markers, all consistent. An inconsistent count already corrupted the nation table in this repository's first elimination attempt (`run-exp-turn-end-army-removal`, `attempt_elimination_patched_count.tar.gz`). The state would also be artificial, and the tile question is already answered by the code plus the seven paths run in play.
 
 ## Not established
 

@@ -237,7 +237,7 @@ It writes no conquest news (the only line is the ordinary "*C defects from X to 
 ### `FUN_0044C528(loser, winner)`, :50602: conquest, in order `[confirmed: decompile]`
 
 1. `MakeSound(10)`.
-2. **Every city with `owner == loser`** goes to the winner. `FUN_0044B8F4` moves the city between the sorted city lists, the owner is written, and `FUN_0044A794` repaints the marker.
+2. **Every city with `owner == loser`** goes to the winner. `FUN_0044B8F4` moves the city between the city lists, which are sorted by city name ([2026-10-21 atlas](2026-10-21-original-sav-semantic-atlas.md), increment 7), the owner is written, and `FUN_0044A794` repaints the marker.
    - Loyalty: `min(80, 120 − L)` if `allegiance == winner`, else `min(70, max(40, 100 − L))`; then `+ Random(6)`.
    - The winner gets: city count `+1`, wealth `+ pop × 3000`, treasury `+ contribution × 6`, tax base `+ contribution × 4`.
    - **The loser's city count, wealth and tax base are never decremented.** This is Galatia's stale `cities = 5`, the open anomaly in the Galatia report.
