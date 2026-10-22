@@ -35,15 +35,18 @@ shows that a launched fleet keeps the leftover moves of a reused index.
 
 ## Still unobserved (from the manual's list; research agrees, nothing added here)
 
-- the Offer of peace seen from a human's loss;
-- the "attack this army ?" prompt;
-- the AI declaring war on a human;
+**Update (2026-10-22):** ic2-conquest's `run-exp-manual-gaps` (PR #140) has since played or shot most of this list.
+See [2026-10-22-manual-gaps-disband-purchase-storm-ai-war.md](2026-10-22-manual-gaps-disband-purchase-storm-ai-war.md); the items struck through are now observed.
+
+- ~~the Offer of peace seen from a human's loss~~ (screenshot, seed 2);
+- ~~the "attack this army ?" prompt~~ (screenshot);
+- ~~the AI declaring war on a human~~ (§4: Carthage's war rule, and Illyria's alliance cascade);
 - reparations "sues" seen from a human seat;
-- the 250 BC and victory endings;
+- ~~the 250 BC and victory endings~~ (screenshots; the victory is staged by the city-count word only);
 - New nation / New player after Yes;
-- the Yes effects of disband (P01) and scuttle (P02);
-- the winter storm spike to 30;
-- foreign supply purchase.
+- ~~the Yes effects of disband (P01) and scuttle (P02)~~ (§1);
+- ~~the winter storm spike to 30~~ (§3);
+- ~~foreign supply purchase~~ (§2).
 
 ## Limits
 
