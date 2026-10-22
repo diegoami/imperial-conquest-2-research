@@ -79,3 +79,14 @@ owner-authorized game run, and it is recorded in the report and in `cloud-contin
   spot-checked.
 - The text-tail claim was not re-derived.
 - There was no review of increments 3–5 and no separate review of this intake.
+
+## 2026-10-22: increment 6 (conquest `22b450d`)
+
+`run-exp-sav-fleetmoves107` confirms the fleet-leftover effect in Wine.
+- **T4:** a new fleet at a reused index keeps the copy's x,y and route.
+- **T5:** a launched fleet keeps a crafted moves 17, while the control holds 0. The two
+  autosaves differ in that one byte only.
+
+The saves were re-hashed and decoded here. With this, every research #47 item has an answer,
+and the issue is closed. Still open: spending leftover moves on the launch turn (not exercised),
+the GitHub releases for both runs' saves, and review of increments 3–6.

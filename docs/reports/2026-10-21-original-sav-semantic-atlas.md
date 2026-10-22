@@ -7,7 +7,7 @@
 (blob `217de9d6`), increments 1–4 of
 [conquest #107](https://github.com/diegoami/ic2-conquest/issues/107). The authoritative ledger
 is [`field-map-v4.csv`](https://github.com/diegoami/ic2-conquest/blob/29cc3a8/runs/experiments/data/run-exp-sav-atlas107/field-map-v4.csv)
-(SHA-256 `52ba0fd7…936e`). Increment 5 (conquest `ad0af2d`, ledger `field-map-v5.csv`) has its own section below. Research intake by the research session (2026-10-21): every receipt
+(SHA-256 `52ba0fd7…936e`). Increments 5 and 6 (conquest `ad0af2d` and `22b450d`; ledgers `field-map-v5.csv` and `field-map-v6.csv`) have their own sections below. Research intake by the research session (2026-10-21): every receipt
 rerun from the restored private bundle, the twelve native-run saves retrieved and diffed, and an
 independent instruction-level adversarial check of the INERT claim. No upstream review was run
 on increments 3–4, and none is claimed here. This session launched no game.
@@ -188,12 +188,44 @@ Consequences:
 - **Fresh campaigns** must supply `CITY.allegiance`. The four nation history fields affect only
   presentation.
 
+## Increment 6: fleet leftovers observed in a game
+
+**Provenance:** conquest `main` `22b450d` (PR #117). The ledger is
+[`field-map-v6.csv`](https://github.com/diegoami/ic2-conquest/blob/22b450d/runs/experiments/data/run-exp-sav-atlas107/field-map-v6.csv)
+(`d7ff9f9b…91bf1`). The run is
+[run-exp-sav-fleetmoves107](https://github.com/diegoami/ic2-conquest/blob/22b450d/runs/experiments/data/run-exp-sav-fleetmoves107/README.md),
+owner-approved upstream, on the seed build, seed 12345, under Wine. **Intake (2026-10-22):**
+- The four atlas test suites pass.
+- Ledger v5 → v6 changes only the evidence and uncertainty cells of eight fleet rows.
+- The 7 saves were copied read-only from `gdrive:IC2/artifacts/run-exp-sav-fleetmoves107/`
+  and match `SAVES.sha256`. Their fleet tables were decoded independently.
+
+Observations:
+- **T4, natural path** (start `fleet-split-antium-0734.SAV`):
+  - **Scuttle:** after scuttling fleet 2 and End turn, the count is 5, and slot 2 holds the old
+    fleet 5, ticked (moves 31, condition 96).
+  - **Build:** a Build fleet order then creates index 5 with owner, countdown 24, ships 10, build
+    city 89 and army −1. It keeps the pre-tick copy's x,y (101,47) and route (0;0), and those are
+    saved. Moves, supplies, money and cell were also kept, but the copy held 0 in each.
+  - **Next tick:** route_x becomes −1, and x,y stay (101,47) while the fleet is building.
+
+  The past-count copy itself is not in any save (it is beyond the count). Its pre-tick values
+  come from upstream memory dumps, which were not re-read here.
+- **T5, direct:** a building fleet (countdown 2) holds a crafted moves 17, and its control holds
+  0. After End turn both fleets have launched at (219,55) with supplies 50 and condition 100.
+  The sentinel keeps **moves 17** in the autosave. The two autosaves differ in exactly that one
+  byte.
+- **Not exercised:** spending leftover moves on the launch turn.
+
+This confirms in Wine what increment 5 predicted. Launch does not set moves, so a fleet keeps
+its index's leftover moves, x,y, route and other unwritten words until the next round tick. A
+reused index can therefore carry a moved fleet's pre-tick values.
+
 ## What this does not establish
 
 - Semantic completion for the CONTEXTUAL rows: domains, sentinels and cross-record invariants.
 - Native Windows behaviour. Every dynamic check here is Wine, and only T3 ran on the original
   EXE.
 - An AI-set waypoint observed natively.
-- The first-turn moves of a fleet launched into a reused index. This is static only; a game
-  run is needed.
-- Independent review of increments 3–5 or of this intake's checker.
+- Whether leftover moves can be spent on the launch turn (not exercised in increment 6).
+- Independent review of increments 3–6 or of this intake's checker.
