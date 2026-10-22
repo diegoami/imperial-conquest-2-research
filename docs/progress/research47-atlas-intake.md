@@ -51,3 +51,31 @@ committed receipt is the authoritative one.
   scripts were rerun, not audited line by line.
 - The native-run saves have no release yet; the owner's Drive is their only copy outside the
   bot's container.
+
+## 2026-10-22: increment 5 (conquest `ad0af2d`)
+
+The owner confirmed this intake after the IC2 Conquest session's relay.
+
+**Checks.**
+- The four atlas test suites pass, and the corpus was rerun with ledger v5.
+- The ledger diff v4→v5 changes no class or offset.
+- Corpus slot and fleet counts were recomputed over the same 56 saves.
+- Re-read in source or x86: the army constructor, attrition and all four of its callers, fleet
+  launch, the round tick's fleet branch, `ShowArmyDetails`, and the five allegiance readers.
+
+The results are in the report's Increment 5 section.
+
+**Finding.** The upstream slot counts exclude two tombstoned army records (owner −1) that still
+hold live troops, and upstream doesn't say so. With them included the counts are 6,118 live
+and 9,522 empty slots.
+
+**Research #47: closed.** Its done-when (a field table with class and evidence for the 31
+bytes and the new-record/residue/history fields) is met statically. The one residual is the
+first-turn moves of a fleet launched into a reused index. That candidate effect needs an
+owner-authorized game run, and it is recorded in the report and in `cloud-continuation.md`.
+
+**Limits.**
+- The other readers of an empty slot were not re-read one by one; ShowArmyDetails was
+  spot-checked.
+- The text-tail claim was not re-derived.
+- There was no review of increments 3–5 and no separate review of this intake.

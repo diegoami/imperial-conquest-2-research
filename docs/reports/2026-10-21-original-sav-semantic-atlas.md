@@ -7,7 +7,7 @@
 (blob `217de9d6`), increments 1–4 of
 [conquest #107](https://github.com/diegoami/ic2-conquest/issues/107). The authoritative ledger
 is [`field-map-v4.csv`](https://github.com/diegoami/ic2-conquest/blob/29cc3a8/runs/experiments/data/run-exp-sav-atlas107/field-map-v4.csv)
-(SHA-256 `52ba0fd7…936e`). Research intake by the research session (2026-10-21): every receipt
+(SHA-256 `52ba0fd7…936e`). Increment 5 (conquest `ad0af2d`, ledger `field-map-v5.csv`) has its own section below. Research intake by the research session (2026-10-21): every receipt
 rerun from the restored private bundle, the twelve native-run saves retrieved and diffed, and an
 independent instruction-level adversarial check of the INERT claim. No upstream review was run
 on increments 3–4, and none is claimed here. This session launched no game.
@@ -154,12 +154,46 @@ and the [unknown-access report](2026-10-18-sav-export-unknown-access-and-record-
 are superseded on the classification of the 31 bytes (UNKNOWN → INERT, with this scope) but not
 on new-record residue, slot lineage or historical-profile rejection.
 
+## Increment 5: new-record residue, deleted slots, text tails and history
+
+**Provenance:** conquest `main` `ad0af2d` (PR #115). The ledger is
+[`field-map-v5.csv`](https://github.com/diegoami/ic2-conquest/blob/ad0af2d/runs/experiments/data/run-exp-sav-atlas107/field-map-v5.csv).
+It is static only, and no review was run upstream. **Intake (2026-10-22):**
+- The four atlas test suites pass at `ad0af2d`.
+- Ledger v4 → v5 changes no class or offset, only notes, evidence and value policies:
+  - route_x/route_y become `LIVE_AND_RESIDUE`;
+  - the 3 INERT rows become `PRESERVE_OR_ZERO`;
+  - `CITY.allegiance` becomes `HISTORICAL_PROFILE`.
+- Each claim below was re-read in the pinned decompilation or the original EXE, and the corpus
+  counts were recomputed independently.
+
+| Claim | Intake check | Result |
+|---|---|---|
+| The army constructor `FUN_00449F08` writes 96/656 bytes | read | **holds**: the 16-byte header, then type and troops (= 0) in each of the 20 slots |
+| Troops never go negative | read `FUN_0044AE20` and every caller | **holds**. The subtraction is `(troops div (Random(15)+105)) × p`, with p as follows:<br>• battle (`FUN_0044AEE4`): 40 × smaller div larger, so < 40<br>• siege (`FUN_0044B27C`): clamped 1..15<br>• naval/storm (`FUN_0044B4F8`): r²/100 with r ≤ 100; the storm calls it only when the loss is ≥ 6, so r = 10000/(≥106) |
+| An empty slot's label, quality and name have no effect | spot-checked `TInformation.ShowArmyDetails` | **holds** there: type, label and quality are read for every slot, but each term is multiplied by `troops div 200` = 0. The other readers' guards were not re-read one by one |
+| Corpus: 6,102 live and 9,498 empty slots; none negative; no live slot after an empty one | recount over the same 56 saves | **holds when tombstones are excluded.** Two owner −1 army records, in one owner-retained group, still hold 8 slots with troops > 0 each. With them included the counts are 6,118/9,522. Upstream does not state that exclusion |
+| Launch `FUN_0044A050` does not write fleet moves; a fleet launched in a tick keeps its old moves until the next tick | read the launch; disassembled the round tick `FUN_004514EC` | **holds.** The tick decrements countdown by 2. At 0 it calls the launch and jumps to the next fleet (`0x451758`). The moves refresh (`0x4518FC`) runs only for already launched fleets |
+| All 120 fleets under construction hold 0 in the leftover words | recount | **holds**. army = −1 and route_x = −1 are written by the order and the tick; x, y, route_y, moves, supplies, money and cell are 0 |
+| wealth0, treasury0, cities0 and conqueror are presentation only | `asm-index-v2` reader sets | **holds**. Readers: the saver, `THumanFalls.InitializeForm` and, for conqueror only, `TInformation.ShowNationStatus` |
+| `CITY.allegiance` drives gameplay | read `FUN_0044A98C`, `FUN_0044B27C`, `FUN_0044BB18`, `FUN_0044BED8`, `FUN_0044C204` | **holds**:<br>• defence × 4/5 when the owner is not the allegiance nation<br>• × 9/10 in a siege by the allegiance nation<br>• capture by the allegiance nation sets loyalty to min(90, 140 − L)<br>• the rebellion compares owner and allegiance<br>These agree with E14/E21 of the [feature inventory](2026-10-05-player-facing-feature-inventory.md) and with [decompiled-quarterly-rebellion](decompiled-quarterly-rebellion.md). That report already gives the full rebellion rule that increment 5 lists as open |
+| Text tails after the NUL are never interpreted | not re-derived | upstream static claim. It is consistent with the StrCopy semantics in the [unknown-access report](2026-10-18-sav-export-unknown-access-and-record-lineage-boundaries.md) |
+
+Consequences:
+- **Byte identity.** Residue and text tails still matter, which is why the unknown-access
+  report's lineage rejection stands.
+- **Semantic export.** An army slot with troops 0 may hold any label, quality or name. A fleet
+  index reused after compaction carries its previous moves into the first turn after launch.
+  This candidate effect is not observed in a game; checking it needs an owner-authorized run.
+- **Fresh campaigns** must supply `CITY.allegiance`. The four nation history fields affect only
+  presentation.
+
 ## What this does not establish
 
 - Semantic completion for the CONTEXTUAL rows: domains, sentinels and cross-record invariants.
 - Native Windows behaviour. Every dynamic check here is Wine, and only T3 ran on the original
   EXE.
 - An AI-set waypoint observed natively.
-- New-record minimal images (army 96/656, fleet 10/26 written), inactive-slot and text-tail
-  policy, or historical-profile applicability. These are the remaining parts of research #47.
-- Independent review of increments 3–4 or of this intake's checker.
+- The first-turn moves of a fleet launched into a reused index. This is static only; a game
+  run is needed.
+- Independent review of increments 3–5 or of this intake's checker.
