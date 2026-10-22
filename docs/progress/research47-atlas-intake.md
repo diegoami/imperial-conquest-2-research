@@ -107,3 +107,17 @@ Done after the owner confirmed it.
 
 **Not recomputed:** fleet and army marker bands, countdown parity, merc placement and fort
 encoding.
+
+## 2026-10-22: increments 9–10 (conquest `de952d1`; checked at `a4e2293`)
+
+Done after the owner confirmed it.
+- **Receipts:** the four v2 invariants receipts reproduce. The battle-probe release saves were
+  fetched from GitHub and the aboard saves read-only from Drive.
+- **Aboard links:** decoded independently.
+- **Code reads:** the route low-word residue in `FUN_0044CD08`, plus the defection
+  (`FUN_0044BA1C`) and elimination (`FUN_0044C528`) allegiance effects.
+
+**Findings.**
+- Increment 10's two "new" allegiance effects were already documented in research.
+- Its revival correction matches the one made here in increment 8.
+- Increment 10 is a same-model second look, not an independent review.
