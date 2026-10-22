@@ -1,0 +1,814 @@
+{
+ "hashes": {
+  "listed": 46,
+  "mismatched": []
+ },
+ "B7_disband": {
+  "changed": {
+   "army0+4": [
+    0,
+    -1
+   ],
+   "city81+24": [
+    150,
+    320
+   ],
+   "map(100,37)": [
+    200,
+    2
+   ],
+   "nation0+0x438 (int32)": [
+    2200,
+    2300
+   ]
+  },
+  "news_unchanged": true,
+  "army0_before": {
+   "supplies": 170,
+   "purse": 100
+  }
+ },
+ "B8_scuttle": {
+  "changed": {
+   "city89+24": [
+    230,
+    330
+   ],
+   "fleet2+8": [
+    0,
+    -1
+   ],
+   "map(101,46)": [
+    300,
+    0
+   ],
+   "nation0+0x438 (int32)": [
+    1630,
+    1730
+   ]
+  },
+  "news_unchanged": true,
+  "fleet2_before": {
+   "supplies": 100,
+   "money": 100,
+   "ships": 20,
+   "army": -1
+  }
+ },
+ "B9_buy": {
+  "changed": {
+   "army1+10": [
+    176,
+    221
+   ],
+   "army1+12": [
+    100,
+    91
+   ],
+   "city98+24": [
+    197,
+    152
+   ],
+   "nation0+0x486": [
+    39,
+    60
+   ],
+   "nation0+0x488": [
+    107,
+    101
+   ],
+   "nation1+0x438 (int32)": [
+    11000,
+    11009
+   ]
+  },
+  "news_unchanged": true
+ },
+ "B9b_staged": {
+  "supplies": 0,
+  "purse": 5,
+  "note": "no after save; result is in run-log only"
+ },
+ "B10_storms": {
+  "start_calendar": {
+   "week": 1,
+   "year": 270,
+   "season": 3
+  },
+  "counts": {
+   "dmg5": 61,
+   "dmg30": 4,
+   "dmg9": 7
+  },
+  "spikes": [
+   {
+    "seed": "12345",
+    "turn": 741,
+    "fleet": 0,
+    "ships": 50,
+    "condition": 90,
+    "lost": [
+     9,
+     17
+    ]
+   },
+   {
+    "seed": "1",
+    "turn": 741,
+    "fleet": 1,
+    "ships": 50,
+    "condition": 90,
+    "lost": [
+     9,
+     17
+    ]
+   },
+   {
+    "seed": "1",
+    "turn": 742,
+    "fleet": 0,
+    "ships": 50,
+    "condition": 85,
+    "lost": [
+     9,
+     16
+    ]
+   },
+   {
+    "seed": "1",
+    "turn": 743,
+    "fleet": 4,
+    "ships": 50,
+    "condition": 80,
+    "lost": [
+     9,
+     15
+    ]
+   }
+  ]
+ },
+ "B11_war": {
+  "staging_edits": {
+   "nation1+0x36": [
+    3,
+    -18
+   ],
+   "nation8+0x28": [
+    3,
+    -18
+   ]
+  },
+  "turns": [
+   {
+    "turn": "staged",
+    "calendar": {
+     "week": 1,
+     "year": 270,
+     "season": 0
+    },
+    "carthage_rome": 0,
+    "rome_carthage": 0,
+    "carthage_wars": [],
+    "rome_allies": [],
+    "carthage_mob": 15,
+    "P_carthage": 1732,
+    "P_rome": 1050,
+    "rome_cities": 25
+   },
+   {
+    "turn": "0721",
+    "calendar": {
+     "week": 3,
+     "year": 270,
+     "season": 0
+    },
+    "carthage_rome": 0,
+    "rome_carthage": 0,
+    "carthage_wars": [],
+    "rome_allies": [],
+    "carthage_mob": 15,
+    "P_carthage": 1732,
+    "P_rome": 1050,
+    "rome_cities": 25
+   },
+   {
+    "turn": "0722",
+    "calendar": {
+     "week": 5,
+     "year": 270,
+     "season": 0
+    },
+    "carthage_rome": 0,
+    "rome_carthage": 0,
+    "carthage_wars": [],
+    "rome_allies": [],
+    "carthage_mob": 15,
+    "P_carthage": 1732,
+    "P_rome": 1050,
+    "rome_cities": 25
+   },
+   {
+    "turn": "0723",
+    "calendar": {
+     "week": 7,
+     "year": 270,
+     "season": 0
+    },
+    "carthage_rome": 0,
+    "rome_carthage": 0,
+    "carthage_wars": [],
+    "rome_allies": [],
+    "carthage_mob": 15,
+    "P_carthage": 1732,
+    "P_rome": 1015,
+    "rome_cities": 24
+   },
+   {
+    "turn": "0724",
+    "calendar": {
+     "week": 9,
+     "year": 270,
+     "season": 0
+    },
+    "carthage_rome": 0,
+    "rome_carthage": 0,
+    "carthage_wars": [],
+    "rome_allies": [],
+    "carthage_mob": 15,
+    "P_carthage": 1732,
+    "P_rome": 965,
+    "rome_cities": 23
+   },
+   {
+    "turn": "0725",
+    "calendar": {
+     "week": 11,
+     "year": 270,
+     "season": 0
+    },
+    "carthage_rome": 0,
+    "rome_carthage": 0,
+    "carthage_wars": [],
+    "rome_allies": [],
+    "carthage_mob": 15,
+    "P_carthage": 1732,
+    "P_rome": 915,
+    "rome_cities": 22
+   },
+   {
+    "turn": "0726",
+    "calendar": {
+     "week": 1,
+     "year": 270,
+     "season": 1
+    },
+    "carthage_rome": 0,
+    "rome_carthage": 0,
+    "carthage_wars": [],
+    "rome_allies": [],
+    "carthage_mob": 12,
+    "P_carthage": 1798,
+    "P_rome": 884,
+    "rome_cities": 21
+   },
+   {
+    "turn": "0727",
+    "calendar": {
+     "week": 3,
+     "year": 270,
+     "season": 1
+    },
+    "carthage_rome": 0,
+    "rome_carthage": 0,
+    "carthage_wars": [],
+    "rome_allies": [],
+    "carthage_mob": 12,
+    "P_carthage": 1798,
+    "P_rome": 837,
+    "rome_cities": 20
+   },
+   {
+    "turn": "0728",
+    "calendar": {
+     "week": 5,
+     "year": 270,
+     "season": 1
+    },
+    "carthage_rome": 0,
+    "rome_carthage": 0,
+    "carthage_wars": [],
+    "rome_allies": [],
+    "carthage_mob": 12,
+    "P_carthage": 1798,
+    "P_rome": 790,
+    "rome_cities": 19
+   },
+   {
+    "turn": "0729",
+    "calendar": {
+     "week": 7,
+     "year": 270,
+     "season": 1
+    },
+    "carthage_rome": 0,
+    "rome_carthage": 0,
+    "carthage_wars": [],
+    "rome_allies": [],
+    "carthage_mob": 12,
+    "P_carthage": 1798,
+    "P_rome": 738,
+    "rome_cities": 18
+   },
+   {
+    "turn": "0730",
+    "calendar": {
+     "week": 9,
+     "year": 270,
+     "season": 1
+    },
+    "carthage_rome": 0,
+    "rome_carthage": 0,
+    "carthage_wars": [],
+    "rome_allies": [],
+    "carthage_mob": 12,
+    "P_carthage": 1798,
+    "P_rome": 738,
+    "rome_cities": 18
+   },
+   {
+    "turn": "0731",
+    "calendar": {
+     "week": 11,
+     "year": 270,
+     "season": 1
+    },
+    "carthage_rome": 0,
+    "rome_carthage": 0,
+    "carthage_wars": [],
+    "rome_allies": [],
+    "carthage_mob": 12,
+    "P_carthage": 1798,
+    "P_rome": 694,
+    "rome_cities": 17
+   },
+   {
+    "turn": "0732",
+    "calendar": {
+     "week": 1,
+     "year": 270,
+     "season": 2
+    },
+    "carthage_rome": 0,
+    "rome_carthage": 0,
+    "carthage_wars": [],
+    "rome_allies": [],
+    "carthage_mob": 9,
+    "P_carthage": 1859,
+    "P_rome": 630,
+    "rome_cities": 16
+   },
+   {
+    "turn": "0733",
+    "calendar": {
+     "week": 3,
+     "year": 270,
+     "season": 2
+    },
+    "carthage_rome": 0,
+    "rome_carthage": 0,
+    "carthage_wars": [],
+    "rome_allies": [],
+    "carthage_mob": 9,
+    "P_carthage": 1859,
+    "P_rome": 630,
+    "rome_cities": 16
+   },
+   {
+    "turn": "0734",
+    "calendar": {
+     "week": 5,
+     "year": 270,
+     "season": 2
+    },
+    "carthage_rome": 3,
+    "rome_carthage": 3,
+    "carthage_wars": [
+     "Rome"
+    ],
+    "rome_allies": [],
+    "carthage_mob": 13,
+    "P_carthage": 1859,
+    "P_rome": 630,
+    "rome_cities": 16
+   }
+  ],
+  "changes": [
+   {
+    "turn": "0721",
+    "relation_changes": [
+     [
+      "Ptolemaic",
+      "Numidia",
+      0,
+      1
+     ],
+     [
+      "Ptolemaic",
+      "Dacia",
+      1,
+      -8
+     ],
+     [
+      "Numidia",
+      "Ptolemaic",
+      0,
+      1
+     ],
+     [
+      "Numidia",
+      "Illyria",
+      0,
+      1
+     ],
+     [
+      "Gaul",
+      "Bithynia",
+      0,
+      1
+     ],
+     [
+      "Gaul",
+      "Armenia",
+      1,
+      -8
+     ],
+     [
+      "Celtiberia",
+      "Dacia",
+      1,
+      -8
+     ],
+     [
+      "Celtiberia",
+      "Armenia",
+      0,
+      1
+     ],
+     [
+      "Illyria",
+      "Numidia",
+      0,
+      1
+     ],
+     [
+      "Illyria",
+      "Armenia",
+      1,
+      -8
+     ],
+     [
+      "Dacia",
+      "Ptolemaic",
+      1,
+      -8
+     ],
+     [
+      "Dacia",
+      "Celtiberia",
+      1,
+      -8
+     ],
+     [
+      "Dacia",
+      "Armenia",
+      0,
+      1
+     ],
+     [
+      "Bithynia",
+      "Gaul",
+      0,
+      1
+     ],
+     [
+      "Armenia",
+      "Gaul",
+      1,
+      -8
+     ],
+     [
+      "Armenia",
+      "Celtiberia",
+      0,
+      1
+     ],
+     [
+      "Armenia",
+      "Illyria",
+      1,
+      -8
+     ],
+     [
+      "Armenia",
+      "Dacia",
+      0,
+      1
+     ]
+    ],
+    "news_naming_rome": []
+   },
+   {
+    "turn": "0722",
+    "relation_changes": [
+     [
+      "Rome",
+      "Illyria",
+      1,
+      3
+     ],
+     [
+      "Gaul",
+      "Illyria",
+      -8,
+      2
+     ],
+     [
+      "Illyria",
+      "Rome",
+      1,
+      3
+     ],
+     [
+      "Illyria",
+      "Gaul",
+      -8,
+      2
+     ],
+     [
+      "Illyria",
+      "Dacia",
+      0,
+      1
+     ],
+     [
+      "Dacia",
+      "Illyria",
+      0,
+      1
+     ]
+    ],
+    "news_naming_rome": [
+     "ILLYRIA DECLARES WAR ON ROME."
+    ]
+   },
+   {
+    "turn": "0726",
+    "relation_changes": [
+     [
+      "Seleucid",
+      "Ptolemaic",
+      -18,
+      -12
+     ],
+     [
+      "Ptolemaic",
+      "Seleucid",
+      -18,
+      -12
+     ],
+     [
+      "Ptolemaic",
+      "Gaul",
+      -10,
+      -4
+     ],
+     [
+      "Ptolemaic",
+      "Greece",
+      -10,
+      -4
+     ],
+     [
+      "Numidia",
+      "Gaul",
+      -8,
+      -4
+     ],
+     [
+      "Gaul",
+      "Ptolemaic",
+      -10,
+      -4
+     ],
+     [
+      "Gaul",
+      "Numidia",
+      -8,
+      -4
+     ],
+     [
+      "Greece",
+      "Ptolemaic",
+      -10,
+      -4
+     ]
+    ],
+    "news_naming_rome": []
+   },
+   {
+    "turn": "0732",
+    "relation_changes": [
+     [
+      "Rome",
+      "Macedonia",
+      -6,
+      0
+     ],
+     [
+      "Carthage",
+      "Ptolemaic",
+      -8,
+      -4
+     ],
+     [
+      "Seleucid",
+      "Ptolemaic",
+      -12,
+      -8
+     ],
+     [
+      "Ptolemaic",
+      "Carthage",
+      -8,
+      -4
+     ],
+     [
+      "Ptolemaic",
+      "Seleucid",
+      -12,
+      -8
+     ],
+     [
+      "Ptolemaic",
+      "Gaul",
+      -4,
+      0
+     ],
+     [
+      "Macedonia",
+      "Rome",
+      -6,
+      0
+     ],
+     [
+      "Numidia",
+      "Gaul",
+      -4,
+      0
+     ],
+     [
+      "Gaul",
+      "Ptolemaic",
+      -4,
+      0
+     ],
+     [
+      "Gaul",
+      "Numidia",
+      -4,
+      0
+     ]
+    ],
+    "news_naming_rome": []
+   },
+   {
+    "turn": "0734",
+    "relation_changes": [
+     [
+      "Rome",
+      "Carthage",
+      0,
+      3
+     ],
+     [
+      "Carthage",
+      "Rome",
+      0,
+      3
+     ],
+     [
+      "Seleucid",
+      "Galatia",
+      3,
+      -18
+     ],
+     [
+      "Numidia",
+      "Galatia",
+      -6,
+      0
+     ],
+     [
+      "Celtiberia",
+      "Galatia",
+      -8,
+      0
+     ],
+     [
+      "Illyria",
+      "Galatia",
+      -8,
+      0
+     ],
+     [
+      "Dacia",
+      "Galatia",
+      -8,
+      0
+     ],
+     [
+      "Bithynia",
+      "Galatia",
+      2,
+      -24
+     ],
+     [
+      "Galatia",
+      "Seleucid",
+      3,
+      -18
+     ],
+     [
+      "Galatia",
+      "Numidia",
+      -6,
+      0
+     ],
+     [
+      "Galatia",
+      "Celtiberia",
+      -8,
+      0
+     ],
+     [
+      "Galatia",
+      "Illyria",
+      -8,
+      0
+     ],
+     [
+      "Galatia",
+      "Dacia",
+      -8,
+      0
+     ],
+     [
+      "Galatia",
+      "Bithynia",
+      2,
+      -24
+     ],
+     [
+      "Galatia",
+      "Armenia",
+      -8,
+      0
+     ],
+     [
+      "Galatia",
+      "Media",
+      -8,
+      0
+     ],
+     [
+      "Galatia",
+      "Thracia",
+      -8,
+      0
+     ],
+     [
+      "Armenia",
+      "Galatia",
+      -8,
+      0
+     ],
+     [
+      "Media",
+      "Galatia",
+      -8,
+      0
+     ],
+     [
+      "Thracia",
+      "Galatia",
+      -8,
+      0
+     ]
+    ],
+    "news_naming_rome": [
+     "CARTHAGE DECLARES WAR ON ROME."
+    ]
+   }
+  ]
+ }
+}

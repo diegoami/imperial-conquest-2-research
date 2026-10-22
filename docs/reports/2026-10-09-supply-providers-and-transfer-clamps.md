@@ -96,7 +96,7 @@
 
 - **Tiles in the fleet quirk:** only x−1 (P5) was played. The north tile (x, y−1) and the diagonals rest on the code.
 - **The Supply dialog with several providers:** whether the player can choose among them, and in what order they are listed.
-- **A purchase from a foreign city at peace:** the dialog was opened and closed, but nothing was bought.
+- ~~**A purchase from a foreign city at peace:** the dialog was opened and closed, but nothing was bought.~~ **Played since (2026-10-22):** 45 tons for 9 talents (room cap) and 25 for 5 (purse cap), paid from the army's purse to the seller's treasury ([2026-10-22-manual-gaps-disband-purchase-storm-ai-war.md](2026-10-22-manual-gaps-disband-purchase-storm-ai-war.md) §2).
 - **An army aboard a fleet as Supply army's target** (the selected-fleet branch of `0x446f50`).
 - ~~**The money and supplies of a fleet emptied by Transfer ships.**~~ **Answered since (2026-10-10):** the OK handler passes them to the other fleet, uncapped ([`2026-10-10-fleet-emptied-by-transfer-money-and-supplies.md`](2026-10-10-fleet-emptied-by-transfer-money-and-supplies.md)).
 - **The desktop original.**
