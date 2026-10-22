@@ -170,3 +170,18 @@ links the merge. Tax-only native3/3, nativeJSON0/12, callbackUNVERIFIED and UNKN
 remain unchanged; research37 is open. No downstream Evaluated marker or
 T184–T186/#1191 routing is asserted. See
 [../cloud-continuation.md](../cloud-continuation.md) for the durable cloud checkpoint.
+
+### Gate 2 export policy intake (2026-10-22)
+
+The owner confirmed this intake after the IC2 Conquest session's relay
+(ic2-conquest `80a3963`, PR #130).
+- **Reproduction:**
+  - the checker test passes;
+  - the 28 public per-file receipts reproduce byte for byte;
+  - the private-bundle identity group counts reproduce, with only counts recorded.
+- **New controls:** `scripts/gate2-policy-adversarial.py` canonicalises 15 saves (all accepted)
+  and applies 13 mutation types. Every type is refused except the missing or out-of-range
+  allegiance, which the checker does not enforce.
+
+Report: [2026-10-22-sav-export-gate2-policy](../reports/2026-10-22-sav-export-gate2-policy.md).
+Gates 1, 3 and 4 are unchanged, and research #37 stays open.
