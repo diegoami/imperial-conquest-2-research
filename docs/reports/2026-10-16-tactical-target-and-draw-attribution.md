@@ -1,5 +1,10 @@
 # Tactical AI: immutable replay inventory and original target-rule discrepancies
 
+The later [owner #1355 reproduction](2026-10-23-ptolemaic-seleucid-computer-general-gap1355.md)
+adds a separate observed battle gap and a matched-entry/RNG movement divergence.
+It is not a rerun or resolution of the historical inventory below, and establishes
+no exact first original instruction or production cause.
+
 **Status:** `[confirmed, partial]` for research issue #25 / build #1107. The 318-log rerun and inventory reconciliation are complete. Local original-rule discrepancies have minimal reproductions; whole-battle causal attribution remains open where indicated below. This finding proposes no gameplay patch, draw rebaseline, fixture edit or expected-failure change.
 
 **Research intake:** promoted from `diegoami/ic2-conquest`, branch `main`, commit

@@ -2104,3 +2104,54 @@ the archive. The JSON snapshots are newly generated experimental states, not the
 owner's twelve private preflight inputs. Save bytes, native JSON and screenshots
 remain outside research Git. The [research receipt](data/conversion151-intake-v1.json)
 contains scalar checks only; the report preserves normalization, RNG and runtime limits.
+
+
+## Broad strategic conversion (#153, 2026-10-23)
+
+[Report](reports/2026-10-23-broad-save-conversion-matrix.md), conquest
+[PR #155](https://github.com/diegoami/ic2-conquest/pull/155), source
+`83d52d2bad99ad8e3870f498cd7d939e0354f482`. The
+[complete per-case coverage CSV](https://github.com/diegoami/ic2-conquest/blob/83d52d2bad99ad8e3870f498cd7d939e0354f482/runs/experiments/data/run-exp-sav-conversion-broad153/coverage-final.csv)
+and [packet/manifests](https://github.com/diegoami/ic2-conquest/tree/83d52d2bad99ad8e3870f498cd7d939e0354f482/runs/experiments/data/run-exp-sav-conversion-broad153)
+resolve every selected original save and its versioned case. There are 77 round
+trips but only 53 distinct exported input SAVs; cases intentionally reuse states.
+These are generated/synthetic inputs, not the owner's twelve-save set or #1355 files.
+
+Complete [Drive archive](https://drive.google.com/file/d/16xF3L8qDSFcotMLhA5yOon2Rqm56gJXc/view):
+`batch-final.tar.gz`, 21,030,521 bytes / 900 files, SHA256
+`35db99998eb18955469200eb3af755d0abc6cf980cc5f9dd38a13f43905688c1`.
+The [Drive folder](https://drive.google.com/drive/folders/1PwRAw0xg4WKp5MpgpcRO3Fg6B4H5dnmn)
+also retains earlier batches. The valid third archive is `batch-03-complete.tar.gz`
+on Drive (`batch-03.tar.gz` in the local manifest); the earlier partial upload is
+marked `INCOMPLETE-do-not-use`. Research verified all four complete local archives,
+2,516 tar-member entries and the 2,754-check audit. Entries overlap across batches;
+these are not unique-save counts. Drive copies were not downloaded by research.
+
+| Cited original save basename | Case / scope |
+| --- | --- |
+| `Q15359R.SAV` | F39 naval battle, instrumented original, turn0720; continuation, not equal combat outcome |
+| `Q15360R.SAV` | F40 siege/capture, instrumented original, turn0720 |
+| `Q15361R.SAV` | F41 aftermath of a native field battle, original turn0721; not tactical outcome parity |
+| `Q15357R.SAV` | F37 two-human handoff, instrumented original |
+| `Q15375R.SAV` | F54 reversed cargo arrays and landing, turn0720 |
+| `Q15377R.SAV` | F56 fleet removal before a live cargo carrier; reciprocal army13 link survives, turn0720 |
+
+All source/return exports, original immediate/order/reopen saves and screenshots
+remain outside research Git. The shared [scalar intake receipt](data/conversion153-battle1355-intake-v1.json)
+records exact comparison/coverage/audit reproduction and 154 fresh policy passes.
+
+## Private owner battle #1355 (2026-10-23)
+
+[Focused report](reports/2026-10-23-ptolemaic-seleucid-computer-general-gap1355.md),
+conquest [PR #156](https://github.com/diegoami/ic2-conquest/pull/156), source
+`12ae80280609d8d40ec3eca942a7a893af3e5161`. The
+[public-safe aggregate audit and probe code](https://github.com/diegoami/ic2-conquest/tree/12ae80280609d8d40ec3eca942a7a893af3e5161/runs/experiments/data/run-exp-battle1355)
+and research's shared scalar receipt contain no owner input paths, input hashes,
+full state, screenshot or trace. Private access requires owner coordination; none
+of that evidence is in #153's Drive bundle or a public release.
+
+Research checked private preservation/export equality, complete safe-audit
+reproduction, controlled entry fields, repeated control state and the original
+result screenshot against terminal memory. The battle completed; the recorder
+failed after its battle flag cleared. No final original SAV/reopen is claimed.
+Wine only; no exact first original instruction, cause, fix or Windows acceptance.

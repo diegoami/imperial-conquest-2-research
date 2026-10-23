@@ -1,5 +1,11 @@
 # Original-side checks 3, 4, 5 and 7 of the v0.5.0 gap analysis: a 0-move army is selectable and stays selected with its toolbar dialogs opening, an unreachable click walks as far as the moves allow, Join units joins every selected unit, Split unit has a per-type floor (limit/5 per piece), and a storm cuts an army aboard to a few percent
 
+The [2026-10-23 broad conversion matrix](2026-10-23-broad-save-conversion-matrix.md)
+retains the same LI4,800 split refusal as a remake/original mismatch (F04), and a
+separate permitted HI5,000 split (F51). It corroborates the existing type-specific
+threshold rather than replacing the controls below.
+
+
 **Provenance:** draft `findings/2026-10-11-g2-original-checks.md` in `diegoami/ic2-conquest` at `70c51eb` (PR #77, merged `044118f`; their issue #75; `70c51eb` is the newest commit that touches the file). Release [`run-exp-g2-original-checks`](https://github.com/diegoami/ic2-conquest/releases/tag/run-exp-g2-original-checks) (417 assets), hashes in `runs/experiments/data/run-exp-g2-original-checks/SAVES.sha256`. The draft was reviewed upstream in 3 rounds by Sol; it was implemented by a Sonnet subagent at the owner's choice. It answers checks 3, 4, 5 and 7 of the g2 "Original-side checks needed" of [`2026-10-09-remake-v050-gap-analysis.md`](2026-10-09-remake-v050-gap-analysis.md) (rows MM01, MM03, UA06, D05, D06 and NEW-g2-2).
 
 **Review note (2026-10-11, research; every figure below re-read by me, not taken from the draft):**
