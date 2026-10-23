@@ -3,6 +3,21 @@
 Requests from other sessions that are accepted but not done. Whoever picks one up (any session)
 removes it here when its report is promoted, and tells the requester.
 
+## Live army quality 4 (research #63 / build #1352)
+
+Owner-authorized desktop research, 2026-10-23. The candidate
+[original-code report](reports/2026-10-23-live-unit-quality-four.md) and
+[scalar x86 receipt](data/research63-quality-controls-v1.json) establish that 4 means
+`very poor`, is created by normal early human mobilization, and is copied unchanged
+by original load/save and battle entry. Recommended live export range: 4–9 with 4
+preserved exactly; not a conversion to 5/6. Static paths and bounded controls are
+complete; no independent review or native Windows check is claimed.
+
+Pending: report promotion/build evaluation, then separately approved native
+open/inspect/order-or-End-turn/saveNEW/fresh-reopen if requested. Keep #63 open
+for that coordination. No owner-save conversion or game run was performed, and
+research #37's other gates remain open. Do not count this as native-JSON acceptance.
+
 ## Desktop palette check (with the player, via ic2-conquest)
 
 Asked by the research session on 2026-10-09 (the user asked). Every marker-colour result so far is

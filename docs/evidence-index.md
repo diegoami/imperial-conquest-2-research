@@ -2,6 +2,11 @@
 
 Every save, screenshot and recording the reports cite, and the release that holds it.
 
+Research #63 adds a [scalar original-x86 receipt](data/research63-quality-controls-v1.json)
+and [report](reports/2026-10-23-live-unit-quality-four.md), with no new SAV, screenshot
+or release. Its controls use synthetic memory and the pinned private EXE/DAT; they
+are not native Windows play evidence. Reproduction is in the report.
+
 The reports cite **bare filenames** — `11_supply.sav`, `1_rome_270_winter_7.sav` — never paths, because the binaries have never been in a repository and never will be. This file is what turns such a citation into something retrievable.
 
 The originals live in the repository [`diegoami/imp_conquest_fixtures`](https://github.com/diegoami/imp_conquest_fixtures), organised as **one release per play-through**. Nothing here is committed to this repository or to the build repository: the game files, saves, screenshots and recordings stay out of both, and this index is a pointer, not a copy.
