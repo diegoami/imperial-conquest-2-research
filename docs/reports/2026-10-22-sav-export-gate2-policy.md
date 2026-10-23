@@ -17,6 +17,11 @@ No game was launched, and no SAV was written outside a private scratch directory
 
 ## Answer
 
+The [broad #153 conversion matrix](2026-10-23-broad-save-conversion-matrix.md)
+adds 77 Wine round trips and 12 converter/input refusals, with four retained
+deterministic action gaps and conqueror-history loss. Passing export policy is
+therefore distinct from whole-game fidelity and the native Windows acceptance gate.
+
 **Later acceptance evidence (2026-10-23):** [six remake scenarios / seven Wine
 sessions](2026-10-23-remake-original-save-conversion-roundtrips.md) exercised this
 policy through bidirectional conversion. Research reproduced the complete comparison

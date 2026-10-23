@@ -1,6 +1,6 @@
 # Remake → original IC2 → remake: six scenarios, seven Wine sessions
 
-**Status:** promoted candidate `[confirmed, partial]`, 2026-10-23. Original-program
+**Status:** consolidated `[confirmed, partial]`, 2026-10-23. Original-program
 observations under Wine/Xvfb; not native Windows acceptance or lossless conversion.
 Intaken from ic2-conquest [PR #152](https://github.com/diegoami/ic2-conquest/pull/152),
 merged commit [`4ca3afa04c3eb8454c63ed6a4984f5564e8e0496`](https://github.com/diegoami/ic2-conquest/commit/4ca3afa04c3eb8454c63ed6a4984f5564e8e0496),
@@ -10,6 +10,11 @@ Research validation is recorded below; no separate model review was launched.
 explicitly approved by the owner in the desktop session.
 
 ## Answer
+
+The later [broad #153 matrix](2026-10-23-broad-save-conversion-matrix.md) expands
+generated-state coverage and reproduces conqueror-history loss. Its action mismatches
+and the separate [owner #1355 battle gap](2026-10-23-ptolemaic-seleucid-computer-general-gap1355.md)
+remain explicit. The original six-scenario #151 result below keeps its own scope.
 
 Here, **native save** means the remake's JSON format, not a native Windows run.
 

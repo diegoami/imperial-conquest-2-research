@@ -70,6 +70,14 @@ or fixture change is authorized merely by promoting this report.
 Partial rule findings remain evidence for build evaluation; unexplained cases and
 research #25 / build #1107 stay open until that attribution is established.
 
+**New related owner reproduction (2026-10-23, build #1355 / conquest #154):**
+[Ptolemaic–Seleucid Computer general gap](reports/2026-10-23-ptolemaic-seleucid-computer-general-gap1355.md)
+is confirmed under Wine. The matched-original-entry/RNG native control still diverges;
+six positions differ after the first completed movement half, before casualties.
+The private audit and entry checks reproduce, but no exact first original instruction,
+cause or fix is established. Keep #1355 open. This is separate from the historical
+318-hook/36-residual inventory above; no rebaseline, balance or fixture change.
+
 ## SAV export semantic and native Windows gate (research #37)
 
 The [partial safety finding](reports/2026-10-17-sav-export-live-regions-and-safe-rejection-policy.md) establishes the live city list, historical baselines, 31 UNKNOWN nation bytes and constructor residue. It does not clear changed-state export. Main #1194/T185 stays open. An unchanged authentic identity path still requires complete-state and framing/version validation; same-template lineage does not establish safe changed-state inheritance.
@@ -129,6 +137,15 @@ reproduced the full comparison/audit, 164 archive-entry hashes and thirteen poli
 passes. It is not the owner's twelve-save set, format-4 migration, T185 review or
 native Windows validation; none of research #37's remaining gates is waived.
 Research #63's quality-range work is separate. No new game ran during intake.
+
+**Broader generated-input evidence (conquest #153):**
+[77 strategic round trips](reports/2026-10-23-broad-save-conversion-matrix.md)
+cover all16 nation starts, four progressed states, 56 feature cases and one synthetic
+format4 migration; 12 converter/input refusals remain safe. Four deterministic
+action gaps and the known conqueror-history import loss are explicitly retained.
+Research reproduces the full comparison/coverage/audit and freshly passes 154 policy
+checks. This expands Wine evidence; it neither validates the owner's twelve inputs
+nor clears the native Windows gate or establishes tactical outcome equivalence.
 
 ## Crafted battle-grid fidelity (research #40)
 

@@ -1,5 +1,11 @@
 # Army-to-army transfer: exact conservation, confirmed by video, save diff, and code
 
+**Later scoped comparison (2026-10-23):** the [broad conversion matrix](2026-10-23-broad-save-conversion-matrix.md)
+records recipient moves 8 in the remake versus 0 after the original GUI unit transfer
+in F02. This is a specific action-parity gap, distinct from recomputing a weekly moves
+maximum after changing composition; it does not rewrite the earlier observations.
+
+
 The user's second video-plus-saves submission (`2_rome.txt`): `1_rome_270_winter_3.sav → 1_rome_270_winter_5.sav`, with `recordings/bandicam 2026-09-12 23-56-28-394.mp4` covering "reorganizing the two armies, preparing for battle." This is the first use of the "record between two saves" methodology proposed after `battle-recording-melee-cap-confirmed.md`, and it worked exactly as hoped: the video shows the "Army to army transfer" dialog directly, letting three independent sources — video, save diff, and decompiled code — all cross-check each other.
 
 ## What the saves show
