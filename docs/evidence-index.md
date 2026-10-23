@@ -8,6 +8,9 @@ The originals live in the repository [`diegoami/imp_conquest_fixtures`](https://
 
 ## The releases
 
+The conversion experiment below is on Drive rather than in a release; its original
+game observations are Wine-only. It adds no native Windows acceptance result.
+
 The releases `run-exp-*` are in `diegoami/ic2-conquest`, not in the fixtures repository: each holds one bot experiment's saves and screenshots, which are Wine-only evidence (retrieve with `gh release download <tag> --repo diegoami/ic2-conquest`).
 
 A few small probe saves are committed in the fixtures repository itself rather than in a release: `saves/new-game-probes/` (three new-game autosaves, 2026-09-29) and `saves/fortification-probe/` (a planted-order pair, 2026-09-29). Their rows in the table below link to the files in the repository.
@@ -2066,3 +2069,38 @@ are exact candidate matches; control 1 retains area-map and earlier baseline
 Information-window geometry differences. No capture image or private path is
 reproduced. Internal callback traces remain UNVERIFIED, UNKNOWN31 unknown;
 this 3/3 tax-only result is zero of twelve native-JSON conversions.
+
+
+## Remake ↔ original Wine conversion (#151, 2026-10-23)
+
+[Consolidated report](reports/2026-10-23-remake-original-save-conversion-roundtrips.md),
+conquest [PR #152](https://github.com/diegoami/ic2-conquest/pull/152), immutable
+source `4ca3afa04c3eb8454c63ed6a4984f5564e8e0496`.
+[Tracked manifests, commands and receipts](https://github.com/diegoami/ic2-conquest/tree/4ca3afa04c3eb8454c63ed6a4984f5564e8e0496/runs/experiments/data/run-exp-sav-conversion-roundtrip).
+
+The private [Drive folder](https://drive.google.com/drive/folders/1OQWVtWzeN6k-_EgfU_3U_vFa4MjmXfqv)
+holds the complete [batch2 archive](https://drive.google.com/file/d/10BGy85kM1jUA7iXCdvwzkYXcc1z6fZzQ/view):
+`batch2-complete.tar.gz`, 3,118,135 bytes / 85 files, SHA256
+`c21c8607eb1def47b7ea592d2494dd5b9a72ef9dea0cf1342b26205b94fdd91f`.
+The earlier `batch1-conversions.tar.gz`, 3,007,535 bytes / 79 files, SHA256
+`819dc8fc5891487893bdebba32b9fec21bdb99711cc2559cc76e5c70f36e7058`,
+is retained too. Research freshly verified both local archives, every tar member and
+all 164 manifest entries; many entries occur in both archives. No Drive download/hash
+readback was performed by research. No release or original EXE/DAT is included.
+
+| Case / runtime | Original-produced save basenames | What they bind |
+| --- | --- | --- |
+| A / unmodified EXE, Wine | `P151AI.SAV`, `P151AO.SAV`, `P151AR.SAV` | Initial generated remake state: immediate save, tax26, fresh-process reopen/resave |
+| B / unmodified EXE, Wine | `P151BI.SAV`, `P151BO.SAV`, `P151BR.SAV` | Queued HI and fleet construction, same three boundaries |
+| C / unmodified EXE, Wine | `P151CI.SAV`, `P151CO.SAV`, `P151CR.SAV` | Six remake turns later |
+| D / unmodified EXE, Wine | `P151DI.SAV`, `P151DO.SAV`, `P151DR.SAV` | Twelve remake turns later |
+| E / unmodified EXE, Wine | `P151EI.SAV`, `P151EO.SAV`, `P151ER.SAV` | Twenty-four remake turns later |
+| F / unmodified EXE, Wine | `P151FI.SAV`, `P151FO.SAV`, `P151FR.SAV` | Explicitly synthetic carrier/army linkage |
+| G / instrumented seed EXE, Wine | `P151GI.SAV`, `P151GO.SAV`, `AUTO0721.SAV`, `P151GT.SAV`, `P151GR.SAV` | B input repeated, tax26, one End turn, explicit save, fresh-process reopen/resave |
+| A–G / remake re-exports | `RETURNA.SAV`, `RETURNB.SAV`, `RETURNC.SAV`, `RETURND.SAV`, `RETURNE.SAV`, `RETURNF.SAV`, `RETURNG.SAV` | Original results imported/reloaded/resumed, accepted tax27, re-exported; all policy passes |
+
+Bare names resolve through the pinned complete manifest to their case directory in
+the archive. The JSON snapshots are newly generated experimental states, not the
+owner's twelve private preflight inputs. Save bytes, native JSON and screenshots
+remain outside research Git. The [research receipt](data/conversion151-intake-v1.json)
+contains scalar checks only; the report preserves normalization, RNG and runtime limits.

@@ -122,6 +122,14 @@ Research #37 remains open. Four gates remain:
 The main project evaluates the promoted revision and routes evidence into
 T184–T186/#1191; no Evaluated marker or downstream completion is asserted here.
 
+**Separate conversion progress (2026-10-23, conquest #151):** the
+[six-scenario/seven-session report](reports/2026-10-23-remake-original-save-conversion-roundtrips.md)
+records generated remake JSON → original Wine → remake acceptance. Research
+reproduced the full comparison/audit, 164 archive-entry hashes and thirteen policy
+passes. It is not the owner's twelve-save set, format-4 migration, T185 review or
+native Windows validation; none of research #37's remaining gates is waived.
+Research #63's quality-range work is separate. No new game ran during intake.
+
 ## Crafted battle-grid fidelity (research #40)
 
 [Source and retained-save audit](reports/2026-10-21-crafted-battle-grid-movement-and-line.md)

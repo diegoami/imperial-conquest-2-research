@@ -17,6 +17,12 @@ No game was launched, and no SAV was written outside a private scratch directory
 
 ## Answer
 
+**Later acceptance evidence (2026-10-23):** [six remake scenarios / seven Wine
+sessions](2026-10-23-remake-original-save-conversion-roundtrips.md) exercised this
+policy through bidirectional conversion. Research reproduced the complete comparison
+and audit and freshly checked all thirteen exports. This extends bounded Wine
+evidence; the owner twelve-save set, T185 review and native Windows gate remain separate.
+
 The policy says what an exporter writes for every SAV field class:
 - **INERT nation bytes:** carried from the source, else zero.
 - **New armies:** the header plus all five fields of each live slot, slots packed, troops ≥ 0,
