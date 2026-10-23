@@ -14,6 +14,12 @@ are recorded below; no new original/Wine run or separate model review occurred.
 
 ## Answer
 
+**Later strict-corpus result:** the [#1377 Walk follow-up](2026-10-23-seed2-walk-captured-target1377.md)
+finds one remaining hooked trajectory on the faithful-order baseline (317/318).
+A separate capture-once/live-shot-guard movement correction restores318/318 state/
+post and ordered-draw comparisons. This does not retroactively assign the complete
+result to the four-file ordering patch alone or waive broader CI/Windows acceptance.
+
 The original's later Computer general passes iterate in **slot order**. The
 remake runs those passes in **type order, then slot order**, reusing pass one's
 ordering. On the owner's mixed, interleaved army this changes movement, draw

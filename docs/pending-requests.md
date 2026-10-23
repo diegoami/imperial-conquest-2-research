@@ -92,6 +92,18 @@ pending. #1355/#157 stay open; no production patch is merged by research. Owner'
 faithful-first choice and the later optional controller investigation (#1362) are
 separate; no optional general is implemented here.
 
+**Seed2 movement follow-up (#1377 / conquest #157):** the
+[captured-target/live-shot finding](reports/2026-10-23-seed2-walk-captured-target1377.md)
+links the remaining seed2 Walk step to the later draw mismatch. Keeping the captured
+destination enemy plus checking liveness before shooting yields strict318/318 state/
+post and ordered-draw matches; capture-only introduces two cavalry failures.
+Research reproduces all three full-corpus results, fixed-series/regr-ession/Walk
+controls and27unchanged movement tests. The old36-residual inventory above remains
+historical; the new candidate has zero residuals in this sampled hooked corpus.
+No registry/fixture rebaseline, production merge, blanket crafted-grid fidelity,
+main/Godot/solution CI or Windows acceptance is asserted. Keep the owner's separate
+T206 ordering scope and #1377 movement follow-up distinct.
+
 ## SAV export semantic and native Windows gate (research #37)
 
 The [partial safety finding](reports/2026-10-17-sav-export-live-regions-and-safe-rejection-policy.md) establishes the live city list, historical baselines, 31 UNKNOWN nation bytes and constructor residue. It does not clear changed-state export. Main #1194/T185 stays open. An unchanged authentic identity path still requires complete-state and framing/version validation; same-template lineage does not establish safe changed-state inheritance.

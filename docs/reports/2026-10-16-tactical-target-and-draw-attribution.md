@@ -1,5 +1,11 @@
 # Tactical AI: immutable replay inventory and original target-rule discrepancies
 
+The [2026-10-23 seed2 Walk follow-up](2026-10-23-seed2-walk-captured-target1377.md)
+reports a newer correction candidate with strict318/318 hooked state/post and draw
+matches, without known-failure exemptions. The baseline and incomplete correction
+remain317/318 and316/318. The historical comparison/inventory below keeps its exact
+original pin and counting units; it is not the current candidate's residual count.
+
 The later [owner #1355 reproduction](2026-10-23-ptolemaic-seleucid-computer-general-gap1355.md)
 adds a separate observed battle gap and a matched-entry/RNG movement divergence.
 It is not a rerun or resolution of the historical inventory below, and establishes

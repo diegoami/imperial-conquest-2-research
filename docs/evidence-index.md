@@ -2189,3 +2189,40 @@ keeps its missing-field assumptions. Research's
 including entire14-control verification equality and recorder checks, without
 publishing private traces. No new Wine/original run, Windows validation, full318
 acceptance, strategic copy-in/writeback validation or production merge is claimed.
+
+
+## Seed2 Walk target lifetime (#1377, 2026-10-23)
+
+[Research report](reports/2026-10-23-seed2-walk-captured-target1377.md), conquest
+[PR #165](https://github.com/diegoami/ic2-conquest/pull/165), merged source
+`e1a943d5f9de8b88787112f137ad8053a699e6e0`.
+[Evidence/source patch](https://github.com/diegoami/ic2-conquest/tree/e1a943d5f9de8b88787112f137ad8053a699e6e0/runs/experiments/data/run-exp-battle-residual157)
+and [original semantic records](https://github.com/diegoami/ic2-conquest/tree/e1a943d5f9de8b88787112f137ad8053a699e6e0/runs/experiments/data/run-exp-battle-parity157/seed2-residual-v1)
+retain the baseline, incomplete and complete controls. The two fixture aliases
+`mix-rg_s2_r5_hook` and `gate2_s2a` share18boundary saves andpost exactly;
+they do not count as two independent original trajectories.
+
+The [Drive folder](https://drive.google.com/drive/folders/1_NkvDEBYL1IO_2uPGPp5TffTuRHM7oxs)
+holds three explicitly selected bundles:
+
+| Archive | Bytes / members | SHA256 |
+| --- | --- | --- |
+| `seed2-semantic-batch01.tar.gz` | 562,897 / 22 | `a589e6875625aeb620d1a2572bb9da81f8fb98a1cd6c7a01a2118e21d1d94325` |
+| `cached-live-tools-batch02.tar.gz` | 4,371,549 / 40 | `a02049656087296f8d1ef9885a626fe26eabc32c3a7c8845959193aebdde5ad0` |
+| `fixed-corpus-tools-batch03.tar.gz` | 3,186,327 / 30 | `ba996c8328fecb9636f935278d71abee8f1c028c0f0454ddca03dbc2520bae3d` |
+
+Research verified all local archive bytes and92members, not a remote download.
+The original bundle resolves `BATTLE01.SAV` through `BATTLE18.SAV` under the
+seed2 case folder and the fresh `seed2-residual-v1-AFTER.SAV` /
+`seed2-residual-v1-REOPEN.SAV` pair. The strategic start is the already indexed
+`FLD-RG_0743_rome_army0_at_86_28.SAV`, turn0743, fixture revision6319802.
+Tool bundles contain compiled remake/test/replay dependencies, not a deployed game.
+Original EXE/DAT, the full recovered private corpus, owner inputs/hashes and owner
+replays are excluded. Those private inputs require separate owner coordination.
+
+The [scalar intake receipt](data/walk1377-intake-v1.json) records exact full-corpus
+summary/row reproduction, five fixed-series and five regression controls,49Walks,
+178actions, the prior14controls,27upstream movement tests and the325draw/18SAV
+recorder gate. Strict state/post comparison follows the named upstream helpers;
+it is not every hidden runtime field, whole-file export identity or Windows
+acceptance. No fixture, known-failure registry or sibling source was changed.
