@@ -2,6 +2,10 @@
 
 **Tag:** [confirmed: native Windows, bounded tax-only subset; partial]
 
+The later [remake ↔ original conversion experiment](2026-10-23-remake-original-save-conversion-roundtrips.md)
+adds seven **Wine** sessions on generated remake inputs. It neither extends this
+native Windows tax-only profile nor satisfies the owner's native-JSON acceptance gate.
+
 ## Provenance and review note
 
 Promoted from `diegoami/ic2-conquest` main
