@@ -1,5 +1,12 @@
 # Owner #1355: Ptolemaic–Seleucid Computer general gap reproduced
 
+**Later causal evidence:** the [later-pass iteration finding](2026-10-23-battle-general-later-pass-iteration1355.md)
+isolates a slot-versus-type iteration defect on a new fixed-seed owner-derived
+control and validates a compiled source-correction candidate. It preserves the
+different historical natural-RNG results below and their assumptions; it does
+not turn this earlier reproduction into an exact historical event trace or a
+merged production fix.
+
 **Status:** [confirmed, partial], 2026-10-23. Outcome reproduction and bounded
 first-phase localization under Wine; no production fix or exact original
 instruction/draw attribution.
