@@ -70,13 +70,27 @@ or fixture change is authorized merely by promoting this report.
 Partial rule findings remain evidence for build evaluation; unexplained cases and
 research #25 / build #1107 stay open until that attribution is established.
 
-**New related owner reproduction (2026-10-23, build #1355 / conquest #154):**
+**Earlier owner reproduction (2026-10-23, build #1355 / conquest #154):**
 [Ptolemaic–Seleucid Computer general gap](reports/2026-10-23-ptolemaic-seleucid-computer-general-gap1355.md)
 is confirmed under Wine. The matched-original-entry/RNG native control still diverges;
 six positions differ after the first completed movement half, before casualties.
-The private audit and entry checks reproduce, but no exact first original instruction,
-cause or fix is established. Keep #1355 open. This is separate from the historical
+That packet reproduced the private audit/entry checks without establishing an exact
+first original instruction, cause or fix; the later control evidence below advances
+that scope. Keep #1355 open. This is separate from the historical
 318-hook/36-residual inventory above; no rebaseline, balance or fixture change.
+
+**Later causal/control evidence (conquest #157, PR #161):** the
+[later-pass iteration report](reports/2026-10-23-battle-general-later-pass-iteration1355.md)
+establishes slot-versus-type iteration on a new fixed-seed owner-derived case.
+The actual compiled four-file correction reproduces 14 recorded tactical controls,
+2,331 combat draw bounds/results, 253 available boundaries and measured terminal
+slots/grid/counter/RNG. Research independently reran those checks and the focused
+before/after regressions, CPU preservation and parser corruption controls.
+The natural-RNG historical case remains an assumption control, and the full318,
+independent copy-in/writeback, native Windows and main-project review/CI remain
+pending. #1355/#157 stay open; no production patch is merged by research. Owner's
+faithful-first choice and the later optional controller investigation (#1362) are
+separate; no optional general is implemented here.
 
 ## SAV export semantic and native Windows gate (research #37)
 

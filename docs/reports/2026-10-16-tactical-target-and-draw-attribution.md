@@ -127,6 +127,12 @@ Synthetic HI actor(5,5), two moves; four live enemies at(8,6),(9,6),(8,5),(9,5),
 
 ### E. Iteration, claims and remaining flank details `[code; attribution open]`
 
+The [2026-10-23 later-pass finding](2026-10-23-battle-general-later-pass-iteration1355.md)
+now demonstrates this iteration discrepancy causally on a separate interleaved
+owner-derived control, with a compiled correction candidate and focused regressions.
+It neither resolves the historical 36-residual inventory nor removes the other
+source-backed leads below; the old corpus still needs strict comparison.
+
 Only Pass1 FUN0043A31C uses type order `[HI,HC,LC,LI,Ar]` (table0x4790a0), then ascending slot. Pass2 FUN0043A544 and the threat/flank loops in FUN0043ABB4 iterate **ascending own slot** directly. The port reuses type order in every pass. A mixed unsorted army can therefore differ; a type-sorted army cannot establish this cause. No trial is assigned to this alone here.
 
 Original claims at0x45e6b0 are40 signed actor→target words, reset−1. Target-choice records a chosen target in the actor's word; FUN00439DE8 counts matching words. Focus FUN00438420 counts matching target words in the20 own slots. The port stores claim counts by target. These representations are equivalent during an uninterrupted once-per-actor Pass1; representation alone is **not** a proved defect. Interrupt/re-enable streams are separate inputs and are not mixed into the318 recorded-run comparison.

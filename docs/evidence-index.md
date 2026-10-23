@@ -2155,3 +2155,37 @@ reproduction, controlled entry fields, repeated control state and the original
 result screenshot against terminal memory. The battle completed; the recorder
 failed after its battle flag cleared. No final original SAV/reopen is claimed.
 Wine only; no exact first original instruction, cause, fix or Windows acceptance.
+
+
+## Later-pass iteration and faithful-general candidate (#157, 2026-10-23)
+
+[Research report](reports/2026-10-23-battle-general-later-pass-iteration1355.md),
+source conquest [PR #161](https://github.com/diegoami/ic2-conquest/pull/161),
+`b7f11a3ff9b2f93e111c5ea13b6b66e919cc6688` (including earlier PR #159).
+[Original observer/pilot packet](https://github.com/diegoami/ic2-conquest/tree/b7f11a3ff9b2f93e111c5ea13b6b66e919cc6688/runs/experiments/data/run-exp-battle-parity157)
+and [compiled candidate packet](https://github.com/diegoami/ic2-conquest/tree/b7f11a3ff9b2f93e111c5ea13b6b66e919cc6688/runs/experiments/data/run-exp-faithful-general157)
+pin the scripts, manifests, source/assembly identities and scalar checks.
+
+| Private Drive retrieval | Bytes / files | SHA256 |
+| --- | --- | --- |
+| [reference-batch01.tar.gz](https://drive.google.com/file/d/1q-BM_9QjvpvLDCu-TYSi6wm4xuY_J6Uh/view) | 1,419,660 / 58 | `5feaf72645a0d93eea1681368c6d9eea0b339892edcf1ff8902e01b1e9d07ddd` |
+| [pilot-semantic-batch02.tar.gz](https://drive.google.com/file/d/1CKvkjvsykKXP4q9SS9APbiOzY1ZOHjuW/view) | 7,038,349 / 316 | `e0f6d4976054a3ccdf3144c2d9eb85cd1cb797c1e46250a870eb414395a238d8` |
+| [faithful-engine-candidate-v1.tar.gz](https://drive.google.com/file/d/1pTuqmpNKd4-uhHW9wAhcknJ_n5BQA6aH/view) | 600,501 / 8 | `7811e54a7f5e1e425dbec0252a2a6266330f57be8d5c286cce023ad897b0c84b` |
+
+Research rehashed all local archive bytes and all 382 members. The first two
+contain public-reference/synthetic-pilot saves and logs, not owner evidence or
+original EXE/DAT/prefixes. `BATTLE01.SAV` onward resolve by the case folders in
+the manifests; the reference is the already indexed turn0743 fixture. The
+candidate contains compiled remake engine/data and regression/replay tools,
+not a deployed game; shared engine DLLs must accompany the extracted tool DLLs.
+Drive metadata readback is upstream; no remote download/digest claim is added here.
+
+Owner-derived turn0756 saves, fresh-reopen pairs, original observations and full
+native replay outputs remain private and require owner coordination. No individual
+owner hash or input path is reproduced. New seed1 owner controls and the earlier
+historical natural-RNG reproduction are different evidence streams; the latter
+keeps its missing-field assumptions. Research's
+[scalar receipt](data/faithful157-intake-v1.json) records fresh offline validation,
+including entire14-control verification equality and recorder checks, without
+publishing private traces. No new Wine/original run, Windows validation, full318
+acceptance, strategic copy-in/writeback validation or production merge is claimed.
