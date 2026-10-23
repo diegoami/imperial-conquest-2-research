@@ -81,6 +81,53 @@ completed intakes. Existing PR30 (`docs/session-handover-oct17`) and draft PR36
 review-tool trial must not reinstate superseded workflow rules. No unfinished
 research branch was deleted. Check live state after cloning/fetching.
 
+## Handover to the desktop session (2026-10-23)
+
+The cloud session `session_01FEmvQUyuHYp4iXbTmBeY85` ended here. Main is at `d60df38`, with no open
+research PR from it and no scheduled check-ins. Older PRs 30 and 36 are preserved untouched. Open issues:
+42, 39, 37, 35, 25, 20.
+
+**Done in the cloud (2026-10-21 → 23), all merged (research PRs 50–61):**
+- **SAV atlas:** increments 1–11 promoted. Research #47 is closed: UNKNOWN31 is INERT (adversarial check
+  `docs/data/research47-unknown31-adversarial-v1.json`).
+- **Gate 2 of research #37:** the export policy is promoted. The checker's allegiance gap was found here and
+  fixed upstream (`2fd663a`). Gates 1, 3 and 4 remain owner-held.
+- **Manual (conquest #133):** its 14 contradictions are settled, including item 12: fleets under
+  construction are not billed.
+- **Refusal catalogue:** the 35 predicate-audit corrections are applied.
+- **Manual-gaps run (conquest PR #140):** promoted as
+  [reports/2026-10-22-manual-gaps-disband-purchase-storm-ai-war.md](reports/2026-10-22-manual-gaps-disband-purchase-storm-ai-war.md):
+  disband and scuttle refunds, the foreign supply purchase, the Winter storm spike, and AI war on a human,
+  including the Illyria alliance cascade research found.
+- **Cosmetic-gaps:** re-reviewed after its upstream merge. Unchanged; audit v14 has 350 checks.
+- **Releases:** the owner published `run-exp-manual-gaps`, `run-exp-sav-{inert,fleetmoves,aboard,rebellion}107`
+  and `run-exp-fleet-bill` from the desktop. All are in [evidence-index.md](evidence-index.md).
+
+**Peers:**
+- ic2-conquest's cloud session `session_01PShu3abz1TNQHX7YopiBbq` relays findings. Every intake was done only
+  after the owner said yes.
+- OIMP2 (see [environment.md](environment.md)) receives a summary after each merged intake.
+- Re-check both session IDs before messaging, and use an actual messaging tool. If the desktop has none,
+  say so rather than substituting a channel.
+
+**Still open:**
+- **Not played:**
+  - spending leftover fleet moves on the launch turn;
+  - two adjacent own cities on disband or scuttle (code says the last match of the 3×3 scan);
+  - a fleet purchase and the stock cap of Buy supplies;
+  - the 1-in-10 war and 1-in-20 storm-spike rates.
+- **No independent review** of conquest increments 3–11, the gate-2 policy or the manual-gaps intake.
+- **Known broken links** (`nation-marker-colours.md`, a 2025-10-05 typo) are pre-existing and left as is.
+- **`run-0` / `run-1` releases** (published the same evening) are not indexed or reviewed by research.
+
+**Desktop notes:**
+- Use your own rclone remote. In the cloud `gdrive:` came from injected environment variables. The
+  PowerShell release and hash-check commands used for the releases are in that conversation, not in Git.
+- The private bundles were restored only into the cloud container's temp directory. Use the desktop's
+  own inputs; the pins in this file still apply.
+- New intake scripts are `scripts/manual-gaps-intake-check.py` and `scripts/gate2-policy-adversarial.py`.
+  The private saves they read come from Drive and stay out of Git.
+
 ## Authentication and dependencies
 
 The reference is [ic2-conquest's continuation guide](https://github.com/diegoami/ic2-conquest/blob/80eaf3e1a303f86f90b72732e31bc0e8bd18ace3/docs/cloud-continuation.md).
