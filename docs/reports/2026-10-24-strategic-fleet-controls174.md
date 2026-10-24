@@ -97,6 +97,10 @@ No production correction, new native schema, live fleet run or Windows acceptanc
 is implied by this conditional batch.
 
 
+## Later movement evidence
+
+The later [accepted-movement intake](2026-10-24-fleet-accepted-movement174.md) extends this first-destination study through original movement and accepted native commands. Its synthetic stored-route/zero-move case closes this report's *untested combination* only at that declared control; native route persistence remains unsupported. It also isolates a separate AI fleet insufficient-step move-budget discrepancy (#1408). Do not reinterpret this report's proposal rows as accepted actions or whole-turn equivalence.
+
 ## Research intake verification
 
 Research read the full finding, declarations, original phase/scorer runners,
