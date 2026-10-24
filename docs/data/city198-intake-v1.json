@@ -1,0 +1,170 @@
+{
+  "source_repository": "diegoami/ic2-conquest",
+  "source_commit": "33c72eb9b53176a2b8feb04bfce95b41072dc1c3",
+  "source_finding_blob": "068881b0c85bc6c5190b4e54dc11b23476a000b3",
+  "native_source_pin": "0c4944542d32d1e6d2d9982f78fdfcddaabaddea",
+  "summary": {
+    "private_same_boundary": true,
+    "import_projection_and_relevant_input_gates_pass": true,
+    "native_import_fields": 2908,
+    "terrain_occupancy_cells": 44800,
+    "defense_candidate_matches": 40,
+    "assault_strength_equal": true,
+    "primary_cause": "designed city direct-walk eligibility rejects original winner and changes final city-versus-army branch",
+    "secondary": "empty geographic map changes5candidate scores, not the winning city after eligibility alignment in this state",
+    "branch_predicates_not_the_cause_of_private_case": true,
+    "independent_score100_controls": 32,
+    "independent_score100_mismatches": 7,
+    "followups": {
+      "city_policy": 1417,
+      "score100_boundary": 1418
+    },
+    "limits": [
+      "same-state conditional, not whole End turn or command acceptance",
+      "diagnostic eligibility-only formula model, not production patch",
+      "32 synthetic branch rows are score-fed, not naturally reached campaign states",
+      "no owner paths/hashes/full states/raw traces published",
+      "Research promotion and Main scope review before behavior changes"
+    ]
+  },
+  "research_verification": {
+    "original_scalar_exact": true,
+    "scorer_to_branch_sequence_exact": true,
+    "projection_audit_exact": true,
+    "private_city_input_and_component_observations_exact": true,
+    "component_audit_exact": true,
+    "native_v3_scalar_exact": true,
+    "original_public_grid_rows_exact": 32,
+    "native_public_grid_rows_exact": 32,
+    "summary_exact": true,
+    "normalization": false,
+    "signed_weak_score_JLE100_and_strict_better_city_comparison_disassembled": true,
+    "native_rebuild_performed": false,
+    "fresh_game_launched": false,
+    "retained_private_boundary_used": true,
+    "new_owner_save_requested": false,
+    "private_input_paths_or_hashes_published": false,
+    "external_reviewer": false
+  },
+  "projection_audit": {
+    "map_city_army_fleet_nation_queue_relation_mercenary_bytes_equal": true,
+    "turn_order_and_seat_calendar_equal": true,
+    "decoded_JSON_equals_container": true,
+    "news_UI_metadata_not_used_by_scorers": true,
+    "owner_state_paths_hashes_published": false,
+    "scope": "exact relevant RAM-to-diagnostic-container identity; not an original Save As or native Windows acceptance"
+  },
+  "native_scalar": {
+    "source_pin": "0c4944542d32d1e6d2d9982f78fdfcddaabaddea",
+    "input_identity_gate_passed": true,
+    "checked_fields": 2908,
+    "terrain_and_occupancy_cells_checked": 44800,
+    "terrain_and_occupancy_mismatches": 0,
+    "original_city_reachable": false,
+    "native_city": {
+      "target": 253,
+      "Score": 330,
+      "Distance": 6,
+      "Skipped": 36
+    },
+    "native_enemy": {
+      "target": 24,
+      "Score": 828,
+      "Distance": 28
+    },
+    "native_branch": "AttackCity",
+    "original_score_fed_branch": "AttackArmy",
+    "original_city_only_fed_branch": "AttackArmy",
+    "military_phase_branch": "AttackCity",
+    "actor_proposal_kinds": [
+      "approach"
+    ],
+    "assault_strength": 66216,
+    "city_defense_comparisons": 40,
+    "city_defense_mismatches": 0,
+    "original_eligible_native_unreachable": 36,
+    "region_assignment_count": 0,
+    "adjusted_defense_mismatches": 0,
+    "original_candidate_observations": 40,
+    "native_empty_region_formula_mismatches": 5,
+    "original_geography_formula_mismatches": 0,
+    "diagnostic_native_formula_matches_production_choice": true,
+    "original_eligibility_only_city": {
+      "target": 287,
+      "score": 495,
+      "distance": 28
+    },
+    "original_eligibility_only_branch": "AttackArmy",
+    "scope": "same private imported boundary; no whole End turn or production change; diagnostic proposal RNG seed1, no native outcome parity"
+  },
+  "public_score_grid_mismatches": [
+    {
+      "army_score": 99,
+      "city_score": 100,
+      "city_distance": 6,
+      "original_branch": "MoveToResupplyCity",
+      "native_branch": "AttackCity",
+      "equal": false
+    },
+    {
+      "army_score": 100,
+      "city_score": 99,
+      "city_distance": 6,
+      "original_branch": "MoveToResupplyCity",
+      "native_branch": "AttackArmy",
+      "equal": false
+    },
+    {
+      "army_score": 100,
+      "city_score": 99,
+      "city_distance": 28,
+      "original_branch": "MoveToResupplyCity",
+      "native_branch": "AttackArmy",
+      "equal": false
+    },
+    {
+      "army_score": 100,
+      "city_score": 100,
+      "city_distance": 6,
+      "original_branch": "MoveToResupplyCity",
+      "native_branch": "AttackArmy",
+      "equal": false
+    },
+    {
+      "army_score": 100,
+      "city_score": 100,
+      "city_distance": 28,
+      "original_branch": "MoveToResupplyCity",
+      "native_branch": "AttackArmy",
+      "equal": false
+    },
+    {
+      "army_score": 100,
+      "city_score": 101,
+      "city_distance": 28,
+      "original_branch": "MoveToResupplyCity",
+      "native_branch": "AttackArmy",
+      "equal": false
+    },
+    {
+      "army_score": 100,
+      "city_score": 495,
+      "city_distance": 28,
+      "original_branch": "MoveToResupplyCity",
+      "native_branch": "AttackArmy",
+      "equal": false
+    }
+  ],
+  "main_followups_at_verification": {
+    "city_policy": {
+      "issue": 1417,
+      "state": "OPEN"
+    },
+    "score100": {
+      "issue": 1418,
+      "state": "OPEN"
+    },
+    "T212": "OPEN, status:in-progress; enemy-army contract unchanged",
+    "production_or_label_change": false
+  }
+}

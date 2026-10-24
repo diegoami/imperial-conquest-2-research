@@ -249,10 +249,10 @@ the city's original allegiance; do this before the ratio and later modifiers.
 The decision, with `moves` the army's remaining moves:
 
 ```text
-if (armyScore < 100                                        // no worthwhile army target
+if (armyScore <= 100                                        // no worthwhile army target
     or (supplies < 1 and morale < 60 and armyDist > 8)      // demoralised, can't reach
     or (cityScore > 100 and cityDist < moves and armyDist > 2×moves)):   // city is the better buy
-    if (cityScore < 100 or (supplies < 1 and cityDist > 19)):
+    if (cityScore <= 100 or (supplies < 1 and cityDist > 19)):
         if (troops/500 < supplies and a city target exists):
             FUN_0044e84c(army)                             // run to hire mercenaries, §3.4
             then: defend the resupply city (armyScore < 71 and cityScore > 85),
@@ -263,6 +263,8 @@ else: attack the army target
 if (FUN_0044aab4(army) == 0):                              // the army did not actually move
     FUN_0044ebe8(army)                                     // garrison fallback, §3.5
 ```
+
+**Boundary correction (2026-10-24):** the two weak-target checks above include exactly 100 (`JLE` at F3BE/F419). Earlier `< 100` text was a transcription error. The separate better-city condition remains strictly `cityScore > 100`. [Same-state attribution and 32 score-fed controls](2026-10-24-city-army-selection187.md) reproduce seven exact-100 native differences; this separate boundary error does not cause the retained private state's city/army difference. Its cause is the designed native city filter excluding the original distant winner. City geography is a region/coordinate-side pair, not water adjacency.
 
 ### 3.4 The mercenary run: `FUN_0044e84c` (:52382)
 

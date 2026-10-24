@@ -2388,3 +2388,26 @@ original/native checks, preserved probe-version row-shape/order differences and
 excluded; valid v2/v3 use quality 7. Observer/plain, recovery EOF and import
 failures retain their original provenance. This is bounded projected comparison,
 not every strategic feature, whole-turn/global RNG, production or Windows acceptance.
+
+
+## City-versus-army attribution (#187 follow-up, conquest PR198)
+
+[Report](reports/2026-10-24-city-army-selection187.md), source
+`33c72eb9b53176a2b8feb04bfce95b41072dc1c3`, native pin `0c4944542d32d1e6d2d9982f78fdfcddaabaddea`.
+[Public source/ledgers](https://github.com/diegoami/ic2-conquest/blob/33c72eb9b53176a2b8feb04bfce95b41072dc1c3/runs/experiments/data/run-exp-city-army187/)
+identify the same-state scalar, relevant projection/component audits and 32-row
+public score-fed original/native grid. The retained private `before.SAV` is a
+RAM-projected diagnostic container; public-grid `generated-before.SAV` is a
+separate generated container. Neither is original Save As or Windows acceptance.
+The source README owns the authorized private restoration/reproduction inputs;
+no owner names, paths, per-input hashes or full states/traces are indexed here,
+and no owner binary release/archive is asserted.
+
+Research regenerated all original scalars, 40 private component observations,
+relevant-byte projection and complete native v3 scalar result exactly. All 32
+original/native score-fed grid rows and the complete summary reproduce without
+normalization. The [safe research receipt](data/city198-intake-v1.json) preserves
+counts, public boundary counterexamples and limits. The original failed grid
+trailer/native import and scalar v1/v2 attempts remain upstream; v2 grid/v3 native
+scalar are authoritative. No new game, native rebuild, production correction,
+whole-turn/global RNG or Windows result is claimed.

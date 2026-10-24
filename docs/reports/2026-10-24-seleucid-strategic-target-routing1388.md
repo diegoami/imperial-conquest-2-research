@@ -171,3 +171,5 @@ extends the eligibility finding on generated inputs; it does not turn these
 private owner runs into another independent pilot scenario.
 
 Follow-up: the [navigation-rule intake](2026-10-24-army-navigation-rule187.md) supplies interpreted static data, eligibility and first-destination rules, plus a final private regression. The historical “coast” bit is a coordinate partition, not water adjacency. The [caller follow-up](2026-10-24-garrison-mercenary-caller-guards187.md) resolves the specified garrison/mercenary histories, including negative guards. Broader histories remain unproved; T212 is now in progress under its narrowed enemy-army contract.
+
+Follow-up: [city-versus-army selection](2026-10-24-city-army-selection187.md) attributes the retained native AttackCity branch to its designed city eligibility filter; equal enemy scores/waypoint alone do not establish whole military branch parity. It separately confirms an exact-score-100 weak-target boundary error. Main #1417/#1418 own policy/correction decisions; T212's enemy-army scope is unchanged.
