@@ -205,3 +205,23 @@ redraw/sound stubs and synthetic parent frames are explicit. Next: narrowly
 owned build evaluation with normal/contact/endpoint/edge controls and separately
 coordinated native routing evidence. Historical C4 Wine totals remain endpoints,
 not observed crossed tiles; #42/build1012 stay open. Contact#5 remains separate.
+
+
+## Strategic target eligibility, routing and resupply (#1388 / conquest #171)
+
+[Owner routing control](reports/2026-10-24-seleucid-strategic-target-routing1388.md)
+and [generated-input pilot](reports/2026-10-24-strategic-fidelity-pilot171.md) are
+promoted as bounded source/instruction/retained-observation findings. Research
+reproduced their audits and conditional tools; the original own-city selector
+correction is applied in strategic-ai-turn §3.3 and the rules specification.
+This does not require a new low-level land-step rule: the owner control's21steps
+already match when given the original intermediate destination.
+
+Remaining downstream work is original navigation data/eligibility plus wrapper
+routing, faithful selector evaluation and broader same-input strategic families.
+The112pilot decision states are correlated snapshots, not112campaigns. Full native
+greedy selection, homeland/fleet/economy/diplomacy/recruitment decision+global RNG
+comparisons, all16starts/continuations and Windows acceptance remain open. No
+production correction, battle/ex-port gate closure or optional Improved-policy
+change is selected by this intake. Research42's terrain-step/native routing limits
+and contact5 remain separate.
