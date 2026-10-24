@@ -2276,3 +2276,30 @@ RAM/diagnostic containers, not owner1355/1388 inputs or original EXE/DAT/runtime
 RAM-projection SAVs are synthetic containers, never original Save As evidence.
 Local archive verification adds no remote-download digest claim. Eleven distinct
 inputs do not establish full greedy/global RNG/strategic or Windows equivalence.
+
+
+## Synthetic fleet-phase controls (#174, 2026-10-24)
+
+[Report](reports/2026-10-24-strategic-fleet-controls174.md), conquest
+[PR179](https://github.com/diegoami/ic2-conquest/pull/179), source
+`8d975efddd66fd81371991936a7fd0cbc58016be`.
+[Manifest/source/results](https://github.com/diegoami/ic2-conquest/tree/8d975efddd66fd81371991936a7fd0cbc58016be/runs/experiments/data/run-exp-strategic-fleet)
+resolve fourteen cases, including `stored-a` and `stored-b`. Each `pre-move.SAV`
+is a synthetic diagnostic container; it is not an original Save As or a new played
+turn. The clock field is0720 from the generated pilot snapshot lineage. The first
+original movement call is intercepted before executing movement.
+
+Private [Drive folder](https://drive.google.com/drive/folders/1WtM93OfebUVt7vkA1EsWAsSnpWeGVdk8):
+`fleet-controls-batch01.tar.gz`,2,094,486bytes/76members, SHA256
+`9262baa50a70ae5b4fb0dcfffc8317687e173ad01a4c14a9b7629afe8a94682f`.
+Research rehashed all local members, checked the exact inventory, and recovered
+the bundle into a new tree. Recovered and fresh-input compiled native tools
+reproduce all14rows exactly. There is no remote-download digest claim.
+
+Inputs are generated RAM/SAV/expected-JSON controls, native data/terrain sidecars
+and compiled probe/Engine/Data tools. Original EXE/DAT, runtime/credentials and
+owner1355/1388 inputs/traces are excluded. The [scalar intake receipt](data/fleet174-intake-v1.json)
+records original phase/scorer reproduction,3,568fleet/relation gates and the
+four-byte stored-route proof. Native state/proposal hashes refer to synthetic
+controls, not owner preflight saves. Proposed marches are not accepted actions;
+no naval combat, full fleet/global RNG or native Windows equivalence is claimed.
