@@ -1,0 +1,104 @@
+{
+  "source_repository": "diegoami/ic2-conquest",
+  "source_commit": "1525f3985cc54834c5855055599188197c9ec4d4",
+  "method": "Offline original-instruction replay in Unicorn and retained native compiled probes; no game launch or independent rebuild. All generated outputs in fresh private temporary directories.",
+  "fleet": {
+    "synthetic_original_cases": 23,
+    "completed_original_phases_or_walks": 20,
+    "stopped_before_naval_combat": 3,
+    "native_full_AI_runs": 23,
+    "accepted_native_fleet_moves": 10,
+    "accepted_native_naval_attacks": 2,
+    "native_AI_rejections": 0,
+    "native_AI_action_caps": 0,
+    "conditioned_direct_commands": 21,
+    "conditioned_accepted": 19,
+    "conditioned_paths_equal": 10,
+    "conditioned_terminals_equal": 10,
+    "conditioned_move_budgets_equal": 10,
+    "conditioned_path_terminal_budget_all_equal": 9,
+    "native_path_observer_replays": 33,
+    "all_replay_states_equal": true,
+    "live_original_runs": 2,
+    "live_observer_plain_whole_savs_equal": true,
+    "observed_original_phases_replayed": 15,
+    "observed_moving_phases": 2,
+    "whole_phase_RAM_matches": 15,
+    "observer_CPU_checks": 120,
+    "stored_zero_moves_now_tested": true,
+    "original_stored_zero_attempts_walk_but_does_not_move": true,
+    "cargo_sea_positive_zero_terminal_checks_pass": true,
+    "protected_native_attack_rejected_unchanged": true,
+    "unprotected_native_attack_accepted": true,
+    "affordability_paired_input_difference": "controller byte only",
+    "original_AI_move_budget": 0,
+    "original_human_move_budget": 1,
+    "native_AI_move_budget": 1,
+    "native_human_move_budget": 1,
+    "limits": [
+      "Original naval combat was not executed or compared; three controls intentionally stop before it.",
+      "Native full-seat runs use an explicitly declared SplitMix stream; they are not equivalent phase histories to original fleet-only controls.",
+      "Conditioned commands test actual acceptance/movement on measured original pre-move inputs and goals, bypassing AI target choice.",
+      "Protected-port approach differs from protected-port attack; the latter is rejected by the native engine.",
+      "Cargo checked at sea and at zero moves; disembarkation, capacity and combat losses remain outside this batch.",
+      "One generated Roman-start observer/plain pair, not two independent campaigns or Windows acceptance."
+    ]
+  },
+  "navigation": {
+    "public_scalar_rows": 331,
+    "ferry_contact_residue_rows": 20,
+    "actual_caller_entry_controls": 3,
+    "actual_caller_full_controls": 3,
+    "advanced_score_fallback_controls": 4,
+    "additional_original_line_controls": 35,
+    "island_land_cells_enumerated": 329,
+    "static_tables": {
+      "valid_points": 58,
+      "route_shape": [
+        3,
+        7,
+        8
+      ],
+      "region_boxes": 8,
+      "coordinate_splits": 6
+    },
+    "static_blocks_equal_across30live_snapshots": true,
+    "original_RNG_calls_in_controls": 0,
+    "private_final_regression_pass": true,
+    "native_conditioned_walker_pass": true,
+    "implementation_contract": "defined eligibility/direct/waypoint/ferry/contact branches; F31C caller-aware continuation only, not arbitrary DBA8-entry stack",
+    "stop_condition": {
+      "branch": "post-direct-walk continuation for other original caller histories",
+      "observed_alternatives": [
+        "negative inherited word: return with position100,40 and8moves",
+        "nonnegative inherited word: local fallback/recursion reaches100,41 and0moves"
+      ],
+      "current_resolution": "normal F31C and recursive fixture data-flow/controls proved nonnegative; other callers not universally established",
+      "smallest_next_original_control": "generated three-friendly-marker wall; instrument EC7D/ECD6 garrison and E913mercenary calls, record entryESP-14 and subsequent actor moves; no new owner save"
+    },
+    "restrictions": [
+      "No production/source-schema change or broad game rerun.",
+      "Original bytes/RAM/complete traces and owner hashes remain private.",
+      "Group3graph fallback has no table/hub, but is unreachable for valid static classical same-island land pairs as enumerated.",
+      "CB40coincident isolated input is stack-dependent; actual D174sequence makes target-node coincidence visible after its preceding nonzero origin test.",
+      "Native final comparison supplies original waypoint and does not claim native eligibility/whole-turn/RNG equivalence."
+    ]
+  },
+  "research_verification": {
+    "archive_members_verified": 466,
+    "archive_inventory_exact": true,
+    "native_recovered_path_results_byte_identical": 33,
+    "fresh_native_fleet_results_equal": true,
+    "fresh_native_port_and_affordability_results_equal": true,
+    "original_fleet_results_equal": true,
+    "original_live_phase_results_equal": true,
+    "navigation_rows_equal_except_documented_trace_extension": true,
+    "navigation_trace_difference": "New observer adds 0x44dba8 call entries to four branch rows; removing only these added entries reproduces retained call lists and every other field exactly. No movement/result normalization.",
+    "native_navigation_audit_equal": true,
+    "navigation_static_tables_equal": true,
+    "remote_download_digest_checked": false,
+    "external_reviewer": false,
+    "fresh_game_launched": false,
+    "private_input_hashes_published": false
+  }
+}

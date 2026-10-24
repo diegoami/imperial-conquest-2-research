@@ -169,3 +169,5 @@ attribution, not whole-turn or Windows acceptance.
 [eleven-input strategic pilot](2026-10-24-strategic-fidelity-pilot171.md). The pilot
 extends the eligibility finding on generated inputs; it does not turn these
 private owner runs into another independent pilot scenario.
+
+Follow-up: the [navigation-rule intake](2026-10-24-army-navigation-rule187.md) supplies interpreted static data, eligibility and first-destination rules, plus a final private regression. The historical “coast” bit is a coordinate partition, not water adjacency. Other DBA8 caller histories remain unresolved; T212 stays blocked.
