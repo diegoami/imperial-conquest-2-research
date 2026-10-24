@@ -227,18 +227,23 @@ change is selected by this intake. Research42's terrain-step/native routing limi
 and contact5 remain separate.
 
 
-## Fleet stored destinations and accepted behavior (conquest #174 / remake #1405)
+## Fleet state, accepted actions and movement (conquest #174)
 
-The [fourteen synthetic fleet-phase controls](reports/2026-10-24-strategic-fleet-controls174.md)
-are reviewed for promotion. Original absent/A/B route words produce different
-first destinations; all three imported native states/proposals are identical.
-The current exporter explicitly documents canonical reset because native route
-state is absent. This is a faithful state-support gap, not a hidden current-policy
-violation, and designed sailing-score differences are not automatically defects.
+The [stored-destination finding](reports/2026-10-24-strategic-fleet-controls174.md)
+and [accepted-movement follow-up](reports/2026-10-24-fleet-accepted-movement174.md)
+are distinct bounded intakes. The follow-up confirms that native fleet approaches
+can be accepted commands, while original fleet-phase and native full-seat histories
+remain incomparable as whole turns. The current fleet handler retains an AI fleet's
+unaffordable-step moves where the reported original AI clears them; the original
+instruction control awaits independent reread, so this intake is provisional.
 
-Remaining work: native route save/load/export lifecycle and accepted command traces;
-original live boundaries, stored-route+zero-move interaction, protected ports,
-provider thresholds, cargo and navigation/contact controls. The batch stops before
-movement and samples proposals only. No production schema/policy change, global
-RNG/naval combat/fleet parity or Windows completion is selected by intake.
-Homeland/economy/diplomacy/campaign expansion remain separate tasks175–178.
+Main [#1408](https://github.com/diegoami/imperial_conquest_2/issues/1408)
+tracks the narrow budget correction;
+[#1409](https://github.com/diegoami/imperial_conquest_2/issues/1409)
+separates faithful selection and waypoint execution from intentionally designed
+sailing policy;
+[#1405](https://github.com/diegoami/imperial_conquest_2/issues/1405)
+retains stored-route state support beyond v0.8 by owner decision. Disembarkation,
+capacity, provider thresholds, route lifetime, naval combat, global RNG and
+native-Windows acceptance remain unproved. The new batch does not answer
+T212's army navigation-data question, now scoped in conquest #187.
