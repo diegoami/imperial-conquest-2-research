@@ -25,6 +25,12 @@ The 334-city table ends at `0x18A5C`. In the known **SAV** files, a little-endia
 
 Each unit slot contains an origin label at `+0` (see the correction above), a type code at `+2`, troop count at `+4`, quality code at `+6`, and a 24-byte name area beginning at `+8`. A slot with zero troops can still retain a name or filler bytes, so zero-troop slots are not shown as active units. The observed names are NUL-terminated ASCII. This screenshot identifies type codes `0` as light infantry, `1` as heavy infantry, `3` as light cavalry, and `4` as heavy cavalry. [Later recruitment screenshots](archive/rome-city-recruitment-and-nations.md) identify code `2` as archers. Quality codes `6`, `7`, `8`, and `9` map to **average**, **good**, **very good**, and **elite** respectively. A later [15,000-soldier transfer](city-units-army-transfer-and-mercenaries.md) supports code `5` as **poor**.
 
+**Range clarification (2026-10-23, research #63):** the observed 5–9 sample above
+is not a lower bound. Quality **4 is `very poor`**, produced by ordinary human
+mobilization at recruitment readiness 16–19 and copied unchanged by the original
+SAV loader/writer. See the [source and bounded-x86 report](2026-10-23-live-unit-quality-four.md).
+This adds no native Windows acceptance result.
+
 ## First army in `11_supply.sav`
 
 The first record is the Roman army at `(100, 42)`, owner `0`. Its header has moves `8`, candidate morale value `9`, supply `482`, and money `296`. Its thirteen nonzero unit slots reproduce the user's list, although the original screen sorts the list differently from the file order:

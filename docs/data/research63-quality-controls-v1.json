@@ -1,0 +1,193 @@
+{
+  "scope": "synthetic original-x86 controls; no native Windows/game execution",
+  "pins": {
+    "exe": "9d753d5de78801f2368d06125cc87f296b92f671b686c39fd6ac149838ebba31",
+    "dat": "94d0ccfc67148d727de4c4e60aefc3c53ba9e67775bd689f0fcb2e23c12e5fbd",
+    "dump": "2018c205a4e4ea4a4079f2d166623fb571062832d76e19b72e11d1f0edac87d8"
+  },
+  "unicorn": "2.1.4",
+  "quality_names": [
+    "not ready",
+    "not ready",
+    "not ready",
+    "not ready",
+    "very poor",
+    "poor",
+    "average",
+    "good",
+    "very good",
+    "elite"
+  ],
+  "checker_sha256": "6017b41e1a4ca09b26f3c7395e69318fc99e4833db7aa6443fc4469a942e5b90",
+  "initialisation": {
+    "dat_army_records": 15,
+    "dat_army_bytes_identical": true,
+    "dat_quality_table_identical": true,
+    "dat_bytes_read": 140706,
+    "constructor_empty_slots": 20,
+    "constructor_quality_residue_preserved": true
+  },
+  "display": [
+    {
+      "quality": 4,
+      "selected_table_index": 4,
+      "word": "very poor"
+    },
+    {
+      "quality": 5,
+      "selected_table_index": 5,
+      "word": "poor"
+    },
+    {
+      "quality": 9,
+      "selected_table_index": 9,
+      "word": "elite"
+    }
+  ],
+  "mobilisation": [
+    {
+      "readiness": -1,
+      "mobilised": false,
+      "quality": null
+    },
+    {
+      "readiness": 0,
+      "mobilised": false,
+      "quality": null
+    },
+    {
+      "readiness": 15,
+      "mobilised": false,
+      "quality": null
+    },
+    {
+      "readiness": 16,
+      "mobilised": true,
+      "quality": 4
+    },
+    {
+      "readiness": 17,
+      "mobilised": true,
+      "quality": 4
+    },
+    {
+      "readiness": 18,
+      "mobilised": true,
+      "quality": 4
+    },
+    {
+      "readiness": 19,
+      "mobilised": true,
+      "quality": 4
+    },
+    {
+      "readiness": 20,
+      "mobilised": true,
+      "quality": 5
+    },
+    {
+      "readiness": 23,
+      "mobilised": true,
+      "quality": 5
+    },
+    {
+      "readiness": 24,
+      "mobilised": true,
+      "quality": 6
+    }
+  ],
+  "serialisation": [
+    {
+      "battle": false,
+      "bytes": 121707,
+      "transfer_calls": 68,
+      "army_bytes_identical": true,
+      "stream_round_trip_identical": true,
+      "raw_quality_controls": [
+        -1,
+        0,
+        3,
+        4,
+        5,
+        6,
+        9,
+        10,
+        32767
+      ],
+      "note": "Out-of-domain controls demonstrate raw copying, not gameplay validity."
+    },
+    {
+      "battle": true,
+      "bytes": 123812,
+      "transfer_calls": 75,
+      "army_bytes_identical": true,
+      "stream_round_trip_identical": true,
+      "raw_quality_controls": [
+        -1,
+        0,
+        3,
+        4,
+        5,
+        6,
+        9,
+        10,
+        32767
+      ],
+      "note": "Out-of-domain controls demonstrate raw copying, not gameplay validity."
+    }
+  ],
+  "combat": {
+    "copy_in_quality": [
+      4,
+      5,
+      9,
+      4,
+      5,
+      9
+    ],
+    "original_rng_bounds": [
+      16,
+      20,
+      36,
+      16,
+      20,
+      36
+    ],
+    "winner_prefix": [
+      {
+        "forced_random4": 0,
+        "inputs": [
+          4,
+          5,
+          6,
+          8,
+          9
+        ],
+        "outputs": [
+          7,
+          7,
+          7,
+          9,
+          9
+        ]
+      },
+      {
+        "forced_random4": 1,
+        "inputs": [
+          4,
+          5,
+          6,
+          8,
+          9
+        ],
+        "outputs": [
+          6,
+          6,
+          6,
+          8,
+          9
+        ]
+      }
+    ]
+  }
+}
