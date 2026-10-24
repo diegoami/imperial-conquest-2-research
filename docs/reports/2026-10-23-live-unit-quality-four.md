@@ -15,12 +15,9 @@ from recruitment readiness 16–19. The army loader/writer copy its word unchang
 the army list selects its proper DAT string; tactical battle entry copies it
 unchanged and calls `Random(16)` for its initial morale contribution.
 
-The proposed supported live-army quality domain is **4–9**, extending the build
-reader's 5–9 restriction by one tier. Do not convert 4 to 5 or 6 or interpret it on
+The supported live-army quality domain recommended by this research is **4–9**, extending the build reader's former 5–9 restriction by one tier. Do not convert 4 to 5 or 6 or interpret it on
 another scale. A battle winner's later quality floor of 6 is a gameplay effect,
-not a load/export normalization rule. Build should evaluate this evidence and add
-focused reader/exporter coverage for exact preservation of 4 and continued refusal
-of unsupported live values. No build code is changed here.
+not a load/export normalization rule. Main implemented that policy in [PR1353](https://github.com/diegoami/imperial_conquest_2/pull/1353), merged at `ae614899d63ac721ee46d1e3213191fe1f43a676` on 2026-10-23, with focused reader/exporter tests and typed refusal outside 4–9. No build code is changed here.
 
 Distinguish the **raw storage domain** (a 16-bit word copied without validation) from
 the **supported gameplay domain**. Raw load/save success for negative values, 0–3
@@ -28,8 +25,7 @@ or values above 9 does not establish valid gameplay. Retain typed refusal for su
 unsupported live values until applicable evidence supports them. The ten-entry
 display table is not itself a live-unit validity specification.
 
-**Native Windows open → inspect → order/End turn → saveNEW → fresh reopen remains
-untested.** These controls do not clear research #37's native-JSON gate, prove the
+**Native Windows open → inspect → order/End turn → saveNEW → fresh reopen is not tested by this report.** These controls do not clear research #37's native-JSON gate, prove the
 owner's entire state exportable, or change the twelve-save run's acceptance status.
 
 ## Input identity and representation
@@ -158,5 +154,8 @@ Quality 4's original-code meaning and supported policy are answered at this scop
 An optional coordinated native check can open a separate private candidate, inspect
 `very poor`, issue an order/End turn, saveNEW and fresh-reopen while recording any
 intervening battle. It requires owner approval and was not performed here. A winner
-promotion must be separated from load/save behavior. Research #63 stays open for
-that coordination and build evaluation; #37's other gates remain open.
+promotion must be separated from load/save behavior. Build evaluation is complete as noted above; research #63 stays open for its native coordination. This finding does not clear #37's other gates.
+
+## Verification before merge (2026-10-24)
+
+The active research session reviewed the mobilization gate and readiness conversion, direct display index, battle copy-in and winner floor/promotion against the pinned listing. A fresh run of the unchanged checker with pinned EXE/DAT/listing reproduced the **entire committed JSON receipt exactly**, including the checker digest. Initialization, constructor residue, all ten readiness cases, three display indices, both complete in-memory serialization round trips, battle copy-in and two forced promotion branches pass. These are offline instruction controls with the interceptions listed above; no new game, owner-save access, independent reviewer or native Windows validation is claimed.

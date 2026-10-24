@@ -5,7 +5,7 @@ removes it here when its report is promoted, and tells the requester.
 
 ## Live army quality 4 (research #63 / build #1352)
 
-Owner-authorized desktop research, 2026-10-23. The candidate
+Owner-authorized desktop research, 2026-10-23. The
 [original-code report](reports/2026-10-23-live-unit-quality-four.md) and
 [scalar x86 receipt](data/research63-quality-controls-v1.json) establish that 4 means
 `very poor`, is created by normal early human mobilization, and is copied unchanged
@@ -13,10 +13,9 @@ by original load/save and battle entry. Recommended live export range: 4–9 wit
 preserved exactly; not a conversion to 5/6. Static paths and bounded controls are
 complete; no independent review or native Windows check is claimed.
 
-Pending: report promotion/build evaluation, then separately approved native
-open/inspect/order-or-End-turn/saveNEW/fresh-reopen if requested. Keep #63 open
-for that coordination. No owner-save conversion or game run was performed, and
-research #37's other gates remain open. Do not count this as native-JSON acceptance.
+Build evaluation is complete: [Main PR1353](https://github.com/diegoami/imperial_conquest_2/pull/1353) merged at `ae614899d63ac721ee46d1e3213191fe1f43a676` on 2026-10-23, preserving 4 and refusing unsupported live values outside 4–9. Research rechecked the pinned instructions and exactly reproduced the complete scalar receipt on 2026-10-24.
+
+Keep #63 open for its separately coordinated native acceptance follow-up. This report and verification performed no owner-save conversion or game run and do not establish native-JSON acceptance or clear research #37's other gates.
 
 ## Desktop palette check (with the player, via ic2-conquest)
 
