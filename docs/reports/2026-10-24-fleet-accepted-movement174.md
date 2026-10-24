@@ -1,0 +1,21 @@
+# Fleet movement: accepted actions and AI move-budget boundary
+
+**Tag:** [confirmed, partial; provisional intake of Wine and synthetic controls].
+**Source:** ic2-conquest [PR #185](https://github.com/diegoami/ic2-conquest/pull/185), merged at `b22b31bdc466a638d61ee3db173b8fd71a0e7d86`; [finding](https://github.com/diegoami/ic2-conquest/blob/b22b31bdc466a638d61ee3db173b8fd71a0e7d86/findings/2026-10-24-fleet-accepted-movement174.md).
+**Related:** earlier [fleet stored-destination report](2026-10-24-strategic-fleet-controls174.md), remake [#1408](https://github.com/diegoami/imperial_conquest_2/issues/1408), [#1409](https://github.com/diegoami/imperial_conquest_2/issues/1409), and [#1405](https://github.com/diegoami/imperial_conquest_2/issues/1405).
+
+## Bounded findings
+
+The upstream batch extends its earlier first-destination controls through original fleet movement and real native command dispatch. It distinguishes original fleet-phase instructions, conditional native requests, and full native AI turns; these have different phase histories and are not compared as equivalent whole turns. The original observer/plain runs agree at the complete saved-state boundary, and captured fleet-phase exits replay through unchanged original instructions according to the upstream receipts. Research has not rerun those private inputs in this intake.
+
+A paired original low-level control changes only the fleet's controller. When a fleet has fewer moves than the next rough-sea step costs, original AI control clears its remaining moves; original human control retains them. The corresponding native `MoveFleetCommand` accepts and leaves the fleet in place with its moves retained under both controllers. The affordable positive control agrees. In the remake source at `933a5d4a`, `MoveFleetCommandHandler` writes `walk.MovesRemaining` directly, while `MoveArmyCommandHandler` applies `MovementAbortRule.MovesAfterAbortedStep` for an insufficient step. This independently supports the native half of the reported discrepancy. The original instruction at `0044E073` and its private RAM control were **not** independently re-executed here. [#1408](https://github.com/diegoami/imperial_conquest_2/issues/1408) owns the bounded correction and must retain human, affordable and marker-block controls.
+
+The upstream native AI traces show that some peace, trade and alliance fleet approaches were **accepted commands**, extending the earlier proposal-only observation. Those native weights are explicitly designed. This establishes an executed policy difference on the declared controls, not an unintended bug or a decision to change the designed mode. [#1409](https://github.com/diegoami/imperial_conquest_2/issues/1409) scopes faithful selection and destination execution separately from [#1405](https://github.com/diegoami/imperial_conquest_2/issues/1405)'s missing stored-route state.
+
+Synthetic follow-ups exercise stored route with zero moves, cargo carried at sea, and protected versus unprotected adjacent ports. They narrow the earlier report's explicit untested combination and distinguish approach from attack. They do not establish route persistence through native save/load/export, disembarkation or capacity, naval combat outcomes, global RNG equivalence, or native-Windows original acceptance. The recorded original waypoint and port movement cannot be modelled by merely giving the same final coordinate to one native straight walk.
+
+## Intake verification and limits
+
+This intake read the merged upstream finding, issue disposition and prior canonical fleet report; checked the current remake fleet and army command handlers and their abort-rule seam; and confirmed that the new T212 army-routing research issue has **no result yet**. No original binary, private save, RAM block or full decompile was copied into this repository. The upstream Wine/CPU/recovery receipts and case counts are attributed to ic2-conquest, not claimed as fresh research reruns. A later independent check may strengthen this provisional status if the original instruction controls and generated bundle are available.
+
+Keep the three Main scopes separate: budget correction #1408, faithful fleet policy/execution #1409, and stored-route state #1405. None changes T212 army eligibility or waypoint research.
