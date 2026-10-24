@@ -2358,3 +2358,33 @@ troop WORD at 49DA18. Its summary/paired/identity outputs equal upstream v3.
 The [safe receipt](data/navigation187-callers-intake-v1.json) publishes counts,
 original asset identity and scope only. Generated raw RAM/SAV/full traces and
 private hash manifests remain private; no native caller or whole-turn claim.
+
+
+## Economy/diplomacy/fleet continuation (conquest PR190, 2026-10-24)
+
+[Report](reports/2026-10-24-strategic-economy-diplomacy-fleet-continuation.md), source
+`7129418663447e0b242c0ad56afcb78f8af1ae0c`.
+[Manifest, phase ledgers and case declarations](https://github.com/diegoami/ic2-conquest/blob/7129418663447e0b242c0ad56afcb78f8af1ae0c/runs/experiments/data/run-exp-strategic-tracks/)
+resolve `ST176-ST-rom-hook-v1-before.SAV`, `ST176-ST-rom-hook-v1-after.SAV`
+and the corresponding `plain-v1` pair. They are one generated ROM720 trajectory
+and its observer control, 0720→0721. Per-case bare `before.SAV` / `expected.SAV`
+resolve under the declared phase/synthetic/fleet case names. These per-case SAVs
+are RAM-projected diagnostic containers, not original Save As outputs.
+
+Private [Drive folder](https://drive.google.com/drive/folders/1Fzspq5V6nRtcDmxUpGlH6bh0hR0w5OvJ):
+[strategic-tracks-batch01.tar.gz](https://drive.google.com/file/d/1SEmZSpSXU2l3VnPt-FkR8x7nEnnjTMN_/view),
+19,787,823 bytes / 1,131 members including manifest, SHA256
+`d29926a6e430039072ec8e025f30ec0dcd8d412cabd775204aba429116649188`.
+Research verified the local archive identity, exact inventory and all 1,130
+payload hashes/sizes, then recovered native tools reproduce 30 phase and four
+mixed-unit result rows byte for byte. No remote downloaded digest claim.
+The allowlist contains generated saves/RAM, native state/data/terrain sidecars,
+compiled diagnostic tools and public ledgers; it excludes original EXE/DAT,
+runtime/prefix/credentials and owner inputs.
+
+The [safe research receipt](data/strategic190-intake-v1.json) records fresh
+original/native checks, preserved probe-version row-shape/order differences and
+12 valid cargo totals. The eight original quality-50 cargo-v1 attempts remain
+excluded; valid v2/v3 use quality 7. Observer/plain, recovery EOF and import
+failures retain their original provenance. This is bounded projected comparison,
+not every strategic feature, whole-turn/global RNG, production or Windows acceptance.
