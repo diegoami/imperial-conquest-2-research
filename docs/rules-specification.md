@@ -650,6 +650,8 @@ Open:
 
 ### Boarding and disembarking armies
 
+- AI embark overflow in the tested free-land/free-army-slot branch moves the first whole slot whose cumulative troops exceed `ships × 500`, and all following slots, ashore. It conserves troops and may leave fewer than capacity aboard; proportional troop scaling is a derived remake discrepancy, not the observed original rule `[confirmed: source and bounded original/native controls]` ([continuation report](reports/2026-10-24-strategic-economy-diplomacy-fleet-continuation.md)). No-land/allocation/existing-receiver/human UI branches remain unproved.
+
 - Embark = select the army, click the adjacent own fleet: the army moves onto the fleet's tile, its cell becomes −1, the fleet's carried-army field becomes the army's index, and **both units' moves become 0** — live (Wine-only) (2026-10-02-fleet-orders-live.md).
 - An army produced by Split army has 0 moves, so it cannot embark that turn — live (Wine-only) (2026-10-02-fleet-orders-live.md). **Corrected 2026-10-11:** the earlier "and cannot be selected" is wrong as a rule: an own army with 0 moves is selected by a click and stays selected; why the split-off army was not selected in that run was not isolated (2026-10-11-g2-original-checks.md).
 - Unload = select the fleet, click an adjacent land tile: the army lands there (cell = terrain code), the fleet's carried-army field becomes −1, and **both units' moves become 0** again; both need moves, so a landing is a whole turn for both — live (Wine-only) (2026-10-02-fleet-orders-live.md).

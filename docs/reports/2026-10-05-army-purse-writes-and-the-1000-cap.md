@@ -95,3 +95,5 @@ python3 runs/experiments/v050_rules/q1b_overcap_trim.py    # needs Q1_06_after_j
 python3 runs/experiments/v050_rules/fetch_archive.py      # once: the released saves and screenshots into artifacts/ (hash-checked)
 python3 runs/experiments/v050_rules/claims_audit.py       # inputs: the saves, the tracked code extracts and readings; row_source_audit.py checks each rule row        # recomputes every number above from the saves and the extract
 ```
+
+Follow-up: [the source/control continuation](2026-10-24-strategic-economy-diplomacy-fleet-continuation.md) now corroborates F8FC's whole-slot AI overflow landing and one-third resource split in the tested allocation branch (100 money → 67/33; 90 supply → 60/30). This does not establish allocation-failure or human UI behavior.

@@ -1,0 +1,155 @@
+{
+  "source_repository": "diegoami/ic2-conquest",
+  "source_commit": "7129418663447e0b242c0ad56afcb78f8af1ae0c",
+  "source_finding_blob": "2bde5aa9b5bb678316d33c302d2cf5505b83fdb1",
+  "summary": {
+    "original_observed_phases": 45,
+    "exact_replayed_exits": 45,
+    "original_draws": 54,
+    "economy_comparisons": 35,
+    "economy_projection_matches": 35,
+    "diplomacy_busy_war_target_comparisons": 24,
+    "diplomacy_busy_war_target_matches": 24,
+    "fleet_provider_matches": 23,
+    "valid_cargo_comparisons": 12,
+    "cargo_matches": 7,
+    "embark_overflow_discrepancies": 5,
+    "all_native_input_gate_fields": 227833,
+    "main_followup": 1412,
+    "limits": [
+      "not whole-turn/native RNG parity",
+      "diplomacy alliance/trade candidate outputs are observations, not full parity assertions",
+      "eight invalid quality50 cargo v1 inputs retained and excluded; v2/v3 use valid quality7",
+      "provider rows recovered from persisted complete per-case output before v1 cargo import failure",
+      "route arrival retention proved; next fresh-stack phase is diagnostic, not universal coincident-line behavior",
+      "overflow no-land/no-free-slot/existing-receiver and human UI branches untested"
+    ]
+  },
+  "archive": {
+    "archive": "strategic-tracks-batch01.tar.gz",
+    "sha256": "d29926a6e430039072ec8e025f30ec0dcd8d412cabd775204aba429116649188",
+    "bytes": 19787823,
+    "members": 1131,
+    "all_member_hashes_verified": true,
+    "scope": "explicit generated controls/captured states/native tools and public data only; no original binary/DAT/runtime/owner input"
+  },
+  "research_verification": {
+    "inventory_exact": true,
+    "payload_hashes_and_sizes_verified": 1130,
+    "recovered_native_phase_rows_byte_identical": 30,
+    "recovered_native_mixed_cargo_rows_byte_identical": 4,
+    "fresh_original_phase_exit_RAM_matches": 45,
+    "original_draw_ledger_equal": true,
+    "fresh_original_synthetic_rows_equal": 29,
+    "fresh_native_economy_diplomacy_rows_equal": 59,
+    "fresh_original_fleet_whole_RAM_matches": 35,
+    "fresh_native_fleet_rows_shared_fields_equal": 35,
+    "observer_CPU_checks": 360,
+    "complete_observer_plain_before_after_SAV_equal": true,
+    "provider_comparison": "Match23 unique case names, disregarding row order only; all existing fields agree. New retained probe adds three zero troop-count fields per provider row.",
+    "cargo_v2_comparison": "All eight existing row fields agree; probe adds three troop-count fields. Native values and original conservation independently recorded below.",
+    "mixed_cargo_v3_comparison": "All four result objects reproduce exactly.",
+    "native_rebuild_performed": false,
+    "remote_download_digest_verified": false,
+    "fresh_original_game_launched": false,
+    "owner_inputs_used": false,
+    "external_reviewer": false,
+    "private_input_paths_or_hashes_published": false
+  },
+  "cargo_comparisons": [
+    {
+      "caseName": "land-moves0-39-34",
+      "troops_before": 5000,
+      "troops_after_native": 5000,
+      "troops_after_original": 5000,
+      "projection_equal": true
+    },
+    {
+      "caseName": "land-moves0-40-34",
+      "troops_before": 5000,
+      "troops_after_native": 5000,
+      "troops_after_original": 5000,
+      "projection_equal": true
+    },
+    {
+      "caseName": "land-moves8-39-34",
+      "troops_before": 5000,
+      "troops_after_native": 5000,
+      "troops_after_original": 5000,
+      "projection_equal": true
+    },
+    {
+      "caseName": "land-moves8-40-34",
+      "troops_before": 5000,
+      "troops_after_native": 5000,
+      "troops_after_original": 5000,
+      "projection_equal": true
+    },
+    {
+      "caseName": "embark-troops-4999",
+      "troops_before": 4999,
+      "troops_after_native": 4999,
+      "troops_after_original": 4999,
+      "projection_equal": true
+    },
+    {
+      "caseName": "embark-troops-5000",
+      "troops_before": 5000,
+      "troops_after_native": 5000,
+      "troops_after_original": 5000,
+      "projection_equal": true
+    },
+    {
+      "caseName": "embark-troops-5001",
+      "troops_before": 5001,
+      "troops_after_native": 5000,
+      "troops_after_original": 5001,
+      "projection_equal": false
+    },
+    {
+      "caseName": "embark-troops-10000",
+      "troops_before": 10000,
+      "troops_after_native": 5000,
+      "troops_after_original": 10000,
+      "projection_equal": false
+    },
+    {
+      "caseName": "embark-units-4000-2000",
+      "troops_before": 6000,
+      "troops_after_native": 5000,
+      "troops_after_original": 6000,
+      "projection_equal": false
+    },
+    {
+      "caseName": "embark-units-2000-3000-1000",
+      "troops_before": 6000,
+      "troops_after_native": 5000,
+      "troops_after_original": 6000,
+      "projection_equal": false
+    },
+    {
+      "caseName": "embark-units-5000-1",
+      "troops_before": 5001,
+      "troops_after_native": 5000,
+      "troops_after_original": 5001,
+      "projection_equal": false
+    },
+    {
+      "caseName": "embark-units-3000-2000",
+      "troops_before": 5000,
+      "troops_after_native": 5000,
+      "troops_after_original": 5000,
+      "projection_equal": true
+    }
+  ],
+  "main_followup_at_verification": {
+    "issue": 1412,
+    "state": "OPEN",
+    "labels": [
+      "bug",
+      "triage:needed",
+      "priority:P1"
+    ],
+    "production_change_or_label_edit": false
+  }
+}

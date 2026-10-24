@@ -98,7 +98,7 @@ if (fleet[+22] == -1) {                                  // fleet not already ca
 }
 ```
 
-So a fleet carries **one army**, up to **500 troops per ship** — the same `ships × 500` number `fleet-order-at-caere.md` recorded as the order dialog's "5,000 soldiers", now confirmed as a real enforced capacity rather than a display value. `FUN_0044B79C` zeroes the fleet's moves, sets `fleet[+22] = armyIndex`, restores the army's covered map cell and sets `army[+8] = -1`, snaps the army's coordinates to the fleet's, zeroes the army's moves, and — for an AI nation only — trims the army to `ships × 500` troops if it is over capacity (`FUN_0044F8FC`). Everything downstream keys off those two fields: an embarked army cannot be joined, a carrying fleet cannot be repaired, scuttled, split or joined, and deleting a carrying fleet deletes the army with it (`FUN_0044AD38` → `FUN_0044AB90`).
+So a fleet carries **one army**, up to **500 troops per ship** — the same `ships × 500` number `fleet-order-at-caere.md` recorded as the order dialog's "5,000 soldiers", now confirmed as a real enforced capacity rather than a display value. `FUN_0044B79C` zeroes the fleet's moves, sets `fleet[+22] = armyIndex`, restores the army's covered map cell and sets `army[+8] = -1`, snaps the army's coordinates to the fleet's, zeroes the army's moves, and — for an AI nation only — handles an over-capacity army through `FUN_0044F8FC`. **Correction (2026-10-24):** in the tested free-land/free-slot branch, it lands the first whole unit that crosses capacity and all following units, conserving troops; the aboard total may be below capacity. It does not proportionally scale troops to exactly `ships × 500`. See the [source and bounded-control follow-up](2026-10-24-strategic-economy-diplomacy-fleet-continuation.md). Everything downstream keys off those two fields: an embarked army cannot be joined, a carrying fleet cannot be repaired, scuttled, split or joined, and deleting a carrying fleet deletes the army with it (`FUN_0044AD38` → `FUN_0044AB90`).
 
 The fleet orders above were run live, and agree with this code reading: [2026-10-02-fleet-orders-live.md](2026-10-02-fleet-orders-live.md) (Wine-only).
 
@@ -252,7 +252,7 @@ Every flagged unit has an **ethnic** name and every unflagged one has the auto-g
 - The one discrepancy this pass found and could not resolve: the code says buying supply costs `amount / 5` from the army's money, but the three frames tabulated in `galatia-elimination-and-city-resupply-confirmed.md` show Army 0's money unchanged at 256 across a 100-ton purchase (which should cost 20 talents). Either the frames are ordered differently than assumed or there is a path where the charge is skipped. **A controlled before/after save pair around one supply purchase would settle it** and is worth doing before any of this is implemented.
 - Fleet record `+4` and `+6` remain unidentified (`+6` was the word `fleet-owner-field-confirmed.md` noted as non-zero only for the Carthage fleet).
 - The exact fleet-table capacity behind *"You can not make any more fleets at this time."*
-- `FUN_0044F8FC` (the AI over-capacity troop trim) was not decompiled.
+- `FUN_0044F8FC` was not decompiled in this original packet. The [later source/control intake](2026-10-24-strategic-economy-diplomacy-fleet-continuation.md) now establishes whole-slot overflow landing for the tested allocation branch; failure/receiver/human branches remain outside that result.
 
 ## Reproduction
 
