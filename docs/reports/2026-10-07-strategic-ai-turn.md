@@ -213,11 +213,17 @@ qualifies and 5 does not. See [2026-10-16-strategic-ai-regions-resupply.md](2026
 
 Three scorers run per army (`FUN_0044f31c`, :52919–52971):
 
-- `FUN_0044e670` (:52307) — **resupply/defence city**: an own city whose supply stock is below the
-  army's strength (`troops/100`), or (only while at war) a foreign non-war city with stock above
-  strength + 80 and `money > strength/5`; own cities score −20 if they are a capital
-  (`FUN_0044b8d0` — see §5), foreign +20. If nothing qualifies or the best foreign city is beyond
-  15, fall back to the nearest own city.
+- `FUN_0044e670` (:52307) — **resupply/defence city**, corrected 2026-10-24:
+  let `q = trunc(troops/1000)`. An own city qualifies when supply stock is **above q**;
+  the foreign non-war path additionally requires the acting nation to be at war,
+  stock `> q + 80` and purse `> trunc(q/5)`. Minimize adjusted Chebyshev distance:
+  subtract20 for an own city that is a capital (`FUN_0044b8d0`, §5), add20 for a
+  foreign city. If none qualifies, or the selected foreign city's **adjusted**
+  distance exceeds15, fall back to the nearest own city. The earlier below/100
+  prose was wrong. [Six original-instruction controls and matched native gates](2026-10-24-strategic-fidelity-pilot171.md)
+  verify the own-city threshold/divisor and capital preference. This is a city-choice
+  threshold, distinct from §3.2's actual automatic supply capacity `troops/100`;
+  foreign preference was not independently isolated by those six controls.
 - `FUN_0044ece4` (:52655) — **best enemy city to attack** (cities of nations at war, reachable by
   land or because the nation owns a fleet, `FUN_0044cab4`):
 

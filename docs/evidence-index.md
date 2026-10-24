@@ -2226,3 +2226,53 @@ summary/row reproduction, five fixed-series and five regression controls,49Walks
 recorder gate. Strict state/post comparison follows the named upstream helpers;
 it is not every hidden runtime field, whole-file export identity or Windows
 acceptance. No fixture, known-failure registry or sibling source was changed.
+
+
+## Owner strategic destination/routing (#1388, 2026-10-24)
+
+[Report](reports/2026-10-24-seleucid-strategic-target-routing1388.md), conquest
+[PR167](https://github.com/diegoami/ic2-conquest/pull/167), original merge
+`889557fa2d8f1dd6f36bc5ef3a06bcaf3532082c`, reviewed in source main
+`363a9069089bd400c6905f3b93975162395031b3`.
+[Public scalar audit/source/build records](https://github.com/diegoami/ic2-conquest/tree/363a9069089bd400c6905f3b93975162395031b3/runs/experiments/data/run-exp-seleucid1388)
+contain no owner inputs or full RAM/logs. Private turn0755→0756 before/after pairs,
+pre-walk RAM and complete original/native diagnostics require owner coordination;
+no public binary archive or new owner release exists. The three same-seed runs
+are observer controls on one owner trajectory, not independent scenarios.
+
+Research replays the original helpers from that captured RAM and reproduces the
+complete safe audit, full656-byte post-walk record and21paired steps. Private
+input/save hashes, paths and full state are excluded from the
+[shared scalar receipt](data/strategic171-intake-v1.json). No new original game,
+full-turn RNG parity, deployed correction or Windows result is claimed.
+
+## Generated strategic fidelity pilot (#171, 2026-10-24)
+
+[Report](reports/2026-10-24-strategic-fidelity-pilot171.md), conquest
+[PR172](https://github.com/diegoami/ic2-conquest/pull/172), source
+`363a9069089bd400c6905f3b93975162395031b3`.
+[Per-case declarations/audits](https://github.com/diegoami/ic2-conquest/tree/363a9069089bd400c6905f3b93975162395031b3/runs/experiments/data/run-exp-strategic-fidelity)
+resolve the generated cases and original turn0720→0721 before/after files.
+Bare examples: `SF-N-rome-hook-v1-after.SAV`,
+`SF-L-ptolemaic-isolated-hook-v1-after.SAV`. The pattern
+`SF-<case>-hook-v1-before.SAV` / `SF-<case>-hook-v1-after.SAV` and the two `plain-v1`
+control pairs resolve through the manifests, rather than an owner-input list.
+
+Private [Drive folder](https://drive.google.com/drive/folders/1gNiyzqi7RbgV0U4AJ5xwiYeDzK58H8-i):
+
+| Archive | Bytes / members | SHA256 |
+| --- | --- | --- |
+| [pilot-evidence-batch01.tar.gz](https://drive.google.com/file/d/17WwEnBzQTlrOgJ-n7bTbBq7jwjEKLzRD/view) | 9,008,591 / 455 | `03f77f01cf23cac83cd86598115aa482f2903826efb525bbb719e8222cbf4f24` |
+| [isolated-scarcity-and-tools-batch02.tar.gz](https://drive.google.com/file/d/1cF2nLkQPvkTMl98UIuG7lPm2VEqr3v1z/view) | 1,301,860 / 42 | `e3dfd26a4607d20832790f6e139daec5c10543734971c560f79550e500c519cc` |
+| [terrain-sidecars-batch03.tar.gz](https://drive.google.com/file/d/1ICs45mHD4lvbV7Utol6H-AQAv5VDGw5D/view) | 12,551 / 2 | `d52e297b3211890af5c51dc917c2cb0d7a3c9d71419cd2012e45ef1c84b2d620` |
+| [geometry-audit-tools-batch04.tar.gz](https://drive.google.com/file/d/1k5tbljKOYEJX6McF4bMepmUQLB0yoll9/view) | 601,045 / 5 | `f0b92b307836a78e9c7017762dd99f20ec7fd48588ec3da7ab94e6163bac8613` |
+
+Research rehashed/recovered all504members, checked exact archive inventories and
+reran retained compiled tools. All three modes match over112states; the recovered
+geometry tool reproduces all112rows. Batch02 `tools-v7` supersedes batch01's
+initial tool; batch03's terrain sidecars and batch04 geometry tool are required.
+The first failed sidecar recovery remains recorded. These bundles contain generated
+RAM/diagnostic containers, not owner1355/1388 inputs or original EXE/DAT/runtime.
+RAM-projection SAVs are synthetic containers, never original Save As evidence.
+Local archive verification adds no remote-download digest claim. Eleven distinct
+inputs do not establish full greedy/global RNG/strategic or Windows equivalence.

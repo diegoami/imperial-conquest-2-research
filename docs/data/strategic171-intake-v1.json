@@ -1,0 +1,304 @@
+{
+  "source_commit": "363a9069089bd400c6905f3b93975162395031b3",
+  "checker_sha256": "262bc93d2d9a790a2530fde5da9f9c84e52f96379833f87fc79439b55057e502",
+  "archived_git_blobs_verified": {
+    "run-exp-strategic-fidelity": 349,
+    "run-exp-seleucid1388": 332
+  },
+  "cpu_controls": {
+    "seleucid1388": {
+      "passed": 816,
+      "sites": 17,
+      "capacity_cases": [
+        0,
+        7,
+        8191,
+        8192
+      ],
+      "registers_flags_stack_army_header_seed_preserved": true
+    },
+    "strategic-fidelity": {
+      "passed": 792,
+      "sites": 22,
+      "snapshot_capacity": 64,
+      "record_capacity": 8192,
+      "registers_flags_stack_seed_and_game_RAM_preserved": true,
+      "full_capacities_fail_closed": true
+    }
+  },
+  "owner_audit_exact": true,
+  "owner_audit_sha256": "997c13a5fa11ca6a6107d5f1a6216b63884ebf7a3adf399e27dd8ef39e79d57a",
+  "owner_audit": {
+    "tag": "confirmed, partial",
+    "remake_pin": "3c1860079db6dd9b1fb11ceb8b726c7fd95293ac",
+    "original_turn": 756,
+    "original_live_runs": 3,
+    "observed_runs": 2,
+    "plain_runs": 1,
+    "before_and_after_whole_sav_equal_across_all_three": true,
+    "observer_cpu_preservation_states": 816,
+    "original_destination": [
+      191,
+      95
+    ],
+    "original_waypoint": [
+      189,
+      104
+    ],
+    "original_target_score": 828,
+    "remake_destination": [
+      207,
+      95
+    ],
+    "remake_target_score": 212,
+    "weak_target_reachable_original": true,
+    "weak_target_reachable_remake": false,
+    "original_weak_target_direct_line": false,
+    "original_region_and_coast_equal": true,
+    "field_strengths_agree": true,
+    "original_full_wrapper_matches_saved_army_record": true,
+    "paired_conditional_walks": [
+      {
+        "goal": [
+          207,
+          95
+        ],
+        "steps": 7,
+        "endpoint": [
+          212,
+          94
+        ]
+      },
+      {
+        "goal": [
+          191,
+          95
+        ],
+        "steps": 7,
+        "endpoint": [
+          213,
+          94
+        ]
+      },
+      {
+        "goal": [
+          189,
+          104
+        ],
+        "steps": 7,
+        "endpoint": [
+          212,
+          96
+        ]
+      }
+    ],
+    "matching_conditional_steps": 21,
+    "original_local_rng_calls": 0,
+    "original_local_seed_controls": 5,
+    "original_local_seed_control_endpoints_identical": true,
+    "native_diagnostic_repeats_equal": 3,
+    "production_source_changed": false,
+    "owner_hashes_or_full_states_published": false,
+    "limits": [
+      "One owner campaign and one seeded original trajectory, not three independent scenarios.",
+      "Five seed controls are original-instruction local replays, not five fresh whole-turn games.",
+      "The whole End-turn action/RNG stream is not synchronized across engines.",
+      "No complete strategic routing implementation, production correction or native Windows acceptance."
+    ]
+  },
+  "original_owner_helpers_replayed_exact": true,
+  "bundle_recovery": {
+    "archives": 4,
+    "members_verified": 504,
+    "exclusive_recovery": true,
+    "latest_tool_executes": true,
+    "retained_11_rows_byte_identical": true,
+    "geometry_112_states_byte_identical": true,
+    "source_data_read_only_locator_link": true,
+    "remote_download_digest_check": false
+  },
+  "exact_archive_inventories": [
+    {
+      "name": "pilot-evidence-batch01.tar.gz",
+      "bytes": 9008591,
+      "sha256": "03f77f01cf23cac83cd86598115aa482f2903826efb525bbb719e8222cbf4f24",
+      "members": 455
+    },
+    {
+      "name": "isolated-scarcity-and-tools-batch02.tar.gz",
+      "bytes": 1301860,
+      "sha256": "e3dfd26a4607d20832790f6e139daec5c10543734971c560f79550e500c519cc",
+      "members": 42
+    },
+    {
+      "name": "terrain-sidecars-batch03.tar.gz",
+      "bytes": 12551,
+      "sha256": "d52e297b3211890af5c51dc917c2cb0d7a3c9d71419cd2012e45ef1c84b2d620",
+      "members": 2
+    },
+    {
+      "name": "geometry-audit-tools-batch04.tar.gz",
+      "bytes": 601045,
+      "sha256": "f0b92b307836a78e9c7017762dd99f20ec7fd48588ec3da7ab94e6163bac8613",
+      "members": 5
+    }
+  ],
+  "regenerated_projection_outputs_private": true,
+  "all_original_and_three_native_modes_replayed_cases": [
+    "N-rome",
+    "N-carthage",
+    "N-seleucid",
+    "N-ptolemaic",
+    "N-numidia",
+    "N-gaul",
+    "W-carthage-numidia",
+    "L-ptolemaic-shortages",
+    "H-seleucid-capital",
+    "P-rome-gaul-peace",
+    "L-ptolemaic-isolated"
+  ],
+  "pilot_summary": {
+    "cases": 11,
+    "byte_distinct_inputs": 11,
+    "original_observed_runs": 11,
+    "original_plain_runs": 2,
+    "native_normal_runs": 12,
+    "native_unobserved_control_runs": 1,
+    "matched_original_decision_states": 112,
+    "matched_state_gate_checks": 290524,
+    "ai_nations_at_compared_boundaries": {
+      "macedonia": 11,
+      "thracia": 11,
+      "ptolemaic": 11,
+      "carthage": 16,
+      "media": 11,
+      "celtiberia": 8,
+      "gaul": 9,
+      "bithynia": 11,
+      "seleucid": 18,
+      "rome": 5,
+      "galatia": 1
+    },
+    "branches_equal": 58,
+    "city_target_equal": 61,
+    "enemy_target_equal": 57,
+    "raw_resupply_equal": 14,
+    "primary_destination_equal": 9,
+    "primary_destination_compared": 109,
+    "primary_destination_unresolved": 3,
+    "original_live_first_calls_verified": 102,
+    "original_cpu_states": 792,
+    "original_paired_whole_save_controls": 2,
+    "native_observation_inert": true,
+    "negative_input_gates": 2,
+    "original_rng_calls_in_compared_helpers": 0,
+    "resupply_controls": [
+      {
+        "name": "capital-a",
+        "original": 144,
+        "native": 152,
+        "gate_fields": 2568
+      },
+      {
+        "name": "capital-b",
+        "original": 152,
+        "native": 144,
+        "gate_fields": 2568
+      },
+      {
+        "name": "stock29",
+        "original": 144,
+        "native": 152,
+        "gate_fields": 2568
+      },
+      {
+        "name": "stock30",
+        "original": 152,
+        "native": 152,
+        "gate_fields": 2568
+      },
+      {
+        "name": "stock297",
+        "original": 152,
+        "native": 152,
+        "gate_fields": 2568
+      },
+      {
+        "name": "stock298",
+        "original": 152,
+        "native": 159,
+        "gate_fields": 2568
+      }
+    ],
+    "original_scores_restore_native_branches": 112,
+    "target_eligibility_attribution": {
+      "city_different_targets": 51,
+      "city_original_winner_excluded": 51,
+      "enemy_different_targets": 55,
+      "enemy_original_winner_excluded": 55
+    },
+    "accepted_native_commands": {
+      "movement.move-army": 138,
+      "diplomacy.ai-swap-trade-partner": 117,
+      "diplomacy.ai-form-trade": 91,
+      "recruitment.recruit-standing-unit": 318,
+      "armies.join-units": 12,
+      "battle.besiege-city": 7,
+      "naval.order-fleet": 2,
+      "armies.disband-unit": 8,
+      "battle.attack-army": 3,
+      "diplomacy.declare-war": 1
+    },
+    "original_observed_call_sites": {
+      "0044f38b": 112,
+      "0044f47c": 45,
+      "0044dc16": 160,
+      "0044f2f9": 26,
+      "0044dca1": 49,
+      "0044f6be": 12,
+      "0044f409": 48,
+      "0044e913": 8,
+      "0044f4a3": 7,
+      "0044dc3a": 30,
+      "0044f667": 6,
+      "0044f43f": 9,
+      "0044f4c7": 2
+    },
+    "limits": [
+      "Conditional comparisons test local scorers/tree from original states, not the full native greedy command selection.",
+      "Raw resupply target and reachability-resolved destination are reported separately.",
+      "No-candidate score sentinels -10000/original and0/native are retained, not counted as distinct target choices.",
+      "Whole-turn outcome differences have unmatched RNG/order histories and are not individual defect proofs.",
+      "Mercenary-run continuation destinations are unresolved in the primary-destination denominator.",
+      "Fleet destination observations, recruitment/economy/diplomacy outcomes are not complete same-input decision/RNG comparisons.",
+      "One End turn per case; no all16start, multi-seed campaign, short continuation or Windows acceptance claim."
+    ]
+  },
+  "pilot_summary_sha256": "608b1c659d6cae9f1b717cd34f7431dfbe591e77340093b2522d2e30b401cd55",
+  "full_decision_ledger_and_case_csv_equal": true,
+  "geometry": {
+    "states": 112,
+    "cellsPerState": 44800,
+    "landTerrainMismatches": 0,
+    "armyPassabilityAndOccupancyMismatches": 0
+  },
+  "six_resupply_controls_original_and_native_exact": true,
+  "negative_gates": [
+    {
+      "mutation": "troops",
+      "rejected_before_output": true
+    },
+    {
+      "mutation": "relations",
+      "rejected_before_output": true
+    }
+  ],
+  "limits": [
+    "Offline instruction/retained diagnostic replay, no new original/Wine or whole-turn game run",
+    "Local tree/scorer/primary destination comparisons, not native greedy command-selection/global RNG equality",
+    "112 correlated states from11inputs; geometry covers land/blocking, not sea-weather equality",
+    "Private owner paths/input hashes/full state/RAM excluded; work directory must stay private",
+    "No independent rebuild/model review, production fix or native Windows acceptance",
+    "Local archive/member recovery only; no remote Drive download claim"
+  ]
+}
