@@ -1,0 +1,47 @@
+{
+  "source_repository": "diegoami/ic2-conquest",
+  "source_commit": "0cda6c4417202d39e848ab00569a61f004d7c9ff",
+  "source_finding_blob": "e66f1acba882993a0c1bf22fd5b9359460825bed",
+  "scope": "Fresh offline original-instruction controls on synthetic generated maps; no owner inputs, fresh game or native caller implementation.",
+  "original_asset_identity": "9d753d5de78801f2368d06125cc87f296b92f671b686c39fd6ac149838ebba31",
+  "summary": {
+    "isolated_caller_controls": 24,
+    "full_F31C_parent_controls": 64,
+    "total_controls": 88,
+    "complete_original_RNG_calls": 0,
+    "observer_plain_RAM_and_stack_matches": 88,
+    "single_WORD_offer_pairs": 20,
+    "garrison_negative_guard_is_reachable_in_F31C": true,
+    "no_universal_zero_initialization": true,
+    "progress_then_block_controls": 8,
+    "original_signed_budget_minus1_observed": true,
+    "remaining_limits": [
+      "arbitrary standalone caller roots still undefined",
+      "not all homeland/interception/combat/embarked callers or every earlier route history",
+      "no native caller implementation/parity or whole End turn comparison",
+      "Research intake before broadening Main scope"
+    ]
+  },
+  "verification": {
+    "fresh_control_rows": 88,
+    "all_four_control_ledgers_equal": true,
+    "summary_v3_equal": true,
+    "paired_inputs_v3_equal": true,
+    "observer_identity_v3_equal": true,
+    "game_RAM_bytes_per_control": 274432,
+    "stack_bytes_per_control": 65536,
+    "result_normalization": false,
+    "paired_input_difference": "Exactly signed WORD 49DA18: absent -1 versus present 1000; two bytes only.",
+    "source_decompilation_and_key_writer_instructions_rechecked": true,
+    "new_game_launched": false,
+    "native_comparison_performed": false,
+    "external_reviewer": false,
+    "private_input_paths_or_hashes_published": false
+  },
+  "main_disposition": {
+    "issue": 1394,
+    "status_at_verification": "open, status:in-progress",
+    "contract": "F31C enemy-army target-tree slice and tested recursive context; other callers unchanged until a separately reviewed expansion.",
+    "labels_changed_by_research": false
+  }
+}

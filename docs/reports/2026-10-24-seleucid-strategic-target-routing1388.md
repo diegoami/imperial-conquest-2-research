@@ -170,4 +170,4 @@ attribution, not whole-turn or Windows acceptance.
 extends the eligibility finding on generated inputs; it does not turn these
 private owner runs into another independent pilot scenario.
 
-Follow-up: the [navigation-rule intake](2026-10-24-army-navigation-rule187.md) supplies interpreted static data, eligibility and first-destination rules, plus a final private regression. The historical “coast” bit is a coordinate partition, not water adjacency. Other DBA8 caller histories remain unresolved; T212 stays blocked.
+Follow-up: the [navigation-rule intake](2026-10-24-army-navigation-rule187.md) supplies interpreted static data, eligibility and first-destination rules, plus a final private regression. The historical “coast” bit is a coordinate partition, not water adjacency. The [caller follow-up](2026-10-24-garrison-mercenary-caller-guards187.md) resolves the specified garrison/mercenary histories, including negative guards. Broader histories remain unproved; T212 is now in progress under its narrowed enemy-army contract.
