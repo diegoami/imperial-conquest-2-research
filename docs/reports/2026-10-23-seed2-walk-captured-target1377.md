@@ -2,7 +2,7 @@
 
 **Status:** [confirmed, partial], 2026-10-23. Fresh original Wine semantic trace,
 conditional native replay and strict full318 corpus controls. A tested source
-candidate, not a merged remake fix or native Windows acceptance.
+candidate at the original packet; native Windows acceptance remains separate.
 **Tasks:** [remake #1377](https://github.com/diegoami/imperial_conquest_2/issues/1377),
 [conquest #157](https://github.com/diegoami/ic2-conquest/issues/157), related #1324.
 This follows the accepted-scope T206 ordering correction; it does not impose a
@@ -12,6 +12,8 @@ new hold on that separately approved bounded fix or start Improved policy tuning
 merged main `e1a943d5f9de8b88787112f137ad8053a699e6e0`, finding blob `8e5fe73982c14d22f911807f0750d84122ec56e7`.
 The complete research checks and their limits are recorded below. No new original/Wine
 execution or separate model review is claimed by research.
+
+**Production status, 2026-10-25:** [Main PR1387](https://github.com/diegoami/imperial_conquest_2/pull/1387) merged at `3c1860079db6dd9b1fb11ceb8b726c7fd95293ac`; #1377 is closed/status:merged. The [fresh Main audit](2026-10-25-current-main-battle-replay157.md) independently builds pin `b593c6e2` and reproduces all318 strict state/draw series with an empty failure registry. This does not establish installed desktop identity, natural owner entry or #1355/Windows acceptance. Historical measurements below are unchanged.
 
 ## Answer
 
@@ -232,8 +234,6 @@ of this new candidate. The endpoint-only state discrepancy and later draw mismat
 are linked by the shared-state Walk observation, not by substituting one random
 range into a different action.
 
-Research promotes bounded original-control-flow attribution and a tested candidate,
-not a deployed remake fix or every crafted-grid/controller behavior. Main #1377/#1355
-acceptance, normal CI and Windows work remain downstream. This does not reinstate
+The original promotion established bounded control flow and a tested candidate. Main #1377 is now merged, and the later audit validates the retained corpus/current-at-pin engine; installed deployment, Main #1355 acceptance and Windows work remain separate. Broader crafted-grid/controller coverage remains outside this result. This does not reinstate
 a hold on the owner's separately approved bounded T206 ordering fix, and Improved
 controller policy remains a different task.

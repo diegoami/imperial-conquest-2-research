@@ -2411,3 +2411,32 @@ counts, public boundary counterexamples and limits. The original failed grid
 trailer/native import and scalar v1/v2 attempts remain upstream; v2 grid/v3 native
 scalar are authoritative. No new game, native rebuild, production correction,
 whole-turn/global RNG or Windows result is claimed.
+
+
+## Audited merged-Main tactical replay (#157, 2026-10-25)
+
+[Report](reports/2026-10-25-current-main-battle-replay157.md), conquest [PR202](https://github.com/diegoami/ic2-conquest/pull/202) / [PR203 qualification](https://github.com/diegoami/ic2-conquest/pull/203), source
+`8abbdf61c1898be9d68e33d2943fcd538cf0b4ba`; unchanged finding blob from `fd62cb58`.
+[Public scalar/source receipts](https://github.com/diegoami/ic2-conquest/blob/8abbdf61c1898be9d68e33d2943fcd538cf0b4ba/runs/experiments/data/run-exp-battle-current157/)
+identify audited Main `b593c6e28939c1c7154f9a41d0436a8f14f352dc`, ordering
+PR1371 and movement PR1387. Fixture revision remains
+`6319802a75067e7730e4f6a27dce3b4e296ddd9b`; the retained `BATTLE*.SAV` and
+post-save citations resolve through the earlier private corpus and #157
+reference/pilot evidence above. The owner control reuses the existing private
+seed1 entry/terminal recording; no new owner save, original asset or public
+raw-corpus/owner archive is introduced.
+
+Research freshly builds the byte-verified Main archive and reproduces318strict
+state/draw series,5fixed cases,14recorded controls,2420tactical tests and6+5
+regressions. After execution, all5862battle files equal their pinned archive
+members and DAT matches its identity pin; KnownFailures is empty. The
+[safe intake receipt](data/current-main157-intake-v1.json) contains aggregate
+checks/build identities only. Owner/corpus paths, per-input hashes, states,
+semantic traces, TRX and private manifests remain outside research Git.
+
+Three pilot selected-slot fields remain unobserved/default−1; owner selection
+was observed. Historical assumptions are not promoted to observation. Strict
+fixture replay includes Fresh copy-in, conclusion/writeback and supplied post
+fields; it does not establish the natural owner entry, deployed build or
+unmodified Original Windows completion/reopen. Earlier source/candidate and
+UTF8/preparation failure receipts remain historical, not new measurements.
