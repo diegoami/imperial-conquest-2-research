@@ -1,0 +1,84 @@
+{
+  "source_commit": "8d975efddd66fd81371991936a7fd0cbc58016be",
+  "checker_sha256": "6ac55d6b92eb37a5a4893d864530735f929c4fd8930afecee1409c2606ccfa44",
+  "source_data_blobs_verified": 349,
+  "remake_pin": "55d96876a98ba3bb7142ca7c1ecc0d1b61095c18",
+  "original_phase_controls_exact": 14,
+  "original_score_controls_exact": 6,
+  "fresh_native_rows_exact": 14,
+  "fleet_relation_gate_checks": 3568,
+  "whole_summary_equal": true,
+  "summary_sha256": "226c28b4180d2e8d9daf174394fc9eea3c51dc8d3e71ffa7fa78cfbe4705633f",
+  "summary": {
+    "cases": 14,
+    "fleet_and_relation_gate_checks": 3568,
+    "original_game_launched": false,
+    "native_game_launched": false,
+    "original_strength_rng_executed": true,
+    "original_stored_goals": [
+      [
+        48,
+        66
+      ],
+      [
+        47,
+        67
+      ]
+    ],
+    "identical_imported_decision_state_for_absent_and_two_stored_routes": true,
+    "identical_native_march_proposals_for_those_three": true,
+    "original_peace_trade_alliance_choose_port": true,
+    "native_peace_trade_alliance_offer_foreign_fleet_march": true,
+    "original_hunt_boundary_scores": [
+      100,
+      101
+    ],
+    "zero_moves_and_construction_outer_gates_match": true,
+    "classification": {
+      "fleet_march_weights": "explicitly designed native policy; not an unintended defect claim",
+      "stored_destination": "documented absent native field/canonical export reset; faithful feature/state-support gap"
+    },
+    "limits": [
+      "Synthetic fleet-phase controls, not fresh original live boundary traces.",
+      "Native measurements are offered fleet marches, not full greedy-loop accepted commands.",
+      "No matched naval combat/RNG-stream equivalence or full fleet strategy acceptance.",
+      "Ports are original measured choices; native port-selection parity not established."
+    ]
+  },
+  "stored_route_byte_proof": [
+    {
+      "case": "stored-a",
+      "only_changed_offsets": [
+        110148,
+        110149,
+        110150,
+        110151
+      ],
+      "fleet0_route_field_only": true
+    },
+    {
+      "case": "stored-b",
+      "only_changed_offsets": [
+        110148,
+        110149,
+        110150,
+        110151
+      ],
+      "fleet0_route_field_only": true
+    }
+  ],
+  "native_absent_a_b_states_and_proposals_equal": true,
+  "archive": {
+    "name": "fleet-controls-batch01.tar.gz",
+    "bytes": 2094486,
+    "sha256": "9262baa50a70ae5b4fb0dcfffc8317687e173ad01a4c14a9b7629afe8a94682f",
+    "members": 76
+  },
+  "limits": [
+    "Synthetic original F608 phase/prepass/scorers, intercepted before movement; no original/Wine/game launch",
+    "Native proposals, not full greedy-loop accepted command traces or naval combat/RNG equivalence",
+    "Stored-route+zero-move combination, protected ports, providers, cargo and routing/contact remain untested",
+    "Retained compiled tool replay, not independent rebuild/model review; no production fix or Windows acceptance",
+    "Local recovery only, no remote Drive digest verification"
+  ]
+}

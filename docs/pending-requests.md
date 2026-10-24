@@ -225,3 +225,20 @@ comparisons, all16starts/continuations and Windows acceptance remain open. No
 production correction, battle/ex-port gate closure or optional Improved-policy
 change is selected by this intake. Research42's terrain-step/native routing limits
 and contact5 remain separate.
+
+
+## Fleet stored destinations and accepted behavior (conquest #174 / remake #1405)
+
+The [fourteen synthetic fleet-phase controls](reports/2026-10-24-strategic-fleet-controls174.md)
+are reviewed for promotion. Original absent/A/B route words produce different
+first destinations; all three imported native states/proposals are identical.
+The current exporter explicitly documents canonical reset because native route
+state is absent. This is a faithful state-support gap, not a hidden current-policy
+violation, and designed sailing-score differences are not automatically defects.
+
+Remaining work: native route save/load/export lifecycle and accepted command traces;
+original live boundaries, stored-route+zero-move interaction, protected ports,
+provider thresholds, cargo and navigation/contact controls. The batch stops before
+movement and samples proposals only. No production schema/policy change, global
+RNG/naval combat/fleet parity or Windows completion is selected by intake.
+Homeland/economy/diplomacy/campaign expansion remain separate tasks175–178.
