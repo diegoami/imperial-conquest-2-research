@@ -1,5 +1,16 @@
 # Tactical AI: immutable replay inventory and original target-rule discrepancies
 
+The [2026-10-23 seed2 Walk follow-up](2026-10-23-seed2-walk-captured-target1377.md)
+reports a newer correction candidate with strict318/318 hooked state/post and draw
+matches, without known-failure exemptions. The baseline and incomplete correction
+remain317/318 and316/318. The historical comparison/inventory below keeps its exact
+original pin and counting units; it is not the current candidate's residual count.
+
+The later [owner #1355 reproduction](2026-10-23-ptolemaic-seleucid-computer-general-gap1355.md)
+adds a separate observed battle gap and a matched-entry/RNG movement divergence.
+It is not a rerun or resolution of the historical inventory below, and establishes
+no exact first original instruction or production cause.
+
 **Status:** `[confirmed, partial]` for research issue #25 / build #1107. The 318-log rerun and inventory reconciliation are complete. Local original-rule discrepancies have minimal reproductions; whole-battle causal attribution remains open where indicated below. This finding proposes no gameplay patch, draw rebaseline, fixture edit or expected-failure change.
 
 **Research intake:** promoted from `diegoami/ic2-conquest`, branch `main`, commit
@@ -121,6 +132,12 @@ FUN0043AA60 (40108–40190) adds1for an enemy **strictly below**, otherwise subt
 Synthetic HI actor(5,5), two moves; four live enemies at(8,6),(9,6),(8,5),(9,5), empty grid, seed1, captured horizontal flag false: original's first Walk destination is **(3,3)**; port ends at **(3,7)**. The x86 probe stops before Walk and captures its actual arguments; it does not stub movement. Original balance0becomes−1; port balance2becomes+1. This is a minimal local defect, not an attribution of any entire residual trial. No first draw mismatch is at the flank Random(3) site.
 
 ### E. Iteration, claims and remaining flank details `[code; attribution open]`
+
+The [2026-10-23 later-pass finding](2026-10-23-battle-general-later-pass-iteration1355.md)
+now demonstrates this iteration discrepancy causally on a separate interleaved
+owner-derived control, with a compiled correction candidate and focused regressions.
+It neither resolves the historical 36-residual inventory nor removes the other
+source-backed leads below; the old corpus still needs strict comparison.
 
 Only Pass1 FUN0043A31C uses type order `[HI,HC,LC,LI,Ar]` (table0x4790a0), then ascending slot. Pass2 FUN0043A544 and the threat/flank loops in FUN0043ABB4 iterate **ascending own slot** directly. The port reuses type order in every pass. A mixed unsorted army can therefore differ; a type-sorted army cannot establish this cause. No trial is assigned to this alone here.
 

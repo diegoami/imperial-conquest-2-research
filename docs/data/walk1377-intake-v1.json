@@ -1,0 +1,118 @@
+{
+  "source_commit": "e1a943d5f9de8b88787112f137ad8053a699e6e0",
+  "checker_sha256": "0fafd4086c24f99705ad814ba82f99dc28ff93f380c0d64803dcb062e743edec",
+  "corpus": {
+    "baseline": {
+      "trials": 318,
+      "state": 317,
+      "draws": 317,
+      "failed": 1,
+      "complete_record_sha256": "6b148ca7e1423aa12ed32ac1b3733c1a5f3db87400e9dedbaf1c010fe8288ba5",
+      "failed_trials": [
+        "mix-rg_s2_r5_hook"
+      ]
+    },
+    "cached-only": {
+      "trials": 318,
+      "state": 316,
+      "draws": 316,
+      "failed": 2,
+      "complete_record_sha256": "14583ff2697e6698d9ed783e6c8b2ca6381c383c11910969c90370443e986c34",
+      "failed_trials": [
+        "lc-ar-three-half_s1_r5_hook",
+        "lc-ar-three_s2_r5_hook"
+      ]
+    },
+    "cached-live": {
+      "trials": 318,
+      "state": 318,
+      "draws": 318,
+      "failed": 0,
+      "complete_record_sha256": "c4391b2337f68f14f59d37beec73f1be1bd5c80f4abeb347222644f2d8253a46",
+      "failed_trials": []
+    }
+  },
+  "fixed": {
+    "baseline": {
+      "fixedCases": 5,
+      "passed": 4,
+      "failed": 1,
+      "scope": "Unmodified strict GoldenReplay including fixed gate aliases; no registry exemptions"
+    },
+    "cached-live": {
+      "fixedCases": 5,
+      "passed": 5,
+      "failed": 0,
+      "scope": "Unmodified strict GoldenReplay including fixed gate aliases; no registry exemptions"
+    }
+  },
+  "regressions": {
+    "baseline": {
+      "passed": 3,
+      "failed": 2
+    },
+    "cached-only": {
+      "passed": 4,
+      "failed": 1
+    },
+    "cached-live": {
+      "passed": 5,
+      "failed": 0
+    }
+  },
+  "conditional_walks": {
+    "before": {
+      "calls": 49,
+      "different": 1
+    },
+    "cached-live": {
+      "calls": 49,
+      "different": 0
+    }
+  },
+  "original_gate_exact": true,
+  "selected_fixture_files_verified": 40,
+  "byte_identical_alias_pairs": 19,
+  "archives": [
+    {
+      "name": "seed2-semantic-batch01.tar.gz",
+      "bytes": 562897,
+      "sha256": "a589e6875625aeb620d1a2572bb9da81f8fb98a1cd6c7a01a2118e21d1d94325",
+      "members": 22
+    },
+    {
+      "name": "cached-live-tools-batch02.tar.gz",
+      "bytes": 4371549,
+      "sha256": "a02049656087296f8d1ef9885a626fe26eabc32c3a7c8845959193aebdde5ad0",
+      "members": 40
+    },
+    {
+      "name": "fixed-corpus-tools-batch03.tar.gz",
+      "bytes": 3186327,
+      "sha256": "ba996c8328fecb9636f935278d71abee8f1c028c0f0454ddca03dbc2520bae3d",
+      "members": 30
+    }
+  ],
+  "prior14_control_record_exact": true,
+  "prior14_record_sha256": "0a69ebc57c4a35d66aadfb23eac32c19b39d8bef302800e4348b649bd0e2720b",
+  "upstream_movement_tests": {
+    "total": 27,
+    "passed": 27,
+    "skipped": 0
+  },
+  "original_instruction_guards_verified": true,
+  "t206_general_blobs_verified": 4,
+  "comparator_source_files_verified": 5,
+  "post_rout_common_state_verified": true,
+  "original_raw_semantic_redecode_equal": true,
+  "complete_seed2_replay_and178_action_comparison_equal": true,
+  "only_two_seed_immediates_changed": true,
+  "limits": [
+    "Offline retained binaries and recorded fixtures; no fresh original/Wine or independent rebuild",
+    "Strict helper-defined block/post fields and ordered bounds/results, not every hidden runtime field",
+    "No registry/fixture/sibling production-source changes; no main CI/Godot/Windows claim",
+    "Private corpus, owner data/hashes and full control outputs excluded; work directory must stay private",
+    "Prior historical assumptions and three Selected defaults remain; no separate model review",
+    "Local archive verification only; no Drive download/readback"
+  ]
+}

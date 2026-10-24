@@ -85,6 +85,40 @@ or fixture change is authorized merely by promoting this report.
 Partial rule findings remain evidence for build evaluation; unexplained cases and
 research #25 / build #1107 stay open until that attribution is established.
 
+**Earlier owner reproduction (2026-10-23, build #1355 / conquest #154):**
+[Ptolemaic–Seleucid Computer general gap](reports/2026-10-23-ptolemaic-seleucid-computer-general-gap1355.md)
+is confirmed under Wine. The matched-original-entry/RNG native control still diverges;
+six positions differ after the first completed movement half, before casualties.
+That packet reproduced the private audit/entry checks without establishing an exact
+first original instruction, cause or fix; the later control evidence below advances
+that scope. Keep #1355 open. This is separate from the historical
+318-hook/36-residual inventory above; no rebaseline, balance or fixture change.
+
+**Later causal/control evidence (conquest #157, PR #161):** the
+[later-pass iteration report](reports/2026-10-23-battle-general-later-pass-iteration1355.md)
+establishes slot-versus-type iteration on a new fixed-seed owner-derived case.
+The actual compiled four-file correction reproduces 14 recorded tactical controls,
+2,331 combat draw bounds/results, 253 available boundaries and measured terminal
+slots/grid/counter/RNG. Research independently reran those checks and the focused
+before/after regressions, CPU preservation and parser corruption controls.
+The natural-RNG historical case remains an assumption control, and the full318,
+independent copy-in/writeback, native Windows and main-project review/CI remain
+pending. #1355/#157 stay open; no production patch is merged by research. Owner's
+faithful-first choice and the later optional controller investigation (#1362) are
+separate; no optional general is implemented here.
+
+**Seed2 movement follow-up (#1377 / conquest #157):** the
+[captured-target/live-shot finding](reports/2026-10-23-seed2-walk-captured-target1377.md)
+links the remaining seed2 Walk step to the later draw mismatch. Keeping the captured
+destination enemy plus checking liveness before shooting yields strict318/318 state/
+post and ordered-draw matches; capture-only introduces two cavalry failures.
+Research reproduces all three full-corpus results, fixed-series/regr-ession/Walk
+controls and27unchanged movement tests. The old36-residual inventory above remains
+historical; the new candidate has zero residuals in this sampled hooked corpus.
+No registry/fixture rebaseline, production merge, blanket crafted-grid fidelity,
+main/Godot/solution CI or Windows acceptance is asserted. Keep the owner's separate
+T206 ordering scope and #1377 movement follow-up distinct.
+
 ## SAV export semantic and native Windows gate (research #37)
 
 The [partial safety finding](reports/2026-10-17-sav-export-live-regions-and-safe-rejection-policy.md) establishes the live city list, historical baselines, 31 UNKNOWN nation bytes and constructor residue. It does not clear changed-state export. Main #1194/T185 stays open. An unchanged authentic identity path still requires complete-state and framing/version validation; same-template lineage does not establish safe changed-state inheritance.
@@ -137,6 +171,23 @@ Research #37 remains open. Four gates remain:
 The main project evaluates the promoted revision and routes evidence into
 T184–T186/#1191; no Evaluated marker or downstream completion is asserted here.
 
+**Separate conversion progress (2026-10-23, conquest #151):** the
+[six-scenario/seven-session report](reports/2026-10-23-remake-original-save-conversion-roundtrips.md)
+records generated remake JSON → original Wine → remake acceptance. Research
+reproduced the full comparison/audit, 164 archive-entry hashes and thirteen policy
+passes. It is not the owner's twelve-save set, format-4 migration, T185 review or
+native Windows validation; none of research #37's remaining gates is waived.
+Research #63's quality-range work is separate. No new game ran during intake.
+
+**Broader generated-input evidence (conquest #153):**
+[77 strategic round trips](reports/2026-10-23-broad-save-conversion-matrix.md)
+cover all16 nation starts, four progressed states, 56 feature cases and one synthetic
+format4 migration; 12 converter/input refusals remain safe. Four deterministic
+action gaps and the known conqueror-history import loss are explicitly retained.
+Research reproduces the full comparison/coverage/audit and freshly passes 154 policy
+checks. This expands Wine evidence; it neither validates the owner's twelve inputs
+nor clears the native Windows gate or establishes tactical outcome equivalence.
+
 ## Crafted battle-grid fidelity (research #40)
 
 [Source and retained-save audit](reports/2026-10-21-crafted-battle-grid-movement-and-line.md)
@@ -169,3 +220,46 @@ redraw/sound stubs and synthetic parent frames are explicit. Next: narrowly
 owned build evaluation with normal/contact/endpoint/edge controls and separately
 coordinated native routing evidence. Historical C4 Wine totals remain endpoints,
 not observed crossed tiles; #42/build1012 stay open. Contact#5 remains separate.
+
+
+## Strategic target eligibility, routing and resupply (#1388 / conquest #171)
+
+[Owner routing control](reports/2026-10-24-seleucid-strategic-target-routing1388.md)
+and [generated-input pilot](reports/2026-10-24-strategic-fidelity-pilot171.md) are
+promoted as bounded source/instruction/retained-observation findings. Research
+reproduced their audits and conditional tools; the original own-city selector
+correction is applied in strategic-ai-turn §3.3 and the rules specification.
+This does not require a new low-level land-step rule: the owner control's21steps
+already match when given the original intermediate destination.
+
+Remaining downstream work is original navigation data/eligibility plus wrapper
+routing, faithful selector evaluation and broader same-input strategic families.
+The112pilot decision states are correlated snapshots, not112campaigns. Full native
+greedy selection, homeland/fleet/economy/diplomacy/recruitment decision+global RNG
+comparisons, all16starts/continuations and Windows acceptance remain open. No
+production correction, battle/ex-port gate closure or optional Improved-policy
+change is selected by this intake. Research42's terrain-step/native routing limits
+and contact5 remain separate.
+
+
+## Fleet state, accepted actions and movement (conquest #174)
+
+The [stored-destination finding](reports/2026-10-24-strategic-fleet-controls174.md)
+and [accepted-movement follow-up](reports/2026-10-24-fleet-accepted-movement174.md)
+are distinct bounded intakes. The follow-up confirms that native fleet approaches
+can be accepted commands, while original fleet-phase and native full-seat histories
+remain incomparable as whole turns. Fresh offline original/native controls reproduce the budget counterexample at the retained build. Main #1408 is now closed and `status:merged`; no post-fix build was tested here.
+
+Main [#1408](https://github.com/diegoami/imperial_conquest_2/issues/1408)
+holds the merged narrow budget correction;
+[#1409](https://github.com/diegoami/imperial_conquest_2/issues/1409)
+separates faithful selection and waypoint execution from intentionally designed
+sailing policy;
+[#1405](https://github.com/diegoami/imperial_conquest_2/issues/1405)
+retains stored-route state support beyond v0.8 by owner decision. Disembarkation,
+capacity, provider thresholds, route lifetime, naval combat, global RNG and
+native-Windows acceptance remain unproved. The [navigation-rule intake](reports/2026-10-24-army-navigation-rule187.md) now supplies static data and a bounded eligibility/first-destination contract for conquest #187. Main #1394/T212 remains open and `status:blocked`: F31C continuation is covered, other caller histories are not. No new caller experiment is authorized by this intake.
+
+## New continuation packet awaiting intake
+
+Conquest [PR190](https://github.com/diegoami/ic2-conquest/pull/190), source `71294186`, was relayed while the #174/#187 consolidation was under review. Its economy/diplomacy/fleet continuation and cargo-overflow claim (Main #1412) are **queued, not promoted or independently verified here**. They are separate from the bounded fleet-at-sea cargo and navigation findings above.

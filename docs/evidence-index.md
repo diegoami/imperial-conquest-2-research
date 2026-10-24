@@ -13,6 +13,9 @@ The originals live in the repository [`diegoami/imp_conquest_fixtures`](https://
 
 ## The releases
 
+The conversion experiment below is on Drive rather than in a release; its original
+game observations are Wine-only. It adds no native Windows acceptance result.
+
 The releases `run-exp-*` are in `diegoami/ic2-conquest`, not in the fixtures repository: each holds one bot experiment's saves and screenshots, which are Wine-only evidence (retrieve with `gh release download <tag> --repo diegoami/ic2-conquest`).
 
 A few small probe saves are committed in the fixtures repository itself rather than in a release: `saves/new-game-probes/` (three new-game autosaves, 2026-09-29) and `saves/fortification-probe/` (a planted-order pair, 2026-09-29). Their rows in the table below link to the files in the repository.
@@ -2071,3 +2074,266 @@ are exact candidate matches; control 1 retains area-map and earlier baseline
 Information-window geometry differences. No capture image or private path is
 reproduced. Internal callback traces remain UNVERIFIED, UNKNOWN31 unknown;
 this 3/3 tax-only result is zero of twelve native-JSON conversions.
+
+
+## Remake ↔ original Wine conversion (#151, 2026-10-23)
+
+[Consolidated report](reports/2026-10-23-remake-original-save-conversion-roundtrips.md),
+conquest [PR #152](https://github.com/diegoami/ic2-conquest/pull/152), immutable
+source `4ca3afa04c3eb8454c63ed6a4984f5564e8e0496`.
+[Tracked manifests, commands and receipts](https://github.com/diegoami/ic2-conquest/tree/4ca3afa04c3eb8454c63ed6a4984f5564e8e0496/runs/experiments/data/run-exp-sav-conversion-roundtrip).
+
+The private [Drive folder](https://drive.google.com/drive/folders/1OQWVtWzeN6k-_EgfU_3U_vFa4MjmXfqv)
+holds the complete [batch2 archive](https://drive.google.com/file/d/10BGy85kM1jUA7iXCdvwzkYXcc1z6fZzQ/view):
+`batch2-complete.tar.gz`, 3,118,135 bytes / 85 files, SHA256
+`c21c8607eb1def47b7ea592d2494dd5b9a72ef9dea0cf1342b26205b94fdd91f`.
+The earlier `batch1-conversions.tar.gz`, 3,007,535 bytes / 79 files, SHA256
+`819dc8fc5891487893bdebba32b9fec21bdb99711cc2559cc76e5c70f36e7058`,
+is retained too. Research freshly verified both local archives, every tar member and
+all 164 manifest entries; many entries occur in both archives. No Drive download/hash
+readback was performed by research. No release or original EXE/DAT is included.
+
+| Case / runtime | Original-produced save basenames | What they bind |
+| --- | --- | --- |
+| A / unmodified EXE, Wine | `P151AI.SAV`, `P151AO.SAV`, `P151AR.SAV` | Initial generated remake state: immediate save, tax26, fresh-process reopen/resave |
+| B / unmodified EXE, Wine | `P151BI.SAV`, `P151BO.SAV`, `P151BR.SAV` | Queued HI and fleet construction, same three boundaries |
+| C / unmodified EXE, Wine | `P151CI.SAV`, `P151CO.SAV`, `P151CR.SAV` | Six remake turns later |
+| D / unmodified EXE, Wine | `P151DI.SAV`, `P151DO.SAV`, `P151DR.SAV` | Twelve remake turns later |
+| E / unmodified EXE, Wine | `P151EI.SAV`, `P151EO.SAV`, `P151ER.SAV` | Twenty-four remake turns later |
+| F / unmodified EXE, Wine | `P151FI.SAV`, `P151FO.SAV`, `P151FR.SAV` | Explicitly synthetic carrier/army linkage |
+| G / instrumented seed EXE, Wine | `P151GI.SAV`, `P151GO.SAV`, `AUTO0721.SAV`, `P151GT.SAV`, `P151GR.SAV` | B input repeated, tax26, one End turn, explicit save, fresh-process reopen/resave |
+| A–G / remake re-exports | `RETURNA.SAV`, `RETURNB.SAV`, `RETURNC.SAV`, `RETURND.SAV`, `RETURNE.SAV`, `RETURNF.SAV`, `RETURNG.SAV` | Original results imported/reloaded/resumed, accepted tax27, re-exported; all policy passes |
+
+Bare names resolve through the pinned complete manifest to their case directory in
+the archive. The JSON snapshots are newly generated experimental states, not the
+owner's twelve private preflight inputs. Save bytes, native JSON and screenshots
+remain outside research Git. The [research receipt](data/conversion151-intake-v1.json)
+contains scalar checks only; the report preserves normalization, RNG and runtime limits.
+
+
+## Broad strategic conversion (#153, 2026-10-23)
+
+[Report](reports/2026-10-23-broad-save-conversion-matrix.md), conquest
+[PR #155](https://github.com/diegoami/ic2-conquest/pull/155), source
+`83d52d2bad99ad8e3870f498cd7d939e0354f482`. The
+[complete per-case coverage CSV](https://github.com/diegoami/ic2-conquest/blob/83d52d2bad99ad8e3870f498cd7d939e0354f482/runs/experiments/data/run-exp-sav-conversion-broad153/coverage-final.csv)
+and [packet/manifests](https://github.com/diegoami/ic2-conquest/tree/83d52d2bad99ad8e3870f498cd7d939e0354f482/runs/experiments/data/run-exp-sav-conversion-broad153)
+resolve every selected original save and its versioned case. There are 77 round
+trips but only 53 distinct exported input SAVs; cases intentionally reuse states.
+These are generated/synthetic inputs, not the owner's twelve-save set or #1355 files.
+
+Complete [Drive archive](https://drive.google.com/file/d/16xF3L8qDSFcotMLhA5yOon2Rqm56gJXc/view):
+`batch-final.tar.gz`, 21,030,521 bytes / 900 files, SHA256
+`35db99998eb18955469200eb3af755d0abc6cf980cc5f9dd38a13f43905688c1`.
+The [Drive folder](https://drive.google.com/drive/folders/1PwRAw0xg4WKp5MpgpcRO3Fg6B4H5dnmn)
+also retains earlier batches. The valid third archive is `batch-03-complete.tar.gz`
+on Drive (`batch-03.tar.gz` in the local manifest); the earlier partial upload is
+marked `INCOMPLETE-do-not-use`. Research verified all four complete local archives,
+2,516 tar-member entries and the 2,754-check audit. Entries overlap across batches;
+these are not unique-save counts. Drive copies were not downloaded by research.
+
+| Cited original save basename | Case / scope |
+| --- | --- |
+| `Q15359R.SAV` | F39 naval battle, instrumented original, turn0720; continuation, not equal combat outcome |
+| `Q15360R.SAV` | F40 siege/capture, instrumented original, turn0720 |
+| `Q15361R.SAV` | F41 aftermath of a native field battle, original turn0721; not tactical outcome parity |
+| `Q15357R.SAV` | F37 two-human handoff, instrumented original |
+| `Q15375R.SAV` | F54 reversed cargo arrays and landing, turn0720 |
+| `Q15377R.SAV` | F56 fleet removal before a live cargo carrier; reciprocal army13 link survives, turn0720 |
+
+All source/return exports, original immediate/order/reopen saves and screenshots
+remain outside research Git. The shared [scalar intake receipt](data/conversion153-battle1355-intake-v1.json)
+records exact comparison/coverage/audit reproduction and 154 fresh policy passes.
+
+## Private owner battle #1355 (2026-10-23)
+
+[Focused report](reports/2026-10-23-ptolemaic-seleucid-computer-general-gap1355.md),
+conquest [PR #156](https://github.com/diegoami/ic2-conquest/pull/156), source
+`12ae80280609d8d40ec3eca942a7a893af3e5161`. The
+[public-safe aggregate audit and probe code](https://github.com/diegoami/ic2-conquest/tree/12ae80280609d8d40ec3eca942a7a893af3e5161/runs/experiments/data/run-exp-battle1355)
+and research's shared scalar receipt contain no owner input paths, input hashes,
+full state, screenshot or trace. Private access requires owner coordination; none
+of that evidence is in #153's Drive bundle or a public release.
+
+Research checked private preservation/export equality, complete safe-audit
+reproduction, controlled entry fields, repeated control state and the original
+result screenshot against terminal memory. The battle completed; the recorder
+failed after its battle flag cleared. No final original SAV/reopen is claimed.
+Wine only; no exact first original instruction, cause, fix or Windows acceptance.
+
+
+## Later-pass iteration and faithful-general candidate (#157, 2026-10-23)
+
+[Research report](reports/2026-10-23-battle-general-later-pass-iteration1355.md),
+source conquest [PR #161](https://github.com/diegoami/ic2-conquest/pull/161),
+`b7f11a3ff9b2f93e111c5ea13b6b66e919cc6688` (including earlier PR #159).
+[Original observer/pilot packet](https://github.com/diegoami/ic2-conquest/tree/b7f11a3ff9b2f93e111c5ea13b6b66e919cc6688/runs/experiments/data/run-exp-battle-parity157)
+and [compiled candidate packet](https://github.com/diegoami/ic2-conquest/tree/b7f11a3ff9b2f93e111c5ea13b6b66e919cc6688/runs/experiments/data/run-exp-faithful-general157)
+pin the scripts, manifests, source/assembly identities and scalar checks.
+
+| Private Drive retrieval | Bytes / files | SHA256 |
+| --- | --- | --- |
+| [reference-batch01.tar.gz](https://drive.google.com/file/d/1q-BM_9QjvpvLDCu-TYSi6wm4xuY_J6Uh/view) | 1,419,660 / 58 | `5feaf72645a0d93eea1681368c6d9eea0b339892edcf1ff8902e01b1e9d07ddd` |
+| [pilot-semantic-batch02.tar.gz](https://drive.google.com/file/d/1CKvkjvsykKXP4q9SS9APbiOzY1ZOHjuW/view) | 7,038,349 / 316 | `e0f6d4976054a3ccdf3144c2d9eb85cd1cb797c1e46250a870eb414395a238d8` |
+| [faithful-engine-candidate-v1.tar.gz](https://drive.google.com/file/d/1pTuqmpNKd4-uhHW9wAhcknJ_n5BQA6aH/view) | 600,501 / 8 | `7811e54a7f5e1e425dbec0252a2a6266330f57be8d5c286cce023ad897b0c84b` |
+
+Research rehashed all local archive bytes and all 382 members. The first two
+contain public-reference/synthetic-pilot saves and logs, not owner evidence or
+original EXE/DAT/prefixes. `BATTLE01.SAV` onward resolve by the case folders in
+the manifests; the reference is the already indexed turn0743 fixture. The
+candidate contains compiled remake engine/data and regression/replay tools,
+not a deployed game; shared engine DLLs must accompany the extracted tool DLLs.
+Drive metadata readback is upstream; no remote download/digest claim is added here.
+
+Owner-derived turn0756 saves, fresh-reopen pairs, original observations and full
+native replay outputs remain private and require owner coordination. No individual
+owner hash or input path is reproduced. New seed1 owner controls and the earlier
+historical natural-RNG reproduction are different evidence streams; the latter
+keeps its missing-field assumptions. Research's
+[scalar receipt](data/faithful157-intake-v1.json) records fresh offline validation,
+including entire14-control verification equality and recorder checks, without
+publishing private traces. No new Wine/original run, Windows validation, full318
+acceptance, strategic copy-in/writeback validation or production merge is claimed.
+
+
+## Seed2 Walk target lifetime (#1377, 2026-10-23)
+
+[Research report](reports/2026-10-23-seed2-walk-captured-target1377.md), conquest
+[PR #165](https://github.com/diegoami/ic2-conquest/pull/165), merged source
+`e1a943d5f9de8b88787112f137ad8053a699e6e0`.
+[Evidence/source patch](https://github.com/diegoami/ic2-conquest/tree/e1a943d5f9de8b88787112f137ad8053a699e6e0/runs/experiments/data/run-exp-battle-residual157)
+and [original semantic records](https://github.com/diegoami/ic2-conquest/tree/e1a943d5f9de8b88787112f137ad8053a699e6e0/runs/experiments/data/run-exp-battle-parity157/seed2-residual-v1)
+retain the baseline, incomplete and complete controls. The two fixture aliases
+`mix-rg_s2_r5_hook` and `gate2_s2a` share18boundary saves andpost exactly;
+they do not count as two independent original trajectories.
+
+The [Drive folder](https://drive.google.com/drive/folders/1_NkvDEBYL1IO_2uPGPp5TffTuRHM7oxs)
+holds three explicitly selected bundles:
+
+| Archive | Bytes / members | SHA256 |
+| --- | --- | --- |
+| `seed2-semantic-batch01.tar.gz` | 562,897 / 22 | `a589e6875625aeb620d1a2572bb9da81f8fb98a1cd6c7a01a2118e21d1d94325` |
+| `cached-live-tools-batch02.tar.gz` | 4,371,549 / 40 | `a02049656087296f8d1ef9885a626fe26eabc32c3a7c8845959193aebdde5ad0` |
+| `fixed-corpus-tools-batch03.tar.gz` | 3,186,327 / 30 | `ba996c8328fecb9636f935278d71abee8f1c028c0f0454ddca03dbc2520bae3d` |
+
+Research verified all local archive bytes and92members, not a remote download.
+The original bundle resolves `BATTLE01.SAV` through `BATTLE18.SAV` under the
+seed2 case folder and the fresh `seed2-residual-v1-AFTER.SAV` /
+`seed2-residual-v1-REOPEN.SAV` pair. The strategic start is the already indexed
+`FLD-RG_0743_rome_army0_at_86_28.SAV`, turn0743, fixture revision6319802.
+Tool bundles contain compiled remake/test/replay dependencies, not a deployed game.
+Original EXE/DAT, the full recovered private corpus, owner inputs/hashes and owner
+replays are excluded. Those private inputs require separate owner coordination.
+
+The [scalar intake receipt](data/walk1377-intake-v1.json) records exact full-corpus
+summary/row reproduction, five fixed-series and five regression controls,49Walks,
+178actions, the prior14controls,27upstream movement tests and the325draw/18SAV
+recorder gate. Strict state/post comparison follows the named upstream helpers;
+it is not every hidden runtime field, whole-file export identity or Windows
+acceptance. No fixture, known-failure registry or sibling source was changed.
+
+
+## Owner strategic destination/routing (#1388, 2026-10-24)
+
+[Report](reports/2026-10-24-seleucid-strategic-target-routing1388.md), conquest
+[PR167](https://github.com/diegoami/ic2-conquest/pull/167), original merge
+`889557fa2d8f1dd6f36bc5ef3a06bcaf3532082c`, reviewed in source main
+`363a9069089bd400c6905f3b93975162395031b3`.
+[Public scalar audit/source/build records](https://github.com/diegoami/ic2-conquest/tree/363a9069089bd400c6905f3b93975162395031b3/runs/experiments/data/run-exp-seleucid1388)
+contain no owner inputs or full RAM/logs. Private turn0755→0756 before/after pairs,
+pre-walk RAM and complete original/native diagnostics require owner coordination;
+no public binary archive or new owner release exists. The three same-seed runs
+are observer controls on one owner trajectory, not independent scenarios.
+
+Research replays the original helpers from that captured RAM and reproduces the
+complete safe audit, full656-byte post-walk record and21paired steps. Private
+input/save hashes, paths and full state are excluded from the
+[shared scalar receipt](data/strategic171-intake-v1.json). No new original game,
+full-turn RNG parity, deployed correction or Windows result is claimed.
+
+## Generated strategic fidelity pilot (#171, 2026-10-24)
+
+[Report](reports/2026-10-24-strategic-fidelity-pilot171.md), conquest
+[PR172](https://github.com/diegoami/ic2-conquest/pull/172), source
+`363a9069089bd400c6905f3b93975162395031b3`.
+[Per-case declarations/audits](https://github.com/diegoami/ic2-conquest/tree/363a9069089bd400c6905f3b93975162395031b3/runs/experiments/data/run-exp-strategic-fidelity)
+resolve the generated cases and original turn0720→0721 before/after files.
+Bare examples: `SF-N-rome-hook-v1-after.SAV`,
+`SF-L-ptolemaic-isolated-hook-v1-after.SAV`. The pattern
+`SF-<case>-hook-v1-before.SAV` / `SF-<case>-hook-v1-after.SAV` and the two `plain-v1`
+control pairs resolve through the manifests, rather than an owner-input list.
+
+Private [Drive folder](https://drive.google.com/drive/folders/1gNiyzqi7RbgV0U4AJ5xwiYeDzK58H8-i):
+
+| Archive | Bytes / members | SHA256 |
+| --- | --- | --- |
+| [pilot-evidence-batch01.tar.gz](https://drive.google.com/file/d/17WwEnBzQTlrOgJ-n7bTbBq7jwjEKLzRD/view) | 9,008,591 / 455 | `03f77f01cf23cac83cd86598115aa482f2903826efb525bbb719e8222cbf4f24` |
+| [isolated-scarcity-and-tools-batch02.tar.gz](https://drive.google.com/file/d/1cF2nLkQPvkTMl98UIuG7lPm2VEqr3v1z/view) | 1,301,860 / 42 | `e3dfd26a4607d20832790f6e139daec5c10543734971c560f79550e500c519cc` |
+| [terrain-sidecars-batch03.tar.gz](https://drive.google.com/file/d/1ICs45mHD4lvbV7Utol6H-AQAv5VDGw5D/view) | 12,551 / 2 | `d52e297b3211890af5c51dc917c2cb0d7a3c9d71419cd2012e45ef1c84b2d620` |
+| [geometry-audit-tools-batch04.tar.gz](https://drive.google.com/file/d/1k5tbljKOYEJX6McF4bMepmUQLB0yoll9/view) | 601,045 / 5 | `f0b92b307836a78e9c7017762dd99f20ec7fd48588ec3da7ab94e6163bac8613` |
+
+Research rehashed/recovered all504members, checked exact archive inventories and
+reran retained compiled tools. All three modes match over112states; the recovered
+geometry tool reproduces all112rows. Batch02 `tools-v7` supersedes batch01's
+initial tool; batch03's terrain sidecars and batch04 geometry tool are required.
+The first failed sidecar recovery remains recorded. These bundles contain generated
+RAM/diagnostic containers, not owner1355/1388 inputs or original EXE/DAT/runtime.
+RAM-projection SAVs are synthetic containers, never original Save As evidence.
+Local archive verification adds no remote-download digest claim. Eleven distinct
+inputs do not establish full greedy/global RNG/strategic or Windows equivalence.
+
+
+## Synthetic fleet-phase controls (#174, 2026-10-24)
+
+[Report](reports/2026-10-24-strategic-fleet-controls174.md), conquest
+[PR179](https://github.com/diegoami/ic2-conquest/pull/179), source
+`8d975efddd66fd81371991936a7fd0cbc58016be`.
+[Manifest/source/results](https://github.com/diegoami/ic2-conquest/tree/8d975efddd66fd81371991936a7fd0cbc58016be/runs/experiments/data/run-exp-strategic-fleet)
+resolve fourteen cases, including `stored-a` and `stored-b`. Each `pre-move.SAV`
+is a synthetic diagnostic container; it is not an original Save As or a new played
+turn. The clock field is0720 from the generated pilot snapshot lineage. The first
+original movement call is intercepted before executing movement.
+
+Private [Drive folder](https://drive.google.com/drive/folders/1WtM93OfebUVt7vkA1EsWAsSnpWeGVdk8):
+`fleet-controls-batch01.tar.gz`,2,094,486bytes/76members, SHA256
+`9262baa50a70ae5b4fb0dcfffc8317687e173ad01a4c14a9b7629afe8a94682f`.
+Research rehashed all local members, checked the exact inventory, and recovered
+the bundle into a new tree. Recovered and fresh-input compiled native tools
+reproduce all14rows exactly. There is no remote-download digest claim.
+
+Inputs are generated RAM/SAV/expected-JSON controls, native data/terrain sidecars
+and compiled probe/Engine/Data tools. Original EXE/DAT, runtime/credentials and
+owner1355/1388 inputs/traces are excluded. The [scalar intake receipt](data/fleet174-intake-v1.json)
+records original phase/scorer reproduction,3,568fleet/relation gates and the
+four-byte stored-route proof. Native state/proposal hashes refer to synthetic
+controls, not owner preflight saves. Proposed marches are not accepted actions;
+no naval combat, full fleet/global RNG or native Windows equivalence is claimed.
+
+
+## Accepted fleet movement and army navigation (#174/#187, 2026-10-24)
+
+Reports: [fleet accepted actions](reports/2026-10-24-fleet-accepted-movement174.md),
+[army navigation](reports/2026-10-24-army-navigation-rule187.md).
+Common source pin `1525f3985cc54834c5855055599188197c9ec4d4`; [fleet manifest and case ledgers](https://github.com/diegoami/ic2-conquest/blob/1525f3985cc54834c5855055599188197c9ec4d4/runs/experiments/data/run-exp-fleet-actions174/),
+[navigation tables, source ledger and scalar controls](https://github.com/diegoami/ic2-conquest/blob/1525f3985cc54834c5855055599188197c9ec4d4/runs/experiments/data/run-exp-navigation187/).
+Generated before/after Save As names include `FA174-live-rom-hook-v1-before.SAV`
+and `FA174-live-rom-hook-v1-after.SAV`, with matching `plain-v1` counterparts.
+These four files describe one generated Rome trajectory, not independent campaigns.
+Other synthetic projected SAVs in the manifest are diagnostic containers.
+
+Private [Drive folder](https://drive.google.com/drive/folders/19FVgahM2dSCOBxYyHV0ZR2P4TEyU2d5D):
+[fleet-actions-batch01.tar.gz](https://drive.google.com/file/d/1fFCIu5lKk3LuUO-ILGSI9FR8UYa7055d/view),
+8,322,493 bytes / 466 members, SHA256
+`3189e5084511e54e926c74222e766658f6e8c4d2aef0a3f12c1e93662deabecd`.
+Research checked the local archive hash, every member hash and exact inventory,
+recovered it into a new tree, and reproduced all 33 native path results byte for
+byte. No remote-download digest claim. Generated evidence/compiled probes are
+included; original assets, runtime, credentials and owner inputs are excluded.
+
+Navigation's static table extraction uses separately retained original assets
+and generated pilot RAM. Public interpreted tables are not a binary release.
+The final private #1388 regression remains private and is represented only by
+its safe audit; no owner input names, hashes, RAM or complete traces are indexed.
+The [research scalar receipt](data/actions-navigation187-intake-v1.json) records
+fresh instruction/native checks and the exact observer-only trace difference.
+No new original game, universal caller contract, global RNG or Windows claim.

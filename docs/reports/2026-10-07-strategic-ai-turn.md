@@ -213,11 +213,17 @@ qualifies and 5 does not. See [2026-10-16-strategic-ai-regions-resupply.md](2026
 
 Three scorers run per army (`FUN_0044f31c`, :52919–52971):
 
-- `FUN_0044e670` (:52307) — **resupply/defence city**: an own city whose supply stock is below the
-  army's strength (`troops/100`), or (only while at war) a foreign non-war city with stock above
-  strength + 80 and `money > strength/5`; own cities score −20 if they are a capital
-  (`FUN_0044b8d0` — see §5), foreign +20. If nothing qualifies or the best foreign city is beyond
-  15, fall back to the nearest own city.
+- `FUN_0044e670` (:52307) — **resupply/defence city**, corrected 2026-10-24:
+  let `q = trunc(troops/1000)`. An own city qualifies when supply stock is **above q**;
+  the foreign non-war path additionally requires the acting nation to be at war,
+  stock `> q + 80` and purse `> trunc(q/5)`. Minimize adjusted Chebyshev distance:
+  subtract20 for an own city that is a capital (`FUN_0044b8d0`, §5), add20 for a
+  foreign city. If none qualifies, or the selected foreign city's **adjusted**
+  distance exceeds15, fall back to the nearest own city. The earlier below/100
+  prose was wrong. [Six original-instruction controls and matched native gates](2026-10-24-strategic-fidelity-pilot171.md)
+  verify the own-city threshold/divisor and capital preference. This is a city-choice
+  threshold, distinct from §3.2's actual automatic supply capacity `troops/100`;
+  foreign preference was not independently isolated by those six controls.
 - `FUN_0044ece4` (:52655) — **best enemy city to attack** (cities of nations at war, reachable by
   land or because the nation owns a fleet, `FUN_0044cab4`):
 
@@ -283,8 +289,14 @@ go to the capital `[confirmed: decompile]`.
 
 ## 4. The fleet phase: `FUN_0044f608` [confirmed: decompile]
 
-For every own launched fleet (construction countdown `+0x0A == -1`) with no pending destination
-(the packed `xy` at `+0x4`, read as "no destination" when negative `[derived]`):
+For every own launched fleet (construction countdown `+0x0A == -1`), first run
+the supply/repair prepass and compute a port candidate. Then a nonnegative stored
+destination **X word at `+4`** dispatches to that stored pair; otherwise the hunt/
+port decision runs only with positive moves. This clarifies the earlier intro,
+which incorrectly restricted the whole phase to absent destinations and called
+the absence test a negative packed coordinate. [Fourteen bounded controls](2026-10-24-strategic-fleet-controls174.md)
+corroborate the distinction; they stop before movement and do not test the stored-
+route/zero-move combination or accepted native actions.
 
 1. **Resupply and repair** — `FUN_0044e5dc` (:52278) visits cities at Chebyshev distance
    **< 4**, then `FUN_0044f7e4` (:53120):
@@ -315,7 +327,8 @@ For every own launched fleet (construction countdown `+0x0A == -1`) with no pend
    - Distance ranks the candidates but does not stop a hunt: AI fleets were seen chasing across
      26-181 tiles.
    - A fleet that already has a stored destination (for example, called as a ferry by an army)
-     sails there, with no hunt or port choice.
+     dispatches there without hunting. The precomputed port candidate does not choose its
+     destination; the port selector/prepass still execute before this branch.
    Seen in play: [`2026-10-09-ai-intercept-and-fleet-hunt-in-play.md`](2026-10-09-ai-intercept-and-fleet-hunt-in-play.md).
 4. **Move** — `FUN_0044e1fc` (:52115), the fleet's `FUN_0044dba8`: walks the sea path spending
    moves; on the final step, a land cell disembarks the carried army (for a computer nation the
