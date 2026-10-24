@@ -2303,3 +2303,32 @@ records original phase/scorer reproduction,3,568fleet/relation gates and the
 four-byte stored-route proof. Native state/proposal hashes refer to synthetic
 controls, not owner preflight saves. Proposed marches are not accepted actions;
 no naval combat, full fleet/global RNG or native Windows equivalence is claimed.
+
+
+## Accepted fleet movement and army navigation (#174/#187, 2026-10-24)
+
+Reports: [fleet accepted actions](reports/2026-10-24-fleet-accepted-movement174.md),
+[army navigation](reports/2026-10-24-army-navigation-rule187.md).
+Common source pin `1525f3985cc54834c5855055599188197c9ec4d4`; [fleet manifest and case ledgers](https://github.com/diegoami/ic2-conquest/blob/1525f3985cc54834c5855055599188197c9ec4d4/runs/experiments/data/run-exp-fleet-actions174/),
+[navigation tables, source ledger and scalar controls](https://github.com/diegoami/ic2-conquest/blob/1525f3985cc54834c5855055599188197c9ec4d4/runs/experiments/data/run-exp-navigation187/).
+Generated before/after Save As names include `FA174-live-rom-hook-v1-before.SAV`
+and `FA174-live-rom-hook-v1-after.SAV`, with matching `plain-v1` counterparts.
+These four files describe one generated Rome trajectory, not independent campaigns.
+Other synthetic projected SAVs in the manifest are diagnostic containers.
+
+Private [Drive folder](https://drive.google.com/drive/folders/19FVgahM2dSCOBxYyHV0ZR2P4TEyU2d5D):
+[fleet-actions-batch01.tar.gz](https://drive.google.com/file/d/1fFCIu5lKk3LuUO-ILGSI9FR8UYa7055d/view),
+8,322,493 bytes / 466 members, SHA256
+`3189e5084511e54e926c74222e766658f6e8c4d2aef0a3f12c1e93662deabecd`.
+Research checked the local archive hash, every member hash and exact inventory,
+recovered it into a new tree, and reproduced all 33 native path results byte for
+byte. No remote-download digest claim. Generated evidence/compiled probes are
+included; original assets, runtime, credentials and owner inputs are excluded.
+
+Navigation's static table extraction uses separately retained original assets
+and generated pilot RAM. Public interpreted tables are not a binary release.
+The final private #1388 regression remains private and is represented only by
+its safe audit; no owner input names, hashes, RAM or complete traces are indexed.
+The [research scalar receipt](data/actions-navigation187-intake-v1.json) records
+fresh instruction/native checks and the exact observer-only trace difference.
+No new original game, universal caller contract, global RNG or Windows claim.

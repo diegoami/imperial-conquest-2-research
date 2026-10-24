@@ -233,17 +233,18 @@ The [stored-destination finding](reports/2026-10-24-strategic-fleet-controls174.
 and [accepted-movement follow-up](reports/2026-10-24-fleet-accepted-movement174.md)
 are distinct bounded intakes. The follow-up confirms that native fleet approaches
 can be accepted commands, while original fleet-phase and native full-seat histories
-remain incomparable as whole turns. The current fleet handler retains an AI fleet's
-unaffordable-step moves where the reported original AI clears them; the original
-instruction control awaits independent reread, so this intake is provisional.
+remain incomparable as whole turns. Fresh offline original/native controls reproduce the budget counterexample at the retained build. Main #1408 is now closed and `status:merged`; no post-fix build was tested here.
 
 Main [#1408](https://github.com/diegoami/imperial_conquest_2/issues/1408)
-tracks the narrow budget correction;
+holds the merged narrow budget correction;
 [#1409](https://github.com/diegoami/imperial_conquest_2/issues/1409)
 separates faithful selection and waypoint execution from intentionally designed
 sailing policy;
 [#1405](https://github.com/diegoami/imperial_conquest_2/issues/1405)
 retains stored-route state support beyond v0.8 by owner decision. Disembarkation,
 capacity, provider thresholds, route lifetime, naval combat, global RNG and
-native-Windows acceptance remain unproved. The new batch does not answer
-T212's army navigation-data question, now scoped in conquest #187.
+native-Windows acceptance remain unproved. The [navigation-rule intake](reports/2026-10-24-army-navigation-rule187.md) now supplies static data and a bounded eligibility/first-destination contract for conquest #187. Main #1394/T212 remains open and `status:blocked`: F31C continuation is covered, other caller histories are not. No new caller experiment is authorized by this intake.
+
+## New continuation packet awaiting intake
+
+Conquest [PR190](https://github.com/diegoami/ic2-conquest/pull/190), source `71294186`, was relayed while the #174/#187 consolidation was under review. Its economy/diplomacy/fleet continuation and cargo-overflow claim (Main #1412) are **queued, not promoted or independently verified here**. They are separate from the bounded fleet-at-sea cargo and navigation findings above.
