@@ -2337,3 +2337,24 @@ its safe audit; no owner input names, hashes, RAM or complete traces are indexed
 The [research scalar receipt](data/actions-navigation187-intake-v1.json) records
 fresh instruction/native checks and the exact observer-only trace difference.
 No new original game, universal caller contract, global RNG or Windows claim.
+
+
+## Garrison/mercenary caller guards (#187 follow-up, 2026-10-24)
+
+[Report](reports/2026-10-24-garrison-mercenary-caller-guards187.md), conquest
+[PR194](https://github.com/diegoami/ic2-conquest/pull/194), source
+`0cda6c4417202d39e848ab00569a61f004d7c9ff`.
+[Public ledgers/source provenance](https://github.com/diegoami/ic2-conquest/blob/0cda6c4417202d39e848ab00569a61f004d7c9ff/runs/experiments/data/run-exp-navigation187-callers/)
+identify 24 isolated, 24 parent, 32 offer-history and eight progress controls.
+Their bare `before.SAV` / `after.SAV` citations resolve through each ledger's
+case and private group (`controls-v1`, `parent-v1`, `history-v1`, `progress-v1`).
+These are generated turn-0720 diagnostic containers, not original Save As files,
+new played games or owner #1355/#1388 inputs. No public binary archive is asserted.
+
+Research regenerated all 88 controls in a new private tree and matched every
+public result field. The fresh verifier proves 88 complete game-RAM/stack
+observer/plain identities and 20 input pairs differing only in the mercenary
+troop WORD at 49DA18. Its summary/paired/identity outputs equal upstream v3.
+The [safe receipt](data/navigation187-callers-intake-v1.json) publishes counts,
+original asset identity and scope only. Generated raw RAM/SAV/full traces and
+private hash manifests remain private; no native caller or whole-turn claim.

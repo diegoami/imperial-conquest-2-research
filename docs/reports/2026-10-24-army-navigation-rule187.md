@@ -4,7 +4,7 @@
 rows, static-domain checks and a final private conditional regression.
 **Tasks:** [#187](https://github.com/diegoami/ic2-conquest/issues/187),
 [Main T212 / #1394](https://github.com/diegoami/imperial_conquest_2/issues/1394).
-**Status:** promoted from ic2-conquest [PR188](https://github.com/diegoami/ic2-conquest/pull/188), commit `1525f3985cc54834c5855055599188197c9ec4d4`, with independent offline replay. T212 remains blocked; no production code changed.
+**Status:** promoted from ic2-conquest [PR188](https://github.com/diegoami/ic2-conquest/pull/188), commit `1525f3985cc54834c5855055599188197c9ec4d4`, with independent offline replay. T212 was blocked at this initial intake; see the caller follow-up and current status below. No production code changed.
 
 ## Reusable rule and navigation data
 
@@ -109,12 +109,11 @@ Two original artifacts require explicit limits:
   context and its tested recursive calls as nonnegative. Other caller histories
   are not universally established.
 
-**Stop the broader continuation branch here.** Do not invent universal guard
+**Original packet stop condition (superseded for the measured follow-up histories):** Do not invent universal guard
 initialization. The smallest next original control is the same generated
 friendly-marker wall, capturing entry ESP−14 and ensuing movement at EC7D/ECD6
 (garrison) and E913 (mercenary) call sites. No new owner save or screen is needed.
-Keep T212 blocked for any contract requiring those unresolved callers; review
-and promote the covered scope before Main changes behavior.
+At that intake, a broader contract requiring those unresolved callers remained blocked. The [promoted caller follow-up](2026-10-24-garrison-mercenary-caller-guards187.md) now resolves the requested generated garrison/mercenary paths, including reachable negative guards. Other histories remain bounded; production scope belongs to Main.
 
 CB40's isolated coincident input also reads an uninitialized temporary. D174's
 actual origin-then-target sequence makes target-node coincidence visible after
@@ -147,4 +146,6 @@ Research replayed the pinned extraction, scalar, ferry/contact/residue, caller-e
 
 The retained native `PrivateWalk` executable reproduces its v2 gated audit on the fresh private diagnostic container, including zero terrain/occupancy mismatches and endpoint (212,96), zero moves. This executes a retained build, not an independent rebuild or post-fix Main validation. Original helper decompilation was rechecked against the pinned private listing; source-shaped rules are interpretation supported by the bounded instruction controls, not universal acceptance.
 
-The [scalar research receipt](../data/actions-navigation187-intake-v1.json) contains counts and verification limits, with no private owner paths, hashes, states or full traces. The [reference model](https://github.com/diegoami/ic2-conquest/blob/1525f3985cc54834c5855055599188197c9ec4d4/runs/experiments/navigation187/model.py) and [15-fixture matrix](https://github.com/diegoami/ic2-conquest/blob/1525f3985cc54834c5855055599188197c9ec4d4/runs/experiments/data/run-exp-navigation187/public-test-matrix-v1.json) remain pinned upstream. No fresh Wine game, new caller experiment, production change or native Windows run was performed. Main #1394 remains open and `status:blocked` at the 2026-10-24 live check.
+The [scalar research receipt](../data/actions-navigation187-intake-v1.json) contains counts and verification limits, with no private owner paths, hashes, states or full traces. The [reference model](https://github.com/diegoami/ic2-conquest/blob/1525f3985cc54834c5855055599188197c9ec4d4/runs/experiments/navigation187/model.py) and [15-fixture matrix](https://github.com/diegoami/ic2-conquest/blob/1525f3985cc54834c5855055599188197c9ec4d4/runs/experiments/data/run-exp-navigation187/public-test-matrix-v1.json) remain pinned upstream. No fresh Wine game, new caller experiment, production change or native Windows run was performed. Main #1394 was open and `status:blocked` at the initial intake check. The later caller intake found it `status:in-progress` under a narrowed enemy-army target-tree contract; see the follow-up.
+
+Follow-up: [garrison/mercenary caller guards](2026-10-24-garrison-mercenary-caller-guards187.md) reproduces 88 controls and proves reachable zero and negative histories within full F31C execution. “Nonnegative F31C context” in this initial report applies to the tested ordinary target-tree/recursive path, not every nested garrison or mercenary invocation. Universal zero initialization would fail the later paired controls.

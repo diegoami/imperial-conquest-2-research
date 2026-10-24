@@ -257,7 +257,7 @@ sailing policy;
 [#1405](https://github.com/diegoami/imperial_conquest_2/issues/1405)
 retains stored-route state support beyond v0.8 by owner decision. Disembarkation,
 capacity, provider thresholds, route lifetime, naval combat, global RNG and
-native-Windows acceptance remain unproved. The [navigation-rule intake](reports/2026-10-24-army-navigation-rule187.md) now supplies static data and a bounded eligibility/first-destination contract for conquest #187. Main #1394/T212 remains open and `status:blocked`: F31C continuation is covered, other caller histories are not. No new caller experiment is authorized by this intake.
+native-Windows acceptance remain unproved. The [navigation-rule intake](reports/2026-10-24-army-navigation-rule187.md) now supplies static data and a bounded eligibility/first-destination contract for conquest #187. Main #1394/T212 is now open and `status:in-progress` under a narrowed original-policy enemy-army target-tree contract. The [caller follow-up](reports/2026-10-24-garrison-mercenary-caller-guards187.md) freshly reproduces 88 controls, resolving the requested garrison/mercenary zero and negative histories. It does not widen Main's contract or establish every interception/combat/embarked history. Production regression, private boundary and CI acceptance remain Main work; no new game is authorized by this intake.
 
 ## New continuation packet awaiting intake
 
