@@ -1,0 +1,123 @@
+{
+  "source_repository": "diegoami/ic2-conquest",
+  "source_commit": "8abbdf61c1898be9d68e33d2943fcd538cf0b4ba",
+  "source_finding_blob": "77931167a845e701ed730c4d652ce479b4a440d1",
+  "main_source_pin": "b593c6e28939c1c7154f9a41d0436a8f14f352dc",
+  "summary": {
+    "main_pin": "b593c6e28939c1c7154f9a41d0436a8f14f352dc",
+    "ordering_fix_already_merged": 1371,
+    "movement_fix_already_merged": 1387,
+    "strict_recorded_series": 318,
+    "state_matches": 318,
+    "ordered_draw_matches": 318,
+    "known_failure_registry_entries": 0,
+    "fixed_replays": 5,
+    "recorded_entry_controls": 14,
+    "recorded_combat_draws": 2331,
+    "recorded_boundary_states": 253,
+    "owner_recorded_entry_match": true,
+    "tactical_tests_passed": 2420,
+    "tactical_tests_failed": 0,
+    "tactical_tests_skipped": 0,
+    "ordering_regressions": 6,
+    "movement_regressions": 5,
+    "retained_input_files_unchanged": 5862,
+    "missing_duplicate_patch": false,
+    "installed_desktop_build_verified": false,
+    "native_Windows_acceptance": false,
+    "new_Original_game_launched": false,
+    "coverage_clarification": "GoldenReplay.Passed includes battle conclusion and post-field comparisons where recorded; Fresh-mode series exercise fixture-start copy-in, Resume uses saved block. The earlier receipt wording about no strategic copy-in means no newly validated natural owner End-turn-to-battle pipeline, not omission of fixture copy-in.",
+    "remaining": [
+      "Main1355 acceptance review remains separate",
+      "running desktop build identity not established",
+      "natural owner entry/runtime/RNG equivalence not freshly validated by this audit",
+      "unmodified Original Windows completion/reopen not newly established; prior manual result used fast variant",
+      "historical-entry control retains its missing-runtime assumptions"
+    ]
+  },
+  "source_verification": {
+    "main_archive_sha256": "cae620d398fbc7a270445195f904d85597fa96810693e3f261545a40b78b6a8d",
+    "authoritative_Git_blobs_equal": 1228,
+    "ordering_files_equal_retained_candidate": 4,
+    "captured_destination_and_live_guard_present": true,
+    "fresh_engine_tests_and_four_probes_built": true,
+    "tactical_overlay_or_source_edit": false,
+    "same_fresh_engine_in_harnesses_replay_and_tests": true,
+    "engine_sha256": "f055c1ad4476d823ed311ad897dc434f89f3825aea8a2be180867568fcadd99b",
+    "test_helpers_sha256": "d133f19763886b44fd87a85f4bef8fd453fbe67b8c62ca21786afb811c760b7d"
+  },
+  "research_results": {
+    "strict_corpus": {
+      "trials": 318,
+      "statePass": 318,
+      "drawPass": 318,
+      "failed": 0
+    },
+    "fixed_corpus": {
+      "fixedCases": 5,
+      "passed": 5,
+      "failed": 0
+    },
+    "recorded_entry_verification": {
+      "main_pin": "b593c6e28939c1c7154f9a41d0436a8f14f352dc",
+      "recorded_cases": 14,
+      "all_passed": true,
+      "draw_tuples": 2331,
+      "boundary_states": 253,
+      "all_terminal_slots_grid_counter_RNG_equal": true,
+      "owner_case_passed": true,
+      "semantic_actions_equal": true,
+      "historical_assumption_control_passed": true,
+      "owner_paths_hashes_states_published": false,
+      "scope": "fresh compiled current Main on recorded original tactical entries; no new original game/independent copy-in/Windows or installed-build acceptance"
+    },
+    "ordering_full_result_equal": true,
+    "movement_full_result_equal": true,
+    "input_test_gate_full_result_equal": true,
+    "summary_full_result_equal": true
+  },
+  "runtime_assumptions": {
+    "recorded_controls": 14,
+    "selected_slot_not_recorded_in_pilots": 3,
+    "retained_default_selected_slot": -1,
+    "owner_selected_slot_observed": true,
+    "scope": "existing protocol/defaults retained; no missing field backfilled or new observation claimed"
+  },
+  "input_integrity": {
+    "retained_battle_files_equal_pinned_archive": 5862,
+    "original_DAT_pin_equal": true,
+    "expected_failure_registry_entries": 0,
+    "tactical_test_counts": {
+      "total": 2420,
+      "executed": 2420,
+      "passed": 2420,
+      "failed": 0,
+      "error": 0,
+      "timeout": 0,
+      "aborted": 0,
+      "inconclusive": 0,
+      "passedButRunAborted": 0,
+      "notRunnable": 0,
+      "notExecuted": 0,
+      "disconnected": 0,
+      "warning": 0,
+      "completed": 0,
+      "inProgress": 0,
+      "pending": 0
+    },
+    "owner_paths_hashes_traces_published": false,
+    "scope": "read-only input integrity after tests; no Original/Wine game, fixture edit or Windows acceptance"
+  },
+  "preparation_limit": "Initial partial extraction omitted linked terrain tools; restored unchanged authoritative blobs, built with new retained logs; no source patch.",
+  "privacy_and_acceptance": {
+    "owner_or_corpus_paths_hashes_full_states_published": false,
+    "fresh_Original_game_launched": false,
+    "native_Windows_acceptance": false,
+    "installed_desktop_build_identity_verified": false,
+    "natural_owner_entrance_acceptance": false,
+    "separate_external_reviewer": false,
+    "Main1355": "OPEN, status:blocked",
+    "Main1377": "CLOSED, status:merged",
+    "production_or_issue_label_change": false
+  }
+}

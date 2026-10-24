@@ -1,8 +1,7 @@
 # Computer general: later-pass iteration changes the owner battle's winner
 
 **Status:** [confirmed, partial], 2026-10-23. Fresh original Wine execution,
-CPU/live recorder validation and diagnostic native controls. No production fix,
-native Windows acceptance or full-corpus clearance.
+CPU/live recorder validation and diagnostic native controls. This describes the original packet; see the later production-status update below.
 **Task:** [conquest #157](https://github.com/diegoami/ic2-conquest/issues/157),
 following [the owner #1355 reproduction](2026-10-23-ptolemaic-seleucid-computer-general-gap1355.md).
 
@@ -11,6 +10,8 @@ merged main `b7f11a3ff9b2f93e111c5ea13b6b66e919cc6688`, finding blob `36b4cfad40
 This includes the earlier PR #159 diagnostic evidence and the actual compiled
 source-correction follow-up. Research's independent offline checks and limits
 are recorded below; no new original/Wine run or separate model review occurred.
+
+**Production status, 2026-10-25:** Main [PR1371/T206](https://github.com/diegoami/imperial_conquest_2/pull/1371) merged the ordering correction, followed by [PR1387](https://github.com/diegoami/imperial_conquest_2/pull/1387)'s captured-target/live-shot guard. The [independently rebuilt Main audit](2026-10-25-current-main-battle-replay157.md) at `b593c6e2` passes strict 318 state/draw series, 14 recorded entries and 2,420 tactical tests. #1355 remains blocked on acceptance; this is not proof of the installed owner build or natural End-turn/Windows flow. The pre-fix results below are historical.
 
 ## Answer
 
@@ -197,9 +198,7 @@ The historical assumption control also recovers48,969/counter21.
 See that folder's `verification-v1.json` and README for receipts, preserved
 preparation failures, scope and downstream acceptance still required.
 
-This is a tested source-correction candidate, not a merged/deployed remake fix.
-Full318-corpus, native Windows, independent copy-in and strategic writeback
-acceptance remain open. The proposed optional general is not implemented.
+At this original packet, this was a tested source-correction candidate. The later audit above verifies the merged fixes and full recorded corpus; installed deployment, natural owner copy-in/writeback and native Windows acceptance remain separate. The proposed optional general is not implemented.
 
 This supports an **AI fidelity/order defect**. It does not measure whether the
 original AI is generally stronger. No morale/training/exchange-formula change
@@ -213,8 +212,7 @@ writeback remains separate from tactical equality.
 The v3 diagnostic's middle pass-two interval included subsequent flank effects;
 those retained rows are not isolated pass-two evidence. Later versions omit it.
 
-Further seeds, the full25-melee/15-ranged kernel matrix, full318-series corpus
-and native Windows remain separate work. Historical survivor/counter recovery
+Further seeds, the full25-melee/15-ranged kernel matrix and native Windows remain separate work; the later audit covers the retained full318-series corpus. Historical survivor/counter recovery
 above retains its explicit assumptions and is weaker than a fresh exact trace.
 Upstream #1355 and conquest #157 stay open. Correction proposals belong in the
 remake workflow with a minimal regression and broader corpus verification.
@@ -307,11 +305,7 @@ the measured new seed1 owner-derived control. It advances the earlier
 [unlocalized #1355 reproduction](2026-10-23-ptolemaic-seleucid-computer-general-gap1355.md)
 and [tactical25 iteration lead](2026-10-16-tactical-target-and-draw-attribution.md)
 at that scope. The new original winner/result differs from the historical natural-RNG
-run; their counts and evidence streams must not be combined. No full-corpus residual
-is declared resolved, no legacy draw/state fixture is rebaselined, and the proposed
-selectable improved general remains separate.
+run; their counts and evidence streams must not be combined. The original ordering packet did not resolve the full-corpus residual; the separate movement correction and combined-Main audit now cover that recorded corpus. No legacy draw/state fixture is rebaselined, and the proposed selectable improved general remains separate.
 
-The faithful correction still needs the remake's normal branch/review/CI workflow,
-full318-series comparison, and the stated copy-in/writeback and Windows acceptance
-work before broader completion claims. Research does not merge a production fix or
+The original candidate needed Main review and full318 comparison; PR1371/1387 and the later audit now supersede those pending-source statements. Natural owner copy-in/writeback, installed deployment and Windows acceptance still limit broader completion claims. Research does not merge a production fix or
 close remake #1355/conquest #157 by promoting this report.

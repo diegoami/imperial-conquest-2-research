@@ -100,9 +100,7 @@ The actual compiled four-file correction reproduces 14 recorded tactical control
 2,331 combat draw bounds/results, 253 available boundaries and measured terminal
 slots/grid/counter/RNG. Research independently reran those checks and the focused
 before/after regressions, CPU preservation and parser corruption controls.
-The natural-RNG historical case remains an assumption control, and the full318,
-independent copy-in/writeback, native Windows and main-project review/CI remain
-pending. #1355/#157 stay open; no production patch is merged by research. Owner's
+The natural-RNG historical case remains an assumption control. Main PR1371/1387 already merged the tactical corrections. The [2026-10-25 independent current-Main audit](reports/2026-10-25-current-main-battle-replay157.md) rebuilds audited pin b593c6e and passes strict318/fixed5/recorded14 and2420tactical tests. Natural owner entry/writeback, installed build identity and native Windows acceptance remain separate; #1355/#157 stay open. Owner's
 faithful-first choice and the later optional controller investigation (#1362) are
 separate; no optional general is implemented here.
 
@@ -114,9 +112,7 @@ post and ordered-draw matches; capture-only introduces two cavalry failures.
 Research reproduces all three full-corpus results, fixed-series/regr-ession/Walk
 controls and27unchanged movement tests. The old36-residual inventory above remains
 historical; the new candidate has zero residuals in this sampled hooked corpus.
-No registry/fixture rebaseline, production merge, blanket crafted-grid fidelity,
-main/Godot/solution CI or Windows acceptance is asserted. Keep the owner's separate
-T206 ordering scope and #1377 movement follow-up distinct.
+No registry/fixture rebaseline or blanket crafted-grid/full-game/Windows acceptance is asserted. Main PR1387 merged the movement correction and #1377 is closed/status:merged. Keep ordering and movement attribution distinct; neither alone represents the current combined-correction corpus result.
 
 ## SAV export semantic and native Windows gate (research #37)
 
@@ -270,3 +266,7 @@ Remaining research: ready-queue mobilization/compaction and mercenary/consolidat
 The [PR198 report](reports/2026-10-24-city-army-selection187.md) is promoted after fresh original/native same-boundary and public grid verification. Import, terrain/occupancy and raw/adjusted defense checks agree; the retained designed city filter rejects the original distant city. Supplying only the original city result restores AttackArmy; an eligibility-only diagnostic reproduces that city/branch. Its separate empty geography map changes five scores but not this restored winner. This is an attributed designed policy difference, not an importer error or an executed corrected order.
 
 Main [#1417](https://github.com/diegoami/imperial_conquest_2/issues/1417) owns explicit faithful-city eligibility/geography scope review. [#1418](https://github.com/diegoami/imperial_conquest_2/issues/1418) owns the independent weak-score inclusivity correction: original `<= 100` for two weak checks, while better-city remains `> 100`. Both are open at the live check; no scope/label/production change here. T212 remains in progress under its narrower enemy-army contract; full branch/End-turn acceptance remains separate.
+
+## Current-Main tactical acceptance (#157 / Main #1355, 2026-10-25)
+
+The [promoted audit](reports/2026-10-25-current-main-battle-replay157.md) and [safe Research receipt](data/current-main157-intake-v1.json) establish that the audited Main already contains both fixes and passes the retained recorded corpus without overlays/exemptions. Do not prepare another copy of those patches. Main #1355 remains open/status:blocked for its reviewed acceptance inventory: running desktop build identity, naturally identical owner tactical entry/protocol, relevant full-flow/writeback checks and unmodified Original Windows completion/reopen. Fixture-start copy-in/conclusion/supplied post fields are tested; natural owner flow is not inferred from them. Three pilot selected-slot defaults and the historical assumption control remain explicit. No new game or Windows action is authorized by this intake.

@@ -214,3 +214,5 @@ identify one of its 36 residuals, prove an existing issue's cause, or authorize
 fixture/draw rebaselining. Keep #1355 open and investigate exact first decisions/
 movement/draw ordering under the stated control assumptions. No balance change,
 production fix or dismissal as ordinary RNG variance follows from this report.
+
+Production-status follow-up (2026-10-25): the [independently rebuilt audited-Main report](2026-10-25-current-main-battle-replay157.md) verifies that PR1371/1387 are merged and the retained tactical corpus/recorded owner-entry controls pass. This does not replace this historical natural-entry evidence, establish the owner's installed build or complete #1355/Windows acceptance. No duplicate tactical patch is needed from the older pending-source premise.
