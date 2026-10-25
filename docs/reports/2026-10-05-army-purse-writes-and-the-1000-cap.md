@@ -5,6 +5,8 @@
 
 > **Checked here:** the min(step, 1000 − receiver's purse) rule with no floor at 0 in Army to army is in [2026-10-03-army-to-army-ok-supply-rebalancing.md](2026-10-03-army-to-army-ok-supply-rebalancing.md); the own-city refill (purse over 1,000 sends the excess to the treasury, under 500 gets +500) is in [supply-capacity-rounding.md](supply-capacity-rounding.md). The new claims here are that Join armies adds purses uncapped (2,000 seen) and that Buy supplies with a negative amount raises the purse; not re-read here. The bot's audit figures (PR review rounds, claim counts) stand as its own.
 
+**Debt/runtime follow-up (2026-10-25):** [nineteen original UI controls](2026-10-25-manual-funding-in-debt1456.md) now measure manual army/fleet funding at treasury −100, 0 and +50. A +100 request gives the full 100 below the purse cap, allowing debt; this older packet had not measured that boundary. Army fleet-provider limits remain distinct, and a fleet target takes money from treasury even when a fleet supplies provisions. Wine-only observation and general derived-code scope remain separate; T207 automatic-funding reserve is unchanged.
+
 **Tags.** `[derived]` = read from the decompile only (function, address and line of `all_app_functions.txt`, kept in `runs/experiments/data/run-exp-v050-rules/code_extract_q1_purse.txt` with those line numbers). `[confirmed]` = seen in play with a before and after save, listed in the evidence table. A rule is never tagged `[confirmed]` for the part only the code shows.
 
 **Answer.**
