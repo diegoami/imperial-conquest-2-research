@@ -2440,3 +2440,30 @@ fixture replay includes Fresh copy-in, conclusion/writeback and supplied post
 fields; it does not establish the natural owner entry, deployed build or
 unmodified Original Windows completion/reopen. Earlier source/candidate and
 UTF8/preparation failure receipts remain historical, not new measurements.
+
+
+## Manual treasury funding while in debt (#1456, 2026-10-25)
+
+[Report](reports/2026-10-25-manual-funding-in-debt1456.md), conquest [PR207](https://github.com/diegoami/ic2-conquest/pull/207), source
+`92314c83449c11285cdccb76e61a47c3b0481158`.
+[Public case/prediction/source records](https://github.com/diegoami/ic2-conquest/blob/92314c83449c11285cdccb76e61a47c3b0481158/runs/experiments/data/run-exp-manual-funding1456/)
+resolve all19 before/after pairs at turn0734 from `fleet-split-antium-0734.SAV`.
+Examples: `treasury-v2_army-debt-negative_before.SAV` /
+`treasury-v2_army-debt-negative_after.SAV` and
+`controls-v3_fleet-fleet-provider_before.SAV` /
+`controls-v3_fleet-fleet-provider_after.SAV`.
+These are actual original File > Save as outputs after bounded UI actions,
+using a copied fixture with only allowlisted money fields staged. No End turn,
+battle, new campaign or native Windows observation is claimed.
+
+The source README identifies retained private case artifacts and reproduction.
+The original EXE/DAT, screenshots, fingerprints, full saves/states and hashes
+remain private; there is no public binary release/archive asserted for this
+packet. Research freshly reparses all38saves, reproduces the complete19-case
+audit and checks19staged byte allowlists plus money-control/provider records.
+The [safe intake receipt](data/manual-funding1456-intake-v1.json) publishes
+synthetic monetary scalars and code identities only, with no original asset or
+save hashes. Fresh native helper/dispatch projection reproduces all19v2rows;
+it is not native UI/full-command/deployed-build acceptance. Failed pilot and
+superseded v1 native/source audits remain retained. General signed/provider
+rules outside measured cases remain derived; automatic T207 reserve is separate.

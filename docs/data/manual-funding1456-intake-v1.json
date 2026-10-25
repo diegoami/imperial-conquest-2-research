@@ -1,0 +1,482 @@
+{
+  "source_repository": "diegoami/ic2-conquest",
+  "source_commit": "92314c83449c11285cdccb76e61a47c3b0481158",
+  "source_finding_blob": "aac788900ca1f96f09bace00e78e9b85b0efdad8",
+  "scope": "Upstream real Original Wine UI measurements, independently reaudited from retained saves/control records; fresh actual native helper plus source-verified dispatch projection.",
+  "original_audit": {
+    "cases": 19,
+    "original_matches_predictions": 19,
+    "native_matches_original": 12,
+    "original_exe_unchanged": true,
+    "original_dat_unchanged": true,
+    "platform": "Linux, Wine 10.0 Ubuntu 10.0~repack-12ubuntu1, win32 prefix, Xvfb 1280x1024",
+    "source_fixture": "fleet-split-antium-0734.SAV",
+    "turn": 734,
+    "native_scope": "Actual helper with source-verified TransferMoneyCommandHandler treasury/via dispatch; no native UI or complete command execution",
+    "scope": "Staged monetary fields only, real original UI clicks; no battle/End turn/native Windows",
+    "rows": [
+      {
+        "id": "army-debt-negative",
+        "before": [
+          -100,
+          100,
+          50
+        ],
+        "after": [
+          -200,
+          200,
+          50
+        ],
+        "enabled": true,
+        "visible": true,
+        "parsed_state_unchanged_except_balances_and_view": true,
+        "native_after": [
+          -100,
+          100,
+          50
+        ],
+        "native_matches_original": false
+      },
+      {
+        "id": "army-debt-zero",
+        "before": [
+          0,
+          100,
+          50
+        ],
+        "after": [
+          -100,
+          200,
+          50
+        ],
+        "enabled": true,
+        "visible": true,
+        "parsed_state_unchanged_except_balances_and_view": true,
+        "native_after": [
+          0,
+          100,
+          50
+        ],
+        "native_matches_original": false
+      },
+      {
+        "id": "army-debt-low-positive",
+        "before": [
+          50,
+          100,
+          50
+        ],
+        "after": [
+          -50,
+          200,
+          50
+        ],
+        "enabled": true,
+        "visible": true,
+        "parsed_state_unchanged_except_balances_and_view": true,
+        "native_after": [
+          0,
+          150,
+          50
+        ],
+        "native_matches_original": false
+      },
+      {
+        "id": "army-at-cap",
+        "before": [
+          -100,
+          1000,
+          50
+        ],
+        "after": [
+          -100,
+          1000,
+          50
+        ],
+        "enabled": true,
+        "visible": true,
+        "parsed_state_unchanged_except_balances_and_view": true,
+        "native_after": [
+          -100,
+          1000,
+          50
+        ],
+        "native_matches_original": true
+      },
+      {
+        "id": "army-over-cap",
+        "before": [
+          -100,
+          1100,
+          50
+        ],
+        "after": [
+          0,
+          1000,
+          50
+        ],
+        "enabled": true,
+        "visible": true,
+        "parsed_state_unchanged_except_balances_and_view": true,
+        "native_after": [
+          0,
+          1000,
+          50
+        ],
+        "native_matches_original": true
+      },
+      {
+        "id": "army-reverse",
+        "before": [
+          -100,
+          100,
+          50
+        ],
+        "after": [
+          0,
+          0,
+          50
+        ],
+        "enabled": true,
+        "visible": true,
+        "parsed_state_unchanged_except_balances_and_view": true,
+        "native_after": [
+          0,
+          0,
+          50
+        ],
+        "native_matches_original": true
+      },
+      {
+        "id": "army-reverse-limited",
+        "before": [
+          -100,
+          50,
+          50
+        ],
+        "after": [
+          -50,
+          0,
+          50
+        ],
+        "enabled": true,
+        "visible": true,
+        "parsed_state_unchanged_except_balances_and_view": true,
+        "native_after": [
+          -50,
+          0,
+          50
+        ],
+        "native_matches_original": true
+      },
+      {
+        "id": "army-fleet-limited",
+        "before": [
+          -100,
+          100,
+          50
+        ],
+        "after": [
+          -100,
+          150,
+          0
+        ],
+        "enabled": true,
+        "visible": true,
+        "parsed_state_unchanged_except_balances_and_view": true,
+        "native_after": [
+          -100,
+          150,
+          0
+        ],
+        "native_matches_original": true
+      },
+      {
+        "id": "army-fleet-empty",
+        "before": [
+          -100,
+          100,
+          0
+        ],
+        "after": [
+          -100,
+          100,
+          0
+        ],
+        "enabled": true,
+        "visible": true,
+        "parsed_state_unchanged_except_balances_and_view": true,
+        "native_after": [
+          -100,
+          100,
+          0
+        ],
+        "native_matches_original": true
+      },
+      {
+        "id": "army-fleet-over-cap",
+        "before": [
+          -100,
+          1100,
+          50
+        ],
+        "after": [
+          -100,
+          1000,
+          150
+        ],
+        "enabled": true,
+        "visible": true,
+        "parsed_state_unchanged_except_balances_and_view": true,
+        "native_after": [
+          -100,
+          1000,
+          150
+        ],
+        "native_matches_original": true
+      },
+      {
+        "id": "army-fleet-reverse",
+        "before": [
+          -100,
+          100,
+          50
+        ],
+        "after": [
+          -100,
+          0,
+          150
+        ],
+        "enabled": true,
+        "visible": true,
+        "parsed_state_unchanged_except_balances_and_view": true,
+        "native_after": [
+          -100,
+          0,
+          150
+        ],
+        "native_matches_original": true
+      },
+      {
+        "id": "army-fleet-reverse-cap",
+        "before": [
+          -100,
+          100,
+          950
+        ],
+        "after": [
+          -100,
+          50,
+          1000
+        ],
+        "enabled": true,
+        "visible": true,
+        "parsed_state_unchanged_except_balances_and_view": true,
+        "native_after": [
+          -100,
+          50,
+          1000
+        ],
+        "native_matches_original": true
+      },
+      {
+        "id": "fleet-debt-negative",
+        "before": [
+          -100,
+          100,
+          50
+        ],
+        "after": [
+          -200,
+          200,
+          50
+        ],
+        "enabled": true,
+        "visible": true,
+        "parsed_state_unchanged_except_balances_and_view": true,
+        "native_after": [
+          -100,
+          100,
+          50
+        ],
+        "native_matches_original": false
+      },
+      {
+        "id": "fleet-debt-zero",
+        "before": [
+          0,
+          100,
+          50
+        ],
+        "after": [
+          -100,
+          200,
+          50
+        ],
+        "enabled": true,
+        "visible": true,
+        "parsed_state_unchanged_except_balances_and_view": true,
+        "native_after": [
+          0,
+          100,
+          50
+        ],
+        "native_matches_original": false
+      },
+      {
+        "id": "fleet-debt-low-positive",
+        "before": [
+          50,
+          100,
+          50
+        ],
+        "after": [
+          -50,
+          200,
+          50
+        ],
+        "enabled": true,
+        "visible": true,
+        "parsed_state_unchanged_except_balances_and_view": true,
+        "native_after": [
+          0,
+          150,
+          50
+        ],
+        "native_matches_original": false
+      },
+      {
+        "id": "fleet-at-cap",
+        "before": [
+          -100,
+          1000,
+          50
+        ],
+        "after": [
+          -100,
+          1000,
+          50
+        ],
+        "enabled": true,
+        "visible": true,
+        "parsed_state_unchanged_except_balances_and_view": true,
+        "native_after": [
+          -100,
+          1000,
+          50
+        ],
+        "native_matches_original": true
+      },
+      {
+        "id": "fleet-over-cap",
+        "before": [
+          -100,
+          1100,
+          50
+        ],
+        "after": [
+          0,
+          1000,
+          50
+        ],
+        "enabled": true,
+        "visible": true,
+        "parsed_state_unchanged_except_balances_and_view": true,
+        "native_after": [
+          0,
+          1000,
+          50
+        ],
+        "native_matches_original": true
+      },
+      {
+        "id": "fleet-reverse",
+        "before": [
+          -100,
+          100,
+          50
+        ],
+        "after": [
+          0,
+          0,
+          50
+        ],
+        "enabled": true,
+        "visible": true,
+        "parsed_state_unchanged_except_balances_and_view": true,
+        "native_after": [
+          0,
+          0,
+          50
+        ],
+        "native_matches_original": true
+      },
+      {
+        "id": "fleet-fleet-provider",
+        "before": [
+          -100,
+          100,
+          50
+        ],
+        "after": [
+          -200,
+          200,
+          50
+        ],
+        "enabled": true,
+        "visible": true,
+        "parsed_state_unchanged_except_balances_and_view": true,
+        "native_after": [
+          -100,
+          150,
+          0
+        ],
+        "native_matches_original": false
+      }
+    ]
+  },
+  "native_source": {
+    "current_source_pin": "a5cfebedbb419870985c5f86e3987f238dd587f4",
+    "retained_engine_build_pin": "b593c6e28939c1c7154f9a41d0436a8f14f352dc",
+    "helper_git_blob": "884097638b6708f5152ae3a5b53c8d1ca72149bc",
+    "handler_git_blob": "9a66af872c31e9ecbb0947e7cf608d20f4fa0362",
+    "ruleset_git_blob": "4e04ca3e72cb1eb5bbe68010eb3280a373ebb93b",
+    "all_three_equal_authoritative_current_blobs": true
+  },
+  "research_verification": {
+    "retained_save_pairs_reparsed": 19,
+    "full_original_audit_equal": true,
+    "staged_byte_allowlists_pass": 19,
+    "retained_visible_enabled_money_control_records_checked": 19,
+    "target_provider_form_records_checked": 19,
+    "batch_plans_equal_all19_cases": true,
+    "source_listing_pin_matches": true,
+    "original_asset_identity_checked_privately": true,
+    "unchanged_native_probe_freshly_built": true,
+    "native_v2_full19_row_ledger_equal": true,
+    "native_matches": 12,
+    "native_differences": 7,
+    "new_Wine_game_or_UI_run": false,
+    "native_UI_or_full_command_integration": false,
+    "private_original_or_save_hashes_published": false,
+    "external_reviewer": false
+  },
+  "remaining_limits": [
+    "One original fixture/turn, staged monetary fields; not naturally played debt.",
+    "General code rule remains derived outside the19measured cases.",
+    "Helper plus source-dispatch projection, not native UI/caller/whole-command or installed-build validation.",
+    "Negative purses, integer overflow, live foreign-city visibility and arbitrary providers unmeasured.",
+    "No native Windows acceptance or fresh game.",
+    "T207 automatic-funding reserve is a separate unchanged owner-selected policy."
+  ],
+  "main_followup_at_verification": {
+    "issue": 1456,
+    "state": "OPEN",
+    "labels": [
+      "bug",
+      "triage:needed"
+    ],
+    "release_scope": "v0.8.1 owner request; no tag or release change",
+    "production_or_issue_label_change": false
+  }
+}
