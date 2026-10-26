@@ -7,7 +7,8 @@ set -euo pipefail
 src=diegoami/ic2-conquest
 ledger=${LEDGER:-$(dirname "$0")/../docs/findings-intake.md}
 
-# ledger rows: "<draft>\t<reviewed commit>" from the first two columns.
+# Ledger history may contain multiple reviews of a draft; use the last row.
+# Keep each reviewed commit a single ref, never a newline-joined list.
 rows=$(awk -F'|' '/^\| `/ { d=$2; c=$3; gsub(/[ `]/,"",d); gsub(/[ `]/,"",c); print d "\t" c }' "$ledger")
 
 n=0
@@ -32,7 +33,7 @@ done <<<"$branches"
 
 # a draft is judged once per distinct blob: first by ledger, then by compare against the reviewed commit.
 while read -r draft; do
-  reviewed=$(awk -F'\t' -v d="$draft" '$1==d { print $2 }' <<<"$rows")
+  reviewed=$(awk -F'\t' -v d="$draft" '$1==d { latest=$2 } END { print latest }' <<<"$rows")
   if [[ -z "$reviewed" ]]; then
     echo "$draft $(awk -v d="$draft" '$2==d {print $1; exit}' <<<"$pairs") unledgered"; n=$((n+1)); continue
   fi

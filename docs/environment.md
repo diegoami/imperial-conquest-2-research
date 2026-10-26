@@ -25,6 +25,7 @@ and record unavailable evidence. Safe syntax checks:
 
 ```bash
 bash -n scripts/pending-drafts.sh
+python3 scripts/tests/test_pending_drafts.py
 python3 -c 'import ast, pathlib; [ast.parse(p.read_text(), filename=str(p)) for p in pathlib.Path("scripts").rglob("*.py")]'
 ```
 
