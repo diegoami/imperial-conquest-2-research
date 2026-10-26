@@ -99,3 +99,5 @@ python3 runs/experiments/v050_rules/claims_audit.py       # inputs: the saves, t
 ```
 
 Follow-up: [the source/control continuation](2026-10-24-strategic-economy-diplomacy-fleet-continuation.md) now corroborates F8FC's whole-slot AI overflow landing and one-third resource split in the tested allocation branch (100 money → 67/33; 90 supply → 60/30). This does not establish allocation-failure or human UI behavior.
+
+Follow-up (2026-10-26): [army-money-and-unchanged-ok85](2026-10-26-army-money-and-unchanged-ok85.md). Signed 100/1100→200/1000 pullback and shared Split caller now have stock-Wine working-copy/OK/Cancel controls. Fleet-to-fleet partial arrows/ship-only behavior is separately measured in the manual-family sweep; treasury debt funding is a different caller.

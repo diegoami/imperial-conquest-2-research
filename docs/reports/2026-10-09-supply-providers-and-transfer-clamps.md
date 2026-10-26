@@ -100,3 +100,5 @@
 - **An army aboard a fleet as Supply army's target** (the selected-fleet branch of `0x446f50`).
 - ~~**The money and supplies of a fleet emptied by Transfer ships.**~~ **Answered since (2026-10-10):** the OK handler passes them to the other fleet, uncapped ([`2026-10-10-fleet-emptied-by-transfer-money-and-supplies.md`](2026-10-10-fleet-emptied-by-transfer-money-and-supplies.md)).
 - **The desktop original.**
+
+Follow-up (2026-10-26): [supply-provider-gui78](2026-10-26-supply-provider-gui78.md). Natural coastal controls resolve provider stock-sort/slot limits and skipped/duplicate row binding, plus retained staged90 causing stock−80 after switching. These original defects require an explicit owner/design decision rather than automatic parity.

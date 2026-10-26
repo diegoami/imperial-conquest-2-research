@@ -50,7 +50,7 @@ fortification > 100 and fortification % 100 >= 75     // an order in progress; c
 the town is the nation's capital
 ```
 
-If more than one town already has units in training, an **"All cities"** entry is added at the top of the list. The default selection is the capital, or the town with the most units in training.
+If more than one town already has units in training, an **"All cities"** entry is added at the top of the list. **Default clarified (2026-10-26):** with no occupied first queue slot choose capital; otherwise maximize occupied queued-unit count plus one for capital, preserving the first city-list entry on ties. All cities insertion does not replace that default. [Nine controls and disassembly](2026-10-26-recruitment-default-gui81.md) distinguish the rule from T162's deliberate opening UX, which remains unchanged.
 
 ### 2. What `RecruitUnit` refuses, with the exact texts
 

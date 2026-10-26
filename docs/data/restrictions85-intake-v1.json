@@ -1,0 +1,123 @@
+{
+  "source_repository": "diegoami/ic2-conquest",
+  "source_commit": "9a2009de95efedd4be64c38a499fc3539c96b150",
+  "findings": [
+    {
+      "file": "2026-10-26-signed-paid-supply85.md",
+      "git_blob": "ae799859ad80241b74cd7b83b340286bc41c323e"
+    },
+    {
+      "file": "2026-10-26-army-money-and-unchanged-ok85.md",
+      "git_blob": "0806ff3eb4f53ca6d43165917f5dd37277a3dd08"
+    },
+    {
+      "file": "2026-10-26-partial-army-transfer85.md",
+      "git_blob": "cec8ff107caced341e75ba268774d7c4f60c2e3b"
+    },
+    {
+      "file": "2026-10-26-human-transport-rounding83.md",
+      "git_blob": "23f7a3a69d492ee2f218dafb75164b4bb970f57e"
+    },
+    {
+      "file": "2026-10-26-manual-family-assumption-sweep85.md",
+      "git_blob": "369c929b2b7d11554cb07942935b637a6e948cd6"
+    },
+    {
+      "file": "2026-10-26-supply-provider-gui78.md",
+      "git_blob": "f6e6165e4c23df1e6756bf27698619a488fa014c"
+    },
+    {
+      "file": "2026-10-26-carried-army-supply-gui79.md",
+      "git_blob": "9ce534414b2c0093ba12c079eea847af7c83f12f"
+    },
+    {
+      "file": "2026-10-26-tactical-enemy-click-gui80.md",
+      "git_blob": "03216d8a3225916a31f84ef9e4be45ab6907cc5e"
+    },
+    {
+      "file": "2026-10-26-recruitment-default-gui81.md",
+      "git_blob": "5505a8e76932d05d04ad54bf0f1d9bb284150818"
+    }
+  ],
+  "fresh_reparse_counts": {
+    "paid_original": 17,
+    "paid_coherent": 2,
+    "money_ok": 14,
+    "units": 17,
+    "transport_pilot": 2,
+    "transport": 7,
+    "fleet_sweep": 7,
+    "gui": 30,
+    "carried": 6
+  },
+  "current_pairs": 102,
+  "historical_pairs": 6,
+  "supporting_pilot_pairs": 3,
+  "complete_audit_objects_equal": true,
+  "coherent_marker_repeat": {
+    "pairs": 2,
+    "owner": 1,
+    "marker": 37,
+    "bilateral_peace_and_marker_at_both_endpoints": true,
+    "old17marker_caveat_retained": true
+  },
+  "native": {
+    "authoritative_build_tree_blobs": 1242,
+    "audited_source_blobs": 13,
+    "results": {
+      "Audit": {
+        "lines": 5,
+        "full_scalar_output_equal": true
+      },
+      "NativeExtra": {
+        "lines": 17,
+        "full_scalar_output_equal": true
+      },
+      "NativeGui": {
+        "lines": 5,
+        "full_scalar_output_equal": true
+      }
+    },
+    "source_blobs_unchanged_after_builds": true
+  },
+  "native_source_pin": "4d70275aac4e155c0370a3ee23525cf34450a908",
+  "original_source_sites": {
+    "pinned_listing_verified": true,
+    "mechanically_located_sites": 35,
+    "semantic_paths_and_additional_disassembly_reread": true,
+    "original_identity_verified_privately": true,
+    "all_three_runtime_prefix_EXE_DAT_identities_verified_privately": true
+  },
+  "scope_limits": [
+    "Wine UI observations reaudited offline; no fresh Original game, battle completion or End turn.",
+    "Three fresh native probes are GUI-free model/helper/dispatcher comparisons, not deployed Godot/native Windows acceptance.",
+    "Old paid17 entry-marker mismatch retained; two coherent repeats establish the measured proper foreign entry.",
+    "Six historical controls use older patched fast/seed Wine; separate from stock-original controls.",
+    "Tactical16 executions include two load-reset repeats; genuinezero uses observed zero after actual shots.",
+    "Invalid provider rows/negative-stock exploit need owner disposition, not automatic unsafe parity.",
+    "Carried whole-army Disband GUI reachability unresolved; desertion cleanup code-derived/unplayed.",
+    "CLI ceilings and T162/T207/T216/no-wrap/last-unit/name/Transfer-ships policies preserved.",
+    "No new implementation issue, issue closure, production/label/tag/release change or external review.",
+    "Original assets, screenshots, full states, raw saves and private hashes stay private."
+  ],
+  "routes": {
+    "main": [
+      1486,
+      1487,
+      1488,
+      1489,
+      1326
+    ],
+    "research": [
+      78,
+      79,
+      80,
+      81,
+      82,
+      83,
+      84,
+      85
+    ],
+    "state_at_verification": "all open; publication alone changes no acceptance status"
+  }
+}

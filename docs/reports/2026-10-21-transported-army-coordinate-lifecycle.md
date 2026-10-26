@@ -212,3 +212,5 @@ available from this pass. Source access is resolved; current blockers are
 runtime/control evidence and normal independent review/intake, not whether a
 synchronization write exists. No remake comparison or correction is selected.
 
+
+Follow-up (2026-10-26): [carried-army-supply-gui79](2026-10-26-carried-army-supply-gui79.md). Six coherent stock-Wine controls now establish selected-carrier cargo supply, carrier-as-provider, actual moved coordinates and immediate Close persistence. This does not clear native Windows/full lifecycle acceptance.
