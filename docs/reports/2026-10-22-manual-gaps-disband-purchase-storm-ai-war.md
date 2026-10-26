@@ -187,3 +187,5 @@ and trade offers.
 - **Staged positions:** the unit placements, the fleets and Carthage's peace with Celtiberia are save edits. In the
   unedited start Carthage is at war with Celtiberia and cannot declare.
 - **Environment:** Wine and the seed build only. There was no native Windows run and no independent review.
+
+Follow-up (2026-10-26): [carried-army Disband218](2026-10-26-carried-army-disband218.md). The older land/scuttle refund controls now have a separate carried whole-Disband counterpart through a no-offer/before-repaint GUI route. Whole refunds, unit removal and modal pooling must not be generalized across callers.

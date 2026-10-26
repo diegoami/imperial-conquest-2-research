@@ -2518,3 +2518,30 @@ Selected examples: `sel_20261012-203220_army_selected.png`,
 The [safe reconciliation receipt](data/findings-queue-reconciliation-v1.json)
 records the scrollbar-only difference rectangles and zero army/fleet tile
 differences; blink timing and town-selection claims are not promoted.
+
+
+## Carried-army Disband218 (2026-10-26)
+
+[Report](reports/2026-10-26-carried-army-disband218.md), conquest [PR219](https://github.com/diegoami/ic2-conquest/pull/219), source
+`77f4e21736670dcd7a3a8cb9221df2eccd82e0f8`; [case/phase plans and audits](https://github.com/diegoami/ic2-conquest/blob/77f4e21736670dcd7a3a8cb9221df2eccd82e0f8/runs/experiments/data/run-exp-carried-disband/).
+Primary endpoints `cd218-fast-v4_carried-nooffer-fast-20ms_before.SAV` /
+`cd218-fast-v4_carried-nooffer-fast-20ms_after.SAV`, turn0734.
+Pan countercontrol `cd218-boundary-v5_carried-nooffer-then-pan_before.SAV` /
+`cd218-boundary-v5_carried-nooffer-then-pan_after.SAV`. Empty-record/reload
+example `cd218-pilot-v1_carried-change-last-ok_after.SAV` /
+`cd218-pilot-v1_carried-change-last-ok_reopened.SAV`; separate cold output
+`cd218-cold-v1-c00_change-regular-empty_cold_saved.SAV`.
+
+All29saved comparisons over52unique Original Save as files freshly reparse
+and reproduce the fullv2 audit. They comprise23action pairs,3same-process
+reload and3separate-cold-process comparisons with reused endpoints, not29
+independent campaigns. Private source README owns original asset/output
+restoration; no public raw binary archive. All EXE/DAT, full states/images/
+traces and per-input hashes stay outside research Git.
+
+The [safe Research receipt](data/carried-disband218-intake-v1.json) records
+counts, public synthetic outcomes and exact source/resource/native checks.
+Upstream's wrong zero-troop supplypercent audit expectation is superseded byv2,
+with original measurements unchanged. Literal-resource-v1 output was safely
+isolated in a fresh source tree; no original output overwritten. No new
+Original game, cold load, Windows/Godot or production/acceptance change.
