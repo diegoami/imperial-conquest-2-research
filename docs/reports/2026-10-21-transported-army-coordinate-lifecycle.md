@@ -214,3 +214,5 @@ synchronization write exists. No remake comparison or correction is selected.
 
 
 Follow-up (2026-10-26): [carried-army-supply-gui79](2026-10-26-carried-army-supply-gui79.md). Six coherent stock-Wine controls now establish selected-carrier cargo supply, carrier-as-provider, actual moved coordinates and immediate Close persistence. This does not clear native Windows/full lifecycle acceptance.
+
+Follow-up (2026-10-26): [carried-army Disband218](2026-10-26-carried-army-disband218.md). A measured carried whole-Disband route now clears the valid carrier link. Change-unit empty linked records and transfer deletion are distinct; no later quarter/support lifecycle acceptance follows.
