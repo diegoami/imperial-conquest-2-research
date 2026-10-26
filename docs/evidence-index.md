@@ -2498,3 +2498,23 @@ probe outputs reproduce. Old17paid entry caveat, incoherent GUI79 inputs, failed
 selection stimuli and positive load-reset attempts remain qualified/excluded from
 stronger claims. Genuinezero and coherent repeats are separate controls. No new
 Original/Wine run, deployed Godot/Windows acceptance, policy change or issue closure.
+
+
+## Partial unit-map selection rendering intake (2026-10-26)
+
+[Report](reports/2026-10-12-unit-map-selection-rendering.md), conquest branch
+`run/unit-map-selection-rendering`, source `9da03bc625bfaf57c7eaec6c8a1029ff2ce699a9`.
+Release [run-exp-unit-map-selection](https://github.com/diegoami/ic2-conquest/releases/tag/run-exp-unit-map-selection)
+contains16unique binary assets; all match the tracked manifest and asset sizes.
+The32manifest lines include repeated records. Three recorded selection SAVs
+and13screenshots retain their older patched-Wine provenance; no binary copied
+into research Git and no new Original game.
+
+Selected examples: `sel_20261012-203220_army_selected.png`,
+`sel_20261012-203220_fleet_selected.png`,
+`sel_20261012-203220_town_selected.png`, with corresponding `_frame2.png` /
+`_frame3.png`. Metadata/runner and manifest resolve through the immutable
+[source package](https://github.com/diegoami/ic2-conquest/tree/9da03bc625bfaf57c7eaec6c8a1029ff2ce699a9/runs/experiments/data/run-exp-unit-map-selection).
+The [safe reconciliation receipt](data/findings-queue-reconciliation-v1.json)
+records the scrollbar-only difference rectangles and zero army/fleet tile
+differences; blink timing and town-selection claims are not promoted.

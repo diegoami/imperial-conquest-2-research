@@ -1,0 +1,95 @@
+{
+  "source_main_pin": "69d02e3a3e0dee5aa72507c656d67168f546a4c5",
+  "authoritative_branch_heads": 160,
+  "all_head_objects_available_and_inspected_read_only": true,
+  "branch_only_drafts": [
+    "2026-10-07-ai-mover-contact.md",
+    "2026-10-07-ai-turn-corroboration.md",
+    "2026-10-12-unit-map-selection-rendering.md"
+  ],
+  "already_promoted_ai_branch_drafts_retained": true,
+  "source_status_reviews_refreshed": [
+    "2026-10-06-cosmetic-gaps.md",
+    "2026-10-11-g2-original-checks.md",
+    "2026-10-11-g1-original-checks.md",
+    "2026-10-12-g3-original-checks.md",
+    "2026-10-17-foreign-city-automatic-resupply.md",
+    "2026-10-17-hostile-control-recruitment-treasury-ledger.md",
+    "2026-10-17-sav-export-live-regions-and-safe-rejection-policy.md",
+    "2026-10-21-original-sav-semantic-atlas.md",
+    "2026-10-23-battle-general-later-pass-iteration1355.md",
+    "2026-10-23-seed2-walk-captured-target1377.md",
+    "2026-10-24-seleucid-strategic-target-routing1388.md",
+    "2026-10-24-strategic-fidelity-pilot171.md",
+    "2026-10-24-strategic-fleet-controls174.md",
+    "2026-10-24-fleet-accepted-movement174.md",
+    "2026-10-24-army-navigation-rule187.md",
+    "2026-10-24-garrison-mercenary-caller-guards187.md",
+    "2026-10-24-strategic-economy-diplomacy-fleet-continuation.md",
+    "2026-10-24-city-army-selection187.md",
+    "2026-10-25-current-main-battle-replay157.md",
+    "2026-10-25-manual-funding-in-debt1456.md",
+    "2026-10-26-signed-paid-supply85.md",
+    "2026-10-26-army-money-and-unchanged-ok85.md",
+    "2026-10-26-partial-army-transfer85.md",
+    "2026-10-26-human-transport-rounding83.md",
+    "2026-10-26-manual-family-assumption-sweep85.md",
+    "2026-10-26-supply-provider-gui78.md",
+    "2026-10-26-carried-army-supply-gui79.md",
+    "2026-10-26-tactical-enemy-click-gui80.md",
+    "2026-10-26-recruitment-default-gui81.md"
+  ],
+  "covered_combined_drafts": 4,
+  "superseded_tactical_checkpoint": true,
+  "scenario39_deferred": true,
+  "scenario_source_review": {
+    "retrieved": [
+      "S1 Met Etruscan",
+      "S4 Diodorus13 excerpt",
+      "S5 Livy7 university text",
+      "S7 Met Tarentine relief",
+      "S9 Penn Etruscan archaeology",
+      "S10 Polybius2 university text",
+      "S11 Leontinoi official site",
+      "S12 university Tarento crosswalk",
+      "S13 Natural Earth terms",
+      "S14 Pleiades policies"
+    ],
+    "unavailable": [
+      "S2 Veneti timeout",
+      "S3 Veii timeout",
+      "S6 Molise502",
+      "S8 Diodorus16 timeout"
+    ],
+    "date_roster_or_content_approval": false
+  },
+  "selection": {
+    "unique_release_assets_verified": 16,
+    "manifest_records": 32,
+    "all_published_assets_match_manifest_and_release_size": true,
+    "full_frame_changed_pixels": {
+      "army": 98,
+      "fleet": 98,
+      "town": 98
+    },
+    "difference_rectangles": {
+      "army": "15x13+467+543",
+      "fleet": "15x13+467+543",
+      "town": "15x13+470+543"
+    },
+    "selected_tile_region_changed_pixels": {
+      "army": 0,
+      "fleet": 0
+    },
+    "army_fleet_rhombus_visually_confirmed": true,
+    "town_frame_not_established": true,
+    "blink_period_not_established": true,
+    "no_new_game": true
+  },
+  "queue_fix": "Use the last ledger review row as one ref; historical rows no longer concatenate into invalid newline-separated refs.",
+  "original_game_or_production_change": false,
+  "private_owner_inputs_read_or_published": false,
+  "acceptance_or_issue_label_change": false,
+  "unique_finding_paths_accounted": 138,
+  "finding_paths_without_disposition": 0
+}
