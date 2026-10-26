@@ -166,3 +166,5 @@ The `+1` looks like it exists so that a dialog fill reads 100 % rather than 99 %
 - **Other writers:** `TArmyToArmy_OK` `44572`, `TUnitMap_JoinArmies` `46950`, `FUN_0044AEE4` `49608`, `TBattleOver_OK` `57566`, `TInformation_ShowArmyDetails` `41000`.
 - **Listing:** `analyzeHeadless <ReTools>\ghidra_projects IC2 -process "Imperial Conquest 2.exe" -noanalysis -readOnly -scriptPath <ReTools>\scripts -postScript DumpListing.java supply_capacity_listing.txt 0x0043fc74 0x0043fe4c 0x0043ff98 0x0044f6d8 0x0044f7e4 0x0044a698 0x0044aee4 0x00459220`. The project path is the `ghidra_projects` folder itself, not `ghidra_projects\IC2`.
 - **Save checks:** a direct Python reader over the local saves using the offsets above. Nothing was written to either repository.
+
+Follow-up (2026-10-26): [signed-paid-supply85](2026-10-26-signed-paid-supply85.md). Paid room−105/−5/−4/−1, immediate purchase and Close timing now have stock-Wine controls. The older17 foreign-owner/map-marker mismatch remains qualified; two coherent-marker repeats establish proper foreign entry.

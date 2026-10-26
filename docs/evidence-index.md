@@ -2467,3 +2467,34 @@ save hashes. Fresh native helper/dispatch projection reproduces all19v2rows;
 it is not native UI/full-command/deployed-build acceptance. Failed pilot and
 superseded v1 native/source audits remain retained. General signed/provider
 rules outside measured cases remain derived; automatic T207 reserve is separate.
+
+
+## Restrictions85 and GUI78–81 stock-original packet (2026-10-26)
+
+Conquest [PR212](https://github.com/diegoami/ic2-conquest/pull/212), [PR213](https://github.com/diegoami/ic2-conquest/pull/213) and [PR214](https://github.com/diegoami/ic2-conquest/pull/214), pinned source
+`9a2009de95efedd4be64c38a499fc3539c96b150`. [Canonical report routes](pending-requests.md); [pinned data/README](https://github.com/diegoami/ic2-conquest/blob/9a2009de95efedd4be64c38a499fc3539c96b150/runs/experiments/data/run-exp-restrictions85/).
+
+| Reaudited case group | Current pairs | Example original Save as pair, turn0734 |
+| --- | ---: | --- |
+| Paid old/coherent |17+2| `supply-marker-v3_paid-army-room--105_before.SAV` / `supply-marker-v3_paid-army-room--105_after.SAV` |
+| Army money/OK |14| `army-v2_money-side0-receiver1100_before.SAV` / `army-v2_money-side0-receiver1100_after.SAV` |
+| Partial units/disband |17| `units-v3_two-refusal-types_before.SAV` / `units-v3_two-refusal-types_after.SAV` |
+| Human embark/hire |9| `transport-pilot-v1_embark-5001_before.SAV` / `transport-pilot-v1_embark-5001_after.SAV` |
+| Fleet sweep |7| `sweep-v2_fleet-ships-only-overcap_before.SAV` / `sweep-v2_fleet-ships-only-overcap_after.SAV` |
+| Provider/recruitment/tactical |30| `gui78-natural-v2_natural-four-fleets_before.SAV` / `gui78-natural-v2_natural-four-fleets_after.SAV` |
+| Coherent cargo |6| `gui79-moved-v2_carried-moved-carrier_before.SAV` / `gui79-moved-v2_carried-moved-carrier_after.SAV` |
+
+Public per-case JSON resolves all102current pairs. Six historical U1/U3/U3b/c1/c4/c5
+pairs retain their older patched-Wine provenance; three supporting pilot pairs
+were additionally reparsed. These are copied-fixture/staged states, not independent
+campaigns or a new owner save. Raw EXE/DAT, SAVs, screenshots, fingerprints, full
+states/disassembly and per-save hashes remain private under the source README's
+artifact layout. No public original binary release is asserted.
+
+The [safe Research receipt](data/restrictions85-intake-v1.json) records exact audit
+object equality, coherent marker/peace checks and fresh native-build verification
+(1,242 authoritative build-tree blobs;13specific source files). All three scalar
+probe outputs reproduce. Old17paid entry caveat, incoherent GUI79 inputs, failed
+selection stimuli and positive load-reset attempts remain qualified/excluded from
+stronger claims. Genuinezero and coherent repeats are separate controls. No new
+Original/Wine run, deployed Godot/Windows acceptance, policy change or issue closure.

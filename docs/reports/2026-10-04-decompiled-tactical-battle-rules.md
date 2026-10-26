@@ -434,3 +434,5 @@ Each check is seeded and taken half-round for half-round.
 - Read `all_app_functions.txt` `:37432–40297`, `:57359–57687` and `:59086–59140`. Read `scratch/datload.txt` for `FUN_004481A0`.
 - Ghidra `analyzeHeadless … -readOnly -postScript DisRange.java out.txt 004378f8 00437a60`, and `DumpListing.java` for the frame offsets.
 - Python, kept in the scratchpad: a PE resource walker plus a `TPF0` reader for `TBATTLEMAP`, `TBATTLEOVER` and `TBATTLEDELAYS`; an `E8 rel32` scan of `CODE`; and DAT offsets summed from the loader's block lengths.
+
+Follow-up (2026-10-26): [tactical-enemy-click-gui80](2026-10-26-tactical-enemy-click-gui80.md). Enemy inspection does not select an enemy. Positive adjacent own-target assignment, genuinezero inspection, right shooting/own-target clear and Cancel are separately observed. Earlier zero-labelled load-reset attempts are positive controls; no hidden-enemy-field leak or deployed scene fix is established.

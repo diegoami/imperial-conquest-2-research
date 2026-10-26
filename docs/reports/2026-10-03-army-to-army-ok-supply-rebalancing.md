@@ -115,3 +115,5 @@ Final: **A 700, B 300**. Had B been selected (roles swapped), the totals would b
   - **Third run:** a transfer that empties A, to confirm the uncapped merge.
 - The both-empty edge was read from code only.
 - Whether an army aboard a fleet can be A. The order accepts a selected fleet's carried army, but the partner search uses that army's own stored position, which was not traced for aboard armies.
+
+Follow-up (2026-10-26): [army-money-and-unchanged-ok85](2026-10-26-army-money-and-unchanged-ok85.md). Six no-edit OK/Cancel/reversed-selection controls confirm unconditional A→B then B→A rebalance. Both signed money-arrow directions and Split share the working-copy semantics; do not suppress a confirmed unchanged OK as a generic no-op.

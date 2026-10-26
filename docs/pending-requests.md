@@ -276,3 +276,21 @@ The [promoted audit](reports/2026-10-25-current-main-battle-replay157.md) and [s
 The [promoted PR207 finding](reports/2026-10-25-manual-funding-in-debt1456.md) establishes 19 original Wine UI controls with fresh offline save/control audits: manual treasury funding can create debt, while an army's fleet-provider source remains purse-limited. Fleet-target money uses treasury even with a fleet supply provider. The actual native helper plus source-verified dispatch projection reproduces 12 matches/seven differences; this is not native UI or complete command acceptance.
 
 Main [#1456](https://github.com/diegoami/imperial_conquest_2/issues/1456) remains open/triage-needed for the scoped manual correction and caller/regression checks. Preserve signed over-cap pullback, reverse limits and purse conservation; do not remove account-source clamps globally or infer a remake UI routing bug from generic `via` support. **T207's automatic-funding reserve remains the separate owner-selected QoL policy.** No source/schema/tag/release/label change here; no new game or Windows acceptance. The source/owner data identities remain private.
+
+## Research85 and GUI78–81 bounded findings (2026-10-26)
+
+Nine findings are now promoted; [shared verified receipt](data/restrictions85-intake-v1.json). All Research78–85 and Main1486–1489/1326 remain open at the live check; evidence promotion changes no acceptance, labels or owner policy.
+
+| Finding | Implementation/decision route |
+| --- | --- |
+| [signed-paid-supply85](reports/2026-10-26-signed-paid-supply85.md) | Main #1486; signed command/staging boundary must be decided, with original provider-entry qualification retained. |
+| [army-money-and-unchanged-ok85](reports/2026-10-26-army-money-and-unchanged-ok85.md) | Main #1487 and Research #84; signed working copies and confirmed unchanged OK are separate GUI/command contracts; Cancel stays inert. |
+| [partial-army-transfer85](reports/2026-10-26-partial-army-transfer85.md) | Main #1488/#1489; partial acceptance plus refusal information needs an explicit command result contract, not aggregate rejection. |
+| [human-transport-rounding83](reports/2026-10-26-human-transport-rounding83.md) | Research #83; preserve other gates and T216 AI safe-refusal policy; no AI/other-caller generalization. |
+| [manual-family-assumption-sweep85](reports/2026-10-26-manual-family-assumption-sweep85.md) | Existing Main #1326 owns fleet-money correction; carried Disband reachability stays unresolved, cleanup is source-only, and CLI ceilings/owner divergences are not automatically removed. |
+| [supply-provider-gui78](reports/2026-10-26-supply-provider-gui78.md) | Research #78/#82; original skipped/duplicate/invalid rows and negative-stock switching require owner/design disposition, not automatic replication. |
+| [carried-army-supply-gui79](reports/2026-10-26-carried-army-supply-gui79.md) | Research #79/#82; confirms cargo target/provider binding, excludes malformed stale-coordinate/marker attempts, and preserves extra army/money providers. |
+| [tactical-enemy-click-gui80](reports/2026-10-26-tactical-enemy-click-gui80.md) | Research #80/#82; no enemy private-field leak demonstrated; Godot-free intent differs from original inspection, but scene/installed GUI remains untested. |
+| [recruitment-default-gui81](reports/2026-10-26-recruitment-default-gui81.md) | Research #81/#82; exact original score/tie rule is evidence, while T162 opening UX remains an explicit preserved owner policy. |
+
+Original102current pairs plus6historical and3supporting pilots were reaudited offline; three fresh native probe outputs reproduce exactly. The old17paid marker mismatch, coherent-marker repeats, failed selections/stale cargo attempts and load-reset zero labels retain their exact scope. Original negative-index/negative-stock behavior needs owner/design disposition. Signed paid submission, partial-success/refusal results and confirmed unchanged OK need reviewed GUI/command contracts. T162 opening UX, T207 reserve, T216 safe refusal, no-wrap, final-unit/name and explicit1340policies remain unchanged. No fresh game, native Windows or deployed Godot acceptance; raw original evidence stays private.

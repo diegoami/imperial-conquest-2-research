@@ -63,3 +63,5 @@ Lines 45015-45023 are the same for the other side (the receiver emptied, its val
 - **Both fleets emptied at once** was not tried; with the arrows one side keeps ships.
 - **A carried army** is deleted with its emptied fleet (earlier finding, Ta4); not combined with money here.
 - **The desktop original.**
+
+Follow-up (2026-10-26): [manual-family-assumption-sweep85](2026-10-26-manual-family-assumption-sweep85.md). Partial Transfer ships money arrows use a signed receiver cap without treasury diversion; ship-only OK leaves purse1100 unchanged in measured controls. This is distinct from empty-fleet absorption and preserves the existing Main1326 route and owner safety policies.
