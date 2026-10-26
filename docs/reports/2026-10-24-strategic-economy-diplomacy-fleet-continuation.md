@@ -6,6 +6,8 @@ conditional native comparisons and declared synthetic controls].
 [Main #1412](https://github.com/diegoami/imperial_conquest_2/issues/1412) tracks
 new embark-overflow evidence. **Status:** promoted from ic2-conquest [PR190](https://github.com/diegoami/ic2-conquest/pull/190), branch `main`, commit `7129418663447e0b242c0ad56afcb78f8af1ae0c`, after independent offline verification. No production change.
 
+**Production update (2026-10-26):** Main #1412/T216 is merged; proportional-trim observations below refer to the retained older `195a588e` build. The [receiver follow-up](2026-10-26-fleet-overflow-receiver174.md) narrows accepted receiver-context/moves differences at `4d70275a` without reopening the whole troop-loss fix or revoking its safety/conservation policies.
+
 ## Result and attribution
 
 The measured faithful economy rules agree on 35 matched inputs when supplied
@@ -129,10 +131,7 @@ loses surplus troops. The two single-unit and three mixed-unit overflow cases
 are the five mismatches. The seven valid cargo controls at/below capacity or
 explicitly landing agree.
 
-Original removal/compaction changes army indices when the carrier army empties.
-Compare carrier links and surviving records, not a presumed permanent army-0
-identity. No-land, no-free-army-slot, existing receiver, every slot/type/count,
-large capacity and human click/refusal branches remain untested. The source has
+**Raw lineage correction (2026-10-26):** in the [receiver follow-up](2026-10-26-fleet-overflow-receiver174.md), all-overflow AB90 tombstones source0 and clears the carrier while raw count stays2; ABE0 compaction is not called. Native/import filtering of dead records may change live-model identity, which must not be described as observed original raw compaction. Compare raw IDs/counts, carrier links and live records separately. No-land, no-free-army-slot, existing receiver, every slot/type/count, large-capacity and human-click branches were untested by this original packet; the follow-up covers only its explicitly declared conditional subsets. The source has
 a no-receiver deletion branch; this batch does not establish its safe contract.
 Main should consume Research's promoted rule and scope those limits explicitly.
 
@@ -190,3 +189,5 @@ Source rereading corroborates the interpretation: B79C invokes F8FC only for an 
 The [safe research receipt](../data/strategic190-intake-v1.json) records counts, source pin, caveats and cargo totals. Original assets, generated raw RAM/SAV/full traces, and private manifests remain outside research Git; no owner input was used. Allocation failures, existing receivers, human click/refusal, every slot/type/count and complete diplomacy/whole-turn/native RNG/Windows acceptance remain outside this promotion. Main [#1412](https://github.com/diegoami/imperial_conquest_2/issues/1412) is open with `triage:needed`, priority P1, at the live 2026-10-24 check. The draft remains upstream until the conquest session records its promotion.
 
 Reproduction uses the [pinned runners](https://github.com/diegoami/ic2-conquest/blob/7129418663447e0b242c0ad56afcb78f8af1ae0c/runs/experiments/strategic-tracks/) and data README. Use fresh output directories: `verify_bundle.py --version UNIQUE`; then original phase/facts/synthetic replay, retained native probes on the regenerated containers, and direct unchanged-instruction replay of retained valid fleet before-RAM. Fixed-v1-output runners need a new private source tree; never route generated outputs through symlinks into the sibling checkout. The initial comparison attempt's row-shape/order difference is documented above. Upstream invalid quality-50 cargo and early EOF recovery attempts remain excluded and preserved.
+
+Follow-up: [receiver context/raw allocation](2026-10-26-fleet-overflow-receiver174.md) refines this packet's allocation/existing-army gap. The original searches after boarding/vacating/zeroing moves, unlike accepted native pre-board placement/receiver moves1. Raw198 destructive behaviour supports retaining T216's atomic refusal; native all-overflow conservation is explicit policy. The whole troop-loss fix is merged (Main1412), not reopened by this narrow accepted-placement/moves evidence. The optional false-refusal control is unrun.
