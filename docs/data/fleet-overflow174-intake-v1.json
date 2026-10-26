@@ -1,0 +1,89 @@
+{
+  "source_repository": "diegoami/ic2-conquest",
+  "source_commit": "a1ec35cfe994d0bbc1d0818e82687e2e4046708d",
+  "source_finding_blob": "9fd522355bed9a21aa84f97e18679e975526e659",
+  "research_verification": {
+    "retained_closure_hashes_verified": 255,
+    "authoritative_build_tree_blobs": 1243,
+    "cited_source_blobs": 8,
+    "all_semantic_audit_fields_and_rows_equal": true,
+    "closure_bookkeeping_differences": {
+      "private_closure_files": [
+        255,
+        257
+      ],
+      "private_closure_manifest": [
+        "closure-v2.json",
+        "closure-research.json"
+      ]
+    },
+    "fresh_native_v2_all_rows_exact": true,
+    "fresh_native_full_states_exact": 15,
+    "fresh_original_instruction_reexecution": false,
+    "new_game": false,
+    "native_replay_performed_after_read_only_audit": true
+  },
+  "source_pin": "4d70275aac4e155c0370a3ee23525cf34450a908",
+  "classification": {
+    "labels": 16,
+    "distinct_original_inputs": 13,
+    "accepted_receiver_discrepancy_rows": 8,
+    "distinct_discrepancy_inputs": 5,
+    "position_moves_only_rows": 7,
+    "position_moves_only_distinct_inputs": 4,
+    "additional_resource_policy_difference_rows": 1,
+    "measured_projection_matches": 3,
+    "intended_full_table_refusals": 2,
+    "raw_live_model_boundary": 1,
+    "human_helper_boundary": 1,
+    "helper_only_no_land": 1
+  },
+  "policy_limits": [
+    "Keep T216 atomic refusal; original raw198 deletes units and corrupts city-name words.",
+    "Keep human/designed refusal and native resource conservation; original all-overflow tombstone resources differ.",
+    "No ABE0 compaction observed in this original call chain; raw IDs/counts differ from live-model/import IDs.",
+    "Source-only labels have duplicate inputs and do not prove a false no-receiver refusal; optional union control unrun.",
+    "No Original instruction/game reexecution; author traces reaudited. Fresh native command replay is conditional, not production correction.",
+    "No actual AI caller, export/reimport, full-turn/RNG, Original UI, Godot or Windows acceptance.",
+    "All Original RAM/SAV/full states/traces, input hashes and closure manifests stay private."
+  ],
+  "main_disposition_at_verification": {
+    "Main1412_T216": "CLOSED, status:merged",
+    "conquest174": "OPEN",
+    "implementation_or_label_or_release_change": false
+  },
+  "external_reviewer": false,
+  "read_only_audit_phase": {
+    "source_pin": "4d70275aac4e155c0370a3ee23525cf34450a908",
+    "source_public_blobs_verified": 8,
+    "stock_original_identity_verified": true,
+    "original_endpoints_verified": 32,
+    "original_trace_records_verified": 32,
+    "original_declared_controls": 16,
+    "byte_distinct_inputs": 13,
+    "duplicate_input_groups": [
+      [
+        "vacated-source-only",
+        "existing-own",
+        "existing-own-source-only"
+      ],
+      [
+        "existing-enemy",
+        "existing-enemy-source-only"
+      ]
+    ],
+    "native_full_state_projections_verified": 15,
+    "retained_input_gates": 15,
+    "placement_queries_independently_rederived": 30,
+    "original_no_rng_or_compaction_in_retained_traces": true,
+    "accepted_receiver_discrepancies": 8,
+    "placement_moves_only_rows": 7,
+    "single_all_overflow_additional_resource_difference": true,
+    "initial_private_hashes_verified": 128,
+    "private_closure_files": 257,
+    "public_per_input_hashes": false,
+    "reran_original_or_native": false,
+    "additional_union_control_run": false,
+    "full_native_import_reexecution": false
+  }
+}

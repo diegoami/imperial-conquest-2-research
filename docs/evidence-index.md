@@ -2545,3 +2545,25 @@ Upstream's wrong zero-troop supplypercent audit expectation is superseded byv2,
 with original measurements unchanged. Literal-resource-v1 output was safely
 isolated in a fresh source tree; no original output overwritten. No new
 Original game, cold load, Windows/Godot or production/acceptance change.
+
+
+## Fleet overflow receiver174 (2026-10-26)
+
+[Report](reports/2026-10-26-fleet-overflow-receiver174.md), conquest [PR223](https://github.com/diegoami/ic2-conquest/pull/223), source
+`a1ec35cfe994d0bbc1d0818e82687e2e4046708d`; [public declarations/scalars/audit](https://github.com/diegoami/ic2-conquest/blob/a1ec35cfe994d0bbc1d0818e82687e2e4046708d/runs/experiments/data/run-exp-fleet-overflow174/).
+Each declared private case resolves bare `before.SAV` / `expected.SAV` under
+`private-original-v1/<case>/`, turn0720, with `free-receiver`, `raw197`,
+`single-all-overflow` and raw198/occupied/human/helper controls. These SAVs are
+diagnostic RAM projections, **not Original Save as outputs**. Sixteen labels
+contain13byte-distinct inputs; the8receiver discrepancies cover5inputs.
+
+Research verified255retained closure file hashes/lengths privately and reran the
+read-only audit:32endpoints/32traces/15native projections/30queries/128initial
+hashes and all scientific rows reproduce. The new closure inventory257/name
+change is bookkeeping only. Fresh native15commands and full states reproduce;
+corrupt expected Original SAVs are never imported. The
+[safe receipt](data/fleet-overflow174-intake-v1.json) contains counts/qualifications
+only. All raw Original files, full states/CPU traces, input hashes and closure
+manifests remain private; no public binary release asserted. No Original
+instruction/game rerun or UI/Windows/export/whole-turn acceptance. Preserve
+T216 policy and the unrun optional-control boundary.
