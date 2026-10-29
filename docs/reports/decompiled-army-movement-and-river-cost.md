@@ -6,7 +6,7 @@ The user asked directly whether I actually knew the game's movement rules (does 
 
 ## The dispatch chain
 
-`TUnitMap_CheckForMove` → `TUnitMap_MoveHumanArmy` → `FUN_0044d734` (the actual path walker) → `FUN_0044d420` (executes one step of the walk). `FUN_0044d734` implements a **Bresenham line walk** from the army's current tile toward the clicked destination — the whole multi-tile move is issued and processed in one player click, not one tile at a time.
+`TUnitMap_CheckForMove` → `TUnitMap_MoveHumanArmy` (which walks a second time if the first walk ends short with moves left: [2026-10-29-walk-stops-at-own-city-on-line230.md](2026-10-29-walk-stops-at-own-city-on-line230.md)) → `FUN_0044d734` (the actual path walker) → `FUN_0044d420` (executes one step of the walk). `FUN_0044d734` implements a **Bresenham line walk** from the army's current tile toward the clicked destination — the whole multi-tile move is issued and processed in one player click, not one tile at a time.
 
 ## The finding: only specific cell codes cost movement points, and only rivers are confirmed among them
 
