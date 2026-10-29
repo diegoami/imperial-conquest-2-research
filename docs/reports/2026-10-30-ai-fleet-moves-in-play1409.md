@@ -9,8 +9,10 @@ and the leftover of research #42, delegated to conquest on 2026-10-29.
 - **Data:** `runs/experiments/data/run-exp-fleethook1409/`.
 
 **Tag:** `[confirmed, partial]`, observed in play: the seed build under Wine, 3 starts × 4 AI End
-turns. **Promoted provisional:** the autosaves are in conquest's local artifacts only, and the
-release `run-exp-fleethook1409` is not published yet (creating it awaits the owner).
+turns. Release
+[`run-exp-fleethook1409`](https://github.com/diegoami/ic2-conquest/releases/tag/run-exp-fleethook1409)
+holds the 24 autosaves; all 24 assets match `SAVES.sha256` by name and hash (checked 2026-10-29).
+*(First promoted provisional, before the release existed.)*
 
 **Review note (2026-10-29):**
 - **Saves:** all 24 local autosaves match `SAVES.sha256`.
@@ -48,4 +50,3 @@ In the 12 AI turns:
 - The `FUN_0044939c` target replacement, and D174's internals: these were not logged.
 - More than 3 starts and 4 turns each.
 - Native Windows behaviour.
-- **Public evidence:** the autosaves await the owner's release.
