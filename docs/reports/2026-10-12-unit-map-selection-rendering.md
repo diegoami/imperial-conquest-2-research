@@ -1,5 +1,7 @@
 # Unit-map selection: army/fleet diamonds confirmed; blink and town claims withheld
 
+**Update 2026-10-29:** the open points are resolved, and two readings corrected, in [2026-10-30-unit-map-selection-drawing1010.md](2026-10-30-unit-map-selection-drawing1010.md). The yellow is the inverted tile around a black SRCERASE rhombus, the marker is inverted too, there is no timer, and the earlier "town" capture was not a town.
+
 **Status:** promoted `[confirmed, partial: published patched-Wine screenshots]` from ic2-conquest branch `run/unit-map-selection-rendering`, source `9da03bc625bfaf57c7eaec6c8a1029ff2ce699a9`. The original October12 draft's interpretation is corrected by this October26 intake. [Main #1010](https://github.com/diegoami/imperial_conquest_2/issues/1010) remains open; this report changes no implementation, release gate or acceptance status.
 
 ## Supported observations
