@@ -1,5 +1,7 @@
 # Tactical AI: immutable replay inventory and original target-rule discrepancies
 
+**Update 2026-10-29:** all 36 residual series of this inventory are attributed to four later main-project commits, and none survives at current main: [2026-10-30-tactical-residuals-attributed25.md](2026-10-30-tactical-residuals-attributed25.md).
+
 The [2026-10-23 seed2 Walk follow-up](2026-10-23-seed2-walk-captured-target1377.md)
 reports a newer correction candidate with strict318/318 hooked state/post and draw
 matches, without known-failure exemptions. The baseline and incomplete correction

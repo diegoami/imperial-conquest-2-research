@@ -42,6 +42,8 @@ on the desktop too.
 
 ## Tactical target/draw divergences (research #25)
 
+**Resolved 2026-10-29:** all 36 residual series are attributed to four main-project commits: the Pass2 eligibility fix 23, the threat-actor correction 11, PR1371 `mix-rg_s1`, PR1387 `mix-rg_s2`. No complete causal path survives at current main. See [2026-10-30-tactical-residuals-attributed25.md](reports/2026-10-30-tactical-residuals-attributed25.md); it is an attribution by source change, not per-series instruction causality. The history below is kept.
+
 The prerequisite gate is now cleared at reviewed build PR #1156, merge
 `257f2d2cd7510451d229a983553a54b89065b06c`, including the control correction
 alongside #1103/#1105. The 318-hook comparison and recovered historical inventory
