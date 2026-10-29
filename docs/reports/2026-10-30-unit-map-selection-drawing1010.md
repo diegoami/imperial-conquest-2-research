@@ -1,0 +1,57 @@
+# Unit-map selection drawing: an SRCERASE rhombus over any selected cell, with no timer
+
+**Provenance:** draft from `diegoami/ic2-conquest`, branch `main`, commit `edc13ea` (PR #255). It
+answers imperial_conquest_2 [#1010](https://github.com/diegoami/imperial_conquest_2/issues/1010),
+delegated to conquest on 2026-10-29.
+- **Scripts:** `runs/experiments/selection1010/{capture.py, recheck.py}`.
+- **Data:** `runs/experiments/data/run-exp-selection1010/` (`captures-v1.json` with the origin off
+  by 1 px, kept as measured; `recheck-v2.json`; `SAVES.sha256`).
+
+**Tag:** `[confirmed]` (decompile plus five controlled Wine captures). **Promoted provisional:** the
+screenshots are in conquest's local artifacts only, and the release is not published yet (creating
+it awaits the owner).
+
+**Review note (2026-10-29):**
+- **Captures:** all **40** local files match `SAVES.sha256`. *(Bookkeeping: 20 of its entries
+  carry an `artifacts/run-exp-selection1010/` prefix and 20 are bare file names; both resolve to
+  the same folder.)*
+- **Recheck rerun:** I ran `recheck.py` through a wrapper that redirects only its output; it reads
+  the kept screenshots. The result equals `recheck-v2.json` exactly. All five cases match the
+  per-pixel model on **1,024 of 1,024** pixels at all three times.
+- **Decompile re-read.**
+  - `FUN_004465a8` (:46433) checks that the selected cell (`+0x21a`/`+0x21c`) is inside the
+    view, then draws image **12** (`0xc`) of the form's image list (`+0x1b0`), with the canvas
+    `CopyMode` set to `0x00440328` (SRCERASE).
+  - `TUnitMap_SelectUnit` calls it **before** its type branches, so a town, an army or a fleet,
+    own or foreign, all get the frame.
+- **This corrects** the open points of
+  [`2026-10-12-unit-map-selection-rendering.md`](2026-10-12-unit-map-selection-rendering.md):
+  - its "yellow rhombus" is the **inverted tile** around a **black** line;
+  - the marker itself **is** recoloured (inverted);
+  - there is **no** game timer and no blink;
+  - October's "town" capture clicked (101,47), which is not a town.
+
+  A one-line note links that report here.
+
+## Answer
+
+- **What draws it.** `TUnitMap_SelectUnit` calls the nested `FUN_004465a8` for **any** selected
+  cell: town, army or fleet, own or foreign. If the cell is in view, it draws TerrainList
+  **image 12** with `CopyMode = SRCERASE` (`0x00440328`), then restores SRCCOPY.
+- **Image 12** comes from the TUnitMap form resource, which holds 13 images with an opaque mask. It
+  is a **black rhombus outline**: corners at the edge midpoints, 3–4 px thick, 240 black and 784
+  white pixels.
+- **What appears on screen:** where the image is white, the tile is **inverted**, so sea turns
+  yellow and the marker is inverted too. On the line itself, it is **black**.
+- **No game timer.** The only `SetTimer` is VCL's hint timer, so nothing blinks.
+- **One tile size,** 32 px.
+- **The five captures** (army, fleet, town, capital, foreign town) match the per-pixel model on
+  1,024 of 1,024 pixels and are stable at 0.4 s, 1.4 s and 2.9 s. October's army capture matches
+  too.
+
+## What this does not establish
+
+- Native Windows palettized rendering.
+- Keyboard selection.
+- The area-map cursor.
+- **Public evidence:** the screenshots await the owner's release.

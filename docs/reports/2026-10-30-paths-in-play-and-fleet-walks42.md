@@ -85,7 +85,7 @@ Remake **v0.8.4** (`d9cc71bc82e22ad1d3d7c373c3d80d61ed0bcbeb`).
 
 ## What this does not establish
 
-- The AI fleet's recursion or continuation off the direct path. That needs a live hook.
+- The AI fleet's recursion or continuation off the direct path. That needs a live hook. *(Since observed: [2026-10-30-ai-fleet-moves-in-play1409.md](2026-10-30-ai-fleet-moves-in-play1409.md).)*
 - Paths beyond two AI End turns from one start, or other seeds.
 - Native Windows behaviour.
 - Fleet routes on real maps beyond the one-save search, or with storms during the walk.
