@@ -1,4 +1,6 @@
-# A long walk whose line crosses an own city goes around it in the original; the remake stops after one side step
+# A player's move walks a second time in the original when the first walk ends short; the remake walks once
+
+*(First seen with an own city on the line; the file name keeps that first case.)*
 
 **Provenance:** draft from `diegoami/ic2-conquest`, branch `main`, commit `7c5803b` (PR #239, branch
 `research/diff084-campaign232`), conquest [#230](https://github.com/diegoami/ic2-conquest/issues/230).
@@ -80,6 +82,36 @@ and a city marker blocks an army's path.
 moves left, it walks again from where it stopped. The first walk ends beside Venusia. The second
 walk starts a new line from (118,52), which passes the city. The remake performs only the first
 walk.
+
+## In general (added 2026-10-29, draft at ic2-conquest `main` `50ab1a7`, PR #241)
+
+**The rule.** After a human army's move order, the original calls the army walker. If the army is
+still short of the target with moves left, it calls the walker once more, from the new position on
+a fresh line (`TUnitMap_MoveHumanArmy`). The remake calls it once, and its single walk equals the
+original's first call step for step. This holds in all three replayed cases, below.
+
+**When a first walk ends short.** It does so when its chosen step is blocked (a city or army marker
+on the line) or costs more than the moves left. A neighbouring tile may still be affordable. This
+follows from the step rule of
+[`2026-10-21-strategic-lateral-steps-and-callers.md`](2026-10-21-strategic-lateral-steps-and-callers.md):
+- affordability is tested after the candidate is chosen;
+- a human army's unaffordable step keeps its moves.
+
+This reading is code-backed `[code]`; it was not replayed for each campaign move.
+
+**How often, in the #232 campaigns.** The release `run-exp-diff084-campaign` holds three archives.
+All 453 saves match `SAVES.sha256`. I parsed every remake `move` receipt of the **16** completed
+campaigns (the folders with `summary.json`):
+- **32 move orders**, of which **21 ended short of the target with moves left**. The draft says
+  "15 finished campaigns"; the 32 and 21 reproduce over the 16 folders.
+- The 21 come from only 7 armies, re-ordered turn after turn: Carthage's army 3 and Rome's army 1
+  five times each, Bithynia's army 11 and Ptolemaic's army 7 four times each, and one order each for
+  Celtiberia, Gaul and Seleucid. Carthage's army 3 sits at (87,76) from turn 2, and Ptolemaic's
+  army 7 at (189,94) from turn 1, since its target lies across the sea.
+- These are the moves where the original would walk a second time, but that second walk can be
+  blocked too. So 21 is an upper bound on the orders that end differently, not a count of observed
+  differences.
+- The original's own receipts were not parsed for this count.
 
 ## Two more cases, with no city on the line (added 2026-10-29)
 
