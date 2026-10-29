@@ -203,7 +203,7 @@ not catch a wrong pairing of their inputs; the correction came from conquest its
 
 - Later games with several armies per nation, where same-nation inversions and the merge
   dependence would show up.
-- Other cross-nation scans (`FUN_004502e0`, `FUN_0044ffbc`): not read.
+- The full rule of the capital-defence assignment `FUN_0044efc8`, beyond its table-order listing (research #123). *(Corrected 2026-10-29: this line used to say `FUN_004502e0` and `FUN_0044ffbc` were not read; addendum 3 reads both, and neither depends on order.)*
 - Enemy-pick ties beyond 30 turns: not hooked.
 - A same-nation fleet inversion in play: it needs later games with several fleets per nation. The tie count below replays each death turn with a fresh seed, so the turns are not the campaigns' own.
 - How the remake handles an imported dead record.
