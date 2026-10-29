@@ -989,6 +989,13 @@ Source: 2026-10-07-strategic-ai-turn.md (decompilation of `FUN_0044fa20` and its
 - Up to `threats + 2` own armies that still have moves and are not committed to a reachable attack (no army or city target scoring ≥ 100 reachable this turn, or the capital within 3× their moves) are dispatched toward the nearest threatening army if it is at war and on land, otherwise back to the capital (2026-10-07-strategic-ai-turn.md).
 - A threat whose owner is not at war is accepted only by a responder at least 20 from the capital (corrected 2026-10-09; seen in play: 2026-10-09-ai-intercept-and-fleet-hunt-in-play.md).
 - A threat aboard a fleet cannot be intercepted — the responder goes to the capital (2026-10-07-strategic-ai-turn.md).
+- **Table order and ties:**
+  - The threat list keeps the **first 9** qualifying armies in table order; later ones overwrite an uncounted 10th slot.
+  - Responders are taken in table order.
+  - Each responder takes the nearest eligible listed threat, with the earlier list entry winning ties.
+  - EFC8 runs before the per-army loop and so pre-empts `FUN_0044EE60` by spending moves.
+  - In emulation, swapping records changed both the tie choice and which threat the 9-cap dropped.
+  - In play (3 starts × 30 turns), there were at most 2 threats per call, 0 cap drops and 0 ties `[confirmed]` ([capital defence](reports/2026-10-30-capital-defence-rule123.md)).
 
 **Resupply and free mercenary hire** (`FUN_0044e41c`, every own army, over the 334 cities within Chebyshev 4):
 - Own city: the army takes `min(troops/100 − supplies, city supply stock)` tons free; its purse is then normalised against the national treasury — surplus above 1000 deposited, below 500 topped up by 500 while the treasury is positive (this is the mechanism behind the army-purse 1000 cap) (2026-10-07-strategic-ai-turn.md).
