@@ -12,9 +12,10 @@ screenshots are in conquest's local artifacts only, and the release is not publi
 it awaits the owner).
 
 **Review note (2026-10-29):**
-- **Captures:** all **40** local files match `SAVES.sha256`. *(Bookkeeping: 20 of its entries
-  carry an `artifacts/run-exp-selection1010/` prefix and 20 are bare file names; both resolve to
-  the same folder.)*
+- **Captures:** all **20** local capture files match `SAVES.sha256`. *(Corrected 2026-10-29: the
+  first index listed each file twice, once with an `artifacts/run-exp-selection1010/` prefix and
+  once bare, which this note first counted as 40 files. Since conquest PR #257 the index holds the
+  20 bare-name lines, and `sha256sum -c` from the artifacts folder gives 20/20 OK.)*
 - **Recheck rerun:** I ran `recheck.py` through a wrapper that redirects only its output; it reads
   the kept screenshots. The result equals `recheck-v2.json` exactly. All five cases match the
   per-pixel model on **1,024 of 1,024** pixels at all three times.
