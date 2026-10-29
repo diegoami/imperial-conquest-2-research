@@ -88,6 +88,58 @@ stale value is ≥ 0, and this review does not establish what it is in play.
 point. It is executed once, by the same handler as human moves, and the army is then not offered a
 second march that turn. An AI walk that ends short with moves left stops there.
 
+## How often (remake, measured; added 2026-10-29)
+
+The draft gained this at ic2-conquest `main` `fbd77a7` (PR #244). The probe is `RemakeAdapter aiprobe`
+(ic2-conquest `difftest/remake_adapter/AiProbe.cs`), run on remake v0.8.4, `classical-faithful`:
+- it plays 10 End turns from each of the 16 New Game starts, with seeds 1–3 (48 runs);
+- the human seat gives no orders;
+- for every AI march named in the remake's AI log, it records the march's own `ArmyMoved` event.
+
+The data, one jsonl per run, is committed at `runs/experiments/data/run-exp-diff084-aiprobe/`. This
+review parsed all 48 files independently, and the figures reproduce exactly:
+
+| | AI marches |
+|---|---|
+| logged | 5,105 (94 armies gone by the end of their round: no position or moves) |
+| walked | 5,011 |
+| ended within 1 tile of the aimed point | 2,984 (59.5%) |
+| **ended more than 1 tile short, with moves left** | **1,406 (28.1%)** |
+| ended short with no moves left | 621 |
+
+**The 1,406 by reason:**
+
+| Reason | Marches |
+|---|---|
+| approach an enemy army | 781 |
+| approach a city | 436 |
+| mercenary run | 100 |
+| garrison fallback | 32 |
+| approach an army via a waypoint | 26 |
+| move to the resupply city | 24 |
+| defend the resupply city | 7 |
+
+The draft's list leaves out the last 7, so its categories sum to 1,399.
+
+**Moves left in the 1,406:**
+
+| Moves left | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |
+|---|---|---|---|---|---|---|---|---|---|
+| Marches | 365 | 197 | 245 | 127 | 56 | 145 | 86 | 142 | 43 |
+
+**How to read it.**
+- **Remake only.** No original game is played, so this counts where the *remake's* AI stops short.
+- **Moves left are estimated.** They come from the remake's refill rule applied to the army at the
+  end of the round (`SupplyMoraleRule.BaseMoves` with the supply penalty). This is an estimate where
+  troops or supplies changed during the round.
+- **The bounds assume the original routes the same way.** The draft brackets the share that ends
+  differently in the original between 26/5,011 (0.5%), the waypoint marches, and 1,406/5,011 (28%).
+  This assumes the original's `FUN_0044cb40` test sends the same marches through an intermediate
+  point as the remake's waypoint choice, which the probe does not check. The stale `[ebp-0xa]`
+  above decides where in that range the original falls.
+- **Distance is measured to the aimed point.** The original's recursion test measures distance to
+  the *target*.
+
 ## Consequence for #1585
 
 | Mover | Original | Remake v0.8.4 |
@@ -108,4 +160,4 @@ in play.
 - The stale value at `[ebp-0xa]` on the direct path for any real caller.
 - Real routes. The replay lacked the city and fleet tables.
 - The semantics of `FUN_0044cb40`, `FUN_0044db38` and `FUN_0044cec8`. Only their use is read here.
-- How often an AI walk ends short in play.
+- How often an AI walk ends short in the original. The remake's share (28.1%) is measured above.
