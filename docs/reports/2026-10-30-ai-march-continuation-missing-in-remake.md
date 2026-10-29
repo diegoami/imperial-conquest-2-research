@@ -45,12 +45,14 @@ for research issue [#97](https://github.com/diegoami/imperial-conquest-2-researc
     independent of stale memory.
   - On the direct path, the same state gives one walk or a continued walk depending only on the
     stale word.
-- **What the game actually reads there is open.** There are nine call sites (`0x44e913`,
-  `0x44ec7d`, `0x44ecd6`, `0x44f2e7`, `0x44f2f9`, `0x44f409`, `0x44f43f`, `0x44f47c`, `0x44f4a3`,
-  plus the self-call `0x44dca1`). Each leaves its own stack history, and I did not emulate them.
-  ic2-conquest's inert AI hook (`patches/ai_hook.py`), used in
-  [`2026-10-09-ai-intercept-and-fleet-hunt-in-play.md`](2026-10-09-ai-intercept-and-fleet-hunt-in-play.md),
-  could log `[ebp-0xa]` and the recursion in play.
+- **What the game reads there: measured later, never −1.** There are **10** call sites
+  (`0x44e913`, `0x44ec7d`, `0x44ecd6`, `0x44f2e7`, `0x44f2f9`, `0x44f409`, `0x44f43f`, `0x44f47c`,
+  `0x44f4a3`, `0x44f4c7`), plus the self-call `0x44dca1`.
+  - *Corrected:* this note first listed nine, because I had cut the scan output short.
+  - ic2-conquest's observation-only hook measured the word in play: 5 starts × 5 AI End turns,
+    autosaves byte-identical to the plain build. The word was 49, 71 or 0 and never −1, and every
+    recursion and no-progress test passed. See
+    [`2026-10-30-ai-move-stale-word-in-play97.md`](2026-10-30-ai-move-stale-word-in-play97.md).
 - **The remake side is confirmed in source at v0.8.4.**
   - `AiMilitaryPhase.cs`:307 says "an army that has already marched this turn is offered only the
     attack its target allows, never a second march".
@@ -136,7 +138,9 @@ The draft's list leaves out the last 7, so its categories sum to 1,399.
   differently in the original between 26/5,011 (0.5%), the waypoint marches, and 1,406/5,011 (28%).
   This assumes the original's `FUN_0044cb40` test sends the same marches through an intermediate
   point as the remake's waypoint choice, which the probe does not check. The stale `[ebp-0xa]`
-  above decides where in that range the original falls.
+  above decides where in that range the original falls. In play it was never −1, so the share is
+  about 28%, the upper end
+  ([`2026-10-30-ai-move-stale-word-in-play97.md`](2026-10-30-ai-move-stale-word-in-play97.md)).
 - **Distance is measured to the aimed point.** The original's recursion test measures distance to
   the *target*.
 

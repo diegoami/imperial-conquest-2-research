@@ -169,7 +169,8 @@ terrain 2..11 can recurse only when cost<remaining moves (strict); army-marker
 codes 200..247 and city-marker codes 20..99 enter their own hostility/contact
 branches, with positive-move gates for attacks and own/nonwar city supply.
 This tail is not proof of a middle-path interaction or research #5 contact-rule
-reopening. Human caller's second walk and AI routing wrapper are separate
+reopening. Controls for each tail branch (both flags):
+[2026-10-30-walker-distance1-tail-controls98.md](2026-10-30-walker-distance1-tail-controls98.md). Human caller's second walk and AI routing wrapper are separate
 from the step's own return; endpoint agreement alone cannot identify the path.
 
 ## Limits / next acceptance
