@@ -113,6 +113,9 @@ campaigns (the folders with `summary.json`):
   differences.
 - The original's own receipts were not parsed for this count.
 
+**Fleets too:** the human fleet handler makes the same second walk, and the remake's fleet move
+walks once ([2026-10-30-paths-in-play-and-fleet-walks42.md](2026-10-30-paths-in-play-and-fleet-walks42.md)).
+
 ## Two more cases, with no city on the line (added 2026-10-29)
 
 The draft gained these at ic2-conquest `main` `e6ee978` (PR #240), from the #232 campaigns of other
