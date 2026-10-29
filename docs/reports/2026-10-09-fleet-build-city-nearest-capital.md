@@ -46,6 +46,7 @@ reading.
   - `FreeCoastalCities` (`godot/UI/Dialogs/StrategyDialogModels.cs:372-400`) excludes the cities already building a fleet, which **matches**.
   - But it lists the cities **in world order** (`CoastalCities`, `:344-363`, a plain scan of `_state.Cities`), and the dialog's OK builds at the first (`godot/UI/Dialogs/BuildFleetDialog.cs:249`). For Rome that is Pisae, the first Roman coastal city in the world's order, not Caere.
   - So the remake's dialog **differs** in which city builds (fidelity only, NEW-g1-3 as drafted).
+  - Still different at remake v0.8.4, measured live (original Caere, remake Pisae): [2026-10-29-v084-known-differences-and-command-gaps.md](2026-10-29-v084-known-differences-and-command-gaps.md) §1.
   - The remake's `CoastalCity.IsCoastal` test was not compared with the original's "free adjacent water cell".
 
 ## Evidence
