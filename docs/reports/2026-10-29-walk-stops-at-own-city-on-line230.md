@@ -9,8 +9,8 @@ and
 the save SHA-256s are committed at `runs/experiments/data/<run>/SAVES.sha256`. Wine-only. Remake
 **v0.8.4** (`d9cc71bc82e22ad1d3d7c373c3d80d61ed0bcbeb`), `classical-faithful`.
 
-**Tag:** `[confirmed, partial]` for the observation: single deterministic orders from one save, one
-army, one blocking city. This review **establishes the cause** `[confirmed: original x86 replay]`:
+**Tag:** `[confirmed, partial]` for the observation: single deterministic orders from three saves
+(Rome, Carthage, Gaul), three armies. This review **establishes the cause** `[confirmed: original x86 replay]`:
 the original's click handler calls the walker a second time, and the remake does not.
 
 **Review note (2026-10-29):**
@@ -81,6 +81,33 @@ moves left, it walks again from where it stopped. The first walk ends beside Ven
 walk starts a new line from (118,52), which passes the city. The remake performs only the first
 walk.
 
+## Two more cases, with no city on the line (added 2026-10-29)
+
+The draft gained these at ic2-conquest `main` `e6ee978` (PR #240), from the #232 campaigns of other
+nations. Both were reproduced as single orders (run
+[`run-exp-diff084-orders-b5`](https://github.com/diegoami/ic2-conquest/releases/tag/run-exp-diff084-orders-b5),
+turn 0720; the starts come from release `run-exp-civ-sweep`). This review checked all 12 saves
+against `SAVES.sha256` (12 of 12 OK), re-read the endpoints from the `a001` saves, and replayed the
+original walker on each case's `a000.SAV`. For the replay, the acting nation was set as the current
+human seat.
+
+| Start | Order | Original (save) | Remake (save) | One walker call | Two calls |
+|---|---|---|---|---|---|
+| `S01_Carthage_AUTO0720.SAV` | army 3 from (93,79) toward (61,56) | (89,76), 0 left | (90,77), 1 left | (90,77), 1 left | **(89,76), 0 left** |
+| `S06_Gaul_AUTO0720.SAV` | army 9 from (93,28) toward (92,34) | (92,34), 1 left | (92,32), 3 left | (92,32), 3 left | **(92,34), 1 left** |
+
+The first walk ends short with moves left in both cases, although no city is on the line:
+- **Carthage:** (93,79) → (92,78) → (92,77) → (91,77) (a 4-point step) → (90,77).
+- **Gaul:** (93,28) → (92,28) → … → (92,32).
+
+The handler's second walk then continues: Carthage (90,77) → (89,76); Gaul (92,32) → (92,33) →
+(92,34). So the difference is **not specific to cities**. It appears whenever the original's first
+walk stops short of the target with moves left. The remake again equals the single call exactly.
+
+The draft adds that, in the Gaul campaign, Rome's AI destroyed the Gaulish army at (92,34), where
+the original's walk had put it. In the remake the army stood two tiles away and survived. This
+review did not re-read that campaign.
+
 ## Found in play
 
 The #232 campaign `rome-rulebot1-5t` (rule bot, 5 turns, seed 12345) gave both games the same orders
@@ -102,7 +129,7 @@ with that code being unchanged.
 ## What this does not establish
 
 - Native Windows behaviour.
-- Other blockers (foreign cities, armies) and other geometries.
+- Every geometry that makes the first walk end short. Three cases are covered: one with an own city on the line, two without.
 - Whether a second walk can itself end short and leave moves unused. The handler calls the walker
   at most twice.
 - The AI's walks, which go through a separate routing wrapper (`0x0044dba8`).
