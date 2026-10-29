@@ -7,9 +7,10 @@ delegated to conquest on 2026-10-29.
 - **Data:** `runs/experiments/data/run-exp-selection1010/` (`captures-v1.json` with the origin off
   by 1 px, kept as measured; `recheck-v2.json`; `SAVES.sha256`).
 
-**Tag:** `[confirmed]` (decompile plus five controlled Wine captures). **Promoted provisional:** the
-screenshots are in conquest's local artifacts only, and the release is not published yet (creating
-it awaits the owner).
+**Tag:** `[confirmed]` (decompile plus five controlled Wine captures). Release
+[`run-exp-selection1010`](https://github.com/diegoami/ic2-conquest/releases/tag/run-exp-selection1010)
+holds the 20 screenshots; all 20 assets match `SAVES.sha256` by name and hash (checked 2026-10-29).
+*(First promoted provisional, before the release existed.)*
 
 **Review note (2026-10-29):**
 - **Captures:** all **20** local capture files match `SAVES.sha256`. *(Corrected 2026-10-29: the
@@ -55,4 +56,3 @@ it awaits the owner).
 - Native Windows palettized rendering.
 - Keyboard selection.
 - The area-map cursor.
-- **Public evidence:** the screenshots await the owner's release.
