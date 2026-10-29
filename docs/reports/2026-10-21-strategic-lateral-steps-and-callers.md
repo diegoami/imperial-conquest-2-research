@@ -150,7 +150,7 @@ gameplay progress or native compatibility claim follows.
 | Caller | Route into exact step | Boundary differences |
 |---|---|---|
 |Human army 00446D9C|46728/46733 ->0044D734 ->0044D420 ->0044D31C|Second walk when not at target and moves remain; human residual moves preserved. Seen in play, and absent in the remake v0.8.4: [2026-10-29-walk-stops-at-own-city-on-line230.md](2026-10-29-walk-stops-at-own-city-on-line230.md).|
-|AI army 0044DBA8|51825/51829/51835 ->same army walk/step/helper|Routing before walking and fallback moves accounting; aboard branch routes carrier instead of a land walk.|
+|AI army 0044DBA8|51825/51829/51835 ->same army walk/step/helper|Routing before walking and fallback moves accounting; aboard branch routes carrier instead of a land walk. Recursion and its stale-stack condition on the direct path: [2026-10-30-ai-march-continuation-missing-in-remake.md](2026-10-30-ai-march-continuation-missing-in-remake.md).|
 |Human fleet 00446E24|46761/46766 ->0044E094 ->0044DD70 ->0044DCAC|Separate sea walker; possible second call; fleet moves field +12.|
 |AI fleet 0044F608|53054/53058/53063 ->0044E1FC ->0044E094 ->same fleet step/helper|Routing/recursive wrapper; adjacent unloading, fleet-city supply and naval contacts stay outside the single step.|
 
