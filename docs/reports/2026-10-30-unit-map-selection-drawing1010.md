@@ -40,7 +40,7 @@ holds the 20 screenshots; all 20 assets match `SAVES.sha256` by name and hash (c
 - **What draws it.** `TUnitMap_SelectUnit` calls the nested `FUN_004465a8` for **any** selected
   cell: town, army or fleet, own or foreign. If the cell is in view, it draws TerrainList
   **image 12** with `CopyMode = SRCERASE` (`0x00440328`), then restores SRCCOPY.
-- **Image 12** comes from the TUnitMap form resource, which holds 13 images with an opaque mask. It
+- **Image 12** (exact pixel rule: [2026-10-30-selection-rhombus-band124.md](2026-10-30-selection-rhombus-band124.md)) comes from the TUnitMap form resource, which holds 13 images with an opaque mask. It
   is a **black rhombus outline**: corners at the edge midpoints, 3–4 px thick, 240 black and 784
   white pixels.
 - **What appears on screen:** where the image is white, the tile is **inverted**, so sea turns
