@@ -659,6 +659,7 @@ Open:
 
 ### Boarding and disembarking armies
 
+- **All-ashore AI unload with several live armies:** the land receiver is **appended** at index = count, and the source is tombstoned in place (no compaction at the unload). The next dead-record sweep (`FUN_0044ADB0`) swap-removes the tombstone, moving the last record (the receiver, if no other tombstone exists) into the source's slot. The sweep runs at the start of the AI-seat loop and before each AI seat. A human turn that directly follows the embarking AI seat can see the unswept table `[confirmed: emulation; timing derived]` ([all-ashore order](reports/2026-10-30-all-ashore-army-order1439.md)).
 - AI embark overflow in the tested free-land/free-army-slot branch moves the first whole slot whose cumulative troops exceed `ships × 500`, and all following slots, ashore. It conserves troops and may leave fewer than capacity aboard; proportional troop scaling is a derived remake discrepancy, not the observed original rule `[confirmed: source and bounded original/native controls]` ([continuation report](reports/2026-10-24-strategic-economy-diplomacy-fleet-continuation.md)). No-land/allocation/existing-receiver/human UI branches remain unproved.
 
 - Embark = select the army, click the adjacent own fleet: the army moves onto the fleet's tile, its cell becomes −1, the fleet's carried-army field becomes the army's index, and **both units' moves become 0** — live (Wine-only) (2026-10-02-fleet-orders-live.md).
