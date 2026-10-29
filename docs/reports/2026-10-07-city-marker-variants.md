@@ -26,7 +26,8 @@ tiers" the asset specification assumed?
   `FUN_0044c528` (:50636, :50746) — and nothing in the weekly or quarterly tick calls it. So a
   city that grows past a threshold keeps its old, smaller icon until captured **[confirmed:
   decompile + saves]**: the long runs hold variant-0 cities at population 26–28, above the
-  variant-1 threshold.
+  variant-1 threshold. The remake v0.8.4's save conversion does not keep such a stale tier: it
+  writes the current-population tier ([2026-10-29-export-city-marker-variant-and-empty-offer230.md](2026-10-29-export-city-marker-variant-and-empty-offer230.md)).
 
 **Also found, completing the marker family: fleet markers carry size bands.** `FUN_0044a878`
 (:49145–49172) writes `owner + 300 / + 316 / + 332` at **< 25, 25–49, ≥ 50 ships** (unsigned), and

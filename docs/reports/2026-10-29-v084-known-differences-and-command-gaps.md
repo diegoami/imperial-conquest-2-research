@@ -63,8 +63,9 @@ the same start save and the same orders in both games. Not run on native Windows
   - 46 are equal after End turn. The 8 others carry only their immediate difference: fleet city ×3,
     army position ×2 and ally relation ×3
     ([`2026-10-29-war-declaration-ally-cooldown-diff230.md`](2026-10-29-war-declaration-ally-cooldown-diff230.md)).
-- **Dangling citation:** the draft cites `findings/2026-10-29-ai-fleet-hunt-absent-in-remake233.md`.
-  No ic2-conquest branch had that file on 2026-10-29. It is not promoted or relied on here.
+- **Citation that arrived later:** the draft cites `findings/2026-10-29-ai-fleet-hunt-absent-in-remake233.md`,
+  which was on no ic2-conquest branch at intake. It was published later the same day and promoted as
+  [`2026-10-29-ai-fleet-hunt-absent-in-remake233.md`](2026-10-29-ai-fleet-hunt-absent-in-remake233.md).
 
 ## 1. Build fleet still uses a different city (known since 2026-10-09)
 
@@ -113,7 +114,8 @@ difference to Rome's own records.
 ## Not covered
 
 Fleet orders, mobilization and unit-level orders (#230 batch 3), battles (#231), multi-turn play
-(#232) and random outcomes (#233). The test registry is ic2-conquest's `difftest/REGISTRY.md`.
+(#232) and random outcomes (#233; for the AI fleet hunt see
+[`2026-10-29-ai-fleet-hunt-absent-in-remake233.md`](2026-10-29-ai-fleet-hunt-absent-in-remake233.md)). The test registry is ic2-conquest's `difftest/REGISTRY.md`.
 
 ## What this does not establish
 
