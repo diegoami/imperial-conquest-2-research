@@ -110,10 +110,34 @@ not catch a wrong pairing of their inputs; the correction came from conquest its
        `FUN_0044ee60` were re-read: the cap at 1000, the +1000 bonus, and the strict `<`
        replacement.
 
+### Addendum 2: enemy-pick ties counted in play (conquest PR #262, commit `e36b39f`)
+
+- **The hook:** an inert tie hook on `FUN_0044ee60` (`patches/tie_hook.py`), with two probes:
+  - `0x44EF79` logs each candidate: score, index, distance, and the best so far;
+  - `0x44EFB1` logs the chosen candidate.
+- **The run:** each of the 43 death turns, replayed from its End-turn click save for one End turn,
+  with seed 12345 in a fresh process.
+- **The result:**
+  - 501 picks, 220 of them with at least one candidate;
+  - **6 ties**, all **one recurring situation**: nation 12's army choosing between Seleucid
+    armies 4 and 5, both scoring 31, at 27 and 22 tiles. Table order picks the **farther** one
+    (index 4);
+  - **0 cross-nation ties**, so no pick in these turns could change from a cross-nation reorder.
+    The capped 2000 regime was not reached.
+- **Review:**
+  - release [`run-exp-tiehook117`](https://github.com/diegoami/ic2-conquest/releases/tag/run-exp-tiehook117):
+    129 of 129 files match `SAVES.sha256`;
+  - hooked vs plain autosaves (my own comparison): 43 of 43 byte-identical;
+  - `analyze.py` rerun from a scratch layout of the release reproduces `summary-v1.json` exactly
+    (calls 501, with candidates 220, ties 6, cross-nation 0, farther won 6);
+  - the fixed `same_nation.py --input v3 --sweep v5` reproduces `same-nation-v3.json`, which
+    equals v2.
+
 ## What this does not establish
 
 - Later games with several armies per nation, where same-nation inversions and the merge
   dependence would show up.
-- Other cross-nation scans (`FUN_004502e0`, `FUN_0044ffbc`): not read. Whether an `FUN_0044ee60` tie actually occurred in the 43 observed death turns was not checked.
+- Other cross-nation scans (`FUN_004502e0`, `FUN_0044ffbc`): not read.
+- Enemy-pick ties in later turns, with more and larger armies: not hooked. The tie count below replays each death turn with a fresh seed, so the turns are not the campaigns' own.
 - How the remake handles an imported dead record.
 - Native Windows behaviour.
