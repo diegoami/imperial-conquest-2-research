@@ -63,5 +63,5 @@ swept state no remake change is needed.
 
 - Play: everything here is emulated.
 - Saving and loading an unswept table.
-- The remake's own order for removing dead armies.
+- The remake's own order for removing dead armies. *(Since answered: [2026-10-30-army-table-order-after-deaths117.md](2026-10-30-army-table-order-after-deaths117.md).)*
 - The fleet sweep (`FUN_0044ad7c`), which these controls did not exercise.
