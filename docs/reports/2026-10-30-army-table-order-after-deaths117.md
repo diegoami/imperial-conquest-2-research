@@ -88,11 +88,32 @@ not catch a wrong pairing of their inputs; the correction came from conquest its
      nothing.
    - **No observed case where it mattered:** none of the 43 death turns inverted two surviving
      armies of the same nation.
+   - **Cross-nation targeting also follows table order** (addendum, conquest PR #261, commit
+     `46cbf74`).
+     - **The enemy army an AI army goes for:** `FUN_0044ee60` (:52715–52776) scans every army of
+       a nation at war in table order. Score = `min(1000, strength × 110 / enemy − distance)`
+       (halved by `FUN_0044eb9c`'s test), +1000 if weaker and within 7. It replaces the current
+       pick only when **strictly** greater, so the lowest index wins ties. Because the cap applies
+       before distance can separate candidates, a strong army scores **every** weak enemy within
+       7 tiles at 2000, and it picks the first in table order, not the nearest.
+     - **Emulated** on the #187 RAM, unmodified: Carthage's 33,900 troops at (47,62), at war with
+       Rome, with two 2,000-troop Roman armies. In the staged order the target is (44,62); with the
+       records swapped it is (50,62). With the Romans 3 and 4 tiles away, swapping makes it chase
+       the **farther** one, (51,62).
+     - **Capital defence:** `FUN_0044efc8` (:52776–52899, read only) lists the enemy armies near
+       the capital in table order, at most 10, then assigns its own armies in list order
+       `[derived]`.
+     - **So a cross-nation reorder after deaths can change an AI army's target and its capital
+       defence.**
+     - **Review:** I reran `tiebreak.py` from a scratch copy (with `visit_order.py`, outputs
+       redirected); the result is identical to `tiebreak-v1.json`. The scoring lines of
+       `FUN_0044ee60` were re-read: the cap at 1000, the +1000 bonus, and the strict `<`
+       replacement.
 
 ## What this does not establish
 
 - Later games with several armies per nation, where same-nation inversions and the merge
   dependence would show up.
-- Cross-nation tie-breaks, such as target choice or interception: not read.
+- Other cross-nation scans (`FUN_004502e0`, `FUN_0044ffbc`): not read. Whether an `FUN_0044ee60` tie actually occurred in the 43 observed death turns was not checked.
 - How the remake handles an imported dead record.
 - Native Windows behaviour.
