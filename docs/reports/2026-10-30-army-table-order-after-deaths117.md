@@ -170,12 +170,41 @@ not catch a wrong pairing of their inputs; the correction came from conquest its
     `summary-v2.json` exactly;
   - `FUN_00450b30`'s loop and conditions were re-read.
 
+### Addendum 4: fleet order diverges the same way (conquest PR #264, commit `3c08e35`)
+
+- **The original, in play** (`fleet_order.py`). The sources are the 80 campaign End turns, the 90
+  long-run End turns, and the 30 `storm30` End turns, where Carthage hunts and sinks Rome's
+  fleet 2.
+  - **31** End turns lose a fleet. The order is kept in **0 of 31**, and swap-remove sweep
+    groupings (`FUN_0044ad7c`) reproduce **31 of 31**.
+  - Example, storm30 seed 1: [0,1,2,3,4] → [0,1,4,3].
+  - No two fleets of one nation were inverted, since each nation had one fleet early on.
+- **The remake v0.8.4** filters fleets in place, so its order is kept:
+  - `AiAbsorbFleetCommandHandler` uses `.Where`, with the survivor replaced in place;
+  - `FleetTickSystem` rebuilds the list in order;
+  - so does `ScuttleFleetCommandHandler`.
+- **Both games' AI fleet merge takes the first survivor and partner in list order:** the
+  original's `FUN_00450b30`, and the remake's `AiFaithfulEconomy.MergeFleets` (T159).
+  - **Emulated** (`fleet_merge.py`, on the #187 RAM, unmodified): two launched 20-ship
+    Carthaginian fleets at (49,62) and (48,66) merge onto (49,62) as staged, and onto (48,66) with
+    the records swapped.
+  - The absorbed record stays dead (owner −1) until the next sweep.
+  - So after a fleet loss, the original's reorder can change which fleet survives a merge, which
+    the remake cannot reproduce.
+- **Review:**
+  - I reran `fleet_order.py --version v2` and `fleet_merge.py --version v2` from scratch copies
+    (outputs redirected). Both are identical to the committed `fleet-order-v2.json` and
+    `fleet-merge-v2.json`: 31 turns with a fleet gone, 0 kept, 31 explained, 0 same-owner
+    inversions.
+  - In the remake source at v0.8.4, `MergeFleets` loops survivor then partner over
+    `state.Fleets`, and the three removal paths use `.Where`/`.Select` without reordering.
+
 ## What this does not establish
 
 - Later games with several armies per nation, where same-nation inversions and the merge
   dependence would show up.
 - Other cross-nation scans (`FUN_004502e0`, `FUN_0044ffbc`): not read.
 - Enemy-pick ties beyond 30 turns: not hooked.
-- The remake's fleet merge and fleet-table order. The tie count below replays each death turn with a fresh seed, so the turns are not the campaigns' own.
+- A same-nation fleet inversion in play: it needs later games with several fleets per nation. The tie count below replays each death turn with a fresh seed, so the turns are not the campaigns' own.
 - How the remake handles an imported dead record.
 - Native Windows behaviour.
