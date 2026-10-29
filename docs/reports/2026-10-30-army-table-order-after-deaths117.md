@@ -133,11 +133,49 @@ not catch a wrong pairing of their inputs; the correction came from conquest its
   - the fixed `same_nation.py --input v3 --sweep v5` reproduces `same-nation-v3.json`, which
     equals v2.
 
+### Addendum 3: 30-turn tie runs and the remaining army scans (conquest PR #263, commit `76237b6`)
+
+- **Ties over 3 starts × 30 End turns** (Rome `BASE`, S13 Armenia, S10 Dacia; human seat idle;
+  seed 12345; owners read from each turn's start):
+  - 1,127 picks, 437 with candidates;
+  - **5 ties, all within one target nation:** the turn-1 Seleucid case in each start, and
+    Armenia's turns 24 and 26 between two Carthaginian armies. 4 of the 5 went to the farther
+    army;
+  - **0 cross-nation ties.**
+  - The first long summary read owners from the start save and wrongly showed 2 cross-nation ties.
+    It is kept as `summary-long-v1`.
+- **Inertness:**
+  - Rome and Dacia: 30 of 30 byte-identical.
+  - **Armenia:** 4 turns (11, 14, 15, 22) differ in **one word only**, a fleet's route_y (`+6`).
+    In all 4 records route_x is −1, so route_y is meaningless there. The atlas classes it as
+    `LIVE_AND_RESIDUE`, and the hook's stack use changes the leftover value. Every other byte, and
+    every later turn, is identical.
+- **The remaining army scans** (code reading):
+  - **no order dependence:** `FUN_004502e0` (recruitment city: an any-army flag, with its tie-break
+    over the city list), `FUN_0044ffbc` (sums only), `FUN_00450858` (per army) and `FUN_004504f4`
+    (a flag);
+  - **order-dependent:** the merge `FUN_004509f0`, the enemy pick `FUN_0044ee60` and the capital
+    defence `FUN_0044efc8`;
+  - **new, the AI fleet merge** `FUN_00450b30` (:54002): the **first** own fleet in fleet-table
+    order with fewer than 40 ships, not carrying an army and launched, absorbs the **first** other
+    own fleet within 34 tiles whose ships keep the total under 100. The receiver keeps its cell.
+    Dead fleets are swap-removed too (`FUN_0044ad7c`), so a sunk fleet can change the fleet
+    merge. The remake side was not checked.
+- **Review:**
+  - release [`run-exp-tiehook117-long`](https://github.com/diegoami/ic2-conquest/releases/tag/run-exp-tiehook117-long):
+    183 of 183 files match `SAVES.sha256`;
+  - my own diff of the hooked vs plain saves confirms the Armenia differences are only fleet
+    route_y, with route_x −1 in all four;
+  - `analyze.py` reruns reproduce `summary-long-v2.json` and the re-analysed first run's
+    `summary-v2.json` exactly;
+  - `FUN_00450b30`'s loop and conditions were re-read.
+
 ## What this does not establish
 
 - Later games with several armies per nation, where same-nation inversions and the merge
   dependence would show up.
 - Other cross-nation scans (`FUN_004502e0`, `FUN_0044ffbc`): not read.
-- Enemy-pick ties in later turns, with more and larger armies: not hooked. The tie count below replays each death turn with a fresh seed, so the turns are not the campaigns' own.
+- Enemy-pick ties beyond 30 turns: not hooked.
+- The remake's fleet merge and fleet-table order. The tie count below replays each death turn with a fresh seed, so the turns are not the campaigns' own.
 - How the remake handles an imported dead record.
 - Native Windows behaviour.

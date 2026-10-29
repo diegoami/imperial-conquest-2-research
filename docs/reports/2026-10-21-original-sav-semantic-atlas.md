@@ -139,7 +139,9 @@ This intake reran or checked it as follows, against the private bundle
   wants byte identity with an original lineage must still carry the source bytes. The ledger's
   `UNKNOWN_REJECT_CHANGED_STATE` policy column is unchanged upstream as well.
 - Fleet route_y is meaningful only while route_x ≥ 0. A new fleet record keeps its slot's old
-  route bytes until the next round tick.
+  route bytes until the next round tick. *Observed residue source (2026-10-29):* an inert code hook
+  changed only route_y, with route_x −1, in 4 of 30 Armenia autosaves, through its stack use
+  ([army order after deaths](2026-10-30-army-table-order-after-deaths117.md), addendum 3).
 
 ## Corrections and cross-links
 
