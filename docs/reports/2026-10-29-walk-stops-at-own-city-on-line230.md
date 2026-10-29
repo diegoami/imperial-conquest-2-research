@@ -164,5 +164,6 @@ with that code being unchanged.
 - Every geometry that makes the first walk end short. Three cases are covered: one with an own city on the line, two without.
 - Whether a second walk can itself end short and leave moves unused. The handler calls the walker
   at most twice.
-- The AI's walks, which go through a separate routing wrapper (`0x0044dba8`).
+- The AI's walks, which go through a separate routing wrapper (`0x0044dba8`): see
+  [2026-10-30-ai-march-continuation-missing-in-remake.md](2026-10-30-ai-march-continuation-missing-in-remake.md).
 - Where exactly the remake's move command would need the second call.
