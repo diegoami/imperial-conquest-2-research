@@ -127,6 +127,8 @@ decompile]` for the four corrections; ferry: `[confirmed: decompile]` for the wr
   - 0x44dbc9: an army already aboard steers its fleet.
 - **The link here** `[derived]`: Carthage's army 3 stood 3 tiles from (96,78) before the turn, so it most likely called the fleet. The army phase runs before the fleet phase, so **a fleet called as a ferry skips the hunt and the port choice that turn.**
 
+**Differential (2026-10-29):** the hunt fires in 30 of 30 original seeds from one state, while the remake v0.8.4 never hunts in that state: [2026-10-29-ai-fleet-hunt-absent-in-remake233.md](2026-10-29-ai-fleet-hunt-absent-in-remake233.md).
+
 ## Evidence
 
 - **Data:** `runs/experiments/data/run-exp-ai-intercept-hunt/` (its `README.md` lists every file):
