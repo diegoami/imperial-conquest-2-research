@@ -101,7 +101,7 @@ not catch a wrong pairing of their inputs; the correction came from conquest its
        records swapped it is (50,62). With the Romans 3 and 4 tiles away, swapping makes it chase
        the **farther** one, (51,62).
      - **Capital defence:** `FUN_0044efc8` (:52776–52899, read only) lists the enemy armies near
-       the capital in table order, at most 10, then assigns its own armies in list order
+       the capital in table order, at most **9** (corrected from 10; see [2026-10-30-capital-defence-rule123.md](2026-10-30-capital-defence-rule123.md)), then assigns its own armies in list order
        `[derived]`.
      - **So a cross-nation reorder after deaths can change an AI army's target and its capital
        defence.**
@@ -203,7 +203,7 @@ not catch a wrong pairing of their inputs; the correction came from conquest its
 
 - Later games with several armies per nation, where same-nation inversions and the merge
   dependence would show up.
-- The full rule of the capital-defence assignment `FUN_0044efc8`, beyond its table-order listing (research #123). *(Corrected 2026-10-29: this line used to say `FUN_004502e0` and `FUN_0044ffbc` were not read; addendum 3 reads both, and neither depends on order.)*
+- *(The full `FUN_0044efc8` rule is now in [2026-10-30-capital-defence-rule123.md](2026-10-30-capital-defence-rule123.md).)* *(Corrected 2026-10-29: this line used to say `FUN_004502e0` and `FUN_0044ffbc` were not read; addendum 3 reads both, and neither depends on order.)*
 - Enemy-pick ties beyond 30 turns: not hooked.
 - A same-nation fleet inversion in play: it needs later games with several fleets per nation. The tie count below replays each death turn with a fresh seed, so the turns are not the campaigns' own.
 - How the remake handles an imported dead record.
