@@ -37,7 +37,9 @@ is not established.
   hunt above 100.
   - Carthage has 90 ships at condition 100, a strength of about 900. Rome has 30 at 97, about 291.
     The distance is 14–15.
-  - That gives a score of about 294, doubled to about 590, far above the threshold under any jitter.
+  - That gives `my×100/their − d` ≈ 309 − 15 = 294. It is doubled because Rome is weaker and
+    d < 18, and the chosen `d` is added back: 2 × 294 + 15 ≈ 603, far above the threshold under any
+    jitter. *(Corrected 2026-10-29: the first version left out the add-back, ≈ 590.)*
     This is my arithmetic; the conquest run had no hook.
 - **What the remake source shows (v0.8.4, static).**
   - No source file under `src/` references the original's hunt routines (`FUN_0044f608`,
