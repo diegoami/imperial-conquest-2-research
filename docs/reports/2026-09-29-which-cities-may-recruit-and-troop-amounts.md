@@ -9,6 +9,7 @@
   - the dialog allows from **one fifth of the standard battalion up to the full battalion**, in steps of 100 and 1,000;
   - choosing a unit type sets the amount to one fifth;
   - the maxima equal the DAT battalion sizes exactly.
+  - The remake v0.8.4's dialog keeps this minimum, but its `recruit-standing` command accepts any positive amount (1,000 heavy infantry live): [2026-10-29-v084-known-differences-and-command-gaps.md](2026-10-29-v084-known-differences-and-command-gaps.md) §2.
 
 Found by decompiling the recruit dialog (`TArmyRecruits`), and checked against every town holding units in six saves: 118 checks, 0 exceptions. The dialog was **not** driven live headless in this pass.
 

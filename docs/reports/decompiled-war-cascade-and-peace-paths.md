@@ -137,7 +137,7 @@ Rows 5–8 never turn a war into peace **by anyone's decision**. Row 5 ends a wa
 0x00452E29–E34  else if working[target] > 0: working[target] = 0   // form +0x384
 ```
 
-`TPolitics_OK` (`0x00453230`, :55335) commits every changed cell through the setter. A cell goes through if the committed value is ≥ 0 or the new value is war (:55380–55385). `0` then becomes the cooldown for the old state. The setter writes news only for alliance and war (§1.2), so **ending a trade, an alliance or a hotseat war from this screen writes no news line**.
+`TPolitics_OK` (`0x00453230`, :55335) commits every changed cell through the setter. A cell goes through if the committed value is ≥ 0 or the new value is war (:55380–55385). `0` then becomes the cooldown for the old state. The setter writes news only for alliance and war (§1.2), so **ending a trade, an alliance or a hotseat war from this screen writes no news line**. Because the loop re-reads the committed cell, a war declared here leaves an ally with a higher index than the target at −18 rather than at war (live, five Wine cases: [2026-10-29-war-declaration-ally-cooldown-diff230.md](2026-10-29-war-declaration-ally-cooldown-diff230.md)).
 
 To sum up: against an AI, the human can end a trade (→ −8) or an alliance (→ −24) and cannot end a war. Against another human, all three are accepted. The engine's `MakePeaceCommandHandler` accepts war only (`NotAtWar` otherwise), so it has no route for the human to end a trade or an alliance. This report did not check whether another engine command covers that.
 
