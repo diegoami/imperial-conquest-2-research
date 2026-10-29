@@ -163,5 +163,5 @@ in play.
   pick different targets after the first End turn.
 - The stale value at `[ebp-0xa]` on the direct path for any real caller.
 - Real routes. The replay lacked the city and fleet tables.
-- The semantics of `FUN_0044cb40`, `FUN_0044db38` and `FUN_0044cec8`. Only their use is read here.
+- The semantics of `FUN_0044cb40`, `FUN_0044db38` and `FUN_0044cec8`. Only their use is read here. *(Since answered: [2026-10-30-ai-move-fallback-point105.md](2026-10-30-ai-move-fallback-point105.md).)*
 - How often an AI walk ends short in the original. The remake's share (28.1%) is measured above.

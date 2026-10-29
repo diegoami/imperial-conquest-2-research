@@ -1011,6 +1011,13 @@ Source: 2026-10-07-strategic-ai-turn.md (decompilation of `FUN_0044fa20` and its
     - The recursion takes a fresh line and point each time.
     - On the direct path, the fallback and the recursion test an intermediate-point word `[ebp-0xa]` that this path never writes. Continuation there depends on a stale stack value.
   - **In play** (Wine hook, 5 starts × 5 AI End turns), that word was 49, 71 or 0 and **never −1**, and all 152 recursion tests passed. So the AI walks on until it is within 1 tile or out of moves. There are 10 call sites plus the self-call `[confirmed, partial]` ([continuation](reports/2026-10-30-ai-march-continuation-missing-in-remake.md), [stale word in play](reports/2026-10-30-ai-move-stale-word-in-play97.md)).
+  - **The no-progress fallback** (`FUN_0044cec8`):
+    - It tries the eight directions (dx outer, dy inner) for three cells of the same medium. Sea is a code below 2 or above 299; cells are clamped to the map.
+    - It returns the **last** success + 3·(dx, dy), or none.
+    - It uses no cost, unit or RNG. The sea-tolerance flag `DAT_004a0340` is 0 for armies (army phase) and 1 for fleets.
+    - The wrapper walks toward the point and then spends 1 move even when none was found, so moves can reach −1 and an army can oscillate or burn moves in place.
+    - CB40, D174, DA88 and CEC8 equal the remake's `ClassicalArmyNavigation` `DirectLine`, `Intermediate`, `RouteGroup` and `LocalFallback` for armies (3,303 and 44,734 emulator cases).
+    - D174 can recurse without end on some geometries; what happens in play is open `[confirmed: emulation]` ([fallback point](reports/2026-10-30-ai-move-fallback-point105.md)).
 - An army aboard a fleet (covered `+0x08 == -1`) instead drives the fleet: `FUN_0044cd08` moves the fleet toward the target and the order costs the army 2 moves [confirmed: decompile] (2026-10-07-strategic-ai-turn.md).
 
 **The idle fallback**:
