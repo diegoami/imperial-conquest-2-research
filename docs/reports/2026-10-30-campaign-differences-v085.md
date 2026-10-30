@@ -50,5 +50,5 @@ at the owner's request, which was to stop at work the remake has not implemented
 
 ## What this does not establish
 
-- Which branch the original took for army 3.
+- *(Since answered: [2026-10-30-carthage-army3-branch138.md](2026-10-30-carthage-army3-branch138.md). The original takes the `FUN_0044e84c` walk, because both scores are ≤ 100.)*
 - A statistical test that the city-supply differences are purely random.
