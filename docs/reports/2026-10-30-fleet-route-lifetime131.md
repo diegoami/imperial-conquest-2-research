@@ -175,3 +175,39 @@ not newly resolved by this reading.
 These details refine the same-seat D9A8/DBA8 route producers only. They do not
 establish execution of saved routes, wider ferry/capacity behavior, a full-seat
 result, naval combat or native Windows acceptance.
+
+## CD08 caller direction and output assignment (2026-10-30)
+
+**Tag:** `[code-backed interpretation]`, same listing pin as the source-precision
+addendum, SHA256 rechecked. Research read complete D9A8 (:51665–51710) and DBA8
+(:51792–51846), including their CD08 calls. No new instruction replay or game run.
+`lastAccepted` and `firstRejected` below name CD08's third and fourth outputs.
+
+| Caller | First point → second point | lastAccepted output | firstRejected output |
+| --- | --- | --- | --- |
+| D9A8, nonadjacent selected ferry (:51704–51706) | army position → selected fleet position | army approach, also copied into the caller's target local | fleet route (+4/+6) |
+| DBA8, embarked army (:51815–51818) | requested target → carrier position | fleet route (+4/+6) | temporary local, not used afterward |
+
+D9A8's separate distance-exactly-1 branch calls B79C to board and sets approach X
+to -1; it does not call CD08 in that branch. If no eligible ferry was found,
+D9A8 does not initialize a new output itself. For its nonadjacent CD08 call,
+there is no requirement that the last accepted approach X be nonnegative before
+the first rejected cell is written to the fleet route. Thus an immediate
+land-to-sea mismatch can produce approach X = -1 and a valid first-sea fleet route.
+
+DBA8 does **not** reverse this line to scan from the ship. With an ordinary land
+requested target and an immediately rejected first sea sample, CD08 writes fleet
+route X = -1; the route Y is residue because CD08 initialized only the X word of
+its last-accepted local. This does not create an active route. Immediately after
+CD08, DBA8 subtracts **two army moves unconditionally**: no successful-route,
+positive-budget or distance guard intervenes. The signed-word underflow behavior
+is the already documented original behavior, not a new policy correction. The
+embarked branch does not execute DBA8's separate land-army walker/fallback/recursion.
+
+For either caller, accepting every sample up to the second point does not finish
+CD08. The helper has no endpoint comparison and continues sampling beyond that
+point until the medium/eastern test rejects a cell. There is no separate
+all-accepted-path success return. This source reading does not establish safe
+out-of-map or coincident-input behavior. Directional integer-line rounding must
+therefore be preserved; reversing the inputs or substituting the other output
+is not equivalent to the original calls.

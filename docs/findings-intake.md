@@ -255,3 +255,5 @@ positive-moves/distance-1 arrival guards agree. CD08 endpoint continuation and
 output ordering are now explicit. Accepted at this source-interpretation scope;
 no 39/41 rerun, original game, private-save inspection, new gameplay result,
 application milestone verdict or native Windows acceptance is claimed.
+
+| `fleet131 CD08 caller / 939C clarification` | original listing `2018c205…87d8` | Source-only complete D9A8/DBA8/939C re-read: original CD08 argument direction/output bindings, immediate mismatch route X = -1 versus firstRejected, unconditional embarked minus-two, no endpoint/all-accepted return; 939C radius0/origin, full-square clamped scan. No new game, private-save read, emulation or independent review claimed. | Existing route-lifetime, move-contract and navigation187 reports | 2026-10-30 |
