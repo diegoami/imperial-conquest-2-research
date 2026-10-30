@@ -316,7 +316,7 @@ route/zero-move combination or accepted native actions.
 2. **Pick a port** — `FUN_0044e9a8` (:52471): own coastal city with stock > 20 (score = distance,
    −1 to dock when already adjacent and supplied), or a foreign non-war city with stock > 120 and
    money > 10 at distance + 50; fallback: the nearest own coastal city. All candidates must be
-   reachable by sea (`FUN_0044e920`: water in the 3×3 around the city and a sea path exists).
+   coastal (`FUN_0044e920`: signed map code < 2 in the 3×3 and outside the eastern zone; no sea-path test). Corrected 2026-10-30: [exact port/CD08 pseudocode](2026-10-30-fleet-route-lifetime131.md#source-precision-addendum-2026-10-30-issue-131).
 3. **Hunt** — `FUN_0044f4f8` (:52976): the best enemy fleet at sea, not docked at its own city
    (`FUN_004494e4`, the same predicate behind refusal R07), scored
    ~~`myStrength×100/theirStrength − distance`, doubled when the enemy is weaker and within 18.

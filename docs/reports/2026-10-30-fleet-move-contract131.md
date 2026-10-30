@@ -55,3 +55,26 @@ no helper replaced.
   another stack history could return true.
 - Naval combat, and arrival at a city at war, were not executed.
 - The arrival branch for a plain sea step did not occur.
+
+## Source-precision addendum: fallback and recursion guards (2026-10-30)
+
+**Tag:** `[code-backed interpretation]`. Research re-read `FUN_0044E1FC` in the
+same pinned listing as the [port/CD08 addendum](2026-10-30-fleet-route-lifetime131.md#source-precision-addendum-2026-10-30-issue-131),
+:52117–52215. No controls were repeated. Steps 4–5 above abbreviate these guards:
+
+- CEC8 runs only when the fleet move word is unchanged from entry, is still > 0,
+  and the current intermediate X is >= 0. A negative D174 result therefore skips
+  both fallback and its extra charge.
+- After CEC8, E094 runs only if fallback X != -1. The fleet loses one additional
+  move regardless of whether CEC8 found a point; this charge is inside the outer
+  guarded fallback block. A CEC8 no-point result leaves intermediate X = -1.
+- Recursion uses the **original target**, only if its current Chebyshev distance
+  is > 1, fleet moves > 0, intermediate X >= 0 and original target X >= 0.
+  Thus a CEC8 no-point result prevents recursion even if moves remain.
+- After that conditional recursive call, arrival handling still runs in every
+  frame, but is entered only at distance exactly 1 from the original target and
+  with fleet moves > 0. There is no early return that suppresses this check after
+  a negative intermediate. The frame retains the original entry target map code.
+
+This is static clarification, not new evidence for the unexecuted arrival/combat
+branches or CB40's coincident-input behavior.
