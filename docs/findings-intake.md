@@ -243,3 +243,15 @@ drafts. They do not advance the automated draft scan's reviewed commit rows.
 | `2026-10-30-recheck-v085.md` | `45f4ce2c3999f9e5ede07a3ae437a73ea2752b88` | promoted `[confirmed]` (owner-requested v0.8.5 recheck). Release `run-exp-recheck-1622407e` 840/840 OK; verdicts recounted from `report-v2.json` (129/8/2/0 regressed; the draft names a .md). Three fixes read directly from the v0.8.5 saves (walk-city-on-line (115,49,1), -near (116,49,3), fleet-second-walk-88-32 (88,32,14)). Remake runs not re-executed; campaign field counts from the draft. | New report; update notes in the v084, walk and paths42 reports; evidence-index | 2026-10-30 |
 | `2026-10-30-campaign-differences-v085.md` | `29d7535e83e16ab885ce96808bf373b2df86d2f4` | promoted `[confirmed, partial]`. The turn-16 weather recounted from the saves (112/112 at turns 15–16, then 0 vs 520). Armenia's turn-1 End-turn autosave `t01-a01` matches the stated fleet and army positions. **Refinement:** the remake's army 3 ends 1 tile from its aim, where the original's recursion would also stop, so this case is target selection (#1402) only, not the missing continuation. | New report; recheck report linked | 2026-10-30 |
 | `2026-10-30-campaign-differences-v085.md` | `2cc86a57f101ceb6a33d7b39227ff63b6ec728f1` | re-reviewed (conquest PR #276): the army-3 attribution is now target selection (#1402) alone, with a dated correction citing research PR #136; this matches research's refinement. No other change. | unchanged | 2026-10-30 |
+
+| `fleet131 source-precision addendum` | original listing `2018c205…87d8` | Source-only clarification for reopened #131: complete E9A8/E920/CD08/E1FC and distance/eastern helpers re-read; listing SHA256 matches. Exact two-pass eligibility/scores/ties, adjacent −1 score, retained foreign index, signed < 2 coastal predicate, eastern land-origin continuation, and fallback/recursion guards. No new games, private-save inspection or repeated 39/41 controls; no external review claimed. | Existing fleet-route, fleet-move and navigation187 reports; rules spec §9 | 2026-10-30 |
+
+Independent source-intake review (2026-10-30, research PR #139): a fresh agent
+checked the entire six-file addendum at `d42f52f` against the matching pinned local
+listing, reading complete E9A8/E920/CD08/E1FC bodies and the distance/eastern
+helpers. The signed strict predicates, retained pass-2 city index, adjacent -1
+ranking score, absence of port reachability, CEC8 no-point recursion stop and
+positive-moves/distance-1 arrival guards agree. CD08 endpoint continuation and
+output ordering are now explicit. Accepted at this source-interpretation scope;
+no 39/41 rerun, original game, private-save inspection, new gameplay result,
+application milestone verdict or native Windows acceptance is claimed.

@@ -70,3 +70,108 @@ Earlier promoted work this builds on, without repeating it:
 - Naval-combat outcomes.
 - Record compaction during the phase.
 - Full-seat or global RNG parity.
+
+## Source-precision addendum (2026-10-30, issue #131)
+
+**Tag:** `[code-backed interpretation]`, not a new emulation or game result.
+Research re-read the complete original functions below in the local listing and
+rechecked its SHA256:
+`2018c205a4e4ea4a4079f2d166623fb571062832d76e19b72e11d1f0edac87d8`.
+The following is interpreted functional pseudocode, not original source.
+Line references identify that pinned listing. No private saves were inspected and
+the existing 39/41 controls were not repeated.
+
+### Port selection: E9A8 and E920
+
+`FUN_0044E9A8` (:52473–52533) returns a **city index through its output**.
+`current` means the current AI nation, not a newly derived fleet owner. `distance`
+is Chebyshev distance (`FUN_00449018`). City, fleet supply/money and score values
+are signed words; compare the strict thresholds below literally. The city scan
+is ascending index 0 through 333.
+
+```text
+chosen = -1
+best = 1000
+for city in city-table order:
+    own = city.owner == current
+    eligible = (own and city.stock > 20) or
+               (relation(current, city.owner) < 3 and
+                city.stock > 120 and fleet.money > 10)
+    if eligible and isPort(city.position):
+        score = distance(city.position, fleet.position)
+        if own:
+            if score == 1 and fleet.supplies > 0:
+                score = -1
+        else:
+            score = signedWord(score + 50)
+        if score < best:
+            chosen = city.index
+            best = score
+
+if chosen == -1 or (city[chosen].owner != current and best > 30):
+    best = 1000
+    # Keep chosen: the original does not reset the output here.
+    for city in city-table order:
+        if city.owner == current and isPort(city.position):
+            score = distance(city.position, fleet.position)
+            if score < best:
+                chosen = city.index
+                best = score
+return chosen
+```
+
+The adjacent/supplied `-1` is a **ranking score**, not a no-port return. Supply
+means the fleet supply word `+0x0E > 0`, with no per-ship threshold. The money
+word is `+0x10`. An own adjacent port with stock > 20 remains the selected city.
+The foreign branch needs relation < 3, stock > 120 and money > 10. The literal
+second disjunct also permits own cities, but adds nothing to the own stock > 20
+branch. Neither pass checks a direct line or a path to the port.
+
+Pass 2 considers every own port regardless of stock, money or fleet supply, uses
+raw distance (no adjacent bonus), and retains the foreign result if it finds no
+own port. On valid map coordinates foreign distance + 50 is always > 30, hence
+the earlier prose that pass 2 always runs after a foreign winner. Both passes
+replace only on strict improvement, so the first equal city wins. The 1000
+initial ceiling is part of both scans.
+
+`FUN_0044E920` (:52426–52468) means:
+
+```text
+isPort(position) =
+    any signed map[x + dx, y + dy] < 2 for dx,dy in -1..1
+    and not eastern(position)
+eastern(x,y) = x >= 248 or (x >= 214 and y >= 99)
+```
+
+This includes the centre cell and has no clamp or bounds check in this helper.
+The eastern predicate is `FUN_004496BC` (:48187–48197), expressed here for valid
+map coordinates. Sea/rough-sea codes 0/1 qualify. Fleet markers >= 300 do **not**
+qualify, even though other navigation helpers classify them as sea. This is a
+local coastal predicate, not sea reachability.
+
+### CD08: the eastern exception forces continuation from land
+
+`FUN_0044CD08` (:51018–51119) walks the original integer line from its first
+point toward its second point, starting with the first sampled step after the
+origin. It classifies the origin and each sampled cell as sea exactly when its
+signed map code is < 2 or > 299. Normally it accepts another sample while that
+classification equals the origin's classification.
+
+**If the origin is land and the sampled coordinate is eastern, it forces the
+sample to be accepted even when its map code is sea.** It then records that
+sample as the last accepted cell and continues the line. It does not force a
+stop, reject the route or change the sea-origin case. The first rejected sample
+and the last accepted sample are returned separately. If no sample was accepted,
+only the last-accepted X is initialized to -1; its Y remains stack residue.
+There is no stop-at-requested-target check in CD08: its stopping condition is the
+first rejected sample. If every sample through the requested endpoint is accepted
+(including eastern sea for a land origin), CD08 continues beyond that endpoint;
+it does not return the requested point merely because it was reached. When a
+later sample is rejected, output 3 is the last accepted point and output 4 is
+that first rejected point. If no sample is ever rejected, this body establishes
+no normal return or output assignment. Coincident or out-of-map histories are
+not newly resolved by this reading.
+
+These details refine the same-seat D9A8/DBA8 route producers only. They do not
+establish execution of saved routes, wider ferry/capacity behavior, a full-seat
+result, naval combat or native Windows acceptance.
