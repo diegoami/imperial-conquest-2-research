@@ -1,5 +1,7 @@
 # The strategic AI turn, decompiled: `FUN_0044fa20` and its four phases
 
+**Correction 2026-10-30:** in §3.3, after the mercenary run, the "city > 85" step walks to the **city target** from `FUN_0044ece4`, not to the resupply city (`0x44F4C7`; [ai decisions vs remake main](2026-10-30-ai-decisions-vs-remake-main.md)).
+
 **The question** (imperial_conquest_2 #816, recorded in `docs/pending-requests.md`): what does the
 original do when a computer seat takes its turn — the shape of the turn, recruiting and mobilisation,
 movement destinations, attack and siege choices, defence and supply, and where randomness and
@@ -255,7 +257,7 @@ if (armyScore <= 100                                        // no worthwhile arm
     if (cityScore <= 100 or (supplies < 1 and cityDist > 19)):
         if (troops/500 < supplies and a city target exists):
             FUN_0044e84c(army)                             // run to hire mercenaries, §3.4
-            then: defend the resupply city (armyScore < 71 and cityScore > 85),
+            then: march at the city target (armyScore < 71 and cityScore > 85; 0x44F4C7, corrected 2026-10-30: not the resupply city),
                   or still chase the army target (armyScore ≥ 71)
         else: move to the resupply/defence city
     else: attack the city
