@@ -1,5 +1,7 @@
 # Army paths in play match the emulator; fleets share the step rule and the human second walk
 
+**Update 2026-10-30 (remake v0.8.5):** `fleet-second-walk-88-32` is fixed; `fleet-second-walk-87-47` now matches after the order and differs only after End turn. See [2026-10-30-recheck-v085.md](2026-10-30-recheck-v085.md).
+
 **Provenance:** draft from `diegoami/ic2-conquest`, branch `main`, commit `37bdac5` (PR #247). It
 answers the remaining parts of research issue
 [#42](https://github.com/diegoami/imperial-conquest-2-research/issues/42) (build

@@ -1,5 +1,7 @@
 # A player's move walks a second time in the original when the first walk ends short; the remake walks once
 
+**Update 2026-10-30 (remake v0.8.5):** the human army second walk is fixed. All four walk cases now match the original. See [2026-10-30-recheck-v085.md](2026-10-30-recheck-v085.md).
+
 *(First seen with an own city on the line; the file name keeps that first case.)*
 
 **Provenance:** draft from `diegoami/ic2-conquest`, branch `main`, commit `7c5803b` (PR #239, branch
