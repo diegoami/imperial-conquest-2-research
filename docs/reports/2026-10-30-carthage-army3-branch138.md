@@ -39,7 +39,7 @@ decision records.
 
 1. **The original** (army phase F31C, `BASE`, turn 1):
    - Army 10 scores 93 and city osca 91; neither is above 100, so neither is attacked.
-   - Resupply is false: a city target exists, and supplies 37 (18,600 / 500) are below 90.
+   - Resupply is false: a city target exists, and troops/500 = 49 (24,600 / 500) is below the 246 supplies. These are the values after the supply pass `FUN_0044e41c`, which F31C runs just before the decision. *(Corrected 2026-10-30: the first version read 37 and 90 from the save; the branch is unchanged. See [ai decisions vs remake main](2026-10-30-ai-decisions-vs-remake-main.md).)*
    - So it takes the `FUN_0044e84c` walk (call `e913`) toward (111,69), and ends at **(88,77) with
      0 moves**.
    - The following over-70 step (`f4a3`) toward army 10 does not move it, since it has no moves
