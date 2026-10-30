@@ -245,3 +245,13 @@ drafts. They do not advance the automated draft scan's reviewed commit rows.
 | `2026-10-30-campaign-differences-v085.md` | `2cc86a57f101ceb6a33d7b39227ff63b6ec728f1` | re-reviewed (conquest PR #276): the army-3 attribution is now target selection (#1402) alone, with a dated correction citing research PR #136; this matches research's refinement. No other change. | unchanged | 2026-10-30 |
 
 | `fleet131 source-precision addendum` | original listing `2018c205…87d8` | Source-only clarification for reopened #131: complete E9A8/E920/CD08/E1FC and distance/eastern helpers re-read; listing SHA256 matches. Exact two-pass eligibility/scores/ties, adjacent −1 score, retained foreign index, signed < 2 coastal predicate, eastern land-origin continuation, and fallback/recursion guards. No new games, private-save inspection or repeated 39/41 controls; no external review claimed. | Existing fleet-route, fleet-move and navigation187 reports; rules spec §9 | 2026-10-30 |
+
+Independent source-intake review (2026-10-30, research PR #139): a fresh agent
+checked the entire six-file addendum at `d42f52f` against the matching pinned local
+listing, reading complete E9A8/E920/CD08/E1FC bodies and the distance/eastern
+helpers. The signed strict predicates, retained pass-2 city index, adjacent -1
+ranking score, absence of port reachability, CEC8 no-point recursion stop and
+positive-moves/distance-1 arrival guards agree. CD08 endpoint continuation and
+output ordering are now explicit. Accepted at this source-interpretation scope;
+no 39/41 rerun, original game, private-save inspection, new gameplay result,
+application milestone verdict or native Windows acceptance is claimed.

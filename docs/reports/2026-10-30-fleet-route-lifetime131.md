@@ -164,8 +164,13 @@ stop, reject the route or change the sea-origin case. The first rejected sample
 and the last accepted sample are returned separately. If no sample was accepted,
 only the last-accepted X is initialized to -1; its Y remains stack residue.
 There is no stop-at-requested-target check in CD08: its stopping condition is the
-first rejected sample. Coincident or out-of-map histories are not newly resolved
-by this reading.
+first rejected sample. If every sample through the requested endpoint is accepted
+(including eastern sea for a land origin), CD08 continues beyond that endpoint;
+it does not return the requested point merely because it was reached. When a
+later sample is rejected, output 3 is the last accepted point and output 4 is
+that first rejected point. If no sample is ever rejected, this body establishes
+no normal return or output assignment. Coincident or out-of-map histories are
+not newly resolved by this reading.
 
 These details refine the same-seat D9A8/DBA8 route producers only. They do not
 establish execution of saved routes, wider ferry/capacity behavior, a full-seat
