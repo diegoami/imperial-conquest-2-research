@@ -27,7 +27,7 @@ The same conquest PR corrects the #117 addendum's "at most 10" threats to 9.
   - a responder is skipped when its `FUN_0044ee60`/`FUN_0044ece4` pick qualifies under the
     3 × moves test;
   - a threat is eligible at war or when the responder is 20 or more from the capital;
-  - a responder aboard, or one facing a threat not at war, walks toward the capital.
+  - the responder walks toward the capital when the **chosen threat** is aboard a fleet or its owner is not at war; otherwise it walks toward the threat. *(Corrected 2026-10-30: this note first said "a responder aboard"; see the correction below.)*
 
   The strict tie comparison (`jge`) is the draft's disassembly reading and was not re-read here.
 - **Consistency:** the rules spec §9 already gives up to 9 threats, the radii (within 20 at war,
@@ -50,8 +50,11 @@ The same conquest PR corrects the #117 addendum's "at most 10" threats to 9.
 3. **The choice:** the nearest listed live threat that is eligible. Eligible means its owner is at
    war, or the responder is 20 or more from the capital. The comparison is strict, so on ties the
    **earlier list entry** wins.
-4. **The responder walks** (`FUN_0044dba8`) toward the threat if at war and not aboard; otherwise
-   it walks toward the capital.
+4. **The responder walks** (`FUN_0044dba8`) toward the **chosen threat** if that threat is not
+   aboard a fleet and its owner is at war with the nation. Otherwise it walks toward the capital.
+   The test is on the **threat**, not on the responder (see the correction below).
+   - A responder that is itself aboard is not tested here. Its walk goes through `FUN_0044dba8`,
+     whose own aboard branch makes it move its fleet toward the destination instead.
 5. **Order in the army phase:** EFC8 runs **first** in F31C, before the per-army loop, and that
    loop only runs for armies with moves left. So EFC8 **pre-empts** the `FUN_0044ee60` pick by
    spending the army's moves; it does not replace the pick.
@@ -71,6 +74,27 @@ inert):
 - **0 ties.**
 
 So in these turns no capital defence was decided by table order.
+
+## Correction (2026-10-30): the aboard test is on the threat, not the responder
+
+The main project's evidence intake (comment on #123) found that this report said a **responder
+aboard** walks to the capital, while the rules specification §9 says an **aboard threat** cannot
+be intercepted. The disassembly settles it in favour of the specification:
+
+| Address | Instruction | Meaning |
+|---|---|---|
+| `0x44F29B` | `movsx eax, word [esp+0xa]` | `local_3e`: the index of the **chosen threat** |
+| `0x44F2A3` | `cmp word [eax*8+0x47C1F4], -1` → `je 0x44F2D2` | the threat's army record `+8` (the covered cell) is −1: the **threat is aboard** → walk to the capital |
+| `0x44F2CA` | `cmp word [ecx+edx*2+0x26], 3` → `je 0x44F2EE` | relation of the nation to the threat's owner (`+4`) is war → walk to the threat |
+| `0x44F2D2`–`0x44F2E7` | `mov edx, [eax*2+0x47959E]`; `call 0x44DBA8` | the walk to the capital city's coordinates |
+| `0x44F2EE`–`0x44F2F9` | `mov edx, [eax*8+0x47C1EC]`; `call 0x44DBA8` | the walk to the threat's position |
+
+The responder's own index (`[esp]`, `local_48`) is passed to `FUN_0044dba8` but never tested for
+being aboard in this routine. These are not two separate predicates: the one test is "chosen
+threat aboard, or not at war", and the earlier wording simply named the wrong army. The draft's
+"if at war and not aboard" did not name its subject, and this research intake misread it as the
+responder. The specification's bullet ("a threat aboard a fleet cannot be intercepted — the
+responder goes to the capital") is correct and unchanged.
 
 ## What this does not establish
 
