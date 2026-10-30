@@ -59,6 +59,30 @@ Of 749 AI army decisions:
   corrected to the values after the supply pass `FUN_0044e41c`: 49 < 246, not 37 < 90. The branch
   is unchanged.
 
+## Recheck on remake main `05b02936` (T249, #1643), added 2026-10-30
+
+The draft gained this at ic2-conquest `main` `02b2fef` (PR #280). The same 749 original decisions
+were compared with remake main `05b02936`, which ports the two gaps above. The data is
+`remake-05b02936-v1/`, `report-05b02936-v1.json` and `attribution-05b02936-v1.json`; the original
+side is unchanged (`orig-v1/`).
+
+| Cause | `10d3bb81` | `05b02936` |
+|---|---|---|
+| same | 390 | **422** |
+| capital-defence attack (gap 2) | 17 | **0** |
+| city > 85 target (gap 1) | 21 | **14**, all with the army already next to the city target, then the #925 garrison or emergency tier |
+| #925 resupply / fallback | 252 / 8 | 250 / 8 |
+| diplomacy / state | 44 / 17 | 41 / 14 |
+| unattributed | 1 | **0** |
+
+So **outside the #925 tiers, diplomacy and battle draws, every decision now matches the
+original.** The §4 boundaries and ties
+([#144](2026-10-30-garrison-and-mercenary-boundaries144.md)) are not in this remake commit.
+
+*Review:* I read `attribution-05b02936-v1.json`. Its counts sum to 749 (422 + 250 + 41 + 14 + 8 +
+14) and it has 0 unattributed rows. `report-05b02936-v1.json`'s raw categories are consistent:
+410 same plus 12 same but unlogged. The remake replays were not re-executed.
+
 ## What this does not establish
 
 - Whether `FUN_0044dba8` attacks on arrival beyond the capital defence (the march contract,
