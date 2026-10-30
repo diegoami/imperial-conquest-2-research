@@ -1,5 +1,7 @@
 # Remake v0.8.4: three known differences remain, and its commands accept what both interfaces refuse
 
+**Update 2026-10-30 (remake v0.8.5):** the sea-target `move` cases (`move-far`, `move-sea`) are fixed and now match the original. See [2026-10-30-recheck-v085.md](2026-10-30-recheck-v085.md).
+
 **Provenance:** draft from `diegoami/ic2-conquest`, branch `research/diff084-stats233`, commit
 `2e5c8dc`. Conquest [#229](https://github.com/diegoami/ic2-conquest/issues/229) and
 [#230](https://github.com/diegoami/ic2-conquest/issues/230) (tracker #228). Releases
