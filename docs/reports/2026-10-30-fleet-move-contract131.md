@@ -78,3 +78,17 @@ same pinned listing as the [port/CD08 addendum](2026-10-30-fleet-route-lifetime1
 
 This is static clarification, not new evidence for the unexecuted arrival/combat
 branches or CB40's coincident-input behavior.
+
+## Source clarification: 939C starts at radius zero (2026-10-30)
+
+`FUN_0044939C` (:47976–48063), re-read in the same pinned listing, initializes
+radius to **0**, so it checks the requested origin cell first. For E1FC's mode 0,
+it accepts signed map codes **0 through 1 inclusive**, excluding the eastern
+zone. Each radius scans the complete square, X offsets ascending outermost and Y
+offsets ascending inside, clamping each coordinate to X 0..319 / Y 0..139.
+Clamping can therefore test the same edge cell more than once. Every matching
+cell overwrites the result, so the last match in the first successful square
+wins. The helper tests for success only after completing that square, then
+returns; otherwise it increments the radius and repeats. There is no explicit
+maximum radius or no-match return. This is source interpretation, not a new
+edge-map execution control.
