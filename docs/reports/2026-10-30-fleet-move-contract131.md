@@ -92,3 +92,64 @@ wins. The helper tests for success only after completing that square, then
 returns; otherwise it increments the radius and repeats. There is no explicit
 maximum radius or no-match return. This is source interpretation, not a new
 edge-map execution control.
+
+## Source clarification: explicit landing target and occupancy (2026-10-30)
+
+**Tag:** `[code-backed interpretation]`. Research rehashed listing
+`2018c205a4e4ea4a4079f2d166623fb571062832d76e19b72e11d1f0edac87d8`
+and read E1FC (:52117–52215), complete B840 (:49988–50012), complete 939C
+(:47976–48063) and marker writer A80C (:49143–49169). No game, emulation or
+private-save inspection was performed for this clarification.
+
+At E1FC's arrival check (:52171–52184), distance to the **original requested
+target** must be exactly 1 and fleet moves must be > 0. The frame's saved entry
+target map code must be **2..11 inclusive**, and the carried-army index must be
+nonnegative. It then calls **B840(fleet index, original requested target)**.
+It does not pass the temporary D174/CEC8 point or ask B840 to start a search at
+the fleet's position. The map code used for this dispatch was captured at frame
+entry; 939C reads the current map when it later selects a landing cell.
+
+B840 selects the automatic branch using the **current seat** at `0x004A0320`,
+not the fleet or carried army owner: human-control byte
+`0x00474B00 + currentSeat * 0x494 == 0` means computer; nonzero means human.
+
+Interpreted functional pseudocode for B840:
+
+```text
+resolved = requestedTarget
+if currentSeat.isComputer:
+    resolved = nearestSquareMatch(requestedTarget, signed currentMapCode in 2..11)
+    # 939C mode 1: radius 0 first; clamped full square each radius;
+    # last eligible cell in first successful square wins.
+fleet.moves = 0
+armyIndex = fleet.carriedArmy
+fleet.carriedArmy = -1
+army[armyIndex].position = resolved
+army[armyIndex].coveredCell = currentMap[resolved]
+paintArmyMarker(armyIndex)
+army[armyIndex].moves = 0
+```
+
+Consequences of 939C **mode 1** for computer landing:
+
+- It accepts only current signed map codes **2 through 11**. City, army and
+  fleet markers, and sea codes 0/1, are excluded. Looking through a marker to
+  its underlying terrain would change this original eligibility rule.
+- Radius 0 tests the explicitly passed target. If it is eligible bare land,
+  that target itself is returned; a neighboring cell does not supersede it.
+- Otherwise it scans full squares of increasing radius, X ascending outermost
+  and Y ascending inside; each coordinate is clamped to X 0..319 / Y 0..139.
+  Last eligible cell in the first successful square wins. There is no extra
+  eastern exclusion in mode 1: 939C calls the eastern predicate only for
+  mode 0 (sea selection). There is no fleet-adjacency/range/path test for the
+  replacement and no explicit maximum-radius/no-match return.
+- The human branch leaves the supplied target unchanged. B840 itself performs
+  no corresponding occupancy, carried-index validity or ownership validation
+  before its writes; this does not establish the human caller's eligibility.
+
+The helper clears the fleet's move budget and carried link, but leaves its
+position unchanged. It records the resolved cell as the army's covered terrain,
+paints the army marker and zeros army moves. A80C does not add a second occupancy
+check: the computer landing's map-code exclusion comes from 939C mode 1.
+These are original source semantics, not acceptance of malformed links, a new
+whole-arrival control, or an instruction to reproduce unbounded-search behavior.

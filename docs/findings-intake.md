@@ -257,3 +257,5 @@ no 39/41 rerun, original game, private-save inspection, new gameplay result,
 application milestone verdict or native Windows acceptance is claimed.
 
 | `fleet131 CD08 caller / 939C clarification` | original listing `2018c205…87d8` | Source-only complete D9A8/DBA8/939C re-read: original CD08 argument direction/output bindings, immediate mismatch route X = -1 versus firstRejected, unconditional embarked minus-two, no endpoint/all-accepted return; 939C radius0/origin, full-square clamped scan. No new game, private-save read, emulation or independent review claimed. | Existing route-lifetime, move-contract and navigation187 reports | 2026-10-30 |
+
+| `fleet131 landing selection clarification` | original listing `2018c205…87d8` | Source-only complete E1FC/B840/939C/A80C re-read and listing rehash: explicit original-target binding, AI current-map codes2..11 only (markers excluded), radius0 target first, full-square tie/clamp, no second occupancy validation; human branch scope separated. No game, emulation, private-save inspection or independent review. | Existing move-contract/coordinate-lifecycle reports and rules spec §9 | 2026-10-30 |
