@@ -216,3 +216,5 @@ synchronization write exists. No remake comparison or correction is selected.
 Follow-up (2026-10-26): [carried-army-supply-gui79](2026-10-26-carried-army-supply-gui79.md). Six coherent stock-Wine controls now establish selected-carrier cargo supply, carrier-as-provider, actual moved coordinates and immediate Close persistence. This does not clear native Windows/full lifecycle acceptance.
 
 Follow-up (2026-10-26): [carried-army Disband218](2026-10-26-carried-army-disband218.md). A measured carried whole-Disband route now clears the valid carrier link. Change-unit empty linked records and transfer deletion are distinct; no later quarter/support lifecycle acceptance follows.
+
+Landing-selection clarification (2026-10-30): [exact E1FC→B840 binding and 939C mode1 predicate](2026-10-30-fleet-move-contract131.md#source-clarification-explicit-landing-target-and-occupancy-2026-10-30). E1FC explicitly passes its original target; AI landing starts radius0 there and accepts only current map codes2..11, excluding city/army/fleet markers. B840 performs no second occupancy check after selection. Source-only, no new controls.
