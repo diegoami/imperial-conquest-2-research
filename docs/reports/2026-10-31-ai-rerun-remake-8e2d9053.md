@@ -1,7 +1,8 @@
 # The AI comparisons rerun on remake main 8e2d9053: the T250–T252 corrections close every attributed gap
 
 **Provenance:** draft from `diegoami/ic2-conquest`, branch `main`, commit `44805be` (PR #289), revised
-at `1860893` (PR #290) and `a982d43` (PR #291, the Galatia attribution), owner
+at `1860893` (PR #290), `a982d43` (PR #291, the Galatia attribution) and `beb08f8` (PR #292, the
+#144 boundaries), owner
 request 2026-10-31, after remake #1650 merged the corrections. It reruns the four equal-state
 comparisons on remake main `8e2d9053` ("T250–T252: correct Faithful AI destinations, trade swaps and
 recruitment city", not released):
@@ -24,7 +25,7 @@ autosave (`hooked-tNN-*.SAV`).
   release.
 
 **Tag:** `[confirmed]`, Wine-only, for the three corrections. Every army row is now explained; the
-fleet rows remain open.
+fleet rows remain open. The #144 boundaries are in this commit too (28 of 30 controls match).
 
 **Review note (2026-10-31):**
 - **Release integrity:** I downloaded `run-exp-aidecide` and `run-exp-econ` again. Every file matches
@@ -99,10 +100,39 @@ ends in the garrison fallback.
 
 **So on `8e2d9053` no army decision in these 80 rounds remains unexplained.**
 
+## The #144 boundaries are in 8e2d9053 (correction, 2026-10-31)
+
+The draft's earlier versions, and this report until this revision, said the
+[#144 corrections](2026-10-30-garrison-and-mercenary-boundaries144.md) were not in this commit.
+**They are.** T250 made all three faithful-only, in `AiArmyTargetTree.cs`:
+- the garrison fallback's capital radius is `< 10`, and the nearest city is taken in city-table
+  order (strict `<`);
+- the mercenary run skips offers at `>= 20` and walks the pool in slot order (strict `<`).
+
+I read this in the `05b02936..8e2d9053` diff, where each rule sits behind
+`ClassicalArmyNavigation.Applies`.
+
+**Executed by conquest:** the #144 synthetic controls, rerun with `RemakeAdapter helperprobe` on
+`8e2d9053`, in both layouts, 15 controls each. Data: `run-exp-boundary144/native-8e2d9053-v1.jsonl`
+and `-v2.jsonl`. I paired each row with the original's emulated answer (`controls-v1.json`,
+`controls-v2.json`, whose 16th row is a relation value, not a control) and compared destinations:
+
+| Remake | Controls matching the original |
+|---|---|
+| `10d3bb81` | 14 of 30 (6 in v1, 8 in v2) |
+| **`8e2d9053`** | **28 of 30** |
+
+- **All distance and tie controls match:** capital distance 9/10/11, offers at 19/20/21, the
+  19-against-20 pairs, the EBE8 table-order ties and the four E84C slot-order ties.
+- **The two left are "capital index −1", once per layout.** The original has no capital guard: it
+  reads city record −1, the bytes before the table, and walks to (153,48). The remake returns no
+  destination. The #144 report already lists this as an ambiguity of the original.
+- Not re-executed: the remake helper probe itself.
+
 ## Open
 
-- **#144 boundaries:** capital radius `< 10`, offer range `< 20` and ties in table order are not in
-  `8e2d9053`. These 80 rounds do not exercise them.
+- **#144 control "capital index −1":** see the section above. The original's behaviour there is an
+  ambiguity of the original, not a boundary.
 - **Carthage fleet 0 (#174):** unchanged, since T250–T252 did not touch the fleet phase. Three rows
   changed verdict because earlier moves in their rounds changed; I checked this against the two
   reports:
