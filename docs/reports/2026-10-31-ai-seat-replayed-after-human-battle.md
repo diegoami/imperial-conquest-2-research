@@ -15,8 +15,10 @@ row in S08 round 2.
   - It is set to 1 at `0x43817F`, inside `FUN_00437de4` (battle setup), as drafted.
   - It is cleared at `0x437B8C`, the first instruction of a routine called from `0x439CDE` (in
     `FUN_00439c84`), and also at `0x448ACA` and `0x45C21F`.
-  - **Discrepancy:** the draft names `FUN_00436434` as the clear at the battle's end. I could not
-    connect that function to any of these clears; I did not trace the call chain further.
+  - **Resolved:** the draft first named `FUN_00436434` as the clear. Its revision `897411d` (PR #298)
+    names `TBattleMap_FinishBattle` at `0x437B8C`, the routine I found; ic2-conquest calls the old name
+    a lookup slip. I confirm the address. The name comes from ic2-conquest's private decompile,
+    which I did not read.
 - **The army loop:** `F31C` tests the flag at the top of every iteration (`0x44F348`: `cmp byte
   [0x4A0B7C],0` / `jne` to the loop's step). So once it is set, the remaining armies are skipped.
 - **The seat:** `FA20` still calls `F608` (`0x44FA51`). Then at `0x44FA56` it tests the flag and, if
@@ -83,6 +85,5 @@ that is inference.
 - **Other battle kinds:** which other paths reach `FUN_00437de4` and set the flag (sieges, naval
   battles, AI attacks on human cities).
 - **The unpatched original:** the evidence is the seed build's hook runs in Wine.
-- **The clear's exact routine** (see the review note).
 - **Per-pass tallies** for the comparisons: they count a seat played twice as one seat.
 - Rounds 6 and later, other seeds, and native Windows behaviour.
