@@ -98,7 +98,7 @@ ends in the garrison fallback.
 - **Cause: state,** a random battle result earlier in the round, not a port gap. `compare.py`'s state
   flag misses it because it covers an army's own battle or death, not its target's.
 
-**So on `8e2d9053` no army decision in these 80 rounds remains unexplained.**
+**So on `8e2d9053` no army decision in these 80 rounds remains unexplained.** This holds for the decision records only: [army order within a seat](2026-10-31-army-order-within-a-seat.md) finds 10 more armies whose first action differs, because the remake runs armies out of table order.
 
 ## The #144 boundaries are in 8e2d9053 (correction, 2026-10-31)
 
