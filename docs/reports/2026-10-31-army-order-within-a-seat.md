@@ -14,6 +14,8 @@ seed 12345, each replayed in the remake from the original's own round-start auto
 - **Main run:** `run-exp-airerun/remake-8e2d9053-v1/`. **Original:** release `run-exp-aidecide` (decide
   hook logs and round-start saves).
 
+**Remake T253 (2026-10-31):** fixed and verified on `e20a6488`, with 0 of 156 seats out of order ([the e20a6488 rerun](2026-10-31-ai-rerun-remake-e20a6488.md)).
+
 **Tag:** `[confirmed]`, Wine-only. It confirms in play the rule already in the
 [rules specification](../rules-specification.md) ("Seat loop and phase order"), and it is a new port
 gap for the remake's classical-faithful mode.
