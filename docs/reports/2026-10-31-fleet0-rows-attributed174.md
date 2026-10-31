@@ -24,7 +24,11 @@ conquest #174, owner request 2026-10-31. It attributes the 27 differing rows of 
 
 **Corrected 2026-10-31** by [the zero-moves measurement](2026-10-31-ferry-route-written-at-zero-moves159.md):
 - S06 round 5's route comes from `F31C`'s `city > 100` branch, not the continuation, so it is a
-  "state" row: **14 state, 5 port gap**;
+  "state" row;
+- S08 round 2 is the [seat replayed](2026-10-31-ai-seat-replayed-after-human-battle.md) after a battle
+  with the human: the first pass's fleet phase moved fleet 0, so the continuation (9 moves) got a
+  ferry route. Final tally: **8 no difference, 14 state, 4 continuation (all at 0 army moves: S06
+  r3/r4, S13 r4/r5), 1 seat replay**;
 - the route write at 0 army moves is now **measured** (7 writes).
 
 **Tag:** `[confirmed]`, Wine-only, for the original's side: a hook and the disassembly. The remake

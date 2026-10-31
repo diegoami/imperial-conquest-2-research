@@ -86,6 +86,7 @@ comes from "the same continuation walk". In this run, S06 round 5's write comes 
   same starts and seed.
 - **So S06 round 5 is a "state" row, not a port gap,** as its own army rows ("state-battle")
   already suggested. The fleet-0 tally becomes 8 no difference, 14 state and **5** port gap.
+- **Later (same day):** S08 r2 turned out to be the [seat replayed](2026-10-31-ai-seat-replayed-after-human-battle.md), so the final tally is 8 / 14 / **4 continuation at 0 moves** / 1 seat replay.
 
 ## What this does not establish
 
