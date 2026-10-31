@@ -36,7 +36,9 @@ open.
 - **Label in the attribution file:** `attribution-aidecide-v1.json` counts the open Galatia row
   under `h925-fallback`, the category it had before. The draft treats it as **unattributed**,
   because the faithful fallback now matches the original's. I follow the draft; the count is the
-  same either way (1).
+  same either way (1). The label comes from `attribute.py:37`, which files every "no remake decision +
+  garrison fallback" row as `h925-fallback`. In faithful mode that fallback is the original's own
+  `FUN_0044ebe8` pick, not the #925 tier. The draft's revision `1860893` (PR #290) says the same.
 - **The remake log line:** "mercenary hire: 0 offer(s) hired across 0 army/armies" is the summary of
   `AiMercenaryHirePass` (`AiMercenaryHirePass.cs:100`). It counts offers **hired**, not offers found.
   So the log shows that the remake hired nothing and chose the garrison fallback. It does not show
