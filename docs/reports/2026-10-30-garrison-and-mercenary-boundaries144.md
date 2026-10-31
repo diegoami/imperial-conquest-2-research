@@ -14,6 +14,8 @@ answers research issue [#144](https://github.com/diegoami/imperial-conquest-2-re
 **Tag:** `[confirmed]`: executed controls on both sides. Nothing here is a claim about play or
 native Windows.
 
+**Remake main `8e2d9053` (2026-10-31):** the three corrections are in, faithful-only; 28 of 30 controls now match, and the two left are the capital −1 case below. See [the rerun](2026-10-31-ai-rerun-remake-8e2d9053.md).
+
 **Review note (2026-10-30):**
 - **Disassembly:**
   - `0x44EC3F` is `cmp ax, 0xa; jge` past the near-capital flag, so the test is strict **< 10**;
