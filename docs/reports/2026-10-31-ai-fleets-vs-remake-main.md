@@ -15,6 +15,8 @@ diplomacy and economy successors.
 
 **Tag:** `[confirmed, partial]`, Wine-only. The 26 differences are not attributed.
 
+**Rerun on remake main `8e2d9053` (2026-10-31):** see [the rerun](2026-10-31-ai-rerun-remake-8e2d9053.md). Still only Carthage fleet 0 differs (27 rows).
+
 **Review note (2026-10-31):**
 - **Release integrity:** 162 of 162 files match `SAVES.sha256`.
 - **Inertness:** I compared the hooked and plain saves myself: **80 of 80** pairs are

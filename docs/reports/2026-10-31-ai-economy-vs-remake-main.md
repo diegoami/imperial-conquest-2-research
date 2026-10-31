@@ -17,6 +17,8 @@ conquest #176 (strategic fidelity), owner request 2026-10-31. It uses the method
 
 **Tag:** `[confirmed]`, Wine-only.
 
+**Rerun on remake main `8e2d9053` (2026-10-31):** see [the rerun](2026-10-31-ai-rerun-remake-8e2d9053.md). With the T252 order city, 0 seats differ.
+
 **Review note (2026-10-31):**
 - **Release integrity:** 162 of 162 files match `SAVES.sha256`.
 - **Inertness:** I compared the hooked and plain saves myself: **80 of 80** pairs are
