@@ -16,6 +16,8 @@ which left diplomacy out of its comparison.
 
 **Tag:** `[confirmed]`, Wine-only.
 
+**Rerun on remake main `8e2d9053` (2026-10-31):** see [the rerun](2026-10-31-ai-rerun-remake-8e2d9053.md). With the T251 one-pass swap, 0 deterministic first divergences remain.
+
 **Review note (2026-10-30):**
 - **Release integrity:** 170 of 170 files match `SAVES.sha256`.
 - **Inertness:** I compared the hooked and plain saves myself: **80 of 80** pairs are
