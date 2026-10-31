@@ -1,6 +1,7 @@
 # The AI comparisons rerun on remake main 8e2d9053: the T250–T252 corrections close every attributed gap
 
-**Provenance:** draft from `diegoami/ic2-conquest`, branch `main`, commit `44805be` (PR #289), owner
+**Provenance:** draft from `diegoami/ic2-conquest`, branch `main`, commit `44805be` (PR #289), revised
+at `1860893` (PR #290) and `a982d43` (PR #291, the Galatia attribution), owner
 request 2026-10-31, after remake #1650 merged the corrections. It reruns the four equal-state
 comparisons on remake main `8e2d9053` ("T250–T252: correct Faithful AI destinations, trade swaps and
 recruitment city", not released):
@@ -22,8 +23,8 @@ autosave (`hooked-tNN-*.SAV`).
   `run-exp-fleetphase`, already in the [evidence index](../evidence-index.md). This rerun adds no
   release.
 
-**Tag:** `[confirmed]`, Wine-only, for the three corrections. One army row and the fleet rows remain
-open.
+**Tag:** `[confirmed]`, Wine-only, for the three corrections. Every army row is now explained; the
+fleet rows remain open.
 
 **Review note (2026-10-31):**
 - **Release integrity:** I downloaded `run-exp-aidecide` and `run-exp-econ` again. Every file matches
@@ -33,22 +34,33 @@ open.
   **byte-identical** to the committed reports.
 - **Remake commit:** `8e2d9053` is remake main, the single commit after `05b02936`. I did not
   re-execute the remake replays, which need the .NET build.
-- **Label in the attribution file:** `attribution-aidecide-v1.json` counts the open Galatia row
-  under `h925-fallback`, the category it had before. The draft treats it as **unattributed**,
-  because the faithful fallback now matches the original's. I follow the draft; the count is the
-  same either way (1). The label comes from `attribute.py:37`, which files every "no remake decision +
+- **Label in the attribution file:** `attribution-aidecide-v1.json` counts the Galatia row under
+  `h925-fallback`, the category it had before; the file is kept as measured. The label comes from `attribute.py:37`, which files every "no remake decision +
   garrison fallback" row as `h925-fallback`. In faithful mode that fallback is the original's own
-  `FUN_0044ebe8` pick, not the #925 tier. The draft's revision `1860893` (PR #290) says the same.
+  `FUN_0044ebe8` pick, not the #925 tier. The row is now attributed to state (below).
 - **The remake log line:** "mercenary hire: 0 offer(s) hired across 0 army/armies" is the summary of
   `AiMercenaryHirePass` (`AiMercenaryHirePass.cs:100`). It counts offers **hired**, not offers found.
-  So the log shows that the remake hired nothing and chose the garrison fallback. It does not show
-  by itself that the remake found no offer.
+  The draft's first version read it as "found no offer"; the offer search plays no part in the row.
+- **Galatia attribution, checked (2026-10-31):**
+  - **The original's saves** (`run-exp-aidecide`, S02, decoded with conquest's `state/sav.py`): at the
+    round start (`hooked-t03-AUTO0723.SAV`), Seleucid army 5 at (172,49) has 37,300 troops and
+    Bithynia army 11 at (177,44) has 32,800. At the round end (`hooked-t04-AUTO0724.SAV`), army 5 has
+    **26,137** and Bithynia (owner 11) has **no army**: the table drops from 12 to 11 records.
+  - **The report:** Bithynia army 11's row is "same" (target army 5, score 1112, distance 5).
+    Galatia's original row targets army 5 at score 91, distance 23.
+  - **The remake replay:** `events.jsonl` has the army-11 against army-5 battle, then
+    `BattleArmyDestroyed` (winner Bithynia, loser Seleucid).
+  - **The diagnostic** (`diag-galatia-v1/`, `diag-galatia-v2/`): the patch adds two stderr lines only,
+    and both runs' AI logs are identical to the v1 replay's. Its tree line shows Galatia army 0 at
+    (195,42): `MercenaryRun`, city aradus (score 77, distance 26), army target army-4 (score 57),
+    0 commands offered, then the garrison-fallback march.
+  - Not re-executed: the diagnostic build itself.
 
 ## Result
 
 | Comparison | 05b02936 | **8e2d9053** |
 |---|---|---|
-| Army decisions (749), by cause | 422 same, 250 #925 resupply, 8 #925 fallback, 14 "city > 85" target, 41 diplomacy, 14 state | **691 same**, 41 diplomacy, 16 state, **1 unattributed** |
+| Army decisions (749), by cause | 422 same, 250 #925 resupply, 8 #925 fallback, 14 "city > 85" target, 41 diplomacy, 14 state | **691 same**, 41 diplomacy, **17 state** (16, plus the Galatia row below) |
 | Diplomacy seats (1,280) | 1,088 same; first divergences: 10 deterministic, 21 draw, 19 battle | **1,110 same**; first divergences: **0 deterministic**, 22 draw, 21 battle |
 | Economy seats (1,200) | 1,055 same, 4 order city differs, 141 state | **1,063 same, 0 differ**, 137 state |
 | Fleet decisions (150) | 124 same, 26 differ (Carthage fleet 0) | 123 same, 27 differ (**still only Carthage fleet 0**) |
@@ -67,19 +79,30 @@ changed during the round. The earlier reports define these categories.
   (both games follow the original's stopping rule, 263 of 263) and the week-11 tax (113 of 113) all
   match.
 
+## The Galatia row is a battle draw (attributed 2026-10-31)
+
+S02 (Seleucid start), round 4 (`hooked-t03-AUTO0723.SAV`), Galatia army 0 at (195,42). The original
+takes the mercenary-run branch, then attacks army 5 because its score of 91 is above 70. The remake
+ends in the garrison fallback.
+- **Same branch, same city:** the remake's tree also picks `MercenaryRun` and aradus (221,65), score
+  77, distance 26.
+- **Different army target:** army 5 is gone, so the remake's target is army-4 at (223,65), score 57.
+  That is below the continuation threshold of 71, and the city's 77 is not above 85. No command is
+  offered, and the fallback runs.
+- **Why army 5 is gone:** both games play the seats in the same order from the human seat, and in
+  both, Bithynia army 11 attacks Seleucid army 5 before Galatia's turn.
+  - **Original:** the attack fails. Army 5 survives with 26,137 of 37,300 troops, and Bithynia's army
+    is destroyed.
+  - **Remake:** the attack wins (power 14,652 against 14,388 in `events.jsonl`), and army 5 is destroyed.
+- **Cause: state,** a random battle result earlier in the round, not a port gap. `compare.py`'s state
+  flag misses it because it covers an army's own battle or death, not its target's.
+
+**So on `8e2d9053` no army decision in these 80 rounds remains unexplained.**
+
 ## Open
 
-- **One army row:** S02 (Seleucid start), round 4 (`hooked-t03-AUTO0723.SAV`), Galatia army 0.
-  - **The original** takes the mercenary run: `FUN_0044e84c` finds an offer, then the army score of
-    91 > 70 attacks army 5.
-  - **The remake** hires nothing ("mercenary hire: 0 offer(s) hired") and chooses the garrison
-    fallback, one tile away.
-  - Before, this was one of the 8 "#925 fallback" rows. With the faithful fallback in place, it
-    shows as a separate difference.
-  - **It is not the #144 offer-range boundary.** There, the remake is the more permissive side
-    (`<= 20` against the original's `< 20`). The open #144 corrections (capital radius `< 10`, offer
-    range `< 20`, ties in table order) are not in this commit.
-  - Not attributed.
+- **#144 boundaries:** capital radius `< 10`, offer range `< 20` and ties in table order are not in
+  `8e2d9053`. These 80 rounds do not exercise them.
 - **Carthage fleet 0 (#174):** unchanged, since T250–T252 did not touch the fleet phase. Three rows
   changed verdict because earlier moves in their rounds changed; I checked this against the two
   reports:

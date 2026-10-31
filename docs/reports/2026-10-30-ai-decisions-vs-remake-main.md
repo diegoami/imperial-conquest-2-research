@@ -11,7 +11,7 @@
 
 **Tag:** `[confirmed]`. The threshold edges in §4 below are `[code]`.
 
-**Rerun on remake main `8e2d9053` (2026-10-31):** see [the rerun](2026-10-31-ai-rerun-remake-8e2d9053.md). The T250 correction makes all 250 resupply rows and 7 of the 8 fallback rows match; one Galatia row (S02 r4) is open.
+**Rerun on remake main `8e2d9053` (2026-10-31):** see [the rerun](2026-10-31-ai-rerun-remake-8e2d9053.md). The T250 correction makes all 250 resupply rows and 7 of the 8 fallback rows match; the one remaining Galatia row (S02 r4) is a battle draw earlier in the round (state).
 
 **Review note (2026-10-30):**
 - **Release integrity:** 176 of 176 files match `SAVES.sha256`.
