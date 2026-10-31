@@ -50,9 +50,16 @@ Remake: main `8e2d9053`, not released.
 - **The post-battle treaty in the original** runs inside the battle path: the gate at
   `0x44B1C4–0x44B20A` calls `FUN_00450c68` ([AI diplomacy](2026-10-30-ai-diplomacy-vs-remake-main.md),
   review note). So the treaty is in effect before the seat goes on.
-- **Not checked:** the draft's statement that Rome's attack comes from the capital defence
-  (`FUN_0044efc8`). `F31C` calls `EFC8` at its entry (`0x44F32A`), but I did not trace the walk to
-  it. Nor did I check the S05/S09 detail (Ptolemaic armies 6 and 7, the +600 money) beyond the
+- **The attack comes before army 0's own turn (follow-up, 2026-10-31):**
+  - **Hook log:** Rome army 0's `e41c-in` record (seq 81, round 2) has position (97,31), where the
+    round-start save has (97,33). The hire at that pass needs the war already ended. So the battle
+    with army 9 at (96,30), next to (97,31), came first.
+  - **Code:** `E41C` is the first call of each army's turn in `F31C` (`0x44F366`). Army 0 is the
+    loop's first index, so before its pass `F31C` has called only `EFC8`, at entry (`0x44F32A`).
+    So the move and attack came from `EFC8`'s capital defence or from an earlier phase.
+  - Neither hook logs the routine, and the remake's log names capital defence for the same step.
+    This is code-backed inference, not an observed call.
+- **Not checked:** the S05/S09 detail (Ptolemaic armies 6 and 7, the +600 money) beyond the
   diagnostic comparison.
 
 ## Result: 1,200 seat-turns
