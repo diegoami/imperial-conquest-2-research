@@ -55,7 +55,17 @@ side is its own fleet events plus a code reading; no remake diagnostic was built
   `MercenaryRunDestination` finds an offer, it adds the run's march and `break`s, so no
   continuation is proposed. The comment reads: "the one march a turn allows an army goes to the run
   while there is an offer to run to".
-- **Not checked:** the draft's statement that `D9A8` writes the route whatever the army's moves.
+- **"`D9A8` writes the route whatever the army's moves", supported but not proven (follow-up,
+  2026-10-31):**
+  - **Code:** on the path `DBA8` → `DB38` → `D9A8` up to the write, I find no test of the army's
+    moves (+6). `DBA8` loads them into `si` at `0x44DBC5` but compares them only after the `DB38`
+    call (`0x44DC43`). `D9A8`'s own tests are on the fleet (+0x16, +0xA, +0xC). `DB38` compares
+    locals I did not trace back.
+  - **Play (from ic2-conquest):** in S06 round 4, the remake's identical run walk spends all 9 moves,
+    (83,84) → (78,85), with 0 left (`remake-8e2d9053-v1/S06_Gaul_AUTO0720-t04-probe.jsonl`). The
+    original's save puts army 3 on the same tile, and its hook logs the rendezvous from (78,85) in
+    that seat. So the original very likely wrote the route at 0 moves.
+  - Not read: the army's moves at the moment of the write.
 
 ## Result: the 27 rows
 
@@ -96,8 +106,7 @@ branch.
 **For the remake (classical-faithful, inference):**
 - After the mercenary-run walk, run the continuation walk too, in the same army turn, with the moves
   left and the original's `> 70` / `> 85` tests. That includes any ferry rendezvous it triggers.
-- The draft adds that with no moves left the walk still asks for a ferry. That is the draft's
-  reading, not checked here.
+- With no moves left, the walk very likely still asks for a ferry (see the review note).
 
 ## What this does not establish
 
