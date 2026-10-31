@@ -25,9 +25,10 @@ round-start autosave.
   release saves: **byte-identical**.
   - The comparers are the army comparison plus its attribution, diplomacy, economy, supply/hire,
     fleet, routes and army order.
-  - **One input detail:** `army-order-v1.json` reproduces only with the **8e2d9053** army report
-    (`run-exp-airerun/report-aidecide-v1.json`) as its row filter. That gives 679 armies, as in v4.
-    With the e20a6488 report it would count 680.
+  - **The army-order filter:** `army-order-v1.json` reproduces only with the **8e2d9053** army
+    report as its row filter (679 armies). With this run's own army report the count is **679 of 680**.
+    The draft's revision `897411d` (PR #298) adds that as `army-order-v2.json`, which is
+    **byte-identical** to my rerun.
 - **Remake commits:** `8e2d9053..e20a6488` is exactly T253 and T254. I did not re-execute the replays.
 
 ## Result
@@ -35,7 +36,7 @@ round-start autosave.
 | Comparison | `8e2d9053` | **`e20a6488`** |
 |---|---|---|
 | Seats where the remake ran armies out of table order | 96 of 158 | **0 of 156** |
-| Armies' first action matching the original | 668 / 679 | **678 / 679** |
+| Armies' first action matching the original (each run filtered by its own army report) | 668 / 679 | **679 / 680** |
 | Army decision records, by cause | 691 same, 41 diplomacy, 16 state, 1 other | 692 same, 40 diplomacy, 16 state, 1 other |
 | Diplomacy: same seats; deterministic first divergences | 1,110; 0 | **1,139; 0** (21 draw, 19 battle) |
 | Economy: seats with a difference | 0 | 0 (1,060 same, 140 state) |
