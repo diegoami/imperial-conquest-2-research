@@ -22,6 +22,11 @@ conquest #174, owner request 2026-10-31. It attributes the 27 differing rows of 
   `report-routes-v1.json`, `README.md`).
 - **Release:** [`run-exp-fleetroute174`](https://github.com/diegoami/ic2-conquest/releases/tag/run-exp-fleetroute174).
 
+**Corrected 2026-10-31** by [the zero-moves measurement](2026-10-31-ferry-route-written-at-zero-moves159.md):
+- S06 round 5's route comes from `F31C`'s `city > 100` branch, not the continuation, so it is a
+  "state" row: **14 state, 5 port gap**;
+- the route write at 0 army moves is now **measured** (7 writes).
+
 **Tag:** `[confirmed]`, Wine-only, for the original's side: a hook and the disassembly. The remake
 side is its own fleet events plus a code reading; no remake diagnostic was built for the gap.
 

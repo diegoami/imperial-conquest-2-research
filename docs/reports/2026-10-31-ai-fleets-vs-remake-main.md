@@ -15,7 +15,7 @@ diplomacy and economy successors.
 
 **Tag:** `[confirmed, partial]`, Wine-only. The 26 differences are not attributed.
 
-**Rerun on remake main `8e2d9053` (2026-10-31):** see [the rerun](2026-10-31-ai-rerun-remake-8e2d9053.md). Still only Carthage fleet 0 differs (27 rows). **Attributed** in [fleet 0 attributed](2026-10-31-fleet0-rows-attributed174.md): 8 of the 27 are no difference (`none` against `idle`), 13 are state, and 6 are a port gap (the mercenary run's continuation walk).
+**Rerun on remake main `8e2d9053` (2026-10-31):** see [the rerun](2026-10-31-ai-rerun-remake-8e2d9053.md). Still only Carthage fleet 0 differs (27 rows). **Attributed** in [fleet 0 attributed](2026-10-31-fleet0-rows-attributed174.md): 8 of the 27 are no difference (`none` against `idle`), 14 are state, and 5 are a port gap (the mercenary run's continuation walk; corrected from 13 and 6 by the [zero-moves measurement](2026-10-31-ferry-route-written-at-zero-moves159.md)).
 
 **Review note (2026-10-31):**
 - **Release integrity:** 162 of 162 files match `SAVES.sha256`.
