@@ -140,7 +140,8 @@ and `-v2.jsonl`. I paired each row with the original's emulated answer (`control
   - S02 r5 and S15 r3 now differ.
 
   The cause is still the route and moves state at the fleet's turn, as the fleet report's
-  "Round-start state of the differing fleet" section describes.
+  "Round-start state of the differing fleet" section describes. Now attributed: 8 no difference,
+  13 state, 6 a port gap ([fleet 0 attributed](2026-10-31-fleet0-rows-attributed174.md)).
 - **Not covered, as before:** rounds 6 and later, other seeds, the fleet hunt branch, and the rest of
   #176.
 
