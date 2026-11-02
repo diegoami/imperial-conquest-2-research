@@ -2597,9 +2597,11 @@ T216 policy and the unrun optional-control boundary.
 
 [Report](reports/2026-11-02-longrun-v090-ai-gaps.md), conquest `main` `23aca35d` (PR #300).
 Release [run-exp-longrun-v090](https://github.com/diegoami/ic2-conquest/releases/tag/run-exp-longrun-v090):
-seven per-game save tarballs (Rome, Carthage, Gaul, Seleucid r1–r4); hashes in
+seven per-game save tarballs (Rome, Carthage, Gaul, Seleucid r1–r4), the three fleet starts and
+`hooks-and-probes-saves.tar.gz` (hooks-decide-v1, hooks-fleet-v1, probes/battle-t26); hashes in
 [`SAVES.sha256`](https://github.com/diegoami/ic2-conquest/blob/23aca35d/runs/experiments/data/run-exp-longrun-v090/SAVES.sha256).
 Cited: `rome-rulebot1-40t/original/t01-a04.SAV` (gap A hook), `t03-a03.SAV` (Castulo),
 `t06-a03.SAV` (Astacus). The fleet starts `fleetstarts/gaul-t30end.SAV`, `gaul-t39end.SAV` and
-`rome-t16end.SAV` are hashed there but **not in the release** (follow-up: publish them).
+`rome-t16end.SAV` were added to the release 2026-11-02 (conquest PR #301); their downloaded
+sha256 matches `SAVES.sha256`.
 No binary copied into research Git.

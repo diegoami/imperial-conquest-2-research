@@ -152,7 +152,8 @@ byte-identical in all three runs):
   runs, and each fleet run's `inert.json` reports the same hash for both.
 - Saves: the game saves are in release `run-exp-longrun-v090` (per-game tarballs, hashes in
   `SAVES.sha256`). The three **fleet-start saves** (`fleetstarts/*.SAV`) are hashed but are not
-  among the release's seven assets, so gap C's original side is local to the bot's machine for now.
+  among the release's seven assets at intake. They were published on 2026-11-02 (conquest PR #301),
+  with `hooks-and-probes-saves.tar.gz`; the downloaded files match their `SAVES.sha256` hashes.
 - I did not rerun Wine or the remake.
 
 ## What this does not establish
