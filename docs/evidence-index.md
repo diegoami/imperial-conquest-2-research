@@ -2610,4 +2610,8 @@ The gate hook (gap A) starts `aab4starts/rome-t01end.SAV`, `rome-t03end.SAV`, `r
 Gap B's siege call ([report](reports/2026-11-02-gapb-siege-call168.md), conquest `ddbeae4d`, PR #303): run
 `hooks-gapb-v1` from the same four `aab4starts/*.SAV`. Its hooked and plain autosaves are in the release's
 `gapb168-hook-saves.tar.gz` (not downloaded at intake).
+Recheck on remake `11f713e2` ([report](reports/2026-11-02-remake-11f713e2-recheck.md), conquest `6aefef1e`, PR #307):
+the hook start `gapbstarts/seleucid-t09end.SAV` and the recheck saves are in the release's
+`recheck-11f713e2-saves.tar.gz` (not downloaded at intake). The turn-26 freeze diagnostics are
+`seleucid-rulebot1-40t-r6/original/t26-a01-freeze-*.txt` in the data folder.
 No binary copied into research Git.
