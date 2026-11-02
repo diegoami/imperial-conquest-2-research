@@ -157,7 +157,10 @@ byte-identical in all three runs):
   rule applied every turn.
 - **Harness limit (conquest, open):** the Seleucid game stops at turn 26 in every run. A battle the
   human must defend leaves a dialog open that blocks File > Save, and the driver's battle flag
-  `0x4A0B7C` reads 0. This is a driver limitation, not a game difference.
+  `0x4A0B7C` reads 0. This is a driver limitation, not a game difference. **Resolved later:** the human leader is
+  overthrown at the end of turn 26 in the original (Wine and native Windows) and in the remake, so the game can't run
+  to 40 turns. The frozen battle window is Wine-only and unexplained
+  ([`2026-11-02-seleucid-turn26-overthrow.md`](2026-11-02-seleucid-turn26-overthrow.md)).
 
 ## Review at intake
 
