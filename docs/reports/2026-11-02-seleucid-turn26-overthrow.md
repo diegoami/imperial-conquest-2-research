@@ -61,11 +61,15 @@ reproduced exactly; Wine against Windows on that exact sequence remains untested
   (`C:\Users\diego\Documents\ic2-turn26-repro`).
 - **Remake:** the receipt (`remake-11f713e2-v1/receipt.jsonl`) has "Your unpopularity has forced the army to overthrow
   you", "handed to the AI. Watch mode from here on" and "Sagalassus (Seleucid) falls to Galatia".
-- **Not verified from the data:**
-  - **"same exe bytes":** neither `result.json` records an executable hash.
-  - **the original's message text:** it appears only in screenshots (`after.png`, hashed in `SAVES.sha256`), which I
-    did not view. The window title and class are consistent with it.
-  - **the release tarball:** I did not download `turn26-repro-saves.tar.gz`.
+- **Closed after intake** (conquest `36a4309e`, PR #310):
+  - **Same executable:** I hashed both copies myself, the Windows folder's and the Wine game folder's. Both are sha256
+    `354d8265cba1dac2a80a0a96ce76367a368e37a4e79c30eb4f0bb587b35c532f`, as `turn26-repro/exe-sha256.txt` records.
+  - **Message text:** I viewed both screenshots from `turn26-repro-saves-v2.tar.gz` (`wine-v1/after.png`,
+    `windows-v1/after-game-only.png`). Both show "The game is over for Darius the leader of Seleucid. Your unpopularity
+    has forced the army to overthrow you." They also show the changes panel: 270 BC with population 16,944,000, 62 cities
+    and 2,700 talents; 269 BC with 13,767,000, 47 cities and 6,308 talents. This matches `end-of-game-text.txt`.
+  - **Asset name:** the release asset is now `turn26-repro-saves-v2.tar.gz`. The first Windows screenshot captured the
+    whole desktop, so conquest replaced it with a crop of the game window and deleted the old tarball.
 - **Scope:**
   - **Established:** from `t26-a00` with the campaign's logged seed, End turn overthrows the human in all three runs.
   - **Inferred, not reproduced:** that the campaign's unpainted battle window comes from the same turn's overthrow.
