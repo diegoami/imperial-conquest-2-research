@@ -2620,3 +2620,12 @@ and the saves and screenshots are in the release's `turn26-repro-saves-v2.tar.gz
 Windows screenshot showed the whole desktop). I downloaded v2: the Windows image is a crop of the game window only.
 Executable sha256 `354d8265…` is in `turn26-repro/exe-sha256.txt`.
 No binary copied into research Git.
+
+## Diplomacy in the long runs (run-exp-diplo-longrun)
+
+[Report](reports/2026-11-03-diplomacy-longrun.md), conquest `main` `cf310f92` (PR #311). The 7 starts (Carthage
+game before turns 21, 34 and 36; Gaul game before turns 21 and 36; Rome game before turn 21; Seleucid game before
+turn 18), × 3 rounds, are in release
+[run-exp-diplo-longrun](https://github.com/diegoami/ic2-conquest/releases/tag/run-exp-diplo-longrun)
+(`diplo-longrun-saves.tar.gz`, not downloaded at intake). Their hashes are in
+[`SAVES.sha256`](https://github.com/diegoami/ic2-conquest/blob/cf310f92/runs/experiments/data/run-exp-diplo-longrun/SAVES.sha256).
