@@ -2604,4 +2604,7 @@ Cited: `rome-rulebot1-40t/original/t01-a04.SAV` (gap A hook), `t03-a03.SAV` (Cas
 `t06-a03.SAV` (Astacus). The fleet starts `fleetstarts/gaul-t30end.SAV`, `gaul-t39end.SAV` and
 `rome-t16end.SAV` were added to the release 2026-11-02 (conquest PR #301); their downloaded
 sha256 matches `SAVES.sha256`.
+The gate hook (gap A) starts `aab4starts/rome-t01end.SAV`, `rome-t03end.SAV`, `rome-t06end.SAV`,
+`carthage-t35end.SAV`, with their hooked and plain autosaves, are in the release's `aab4-hook-saves.tar.gz`
+(conquest `46ddfff4`, PR #302; not downloaded at intake).
 No binary copied into research Git.

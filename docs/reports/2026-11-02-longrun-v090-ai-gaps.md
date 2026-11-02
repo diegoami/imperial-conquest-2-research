@@ -9,7 +9,8 @@ request 2026-11-02 ("parallel long runs with the original and the remake", ancho
   in Wine; hooked and plain autosaves byte-identical in all three runs. Remake `aiprobe` decision and
   walk logs.
 - Gap C: partial. Two hunt samples, one port-tile row unexplained.
-- Gap A's cause in the original: `[code-backed interpretation]` added at intake (below), not hooked.
+- Gap A's cause in the original: `[confirmed: Wine hook]`. Proposed at intake from the decompile, then hooked at
+  `0x44F4CC` by conquest (revision, commit `46ddfff4`, PR #302).
 
 ## Method
 
@@ -65,14 +66,31 @@ then the fallback toward (262,34)).
 capitals (Rome game: Macedonia's army at (146,53) by turn 30, Media's at (283,58) by turn 40). The
 original's armies stay put for 40 turns.
 
-**Intake interpretation (code-backed, not hooked):** the original decides whether to run the
+**Cause (proposed at intake from the decompile, confirmed by a hook):** the original decides whether to run the
 fallback with `FUN_0044aab4`, which returns `recomputedFullMoves != army[+6]`. That is, "did the
 army spend moves", not "did the army change tile"
 ([`2026-10-07-strategic-ai-turn.md`](2026-10-07-strategic-ai-turn.md) §3.5). A swing that spends 7
 of 9 moves and comes back counts as having moved, so `FUN_0044ebe8` does not run. The remake's T156
 condition compares the tile before and after (`beforeTile.X == afterTile.X && …`), which treats the
 same swing as "no movement". This matches every gap-A row: in each one, the walk spent moves and
-returned. A hook at `0x44aab4` on `t01-a04` would confirm it.
+returned.
+
+**Hook of the gate** (`patches/aab4_hook.py`, run `hooks-aab4-v2`, conquest `46ddfff4`): the probe replaces
+`mov eax,esi; call 0x44aab4` at `0x44F4CC`, right after F31C's walk, and logs AL and the army record.
+It ran from four of the games' own saves (`aab4starts/rome-t01end.SAV`, `rome-t03end.SAV`, `rome-t06end.SAV`,
+`carthage-t35end.SAV`). Hooked and plain autosaves are byte-identical in 4 of 4 runs.
+
+| Army after its walk | Moves left | AAB4 | Fallback |
+|---|---|---|---|
+| Macedonia 8 (144,42), Media's capital army (307,58), Thracia 6 (169,38), Ptolemaic 7 (191,95) | 2 | 1 | no |
+| Armenia 1 (256,47), Carthage game turn 36 | 3 | 1 | no |
+| Carthage 2 (37,62), Seleucid 5 (178,41): the gap-B armies | 0 | 1 | no |
+| Celtiberia 2 (41,47), did not move | 8 | **0** | **yes** |
+| the other walks | 0–8 | 1 | no |
+
+I recounted the four logs: 38 walks, AAB4 = 1 on 37 of them; the only 0 is Celtiberia 2. So the original's gate is
+"the army spent moves", and an army that walks back to its start tile never gets the fallback. The remake fix this
+points to is a spent-moves test (moves after the command < moves before) in place of the tile comparison.
 
 ## Gap B: the mercenary-run branch next to an enemy city besieges in the original and steps aside in the remake
 
@@ -158,8 +176,7 @@ byte-identical in all three runs):
 
 ## What this does not establish
 
-- Gap A's cause in the original is an interpretation from the decompile (`FUN_0044aab4`), not a
-  hook result.
+- Gap A's gate is hooked on four starts (38 walks); other seeds and nations are not sampled.
 - Gap B: which original call turns the mercenary-run continuation into a siege, given that the army
   does not leave its tile (Carthage kept 9 moves). The outcome is measured; the mechanism is not.
 - Gap C: whether the two games' hunt-score distributions match. That needs a seed sweep of
