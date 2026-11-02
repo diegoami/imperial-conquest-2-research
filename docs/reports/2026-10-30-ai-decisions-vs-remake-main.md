@@ -85,6 +85,8 @@ original.** The §4 boundaries and ties
 14) and it has 0 unattributed rows. `report-05b02936-v1.json`'s raw categories are consistent:
 410 same plus 12 same but unlogged. The remake replays were not re-executed.
 
+**Later (2026-11-02):** the Macedonia swing is gap A of [`2026-11-02-longrun-v090-ai-gaps.md`](2026-11-02-longrun-v090-ai-gaps.md). On v0.9.0 the walk returns to (144,42) as in the original, but T156's garrison fallback then marches the army to (146,44). This comparison counted the army as "same" because it compared first decisions, not end tiles.
+
 ## What this does not establish
 
 - Whether `FUN_0044dba8` attacks on arrival beyond the capital defence (the march contract,

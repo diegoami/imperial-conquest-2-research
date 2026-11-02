@@ -83,6 +83,6 @@ These are inferences from the saves, not attributions; the writer hook proposed 
 
   The draft proposes a route/moves hook at those writers on the 26 rounds; the decode above narrows
   where to look.
-- **The hunt branch** was not exercised.
+- **The hunt branch** was not exercised. (First exercised in the v0.9.0 long runs: scores 82–127, random in both games, [`2026-11-02-longrun-v090-ai-gaps.md`](2026-11-02-longrun-v090-ai-gaps.md) gap C.)
 - **The port city:** the remake logs the branch, not the city.
 - Rounds 6+, other seeds, fleets carrying armies, native Windows.
