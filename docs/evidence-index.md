@@ -2607,4 +2607,7 @@ sha256 matches `SAVES.sha256`.
 The gate hook (gap A) starts `aab4starts/rome-t01end.SAV`, `rome-t03end.SAV`, `rome-t06end.SAV`,
 `carthage-t35end.SAV`, with their hooked and plain autosaves, are in the release's `aab4-hook-saves.tar.gz`
 (conquest `46ddfff4`, PR #302; not downloaded at intake).
+Gap B's siege call ([report](reports/2026-11-02-gapb-siege-call168.md), conquest `ddbeae4d`, PR #303): run
+`hooks-gapb-v1` from the same four `aab4starts/*.SAV`. Its hooked and plain autosaves are in the release's
+`gapb168-hook-saves.tar.gz` (not downloaded at intake).
 No binary copied into research Git.

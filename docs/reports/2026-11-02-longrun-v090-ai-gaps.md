@@ -177,8 +177,10 @@ byte-identical in all three runs):
 ## What this does not establish
 
 - Gap A's gate is hooked on four starts (38 walks); other seeds and nations are not sampled.
-- Gap B: which original call turns the mercenary-run continuation into a siege, given that the army
-  does not leave its tile (Carthage kept 9 moves). The outcome is measured; the mechanism is not.
+- Gap B's mechanism, which was open here, is answered in
+  [`2026-11-02-gapb-siege-call168.md`](2026-11-02-gapb-siege-call168.md). The siege is the walk's end check
+  (`FUN_0044d734` → `FUN_0044b27c` at 0x44D949), reached by the continuation walk. The 9 moves were read after a
+  mid-round refill.
 - Gap C: whether the two games' hunt-score distributions match. That needs a seed sweep of
   `FUN_0044f4f8`. The cause of the Alexandria port-tile difference (`FUN_0044e9a8`) is also open.
 - The unattributed structural rows (relations, captures, battles), and turns 26–40 of the Seleucid
