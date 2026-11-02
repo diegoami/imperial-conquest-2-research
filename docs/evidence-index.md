@@ -2592,3 +2592,14 @@ only. All raw Original files, full states/CPU traces, input hashes and closure
 manifests remain private; no public binary release asserted. No Original
 instruction/game rerun or UI/Windows/export/whole-turn acceptance. Preserve
 T216 policy and the unrun optional-control boundary.
+
+## Long runs original vs remake v0.9.0 (run-exp-longrun-v090)
+
+[Report](reports/2026-11-02-longrun-v090-ai-gaps.md), conquest `main` `23aca35d` (PR #300).
+Release [run-exp-longrun-v090](https://github.com/diegoami/ic2-conquest/releases/tag/run-exp-longrun-v090):
+seven per-game save tarballs (Rome, Carthage, Gaul, Seleucid r1–r4); hashes in
+[`SAVES.sha256`](https://github.com/diegoami/ic2-conquest/blob/23aca35d/runs/experiments/data/run-exp-longrun-v090/SAVES.sha256).
+Cited: `rome-rulebot1-40t/original/t01-a04.SAV` (gap A hook), `t03-a03.SAV` (Castulo),
+`t06-a03.SAV` (Astacus). The fleet starts `fleetstarts/gaul-t30end.SAV`, `gaul-t39end.SAV` and
+`rome-t16end.SAV` are hashed there but **not in the release** (follow-up: publish them).
+No binary copied into research Git.
