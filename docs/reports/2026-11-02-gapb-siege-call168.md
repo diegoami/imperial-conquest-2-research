@@ -107,6 +107,8 @@ refill's function wasn't hooked.
 - **The only AAB4 = 0** is Celtiberia 2 in `carthage-t35end`: F31C 0x44F409, DBA8 with no `D734` step and 8 moves. EBE8 ran
   for it (seq 11, called from 0x44F4D9).
 
+**Remake fix:** [`2026-11-02-remake-fixes-gaps-ab.md`](2026-11-02-remake-fixes-gaps-ab.md).
+
 ## Review at intake
 
 - **Guards:** I disassembled 0x44D895–0x44D990 of the seed build (`objdump`), and it matches the table. In order:

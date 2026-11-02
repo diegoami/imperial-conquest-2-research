@@ -90,7 +90,9 @@ It ran from four of the games' own saves (`aab4starts/rome-t01end.SAV`, `rome-t0
 
 I recounted the four logs: 38 walks, AAB4 = 1 on 37 of them; the only 0 is Celtiberia 2. So the original's gate is
 "the army spent moves", and an army that walks back to its start tile never gets the fallback. The remake fix this
-points to is a spent-moves test (moves after the command < moves before) in place of the tile comparison.
+points to is the original's **full-budget** gate (run the fallback only while moves equal the full allowance) in
+place of the tile comparison. This is corrected from the first wording, "moves after the command < moves before", which
+is per-command; see [`2026-11-02-remake-fixes-gaps-ab.md`](2026-11-02-remake-fixes-gaps-ab.md).
 
 ## Gap B: the mercenary-run branch next to an enemy city besieges in the original and steps aside in the remake
 
@@ -106,7 +108,7 @@ army score −10000 is ≤ 100, city score 98 is ≤ 100, 21,878 // 500 = 43 < 1
 so the resupply walk is skipped. Then army score ≤ 70 and city score 98 > 85 give `e84c+city>85`.
 
 In the Rome game this repeats every turn: Castulo 80 → 77 → 74 → 71 (turns 3–5), Astacus 52 → 50
-→ 48 → 46 → 44 (turns 7–10), the army losing 500–700 troops a turn, until the army is gone or the
+→ 48 → 46 → 44 (turns 7–10), the army losing about 600–1,150 troops a turn (corrected from 500–700; the table above shows 1,146 for Castulo), until the army is gone or the
 score passes 100 (`city>100` attacks).
 
 **Remake** (`probes/seleucid-siege-t08`, `probes/gaul-rulebot1-40t-t6`,
