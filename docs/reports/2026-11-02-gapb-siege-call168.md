@@ -124,8 +124,10 @@ refill's function wasn't hooked.
   - The watched armies refill at nation 9's FA20 in all four runs (seq 50, 33, 19, 19).
 - **Q3:** I reproduced the comparison independently. For each of the 38 returns at 0x44F4CC, I compared AL with "moves at
   the seat's last DBA8 entry ≠ moves at the AAB4 entry": 0 of 38 differ.
-- **Side note:** in `rome-t06end`, watched index 2 is spent again late in the round, in seat 14 (seq 96–98). That is
-  after the rows above, and it is not attributed.
+- **Side note, attributed by conquest (`6c6de23d`, PR #304):** in `rome-t06end`, table slot 2 is Media's capital
+  army, not Carthage's, because the slot was reused. Seq 95–98 in seat 14 are Media's own walk out and back:
+  (307,58) → (310,61) → (307,58), with moves 9 → 5 → 2. That is gap A's pattern. I checked it against the log's owner
+  and position fields. The Carthage 2 rows all come from `rome-t03end`.
 - **Inertness:** `inert.json` shows hooked = plain in 4 of 4 runs.
 - **Not checked:** I did not rerun Wine or download `gapb168-hook-saves.tar.gz`.
 
