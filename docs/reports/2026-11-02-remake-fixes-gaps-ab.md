@@ -77,6 +77,13 @@ implement it.
   - Astacus's falls 2 points a turn (52 → 50 → … → 44);
   - the besieging army loses roughly 600 to 1,150 troops a turn: Carthage 21,878 → 20,732; Seleucid 11,224 → 10,630.
 
+**Recheck on `11f713e2` (fixes 1723 and 1724):**
+[`2026-11-02-remake-11f713e2-recheck.md`](2026-11-02-remake-11f713e2-recheck.md).
+- Gap A: 410 rows → 4. All 4 are turns where the remake declares a war the original doesn't.
+- Gap B: 17 rows → 1. The row left is a **third measured caller** of the end check: the garrison fallback's own walk
+  (EBE8 → DBA8, called at 0x44ECD6). It besieges in the original and steps aside in the remake. The scope above
+  therefore extends to the fallback walk.
+
 ## Reading moves in saves
 
 AI armies get their moves back between Celtiberia's seat and Illyria's, in every measured round. So a save shows spent
