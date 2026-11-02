@@ -42,6 +42,11 @@ for each partner s of me, for k with rel[me][k] == 0, taxBase[s] < taxBase[k], t
 
 Every trade and alliance write checks that the partner is AI (`+0x490 == 0`, e.g. `0x0044FCF7`). The war write does not, so the AI declares war on humans directly. These are the only AI-originated writes of trade, alliance or war; the other callers (treaty `FUN_00450C68`, defection and elimination `FUN_0044BED8`/`FUN_0044C360`/`FUN_0044C528`/`FUN_0044C8F0`, the quarterly thaw) write only peace or cooldowns. The setter's callers that can pass `3` are exactly `TUnitMap_SelectUnit` ×3 (human UI), `TPolitics_OK` (human UI) and this one call at :53375 **[confirmed: all 22 decompiled `FUN_00449B40(` call sites in `all_app_functions.txt`]**. The "season 3 = Winter" reading is `[derived]` from the Spring = 0 and Summer = 1 observations.
 
+**Note (2026-11-03):** the `busy` test is not hoisted. It runs inside loop 1, after the `0 ≤ rel[k][me] < 3` gates
+(`FUN_0044faa0` at 0x44FC21, store at 0x44FC55). If no nation passes those gates, `busy` is never written, and the
+alliance test reads an uninitialised value
+([`2026-11-03-diplomacy-longrun.md`](2026-11-03-diplomacy-longrun.md)).
+
 ### 1b. `FUN_00452034`: the offer roll at a human seat's turn start [confirmed: decompile + listing]
 
 ```text

@@ -34,7 +34,9 @@ In each of these turns the remake's nation declares a war the original doesn't, 
 
 The AI probe with no human orders (`probes/11f713e2-carthage-rulebot1-40t-t34`, `-seleucid-rulebot1-40t-t18`) keeps Macedonia 8
 at (144,42) and Media's army at (307,58): the swing with no extra fallback, as in the original. Gap A is fixed. Whether these
-war declarations are random draws or a rule difference is not attributed here.
+war declarations are random draws or a rule difference is not attributed here. **Attributed later:**
+[`2026-11-03-diplomacy-longrun.md`](2026-11-03-diplomacy-longrun.md) traces all four to the original's rules: war and
+alliance rolls, and battles that happen in one game's round only.
 
 ## The gap-B row left: the garrison fallback's walk besieges in the original
 
