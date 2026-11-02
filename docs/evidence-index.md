@@ -2614,4 +2614,7 @@ Recheck on remake `11f713e2` ([report](reports/2026-11-02-remake-11f713e2-rechec
 the hook start `gapbstarts/seleucid-t09end.SAV` and the recheck saves are in the release's
 `recheck-11f713e2-saves.tar.gz` (not downloaded at intake). The turn-26 freeze diagnostics are
 `seleucid-rulebot1-40t-r6/original/t26-a01-freeze-*.txt` in the data folder.
+Turn-26 overthrow ([report](reports/2026-11-02-seleucid-turn26-overthrow.md), conquest `eeeaf35c`, PR #309): start
+`seleucid-rulebot1-40t-r7/original/t26-a00.SAV`. The Wine, native Windows and remake results are under `turn26-repro/`,
+and the saves and screenshots are in the release's `turn26-repro-saves.tar.gz` (not downloaded at intake).
 No binary copied into research Git.

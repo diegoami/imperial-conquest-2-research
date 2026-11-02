@@ -60,6 +60,9 @@ not-at-war city branch), with no siege.
 
 ## Seleucid turn 26 (harness, open)
 
+**Resolved later:** the human is overthrown at turn 26 in both games; see
+[`2026-11-02-seleucid-turn26-overthrow.md`](2026-11-02-seleucid-turn26-overthrow.md).
+
 The game stops at turn 26 in every run. The watch build, which has no `no_delay`, stops identically, and its turns 1–25
 match the fast build line for line, so `no_delay` is not the cause. At the freeze (`seleucid-rulebot1-40t-r6`,
 `IC2_FREEZE_DIAG=1`):
