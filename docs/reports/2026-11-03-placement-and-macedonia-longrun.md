@@ -152,7 +152,10 @@ replaced only by a strictly smaller one. A busy city's 2000 therefore never wins
 remake. That leaves the table-order tie as the only code-only difference besides the zone.
 
 **A detail not interpreted.** The busy test reads a fixed global word, `0x4A0330 > −1`, not a field of the fleet record.
-The fleet's own owner (+0x08) and build city (+0x14) are fields. This intake does not interpret the global.
+The fleet's own owner (+0x08) and build city (+0x14) are fields. *Resolved 2026-11-03* (conquest `db366a82`):
+`0x4A0330` is the calendar week. The harness reads it there (`harness/driver.py:44`), and the decompile writes it as
+`(week + 2) % 12` (decompiled-mobilization-and-mercenary-restock.md) and checks it against 11 in the AI's quarterly block.
+Its values are 0–11, so `> −1` is always true. The busy test therefore reduces to the fleet's owner and build city.
 
 **Not re-checked:**
 - the Thracia E1FC mismatch (the original returns its own tile, although the start map has its marker there; the map may
