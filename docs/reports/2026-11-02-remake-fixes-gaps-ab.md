@@ -119,6 +119,19 @@ implement it.
   Macedonia game.
 - **The no-command fallback:** one more case, Carthage army 10 in Macedonia turn 26 (8 moves of 9).
 
+**Recheck on v0.9.2 `1723c673`** (T274, fix 1739, T275): [`2026-11-03-remake-v092-recheck.md`](2026-11-03-remake-v092-recheck.md).
+- **Fixed:** the no-command fallback, the resupply ties and the Siga launch rows.
+- **Regression:** T275's `CoastalCity.LaunchTile` scans static terrain. At Issus, where another fleet stands on
+  (219,55), the new fleet launches on top of it, and the standing fleet doesn't sail (3 rows in 3 games).
+  **Fix:** read the live `OriginalFleetPort.MapCode`.
+- **Still open:** the Caspian build city, and capital defence while a human battle is pending.
+- **New, the stale walk word:**
+  - **Measured:** when a walk's intermediate search (DB38) fails, the walk does no swing and no recursion. When the next
+    walk in the same F31C pass is the garrison fallback for the same army, on the direct path, it doesn't either.
+  - **The remake:** T239 always swings.
+  - **Fix:** implement the measured rule; see the report's specification. Other carry-overs are not measured.
+- **Method:** anchored replays should pass `--turn-seed`. Without it, every turn drew the same AI rolls.
+
 ## Reading moves in saves
 
 AI armies get their moves back between Celtiberia's seat and Illyria's, in every measured round. So a save shows spent

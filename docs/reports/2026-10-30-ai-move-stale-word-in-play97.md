@@ -11,6 +11,11 @@ the data is committed at `runs/experiments/data/run-exp-walk-hook97/`. It follow
 **Tag:** `[confirmed, partial]`: observed in the running original under Wine with an
 observation-only hook, over 5 starts × 5 AI End turns with seed 12345. Not run on native Windows.
 
+**Later (2026-11-03):** the word **can** be −1 in play. In a Numidia game, turn 37, the E84C walk's intermediate
+search found nothing and left −1. The garrison fallback's walk came next for the same army on the direct path, read that
+−1, and neither swung nor recursed. The army stayed, and the remake (T239) swings it away
+([v0.9.2 recheck](2026-11-03-remake-v092-recheck.md) §5, inert walk hook). This report's "never −1" holds for its 25 turns only.
+
 **Review note (2026-10-29):**
 - **Release integrity:** all 54 saves match `SAVES.sha256`.
 - **Inertness:** I compared every hooked autosave with its plain counterpart myself, and all 27
