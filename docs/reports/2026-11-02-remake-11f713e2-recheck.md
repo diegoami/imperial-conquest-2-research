@@ -50,6 +50,10 @@ alliance rolls, and battles that happen in one game's round only.
   4. `D734` (from 0x44DC16), then the siege **`B27C` from 0x44D949**, city 263, with 9 moves.
   
   The army stays on (221,70) and Sidon is besieged.
+
+  *Label correction 2026-11-03* (conquest `bedd1e95`): `hooks-gapb-v2` reused the hook exe built for
+  `hooks-gapb-v1`, so its `watch` fields labelled "6" and "5" are armies 2 and 5. The values cited here (army 6's 9
+  moves, AAB4 = 0, the callers) are from the acting army's own record (seq 111–119), so they stand.
 - **Remake `11f713e2`** (`probes/11f713e2-seleucid-rulebot1-40t-t10`): army-6 gets no tree command. "garrison fallback
   (221, 71)" moves it to (222,71), and the log reports `siege gates: 1 adjacent, 0 tree-selected`. No siege.
 

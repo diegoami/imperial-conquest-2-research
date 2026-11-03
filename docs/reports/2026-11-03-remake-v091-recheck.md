@@ -51,7 +51,9 @@ All 40 turns were played, with no game over and no remake error.
   walks it to (198,46). Iconium (197,47), Galatia's own city, is 3 tiles away.
 
 **The original.** Hook run `hooks-gapb-galatia-v1` (`patches/gapb_hook.py`), start `starts/ptolemaic-t00start.SAV`
-(the campaign's `t00-start`); the hooked and plain autosaves are byte-identical. Galatia's seat is the first AI seat
+(the campaign's `t00-start`); the hooked and plain autosaves are byte-identical. *Label correction (conquest `bedd1e95`):* the run
+was labelled as watching armies 12 and 6, but it reused a hook exe built for armies 2 and 5. Its `watch` fields are
+therefore those two armies. Army 12's 8 moves come from its own record (seq 6–10), so they stand. Galatia's seat is the first AI seat
 this round (seq 4), before the mid-round refill. Army 12 has 8 moves:
 1. seq 6–7: E41C supply pass, then F6D8 (city 233, not at war);
 2. seq 8: E84C mercenary run, with no walk;
