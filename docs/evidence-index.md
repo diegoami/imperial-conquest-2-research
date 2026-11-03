@@ -2675,3 +2675,7 @@ v0.9.2 follow-ups ([report](reports/2026-11-04-v092-followups.md), conquest `3e8
 and `-v091/`. The saves are in release `run-exp-longrun-v092` (`greece-rulebot1-40t-saves.tar.gz`, `v092-followups-saves.tar.gz`)
 and `turnseed-1723c673-saves.tar.gz` on `-v090` and `-v091` (not downloaded at intake). The logged seeds used for the exact
 replays are in `num-start-randseeds-v2.json` (scalar RandSeed values, no paths).
+Port rows and the carried army ([report](reports/2026-11-04-port-rows-and-carried-army.md), conquest `dadc00de`, PR #324):
+under `run-exp-longrun-v092/` (`hooks-fleet-port-seed*-v1`, `port-rows-original-seeds-v1.txt`, `remake-seed-sweep-v1/`,
+`hooks-route-num-v1`). The saves are in release `run-exp-longrun-v092` (`port-and-carried-army-saves.tar.gz`, not downloaded
+at intake).
