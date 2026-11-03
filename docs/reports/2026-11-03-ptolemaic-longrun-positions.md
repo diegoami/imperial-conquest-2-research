@@ -196,9 +196,14 @@ decide-hook autosaves) and `positions-hooks-saves.tar.gz`. The starts are the ca
 
 The tarballs were not downloaded.
 
-**One unreconciled detail.** In the gap-B hook, the `watch` field still shows army 5 with 8 moves at seq 16. The step
-hook has it at 2 moves after (178,48). The walk's end tile is the step hook's, so the attribution doesn't depend on
-which is right.
+**The `watch` detail, resolved** (conquest `bedd1e95`, PR #316). The hook exe compiles in the armies it watches.
+The runner rebuilds it only when no exe exists, so this run reused the exe built on 2026-11-02 for `hooks-gapb-v1`,
+which watches armies **2 and 5**. The labels "5" and "4" were therefore army 2 and army 5:
+- army 2 stays at 8 moves;
+- army 5 goes 8 → 0 at seq 16, matching its own record at seq 22 (0 moves at (178,48)).
+
+I scanned that exe and found the watch reads only for indices 2 and 5. The values cited in this report come from the
+acting army's own record, not from a watch field. The hook now names its exe after the watch list.
 
 **Inference, not measurement: rows 11–15 are random draws.** The hooked original runs with a different random stream
 and ends on the remake's tiles. That shows the campaign's tiles depend on the draw. It doesn't identify which draw.
