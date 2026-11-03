@@ -1076,7 +1076,10 @@ Source: 2026-10-07-strategic-ai-turn.md (decompilation of `FUN_0044fa20` and its
   0 only for an army that kept its full 8 moves `[confirmed: Wine hook]`. Remake v0.9.0 tested tile equality instead
   (T156), which drifted capital armies away (410 rows over four long runs); fix 1723 on `11f713e2` brings that to 0
   outside war-declaration turns ([long runs v0.9.0](reports/2026-11-02-longrun-v090-ai-gaps.md),
-  [11f713e2 recheck](reports/2026-11-02-remake-11f713e2-recheck.md)).
+  [11f713e2 recheck](reports/2026-11-02-remake-11f713e2-recheck.md)). The gate also covers an army whose tree gave it
+  no walk: Galatia army 12 (Ptolemaic game, turn 1), with 8 of its 10 moves after E84C, got AAB4 = 1 and stayed. Remake
+  v0.9.1 gates only the fallback after a command, so it walks that army away `[confirmed: Wine hook + remake code]`
+  ([v0.9.1 recheck](reports/2026-11-03-remake-v091-recheck.md)).
 - **Moves in saves:** AI armies' moves were refilled to full between Celtiberia's seat and Illyria's in every measured
   round. A mid-round save therefore shows spent moves for seats after that point and full moves for seats before it,
   so read moves at the seat's end, not from the save. Only two watched armies were tracked, and the refill routine is

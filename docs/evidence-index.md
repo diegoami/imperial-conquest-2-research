@@ -2629,3 +2629,19 @@ turn 18), × 3 rounds, are in release
 [run-exp-diplo-longrun](https://github.com/diegoami/ic2-conquest/releases/tag/run-exp-diplo-longrun)
 (`diplo-longrun-saves.tar.gz`, not downloaded at intake). Their hashes are in
 [`SAVES.sha256`](https://github.com/diegoami/ic2-conquest/blob/cf310f92/runs/experiments/data/run-exp-diplo-longrun/SAVES.sha256).
+
+## Recheck on remake v0.9.1 (run-exp-longrun-v091, run-exp-recheck-0d9d4729)
+
+[Report](reports/2026-11-03-remake-v091-recheck.md), conquest `main` `28f863b6` (PR #313).
+The replay of the four stored long games is under `run-exp-longrun-v090/` (`stays-0d9d4729-v1.txt`,
+`anchored-0d9d4729-vs-11f713e2-v1.txt`, `probes/0d9d4729-seleucid-rulebot1-40t-t10`, `turn26-repro/wine-v2-gameover`).
+The recheck saves are in release
+[run-exp-longrun-v090](https://github.com/diegoami/ic2-conquest/releases/tag/run-exp-longrun-v090)
+(`recheck-0d9d4729-saves.tar.gz`), and the summary is `run-exp-recheck-0d9d4729/report-v1.json`.
+The new Ptolemaic game, the Galatia hook (`hooks-gapb-galatia-v1`, from `starts/ptolemaic-t00start.SAV` = the campaign's
+`t00-start`) and its probes are in release
+[run-exp-longrun-v091](https://github.com/diegoami/ic2-conquest/releases/tag/run-exp-longrun-v091)
+(`ptolemaic-rulebot1-40t-saves.tar.gz`, `hooks-and-probes-saves.tar.gz`). The tarballs were not downloaded at intake.
+Their hashes are in
+[`SAVES.sha256`](https://github.com/diegoami/ic2-conquest/blob/28f863b6/runs/experiments/data/run-exp-longrun-v091/SAVES.sha256).
+No binary copied into research Git.

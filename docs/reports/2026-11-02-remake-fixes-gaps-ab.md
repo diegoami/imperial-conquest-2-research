@@ -84,6 +84,15 @@ implement it.
   (EBE8 → DBA8, called at 0x44ECD6). It besieges in the original and steps aside in the remake. The scope above
   therefore extends to the fallback walk.
 
+**Recheck on v0.9.1 `0d9d4729` (fix 1729):**
+[`2026-11-03-remake-v091-recheck.md`](2026-11-03-remake-v091-recheck.md).
+- Gap B: 1 row → 0. The fallback walk now besieges Sidon.
+- **New, gap A on a second path.** The fallback for an army that the tree gave **no command**
+  (`AiMilitaryPhase.cs:487–503`) runs on `mayMarch` alone. Fix 1723's full-allowance test (`AiTurn.cs:336–354`) covers
+  only the fallback after a command. In the original both go through the same AAB4 call. Seen once: Galatia army 12,
+  Ptolemaic game turn 1, with 8 of its 10 moves. The original keeps it in place; the remake walks it toward Iconium.
+  **Fix:** the same full-allowance test on the no-command path under Classical Faithful navigation.
+
 ## Reading moves in saves
 
 AI armies get their moves back between Celtiberia's seat and Illyria's, in every measured round. So a save shows spent
