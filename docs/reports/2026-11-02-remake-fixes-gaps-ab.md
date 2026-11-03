@@ -105,8 +105,19 @@ implement it.
   - **The original:** the last match of the ring scan, x outer and y inner, outside the region x ≥ 248, or x ≥ 214 with
     y ≥ 99.
   - **The remake:** `CoastalCity.FirstAdjacentSeaTile` takes the row-major first.
-  - **Code only:** `LandingTile.FirstAdjacentLandTile` for the AI disembark is the same kind of difference.
-- **The resupply-city tie:** the original takes the first city in table order. The remake uses city-id order.
+  - **Fix** (corrected 2026-11-03): use `ClassicalFleetNavigation.ReplaceLandTarget(build city)` on the live
+    `OriginalFleetPort.MapCode`, since the original also skips a tile holding a unit's marker. The AI disembark and
+    the fleet route already follow the rule; the earlier "code only" disembark item is withdrawn
+    ([placement and Macedonia](2026-11-03-placement-and-macedonia-longrun.md) §1).
+- **The AI's fleet build city:**
+  - **The original:** `FUN_004496e0` never picks a city in the eastern region (x ≥ 248, or x ≥ 214 with y ≥ 99).
+  - **The remake:** `CoastalCity.FleetBuildCity` (through `AiFaithfulEconomy.ChoosePort`) has no zone test, so Media
+    builds 64-ship fleets at Ardabil on the Caspian.
+  - **Fix:** exclude `ClassicalFleetNavigation.ExcludedEasternZone` under Classical Faithful.
+  - **Code only:** ties go by table order, not city id ([placement and Macedonia](2026-11-03-placement-and-macedonia-longrun.md) §2).
+- **The resupply-city tie:** the original takes the first city in table order. The remake uses city-id order. Seen 4 more times in the
+  Macedonia game.
+- **The no-command fallback:** one more case, Carthage army 10 in Macedonia turn 26 (8 moves of 9).
 
 ## Reading moves in saves
 
