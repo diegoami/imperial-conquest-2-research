@@ -2651,3 +2651,9 @@ the starts `decidestarts/ptol-tNNpre.SAV` (the campaign's `original/t01-a03`, `t
 `positions-hooks-saves.tar.gz` (not downloaded at intake). The data is under `run-exp-longrun-v091/`
 (`positions-*.txt`, `decide-report-v1.json`, `hooks-decide-v1`, `hooks-step-v1`, `hooks-gapb-t01pre-v1`,
 `hooks-fleet-v1`, `fleet-launch-tiles-v1.txt`, `probes/0d9d4729-ptol-t01pre-galatia12-moves0`).
+Tile finder in play and the Macedonia long run ([report](reports/2026-11-03-placement-and-macedonia-longrun.md), conquest
+`3cf18006`, PR #317): the starts `placestarts/` (Rome `t04-a02`, Gaul `t29-a00`, Rome `t37-a00` of the v0.9.0 games) and
+`decidestarts-mac/` (the campaign's `original/tNN-a00.SAV`). The saves are in the release's `macedonia-rulebot1-40t-saves.tar.gz`,
+`place-hook-saves.tar.gz` and `macedonia-hooks-saves.tar.gz` (not downloaded at intake). The data is under `run-exp-longrun-v091/`
+(`place-compare-v1.txt`, `hooks-place-v1`, `hooks-place-v1b`, `decide-mac-report-v1.json`, `positions-macedonia-*.txt`,
+`hooks-decide-mac-v1`, `hooks-step-mac-v1`, `hooks-fleet-mac-v1`).
