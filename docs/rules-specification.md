@@ -742,10 +742,18 @@ Open:
 ### The AI's own diplomacy (`FUN_0044FB7C`)
 
 - The AI is "busy" (no war declaration, no alliance) while `atWar(me)` or `mobilization(me) > 40` or `season == 3` (Winter; the season reading is `[derived]`) (decompiled-ai-offers-to-human-seats.md).
+  - The test is not made once before the loop. It sits inside loop 1, after the `0 <= rel[k][me] < 3` gates
+    (`FUN_0044faa0` at `0x44FC21`, stored at `0x44FC55`). When no nation passes those gates, the flag is never written,
+    and the alliance test reads an uninitialised value `[code: disassembly]`.
+  - The remake's AI diplomacy on `11f713e2` matches every rule in this section, including the thaw's 8-column bug.
+    Over 7 long-run states × 3 rounds it showed 0 deterministic differences: its war declarations differ only
+    through rolls and battles. One code-only departure is D3: the remake also offers trades to the current best war
+    candidate, which the original's `else if` skips (see "Trade") `[confirmed: code + Wine hook]`
+    ([diplomacy in the long runs](reports/2026-11-03-diplomacy-longrun.md)).
 - **War target:** among `k != me` with `unity[k] > 0` and `0 <= rel[k][me] < 3` (peace, trade or alliance), not busy, `not protected(k)`, and `me` in `neighbours(k)`, the best score `8·P(me)/max(1,P(k))` wins (`best` starts at 10). If a target exists, war is declared with chance `Random(10) == 0`, at most one declaration per turn. The war write has no AI-partner test, so the AI declares war on humans directly (decompiled-ai-offers-to-human-seats.md). Seen once (2026-10-22, staged Wine): Carthage on human Rome on the 14th turn with every gate met; the human gets the upper-cased news line only, no box (2026-10-22-manual-gaps-disband-purchase-storm-ai-war.md).
 - **Protected:** `protected(k)` is true if `k` has an ally `a` with `cities[k] + cities[a] > cities[me]`. The declaring AI counts as its own ally's ally, so the AI's own war rule never picks a current ally that holds a city; an alliance can turn into war only through the setter's cascade (decompiled-ai-offers-to-human-seats.md).
 - **Power formula:** `P(n) = (wealth +0x430 / 20000) × (unity +0x440 / 100)` (decompiled-ai-offers-to-human-seats.md).
-- **Trade:** for `k` at peace with `me` (`rel == 0`) with `unity[k] > 0`, `trades(me) < 3`, `trades(k) < 3` and `k` AI, the relation is set to trade directly — no consent step. Every AI trade/alliance write checks the partner is AI (`+0x490 == 0`) (decompiled-ai-offers-to-human-seats.md).
+- **Trade:** for `k` at peace with `me` (`rel == 0`) with `unity[k] > 0`, `trades(me) < 3`, `trades(k) < 3` and `k` AI, the relation is set to trade directly — no consent step. In loop 1 this is an `else if` after the war-candidate test, so a nation that passes that test in the same iteration is skipped for trade. Every AI trade/alliance write checks the partner is AI (`+0x490 == 0`) (decompiled-ai-offers-to-human-seats.md).
 - **Alliance:** when not busy, with chance `Random(20) == 0`, for a neighbour `j` of `me` with `0 <= rel[me][j] <= 1`, `unity[j] > 0`, not protected: ally with the **first** AI `m` that is at war with `j` (`rel[m][j] == 3`), `m != me`, `wars(m) < 2`, and `cities[j] < cities[me] + cities[m]` — the setter's cascade then brings the war on `j`. The AI allies only with a nation's enemy, never joins an ally's war otherwise (decompiled-ai-offers-to-human-seats.md). Seen against a human (2026-10-22, Wine): "Illyria forms an alliance with Gaul." then "ILLYRIA DECLARES WAR ON ROME.", turning Rome–Illyria from trade to war with no prompt (2026-10-22-manual-gaps-disband-purchase-storm-ai-war.md).
 - **Trade swap:** for each trade partner `s` of `me`, if a richer `k` exists with `rel[me][k] == 0`, `unity[k] > 0`, `taxBase[s] < taxBase[k]`, `trades(k) < 3` and `k` AI, the AI drops `s` to −8 and trades with `k`. Only the **new** partner is tested for being AI, so a **human** trade partner can be dropped to −8 without consent or news (decompiled-war-cascade-and-peace-paths.md). The loop (`0x44FF04–0x44FFAC`) is **one pass**: partner `i` outside and replacement `k` inside, both in table order, with no restart after a swap. A partner gained during the pass is visited only if its index is above the current `i`. Over 16 starts × 5 rounds, remake main `05b02936`, which searches again from the table start after every swap, diverged deterministically in 10 rounds, all through this loop; with a one-pass scratch patch, in 0. Every other first divergence was a war, alliance or treaty roll `[confirmed: Wine hook + replay]` ([AI diplomacy vs remake](reports/2026-10-30-ai-diplomacy-vs-remake-main.md)).
 - **The AI never writes peace over a war, with anyone.** The war-candidate loop only considers `0 <= rel < 3`, and there is no AI peace offer of any kind, not even a notice. AI–AI wars end only through the instant resolver's treaty or elimination (decompiled-war-cascade-and-peace-paths.md).
@@ -1027,6 +1035,26 @@ Source: 2026-10-07-strategic-ai-turn.md (decompilation of `FUN_0044fa20` and its
 
 **Movement execution**:
 - `FUN_0044dba8(army, xy)` stores no waypoint; it **moves now**: computes the next path step (`FUN_0044db38`), executes it (`FUN_0044d734`, resolving contact with an enemy army or city as battle or siege only at `rel == 3`), spends a move, and recurses while moves remain and the target is farther than 1 (2026-10-07-strategic-ai-turn.md).
+  - **The end check of `FUN_0044d734`** (0x44D895–0x44D98C, disassembly 2026-11-02) runs on the target tile when the
+    army is next to it (`FUN_00449018 == 1`):
+    - land (code 2–11) it can afford: one more step;
+    - a city (code 20–99): if the seat is at war with the city's **owner** and moves > 0, the siege
+      `FUN_0044b27c` at `0x44D949`, which sets moves to 0; if not at war, `FUN_0044f6d8`;
+    - an army (code 200–247), at war, moves > 0: the attack `FUN_0044aee4`.
+
+    No city score, offer or branch is tested. So an AI army that walks at an adjacent enemy city besieges it without
+    leaving its tile.
+  - **Measured AI callers:** every AI siege in the hook runs came from this check
+    `[confirmed: Wine hook]`, reached through three walks:
+    - F31C's continuation after the mercenary run (`0x44F4C7`);
+    - the `city>100` walk (`0x44F43F`);
+    - the garrison fallback's own walk (`FUN_0044ebe8`, DBA8 called at `0x44ECD6`).
+
+    The army attack was seen once, through the `army>100` walk (`0x44F409`). E84C's own run walk (`0x44E913`) was not
+    seen ending next to an enemy city.
+    Reports: [gap B siege call](reports/2026-11-02-gapb-siege-call168.md),
+    [11f713e2 recheck](reports/2026-11-02-remake-11f713e2-recheck.md),
+    [remake fixes](reports/2026-11-02-remake-fixes-gaps-ab.md).
   - **Exact conditions** (disassembly, 2026-10-29):
     - The walk goes toward the target when `FUN_0044cb40` passes, otherwise toward a `FUN_0044db38` intermediate point.
     - If the walk spent nothing and moves remain, a `FUN_0044cec8` fallback point is tried and 1 move is spent anyway.
@@ -1043,7 +1071,16 @@ Source: 2026-10-07-strategic-ai-turn.md (decompilation of `FUN_0044fa20` and its
 - An army aboard a fleet (covered `+0x08 == -1`) instead drives the fleet: `FUN_0044cd08` moves the fleet toward the target and the order costs the army 2 moves [confirmed: decompile] (2026-10-07-strategic-ai-turn.md).
 
 **The idle fallback**:
-- `FUN_0044aab4` returns `recomputedFullMoves != army[+6]`; the phase reads it as "did this army actually move"; an army whose whole tree produced no movement gets `FUN_0044ebe8`: if some own army is already within 10 of the capital, go to the nearest city of any owner, otherwise go to the capital [confirmed: decompile] (2026-10-07-strategic-ai-turn.md).
+- `FUN_0044aab4` returns `recomputedFullMoves != army[+6]`; the phase reads it as "did this army actually move"; an army whose whole tree produced no movement gets `FUN_0044ebe8`: if some own army is already within 10 of the capital, go to the nearest city of any owner, otherwise go to the capital [confirmed: decompile] (2026-10-07-strategic-ai-turn.md). **The gate is about spent moves, not position**: an army that walks out and back to its
+  start tile has spent moves (AAB4 = 1) and gets no fallback. A hook at `0x44F4CC` showed AAB4 = 1 on 37 of 38 walks, and
+  0 only for an army that kept its full 8 moves `[confirmed: Wine hook]`. Remake v0.9.0 tested tile equality instead
+  (T156), which drifted capital armies away (410 rows over four long runs); fix 1723 on `11f713e2` brings that to 0
+  outside war-declaration turns ([long runs v0.9.0](reports/2026-11-02-longrun-v090-ai-gaps.md),
+  [11f713e2 recheck](reports/2026-11-02-remake-11f713e2-recheck.md)).
+- **Moves in saves:** AI armies' moves were refilled to full between Celtiberia's seat and Illyria's in every measured
+  round. A mid-round save therefore shows spent moves for seats after that point and full moves for seats before it,
+  so read moves at the seat's end, not from the save. Only two watched armies were tracked, and the refill routine is
+  not identified `[confirmed: Wine hook]` ([gap B siege call](reports/2026-11-02-gapb-siege-call168.md)).
 
 ### The fleet phase
 
@@ -1096,7 +1133,7 @@ Open:
 - Nothing here was observed in play — every claim is decompile-only (`[confirmed: decompile]` means the dump, not a listing or a save); a fixed-seed EXPLORE run could corroborate the week-11 tax moves, a free mercenary hire, an intercept dispatch, a hunt-vs-port fleet decision (2026-10-07-strategic-ai-turn.md).
 - `FUN_0044a004` (the fleet order itself) and the `+0x274` byte gate on mercenary hires were not opened; the fleet-size parameter's meaning is `[derived]` (2026-10-07-strategic-ai-turn.md).
 - The `+0x4` packed fleet destination and the marker-range arithmetic in `FUN_0044e1fc`'s final step are read at decompile granularity only (2026-10-07-strategic-ai-turn.md).
-- Whether `FUN_0044d734`'s contact resolution differs when the mover is AI was not re-checked; the attack gating is inherited from the diplomacy and capture reports (2026-10-07-strategic-ai-turn.md).
+- ~~Whether `FUN_0044d734`'s contact resolution differs when the mover is AI~~ **Resolved (2026-11-02):** AI walks reach the same end check and besiege or attack through it (see "Movement execution"). Only the pass side of its guards was measured; the fail sides are from the disassembly ([gap B siege call](reports/2026-11-02-gapb-siege-call168.md)).
 - The Bowmen ×3 assault weight is literal; design choice vs decompile artefact of the type encoding is not argued (2026-10-07-strategic-ai-turn.md).
 - The readers of the phase-mode flag `DAT_004a0340` were not traced [confirmed: decompile; the readers were not traced] (2026-10-07-strategic-ai-turn.md).
 
@@ -1111,6 +1148,11 @@ Open:
 - **250 BC** is a real trigger, not just screen wording: `You have reached the end of your allotted 20 years.` `[confirmed]` (2026-10-05-end-of-game-screens.md)
 - **Conquered**: `Your nation has been conquerred by <nation>.`, the conqueror read from nation `+0x44E` `[confirmed]` (2026-10-05-end-of-game-screens.md)
 - **Unity below 400**: `Your unpopularity has forced the army to overthrow you.`; **debt** (either threshold): `Your army have deposed you because they have not been paid.` `[confirmed]` (2026-10-05-end-of-game-screens.md)
+  - **Seen in a long run (2026-11-02):** the rule bot's Seleucid started turn 26 with unity 402 and was overthrown at
+    the end of that turn. This happened in the original under Wine and on native Windows (the same executable, sha256
+    `354d8265…`), and in the remake `11f713e2`. The original shows End of Game; the remake hands the nation to the AI
+    and continues in watch mode `[confirmed: Wine + native Windows + remake replay]`
+    ([turn-26 overthrow](reports/2026-11-02-seleucid-turn26-overthrow.md)).
 - When two reasons hold, the window shows the first of the order **victory → 250 BC → conquered → unity → debt** `[derived]`; the pairs victory>250 BC, 250 BC>unity and unity>debt were played `[confirmed]`; conquered against the others is derived only (2026-10-05-end-of-game-screens.md)
 - The autosave of the turn is written **before** the test, so it holds the state the window shows `[confirmed]` (2026-10-05-end-of-game-screens.md)
 
