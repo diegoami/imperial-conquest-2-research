@@ -47,11 +47,15 @@ Of 749 AI army decisions:
      from `FUN_0044ece4`, not to the resupply city.
   2. **The capital-defence walk** (`0x44F2F9`) ends in the threat's cell and fights it, so the
      next responder finds the threat dead (S01 Rome, S05 Seleucid).
+     **Later (2026-11-03):** this holds when the threat's battle resolves at once. Against the human's army, the
+     battle waits for the human, the threat is still alive, and EFC8 sends the next responder toward it as well
+     ([Ptolemaic positions](2026-11-03-ptolemaic-longrun-positions.md) §2).
 
 **§4, edge differences from the code** `[code]`, not exercised:
 - the capital radius in EBE8 is `< 10` in the original, against `≤ 10` in the remake;
 - the offer range in E84C is `< 20`, against `≤ 20`;
-- ties go by table order in the original, against city id in the remake.
+- ties go by table order in the original, against city id in the remake. **Measured 2026-11-03** for the resupply city: 2 rows
+  in a 40-turn game ([Ptolemaic positions](2026-11-03-ptolemaic-longrun-positions.md) §3).
 
 **Corrections to earlier reports:**
 - [`2026-10-07-strategic-ai-turn.md`](2026-10-07-strategic-ai-turn.md) §3.3, "then: defend the
