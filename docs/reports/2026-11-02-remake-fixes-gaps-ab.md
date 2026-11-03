@@ -93,6 +93,21 @@ implement it.
   Ptolemaic game turn 1, with 8 of its 10 moves. The original keeps it in place; the remake walks it toward Iconium.
   **Fix:** the same full-allowance test on the no-command path under Classical Faithful navigation.
 
+**More gaps from the Ptolemaic game on v0.9.1**, from
+[`2026-11-03-ptolemaic-longrun-positions.md`](2026-11-03-ptolemaic-longrun-positions.md):
+- **The no-command fallback:** two more cases, Seleucid armies with 1 move in turns 13 and 16. The fix is the one above.
+- **Capital defence with a pending human battle:**
+  - **The original:** the pass keeps going. The threat stays alive, and the next responder is sent toward it.
+  - **The remake:** `AiCapitalDefence.Run` breaks at the interruption (lines 110 and 137).
+  - **Fix:** under Classical Faithful, the pass continues, and the threat stays valid for later responders.
+  - **Design question:** how the instant-battle mode should treat such a battle. It has no counterpart in the original.
+- **The new fleet's launch tile:**
+  - **The original:** the last match of the ring scan, x outer and y inner, outside the region x ≥ 248, or x ≥ 214 with
+    y ≥ 99.
+  - **The remake:** `CoastalCity.FirstAdjacentSeaTile` takes the row-major first.
+  - **Code only:** `LandingTile.FirstAdjacentLandTile` for the AI disembark is the same kind of difference.
+- **The resupply-city tie:** the original takes the first city in table order. The remake uses city-id order.
+
 ## Reading moves in saves
 
 AI armies get their moves back between Celtiberia's seat and Illyria's, in every measured round. So a save shows spent

@@ -2645,3 +2645,9 @@ The new Ptolemaic game, the Galatia hook (`hooks-gapb-galatia-v1`, from `starts/
 Their hashes are in
 [`SAVES.sha256`](https://github.com/diegoami/ic2-conquest/blob/28f863b6/runs/experiments/data/run-exp-longrun-v091/SAVES.sha256).
 No binary copied into research Git.
+Ptolemaic position rows ([report](reports/2026-11-03-ptolemaic-longrun-positions.md), conquest `0379b992`, PR #315):
+the starts `decidestarts/ptol-tNNpre.SAV` (the campaign's `original/t01-a03`, `t02-a01`, `t13-a01`, `t16-a01`, `t21-a01`,
+`t25-a01`, `t29-a01`, `t30-a01`, `t36-a00`) and the hook autosaves are in the release's `decide-hook-saves.tar.gz` and
+`positions-hooks-saves.tar.gz` (not downloaded at intake). The data is under `run-exp-longrun-v091/`
+(`positions-*.txt`, `decide-report-v1.json`, `hooks-decide-v1`, `hooks-step-v1`, `hooks-gapb-t01pre-v1`,
+`hooks-fleet-v1`, `fleet-launch-tiles-v1.txt`, `probes/0d9d4729-ptol-t01pre-galatia12-moves0`).
