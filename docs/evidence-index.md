@@ -2657,3 +2657,14 @@ Tile finder in play and the Macedonia long run ([report](reports/2026-11-03-plac
 `place-hook-saves.tar.gz` and `macedonia-hooks-saves.tar.gz` (not downloaded at intake). The data is under `run-exp-longrun-v091/`
 (`place-compare-v1.txt`, `hooks-place-v1`, `hooks-place-v1b`, `decide-mac-report-v1.json`, `positions-macedonia-*.txt`,
 `hooks-decide-mac-v1`, `hooks-step-mac-v1`, `hooks-fleet-mac-v1`).
+
+## Recheck on remake v0.9.2 (run-exp-longrun-v092, run-exp-recheck-1723c673)
+
+[Report](reports/2026-11-03-remake-v092-recheck.md), conquest `main` `2ec0ca26` (PR #320). The Numidia game, its walk and
+gap-B hook runs (`hooks-walk-num37-v1` inert; `hooks-gapb-num37-v1` not inert, kept as a negative control) and the probes
+are under `run-exp-longrun-v092/`, with saves in release
+[run-exp-longrun-v092](https://github.com/diegoami/ic2-conquest/releases/tag/run-exp-longrun-v092)
+(`numidia-rulebot1-40t-saves.tar.gz`, `v092-hooks-saves.tar.gz`). The six stored games' v0.9.2 replays are under
+`run-exp-longrun-v090/*/anchored-1723c673` and `run-exp-longrun-v091/*/anchored-1723c673`. The recheck saves are
+`recheck-1723c673-saves.tar.gz` on releases `run-exp-longrun-v090` and `run-exp-longrun-v091`. Start
+`decidestarts/num-t37pre.SAV` = the campaign's `original/t37-a00.SAV`. The tarballs were not downloaded at intake.
