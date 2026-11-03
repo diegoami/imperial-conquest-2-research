@@ -136,8 +136,12 @@ implement it.
 - **Gap C:** the port-stay rows were a seed artefact. Nothing to fix.
 - **The stale word:** 24 more turns support the narrow rule above.
 - **Candidates, not yet attributed:**
-  - Numidia t29–31: Rome's carried army sails on and lands at (110,64) in the original. The remake asks to land near home
-    at (101,43).
+  - Numidia t29–31, Rome's carried army: **attributed 2026-11-04, a gap**. The original routes the fleet toward the
+    mercenary offer at Syracusae (E84C branch). The remake's embarked branch (`AiMilitaryPhase.cs:356–372`) has no case
+    for a `MercenaryRun` without a city continuation, so it lands the army at home.
+    **Fix:** use the offer city (`MercenaryRunDestination`) as the embarked landing target
+    ([port rows and carried army](2026-11-04-port-rows-and-carried-army.md) §2).
+  - The own-port fleet rows at Aradus and Leptis Magna: random draws in both games, closed (same report, §1).
   - Greece t21: the remake's resupply choice at Seleucid's seat moves from Antioch to Aradus. Its scorer chooses Antioch on
     the start state, so some state change within the round flips it.
 
