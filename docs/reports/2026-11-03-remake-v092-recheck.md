@@ -183,6 +183,9 @@ means the autosave matched. A hook at DBA8's entry can change the stale word on 
 
 ### Specification for the remake: the stale walk word
 
+*Supported 2026-11-04* ([v0.9.2 follow-ups](2026-11-04-v092-followups.md) §1): in 24 more AI turns, −1 reached only the same army's EBE8 walk right after a failed
+E84C walk. E84C's and EBE8's DBA8 frames coincide. F31C's own walks and the next seat read 49.
+
 This is the original's behaviour as far as it is measured. It is not a model of the whole stack.
 - **The word:** DBA8 tests an uninitialised local, `[ebp-0xa]`, before its no-progress swing and before its recursion.
   Only DB38 writes it, when the walk takes the intermediate path. When DB38 finds no intermediate point, it leaves −1.
@@ -205,4 +208,11 @@ This is the original's behaviour as far as it is measured. It is not a model of 
 Before `--turn-seed`, every anchored remake turn started from the same random seed and turn index. So the remake's
 per-turn AI rolls were the same draws every turn. The remake-only war rows in the anchored replays of v0.9.0–v0.9.2 are
 rolls, as attributed, but correlated, so their counts are not independent samples. New anchored replays should use
-`--turn-seed`. The six stored games have not been re-run with it.
+`--turn-seed`. The six stored games were re-run with it on 2026-11-04 ([follow-ups](2026-11-04-v092-followups.md) §3).
+
+**On the original's side,** writing the campaign's logged RandSeed to `0x45E030` after loading a checkpoint replays the
+round exactly: the army and fleet tables matched the campaign in 13 of 13 Numidia turns (follow-ups §4).
+
+*Correction 2026-11-04* ([v0.9.2 follow-ups](2026-11-04-v092-followups.md) §4): `decidestarts/num-t04pre`, `-t05pre`, `-t09pre`, `-t10pre` and `-t11pre` were end-of-turn
+states. So the war-roll probe labelled t09 ran on turn 10's start. Its conclusion stands. `num-t37pre`, the stale-word
+start, was correct.
