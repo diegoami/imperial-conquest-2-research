@@ -2668,3 +2668,10 @@ are under `run-exp-longrun-v092/`, with saves in release
 `run-exp-longrun-v090/*/anchored-1723c673` and `run-exp-longrun-v091/*/anchored-1723c673`. The recheck saves are
 `recheck-1723c673-saves.tar.gz` on releases `run-exp-longrun-v090` and `run-exp-longrun-v091`. Start
 `decidestarts/num-t37pre.SAV` = the campaign's `original/t37-a00.SAV`. The tarballs were not downloaded at intake.
+v0.9.2 follow-ups ([report](reports/2026-11-04-v092-followups.md), conquest `3e80eef6`, PR #322): under `run-exp-longrun-v092/`
+(`hooks-walk-multi-v1`, `walk-stale-survey-v1.txt`, `wars-turnseed-v1.txt`, `stays-1723c673-ts-v1.txt`, `hooks-decide-num-v1`,
+`positions-numidia-seeded-v1.txt`, `numidia-rows-by-round-v1.txt`, `greece-rulebot1-40t`, `hooks-decide-gre-v1`,
+`hooks-walk-gre-v1`, `resupplyprobe-gre-t21-v1.txt`), and the six games' `anchored-1723c673-ts` under `run-exp-longrun-v090/`
+and `-v091/`. The saves are in release `run-exp-longrun-v092` (`greece-rulebot1-40t-saves.tar.gz`, `v092-followups-saves.tar.gz`)
+and `turnseed-1723c673-saves.tar.gz` on `-v090` and `-v091` (not downloaded at intake). The logged seeds used for the exact
+replays are in `num-start-randseeds-v2.json` (scalar RandSeed values, no paths).

@@ -132,6 +132,15 @@ implement it.
   - **Fix:** implement the measured rule; see the report's specification. Other carry-overs are not measured.
 - **Method:** anchored replays should pass `--turn-seed`. Without it, every turn drew the same AI rolls.
 
+**Follow-ups on v0.9.2** ([v0.9.2 follow-ups](2026-11-04-v092-followups.md)):
+- **Gap C:** the port-stay rows were a seed artefact. Nothing to fix.
+- **The stale word:** 24 more turns support the narrow rule above.
+- **Candidates, not yet attributed:**
+  - Numidia t29–31: Rome's carried army sails on and lands at (110,64) in the original. The remake asks to land near home
+    at (101,43).
+  - Greece t21: the remake's resupply choice at Seleucid's seat moves from Antioch to Aradus. Its scorer chooses Antioch on
+    the start state, so some state change within the round flips it.
+
 ## Reading moves in saves
 
 AI armies get their moves back between Celtiberia's seat and Illyria's, in every measured round. So a save shows spent
@@ -148,7 +157,7 @@ On the pin with the fix:
 
 Expected: the 410 capital-army rows and the 17 enemy-city rows go to 0. The other structural rows (relations, city
 captures, battle outcomes) were never attributed to a cause, so they are not expected to change, and they are not
-claimed to be random draws. Gap C (fleet hunt draws, the Alexandria port tile) is not addressed here.
+claimed to be random draws. Gap C (fleet hunt draws, the Alexandria port tile) is not addressed here; its port rows later proved a seed artefact.
 
 ## Corrections made at intake
 

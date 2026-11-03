@@ -123,6 +123,10 @@ Seleucid game turn 12).
 
 ## Gap C: AI fleets in their own port: a random hunt draw, plus one port tile (not a rule gap)
 
+*Later (2026-11-04):* the Alexandria port-tile rows (and Salamis in the Macedonia game) follow the original once the
+anchored replay uses per-turn seeds. They came from the harness's fixed import seed, not from a port rule
+([v0.9.2 follow-ups](2026-11-04-v092-followups.md) §2).
+
 Fleet-phase hook (`patches/fleetphase_hook.py`, run `hooks-fleet-v1`; hooked and plain autosaves
 byte-identical in all three runs):
 

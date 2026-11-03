@@ -102,7 +102,8 @@ random stream) ends on the campaign's original tile:
 `IC2_LOG_RANDSEED=1` (`run_all.sh`). A replay with the logged seed may still not be exact, because two paint routines
 reseed ([turn-26 overthrow](2026-11-02-seleucid-turn26-overthrow.md)).
 
-**Gap C (Salamis).**
+**Gap C (Salamis).** *Later (2026-11-04):* with per-turn seeds the remake keeps this fleet at (202,74) with 4 moves, as the
+original does: a seed artefact, not a port rule ([v0.9.2 follow-ups](2026-11-04-v092-followups.md) §2).
 - The remake's `OriginalFleetPort.Pick` should also choose Salamis: own, 77 tons > 20, distance 1, fleet supplies 320 > 0,
   score −1.
 - In the original, F608 then calls E1FC with Salamis, and the fleet does not move.
