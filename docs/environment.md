@@ -19,15 +19,22 @@ install only what the chosen script needs. Wine, .NET and a game launch are not
 needed for static research or migration. A decompilation text dump is not a Ghidra
 project; deeper computed-pointer analysis may require setting up Ghidra separately.
 
-**The private decompilation** (never commit it, never bundle it publicly). Before concluding that the decompilation is
-unavailable, check every location:
-- `%LOCALAPPDATA%\ReTools\` on the Windows side, `/mnt/c/Users/diego/AppData/Local/ReTools/` from WSL:
+**The private decompilation** (never commit it, never bundle it publicly).
+- **Source of truth (owner rule, 2026-11-04): the Drive folder `gdrive:IC2/decompilation/`.** Sessions run on several
+  computers and in the cloud, so never assume a local copy exists.
+- **When no local cache exists, fetch it with rclone**, passing the existing config by path and never printing it:
+  ```bash
+  rclone copy gdrive:IC2/decompilation/ ~/ic2-decompile/ --config "$RCLONE_CONFIG"
+  ```
+- **What it holds:**
   - `all_app_functions.txt`, the pinned Ghidra dump: 59,228 lines, sha256 starting `2018c205`. Every `:NNNNN` line
-    citation in the reports refers to it.
-  - the topic extracts, `delphi_symbols.tsv`/`.json`, the Ghidra scripts and the project `ghidra_projects/IC2.gpr`.
-- The Drive backup `gdrive:IC2/decompilation/`, made 2026-11-04. It has no tool installs. Restore it with rclone, passing the
-  existing config by path.
-- The WSL copy `~/ic2-decompile/`, used by ic2-conquest's `harness.decompile.check()`. It moved there from `~/ic2-work/decompile/`, because cleanups of `~/ic2-work` removed it.
+    citation in the reports refers to it. Check the hash after fetching.
+  - the topic extracts, `delphi_symbols.tsv`/`.json` and the Ghidra scripts; the tool installs are not included.
+- **Local copies (caches only):**
+  - `~/ic2-decompile/` in WSL. ic2-conquest's `harness/decompile.py` fetches into it from Drive when it is missing. Don't
+    keep it under `~/ic2-work`, where cleanups removed an earlier copy.
+  - `%LOCALAPPDATA%\ReTools\` on the owner's Windows machine (`/mnt/c/Users/diego/AppData/Local/ReTools/` from WSL),
+    the original working folder, which also holds the Ghidra project `ghidra_projects/IC2.gpr`.
 
 For instruction-level questions, `objdump -d -M intel` on the seed build is a cross-check, not a replacement.
 
