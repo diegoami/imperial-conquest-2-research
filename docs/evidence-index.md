@@ -2697,3 +2697,9 @@ and `-v092` (not downloaded at intake). Start `decidestarts/celt-t40pre.SAV` = t
 `run-exp-longgames/`, `run-exp-longrun-v093/*-40t` and `run-exp-observer/`. The saves are in releases `ic2-save-corpus`
 (packs every 25 turns to 264 BC, index `runs/experiments/data/save-corpus/index.jsonl`), `run-exp-longgames`,
 `run-exp-longrun-v093` and `run-exp-observer`. Nothing was downloaded at intake.
+
+## AI audit #195 (run-exp-audit195)
+
+[Pass 0 inventory](reports/2026-11-04-ai-audit195-inventory.md), conquest `059fa6c6` (PR #329). Pass 1's X4 count is in
+`runs/experiments/data/run-exp-audit195/x4-orders-per-seat-168dbc04-v1.txt`, and the script is
+`runs/experiments/audit195/orders_per_seat.py`. It reads the anchored replays on `168dbc04` already indexed above.
