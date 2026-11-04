@@ -564,6 +564,14 @@ row's support is the source it cites.
   differs. This intake didn't check whether the two modes differ in anything else on this turn. "The up-front support
   pass is the cause" is therefore the leading reading, measured as a mode difference. A one-change probe would settle it:
   per-army support in Instant mode, with nothing else changed.
+  *Settled from the code, 2026-11-04* (conquest PR #331, checked here at `168dbc04`). The mode reaches the AI turn
+  through one flag, `IAiBattleInterruption.RetainPartialAiPass`. `AiTurn.cs` uses it only for:
+  - the up-front hire pass (line 186) against `PrepareArmy` per army (line 251);
+  - the support logging (lines 215 and 388).
+
+  Its other readers act only when a battle opens or is pending: `AiCapitalDefence.cs:82`, and the dispatch path in
+  `GameSession.cs:2341`, after `OpensABattle`. Greece t21 opened no battle in either mode. **So in that turn the mode switch
+  changed only where the support pass runs, and X2 is the cause.**
 - **The 11 "draw-dependent" rows.** Each disappears under another remake seed, and the two modes agree. That shows the
   remake's result depends on its draws, not that its rule matches the original's: the original was not re-sampled
   under those seeds. They stay unattributed rather than closed as a match. Some were attributed earlier (the Numidia t6
