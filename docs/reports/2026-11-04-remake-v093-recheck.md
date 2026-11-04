@@ -157,5 +157,12 @@ From the seed build's disassembly; `[confirmed: code]`.
 Case 4 needs no event: the word comes from D9A8's own result. Whether it can be −1 there isn't established by this reading.
 
 **The two measured cases:** Numidia t37 and Celtiberia t40 are both cross-class, both have the word −1 after the E84C walk,
-and in both the army stays. This fits case 2 or 3. This intake didn't check which one applied: the fleets in those saves
-were not read.
+and in both the army stays. This fits case 2 or 3.
+
+*Resolved 2026-11-04* (conquest `d9e1e190`, `d9a8-fleet-check-v1.txt`): **both are case 2, no qualifying fleet.**
+- **Numidia t37:** Ptolemaic's only fleet, fleet 1 at (132,94), carries army 10, so it isn't empty; it is also 61 tiles
+  away.
+- **Celtiberia t40:** Macedonia has no fleet.
+
+These are the start-of-End-turn states. The seat runs F31C before the fleet phase F608 (calls at 0x44FA4C and 0x44FA51),
+so fleet 1 is still loaded when army 13 walks. Case 3, the adjacent fleet, is not measured.
