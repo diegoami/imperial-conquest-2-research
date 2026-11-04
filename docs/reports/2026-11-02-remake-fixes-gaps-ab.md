@@ -145,6 +145,15 @@ implement it.
   - Greece t21: the remake's resupply choice at Seleucid's seat moves from Antioch to Aradus. Its scorer chooses Antioch on
     the start state, so some state change within the round flips it.
 
+**Recheck on v0.9.3 `a44c42fc`** (T276): [`2026-11-04-remake-v093-recheck.md`](2026-11-04-remake-v093-recheck.md).
+- **Fixed:** the live-map launch tile, the Caspian build city and the embarked mercenary-run landing.
+- **Partly fixed, the stale walk word.** T276 treats the search as failed only when both points are in the same class.
+  For a cross-class target, the original's DB38 runs the transport search `FUN_0044d9a8` instead, and it leaves −1 when
+  there is no usable own fleet or when the nearest one is adjacent (the army embarks). Both measured cases are
+  cross-class.
+  **Fix:** publish the event in those two cases too (the specification is in the v0.9.3 report).
+- **Still open:** capital defence while a human battle is pending.
+
 ## Reading moves in saves
 
 AI armies get their moves back between Celtiberia's seat and Illyria's, in every measured round. So a save shows spent

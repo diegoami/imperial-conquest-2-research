@@ -2679,3 +2679,11 @@ Port rows and the carried army ([report](reports/2026-11-04-port-rows-and-carrie
 under `run-exp-longrun-v092/` (`hooks-fleet-port-seed*-v1`, `port-rows-original-seeds-v1.txt`, `remake-seed-sweep-v1/`,
 `hooks-route-num-v1`). The saves are in release `run-exp-longrun-v092` (`port-and-carried-army-saves.tar.gz`, not downloaded
 at intake).
+
+## Recheck on remake v0.9.3 (run-exp-longrun-v093, run-exp-recheck-a44c42fc)
+
+[Report](reports/2026-11-04-remake-v093-recheck.md), conquest `main` `36934fae` (PR #326). The data is under
+`run-exp-longrun-v093/` (`ts-a44c42fc-vs-1723c673-v1.txt`, `stays-*`, `anchored-error-scan-v1.txt`, `celtiberia-rulebot1-40t`,
+`hooks-walk-celt40-v1`, `probes/`) and `run-exp-recheck-a44c42fc`. The saves are in release `run-exp-longrun-v093`
+(`celtiberia-rulebot1-40t-saves.tar.gz`, `v093-recheck-saves.tar.gz`) and `v093-anchored-saves.tar.gz` on `-v090`, `-v091`
+and `-v092` (not downloaded at intake). Start `decidestarts/celt-t40pre.SAV` = the campaign's `original/t39-a00.SAV`.
