@@ -2687,3 +2687,13 @@ at intake).
 `hooks-walk-celt40-v1`, `probes/`) and `run-exp-recheck-a44c42fc`. The saves are in release `run-exp-longrun-v093`
 (`celtiberia-rulebot1-40t-saves.tar.gz`, `v093-recheck-saves.tar.gz`) and `v093-anchored-saves.tar.gz` on `-v090`, `-v091`
 and `-v092` (not downloaded at intake). Start `decidestarts/celt-t40pre.SAV` = the campaign's `original/t39-a00.SAV`.
+
+## Recheck on remake v0.9.4, late replays and observer mode (conquest PR #328)
+
+[v0.9.4 recheck](reports/2026-11-04-remake-v094-recheck.md), conquest `dc309429`: under `run-exp-longrun-v093/`
+(`ts-168dbc04-vs-a44c42fc-v1.txt`, `stays-168dbc04-ts-v1.txt`) and `run-exp-recheck-168dbc04/`. The saves are in releases
+`run-exp-longrun-v093` (`recheck-168dbc04-anchored-saves.tar.gz`) and `run-exp-recheck-168dbc04`.
+[Late replays and observer mode](reports/2026-11-04-late-replays-and-observer-mode.md), conquest `88938841`: under
+`run-exp-longgames/`, `run-exp-longrun-v093/*-40t` and `run-exp-observer/`. The saves are in releases `ic2-save-corpus`
+(packs every 25 turns to 264 BC, index `runs/experiments/data/save-corpus/index.jsonl`), `run-exp-longgames`,
+`run-exp-longrun-v093` and `run-exp-observer`. Nothing was downloaded at intake.
