@@ -19,6 +19,18 @@ install only what the chosen script needs. Wine, .NET and a game launch are not
 needed for static research or migration. A decompilation text dump is not a Ghidra
 project; deeper computed-pointer analysis may require setting up Ghidra separately.
 
+**The private decompilation** (never commit it, never bundle it publicly). Before concluding that the decompilation is
+unavailable, check every location:
+- `%LOCALAPPDATA%\ReTools\` on the Windows side, `/mnt/c/Users/diego/AppData/Local/ReTools/` from WSL:
+  - `all_app_functions.txt`, the pinned Ghidra dump: 59,228 lines, sha256 starting `2018c205`. Every `:NNNNN` line
+    citation in the reports refers to it.
+  - the topic extracts, `delphi_symbols.tsv`/`.json`, the Ghidra scripts and the project `ghidra_projects/IC2.gpr`.
+- The Drive backup `gdrive:IC2/decompilation/`, made 2026-11-04. It has no tool installs. Restore it with rclone, passing the
+  existing config by path.
+- The harness copy `~/ic2-work/decompile/`, used by ic2-conquest's `harness.decompile.check()`.
+
+For instruction-level questions, `objdump -d -M intel` on the seed build is a cross-check, not a replacement.
+
 For documentation/process changes check `git diff --check`, relative links and the
 shared skill symlink. For scripts, run the relevant checker on its documented inputs
 and record unavailable evidence. Safe syntax checks:
