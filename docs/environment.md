@@ -27,7 +27,7 @@ unavailable, check every location:
   - the topic extracts, `delphi_symbols.tsv`/`.json`, the Ghidra scripts and the project `ghidra_projects/IC2.gpr`.
 - The Drive backup `gdrive:IC2/decompilation/`, made 2026-11-04. It has no tool installs. Restore it with rclone, passing the
   existing config by path.
-- The harness copy `~/ic2-work/decompile/`, used by ic2-conquest's `harness.decompile.check()`.
+- The WSL copy `~/ic2-decompile/`, used by ic2-conquest's `harness.decompile.check()`. It moved there from `~/ic2-work/decompile/`, because cleanups of `~/ic2-work` removed it.
 
 For instruction-level questions, `objdump -d -M intel` on the seed build is a cross-check, not a replacement.
 
