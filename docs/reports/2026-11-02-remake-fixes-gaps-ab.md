@@ -161,6 +161,14 @@ implement it.
 - **Remaining stays:** 10 own-capital stays with no pending battle. They are open for the comprehensive AI audit
   (research #195).
 
+**From the #195 audit, pass 1** ([inventory](2026-11-04-ai-audit195-inventory.md), rows A09/B22/C08):
+- **Support and hire timing (X2).** The original runs `E41C`, support and hire, as each army's first call inside F31C. The
+  remake's Instant mode, the CLI default and every anchored replay, runs one pass for all armies up front.
+- **Measured:** Greece t21. Instant mode moves the Seleucid army from Antioch toward Aradus on 3 of 3 seeds. Tactical mode,
+  which supports each army in turn, matches the original on 3 of 3.
+- **Candidate fix:** run the support pass per army in every Faithful mode. A one-change probe (per-army support in Instant
+  mode only) would confirm it is the only cause.
+
 ## Reading moves in saves
 
 AI armies get their moves back between Celtiberia's seat and Illyria's, in every measured round. So a save shows spent
