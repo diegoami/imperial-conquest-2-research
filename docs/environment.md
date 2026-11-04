@@ -30,11 +30,18 @@ project; deeper computed-pointer analysis may require setting up Ghidra separate
   - `all_app_functions.txt`, the pinned Ghidra dump: 59,228 lines, sha256 starting `2018c205`. Every `:NNNNN` line
     citation in the reports refers to it. Check the hash after fetching.
   - the topic extracts, `delphi_symbols.tsv`/`.json` and the Ghidra scripts; the tool installs are not included.
+- **Point scripts at it with `IC2_DECOMPILE`**, the directory that holds `all_app_functions.txt`
+  (for example `export IC2_DECOMPILE=~/ic2-decompile`). Reports cite `$IC2_DECOMPILE/all_app_functions.txt`, not
+  machine paths. The cloud inputs bundle in [cloud continuation](cloud-continuation.md) also ships a `decompile/` folder
+  and sets this variable.
 - **Local copies (caches only):**
   - `~/ic2-decompile/` in WSL. ic2-conquest's `harness/decompile.py` fetches into it from Drive when it is missing. Don't
     keep it under `~/ic2-work`, where cleanups removed an earlier copy.
   - `%LOCALAPPDATA%\ReTools\` on the owner's Windows machine (`/mnt/c/Users/diego/AppData/Local/ReTools/` from WSL),
     the original working folder, which also holds the Ghidra project `ghidra_projects/IC2.gpr`.
+- **History:** this guide listed the ReTools copy until the cloud-continuation rewrite of 2026-10-21 (PR #49). That
+  rewrite dropped the pointer, and later sessions wrongly concluded the dump was unavailable until 2026-11-04. Keep this
+  section when this guide is next condensed.
 
 For instruction-level questions, `objdump -d -M intel` on the seed build is a cross-check, not a replacement.
 
