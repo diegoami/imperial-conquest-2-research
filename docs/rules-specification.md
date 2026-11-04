@@ -1083,6 +1083,10 @@ Source: 2026-10-07-strategic-ai-turn.md (decompilation of `FUN_0044fa20` and its
     - CB40, D174, DA88 and CEC8 equal the remake's `ClassicalArmyNavigation` `DirectLine`, `Intermediate`, `RouteGroup` and `LocalFallback` for armies (3,303 and 44,734 emulator cases).
     - D174 can recurse without end on some geometries; what happens in play is open `[confirmed: emulation]` ([fallback point](reports/2026-10-30-ai-move-fallback-point105.md)).
 - An army aboard a fleet (covered `+0x08 == -1`) instead drives the fleet: `FUN_0044cd08` moves the fleet toward the target and the order costs the army 2 moves [confirmed: decompile] (2026-10-07-strategic-ai-turn.md).
+  - **Seen in play** (2026-11-04): in a Numidia game, turns 29–31, Rome's army 8 aboard fleet 4 took the E84C mercenary-run branch.
+    DBA8's aboard branch routed the fleet toward the offer city, Syracusae (111,69), and the army landed at (110,64) at turn 31.
+    The remake's embarked branch (v0.9.2) has no case for a mercenary run without a city continuation, so it lands the army at
+    home instead `[confirmed: exact-seed Wine hook + remake code]` ([port rows and carried army](reports/2026-11-04-port-rows-and-carried-army.md) §2).
 
 **The idle fallback**:
 - `FUN_0044aab4` returns `recomputedFullMoves != army[+6]`; the phase reads it as "did this army actually move"; an army whose whole tree produced no movement gets `FUN_0044ebe8`: if some own army is already within 10 of the capital, go to the nearest city of any owner, otherwise go to the capital [confirmed: decompile] (2026-10-07-strategic-ai-turn.md). **The gate is about spent moves, not position**: an army that walks out and back to its
