@@ -154,6 +154,13 @@ implement it.
   **Fix:** publish the event in those two cases too (the specification is in the v0.9.3 report).
 - **Still open:** capital defence while a human battle is pending.
 
+**Recheck on v0.9.4 `168dbc04`** (T277): [`2026-11-04-remake-v094-recheck.md`](2026-11-04-remake-v094-recheck.md).
+- **Fixed in play:** the cross-class stale word (Numidia t37, Celtiberia t39–40).
+- **Gone:** 14 position rows over 19 games, with none new.
+- **Not exercised by any stored row:** capital defence with a pending human battle (#1741).
+- **Remaining stays:** 10 own-capital stays with no pending battle. They are open for the comprehensive AI audit
+  (research #195).
+
 ## Reading moves in saves
 
 AI armies get their moves back between Celtiberia's seat and Illyria's, in every measured round. So a save shows spent
