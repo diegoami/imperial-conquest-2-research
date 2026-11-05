@@ -171,6 +171,15 @@ implement it.
   the mode switch changes only where the support pass runs, so the up-front pass is the cause. The per-army path runs
   only when `UsesAiPhaseBattleGate` holds: Tactical battles, a living human seat, and not watch mode (`GameSession.cs:2398`).
   No pending battle is needed. The CLI, headless, anchored and observer runs all take the up-front pass.
+- **Phase order (X1, [finding](2026-11-05-x1-war-before-economy.md), conquest PR #333).** In the original, FA20 runs
+  diplomacy (FB7C) before the economy (FFBC), so a war declared in the seat raises that seat's threat by 15,000 and
+  mobilises ready recruits there. The remake runs `AiFaithfulEconomy.Run` (`AiTurn.cs:150`) before the scored loop that
+  declares the war (line 241), so mobilisation waits one round.
+  - **Measured:** in 3 decomposed seats (Rome t29, Macedonia t27, Armenia t36), the original mobilises 13,400–39,200 men,
+    with new armies, and the remake mobilises none. By the mobilisation level, the original ends higher in 8 of 11
+    same-war seats and never lower.
+  - **Candidate fix:** a Faithful own-diplomacy phase before the economy, or a re-run of the economy after a same-seat
+    war.
 
 ## Reading moves in saves
 
