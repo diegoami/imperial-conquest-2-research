@@ -3,7 +3,7 @@
 **Tag:** [confirmed: decompile; anchored remake replays of stored original games]. Wine only for the original side (the
 stored games). No new Wine run.
 **Provenance:** draft from `diegoami/ic2-conquest`, `findings/2026-11-05-x1-war-before-economy.md` (PR #333, merge
-`71b2e780`). Remake pin `168dbc04` (v0.9.4). Ruleset `classical-faithful`, Instant battles (anchored replays).
+`71b2e780`; follow-up PR #334, merge `0e8a4e69`). Remake pin `168dbc04` (v0.9.4). Ruleset `classical-faithful`, Instant battles (anchored replays).
 **Task:** research #195, cross-cutting difference X1 (phase order) of the [inventory](2026-11-04-ai-audit195-inventory.md).
 It had been confirmed in code on both sides but not measured. Written as a remake issue candidate.
 
@@ -107,6 +107,58 @@ games". That holds for ready recruits in only 6 of them:
   and the quarterly decay of 3. So only the three decomposed seats are attributed here. The other five are candidates.
 
 **Not checked:** the two scripts, and the per-slot decomposition of Rome t29 and Macedonia t27.
+
+## Follow-up: all 11 seats decomposed (conquest PR #334)
+
+Asked at intake, the peer decomposed each same-war seat. `x1_decompose.py` matches recruit slots as a (type, troops,
+city) multiset (`decompose.jsonl`, 13 rows).
+
+**The gap call.** `FUN_004504f4(gap)` has two parts:
+- **(a) Mobilise:** it mobilises ready slots (state 24) through `FUN_0044a4e0`. It does this only if one of its own
+  armies is within 6 tiles of the slot's city, or if there are at least 4 ready slots.
+- **(b) Raise:** it raises up to 8 new slots through `FUN_004501f4`, while the recruits are below the gap and the
+  mobilisation level (`+0x442`) is below 100. Raising costs treasury and adds `troops × 1000 / wealth + 1` to the level.
+
+**Its callers** (decompile, checked at intake):
+- `FUN_004501f4` is called only from `FUN_004504f4`.
+- `FUN_004504f4` is called only from `FFBC`.
+- `FUN_0044a4e0` is called from `FUN_004504f4` and from `TArmyRecruits_MobilizeUnits`, the human's dialog.
+
+So in an AI seat, any mobilise or raise is FFBC's gap call.
+
+**Per seat (original; the remake does neither in any of the 11):**
+
+| seat | declarer | (a) mobilised | (b) raised | level |
+|---|---|---|---|---|
+| Rome t29 | Ptolemaic | 5 slots, 21,400 | hc 2,100, lc 6,700, li 9,100 at 214 | 9 → 12 |
+| Armenia t36 | Ptolemaic | the same 5 | hi 4,500, lc 7,000, li 5,100 at 214 | 6 → 6 (remake 3) |
+| Macedonia t27 | Seleucid | 8 slots, 39,200 | ar 2,900 at 292 | 15 → 16 |
+| Greece t8 | Carthage | hc 1,200 at 72 | lc 7,000 at 70 | 12 → 14 |
+| Gaul t7 | Carthage | — | hi 4,200 at 70 | 12 → 13 |
+| Macedonia t12 | Carthage | — | ar 2,000, li 11,000 at 72 | 12 → 13 (remake 9) |
+| Media t5 | Carthage | — | hi 6,000 at 70 | 15 → 17 |
+| Media t1 | Greece | — | 5 slots at 166 (hi 2,600 / 2,800 / 3,900, li 6,300 / 10,000) | 0 → 13; treasury 920 → −134 |
+| Rome t26, Gaul t31, Numidia t30 | Armenia, Seleucid, Macedonia | — | — | neither game |
+
+**Result: the original runs the gap call in 8 of the 11 seats, the remake in none.** All 5 intake candidates are the gap
+call. Only the three seats with mobilised slots that formed or joined armies have position rows. The other five raised
+recruits, not armies.
+
+**Stated assumption (inference):** the war-free threat is equal in both games. They share the start state, and the
+remake never runs its gap call in these seats. So the same-seat war is what tips the original over.
+
+**Checked at intake (2026-11-05):**
+- **The decompile:** the callers above; and in `FUN_004504f4`, the `< 6` distance and `< 4` ready-slot gates, the
+  `< 8` raise loop, the level `< 100` test, and the `× 1000` level term.
+- **`decompose.jsonl`:** all 13 rows, against the table.
+  - The Rome t29 mobilised slots sum to 21,400, which is 46,300 − 24,900.
+  - Armenia t36's flat level fits the quarterly −3 decay: the remake shows the decay alone.
+
+This supersedes the "8 of 11 by the mobilisation level; candidates" narrowing above. It is now decomposed: 8 of 11, all
+the gap call.
+
+**Not checked:** `x1_decompose.py`; the treasury gate in the raise loop; whether the remake's own Faithful gap path
+matches parts (a) and (b) once a war is counted.
 
 ## Evidence
 

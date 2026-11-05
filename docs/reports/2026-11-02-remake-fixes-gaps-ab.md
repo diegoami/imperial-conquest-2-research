@@ -176,8 +176,8 @@ implement it.
   mobilises ready recruits there. The remake runs `AiFaithfulEconomy.Run` (`AiTurn.cs:150`) before the scored loop that
   declares the war (line 241), so mobilisation waits one round.
   - **Measured:** in 3 decomposed seats (Rome t29, Macedonia t27, Armenia t36), the original mobilises 13,400–39,200 men,
-    with new armies, and the remake mobilises none. By the mobilisation level, the original ends higher in 8 of 11
-    same-war seats and never lower.
+    with new armies, and the remake mobilises none. Decomposed (conquest PR #334): the original runs FFBC's gap call
+    (mobilise ready slots and/or raise new ones) in 8 of 11 same-war seats, and the remake in none.
   - **Candidate fix:** a Faithful own-diplomacy phase before the economy, or a re-run of the economy after a same-seat
     war.
 
