@@ -2730,3 +2730,8 @@ and `recheck-168dbc04-anchored-saves.tar.gz` (in `run-exp-longrun-v093`).
 `c23-supply-v1/` (+ `.rows.jsonl`), `stays-hook-v1/` (`regen-check.json`, `decide_hook/`, `capdef_hook/`),
 `stays-remake-ailog-v1/`, `stays-remake-ailog-v2/` (all 9 rows) and `c23-money-stock-v1/` (PR #340); saves in release `run-exp-audit195` (`audit195-c22c23-saves.tar.gz`,
 `audit195-stays-saves.tar.gz`). Hook: `patches/d734tail_hook.py`.
+
+[#195 step 7: late-year rows](reports/2026-11-05-audit195-step7-late-years.md), conquest PR #343 (`a1d16276`):
+`runs/experiments/data/run-exp-audit195/late-classify-v2/` (`rows.jsonl`, `summary.txt`, `quiet_distances.jsonl`),
+`late-classify-v1/`, `late-ailog-v1/`, `late-fleet-starts/seeds.json`; classifier
+`runs/experiments/audit195/late_classify.py`.
