@@ -157,7 +157,17 @@ remake never runs its gap call in these seats. So the same-seat war is what tips
 This supersedes the "8 of 11 by the mobilisation level; candidates" narrowing above. It is now decomposed: 8 of 11, all
 the gap call.
 
-**Not checked:** `x1_decompose.py`; the treasury gate in the raise loop; whether the remake's own Faithful gap path
+**The raise loop's treasury gate** (conquest PR #335, `ef7d6223`; read at intake):
+- **The test:** a slot is raised only while `wealth / −500 < treasury` (`DAT_00474aa0` / −500 < `DAT_00474aa8`), or while
+  fewer than 3 slots have been raised in this call (`sVar9 < 3`).
+- **The cost:** it is subtracted from the treasury at once, `troops / 200 × the type's cost`. The level term divides
+  `troops × 1000` by the same wealth field, and the level then goes through `FUN_00448fd0` with 100.
+- **The precision:** the test runs before each subtraction. So the treasury can end below `−wealth / 500`, by up to one
+  slot's cost, and the first 3 raises can take it lower still. The bound limits when a raise may start, not where the
+  treasury ends.
+- **Media t1** (920 → −134) is consistent with this. Its intermediate states are not checked.
+
+**Not checked:** `x1_decompose.py`; whether the remake's own Faithful gap path
 matches parts (a) and (b) once a war is counted.
 
 ## Evidence
