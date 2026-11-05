@@ -2722,5 +2722,5 @@ and `recheck-168dbc04-anchored-saves.tar.gz` (in `run-exp-longrun-v093`).
 
 [#195 step 6 part 1: B03, D05, D09](reports/2026-11-05-audit195-b03-d05-d09.md), conquest PR #337 (`34140404`):
 `runs/experiments/data/run-exp-audit195/b03-threatened-v1/` (`threatened.jsonl`, the t38 AI-log receipt),
-`d05-foreign-build-v1/` (empty: no hits), `d09-launch-v1/launches.jsonl` (91 rows); saves in release `run-exp-audit195`
+`d05-foreign-build-v1/` (no hits; v2 `summary-v2.txt`: 2,416 saves, 181 builds, PR #338), `d09-launch-v1/launches.jsonl` (91 rows); saves in release `run-exp-audit195`
 (`audit195-b03-saves.tar.gz`) and `run-exp-longrun-v093` (`thracia-rulebot1-40t-saves.tar.gz`).
