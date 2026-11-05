@@ -2703,3 +2703,8 @@ and `-v092` (not downloaded at intake). Start `decidestarts/celt-t40pre.SAV` = t
 [Pass 0 inventory](reports/2026-11-04-ai-audit195-inventory.md), conquest `059fa6c6` (PR #329). Pass 1's X4 count is in
 `runs/experiments/data/run-exp-audit195/x4-orders-per-seat-168dbc04-v1.txt`, and the script is
 `runs/experiments/audit195/orders_per_seat.py`. It reads the anchored replays on `168dbc04` already indexed above.
+
+[X2 support and hire timing](reports/2026-11-05-x2-support-pass-timing.md), conquest `89cf67e3` (PR #332):
+`runs/experiments/data/run-exp-audit195/x2-greece-t21-v1/result.json` and `x2-stays-v1/` (11 results files), hashes in
+`SAVES.sha256`; saves in release `run-exp-audit195` (`audit195-x2-saves.tar.gz`); the original game in release
+`run-exp-longrun-v092` (`greece-rulebot1-40t-saves.tar.gz`). Probe: `runs/experiments/audit195/x2_mode_probe.py`.

@@ -166,8 +166,11 @@ implement it.
   remake's Instant mode, the CLI default and every anchored replay, runs one pass for all armies up front.
 - **Measured:** Greece t21. Instant mode moves the Seleucid army from Antioch toward Aradus on 3 of 3 seeds. Tactical mode,
   which supports each army in turn, matches the original on 3 of 3.
-- **Candidate fix:** run the support pass per army in every Faithful mode. A one-change probe (per-army support in Instant
-  mode only) would confirm it is the only cause.
+- **Candidate fix:** run the support pass per army in every Faithful mode.
+- **Settled (research PR #204 and the [X2 finding](2026-11-05-x2-support-pass-timing.md), conquest PR #332):** in that turn
+  the mode switch changes only where the support pass runs, so the up-front pass is the cause. The per-army path runs
+  only when `UsesAiPhaseBattleGate` holds: Tactical battles, a living human seat, and not watch mode (`GameSession.cs:2398`).
+  No pending battle is needed. The CLI, headless, anchored and observer runs all take the up-front pass.
 
 ## Reading moves in saves
 
