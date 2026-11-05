@@ -2728,5 +2728,5 @@ and `recheck-168dbc04-anchored-saves.tar.gz` (in `run-exp-longrun-v093`).
 [#195 C22, C23, C24 and the own-capital stays](reports/2026-11-05-audit195-c22-c23-stays.md), conquest PR #339
 (`b77b6226`): `runs/experiments/data/run-exp-audit195/c22c23-hook-v2/` (`summary.json`), `-v3/`, `-v3b/`,
 `c23-supply-v1/` (+ `.rows.jsonl`), `stays-hook-v1/` (`regen-check.json`, `decide_hook/`, `capdef_hook/`),
-`stays-remake-ailog-v1/`; saves in release `run-exp-audit195` (`audit195-c22c23-saves.tar.gz`,
+`stays-remake-ailog-v1/`, `stays-remake-ailog-v2/` (all 9 rows) and `c23-money-stock-v1/` (PR #340); saves in release `run-exp-audit195` (`audit195-c22c23-saves.tar.gz`,
 `audit195-stays-saves.tar.gz`). Hook: `patches/d734tail_hook.py`.
