@@ -2735,3 +2735,9 @@ and `recheck-168dbc04-anchored-saves.tar.gz` (in `run-exp-longrun-v093`).
 `runs/experiments/data/run-exp-audit195/late-classify-v2/` (`rows.jsonl`, `summary.txt`, `quiet_distances.jsonl`),
 `late-classify-v1/`, `late-ailog-v1/`, `late-fleet-starts/seeds.json`; classifier
 `runs/experiments/audit195/late_classify.py`.
+
+[#195 final hook runs](reports/2026-11-05-audit195-final-hooks.md), conquest PR #345 (`f71c70ff`):
+`runs/experiments/data/run-exp-audit195/c22c23-hook-v4/` (`summary.json`), `stays-fb7c-v1/` (`<start>-fb7c.jsonl`),
+`late-fleet-hook-v1/` (`carthage-t127/129/130-fleet.jsonl`); saves in release `run-exp-audit195`
+(`audit195-final-hooks-saves.tar.gz`, `SAVES.sha256`). Hooks: `patches/d734tail_hook.py`, `fb7c_hook.py`,
+`fleetphase_hook.py`.
