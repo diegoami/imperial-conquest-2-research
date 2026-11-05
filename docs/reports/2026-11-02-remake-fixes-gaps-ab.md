@@ -188,6 +188,14 @@ implement it.
     X2.
   - **Candidate fix:** in Faithful, interrupt and replay the seat in every battle mode.
   - **#1741 (capital defence with a pending battle)** is now exercised: S03 and S06 Tactical, end tiles matching.
+- **Mobilising next to an enemy army (B03, [step 6](2026-11-05-audit195-b03-d05-d09.md), conquest PR #337).** The
+  original's mobilise chain has no enemy-army test. The remake's `ProposeMobilization` skips a city that
+  `IsThreatened` (`AiEconomyPhase.cs:175`), and the Faithful economy calls it (`AiFaithfulEconomy.cs:113`).
+  - **Hit in play:** in `thracia-rulebot1-40t`, at t38 and t39 at Erivan, the original mobilises 7 + 4 slots and loses
+    the new armies to Seleucid; the remake mobilises none.
+  - **Candidate fix:** drop the restraint in Faithful (keep it as a designed option elsewhere).
+- **Fleet moves at order (D09):** `OrderFleetCommandHandler.cs:76` sets `Moves: 0` for a new fleet. The launch step
+  matches, but this step is not reachable in anchored replays.
 
 ## Reading moves in saves
 
