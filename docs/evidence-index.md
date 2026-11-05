@@ -2713,3 +2713,9 @@ and `-v092` (not downloaded at intake). Start `decidestarts/celt-t40pre.SAV` = t
 `runs/experiments/data/run-exp-audit195/x1-war-seats-v1/war_seats.jsonl` (234 rows) and `mobilise.jsonl` and `decompose.jsonl` (13 rows each);
 scripts `runs/experiments/audit195/x1_war_seats.py`, `x1_mobilise.py` and `x1_decompose.py` (PR #334). Saves: releases `run-exp-longrun-v090`–`v093`
 and `recheck-168dbc04-anchored-saves.tar.gz` (in `run-exp-longrun-v093`).
+
+[X3 seat replay on the remake](reports/2026-11-05-x3-seat-replay-remake.md), conquest PR #336 (`cb9b2b2f`):
+`runs/experiments/data/run-exp-audit195/x3-seat-replay-v1/` (`passes.jsonl`, `positions.jsonl`, 30 per-run folders;
+`SAVES.sha256`); saves in release `run-exp-audit195` (`audit195-x3-saves.tar.gz`); original round starts and ends in
+`run-exp-aidecide` and `run-exp-civ-sweep`; original hook logs in `runs/experiments/data/run-exp-econ/orig-v1/`. Tooling:
+`runs/experiments/audit195/x3_seat_replay.py`, `x3_positions.py`.

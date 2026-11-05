@@ -157,7 +157,7 @@ implement it.
 **Recheck on v0.9.4 `168dbc04`** (T277): [`2026-11-04-remake-v094-recheck.md`](2026-11-04-remake-v094-recheck.md).
 - **Fixed in play:** the cross-class stale word (Numidia t37, Celtiberia t39–40).
 - **Gone:** 14 position rows over 19 games, with none new.
-- **Not exercised by any stored row:** capital defence with a pending human battle (#1741).
+- **Capital defence with a pending human battle (#1741):** exercised by the X3 seat replays (S03, S06 Tactical; end tiles match). No stored anchored row exercises it.
 - **Remaining stays:** 10 own-capital stays with no pending battle. They are open for the comprehensive AI audit
   (research #195).
 
@@ -180,6 +180,14 @@ implement it.
     (mobilise ready slots and/or raise new ones) in 8 of 11 same-war seats, and the remake in none.
   - **Candidate fix:** a Faithful own-diplomacy phase before the economy, or a re-run of the economy after a same-seat
     war.
+- **Seat replay after a human battle (X3, [finding](2026-11-05-x3-seat-replay-remake.md), conquest PR #336).**
+  - **Tactical:** the remake's retained pass reproduces the original's seat replay. In all 5 seats it plays two passes,
+    with the pass-1 economy identical, and the end tiles match in 13 of 15 runs. The two misses are different battle
+    outcomes.
+  - **Instant, headless and observer play:** no replay, and the end tiles differ in 3 of 5 seats. It is the same gate as
+    X2.
+  - **Candidate fix:** in Faithful, interrupt and replay the seat in every battle mode.
+  - **#1741 (capital defence with a pending battle)** is now exercised: S03 and S06 Tactical, end tiles matching.
 
 ## Reading moves in saves
 
