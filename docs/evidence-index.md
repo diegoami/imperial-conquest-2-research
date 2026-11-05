@@ -2710,6 +2710,6 @@ and `-v092` (not downloaded at intake). Start `decidestarts/celt-t40pre.SAV` = t
 `run-exp-longrun-v092` (`greece-rulebot1-40t-saves.tar.gz`). Probe: `runs/experiments/audit195/x2_mode_probe.py`.
 
 [X1 war before economy](reports/2026-11-05-x1-war-before-economy.md), conquest PR #333 (`71b2e780`):
-`runs/experiments/data/run-exp-audit195/x1-war-seats-v1/war_seats.jsonl` (234 rows) and `mobilise.jsonl` (13 rows);
-scripts `runs/experiments/audit195/x1_war_seats.py` and `x1_mobilise.py`. Saves: releases `run-exp-longrun-v090`–`v093`
+`runs/experiments/data/run-exp-audit195/x1-war-seats-v1/war_seats.jsonl` (234 rows) and `mobilise.jsonl` and `decompose.jsonl` (13 rows each);
+scripts `runs/experiments/audit195/x1_war_seats.py`, `x1_mobilise.py` and `x1_decompose.py` (PR #334). Saves: releases `run-exp-longrun-v090`–`v093`
 and `recheck-168dbc04-anchored-saves.tar.gz` (in `run-exp-longrun-v093`).
