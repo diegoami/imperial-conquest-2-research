@@ -160,11 +160,12 @@ implement it.
 - **Capital defence with a pending human battle (#1741):** exercised by the X3 seat replays (S03, S06 Tactical; end tiles match). No stored anchored row exercises it.
 - **Remaining stays:** 10 own-capital stays with no pending battle.
   - **Greece t21 is X2.**
-  - **The other 9 are attributed to diplomacy draws,** as the leading reading
+  - **The other 9 are diplomacy draws, measured** ([final hooks](2026-11-05-audit195-final-hooks.md)). In 8, the
+    original's FB7C search found the remake's target and its 1-in-10 roll missed; Rome t10 is downstream of Greece's
+    missed roll. Earlier, the leading reading
     ([#195 C22/C23/stays](2026-11-05-audit195-c22-c23-stays.md)). The original's army has no target and resupplies at its
-    capital; in the remake, the nation declares a war or an alliance in that seat. The original's `FB7C` roll was not
-    hooked.
-  - Not a rule difference to fix unless an `FB7C` hook shows otherwise.
+    capital; in the remake, the nation declares a war or an alliance in that seat.
+  - Not a rule difference: nothing to fix.
 
 **From the #195 audit, pass 1** ([inventory](2026-11-04-ai-audit195-inventory.md), rows A09/B22/C08):
 - **Support and hire timing (X2).** The original runs `E41C`, support and hire, as each army's first call inside F31C. The
@@ -204,6 +205,10 @@ implement it.
 - **Walk-end resupply (C23):** the original's `D734` tail resupplies at a city not at war (571 times in 80 hooked
   rounds). The remake's resupply march has no end check (`AiMilitaryPhase.cs:469`). It is missing in code, with no
   measured effect on supplies (293 of 294 equal), because `E41C` has just filled the army. Low priority.
+- **Late fleet rows (step 7, [final hooks](2026-11-05-audit195-final-hooks.md)).** Celtiberia's fleet shuttle and
+  Ptolemaic's t130 fleet 5 differ in the stored route that reaches F608, not in F608's branch. The route is written
+  outside F608 (the rendezvous, or `D9A8` → `CD08`). It's a D19 candidate whose writer is not yet identified, so there's
+  no fix to specify yet.
 
 ## Reading moves in saves
 
