@@ -5,8 +5,10 @@
 and [remake #1740](https://github.com/diegoami/imperial_conquest_2/issues/1740).
 The known image-list and nation-glyph geometry is freshly checked against the
 pinned EXE. Palette roles, sprite meaning and retained Wine observations come
-from the linked promoted reports. A general installation extractor and complete
-adapter acceptance remain outstanding; this report does not close #218.
+from the linked promoted reports. A portable general extractor was subsequently
+[accepted for the qualified static scope](../progress/research218-extractor-review.md),
+at conquest `1544d666` (version 1.0.1). Complete adapter/native-rendering acceptance
+remains outstanding; this report does not close #218.
 
 **Sources:** conquest [PR #346](https://github.com/diegoami/ic2-conquest/pull/346),
 branch `research/original-assets218-intake`, reviewed head
@@ -36,7 +38,9 @@ sound routine, map draw dispatch and recolour routine agrees with the existing
 reports. The six pinned remake source files confirm **75 core + 25 tactical =
 100 distinct keys**, file-based asset loading/fallback and the three-region
 battle recolour. This is source inspection, not an executed Godot adapter test.
-No WAV was newly decoded, no pixel matching rerun, and no game launched.
+This initial consolidation decoded no WAV and reran no pixel matching or game.
+The later linked extractor review independently decodes supplied WAVs and static
+exports; it performs no game or native-rendering run.
 
 The required whole-queue scan stopped with `tree of audit-195-b is truncated`;
 it did not establish an empty queue. This intake reviews only the requested PR.
@@ -47,8 +51,10 @@ owned by #195, not an additional asset finding promoted here.
 
 Dimensions below are **cell/frame dimensions**, not full sheet dimensions.
 "Understood" refers to the pinned resource and linked semantics; conversion and
-consumer support are separate. Original resource IDs/languages remain to be
-enumerated; component names below must not be presented as PE directory IDs.
+consumer support are separate. The accepted extractor supplies PE resource
+IDs/languages; component names below must not be presented as PE directory IDs.
+Its 63 glyph sheets now include 44 command-key candidates; component correspondence
+remains separate from consumer rendering and suitability.
 
 | Category | Resource/component and stored count | Current remake key/correspondence | Disposition |
 | --- | --- | --- | --- |
@@ -191,7 +197,7 @@ screenshots or audio enter public repositories/releases. Public receipts contain
 approved scalar metadata only. This is a proposed cache contract, not implemented
 or tested remake behavior.
 
-Minimum acceptance for conquest's next packet:
+Extractor acceptance checklist (review outcome linked above):
 
 - Reproduce the 11 lists/128 images and 16 nation sheets/32 stored frames, with
   explicit PE identity and complete per-category unavailable/unsupported results.
@@ -211,10 +217,13 @@ Minimum acceptance for conquest's next packet:
 **Agreed research-side ownership:** consolidation/specification and independent
 review. Conquest owns the proposed general static inventory/extractor packet;
 the remake owner/session owns consumer/layout/adapter feasibility under #1740.
-This intake supplies the consolidation and metadata checker now. PE enumeration,
-general glyph/cursor/background coverage, full masks and consumer acceptance remain
-open. A rendering experiment, if needed, requires a separate bounded request;
-none was run or authorized by this intake.
+The initial intake supplied the consolidation and metadata checker. The later
+accepted packet supplies bounded PE/DFM inventory, general glyphs, bitmap and
+native cursor/icon containers, separate masks, compositing helpers and supplied
+WAV validation. Area-map meanings, background/chrome completeness, native
+composition and consumer acceptance retain explicit partial/unresolved status.
+A rendering experiment, if needed, requires a separate bounded request; none was
+run or authorized by this intake.
 
 Reproduce this scalar check with explicit inputs:
 
@@ -226,4 +235,5 @@ python3 -B scripts/original-assets218-check.py "$ORIGINAL_EXE" \
 Use the source pins above; the checker itself supports only the pinned EXE/dump.
 Its synthetic bitmap/rejection tests do not replace the next packet's extractor
 tests. The receipt contains no media or private save identities. Research #218
-stays open for that packet and its review.
+stays open for the remaining semantic/consumer boundaries; the static packet and
+research review are now delivered at the pin recorded above.
