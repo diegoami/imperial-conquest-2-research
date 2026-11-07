@@ -1,0 +1,85 @@
+{
+  "reviewed_conquest_commit": "1544d666c45004f1eda362cb84a4701e0e4143d2",
+  "original_implementation_commit": "282777136e355ff94f8e21aac01ae7a6818d4cba",
+  "extractor_version": "1.0.1",
+  "extractor_sha256": "5d266a075ce1cc75ccb359f2b4a64aa5bbf82e2dca031965c729e6abd53a97f5",
+  "disposition": "accepted-qualified-static-extraction",
+  "isolated_tests": {
+    "initial_1_0_0": 35,
+    "corrected_1_0_1": 36,
+    "failures": 0
+  },
+  "independent_original_scan": {
+    "author_v3_metadata_exact_match": true,
+    "author_v5_metadata_exact_match": true,
+    "resource_leaves": 73,
+    "forms": 29,
+    "image_lists": 11,
+    "list_images": 128,
+    "glyph_sheets": 63,
+    "glyph_frames": 79,
+    "resource_bitmaps": 10,
+    "native_cursor_groups": 6,
+    "native_icon_groups": 1,
+    "valid_supplied_wavs": 10
+  },
+  "initial_private_export": {
+    "file_hashes_verified": 362,
+    "external_decoder": {
+      "PNG": 345,
+      "CUR": 6,
+      "ICO": 1
+    },
+    "png_crc_rows_geometry_checks": 345,
+    "independent_wave_decode": 10,
+    "existing_directory_refusal_exit": 2,
+    "payloads_unchanged_after_refusal": 362,
+    "refused_new_metadata_absent": true
+  },
+  "corrected_private_export": {
+    "file_hashes_verified": 362,
+    "payload_hashes_identical_to_initial_export": true,
+    "changed_successful_metadata_fields": [
+      "cache_identity",
+      "extractor_sha256",
+      "extractor_version"
+    ]
+  },
+  "key_crosswalk": {
+    "remake_revision": "55bd7fcef91e41b179a6df9851384bb687932e8e",
+    "candidate_keys": 89,
+    "known_keys": 100,
+    "invalid_keys": 0,
+    "unmapped_keys": [
+      "terrain.desert.surface",
+      "terrain.forest.surface",
+      "terrain.mountain.surface",
+      "terrain.plain.surface",
+      "terrain.sea_open.surface",
+      "terrain.sea_shallow.surface",
+      "unit.archers.icon",
+      "unit.heavy_cavalry.icon",
+      "unit.heavy_infantry.icon",
+      "unit.light_cavalry.icon",
+      "unit.light_infantry.icon"
+    ]
+  },
+  "review_correction": {
+    "finding": "filesystem-exception-text-leaked-private-WAV-input-paths",
+    "reproduced_in_initial_source": true,
+    "corrected_source_uses": "stable-class-and-errno-without-path-or-free-text",
+    "regressions": [
+      "PermissionError",
+      "FileNotFoundError"
+    ],
+    "status": "resolved"
+  },
+  "limits": [
+    "one-qualified-original-EXE-profile",
+    "supplied-WAV-provenance-not-assumed-original",
+    "native-compositing-and-consumer-rendering-unverified",
+    "no-game-or-Windows-run",
+    "no-runtime-packaging-or-shipped-adapter",
+    "no-private-media-or-output-hashes-published"
+  ]
+}

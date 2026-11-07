@@ -12,12 +12,19 @@ EXE (29 forms, 11 lists/128 images, 16 two-frame nation glyphs), 16 code sound
 calls and 100 pinned remake asset keys. Palette/semantic/Wine evidence is inherited
 with explicit provenance; mask geometry alone does not establish mask semantics.
 
-Research consolidation is complete for that packet. Conquest confirmed ownership
-and readiness for the next static inventory/extractor packet: PE resource IDs and
-languages, general glyphs/cursors/backgrounds, mask/compositing checks and explicit
-profile failures. Research reviews that packet; the remake session separately owns
-consumer/river/owner-variant/cache feasibility. #218 stays open until the tool packet
-and research acceptance are delivered. No game run, native rendering acceptance,
+**Extractor review complete:** conquest `1544d666c45004f1eda362cb84a4701e0e4143d2`,
+version 1.0.1, is [accepted for qualified static extraction](progress/research218-extractor-review.md).
+It supplies bounded PE/DFM resource identities, general glyphs/bitmap/native
+cursor/icon inventory, separate masks/compositing helpers and supplied WAV checks.
+Research independently passes 36 tests, reproduces v5 metadata and verifies 362
+private output hashes. Its error-path private-filename defect was fixed upstream
+and rechecked. Main must retrieve that exact source/hash and provide Python 3.10+
+or port the tested contract; no runtime/adapter is shipped here.
+
+#218 remains open for explicit partial semantic boundaries (Area-map meanings,
+background/chrome completeness and native composition); the remake session owns
+consumer/river/owner-variant/cache feasibility under #1740. The static packet and
+research acceptance are delivered. No game run, native rendering acceptance,
 media publication or remake implementation occurred. No new rendering experiment
 is authorized by this entry.
 
