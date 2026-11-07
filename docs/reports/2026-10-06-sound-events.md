@@ -1,5 +1,12 @@
 # The ten sounds: which game events play which WAV, and what each sounds like
 
+**Later consolidation (2026-11-07):** the
+[local extraction specification](2026-11-07-original-assets218-extraction-spec.md)
+maps all ten sounds to pinned remake keys. The later cosmetic-gaps work records
+Wine file opens for strategic 1/2, scuttle 8 and computer battle 9; this does not
+establish audible output or native Windows acceptance. The original report's
+"none heard" statement below describes its own method/date.
+
 **Status:** written directly from the decompile and a local measurement of the ten WAV files, for the clone's sound task (imperial_conquest_2 #790). **No play was run: every event mapping is `[derived: code]` and none has been heard in the running game.** The WAV files were analysed on the researcher's machine only; nothing of them (samples, waveform data, hashes) is reproduced here beyond a size and a duration.
 
 > **Checked here:** agrees with the feature inventory's row M06 ([2026-10-05-player-facing-feature-inventory.md](2026-10-05-player-facing-feature-inventory.md): `TPremierForm_MakeSound`, cases 1-10, `PlaySoundA`) and with [decompiled-elimination-cleanup.md](decompiled-elimination-cleanup.md) (conquest starts with `MakeSound(10)`). Unit types, shot rules and the battle step functions are those of [2026-10-04-decompiled-tactical-battle-rules.md](2026-10-04-decompiled-tactical-battle-rules.md); the army and fleet walkers those of [decompiled-army-movement-and-river-cost.md](decompiled-army-movement-and-river-cost.md). **Not checked here:** anything in play (Wine or desktop).
