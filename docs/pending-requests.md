@@ -3,6 +3,24 @@
 Requests from other sessions that are accepted but not done. Whoever picks one up (any session)
 removes it here when its report is promoted, and tells the requester.
 
+## Original local artwork/sound extraction (research #218 / remake #1740)
+
+Owner-requested research, 2026-11-07. The
+[reviewed coverage and extraction specification](reports/2026-11-07-original-assets218-extraction-spec.md)
+consolidates conquest PR346 at `36e4ad89`, with a fresh scalar check of the pinned
+EXE (29 forms, 11 lists/128 images, 16 two-frame nation glyphs), 16 code sound
+calls and 100 pinned remake asset keys. Palette/semantic/Wine evidence is inherited
+with explicit provenance; mask geometry alone does not establish mask semantics.
+
+Research consolidation is complete for that packet. Conquest confirmed ownership
+and readiness for the next static inventory/extractor packet: PE resource IDs and
+languages, general glyphs/cursors/backgrounds, mask/compositing checks and explicit
+profile failures. Research reviews that packet; the remake session separately owns
+consumer/river/owner-variant/cache feasibility. #218 stays open until the tool packet
+and research acceptance are delivered. No game run, native rendering acceptance,
+media publication or remake implementation occurred. No new rendering experiment
+is authorized by this entry.
+
 ## Live army quality 4 (research #63 / build #1352)
 
 Owner-authorized desktop research, 2026-10-23. The
