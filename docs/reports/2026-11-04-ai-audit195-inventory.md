@@ -4,7 +4,7 @@
 measurement in this pass.
 **Provenance:** draft from `diegoami/ic2-conquest`, branch `main`, PR #329 (`059fa6c6`) and PR #330 (merge `5892106a`).
 It is research issue [#195](https://github.com/diegoami/imperial-conquest-2-research/issues/195)'s pass 0 inventory plus pass 1 results so
-far. **Living document:** later passes revise rows; this copy is the state at `5892106a`.
+far. **Living document:** later passes revise rows; this copy is the state at conquest main `56018eba` (PR #349, commit `eb0b63ec`), which folds in research's final-hooks analysis [`2026-11-05-audit195-final-hooks.md`](2026-11-05-audit195-final-hooks.md). Earlier revisions are in conquest PRs #331–#341 and #343; the per-finding reports remain canonical where they differ.
 **Task:** research issue #195, delegated by ic2-research on 2026-11-04 at the owner's request.
 
 **Pins.**
@@ -68,13 +68,15 @@ Short names:
 
 | area | rows | MATCH | DIFF | AMB | MISSING | APPR | AUTH | UNAUD |
 |---|---|---|---|---|---|---|---|---|
-| A: seat loop, scheduling, draws, authored automation | 43 | 11 | 4 | 14 | 0 | 3 | 8 | 3 |
-| B: economy, recruitment, mercenaries, supply | 35 | 16 | 3 | 9 | 0 | 1 | 2 | 4 |
-| C: army phase | 34 | 19 | 2 | 5 | 1 | 1 | 2 | 4 |
-| D: fleets | 33 | 17 | 2 | 10 | 0 | 0 | 2 | 2 |
+| A: seat loop, scheduling, draws, authored automation | 43 | 13 | 4 | 12 | 0 | 3 | 8 | 3 |
+| B: economy, recruitment, mercenaries, supply | 35 | 17 | 3 | 9 | 0 | 1 | 2 | 3 |
+| C: army phase | 34 | 21 | 2 | 3 | 1 | 1 | 2 | 4 |
+| D: fleets | 33 | 19 | 1 | 9 | 0 | 0 | 2 | 2 |
 | E: diplomacy | 41 | 20 | 3 | 13 | 1 | 1 | 1 | 2 |
-| F: tactical AI and battle transitions | 43 | 29 | 1 | 4 | 0 | 1 | 7 | 1 |
-| **total** | **229** | **112** | **15** | **55** | **2** | **7** | **22** | **16** |
+| F: tactical AI and battle transitions | 43 | 30 | 1 | 3 | 0 | 1 | 7 | 1 |
+| **total** | **229** | **120** | **14** | **49** | **2** | **7** | **22** | **15** |
+
+Updated 2026-11-05 after X3 (`2026-11-05-x3-seat-replay-remake.md`): A12, C02 and F34 go from AMB to "MATCH (Tactical) / DIFF (Instant)", D30 from AMB and B33 from UNAUD to MATCH (Tactical). After step 6 (`2026-11-05-audit195-b03-d05-d09.md`): D09 from DIFF to "MATCH (launch) / DIFF (order)". After C22/C23 (`2026-11-05-audit195-c22-c23-stays.md`): C22 from AMB to MATCH (measured scope). After research's analysis of the final hook runs (`R/2026-11-05-audit195-final-hooks.md`, 2026-11-05, folded in 2026-11-09): C22 MATCH (iv) with the recursion attributed; the own-capital stays measured as diplomacy draws, so A10 goes from AMB to MATCH (measured scope); the late fleet rows placed under D19.
 
 These counts are taken from the tables below; a mixed row (for example "MATCH / AMB") counts once, under its first
 category. Many MATCH rows reach level iv only at an older pin, and their remake tests are mirror only. The battle AI (F) is the best covered. Its 318 recorded tactical series matched state and draws at `b593c6e2`,
@@ -92,12 +94,12 @@ These are the outcome-changing items. Pass 1 takes them first, one finding each.
      the war, alliance and trade candidates compete with the armies.
    - **Consequence:** a war declared this seat is not counted in the threat budget (15,000 per war), the capital-defence
      radius (19 at war, 9 otherwise), the hire gate ("at war with someone") or the busy test.
-   - **Code:** confirmed on both sides; not measured.
+   - **Code:** confirmed on both sides. **Measured (2026-11-05, the economy only):** in 8 of the 11 seats where both games start the same war, the original runs the gap call FUN_004504f4 (mobilise and/or raise recruits) in that seat and the remake does not (3 by mobilising, research PR #207 follow-up for the other 5); this attributes 3 seats' position rows (`2026-11-05-x1-war-before-economy.md`). Radius, hire gate and busy test: not measured.
 2. **X2. Support and hire pass timing** (A09, B22, C08).
    - **Original:** `E41C` is each army's first call inside `F31C` (`0x44F366`), so later armies see the earlier armies'
      moves, battles and treaties.
    - **Remake:** in Instant or headless play (the CLI default and every anchored replay), one pass covers all armies up
-     front. The per-army pass runs only for Faithful with Tactical battles and a human seat.
+     front. The per-army pass runs only for Tactical human battles with a living human seat, outside watch mode, under classical army navigation (`GameSession.cs:2163`, `2398`; research PR #206).
    - **Consequence:** this is the leading candidate for the Greece t21 resupply flip and for some of the 10 own-capital
      stays.
 3. **X3. A seat replayed after a human battle** (A12, A13, B33, C02, D19, D30, E18, F34).
@@ -156,13 +158,14 @@ These are the outcome-changing items. Pass 1 takes them first, one finding each.
 
 | row (game, turn) | where it sits | state |
 |---|---|---|
-| 10 own-capital stays (Antioch ×4, Alexandria ×2, Ecbatana ×2, Carthago, Rome) | A19/F31 (draws) | **pass 1: draw-dependent (each disappears under another seed; Tactical = Instant)** |
+| 10 own-capital stays (Antioch ×4, Alexandria ×2, Ecbatana ×2, Carthago, Rome) | E (FB7C draws) | **diplomacy draws, measured** (FB7C hook on the 8 starts: in 8 of 9 rows the original's search found the remake's target and its 1-in-10 roll missed; Rome t10 is downstream of Greece's missed roll; Carthage t35's alliance search itself was not logged; `R/2026-11-05-audit195-final-hooks.md` §2) |
 | Greece t21 resupply flip (Seleucid army 2, Antioch → Aradus) | X2 (C08) | **attributed (pass 1): matches the original in Tactical mode on 3 seeds** |
 | Greece army at (112,70): Bithynia t30–31, Media t31–32; Numidia t24–25 | C20 (T277) | fixed on 168dbc04; not hook-confirmed |
 | Numidia t32 | — | not attributed |
 | Celtiberia t15/t17 (Pella capital army) | A18 war-roll stream, or X1 | candidate |
 | Celtiberia t37 (0-move army at Ambracia) | C22, or state | candidate |
-| Late-year AI-phase differences (266–264 BC) | all areas | not classified |
+| Late-year AI-phase differences (266–264 BC) | all areas | classified by step 7 (`2026-11-05-audit195-step7-late-years.md`: 94 draws or consequences, 53 human phase, 7 human battles, 68 quiet candidates) |
+| Carthage game t127–t130: Celtiberia fleet 6, Ptolemaic fleet 5 | D19 | **stored-route difference, writer not identified** (F608 agrees given its inputs; the route is written outside F608; next probe: hook the route writers, rendezvous and CD08, in t129–t130; `R/2026-11-05-audit195-final-hooks.md` §3) |
 
 ## The matrix
 
@@ -181,11 +184,11 @@ area, its cross-reference is in the X list above.
 | A06 | Per-seat guard: skip the AI's work when unity ≤ 0, still advance | FA20 | AiTurn.Run (Eliminated / not AI) | i, ii | AMB | A living nation with unity ≤ 0 would still act in the remake; reachability not audited | none |
 | A07 | Phase order: diplomacy, economy, armies, fleets | FA20 | AiTurn.Run (economy first; diplomacy inside the scored loop) | i, ii (both sides) | DIFF | **X1** | none |
 | A08 | Armies one at a time in table order, count latched at 0x44F32F | F31C | OriginalArmyOrder (T253) | iv (R/2026-10-31-army-order-within-a-seat: 678/679, at 8e2d9053) | MATCH | — | mirror |
-| A09 | `E41C` support and hire as each army's first call | F31C 0x44F366 | AiMercenaryHirePass.Run up front; per army only in Faithful Tactical | iv (merges176: 2 army-order differences; Greece t21 Instant vs Tactical, 3 seeds, pass 1) | DIFF | **X2** | mirror |
-| A10 | Capital defence at F31C entry | F31C 0x44F32A → EFC8 | AiCapitalDefence.Run | i–iii; partial iv (decisions report: 0 differences) | AMB | 10 own-capital stays open | mirror |
+| A09 | `E41C` support and hire as each army's first call | F31C 0x44F366 | AiMercenaryHirePass.Run up front; per army only with Tactical human battles, a living human seat and no watch mode (GameSession 2398) | iv (merges176: 2 army-order differences; Greece t21 Instant vs Tactical, 3 seeds, pass 1) | DIFF | **X2** | mirror |
+| A10 | Capital defence at F31C entry | F31C 0x44F32A → EFC8 | AiCapitalDefence.Run | i–iii; partial iv (decisions report: 0 differences; the 10 own-capital stays measured as diplomacy draws, `R/2026-11-05-audit195-final-hooks.md` §2) | MATCH (measured scope: no unexplained difference in the audited runs) | Research scope note (2026-11-09): rests on the decisions report (0 differences) and on the 10 stays being diplomacy draws, not capital-defence differences. The `EFC8` body was not replayed against the original, and the 12 capital-defence attacks attributed in the final-hooks §1 are not compared with the remake's mirror | mirror |
 | A11 | Phase-mode flag DAT_004a0340 (0 armies, 1 fleets) | F31C/F608 | none | i | UNAUD | Readers not traced | none |
-| A12 | A battle with a human interrupts and replays the seat | 0x4A0B7C; F31C 0x44F348; FA20 0x44FA56 | AiPhaseBattleGate (Faithful Tactical only) | iv original; iii remake | AMB | **X3**; no interruption under Instant | mirror |
-| A13 | The replayed pass draws fresh Random values and reruns the economy | FA20 second call | named streams per (nation, turn) | ii (remake code) | UNAUD | **X3**: the same draws repeat | none |
+| A12 | A battle with a human interrupts and replays the seat | 0x4A0B7C; F31C 0x44F348; FA20 0x44FA56 | AiPhaseBattleGate (Faithful Tactical only) | iv original; iii remake; iv remake Tactical (x3-seat-replay-v1: 5/5 seats, 13/15 runs; the 2 misses are battle winners) | MATCH (Tactical) / DIFF (Instant, no replay: 3 of 5 seats differ) | **X3**; no interruption under Instant | mirror |
+| A13 | The replayed pass draws fresh Random values and reruns the economy | FA20 second call | named streams per (nation, turn) | ii (remake code) | UNAUD | **X3**: the same draws repeat; x3: no roll fired in 30 runs, still unmeasured | none |
 | A14 | Capital defence continues with a human battle pending | EFC8 under the flag | AiCapitalDefence continuePending (T277) | i–iii | AMB | **X5** | mirror |
 | A15 | Which battle kinds set the flag (siege of a human city, naval) | 437DE4 callers | gate: AttackArmy on a human army only | i | UNAUD | Interrupts may be missing | none |
 | A16 | Stale walk word carried from E84C into the same army's EBE8 | F31C/E84C/EBE8/DB38/D9A8 | OriginalArmyIntermediateSearchFailed (T276/T277) | iv (v0.9.4 recheck: Numidia t37, Celtiberia t39–40) | MATCH | Other carry-overs not measured | mirror |
@@ -224,7 +227,7 @@ area, its cross-reference is in the X list above.
 |---|---|---|---|---|---|---|---|
 | B01 | Threat-vs-own budget | FFBC, 44A8CC | AiFaithfulEconomy.Threat/Own | iv (economy report 1,059; 8e2d9053: 1,063/0) | MATCH | Threat term corroborated only indirectly; inputs depend on **X1** | mirror |
 | B02 | Mobilise pass (state 24, gate, stop at the deficit) | 4504F4 → 44A4E0 | FaithfulMobilizationGate / ProposeMobilization | iv deployments 1,059/1,059 | MATCH | — | mirror |
-| B03 | No mobilisation at a city with a hostile army adjacent | none in the original | ProposeMobilization `IsThreatened` (spot-checked) | i, ii (both sides) | DIFF (authored, under Faithful) | Probably never hit in the 1,059 deployments | none |
+| B03 | No mobilisation at a city with a hostile army adjacent | none in the original | ProposeMobilization `IsThreatened` (spot-checked) | i, ii (both sides); iv (Thracia t38–39, Armenia at Erivan: 11 slots, the original mobilises and loses the army, the remake keeps the recruits) | DIFF (authored, under Faithful) | Hit in play: 2 seats in 19 games (`2026-11-05-audit195-b03-d05-d09.md`) | none |
 | B04 | Receiving army d < 6 (last match); new 1-unit army | 44A4E0 | MobilizationReceivingArmy / ArmyCreation | ii; iv via counts | MATCH | Identity not compared | mirror |
 | B05 | Order stopping rule (k < 8, deficit, 40 slots) | 4504F4 loop | PlaceOrders | iv 265/265, 263/263 | MATCH | Rule replayed on each side's own draws | mirror |
 | B06 | Deficit floor (≤ 3 orders below it) | 4504F4 | MayPlaceAnother | iv inside B05 | MATCH | — | mirror |
@@ -243,7 +246,7 @@ area, its cross-reference is in the X list above.
 | B19 | Purse normalisation (> 1000 to treasury; < 500 gets +500) | F6D8 | AutomaticResupply | ii | AMB | Not logged by the remake, so not compared | mirror |
 | B20 | Foreign non-war city sale | E41C/F6D8 | FaithfulProviderEligible | iv talents 1,200/1,200 | MATCH | Signed/refund cases staged only | mirror |
 | B21 | Embarked army resupplied and hiring at its own coordinates | E41C | AiResupplyPass (#759) | ii–iii | AMB | Not isolated end to end | mirror |
-| B22 | Support and hire pass timing | F31C → E41C | prepass vs per army | ii; iv (Greece t21, pass 1) | DIFF | **X2** | none |
+| B22 | Support and hire pass timing | F31C → E41C | prepass (per army only with Tactical human battles and a living human seat, no watch mode) vs per army | ii; iv (Greece t21, pass 1) | DIFF | **X2** | none |
 | B23 | Free hire gates | E41C | AiMercenaryHirePass | iv 1,199/1,200 | MATCH | Labels compared as counts | mirror |
 | B24 | Hire after a post-battle treaty in the same seat | 450C68 | PeaceTreatySystem.ApplyBeforeAiContinues | iv difference at 8e2d9053; fix in (iii) | DIFF → fixed, not re-measured | — | none |
 | B25 | Hire gate on army byte +0x274 | E41C | none | i | UNAUD | Meaning unknown | none |
@@ -254,7 +257,7 @@ area, its cross-reference is in the X list above.
 | B30 | Trade swap, one forward pass | FB7C | OriginalTradeSwapPass | iv (10 → 0) | MATCH | — | mirror |
 | B31 | Loop-1 trade skip for the war leader | FB7C | handled by T274 (see E14) | ii | AMB | Not re-measured | mirror |
 | B32 | AI embark over capacity | F8FC via B79C | ArmyTransportTrim (T224) | iii | APPR | Not re-measured | none |
-| B33 | Seat replay reruns the economy | FA20 | AiTurn re-entered | ii | UNAUD | **X3** | none |
+| B33 | Seat replay reruns the economy | FA20 | AiTurn re-entered | ii; iv (x3: pass-1 budgets identical in 15/15 runs, pass 2 reruns the economy) | MATCH (Tactical) | **X3** | none |
 | B34 | Fleet support and repair | E5DC/F7E4 | AutomaticResupply.ForFleet | iv synthetic 23/23 | MATCH (synthetic) | No natural-play comparison | mirror |
 | B35 | Designed economy (Improved) | none | AiEconomyPhase.Propose | iii | AUTH | — | mirror |
 
@@ -263,13 +266,13 @@ area, its cross-reference is in the X list above.
 | id | behaviour | original | remake | levels | cat | difference / uncertainty | tests |
 |---|---|---|---|---|---|---|---|
 | C01 | Army loop: table order, count at entry, one army at a time | F31C | OriginalArmyOrder; AiTurn loop | iv (e20a6488: 0/156 out of order) | MATCH | — | mirror |
-| C02 | Battle with a human: remaining armies skipped, seat replayed | 0x4A0B7C; FA20 | AiPhaseBattleGate (T256) | i, ii; iii (Tactical) | AMB / APPR (Instant) | **X3, X6** | mirror |
+| C02 | Battle with a human: remaining armies skipped, seat replayed | 0x4A0B7C; FA20 | AiPhaseBattleGate (T256) | i, ii; iii (Tactical); iv remake Tactical (x3-seat-replay-v1: 5/5 seats, 13/15 runs; the 2 misses are battle winners) | MATCH (Tactical) / DIFF (Instant) | **X3, X6** | mirror |
 | C03 | Capital-defence threat list (≤ 9, region, radius 19/9) | EFC8, EB18/EB9C | AiCapitalDefence.Threats | iv common cases (05b02936) | MATCH | The 9-cap and ties seen only in emulation | mirror |
 | C04 | Responders (order, offence skip, limit, non-war rule) | EFC8 | Run, CommittedToOffence, NearestThreat | iv (decisions report) | MATCH | Dispatch counted without a command: not isolated | mirror |
 | C05 | Responder destination and arrival attack | EFC8 → DBA8 → D734 | Destination, ArrivalAttack (T249) | iv (17 → 0) | MATCH | — | mirror |
 | C06 | Capital defence while a human battle is pending | EFC8 (no flag test) | continuePending (T277) | i–iii | AMB | **X5** | mirror |
 | C07 | Capital defence and support read relations after this turn's declaration | FB7C first | war candidate inside the loop | ii (code) | UNAUD (suspected DIFF) | **X1** | none |
-| C08 | Per-army support and hire at each army's entry | E41C at 0x44F366 | up front (Instant) | iv for transfers; iv for timing (Greece t21, pass 1) | DIFF | **X2**; Greece t21 attributed | mirror |
+| C08 | Per-army support and hire at each army's entry | E41C at 0x44F366 | up front (Instant, headless, watch mode) | iv for transfers; iv for timing (Greece t21, pass 1) | DIFF | **X2**; Greece t21 attributed | mirror |
 | C09 | Enemy-city scorer | ECE4, CAB4, EB9C | ScoreCityTarget; OriginalWordScore | iv (selection187; decisions) | MATCH | Whole-scorer word overflow never played | discr |
 | C10 | Enemy-army scorer | EE60 | ScoreArmyTarget | iv (army3 fixed; e20a) | MATCH (+ IMPROVED zero guard) | The original divides by zero | mirror |
 | C11 | Resupply/defence city scorer | E670 | ScoreResupplyCity | iv (v0.9.2 tie rows gone) | MATCH | Foreign preference not isolated; the capital test is "any nation's capital" | mirror |
@@ -283,9 +286,9 @@ area, its cross-reference is in the X list above.
 | C19 | DBA8 walk (CB40, D174, CEC8, recursion) | DBA8 | MoveArmyCommandHandler; ClassicalArmyNavigation | iv (3,303 + 44,734 emulator cases; in-play rows) | MATCH | D174 unbounded recursion: the remake drops the march | mirror |
 | C20 | Stale DBA8 word suppression | DB38 0x44DB47 | inheritFailedIntermediate (T276/T277) | iv (v0.9.4 recheck) | MATCH (measured scope) | Greece (112,70), Numidia t24–25 not hook-confirmed | mirror |
 | C21 | D734 end check at the measured callers | D734 0x44D895–98C | OriginalArmyWalkContact; EndCheck | iv (v0.9.1: 17 → 0) | MATCH | — | mirror |
-| C22 | D734 contact at unmeasured callers (E84C walk, F4A3, F47C) | D734 | EndCheck None there | i, ii partly | AMB | The original would besiege or attack | mirror |
-| C23 | D734 "not at war" city tail: F6D8 resupply at the walk's end | D734 → F6D8 | none (Ruleset.cs acknowledges it) | i, ii | MISSING | Mid-seat supply transfer absent | none |
-| C24 | D734 land tail (one more step if cost < moves) | D734 tail | MovementWalker | i, ii | UNAUD | — | none |
+| C22 | D734 contact at unmeasured callers (E84C walk, F4A3, F47C) | D734 | EndCheck None there | i, ii; iv (D734 hook, 80 rounds: no siege or attack at E84C / 0x44F4A3 / 0x44F47C) | MATCH (iv) | v4 frame walk: the 37 recursion actions go to the army target, capital defence, the city target and the walk at 0x44F4C7, none to the named callers (`R/2026-11-05-audit195-final-hooks.md` §1). Open: whether the remake's mirror of the 0x44F4C7 walk (22 sieges) has a City end check | mirror |
+| C23 | D734 "not at war" city tail: F6D8 resupply at the walk's end | D734 → F6D8 | none (Ruleset.cs acknowledges it) | i, ii; iv (571 tails in 80 rounds; the remake replay ends equal: supplies 293/294, money 294/294, city stock 321/323) | MISSING | No measurable effect: E41C has just filled the army (`2026-11-05-audit195-c22-c23-stays.md`) | none |
+| C24 | D734 land tail (one more step if cost < moves) | D734 tail | MovementWalker | i, ii | UNAUD | Not reached: the land-tail recursion never fired in 80 rounds (`2026-11-05-audit195-c22-c23-stays.md`) | none |
 | C25 | Garrison fallback destination | EBE8 | GarrisonFallback | iv (gap A 410 → 0) | MATCH | Capital −1 edge (C26) | mirror |
 | C26 | EBE8 with no capital | EBE8 (no guard) | returns null | i | DIFF (code) | Capital-less nation only | mirror |
 | C27 | AAB4 gate after a command | 0x44F4CC | MovesForActionCheck (#1723) | iv | MATCH | — | mirror |
@@ -305,11 +308,11 @@ area, its cross-reference is in the X list above.
 | D02 | Ship count min(100, cities + 50) | 450768 | OrderFleet | ii (derived); iii | AMB | Order size never compared | mirror |
 | D03 | Build city nearest the capital, eastern zone excluded | 4496E0, 4496BC | ChoosePort; OriginalFleetPort.IsPort | iv (v0.9.3: Media rows gone) | MATCH | — | mirror |
 | D04 | Build-city tie: first record | 4496E0 | ChoosePort | ii; iii | MATCH (code) | Not seen in play | mirror |
-| D05 | Busy build city | 4496E0 (own fleet only) | any nation's fleet (spot-checked, line 647) | ii, iii | DIFF | Captured coastal city with a foreign fleet under construction | mirror (asserts the divergent rule) |
+| D05 | Busy build city | 4496E0 (own fleet only) | any nation's fleet (spot-checked, line 647) | ii, iii | DIFF | Captured coastal city with a foreign fleet under construction; never reached: 0 of 181 builds in 25 games had a captured build city (`2026-11-05-audit195-b03-d05-d09.md`) | mirror (asserts the divergent rule) |
 | D06 | Port predicate for the build city | 4492C0 (body not read) | IsPort (E920 3×3) | i | AMB | Substituted routine | mirror |
 | D07 | Launch tile: 939C mode 0 on the live map | 44939C via 44A050 | CoastalCity.LaunchTile | iv (v0.9.3) | MATCH | — | discr |
 | D08 | Launch after the build city changes hands | 44A050 | FleetTickSystem | ii; iii | AMB | Not compared | none |
-| D09 | Launch-turn moves in a reused, compacted index | 44A050, 44ADB0 | moves 0 | ii | DIFF | The original's fleet can hunt or reach port on its launch turn | none |
+| D09 | Launch-turn moves in a reused, compacted index | 44A050, 44ADB0 | launch keeps the record's moves (FleetTickSystem.cs:94); a new order starts at Moves 0 (OrderFleetCommandHandler.cs:76) | ii; iv for the launch step (6 of 6 leftover launches match) | MATCH (launch) / DIFF (order: new fleet Moves 0, ii) | Order step needs a free-running remake game (`2026-11-05-audit195-b03-d05-d09.md`) | none |
 | D10 | Fleet phase branch order | F608 | OriginalFleetPhase.Run | iv (124/150; 26 rows attributed) | MATCH | — | discr (emulation) |
 | D11 | Supply, purse and repair prepass | E5DC, F7E4 | AiResupplyPass(onlyFleetId) | ii; iii | AMB | Staged Wine only | mirror |
 | D12 | Port pick | E9A8, E920 | OriginalFleetPort.Pick | iv (gap C a seed artefact; port rows) | MATCH | — | mirror |
@@ -319,7 +322,7 @@ area, its cross-reference is in the X list above.
 | D16 | Failed-search −1 word | D9A8 (a)/(b) | IntermediateSearchFailed (T277) | iv | MATCH | = C20 | mirror |
 | D17 | Ferry route at 0 army moves | DBA8 → D9A8 | ZeroMoveRendezvous | ii, iii | AMB | = C16 | mirror |
 | D18 | Carried army drives its fleet | DBA8 → CD08 | Carried | iv | MATCH | = C17 | mirror |
-| D19 | Stored-route lifetime | route_x +4 | OriginalFleetRoutes (per call) | ii, iii | AMB | **X3** | mirror |
+| D19 | Stored-route lifetime | route_x +4 | OriginalFleetRoutes (per call) | ii, iii | AMB | **X3**; the two late fleet rows (Carthage t127–t130) differ in a stored route written outside F608 (`R/2026-11-05-audit195-final-hooks.md` §3) | mirror |
 | D20 | E1FC move contract | E1FC, D174, CEC8, 939C | OriginalFleetMove | iv partial (24/26) | MATCH | — | discr (emulation) |
 | D21 | 939C returns the fleet's own tile (Thracia fleet 6) | 939C | ReplaceLandTarget | i | AMB | Unexplained; no position difference | none |
 | D22 | D174 unbounded recursion | D174 | FleetIntermediate | i | UNAUD | — | none |
@@ -330,7 +333,7 @@ area, its cross-reference is in the X list above.
 | D27 | AI fleet merge | 450B30 | MergeFleets | ii, iii | AMB | Never exercised; 16-bit wrap vs saturation | mirror |
 | D28 | Embark overflow | F8FC | PartitionWholeUnits | ii + controls | MATCH (branch) | Other branches unproved | none |
 | D29 | Reachability: any fleet makes every target reachable | CAB4 | ClassicalArmyNavigation | ii, iii | MATCH (code) | No iv | none |
-| D30 | Fleet phase still runs in an interrupted seat | FA20 0x44FA56 | ArmyPhaseInterrupted → OriginalFleetPhase | ii, iii | AMB | **X3** | none |
+| D30 | Fleet phase still runs in an interrupted seat | FA20 0x44FA56 | ArmyPhaseInterrupted → OriginalFleetPhase | ii, iii; iv (x3: pass 1 runs the fleet phase; S08 fleet 0 to port then stored route, as the original) | MATCH (Tactical) | **X3** | none |
 | D31 | Weather ignored by AI choices; rough sea counts as sea | storm pass; MapCode | IsRoughSea → 1 | iv for storm damage | MATCH | Ignorance inferred | discr |
 | D32 | Elimination removes fleets and carried armies | R/2026-10-09 elimination | conquest cascade | ii; iii | AMB | Not compared | mirror |
 | D33 | The AI never scuttles, splits, transfers or joins fleets with a human | none documented | none found | i | UNAUD | Absence not stated by research | none |
@@ -356,7 +359,7 @@ area, its cross-reference is in the X list above.
 | E15 | Trade swap single forward pass | FB7C | OriginalTradeSwapPass | iv | MATCH | — | mirror |
 | E16 | Swap drops a human partner to −8 | FB7C | MaySwapTradePartner | i–iii | AMB | Not observed in either game | none |
 | E17 | Phase order inside a seat | FA20 | AiTurn.Run | ii | AMB | **X1** | none |
-| E18 | Seat replay: FB7C runs again with fresh rolls | FA20 0x44FA56 | streams keyed by (nation, turn) | iv original | DIFF | **X3** | none |
+| E18 | Seat replay: FB7C runs again with fresh rolls | FA20 0x44FA56 | streams keyed by (nation, turn) | iv original | DIFF | **X3**; x3: no roll fired in 30 runs, the remake side unmeasured | none |
 | E19 | The AI never offers or writes peace over a war | FB7C | no peace branch | iv | MATCH | — | mirror |
 | E20 | Offer roll at a human turn start | 452034 | PendingOfferSystem | iii; iv for the rate (v0.5.0) | MATCH | Rate checked at v0.5.0 only | mirror |
 | E21 | Offer shown as an OK-only box | StartTurn 0x45AC5C | event | iv at v0.5.0 (no box) | AMB | Display not rechecked | none |
@@ -422,7 +425,7 @@ commit, and no later commit touches `Battle/Tactical/General/*`. In this table, 
 | F31 | Random source | global | SplitMix streams | i | AUTH (designed) | = A19 | none |
 | F32 | Write-back | TBattleOver_OK | TacticalWriteBack | i–iv | MATCH | — | discr |
 | F33 | Post-battle peace gate on the board | TBattleOver_OK → TBattlePols | Conclude | i–iv (hook 77/77) | MATCH | Barbarian exclusion authored; compare E28 for the instant path | discr |
-| F34 | AI attack on a human army interrupts the seat | FA20, 451FDC, F31C, 0x4A0B7C | PlaySeatTurn/ResumeAiLap | i, ii; iii | AMB | **X3** | mirror |
+| F34 | AI attack on a human army interrupts the seat | FA20, 451FDC, F31C, 0x4A0B7C | PlaySeatTurn/ResumeAiLap | i, ii; iii; iv remake Tactical (x3-seat-replay-v1: 5/5 seats, 13/15 runs; the 2 misses are battle winners) | MATCH (Tactical) / DIFF (Instant) | **X3** | mirror |
 | F35 | Capital defence while a battle is pending | EFC8 | AiPhaseBattleGate | i–iii | AMB | **X5** | mirror |
 | F36 | Human attack in their own turn declares war implicitly | 44AEE4 | TryOpenTacticalBattle | i–iii | MATCH | — | mirror |
 | F37 | "Board cannot host" fallback | none | CanBeFought | iii | AUTH | Unreachable under the 20-unit cap | none |
