@@ -132,6 +132,12 @@ bitmaps, two draw modes. Which mode the inventory called "mono" and which "terra
 is NOT established here: what is established is two visibly different renders and
 the byte that selects between them.
 
+> **Correction (2026-11-09, [#223 crosswalk](2026-11-09-assets223-command-glyph-crosswalk.md) §D):** the third argument of
+> `FUN_00417200` is an `ImageList` *index*, not a draw-mode flag, so these are two different stored images
+> (`MapsList[1]` when the byte is 0, `MapsList[0]` otherwise), not "the same tile bitmaps". `MapsList[0]` is a
+> two-tone land/sea map and `MapsList[1]` a terrain-colour map, one pixel per tile, measured tile by tile against a
+> tracked save. The measured run-length result below agrees (byte 1 is `MapsList[0]`).
+
 **The button's own appearance** `[derived]` from the form resource (`forms.json` of the
 feature-inventory data): `sb_areatog` is a `TSpeedButton` with one `Glyph.Data`
 (362 bytes), `ShowHint`, and **no** `GroupIndex`/`AllowAllUp`/second glyph — it has no
