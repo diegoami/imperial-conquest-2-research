@@ -36,6 +36,8 @@ Field offsets are given in the sections that use them and in the individual repo
 9. The computer seat's turn
 10. Victory, defeat, and the player interface
 
+*(Updated 2026-11-09: §9 gains "The seat's phases measured in the original (audit #195, 2026-11-05)", consolidating the audit reports of 2026-11-05. The reports for 2026-10-30 to 2026-11-04 not cited in this file are remake rechecks and coverage maps, not rules.)*
+
 *(assembled 2026-10-07 from the 111 reports in `docs/reports/`; the decompilation plan's
 priority queue is closed, so every subsystem now has code-level rules available)*
 
@@ -1157,6 +1159,37 @@ Open:
 - ~~Whether `FUN_0044d734`'s contact resolution differs when the mover is AI~~ **Resolved (2026-11-02):** AI walks reach the same end check and besiege or attack through it (see "Movement execution"). Only the pass side of its guards was measured; the fail sides are from the disassembly ([gap B siege call](reports/2026-11-02-gapb-siege-call168.md)).
 - The Bowmen ×3 assault weight is literal; design choice vs decompile artefact of the type encoding is not argued (2026-10-07-strategic-ai-turn.md).
 - The readers of the phase-mode flag `DAT_004a0340` were not traced [confirmed: decompile; the readers were not traced] (2026-10-07-strategic-ai-turn.md).
+
+### The seat's phases measured in the original (audit #195, 2026-11-05)
+
+Source: the audit #195 reports, which measured the original's AI phases with Wine hooks and read the code again at intake
+(sha256 `2018c205…`). They compare the original with the remake at v0.9.4 (`168dbc04`); this section keeps only what they establish about the
+**original**. Per-row verdicts for the remake are in [the inventory](reports/2026-11-04-ai-audit195-inventory.md), which is a coverage map, not a rule list.
+
+- **A war declared in the seat counts in the same seat's economy** `[confirmed: decompile]`: `FUN_0044fa20` calls diplomacy `FB7C` (:53217) before the economy `FFBC`, and
+  `FFBC` adds 15,000 per relation-3 nation and 6,000 per ally (:53488, :53491) before it compares threat with strength.
+  `[measured]` in 11 stored same-war seats: the original runs the gap call `FUN_004504f4` (mobilising ready recruits and/or raising new ones) in 8; its mobilisation level (`+0x442`) ends
+  higher than the remake's in 8 and equal in 3, never lower. The raise loop's treasury gate is `wealth / −500 < treasury`, or fewer than 3 raised; the cost is subtracted after the test
+  (2026-11-05-x1-war-before-economy.md). Not measured: the capital-defence radius (19 at war, 9 otherwise), the hire gate and the busy test, which also depend on the order; capital defence runs at the `F31C` entry, after `FB7C`.
+- **The support and hire pass is each army's first call** `[confirmed: disassembly]`: `FUN_0044f31c` calls `FUN_0044e41c` at `0x44F366` for every army, so army k's resupply, transfers and hire see the state left by armies 0…k−1 of the same seat: their moves, battles, conquests and the money spent (2026-11-05-x2-support-pass-timing.md).
+- **Mobilisation tests no enemy** `[confirmed: decompile]`: `FUN_004504f4` → `FUN_0044a4e0` → `FUN_0044a120` / `FUN_00449f08` / `FUN_004492c0` never call the hostile-adjacent predicate `FUN_004497cc` and never read the relation table.
+  A new army needs a free tile with map code 2–11 in the 3×3 area and fewer than 198 army records (`DAT_004a0324 < 0xc6`). `[measured, in play]`: `thracia-rulebot1-40t` t38 and t39, Armenia at Erivan with an enemy army adjacent: the original mobilises (7 slots, 41,500 men; 4 slots, 14,800) and the enemy destroys the new army (2026-11-05-audit195-b03-d05-d09.md).
+- **A fleet launched with moves left keeps them** `[measured]`: all 6 launches with leftover moves (17–31) in 91 launches end on the original's tile with the original's moves. The busy-build-city test (`4496E0`) counts the nation's **own** fleet only; no stored game has a build city owned by another nation (0 of 181 builds), so the foreign-fleet case is unreached (same report).
+- **The walk-end check `FUN_0044d734` and its three tails** `[measured, 80 rounds, 16 starts × 5, no human orders; observation-only hook]`: 1,525 entries; the tail resupplied 571 times (`F6D8`, a city not at war, call `0x44D935`), besieged 49 times (`0x44D949`) and attacked 64 times (`0x44D99B`).
+  With the recursion frames walked, the 37 siege and attack actions that sit under the `DBA8` recursion belong to the army-target walk (+15 attacks), capital defence (`EFC8`, +12 attacks), the city target (+3 sieges) and the walk at `0x44F4C7` after `E84C` (+7 sieges; 22 sieges in all);
+  the resupply tails come from the resupply walk 562 times, not 306. The three callers the old inventory worried about (the `E84C` walk, the chase at `0x44F4A3`, the resupply walk at `0x44F47C`) never besiege or attack. The land-tail recursion (`0x44D8E5`) never fired
+  (2026-11-05-audit195-c22-c23-stays.md; 2026-11-05-audit195-final-hooks.md §1). The tail resupply left no measurable effect on the replayed rounds (supplies equal in 293 of 294 armies); the draft's reason is that `E41C` has just filled the army from the same city.
+- **War and alliance come from the nation's own `FB7C` roll** `[measured]`: in the 9 own-capital stay rows, the original's war search found the same target as the remake's in 8 and its `Random(10)` roll missed (Rome t10 follows from Greece's missed roll); across the 8 rounds the original declares no war and forms no alliance.
+  A war extends to the target's ally over the peace cooldown: the setter `FUN_00449b40` never tests the cooldown (Seleucid's war on Armenia reaches Media at −8/−7). Carthage t35's alliance search itself was not logged (2026-11-05-audit195-final-hooks.md §2; 2026-11-05-audit195-c22-c23-stays.md).
+- **Late fleet rows** `[measured]`: at Carthage t127–t130 the original's `F608` takes the branch its inputs imply (stored route, or port for Ptolemaic fleet 1); the shuttle of Celtiberia's fleet 6 and the rewritten route of Ptolemaic fleet 5 come from a stored route written outside `F608`
+  (the rendezvous, `D9A8` → `CD08`, or the stored-route walk itself) (2026-11-05-audit195-final-hooks.md §3). The 222 late-year rows are classified, not explained: 94 draws or their consequences, 53 human phase, 7 human battles, 68 quiet candidates (2026-11-05-audit195-step7-late-years.md).
+- **Replay of an interrupted seat:** the two-pass structure above is unchanged; the audit's remake measurements (the retained pass in Tactical mode) are in 2026-11-05-x3-seat-replay-remake.md and do not add a rule about the original.
+
+**Open (audit #195):**
+- Who writes a fleet's stored route between two `F608` entries (D19): a hook on the route writers in t129–t130 is the next probe.
+- Whether the walk at `0x44F4C7` (22 original sieges) has a City end check in the remake's mirror; whether `EFC8` agrees with the remake beyond the audited runs (A10 is MATCH on those runs only).
+- The 49 ambiguous and 15 unaudited inventory rows; the capital-defence radius, hire gate and busy test as they depend on the phase order.
+- Everything here is Wine-only on the original side; none of it establishes native Windows parity.
 
 ## Victory, defeat, and the player interface
 
